@@ -1,0 +1,424 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Essential Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.85in,top=1in,bottom=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks,colorlinks=true,linkcolor=navyblue,citecolor=navyblue,urlcolor=tealblue]{hyperref}
+
+% --- Color Definitions ---
+\definecolor{navyblue}{RGB}{16, 44, 87}
+\definecolor{tealblue}{RGB}{14, 116, 144}
+\definecolor{darkslate}{RGB}{30, 41, 59}
+\definecolor{boxbg}{RGB}{248, 250, 252}
+\definecolor{boxborder}{RGB}{203, 213, 225}
+\definecolor{alertred}{RGB}{185, 28, 28}
+\definecolor{alertbg}{RGB}{254, 242, 242}
+\definecolor{alertborder}{RGB}{252, 165, 165}
+\definecolor{greenaccent}{RGB}{22, 101, 52}
+\definecolor{greenbg}{RGB}{240, 253, 244}
+\definecolor{greenborder}{RGB}{187, 247, 208}
+
+% --- Typography & Page Layout ---
+\setlist[itemize]{noitemsep, topsep=3pt, leftmargin=1.5em}
+\setlist[enumerate]{noitemsep, topsep=3pt, leftmargin=1.5em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{darkslate}{\small\textbf{QCCA: Query-Conditioned Context Allocator}}}
+\rhead{\textcolor{darkslate}{\small CS787 Research Project Plan v1.0}}
+\cfoot{\textcolor{darkslate}{\small Page \thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\large\bfseries\color{navyblue}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{tealblue}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\small\bfseries\color{darkslate}}{\thesubsubsection}{0.5em}{}
+
+% --- Custom Callout Boxes ---
+\tcbset{
+    sharp corners,
+    colback=boxbg,
+    colframe=boxborder,
+    boxrule=0.8pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+\newtcolorbox{summarybox}[1][]{
+    colback=boxbg,
+    colframe=navyblue,
+    fonttitle=\bfseries\color{white},
+    title=#1,
+    sharp corners,
+    boxrule=1pt
+}
+
+\newtcolorbox{hypothesisbox}[1][]{
+    colback=greenbg,
+    colframe=greenborder,
+    fonttitle=\bfseries\color{greenaccent},
+    title=#1,
+    sharp corners,
+    boxrule=1pt
+}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=alertbg,
+    colframe=alertborder,
+    fonttitle=\bfseries\color{alertred},
+    title=#1,
+    sharp corners,
+    boxrule=1pt
+}
+
+% --- Document Metadata ---
+\title{
+    \vspace{-1.5cm}
+    \textbf{\Large Query-Conditioned Evidence Allocation for Efficient Retrieval-Augmented Generation} \\[0.3em]
+    \large\textbf{Project Specification and Execution Plan v1.0} \\[0.2em]
+    \normalsize\textcolor{tealblue}{\textbf{Short Name: QCCA (Query-Conditioned Context Allocator)}} \\[0.1em]
+    \small CS787 Graduate Research Project $\cdot$ 8-Week Timeline
+}
+\author{\textbf{Research Pair Programming Team}}
+\date{September 2026}
+
+\begin{document}
+
+\maketitle
+\vspace{-0.5cm}
+
+\begin{summarybox}[Central Research Question \& Executive Summary]
+\textbf{Core Question:} \textit{Does retrieval uncertainty/structure predict how much uncompressed natural-language evidence a query requires, and can a lightweight query-conditioned allocator dynamically choose the amount of uncompressed context given to the generator while maintaining answer quality and reducing context/computational cost?}
+\vspace{0.4em}
+
+\textbf{Core Premise:} Standard RAG provides full retrieved text ($k=n$) for every query, while SARA introduces context compression by fixing $k$ ($k=5$ text passages, remaining $10-k$ compressed via projected embeddings). Our research asks whether $k$ should instead depend on the query:
+\begin{equation*}
+k = k(q) \in \{0, 2, 4, 5, 6, 8, 10\}
+\end{equation*}
+The goal is \textbf{not} to retrain the retriever or generator, but to evaluate whether cheap retrieval-side statistics can dynamically govern evidence allocation before generation.
+\end{summarybox}
+
+\begin{center}
+\small
+\begin{tabular}{ccccccc}
+\toprule
+\textbf{Retriever} & \textbf{Compressor} & \textbf{Generator} & \textbf{Dataset} & \textbf{Primary Metric} & \textbf{Target Hardware} \\
+\midrule
+BM25 ($n=10$) & SFR-Embedding-Mistral & Mistral-7B-Instruct-v0.2 & QASPER & Token F1 & 1x NVIDIA TITAN RTX (24GB) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.2cm}
+\noindent\textbf{Conceptual Pipeline Flow:}
+\begin{center}
+\small
+\setlength{\fboxsep}{6pt}
+\fbox{Query $q$} $\longrightarrow$ \fbox{BM25 Retrieval ($n=10$)} $\longrightarrow$ \fbox{Retrieval Uncertainty Stats} $\longrightarrow$ \fbox{\textbf{QCCA Allocator}} $\longrightarrow$ \textbf{$k(q)$}
+\\[0.5em]
+$\left\{
+\begin{array}{lcl}
+\text{Top } k(q) \text{ passages} & \longrightarrow & \text{Natural-Language Plain Text} \\
+\text{Remaining } 10 - k(q) \text{ passages} & \longrightarrow & \text{SFR Embedding Projector } (\langle\text{COMPRESS}\rangle)
+\end{array}
+\right\} \longrightarrow$ \fbox{XMistral Generator} $\longrightarrow$ \fbox{Answer}
+\end{center}
+
+\section{Research Motivation}
+The broader paradigm is \textbf{Query-Conditioned Resource Allocation}.
+\begin{itemize}
+    \item In internal computation routing: A model decides how much Transformer depth or feed-forward capacity a query requires.
+    \item In retrieval-augmented generation (RAG): A system decides how much external evidence must be retained in verbatim natural language versus compressed semantic representations.
+\end{itemize}
+This project investigates \textbf{information and evidence allocation} prior to generation, determining whether expensive context inflation can be selectively curbed using pre-generation uncertainty signals.
+
+\section{Main Hypotheses \& Falsification Conditions}
+
+\begin{hypothesisbox}[H1: Query-Dependent Evidence Requirement]
+Different queries require different amounts of uncompressed evidence. Therefore, the optimal allocation $k^*(q)$ is not constant across queries.
+\end{hypothesisbox}
+
+\begin{hypothesisbox}[H2: Retrieval Structure Predicts Evidence Requirement]
+Features derived from the retrieval-score distribution (e.g., top-1 concentration, top-1/top-2 margin, retrieval entropy) contain predictive signal regarding the amount of natural-language evidence required by the generator.
+\end{hypothesisbox}
+
+\begin{hypothesisbox}[H3: Dynamic Allocation Improves Pareto Efficiency]
+A query-conditioned allocator can match or improve upon the answer quality of the best fixed-allocation baseline while reducing context token overhead and computational cost ($QCCA > \text{Best Static } k$).
+\end{hypothesisbox}
+
+\subsection{Falsification Conditions (Authentic Empirical Outcomes)}
+The central hypothesis is falsified if:
+\begin{enumerate}[label=(\alph*)]
+    \item Optimal $k^*$ barely varies across queries (a single static $k$ dominates for nearly all questions).
+    \item Retrieval statistics provide near-zero predictive mutual information with optimal $k^*$.
+    \item Dynamic allocation provides no context reduction or quality advantage over the development-selected static optimum $k_{\text{dev}}^*$.
+\end{enumerate}
+All negative results will be reported with equal scientific rigor and transparent analysis.
+
+\section{Primary Dataset}
+\begin{itemize}
+    \item \textbf{Dataset:} \texttt{allenai/qasper} (Scientific Research Paper Question Answering).
+    \item \textbf{Justification:} QASPER contains long, multi-paragraph academic papers with complex queries requiring localized or multi-hop evidence, providing an ideal stress test for context compression.
+    \item \textbf{Course Scope Guardrail:} The 8-week CS787 research project will focus deeply on QASPER to maintain statistical power, prevent diluted engineering effort, and ensure thorough error analysis. Cross-domain datasets (e.g., BioASQ) remain an optional extension for subsequent publication development.
+\end{itemize}
+
+\section{Data Splitting and Leakage Control}
+\begin{warningbox}[Critical Rule: Document-Level Disjointness]
+Splits are strictly partitioned at the \textbf{paper level} (\texttt{example\_id}), \textbf{never} at the individual question level. Questions from the same research paper must never appear across development and test splits.
+\end{warningbox}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lrrX}
+\toprule
+\textbf{Split Partition} & \textbf{Approx. Papers} & \textbf{Approx. Questions} & \textbf{Designated Operational Scope} \\
+\midrule
+\textbf{Discovery} & $\sim 11$ & $\sim 35$ & Exploratory hypothesis validation and early sensitivity checks. Locked; excluded from final training. \\
+\textbf{Development} & $\sim 90$ & $\sim 320$ & Fixed-$k$ sweeps, $k_{\text{dev}}^*$ selection, oracle generation, $\epsilon$ tuning, GroupKFold allocator training. \\
+\textbf{Final Test} & $\sim 180$ & $\sim 650$ & \textbf{Frozen evaluation only.} Touched strictly once after complete pipeline freeze. \\
+\bottomrule
+\end{tabularx}
+\caption{Paper-disjoint dataset partitions for the QCCA project.}
+\end{table}
+
+\section{Parent Architecture: SARA Audit \& Hardware Strategy}
+The base system is SARA (\textit{Selective and Adaptive Retrieval-augmented Generation with Context Compression}):
+\begin{itemize}
+    \item \textbf{Retriever:} BM25 through LlamaIndex, $n=10$ candidate passages, chunk size 256.
+    \item \textbf{Compressor:} \texttt{Salesforce/SFR-Embedding-Mistral} ($d_{\text{embed}} = 4096$).
+    \item \textbf{Generator:} \texttt{mistralai/Mistral-7B-Instruct-v0.2} with XMistral 2-layer MLP projector.
+    \item \textbf{Context Mechanism:} Top-$k$ passages injected as text; remaining $10-k$ passages compressed as single $\langle\text{COMPRESS}\rangle$ tokens receiving projected SFR embeddings.
+\end{itemize}
+
+\subsection{Hardware Memory Constraint on 24GB Titan RTX}
+Measured peak VRAM requirements:
+\begin{itemize}
+    \item Generator (\texttt{Mistral-7B} + Projector in \texttt{bfloat16}): $\sim 13.56\text{ GB}$.
+    \item Compressor (\texttt{SFR-Embedding-Mistral} in \texttt{bfloat16}): $\sim 13.24\text{ GB}$.
+    \item Combined footprint: $13.56 + 13.24 = 26.80\text{ GB} > 24.0\text{ GB}$ (Causes CUDA OOM if co-located).
+\end{itemize}
+\textbf{Execution Strategy:} Compression and generation are strictly executed \textbf{sequentially}. Retrieved passage embeddings are precomputed and cached to disk. Latency is reported as isolated model-resident execution times rather than disk/loading overhead.
+
+\section{Experimental Baseline Hierarchy}
+To rigorously evaluate QCCA, we establish a 5-tier baseline hierarchy alongside diagnostic oracles:
+\begin{enumerate}
+    \item \textbf{Baseline 1 (Vanilla RAG, $k=10$):} All 10 retrieved passages presented as natural language; zero compression. Measures full-text reference quality.
+    \item \textbf{Baseline 2 (Pure Compression, $k=0$):} All 10 passages compressed as $\langle\text{COMPRESS}\rangle$ tokens. Measures compression floor.
+    \item \textbf{Baseline 3 (Parent SARA, $k=5$):} Official fixed allocation (5 text, 5 compressed).
+    \item \textbf{Baseline 4 (Best Static SARA, $k=k_{\text{dev}}^*$):} Best performing static $k \in \{0,2,4,5,6,8,10\}$ determined strictly on the Development split. \textbf{This is the primary scientific comparison.}
+    \item \textbf{Baseline 5 (Random Allocation Control):} $k$ sampled uniformly at random from candidate allocations to confirm gains are not an artifact of random context variance.
+    \item \textbf{Related-Work Baseline (RECOMP):} Treated as a conceptual and related-work reference. RECOMP uses FLAN-UL2 (20B) and is incompatible with the QASPER BM25/Mistral pipeline on 24GB VRAM.
+\end{enumerate}
+
+\section{Fixed-$k$ Sensitivity Sweep}
+Every question in the Development set will be evaluated across the discrete grid:
+\begin{equation*}
+K = \{0, 2, 4, 5, 6, 8, 10\}
+\end{equation*}
+Logging per example: Token F1, ROUGE-L, EM, input context tokens, generated output tokens, compression runtime ($L_{\text{comp}}$), generation runtime ($L_{\text{gen}}$), and peak VRAM. This produces the complete $|Q_{\text{dev}}| \times |K|$ empirical matrix.
+
+\section{Oracle Formulations}
+We formulate two diagnostic upper bounds:
+\subsection{Quality Oracle}
+\begin{equation}
+k^*_{\text{qual}}(q) = \arg\max_{k \in K} \text{F1}(q, k) \quad (\text{ties broken to smaller } k)
+\end{equation}
+Measures the unconstrained upper bound on achievable F1 under dynamic context selection.
+
+\subsection{Efficiency-Aware Epsilon Oracle}
+\begin{equation}
+k^*_{\epsilon}(q) = \min \left\{ k \in K \;\Big|\; \text{F1}(q, k) \ge \max_{j \in K} \text{F1}(q, j) - \epsilon \right\}
+\end{equation}
+Prevents the allocator from wasting hundreds of context tokens for negligible quality gains (e.g., $+0.005$ F1). Candidates $\epsilon \in \{0.00, 0.01, 0.02, 0.05\}$ will be evaluated on the Development set to select an optimal Pareto threshold $\epsilon^*$, which is then frozen.
+
+\section{Evaluation Metrics \& Quality Audit}
+\begin{itemize}
+    \item \textbf{Primary Quality Metric:} Official QASPER Token F1 (normalized tokens: lowercase, punctuation stripped, stop words and articles removed).
+    \item \textbf{Secondary Metrics:} ROUGE-L and Exact Match (EM). EM is expected to be near zero for generative scientific answers.
+    \item \textbf{Human Semantic Audit:} A blinded manual audit of $\sim 50$ Development questions comparing outputs at $k \in \{2, 5, 10\}$ against human correctness ($0 = \text{incorrect}$, $1 = \text{partially correct}$, $2 = \text{fully correct}$) to ensure Token F1 reliably tracks true semantic validity.
+\end{itemize}
+
+\section{Retrieval Uncertainty Feature Extraction}
+Given ranked passages $d_1, \dots, d_{10}$ with raw BM25 scores $s_1 \ge s_2 \ge \dots \ge s_{10}$, we first apply non-negative rectification:
+\begin{equation}
+s_i' = \max(s_i, 0)
+\end{equation}
+\begin{enumerate}
+    \item \textbf{Top-1 Concentration:}
+    \begin{equation}
+    \rho_1 = \frac{s_1'}{\sum_{i=1}^{10} s_i' + \varepsilon_{\text{num}}}
+    \end{equation}
+    \item \textbf{Top-2 Normalized Margin:}
+    \begin{equation}
+    \Delta_{12} = \frac{s_1' - s_2'}{s_1' + \varepsilon_{\text{num}}}
+    \end{equation}
+    \item \textbf{Retrieval Entropy:}
+    \begin{equation}
+    p_i = \frac{\exp(s_i' / \tau)}{\sum_{j=1}^{10} \exp(s_j' / \tau)}, \quad H_{\text{ret}} = -\sum_{i=1}^{10} p_i \ln p_i, \quad H_{\text{norm}} = \frac{H_{\text{ret}}}{\ln(10)}
+    \end{equation}
+    \item \textbf{Query Token Length:} Count of tokens in query string $q$.
+    \item \textbf{High-Score Passage Count ($N_{\text{high}}$):} Count of passages where $s_i' \ge \theta_{\text{rel}} \cdot s_1'$.
+    \item \textbf{Query Surface Category:} Non-gold heuristic classifying query as Boolean, Factoid, or Explanatory.
+    \item \textbf{Raw BM25 Score ($s_1$):} Retained strictly as an ablation feature to test whether raw magnitude adds value over scale-invariant statistics.
+\end{enumerate}
+
+\section{BM25 Score Edge-Case Robustness}
+To guarantee mathematical stability before computing probabilities or logs, the feature extractor will be unit-tested against:
+(a) all-zero scores, (b) identical scores across all passages, (c) single dominant passage, (d) negative IDF scores, and (e) near-zero score sums.
+
+\section{QCCA Allocation Policies}
+The allocator operates prior to SFR compression and Mistral generation.
+
+\subsection{QCCA-Rule (Interpretable Piecewise Policy)}
+A simple threshold-based heuristic:
+\begin{equation*}
+k(q) = \begin{cases}
+2, & \text{if } \rho_1 \ge \theta_{\text{high}} \text{ (concentrated evidence)} \\
+4 \text{ or } 6, & \text{if } \theta_{\text{low}} \le \rho_1 < \theta_{\text{high}} \text{ (moderate uncertainty)} \\
+8 \text{ or } 10, & \text{if } \rho_1 < \theta_{\text{low}} \text{ (diffuse/uncertain evidence)}
+\end{cases}
+\end{equation*}
+Thresholds are fitted strictly on the Development set via grid search.
+
+\subsection{QCCA-Learned (Constrained Machine Learning Policy)}
+\begin{itemize}
+    \item \textbf{Models:} L2-regularized Multinomial Logistic Regression and shallow Decision Tree ($\text{depth} \le 4$).
+    \item \textbf{Feature Vector:} $\mathbf{x} = [\rho_1, \Delta_{12}, H_{\text{norm}}, \text{len}(q), N_{\text{high}}, \text{type}(q)]$.
+    \item \textbf{Target:} $k^*_{\epsilon}(q) \in \{2, 4, 6, 8\}$.
+    \item \textbf{Cross-Validation:} 5-fold \textbf{GroupKFold} grouped by paper ID to prevent document-level data leakage across folds.
+\end{itemize}
+
+\section{Methodological Safeguards \& Guardrails}
+\begin{warningbox}[Strict Experimental Boundaries]
+\begin{itemize}
+    \item \textbf{Frozen Retriever \& Generator:} Retain BM25 and Mistral-7B frozen. Do not fine-tune LM weights during allocator development.
+    \item \textbf{No Test-Set Influence:} Allocator weights, thresholds, features, and $\epsilon$ must be completely locked before running the final test set.
+    \item \textbf{No Cheating Features:} Zero gold answers, gold spans, or downstream labels may enter the allocator.
+    \item \textbf{No Synthetic Latency Inflation:} Do not report disk loading/unloading of models as inference latency.
+\end{itemize}
+\end{warningbox}
+
+\section{Master Week-by-Week Execution Timeline}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{clp{10.5cm}}
+\toprule
+\textbf{Week} & \textbf{Phase Goal} & \textbf{Detailed Engineering \& Scientific Deliverables} \\
+\midrule
+\textbf{W1} & \textbf{Infrastructure} & Lock virtualenv; verify all 18 SARA tests; execute SARA adapter training to establish frozen baseline checkpoint; generate deterministic paper-level split manifests; build unit-tested BM25 feature extractor; implement offline SFR embedding cache. \\
+\addlinespace[3pt]
+\textbf{W2} & \textbf{Dev Baseline Matrix} & Run full allocation sweep $k \in \{0,2,4,5,6,8,10\}$ on Development set ($n=320$); log Token F1, ROUGE-L, tokens, isolated latencies, and VRAM; determine $k_{\text{dev}}^*$. \\
+\addlinespace[3pt]
+\textbf{W3} & \textbf{Oracle Analysis} & Compute $k^*_{\text{qual}}$ and $k^*_{\epsilon}$ ($\epsilon \in \{0, .01, .02, .05\}$); analyze optimal $k$ distribution across queries; verify hypothesis H1 (does optimal $k$ vary?); perform 50-question human F1 validation audit. \\
+\addlinespace[3pt]
+\textbf{W4} & \textbf{Allocator Development} & Train QCCA-Rule and QCCA-Learned via GroupKFold; tune hyperparameters on Dev folds; execute end-to-end dry-run of final test harness using a dummy random allocator. \\
+\addlinespace[3pt]
+\textbf{W5} & \textbf{Methodology Freeze} & \textbf{FREEZE} features, model checkpoints, allocator weights, $\epsilon^*$, thresholds, prompts, and evaluation code. Execute Final Test set evaluation across all baseline arms. \\
+\addlinespace[3pt]
+\textbf{W6} & \textbf{Statistical Evaluation} & Execute paper-clustered paired bootstrap ($B=10{,}000$ resamples) computing 95\% CIs; perform Wilcoxon signed-rank tests; analyze isolated vs. synthesized inference latencies. \\
+\addlinespace[3pt]
+\textbf{W7} & \textbf{Ablations \& Failures} & Run feature ablations (concentration-only, leave-one-out); Pareto frontier analysis (F1 vs. tokens); deterministic failure mode taxonomy (over/under-compression, retrieval loss); blinded human evaluation ($n=50$, Cohen's $\kappa$). \\
+\addlinespace[3pt]
+\textbf{W8} & \textbf{Manuscript \& Assets} & Finalize publication-ready LaTeX tables, vector plots (Pareto frontiers, $k^*$ distributions, latency breakdowns); complete CS787 final report and presentation slides. \\
+\bottomrule
+\end{tabularx}
+\caption{Chronological 8-week operational milestone plan.}
+\end{table}
+
+\section{Final Test Evaluation Matrix}
+On the final test partition ($\sim 180$ papers, $\sim 650$ questions), the exact 9 systems evaluated are:
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lccccX}
+\toprule
+\textbf{System Arm} & \textbf{Retriever} & \textbf{Compressor} & \textbf{Generator} & \textbf{Allocation $k$} & \textbf{Experimental Role} \\
+\midrule
+1. Vanilla RAG & BM25 & None & Mistral-7B & 10 & Uncompressed reference ceiling \\
+2. Pure Compression & BM25 & SFR & Mistral-7B & 0 & Compression performance floor \\
+3. Parent SARA & BM25 & SFR & Mistral-7B & 5 & Fixed parent architecture \\
+4. Best Static SARA & BM25 & SFR & Mistral-7B & $k_{\text{dev}}^*$ & Primary static control \\
+5. Random Allocation & BM25 & SFR & Mistral-7B & $k_{\text{rand}} \sim K$ & Variance control \\
+6. \textbf{QCCA-Rule} & BM25 & SFR & Mistral-7B & $k(q)$ & Proposed rule-based policy \\
+7. \textbf{QCCA-Learned} & BM25 & SFR & Mistral-7B & $k(q)$ & Proposed learned ML policy \\
+8. Quality Oracle & BM25 & SFR & Mistral-7B & $k^*_{\text{qual}}(q)$ & Diagnostic upper bound \\
+9. Epsilon Oracle & BM25 & SFR & Mistral-7B & $k^*_{\epsilon}(q)$ & Diagnostic efficiency bound \\
+\bottomrule
+\end{tabularx}
+\caption{Master system comparison matrix.}
+\end{table}
+
+\section{Reporting Table Schema \& Synthesized Latency}
+The main results table will report:
+\begin{equation*}
+\left[ \text{System}, \; \text{Token F1}, \; \text{ROUGE-L}, \; \text{EM}, \; \text{Mean Input Tokens}, \; \Delta\text{Tokens (\%),} \; \bar{k}, \; L_{\text{comp}}, \; L_{\text{gen}}, \; L_{\text{total}}, \; \text{Peak VRAM} \right]
+\end{equation*}
+where synthesized model-resident inference latency is defined as:
+\begin{equation}
+L_{\text{total}}(q) = L_{\text{ret}}(q) + L_{\text{alloc}}(q) + L_{\text{comp}}(10 - k(q)) + L_{\text{gen}}(k(q))
+\end{equation}
+measured with models already resident in GPU memory to isolate true algorithmic latency.
+
+\section{Statistical Testing Protocol}
+Because individual questions within the same paper share background context:
+\begin{itemize}
+    \item \textbf{Paper-Clustered Bootstrap:} $B = 10{,}000$ iterations. Papers are sampled with replacement, and all associated questions are evaluated to compute paired difference distributions:
+    \begin{equation}
+    \Delta \text{F1} = \text{F1}(\text{QCCA}) - \text{F1}(\text{Baseline})
+    \end{equation}
+    Reporting empirical 95\% confidence intervals $[\text{CI}_{0.025}, \text{CI}_{0.975}]$.
+    \item \textbf{Non-Parametric Test:} Wilcoxon signed-rank test across paired query differences.
+\end{itemize}
+
+\section{Deterministic Failure Analysis Taxonomy}
+Rather than cherry-picking qualitative examples, failures ($\text{F1}_{\text{QCCA}} < \text{F1}_{\text{BestStatic}} - 0.15$) will be deterministically categorized into:
+\begin{enumerate}
+    \item \textbf{Over-Compression:} Allocator selected $k$ too small; relevant evidence was compressed into an embedding that lost key tokens.
+    \item \textbf{Under-Compression:} Allocator selected $k$ too large; excess uncompressed context distracted the generator.
+    \item \textbf{Retrieval Failure:} Golden evidence was not present in the top-10 retrieved candidates (independent of allocation).
+    \item \textbf{Generator Failure:} Golden evidence was present in natural language, but Mistral-7B failed to generate the correct entity.
+    \item \textbf{Misleading Distribution:} High BM25 concentration on distractor passages caused false confidence.
+\end{enumerate}
+
+\section{Core Risk Matrix \& Mitigation Strategies}
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lp{6cm}p{7.5cm}}
+\toprule
+\textbf{Risk Event} & \textbf{Root Cause / Mechanism} & \textbf{Mitigation Strategy} \\
+\midrule
+\textbf{GPU OOM} & Concurrent loading of SFR (13.2GB) and Mistral (13.6GB) exceeds 24GB VRAM. & Sequential model execution; precompute and cache all SFR passage embeddings to disk. \\
+\addlinespace[2pt]
+\textbf{Allocator Overfitting} & Small development set ($\sim 320$ questions) with complex classifiers. & Enforce GroupKFold by paper; use strong L2 regularization; restrict decision tree depth $\le 4$. \\
+\addlinespace[2pt]
+\textbf{Best Static $k \ge$ QCCA} & Retrieval statistics contain insufficient signal to beat a fixed compromise. & Valid scientific result. Report honestly, document oracle gap, and characterize why static context suffices. \\
+\addlinespace[2pt]
+\textbf{Pathological BM25} & Zero or negative scores on long queries break entropy/margin calculations. & Apply non-negative rectification $s_i' = \max(s_i, 0)$ with numerical stabilizer $\varepsilon$. \\
+\addlinespace[2pt]
+\textbf{Data Leakage} & Cross-contamination of paper topics across splits. & Strict paper-level disjointness enforced by manifest assertions prior to experiments. \\
+\bottomrule
+\end{tabularx}
+\caption{Identified technical risks and engineering mitigations.}
+\end{table}
+
+\section{Summary \& Definitive Benchmark Standard}
+\begin{summarybox}[Final One-Sentence Project Statement]
+Instead of giving every RAG query the same amount of full-context evidence, QCCA learns whether the current query needs 2, 4, 6, or 8 passages in natural language while compressing the remaining evidence—and tests whether this adaptive allocation beats the best fixed allocation in the quality-vs-efficiency tradeoff.
+\end{summarybox}
+
+\end{document}

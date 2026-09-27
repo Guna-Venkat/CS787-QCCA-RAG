@@ -1,0 +1,39 @@
+# Python & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+sara_env/
+dlenv/
+
+# Model Weights & Large Datasets
+checkpoints/
+outputs/
+data/
+*.safetensors
+*.bin
+*.pth
+*.pt
+*.onnx
+
+# LaTeX Intermediate Files (preserve .tex and .pdf)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.xdv
+*.synctex.gz
+
+# System & IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
