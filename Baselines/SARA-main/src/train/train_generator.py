@@ -330,7 +330,7 @@ def main(**kwargs):
     args.output_dir = checkpoint_dir[0]
 
     if retriever is not None:
-        retriever = retriever.to(accelerator.device)
+        retriever = retriever.to("cpu")
 
     # Make one log on every process with the configuration for debugging.
     logging.basicConfig(
