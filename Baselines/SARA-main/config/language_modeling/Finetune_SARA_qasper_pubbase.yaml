@@ -44,9 +44,9 @@ alpha_kl: 0.0
 kl_temperature: 1.0
 clip_grad_norm: 1.0
 seed: 42
-per_device_train_batch_size: 2
-per_device_eval_batch_size: 4
-gradient_accumulation_steps: 4       # effective batch = 8 per device (matched RAG/SARA)
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 2
+gradient_accumulation_steps: 4       # effective batch = 4 per device (4-hour setup, 17GB peak)
 max_train_steps: 250   # IDENTICAL optimizer updates across RAG and SARA (release plan §3)
 checkpointing_steps: epoch
 
