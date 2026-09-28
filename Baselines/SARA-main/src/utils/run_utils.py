@@ -114,6 +114,7 @@ def run_subprocess(
     With ``dry_run=True`` only prints, returns ``returncode=0`` without spawning.
     """
     env = os.environ.copy()
+    env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
     if gpu is not None:
         env["CUDA_VISIBLE_DEVICES"] = str(gpu)
     if extra_env:
