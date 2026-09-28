@@ -285,6 +285,7 @@ def main(**kwargs):
                     retriever_kwargs["local_files_only"] = True
                 
                 retriever = SFR.from_pretrained(args.compressor_name_or_path, **retriever_kwargs)
+                retriever = retriever.to("cpu")
                 
                 tokenizer_kwargs = {}
                 if "checkpoint" in args.compressor_name_or_path:
@@ -295,7 +296,7 @@ def main(**kwargs):
                 retriever = SentenceBERTEmbedding(
                     args.compressor_name_or_path,
                     torch_dtype=torch.bfloat16,
-                    device="cuda" if torch.cuda.is_available() else "cpu",
+                    device="cpu",
                     # trust_remote_code=True,
                     # token=os.environ['HF_TOKEN']
                 )
