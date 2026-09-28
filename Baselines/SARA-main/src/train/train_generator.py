@@ -299,7 +299,7 @@ def main(**kwargs):
                     # trust_remote_code=True,
                     # token=os.environ['HF_TOKEN']
                 )
-                retriever_tokenizer = AutoTokenizer.from_pretrained(args.compressor_name_or_path, token=os.environ['HF_TOKEN'])
+                retriever_tokenizer = AutoTokenizer.from_pretrained(args.compressor_name_or_path, token=os.environ.get('HF_TOKEN'))
         retrieval_embed_length = retriever.get_embed_length()  # Seems always 1
         retriever_hidden_size = retriever.get_embed_dim()
         retriever.eval()
@@ -636,14 +636,14 @@ def main(**kwargs):
         tokenizer = LlamaTokenizerFast.from_pretrained(
             tokenizer_and_config_path,
             use_fast=args.use_fast_tokenizer,
-            token=os.environ['HF_TOKEN']
+            token=os.environ.get('HF_TOKEN')
         )
 
     else:
         tokenizer = AutoTokenizer.from_pretrained(
             tokenizer_and_config_path,
             use_fast=args.use_fast_tokenizer,
-            token=os.environ['HF_TOKEN']
+            token=os.environ.get('HF_TOKEN')
         )
         
     # vocab_size = len(tokenizer)
@@ -696,7 +696,7 @@ def main(**kwargs):
 
     config = CONFIG_CLASS.from_pretrained(tokenizer_and_config_path,
                                           retriever_hidden_size=retriever_hidden_size,
-                                          token=os.environ['HF_TOKEN']
+                                          token=os.environ.get('HF_TOKEN')
                                           )
     
     # config.vocab_size = vocab_size
@@ -728,7 +728,7 @@ def main(**kwargs):
         # transformers>=4.x: use attn_implementation (flash-attn is ABI-broken here -> sdpa).
         attn_implementation="flash_attention_2" if args.use_flash_attn else "sdpa",
         torch_dtype=torch.bfloat16 if accelerator.mixed_precision == 'bf16' else 'auto',
-        token=os.environ['HF_TOKEN']
+        token=os.environ.get('HF_TOKEN')
     )
     
     

@@ -33,8 +33,6 @@ def rank_documents(documents: Union[Document, List[Document]], question: str, ch
         documents = [documents]
         
     elif isinstance(documents, list) and isinstance(documents[0], str):
-        documents = [Document(text="\n\n".join(documents))]
-        
         documents = [Document(text=doc) for doc in documents]
         
     else:
