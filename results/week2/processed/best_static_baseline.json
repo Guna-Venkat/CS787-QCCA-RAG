@@ -1,0 +1,13 @@
+{
+  "best_static_k": 10,
+  "mean_f1": 0.8222,
+  "exact_match": 0.3333,
+  "rouge_l": 0.0,
+  "mean_context_tokens": 1570.0,
+  "context_reduction_pct": 0.0,
+  "selection_rule": "argmax_k Mean_F1_dev(k) with smaller-k tie-breaking",
+  "evaluated_question_count": 3,
+  "seed": 42,
+  "timestamp": "2026-09-29 22:56:52",
+  "note": "Development set static baseline. Test set untouched."
+}

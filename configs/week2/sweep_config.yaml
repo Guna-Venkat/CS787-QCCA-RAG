@@ -1,0 +1,52 @@
+# Week 2: Fixed-k Development Baseline Response Matrix Configuration
+# Query-Conditioned Evidence Allocation (QCCA) - CS787 Research Project
+
+seed: 42
+
+# Sweep grid
+k_values: [0, 2, 4, 5, 6, 8, 10]
+num_retrieved_passages: 10
+
+# Generation hyperparameters (Deterministic)
+generation:
+  max_new_tokens: 64
+  do_sample: false
+  temperature: 0.0
+  repetition_penalty: 1.0
+  dtype: "bfloat16"
+
+# Retrieval configuration
+retrieval:
+  retriever_name: "bm25"
+  chunk_size: 256
+  chunk_overlap: 5
+
+# Models & Checkpoints
+models:
+  sfr_model: "Salesforce/SFR-Embedding-Mistral"
+  base_model: "mistralai/Mistral-7B-Instruct-v0.2"
+  sara_checkpoint: "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42"
+  rag_checkpoint: "Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42"
+  sfr_dtype: "bfloat16"
+
+# Pre-generation feature extraction hyperparameters
+features:
+  epsilon: 1.0e-8
+  entropy_temperature: 1.0
+  n_high_threshold_ratio: 0.8
+
+# Experiment paths (relative to workspace root)
+paths:
+  dev_file: "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl"
+  manifest_file: "Baselines/SARA-main/data/manifests/qasper_split.json"
+  raw_dir: "results/week2/raw"
+  processed_dir: "results/week2/processed"
+  plots_dir: "results/week2/plots"
+  logs_dir: "results/week2/logs"
+  dev_retrieval_file: "results/week2/raw/dev_retrieval.jsonl"
+  dev_sfr_embeddings_file: "results/week2/raw/dev_sfr_embeddings.pt"
+  dev_retrieval_features_file: "results/week2/processed/dev_retrieval_features.jsonl"
+  dev_fixed_k_matrix_file: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_fixed_k_summary_file: "results/week2/processed/dev_fixed_k_summary.csv"
+  dev_per_query_k_matrix_file: "results/week2/processed/dev_per_query_k_matrix.csv"
+  best_static_baseline_file: "results/week2/processed/best_static_baseline.json"
