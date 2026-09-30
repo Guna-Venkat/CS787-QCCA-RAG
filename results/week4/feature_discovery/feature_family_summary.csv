@@ -1,0 +1,7 @@
+feature_family,n_features,max_abs_spearman_rho,median_abs_spearman_rho,mean_abs_spearman_rho,n_features_fold_stable,strongest_feature,strongest_target,strongest_rho
+B: Query Complexity,12,0.1888,0.0543,0.062,9,query_conjunction_count,oracle_k,0.1888
+A: BM25/Retrieval,17,0.1743,0.0497,0.0565,17,bm25_mean_score,G_4_to_6,0.1743
+E: Lexical Coverage,8,0.1735,0.0748,0.0757,8,lex_coverage_top1,oracle_k,0.1735
+C: Semantic Structure,11,0.1721,0.0661,0.0721,11,sem_sim_mean_top6,G_4_to_6,0.1721
+D: Passage Redundancy/Diversity,10,0.1569,0.0363,0.0434,10,passage_sim_std,G_6_to_8,0.1569
+F: Evidence Structure,6,0.1522,0.0465,0.0526,6,evidence_query_cluster_span,G_4_to_6,0.1522

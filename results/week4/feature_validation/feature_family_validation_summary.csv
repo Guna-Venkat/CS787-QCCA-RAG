@@ -1,0 +1,7 @@
+feature_family,original_features,fdr_sig_relationships_q10,bootstrap_ci_excludes_zero,median_abs_rho,max_abs_rho,median_fold_stability,representative_features
+A: BM25/Retrieval,17,0,6,0.0497,0.1743,0.8,"bm25_mean_score, bm25_top1_score, bm25_first_gap_ratio"
+B: Query Complexity,12,0,6,0.0543,0.1888,0.6,"query_conjunction_count, query_is_what_which, query_is_factoid"
+C: Semantic Structure,11,0,10,0.0661,0.1721,0.6,"sem_sim_mean_top6, sem_sim_top2, sem_sim_gap_12"
+D: Passage Redundancy/Diversity,10,0,1,0.0363,0.1569,0.6,"passage_sim_std, passage_sim_min, passage_sim_mean"
+E: Lexical Coverage,8,0,9,0.0748,0.1735,0.8,"lex_coverage_top1, lex_coverage_top2, lex_coverage_gain_1_to_4"
+F: Evidence Structure,6,0,1,0.0465,0.1522,0.6,"evidence_query_cluster_span, evidence_lexical_overlap_mean, evidence_unique_word_count"

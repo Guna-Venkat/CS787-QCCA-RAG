@@ -1,0 +1,4 @@
+allocator,lambda,mean_f1,mean_k,mean_context_tokens,context_reduction_pct_vs_k8,mean_epsilon_regret,target_accuracy,oracle_headroom_recovered_pct,pct_k2,pct_k4,pct_k5,pct_k6,pct_k8
+Utility-Aware (λ=0.02),0.02,0.3796,6.78,1513.7,13.92,0.1099,0.0779,-16.34,0.0,6.1,6.1,39.8,48.1
+Utility-Aware (λ=0.05),0.05,0.3627,6.18,1391.9,20.85,0.1268,0.0736,-34.22,0.9,16.5,8.2,43.3,31.2
+Utility-Aware (λ=0.1),0.1,0.3601,5.39,1230.3,30.04,0.1294,0.1212,-36.93,2.2,39.8,4.3,38.1,15.6

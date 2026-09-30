@@ -1,0 +1,65 @@
+feature_name,feature_family,description,source,available_pre_generation,uses_query,uses_bm25,uses_passage_text,uses_embedding,computation_method,leakage_status
+rho_1,A: BM25/Retrieval,Top-1 retrieval score concentration ratio s1 / sum(s),raw_retrieval_scores,True,False,True,False,False,score_ratio,VERIFIED_PRE_GEN
+delta_12,A: BM25/Retrieval,Normalized gap between top-1 and top-2 scores (s1 - s2)/s1,raw_retrieval_scores,True,False,True,False,False,normalized_gap,VERIFIED_PRE_GEN
+entropy,A: BM25/Retrieval,Shannon entropy of softmax-normalized retrieval scores,raw_retrieval_scores,True,False,True,False,False,shannon_entropy,VERIFIED_PRE_GEN
+entropy_normalized,A: BM25/Retrieval,Entropy normalized by ln(10),raw_retrieval_scores,True,False,True,False,False,normalized_entropy,VERIFIED_PRE_GEN
+query_token_length,A: BM25/Retrieval,Whitespace token length of query,query_text,True,True,False,False,False,word_count,VERIFIED_PRE_GEN
+n_high,A: BM25/Retrieval,Count of passages with retrieval score >= 0.5 * s1,raw_retrieval_scores,True,False,True,False,False,threshold_count,VERIFIED_PRE_GEN
+bm25_top1_score,A: BM25/Retrieval,Raw BM25 score of top-1 passage,raw_retrieval_scores,True,False,True,False,False,raw_score,VERIFIED_PRE_GEN
+bm25_top2_score,A: BM25/Retrieval,Raw BM25 score of top-2 passage,raw_retrieval_scores,True,False,True,False,False,raw_score,VERIFIED_PRE_GEN
+bm25_top3_score,A: BM25/Retrieval,Raw BM25 score of top-3 passage,raw_retrieval_scores,True,False,True,False,False,raw_score,VERIFIED_PRE_GEN
+bm25_mean_score,A: BM25/Retrieval,Mean BM25 score across top-10 passages,raw_retrieval_scores,True,False,True,False,False,mean,VERIFIED_PRE_GEN
+bm25_std_score,A: BM25/Retrieval,Standard deviation of BM25 scores,raw_retrieval_scores,True,False,True,False,False,std_dev,VERIFIED_PRE_GEN
+bm25_score_range,A: BM25/Retrieval,Range between top-1 and top-10 BM25 score,raw_retrieval_scores,True,False,True,False,False,range,VERIFIED_PRE_GEN
+bm25_coeff_variation,A: BM25/Retrieval,Coefficient of variation of retrieval scores (std / mean),raw_retrieval_scores,True,False,True,False,False,relative_dispersion,VERIFIED_PRE_GEN
+bm25_top2_ratio,A: BM25/Retrieval,Score mass fraction of top-2 passages,raw_retrieval_scores,True,False,True,False,False,cumulative_ratio,VERIFIED_PRE_GEN
+bm25_top4_ratio,A: BM25/Retrieval,Score mass fraction of top-4 passages,raw_retrieval_scores,True,False,True,False,False,cumulative_ratio,VERIFIED_PRE_GEN
+bm25_mean_adjacent_gap,A: BM25/Retrieval,Mean drop between adjacent ranked scores,raw_retrieval_scores,True,False,True,False,False,mean_gradient,VERIFIED_PRE_GEN
+bm25_first_gap_ratio,A: BM25/Retrieval,Top gap (s1 - s2) divided by mean adjacent gap,raw_retrieval_scores,True,False,True,False,False,gap_prominence,VERIFIED_PRE_GEN
+query_word_count,B: Query Complexity,Number of whitespace-delimited words in query,query_text,True,True,False,False,False,word_count,VERIFIED_PRE_GEN
+query_char_length,B: Query Complexity,Total character count in query string,query_text,True,True,False,False,False,char_count,VERIFIED_PRE_GEN
+query_comma_count,B: Query Complexity,Number of commas (proxy for clauses and lists),query_text,True,True,False,False,False,punctuation_count,VERIFIED_PRE_GEN
+query_conjunction_count,B: Query Complexity,Count of coordinating/subordinating conjunctions,query_text,True,True,False,False,False,lexical_count,VERIFIED_PRE_GEN
+query_num_count,B: Query Complexity,Count of numeric/digit tokens in query,query_text,True,True,False,False,False,digit_count,VERIFIED_PRE_GEN
+query_is_comparison,B: Query Complexity,"Indicator for comparative queries ('compare', 'versus', 'differ')",query_text,True,True,False,False,False,binary_keyword,VERIFIED_PRE_GEN
+query_is_how_why,B: Query Complexity,"Indicator for multi-hop explanatory queries ('how', 'why')",query_text,True,True,False,False,False,binary_keyword,VERIFIED_PRE_GEN
+query_is_factoid,B: Query Complexity,"Indicator for localized factoid queries ('who', 'when', 'where')",query_text,True,True,False,False,False,binary_keyword,VERIFIED_PRE_GEN
+query_is_what_which,B: Query Complexity,Indicator for 'what' or 'which' questions,query_text,True,True,False,False,False,binary_keyword,VERIFIED_PRE_GEN
+query_is_numerical,B: Query Complexity,"Indicator for numerical questions ('how many', 'count', 'percentage')",query_text,True,True,False,False,False,binary_keyword,VERIFIED_PRE_GEN
+query_quote_count,B: Query Complexity,Count of quotation marks in query,query_text,True,True,False,False,False,punctuation_count,VERIFIED_PRE_GEN
+query_capitalized_spans,B: Query Complexity,Count of capitalized non-initial words (entity-like tokens),query_text,True,True,False,False,False,capitalization_heuristic,VERIFIED_PRE_GEN
+sem_sim_top1,C: Semantic Structure,Cosine similarity between query and top-1 passage embedding,sfr_embeddings,True,True,False,False,True,cosine_similarity,VERIFIED_PRE_GEN
+sem_sim_top2,C: Semantic Structure,Cosine similarity between query and top-2 passage embedding,sfr_embeddings,True,True,False,False,True,cosine_similarity,VERIFIED_PRE_GEN
+sem_sim_max,C: Semantic Structure,Maximum cosine similarity across all top-10 passages,sfr_embeddings,True,True,False,False,True,max_cosine,VERIFIED_PRE_GEN
+sem_sim_mean_top10,C: Semantic Structure,Mean cosine similarity across all top-10 passages,sfr_embeddings,True,True,False,False,True,mean_cosine,VERIFIED_PRE_GEN
+sem_sim_std_top10,C: Semantic Structure,Standard deviation of cosine similarities across passages,sfr_embeddings,True,True,False,False,True,std_cosine,VERIFIED_PRE_GEN
+sem_sim_gap_12,C: Semantic Structure,Semantic gap between top-1 and top-2 passage similarity,sfr_embeddings,True,True,False,False,True,semantic_gap,VERIFIED_PRE_GEN
+sem_sim_mean_top2,C: Semantic Structure,Mean semantic similarity of top-2 passages,sfr_embeddings,True,True,False,False,True,mean_cosine,VERIFIED_PRE_GEN
+sem_sim_mean_top4,C: Semantic Structure,Mean semantic similarity of top-4 passages,sfr_embeddings,True,True,False,False,True,mean_cosine,VERIFIED_PRE_GEN
+sem_sim_mean_top6,C: Semantic Structure,Mean semantic similarity of top-6 passages,sfr_embeddings,True,True,False,False,True,mean_cosine,VERIFIED_PRE_GEN
+sem_sim_mean_top8,C: Semantic Structure,Mean semantic similarity of top-8 passages,sfr_embeddings,True,True,False,False,True,mean_cosine,VERIFIED_PRE_GEN
+sem_sim_saturation_ratio,C: Semantic Structure,Semantic saturation ratio: mean_sim(top-4) / mean_sim(top-10),sfr_embeddings,True,True,False,False,True,saturation_gradient,VERIFIED_PRE_GEN
+passage_sim_mean,D: Passage Redundancy/Diversity,Mean pairwise cosine similarity among all top-10 passages,sfr_embeddings,True,False,False,False,True,pairwise_cosine,VERIFIED_PRE_GEN
+passage_sim_median,D: Passage Redundancy/Diversity,Median pairwise cosine similarity among top-10 passages,sfr_embeddings,True,False,False,False,True,pairwise_median,VERIFIED_PRE_GEN
+passage_sim_max,D: Passage Redundancy/Diversity,Max pairwise similarity (highest redundancy pair),sfr_embeddings,True,False,False,False,True,max_pairwise,VERIFIED_PRE_GEN
+passage_sim_min,D: Passage Redundancy/Diversity,Min pairwise similarity (most distant pair in candidate set),sfr_embeddings,True,False,False,False,True,min_pairwise,VERIFIED_PRE_GEN
+passage_sim_std,D: Passage Redundancy/Diversity,Standard deviation of pairwise passage similarities,sfr_embeddings,True,False,False,False,True,std_pairwise,VERIFIED_PRE_GEN
+passage_nearest_neighbor_mean,D: Passage Redundancy/Diversity,Mean similarity of each passage to its nearest neighbor,sfr_embeddings,True,False,False,False,True,nearest_neighbor,VERIFIED_PRE_GEN
+passage_nearest_neighbor_min,D: Passage Redundancy/Diversity,Similarity of most isolated passage to nearest neighbor,sfr_embeddings,True,False,False,False,True,outlier_isolation,VERIFIED_PRE_GEN
+passage_diversity_score,D: Passage Redundancy/Diversity,Complement of mean pairwise similarity (1.0 - mean_sim),sfr_embeddings,True,False,False,False,True,diversity_metric,VERIFIED_PRE_GEN
+passage_cluster_count,D: Passage Redundancy/Diversity,Number of distinct semantic clusters (distance threshold 0.20),sfr_embeddings,True,False,False,False,True,agglomerative_clustering,VERIFIED_PRE_GEN
+passage_largest_cluster_frac,D: Passage Redundancy/Diversity,Fraction of passages belonging to largest cluster,sfr_embeddings,True,False,False,False,True,cluster_dominance,VERIFIED_PRE_GEN
+lex_coverage_top1,E: Lexical Coverage,Fraction of query content terms appearing in passage 1,passage_text,True,True,False,True,False,term_recall,VERIFIED_PRE_GEN
+lex_coverage_top2,E: Lexical Coverage,Fraction of query content terms appearing in top-2 passages,passage_text,True,True,False,True,False,cumulative_term_recall,VERIFIED_PRE_GEN
+lex_coverage_top4,E: Lexical Coverage,Fraction of query content terms appearing in top-4 passages,passage_text,True,True,False,True,False,cumulative_term_recall,VERIFIED_PRE_GEN
+lex_coverage_top6,E: Lexical Coverage,Fraction of query content terms appearing in top-6 passages,passage_text,True,True,False,True,False,cumulative_term_recall,VERIFIED_PRE_GEN
+lex_coverage_top8,E: Lexical Coverage,Fraction of query content terms appearing in top-8 passages,passage_text,True,True,False,True,False,cumulative_term_recall,VERIFIED_PRE_GEN
+lex_coverage_top10,E: Lexical Coverage,Fraction of query content terms appearing in top-10 passages,passage_text,True,True,False,True,False,cumulative_term_recall,VERIFIED_PRE_GEN
+lex_coverage_gain_1_to_4,E: Lexical Coverage,Marginal term coverage gain from top-1 to top-4,passage_text,True,True,False,True,False,coverage_growth,VERIFIED_PRE_GEN
+lex_missing_terms_top10,E: Lexical Coverage,Absolute count of query content terms missing from all top-10,passage_text,True,True,False,True,False,missing_term_count,VERIFIED_PRE_GEN
+evidence_high_sim_count,F: Evidence Structure,Count of passages with semantic similarity >= 0.8 * max_sim,sfr_embeddings,True,True,False,False,True,prominence_count,VERIFIED_PRE_GEN
+evidence_length_mean,F: Evidence Structure,Mean word count of retrieved passages,passage_text,True,False,False,True,False,text_length_mean,VERIFIED_PRE_GEN
+evidence_length_std,F: Evidence Structure,Variation in passage lengths (structural heterogeneity),passage_text,True,False,False,True,False,text_length_std,VERIFIED_PRE_GEN
+evidence_lexical_overlap_mean,F: Evidence Structure,Mean pairwise Jaccard word overlap between passages,passage_text,True,False,False,True,False,jaccard_overlap,VERIFIED_PRE_GEN
+evidence_unique_word_count,F: Evidence Structure,Total vocabulary size across all 10 retrieved passages,passage_text,True,False,False,True,False,vocabulary_size,VERIFIED_PRE_GEN
+evidence_query_cluster_span,F: Evidence Structure,Number of distinct passage clusters containing >=1 query term,passage_text_and_clusters,True,True,False,True,True,multi_aspect_span,VERIFIED_PRE_GEN

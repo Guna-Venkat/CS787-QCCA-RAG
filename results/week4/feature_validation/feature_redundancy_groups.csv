@@ -1,0 +1,65 @@
+group_id,feature,family,primary_target,peak_abs_rho,fold_sign_consistency,is_representative,representative_candidate,reason
+21,query_conjunction_count,B: Query Complexity,oracle_k,0.1888,1.0,True,query_conjunction_count,"Cluster representative (highest stability 1.0, peak |rho|=0.189)"
+20,query_is_what_which,B: Query Complexity,oracle_k,0.1752,1.0,True,query_is_what_which,"Cluster representative (highest stability 1.0, peak |rho|=0.175)"
+14,bm25_mean_score,A: BM25/Retrieval,G_4_to_6,0.1743,1.0,True,bm25_mean_score,"Cluster representative (highest stability 1.0, peak |rho|=0.174)"
+17,lex_coverage_top1,E: Lexical Coverage,oracle_k,0.1735,1.0,True,lex_coverage_top1,"Cluster representative (highest stability 1.0, peak |rho|=0.173)"
+6,sem_sim_mean_top6,C: Semantic Structure,G_4_to_6,0.1721,1.0,True,sem_sim_mean_top6,"Cluster representative (highest stability 1.0, peak |rho|=0.172)"
+15,lex_coverage_top2,E: Lexical Coverage,G_6_to_8,0.1701,0.8,True,lex_coverage_top2,"Cluster representative (highest stability 0.8, peak |rho|=0.170)"
+25,query_is_factoid,B: Query Complexity,G_2_to_8,0.1635,0.6,True,query_is_factoid,"Cluster representative (highest stability 0.6, peak |rho|=0.164)"
+16,passage_sim_std,D: Passage Redundancy/Diversity,G_6_to_8,0.1569,0.8,True,passage_sim_std,"Cluster representative (highest stability 0.8, peak |rho|=0.157)"
+13,evidence_query_cluster_span,F: Evidence Structure,G_4_to_6,0.1522,0.8,True,evidence_query_cluster_span,"Cluster representative (highest stability 0.8, peak |rho|=0.152)"
+0,bm25_top1_score,A: BM25/Retrieval,G_4_to_6,0.1479,0.8,True,bm25_top1_score,"Cluster representative (highest stability 0.8, peak |rho|=0.148)"
+8,lex_coverage_gain_1_to_4,E: Lexical Coverage,oracle_k,0.1479,1.0,True,lex_coverage_gain_1_to_4,"Cluster representative (highest stability 1.0, peak |rho|=0.148)"
+9,bm25_first_gap_ratio,A: BM25/Retrieval,oracle_k,0.1478,1.0,True,bm25_first_gap_ratio,"Cluster representative (highest stability 1.0, peak |rho|=0.148)"
+5,lex_coverage_top6,E: Lexical Coverage,G_6_to_8,0.1377,0.8,True,lex_coverage_top6,"Cluster representative (highest stability 0.8, peak |rho|=0.138)"
+34,sem_sim_top2,C: Semantic Structure,G_4_to_6,0.1239,0.8,True,sem_sim_top2,"Cluster representative (highest stability 0.8, peak |rho|=0.124)"
+31,query_is_numerical,B: Query Complexity,oracle_k,0.123,0.8,True,query_is_numerical,"Cluster representative (highest stability 0.8, peak |rho|=0.123)"
+12,evidence_lexical_overlap_mean,F: Evidence Structure,G_2_to_4,0.1216,0.8,True,evidence_lexical_overlap_mean,"Cluster representative (highest stability 0.8, peak |rho|=0.122)"
+35,sem_sim_gap_12,C: Semantic Structure,G_2_to_8,0.1212,0.6,True,sem_sim_gap_12,"Cluster representative (highest stability 0.6, peak |rho|=0.121)"
+4,rho_1,A: BM25/Retrieval,G_6_to_8,0.1208,1.0,True,rho_1,"Cluster representative (highest stability 1.0, peak |rho|=0.121)"
+1,query_char_length,B: Query Complexity,G_4_to_6,0.1182,1.0,True,query_char_length,"Cluster representative (highest stability 1.0, peak |rho|=0.118)"
+18,passage_sim_min,D: Passage Redundancy/Diversity,G_6_to_8,0.1149,1.0,True,passage_sim_min,"Cluster representative (highest stability 1.0, peak |rho|=0.115)"
+3,bm25_top4_ratio,A: BM25/Retrieval,G_4_to_6,0.1145,1.0,True,bm25_top4_ratio,"Cluster representative (highest stability 1.0, peak |rho|=0.115)"
+23,query_num_count,B: Query Complexity,G_2_to_4,0.114,0.8,True,query_num_count,"Cluster representative (highest stability 0.8, peak |rho|=0.114)"
+32,sem_sim_std_top10,C: Semantic Structure,G_6_to_8,0.1111,1.0,True,sem_sim_std_top10,"Cluster representative (highest stability 1.0, peak |rho|=0.111)"
+30,query_is_how_why,B: Query Complexity,G_2_to_8,0.1044,0.8,True,query_is_how_why,"Cluster representative (highest stability 0.8, peak |rho|=0.104)"
+11,evidence_unique_word_count,F: Evidence Structure,G_2_to_4,0.1027,0.8,True,evidence_unique_word_count,"Cluster representative (highest stability 0.8, peak |rho|=0.103)"
+10,passage_sim_mean,D: Passage Redundancy/Diversity,oracle_k,0.0962,1.0,True,passage_sim_mean,"Cluster representative (highest stability 1.0, peak |rho|=0.096)"
+24,query_capitalized_spans,B: Query Complexity,oracle_k,0.088,0.8,True,query_capitalized_spans,"Cluster representative (highest stability 0.8, peak |rho|=0.088)"
+7,evidence_length_mean,F: Evidence Structure,G_2_to_4,0.0873,0.8,True,evidence_length_mean,"Cluster representative (highest stability 0.8, peak |rho|=0.087)"
+27,query_comma_count,B: Query Complexity,G_4_to_6,0.0836,0.4,True,query_comma_count,"Cluster representative (highest stability 0.4, peak |rho|=0.084)"
+37,sem_sim_saturation_ratio,C: Semantic Structure,G_6_to_8,0.0826,0.8,True,sem_sim_saturation_ratio,"Cluster representative (highest stability 0.8, peak |rho|=0.083)"
+2,passage_nearest_neighbor_mean,D: Passage Redundancy/Diversity,G_4_to_6,0.0815,0.6,True,passage_nearest_neighbor_mean,"Cluster representative (highest stability 0.6, peak |rho|=0.082)"
+29,query_is_comparison,B: Query Complexity,G_2_to_4,0.0773,0.6,True,query_is_comparison,"Cluster representative (highest stability 0.6, peak |rho|=0.077)"
+33,query_quote_count,B: Query Complexity,G_2_to_4,0.0766,0.4,True,query_quote_count,"Cluster representative (highest stability 0.4, peak |rho|=0.077)"
+36,passage_largest_cluster_frac,D: Passage Redundancy/Diversity,oracle_k,0.0751,0.8,True,passage_largest_cluster_frac,"Cluster representative (highest stability 0.8, peak |rho|=0.075)"
+28,passage_nearest_neighbor_min,D: Passage Redundancy/Diversity,G_2_to_4,0.07,0.6,True,passage_nearest_neighbor_min,"Cluster representative (highest stability 0.6, peak |rho|=0.070)"
+26,evidence_length_std,F: Evidence Structure,G_2_to_4,0.0597,0.6,True,evidence_length_std,"Cluster representative (highest stability 0.6, peak |rho|=0.060)"
+22,passage_sim_max,D: Passage Redundancy/Diversity,G_6_to_8,0.0482,0.6,True,passage_sim_max,"Cluster representative (highest stability 0.6, peak |rho|=0.048)"
+19,evidence_high_sim_count,F: Evidence Structure,G_4_to_6,0.0387,0.6,True,evidence_high_sim_count,"Cluster representative (highest stability 0.6, peak |rho|=0.039)"
+6,sem_sim_mean_top10,C: Semantic Structure,G_4_to_6,0.1686,1.0,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+6,sem_sim_mean_top8,C: Semantic Structure,G_4_to_6,0.1639,1.0,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+6,sem_sim_mean_top4,C: Semantic Structure,G_4_to_6,0.1476,1.0,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+6,sem_sim_max,C: Semantic Structure,G_4_to_6,0.1469,1.0,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+14,bm25_top3_score,A: BM25/Retrieval,G_4_to_6,0.1371,1.0,False,bm25_mean_score,Redundant with bm25_mean_score in Cluster 14
+6,sem_sim_top1,C: Semantic Structure,oracle_k,0.1354,0.8,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+6,sem_sim_mean_top2,C: Semantic Structure,G_4_to_6,0.1289,0.8,False,sem_sim_mean_top6,Redundant with sem_sim_mean_top6 in Cluster 6
+5,lex_coverage_top4,E: Lexical Coverage,G_6_to_8,0.1269,0.8,False,lex_coverage_top6,Redundant with lex_coverage_top6 in Cluster 5
+9,delta_12,A: BM25/Retrieval,oracle_k,0.126,1.0,False,bm25_first_gap_ratio,Redundant with bm25_first_gap_ratio in Cluster 9
+5,lex_coverage_top8,E: Lexical Coverage,G_6_to_8,0.1216,0.8,False,lex_coverage_top6,Redundant with lex_coverage_top6 in Cluster 5
+1,query_token_length,A: BM25/Retrieval,G_2_to_4,0.12,0.8,False,query_char_length,Redundant with query_char_length in Cluster 1
+1,query_word_count,B: Query Complexity,G_2_to_4,0.12,0.8,False,query_char_length,Redundant with query_char_length in Cluster 1
+5,lex_missing_terms_top10,E: Lexical Coverage,G_6_to_8,0.1187,0.8,False,lex_coverage_top6,Redundant with lex_coverage_top6 in Cluster 5
+5,lex_coverage_top10,E: Lexical Coverage,G_4_to_6,0.1156,0.8,False,lex_coverage_top6,Redundant with lex_coverage_top6 in Cluster 5
+14,bm25_top2_score,A: BM25/Retrieval,G_4_to_6,0.1141,1.0,False,bm25_mean_score,Redundant with bm25_mean_score in Cluster 14
+3,bm25_top2_ratio,A: BM25/Retrieval,G_6_to_8,0.1133,1.0,False,bm25_top4_ratio,Redundant with bm25_top4_ratio in Cluster 3
+3,bm25_coeff_variation,A: BM25/Retrieval,G_6_to_8,0.1129,1.0,False,bm25_top4_ratio,Redundant with bm25_top4_ratio in Cluster 3
+4,n_high,A: BM25/Retrieval,G_6_to_8,0.1015,0.8,False,rho_1,Redundant with rho_1 in Cluster 4
+10,passage_diversity_score,D: Passage Redundancy/Diversity,oracle_k,0.0962,1.0,False,passage_sim_mean,Redundant with passage_sim_mean in Cluster 10
+10,passage_sim_median,D: Passage Redundancy/Diversity,G_4_to_6,0.093,0.6,False,passage_sim_mean,Redundant with passage_sim_mean in Cluster 10
+0,bm25_std_score,A: BM25/Retrieval,G_4_to_6,0.0804,0.8,False,bm25_top1_score,Redundant with bm25_top1_score in Cluster 0
+2,passage_cluster_count,D: Passage Redundancy/Diversity,G_4_to_6,0.0766,0.6,False,passage_nearest_neighbor_mean,Redundant with passage_nearest_neighbor_mean in Cluster 2
+0,entropy,A: BM25/Retrieval,G_4_to_6,0.0728,0.8,False,bm25_top1_score,Redundant with bm25_top1_score in Cluster 0
+0,entropy_normalized,A: BM25/Retrieval,G_4_to_6,0.0728,0.8,False,bm25_top1_score,Redundant with bm25_top1_score in Cluster 0
+0,bm25_score_range,A: BM25/Retrieval,G_4_to_6,0.0706,0.8,False,bm25_top1_score,Redundant with bm25_top1_score in Cluster 0
+0,bm25_mean_adjacent_gap,A: BM25/Retrieval,G_4_to_6,0.0706,0.8,False,bm25_top1_score,Redundant with bm25_top1_score in Cluster 0

@@ -1,0 +1,8 @@
+feature,target,controlling_for,raw_spearman_rho,raw_p_value,partial_rank_r,partial_p_value,signal_retained_pct,hypothesis
+query_conjunction_count,oracle_k,query_word_count,0.1888,0.004,0.2079,0.0015,110.1,Does conjunction count predict evidence needs independently of query length?
+query_is_what_which,oracle_k,query_word_count,0.1752,0.0076,0.1738,0.0082,99.2,Does what/which syntax predict evidence needs independently of query length?
+sem_sim_mean_top6,G_4_to_6,bm25_mean_score,0.1722,0.0087,0.0916,0.1661,53.2,Does top-6 semantic similarity predict 4->6 gains independently of BM25 retrieval score?
+sem_sim_mean_top10,G_4_to_6,bm25_mean_score,0.1687,0.0102,0.0851,0.1986,50.4,Does top-10 semantic tail predict 4->6 gains independently of BM25 retrieval score?
+lex_coverage_top2,G_6_to_8,"bm25_mean_score, sem_sim_mean_top10",-0.1701,0.0096,-0.1676,0.0111,98.6,Does lexical coverage saturation predict diminishing 6->8 returns beyond BM25 and semantic similarity?
+lex_coverage_top2,G_4_to_6,"bm25_mean_score, sem_sim_mean_top6",0.1674,0.0108,0.1109,0.094,66.3,Does lexical coverage predict 4->6 returns independently of retrieval score and semantic similarity?
+passage_sim_std,G_6_to_8,evidence_length_mean,0.1569,0.017,0.1573,0.017,100.2,Does passage similarity variance predict 6->8 gains independently of passage length?

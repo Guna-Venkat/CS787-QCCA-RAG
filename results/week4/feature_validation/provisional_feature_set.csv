@@ -1,0 +1,15 @@
+feature,family,primary_target,spearman_rho,p_value_naive,q_value_fdr,bootstrap_ci_low,bootstrap_ci_high,bootstrap_excludes_zero,fold_sign_consistency,median_fold_rho,is_cluster_representative,why_retained
+query_conjunction_count,B: Query Complexity,oracle_k,0.1888,0.003982,0.4104,0.0494,0.3291,True,1.0,0.2129,True,Primary syntax signal: coordinating/subordinating conjunction count signals multi-part questions.
+query_is_what_which,B: Query Complexity,oracle_k,0.1752,0.007609,0.4104,0.0414,0.3013,True,1.0,0.1601,True,Primary question-type signal: open-ended specification queries requiring multi-chunk context.
+query_is_numerical,B: Query Complexity,oracle_k,-0.123,0.062067,0.4964,-0.1743,-0.0535,True,0.8,-0.1167,True,Localized factoid signal: numerical/count questions consistently favor small budgets (k=2).
+lex_coverage_top1,E: Lexical Coverage,oracle_k,0.1735,0.008232,0.4104,0.0444,0.3164,True,1.0,0.1879,True,Initial keyword concentration signal: high initial match correlates with oracle budget.
+lex_coverage_top2,E: Lexical Coverage,G_6_to_8,-0.1701,0.00958,0.4104,-0.3002,-0.0405,True,0.8,-0.0978,True,Primary saturation stopping signal: high top-2 term coverage predicts negative marginal returns from expanding to k=8.
+lex_coverage_gain_1_to_4,E: Lexical Coverage,oracle_k,-0.1479,0.024576,0.4552,-0.2566,-0.0187,True,1.0,-0.1772,True,Coverage acceleration signal: sharp gain from 1->4 indicates information saturation by k=4.
+sem_sim_mean_top6,C: Semantic Structure,G_4_to_6,0.1721,0.00877,0.4104,0.0263,0.3196,True,1.0,0.1532,True,Semantic tail relevance: deep semantic similarity predicts positive returns when expanding k=4->6.
+sem_sim_top1,C: Semantic Structure,oracle_k,0.1354,0.03969,0.4964,0.0019,0.2649,True,0.8,0.1329,False,Top semantic relevance magnitude: complements lexical coverage.
+bm25_mean_score,A: BM25/Retrieval,G_4_to_6,0.1743,0.007914,0.4104,0.046,0.2958,True,1.0,0.1703,True,Average retrieval strength across candidate set: indicates high background paper relevance.
+bm25_first_gap_ratio,A: BM25/Retrieval,oracle_k,0.1478,0.024687,0.4552,0.0117,0.2757,True,1.0,0.1808,True,Retrieval concentration gradient: prominent top-1 gap signals localized vs distributed evidence.
+passage_sim_std,D: Passage Redundancy/Diversity,G_6_to_8,0.1569,0.016987,0.4552,0.0154,0.2831,True,0.8,0.2327,True,Passage heterogeneity: high similarity variance indicates multi-aspect content benefiting from k=8.
+passage_cluster_count,D: Passage Redundancy/Diversity,G_4_to_6,0.0766,0.246409,0.7104,-0.0534,0.2025,False,0.6,0.0131,False,Semantic cluster count: distinct topic clusters in candidate set.
+evidence_query_cluster_span,F: Evidence Structure,G_4_to_6,0.1522,0.020685,0.4552,0.0129,0.2766,True,0.8,0.0981,True,Query aspect dispersion: query content spanning multiple passage clusters benefits from expanding to k=6.
+evidence_lexical_overlap_mean,F: Evidence Structure,G_2_to_4,0.1216,0.06504,0.4964,-0.0186,0.2664,False,0.8,0.1825,True,Passage overlap: low pairwise overlap indicates distinct information chunks needed for early expansion.
