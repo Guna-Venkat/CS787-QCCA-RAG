@@ -1,0 +1,70 @@
+{
+  "case_A_identical_f1_across_k_alloc": {
+    "count": 97,
+    "pct": 41.99,
+    "description": "Questions where F1 is invariant across all deployable budgets {2,4,5,6,8}.",
+    "sample_question_ids": [
+      "1003",
+      "1013",
+      "1029",
+      "104",
+      "1109"
+    ]
+  },
+  "case_B_multiple_k_tied_at_maximum": {
+    "count": 159,
+    "pct": 68.83,
+    "description": "Questions where two or more budgets in K_alloc achieve the maximal F1 (resolved deterministically to smallest k).",
+    "sample_question_ids": [
+      "1000",
+      "1002",
+      "1003",
+      "1013",
+      "1028"
+    ]
+  },
+  "case_C_k0_pure_compression_strictly_wins": {
+    "count": 14,
+    "pct": 6.06,
+    "description": "Diagnostic sweep cases where zero verbatim passages (k=0) outperforms all deployable SARA budgets.",
+    "sample_question_ids": [
+      "1002",
+      "1315",
+      "1402",
+      "155",
+      "1704"
+    ]
+  },
+  "case_D_k10_standard_rag_strictly_wins": {
+    "count": 20,
+    "pct": 8.66,
+    "description": "Diagnostic sweep cases where full uncompressed context (k=10) outperforms all deployable SARA budgets.",
+    "sample_question_ids": [
+      "1013",
+      "1030",
+      "1316",
+      "1402",
+      "1504"
+    ]
+  },
+  "case_E_no_deployable_action_satisfies_epsilon": {
+    "primary_target_count": 0,
+    "diagnostic_sweep_eps_0_01_count": 31,
+    "diagnostic_sweep_sample_ids": [
+      "1002",
+      "1013",
+      "1030",
+      "1315",
+      "1316"
+    ],
+    "description": "Zero infeasible cases in primary SARA-internal target; 31 cases under diagnostic global-sweep reference."
+  },
+  "case_F_missing_or_malformed_f1": {
+    "count": 0,
+    "status": "PASS (0 malformed)"
+  },
+  "case_G_duplicate_question_k_pairs": {
+    "count": 0,
+    "status": "PASS (0 duplicates)"
+  }
+}

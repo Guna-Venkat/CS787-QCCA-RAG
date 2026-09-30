@@ -1,0 +1,15 @@
+{
+  "gate_name": "WEEK_3_GO_NO_GO_EVALUATION",
+  "timestamp": "2026-09-30 17:30:43",
+  "H1_status": "SUPPORTED",
+  "H1_rationale": "Evidence requirements vary across queries: under tie-broken deployable oracle, 73.59% achieve peak F1 at k <= 4, providing +0.0945 (+23.93%) empirical headroom over static k=8 (95% CI: [+0.0693, +0.1226]). Under tie-aware analysis, static k=8 is strictly suboptimal for 29.44% of queries, and tied for maximum in 60.61%, while unique strict winner in 9.96%.",
+  "epsilon_target_status": "SUPPORTED",
+  "epsilon_target_rationale": "SARA-internal target formulation guarantees 100% feasibility across all 231 development queries. Freezing conservative tolerance epsilon*=0.01 delivers a 52.16% context reduction vs static k=8 (841.3 vs 1758.5 tokens) with virtually zero loss in quality (mean regret 0.0001), while retaining substantial representation across non-minimum budgets (42.86% requiring k in {4,5,6,8}).",
+  "feature_signal_status": "SUPPORTED",
+  "feature_signal_rationale": "Retrieval score gap delta_12 (rho=+0.132, p=0.045) and n_high (rho=-0.142, p=0.031) provide weak but statistically discernible pre-generation signals for optimal budget sizing, supporting non-linear classifier learning in Week 4.",
+  "human_audit_status": "PENDING_MANUAL_EVALUATION",
+  "human_audit_rationale": "Blinded evaluation design completed (50 questions, 150 items across k in {2, 5, 10} anonymized as System A, B, C). Scoring sheet ready at human_scoring_template.csv. Human evaluation is pending manual evaluation and is not cited as completed evidence.",
+  "methodology_blockers": "NONE",
+  "proceed_to_week4": true,
+  "week4_readiness": "READY (Oracle & Target Analysis Complete; Human Validation Pending Manual Evaluation)"
+}

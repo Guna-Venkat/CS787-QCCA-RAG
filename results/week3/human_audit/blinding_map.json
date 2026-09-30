@@ -1,0 +1,252 @@
+{
+  "1002": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "1004": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1028": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "1067": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1108": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "116": {
+    "System A": 5,
+    "System B": 2,
+    "System C": 10
+  },
+  "1215": {
+    "System A": 5,
+    "System B": 2,
+    "System C": 10
+  },
+  "1233": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  },
+  "1266": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "127": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  },
+  "1314": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "1317": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "1402": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1403": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "1419": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  },
+  "1505": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1632": {
+    "System A": 5,
+    "System B": 2,
+    "System C": 10
+  },
+  "1670": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "1683": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "171": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "1808": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "1809": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "1828": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1909": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "1958": {
+    "System A": 5,
+    "System B": 2,
+    "System C": 10
+  },
+  "1984": {
+    "System A": 5,
+    "System B": 10,
+    "System C": 2
+  },
+  "2023": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "2031": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  },
+  "2059": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "2069": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "2158": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "2161": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "2192": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "2293": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "283": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  },
+  "285": {
+    "System A": 5,
+    "System B": 2,
+    "System C": 10
+  },
+  "420": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "422": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "480": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "545": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "550": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "551": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "632": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "638": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "639": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "735": {
+    "System A": 2,
+    "System B": 10,
+    "System C": 5
+  },
+  "819": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "879": {
+    "System A": 2,
+    "System B": 5,
+    "System C": 10
+  },
+  "951": {
+    "System A": 10,
+    "System B": 2,
+    "System C": 5
+  },
+  "964": {
+    "System A": 10,
+    "System B": 5,
+    "System C": 2
+  }
+}

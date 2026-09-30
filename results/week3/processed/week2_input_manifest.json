@@ -1,0 +1,32 @@
+{
+  "manifest_id": "week2_frozen_input_manifest_v1",
+  "creation_timestamp": "2026-09-30 17:30:43",
+  "git_commit": "33cfae3dca55908d599af2b05b7bfd769a0272e1",
+  "source_checkpoint": "sara_qasper_proj_lr5e4_seed42",
+  "rag_checkpoint": "rag_qasper_lora_r16_seed42",
+  "question_count": 231,
+  "paper_count": 86,
+  "k_values": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    8,
+    10
+  ],
+  "expected_record_count": 1617,
+  "actual_record_count": 1617,
+  "missing_combinations": 0,
+  "duplicate_pairs": 0,
+  "best_static_sara_k": 8,
+  "best_static_sara_mean_f1": 0.395,
+  "vanilla_rag_k10_f1": 0.409,
+  "source_files": [
+    "results/week2/raw/dev_fixed_k_matrix.jsonl",
+    "results/week2/processed/dev_retrieval_features.jsonl",
+    "results/week2/processed/dev_per_query_k_matrix.csv",
+    "results/week2/processed/best_static_baseline.json"
+  ],
+  "integrity_verified": true
+}

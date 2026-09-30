@@ -1,0 +1,6 @@
+best_k_qual,question_count,total_gain,mean_gain_per_question,pct_of_total_gain
+2,130,8.3497,0.0642,38.24
+4,40,6.4757,0.1619,29.66
+5,17,3.4256,0.2015,15.69
+6,21,3.5813,0.1705,16.4
+8,23,0.0,0.0,0.0

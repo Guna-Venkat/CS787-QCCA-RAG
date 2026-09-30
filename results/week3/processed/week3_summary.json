@@ -1,0 +1,332 @@
+{
+  "project": "CS787 QCCA (Query-Conditioned Evidence Allocation)",
+  "phase": "Week 3 (Oracle, Epsilon Target, Heterogeneity & Human Validation)",
+  "timestamp": "2026-09-30 17:30:43",
+  "dataset": {
+    "name": "QASPER Development Split",
+    "n_questions": 231,
+    "n_papers": 86,
+    "k_values": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      8,
+      10
+    ]
+  },
+  "best_static_baseline": {
+    "method": "SARA",
+    "k": 8,
+    "mean_f1": 0.395,
+    "context_tokens": 1758.5,
+    "context_reduction_pct": 17.75,
+    "vanilla_rag_k10_f1": 0.409
+  },
+  "quality_oracle": {
+    "action_space": "K_alloc = {2, 4, 5, 6, 8}",
+    "mean_oracle_f1": 0.4895,
+    "mean_static_f1": 0.395,
+    "absolute_headroom": 0.0945,
+    "relative_headroom_pct": 23.93,
+    "best_k_distribution": [
+      {
+        "k": 2,
+        "count": 130,
+        "pct": 56.28,
+        "cumulative_count": 130,
+        "cumulative_pct": 56.28
+      },
+      {
+        "k": 4,
+        "count": 40,
+        "pct": 17.32,
+        "cumulative_count": 170,
+        "cumulative_pct": 73.59
+      },
+      {
+        "k": 5,
+        "count": 17,
+        "pct": 7.36,
+        "cumulative_count": 187,
+        "cumulative_pct": 80.95
+      },
+      {
+        "k": 6,
+        "count": 21,
+        "pct": 9.09,
+        "cumulative_count": 208,
+        "cumulative_pct": 90.04
+      },
+      {
+        "k": 8,
+        "count": 23,
+        "pct": 9.96,
+        "cumulative_count": 231,
+        "cumulative_pct": 100.0
+      }
+    ],
+    "paper_clustered_headroom_95ci": [
+      0.0693,
+      0.1226
+    ]
+  },
+  "heterogeneity": {
+    "f1_range_mean": 0.2461,
+    "f1_range_median": 0.1167,
+    "oracle_gain_mean": 0.0945,
+    "tie_broken_oracle_disagreement_with_k8_pct": 90.04,
+    "tie_aware_k8_status": {
+      "k8_in_exact_best_set_count": 163,
+      "k8_in_exact_best_set_pct": 70.56,
+      "k8_unique_strict_winner_count": 23,
+      "k8_unique_strict_winner_pct": 9.96,
+      "k8_strictly_suboptimal_count": 68,
+      "k8_strictly_suboptimal_pct": 29.44,
+      "k8_tied_with_smaller_budget_count": 140,
+      "k8_tied_with_smaller_budget_pct": 60.61
+    },
+    "strict_adaptation_opportunity": {
+      "strict_gain_gt_00_pct": 29.44,
+      "strict_gain_gt_01_pct": 29.0,
+      "strict_gain_gt_02_pct": 29.0,
+      "strict_gain_gt_05_pct": 26.84,
+      "strict_gain_gt_10_pct": 23.81
+    },
+    "strict_winner_analysis": {
+      "total_strict_winners_count": 72,
+      "total_strict_winners_pct": 31.17,
+      "strict_winners_by_budget": {
+        "2": 17,
+        "4": 12,
+        "5": 7,
+        "6": 13,
+        "8": 23
+      }
+    }
+  },
+  "epsilon_target": {
+    "selected_epsilon_star": 0.01,
+    "selection_rule": "Selected conservative operational tolerance that introduces negligible mean regret relative to the deployable quality oracle while modestly reducing the selected evidence budget and retaining substantial representation across non-minimum budgets. The choice is made entirely from development-set oracle statistics and is independent of downstream allocator performance.",
+    "properties": {
+      "mean_selected_k": 3.49,
+      "median_selected_k": 2.0,
+      "mean_f1": 0.4894,
+      "mean_regret": 0.0001,
+      "max_regret": 0.0095,
+      "p95_regret": 0.0,
+      "mean_context_tokens": 841.3,
+      "context_reduction_pct_vs_k8": 52.16,
+      "context_reduction_pct_vs_k10": 60.65,
+      "budget_distribution_pct": {
+        "k=2": 57.14,
+        "k=4": 17.32,
+        "k=5": 7.36,
+        "k=6": 8.23,
+        "k=8": 9.96
+      },
+      "feasibility_pct": 100.0
+    },
+    "candidate_summary": [
+      {
+        "epsilon": 0.0,
+        "mean_k": 3.53,
+        "median_k": 2,
+        "mean_f1": 0.4895,
+        "mean_regret": 0.0,
+        "max_regret": 0.0,
+        "p95_regret": 0.0,
+        "mean_context_tokens": 848.4,
+        "context_reduction_pct_vs_k8": 51.75,
+        "context_reduction_pct_vs_k10": 60.32,
+        "feasibility_pct_sara": 100.0,
+        "pct_k2": 56.28,
+        "pct_k4": 17.32,
+        "pct_k5": 7.36,
+        "pct_k6": 9.09,
+        "pct_k8": 9.96,
+        "diag_sweep_feasibility_pct": 86.58
+      },
+      {
+        "epsilon": 0.01,
+        "mean_k": 3.49,
+        "median_k": 2,
+        "mean_f1": 0.4894,
+        "mean_regret": 0.0001,
+        "max_regret": 0.0095,
+        "p95_regret": 0.0,
+        "mean_context_tokens": 841.3,
+        "context_reduction_pct_vs_k8": 52.16,
+        "context_reduction_pct_vs_k10": 60.65,
+        "feasibility_pct_sara": 100.0,
+        "pct_k2": 57.14,
+        "pct_k4": 17.32,
+        "pct_k5": 7.36,
+        "pct_k6": 8.23,
+        "pct_k8": 9.96,
+        "diag_sweep_feasibility_pct": 86.58
+      },
+      {
+        "epsilon": 0.02,
+        "mean_k": 3.45,
+        "median_k": 2,
+        "mean_f1": 0.4892,
+        "mean_regret": 0.0003,
+        "max_regret": 0.02,
+        "p95_regret": 0.0,
+        "mean_context_tokens": 831.6,
+        "context_reduction_pct_vs_k8": 52.71,
+        "context_reduction_pct_vs_k10": 61.1,
+        "feasibility_pct_sara": 100.0,
+        "pct_k2": 58.01,
+        "pct_k4": 17.32,
+        "pct_k5": 6.93,
+        "pct_k6": 8.66,
+        "pct_k8": 9.09,
+        "diag_sweep_feasibility_pct": 87.01
+      },
+      {
+        "epsilon": 0.05,
+        "mean_k": 3.43,
+        "median_k": 2,
+        "mean_f1": 0.4888,
+        "mean_regret": 0.0007,
+        "max_regret": 0.05,
+        "p95_regret": 0.0,
+        "mean_context_tokens": 828.0,
+        "context_reduction_pct_vs_k8": 52.91,
+        "context_reduction_pct_vs_k10": 61.27,
+        "feasibility_pct_sara": 100.0,
+        "pct_k2": 58.44,
+        "pct_k4": 16.88,
+        "pct_k5": 6.93,
+        "pct_k6": 9.09,
+        "pct_k8": 8.66,
+        "diag_sweep_feasibility_pct": 88.31
+      }
+    ]
+  },
+  "feature_signal": {
+    "top_associations": [
+      {
+        "feature": "n_high",
+        "target": "best_k_qual",
+        "target_type": "ordinal_budget",
+        "spearman_rho": -0.1421,
+        "spearman_p": 0.0308,
+        "pearson_r": NaN,
+        "pearson_p": NaN,
+        "kruskal_wallis_h": 5.3897,
+        "kruskal_wallis_p": 0.2496,
+        "effect_size": "Weak",
+        "interpretation": "Spearman rho=-0.142 (p=3.080e-02), KW H=5.39 (p=2.496e-01). Weak association with best_k_qual."
+      },
+      {
+        "feature": "n_high",
+        "target": "selected_k_epsilon",
+        "target_type": "ordinal_budget",
+        "spearman_rho": -0.1352,
+        "spearman_p": 0.0401,
+        "pearson_r": NaN,
+        "pearson_p": NaN,
+        "kruskal_wallis_h": 6.0636,
+        "kruskal_wallis_p": 0.1944,
+        "effect_size": "Weak",
+        "interpretation": "Spearman rho=-0.135 (p=4.009e-02), KW H=6.06 (p=1.944e-01). Weak association with selected_k_epsilon."
+      },
+      {
+        "feature": "delta_12",
+        "target": "best_k_qual",
+        "target_type": "ordinal_budget",
+        "spearman_rho": 0.132,
+        "spearman_p": 0.045,
+        "pearson_r": NaN,
+        "pearson_p": NaN,
+        "kruskal_wallis_h": 4.3727,
+        "kruskal_wallis_p": 0.3579,
+        "effect_size": "Weak",
+        "interpretation": "Spearman rho=0.132 (p=4.498e-02), KW H=4.37 (p=3.579e-01). Weak association with best_k_qual."
+      },
+      {
+        "feature": "delta_12",
+        "target": "selected_k_epsilon",
+        "target_type": "ordinal_budget",
+        "spearman_rho": 0.126,
+        "spearman_p": 0.0559,
+        "pearson_r": NaN,
+        "pearson_p": NaN,
+        "kruskal_wallis_h": 4.535,
+        "kruskal_wallis_p": 0.3384,
+        "effect_size": "Weak",
+        "interpretation": "Spearman rho=0.126 (p=5.586e-02), KW H=4.53 (p=3.384e-01). Weak association with selected_k_epsilon."
+      },
+      {
+        "feature": "entropy_normalized",
+        "target": "oracle_gain",
+        "target_type": "continuous_quality",
+        "spearman_rho": 0.0843,
+        "spearman_p": 0.202,
+        "pearson_r": 0.0203,
+        "pearson_p": 0.759,
+        "kruskal_wallis_h": NaN,
+        "kruskal_wallis_p": NaN,
+        "effect_size": "Negligible",
+        "interpretation": "Spearman rho=0.084 (p=2.020e-01), Pearson r=0.020 (p=7.590e-01). Negligible association with oracle_gain."
+      },
+      {
+        "feature": "entropy",
+        "target": "oracle_gain",
+        "target_type": "continuous_quality",
+        "spearman_rho": 0.0842,
+        "spearman_p": 0.2021,
+        "pearson_r": 0.0203,
+        "pearson_p": 0.759,
+        "kruskal_wallis_h": NaN,
+        "kruskal_wallis_p": NaN,
+        "effect_size": "Negligible",
+        "interpretation": "Spearman rho=0.084 (p=2.021e-01), Pearson r=0.020 (p=7.590e-01). Negligible association with oracle_gain."
+      },
+      {
+        "feature": "query_token_length",
+        "target": "oracle_gain",
+        "target_type": "continuous_quality",
+        "spearman_rho": -0.0632,
+        "spearman_p": 0.3389,
+        "pearson_r": -0.118,
+        "pearson_p": 0.0734,
+        "kruskal_wallis_h": NaN,
+        "kruskal_wallis_p": NaN,
+        "effect_size": "Negligible",
+        "interpretation": "Spearman rho=-0.063 (p=3.389e-01), Pearson r=-0.118 (p=7.341e-02). Negligible association with oracle_gain."
+      },
+      {
+        "feature": "query_token_length",
+        "target": "f1_range",
+        "target_type": "continuous_quality",
+        "spearman_rho": -0.062,
+        "spearman_p": 0.3481,
+        "pearson_r": -0.0975,
+        "pearson_p": 0.1398,
+        "kruskal_wallis_h": NaN,
+        "kruskal_wallis_p": NaN,
+        "effect_size": "Negligible",
+        "interpretation": "Spearman rho=-0.062 (p=3.481e-01), Pearson r=-0.097 (p=1.398e-01). Negligible association with f1_range."
+      }
+    ]
+  },
+  "human_audit": {
+    "status": "PENDING_MANUAL_EVALUATION",
+    "n_questions": 50,
+    "total_judgments": 150,
+    "conditions": [
+      2,
+      5,
+      10
+    ],
+    "template_path": "results/week3/human_audit/human_scoring_template.csv",
+    "blinding_map_path": "results/week3/human_audit/blinding_map.json",
+    "spearman_rho_vs_token_f1": null,
+    "note": "Evaluation template generated and verified. Manual evaluation pending."
+  }
+}

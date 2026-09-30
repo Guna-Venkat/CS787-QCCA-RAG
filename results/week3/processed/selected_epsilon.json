@@ -1,0 +1,31 @@
+{
+  "epsilon_star": 0.01,
+  "selection_rule": "Selected conservative operational tolerance that introduces negligible mean regret relative to the deployable quality oracle while modestly reducing the selected evidence budget and retaining substantial representation across non-minimum budgets. The choice is made entirely from development-set oracle statistics and is independent of downstream allocator performance.",
+  "development_only": true,
+  "candidate_values": [
+    0.0,
+    0.01,
+    0.02,
+    0.05
+  ],
+  "properties_at_epsilon_star": {
+    "mean_selected_k": 3.49,
+    "median_selected_k": 2.0,
+    "mean_f1": 0.4894,
+    "mean_regret": 0.0001,
+    "max_regret": 0.0095,
+    "p95_regret": 0.0,
+    "mean_context_tokens": 841.3,
+    "context_reduction_pct_vs_k8": 52.16,
+    "context_reduction_pct_vs_k10": 60.65,
+    "budget_distribution_pct": {
+      "k=2": 57.14,
+      "k=4": 17.32,
+      "k=5": 7.36,
+      "k=6": 8.23,
+      "k=8": 9.96
+    },
+    "feasibility_pct": 100.0
+  },
+  "rationale": "epsilon*=0.01 was selected as a conservative operational tolerance because it introduces negligible mean regret (0.0001) relative to the deployable quality oracle while modestly reducing the selected evidence budget (mean k=3.49 vs static k=8, a 52.16% context reduction: 841.3 vs 1758.5 tokens) and retaining substantial representation across non-minimum budgets (42.86% requiring k in {4,5,6,8}). The choice is made entirely from development-set oracle statistics and is independent of downstream allocator performance."
+}

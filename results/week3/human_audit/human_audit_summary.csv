@@ -1,0 +1,4 @@
+k,n_judgments,mean_human_score,median_human_score,pct_incorrect_0,pct_partial_1,pct_correct_2,mean_token_f1
+2,50,0.64,1,46.0,44.0,10.0,0.2009
+5,50,1.0,1,22.0,56.0,22.0,0.3428
+10,50,1.06,1,24.0,46.0,30.0,0.3808

@@ -1,0 +1,192 @@
+{
+  "n_aligned_questions": 231,
+  "analyzed_features": [
+    "rho_1",
+    "delta_12",
+    "entropy",
+    "entropy_normalized",
+    "n_high",
+    "query_token_length"
+  ],
+  "selected_epsilon_star": 0.01,
+  "feature_group_statistics_by_best_k": {
+    "rho_1": {
+      "k=2_mean": 0.2123,
+      "k=2_std": 0.1094,
+      "k=4_mean": 0.1997,
+      "k=4_std": 0.0441,
+      "k=5_mean": 0.1894,
+      "k=5_std": 0.0421,
+      "k=6_mean": 0.2023,
+      "k=6_std": 0.0819,
+      "k=8_mean": 0.2462,
+      "k=8_std": 0.1753
+    },
+    "delta_12": {
+      "k=2_mean": 0.2025,
+      "k=2_std": 0.1897,
+      "k=4_mean": 0.2039,
+      "k=4_std": 0.1507,
+      "k=5_mean": 0.2294,
+      "k=5_std": 0.1472,
+      "k=6_mean": 0.2403,
+      "k=6_std": 0.172,
+      "k=8_mean": 0.2801,
+      "k=8_std": 0.2457
+    },
+    "entropy": {
+      "k=2_mean": 2.1172,
+      "k=2_std": 0.31,
+      "k=4_mean": 2.1695,
+      "k=4_std": 0.1453,
+      "k=5_mean": 2.203,
+      "k=5_std": 0.0982,
+      "k=6_mean": 2.1564,
+      "k=6_std": 0.2074,
+      "k=8_mean": 2.0542,
+      "k=8_std": 0.4742
+    },
+    "entropy_normalized": {
+      "k=2_mean": 0.9195,
+      "k=2_std": 0.1346,
+      "k=4_mean": 0.9422,
+      "k=4_std": 0.0631,
+      "k=5_mean": 0.9567,
+      "k=5_std": 0.0426,
+      "k=6_mean": 0.9365,
+      "k=6_std": 0.0901,
+      "k=8_mean": 0.8921,
+      "k=8_std": 0.2059
+    },
+    "n_high": {
+      "k=2_mean": 2.1,
+      "k=2_std": 1.2062,
+      "k=4_mean": 1.875,
+      "k=4_std": 1.1589,
+      "k=5_mean": 1.5882,
+      "k=5_std": 0.7123,
+      "k=6_mean": 2.0952,
+      "k=6_std": 1.6095,
+      "k=8_mean": 1.6957,
+      "k=8_std": 1.1846
+    },
+    "query_token_length": {
+      "k=2_mean": 8.3923,
+      "k=2_std": 3.074,
+      "k=4_mean": 7.875,
+      "k=4_std": 2.9716,
+      "k=5_mean": 8.7647,
+      "k=5_std": 3.6491,
+      "k=6_mean": 8.1905,
+      "k=6_std": 2.6948,
+      "k=8_mean": 8.8261,
+      "k=8_std": 3.9732
+    }
+  },
+  "top_associations": [
+    {
+      "feature": "n_high",
+      "target": "best_k_qual",
+      "target_type": "ordinal_budget",
+      "spearman_rho": -0.1421,
+      "spearman_p": 0.0308,
+      "pearson_r": NaN,
+      "pearson_p": NaN,
+      "kruskal_wallis_h": 5.3897,
+      "kruskal_wallis_p": 0.2496,
+      "effect_size": "Weak",
+      "interpretation": "Spearman rho=-0.142 (p=3.080e-02), KW H=5.39 (p=2.496e-01). Weak association with best_k_qual."
+    },
+    {
+      "feature": "n_high",
+      "target": "selected_k_epsilon",
+      "target_type": "ordinal_budget",
+      "spearman_rho": -0.1352,
+      "spearman_p": 0.0401,
+      "pearson_r": NaN,
+      "pearson_p": NaN,
+      "kruskal_wallis_h": 6.0636,
+      "kruskal_wallis_p": 0.1944,
+      "effect_size": "Weak",
+      "interpretation": "Spearman rho=-0.135 (p=4.009e-02), KW H=6.06 (p=1.944e-01). Weak association with selected_k_epsilon."
+    },
+    {
+      "feature": "delta_12",
+      "target": "best_k_qual",
+      "target_type": "ordinal_budget",
+      "spearman_rho": 0.132,
+      "spearman_p": 0.045,
+      "pearson_r": NaN,
+      "pearson_p": NaN,
+      "kruskal_wallis_h": 4.3727,
+      "kruskal_wallis_p": 0.3579,
+      "effect_size": "Weak",
+      "interpretation": "Spearman rho=0.132 (p=4.498e-02), KW H=4.37 (p=3.579e-01). Weak association with best_k_qual."
+    },
+    {
+      "feature": "delta_12",
+      "target": "selected_k_epsilon",
+      "target_type": "ordinal_budget",
+      "spearman_rho": 0.126,
+      "spearman_p": 0.0559,
+      "pearson_r": NaN,
+      "pearson_p": NaN,
+      "kruskal_wallis_h": 4.535,
+      "kruskal_wallis_p": 0.3384,
+      "effect_size": "Weak",
+      "interpretation": "Spearman rho=0.126 (p=5.586e-02), KW H=4.53 (p=3.384e-01). Weak association with selected_k_epsilon."
+    },
+    {
+      "feature": "entropy_normalized",
+      "target": "oracle_gain",
+      "target_type": "continuous_quality",
+      "spearman_rho": 0.0843,
+      "spearman_p": 0.202,
+      "pearson_r": 0.0203,
+      "pearson_p": 0.759,
+      "kruskal_wallis_h": NaN,
+      "kruskal_wallis_p": NaN,
+      "effect_size": "Negligible",
+      "interpretation": "Spearman rho=0.084 (p=2.020e-01), Pearson r=0.020 (p=7.590e-01). Negligible association with oracle_gain."
+    },
+    {
+      "feature": "entropy",
+      "target": "oracle_gain",
+      "target_type": "continuous_quality",
+      "spearman_rho": 0.0842,
+      "spearman_p": 0.2021,
+      "pearson_r": 0.0203,
+      "pearson_p": 0.759,
+      "kruskal_wallis_h": NaN,
+      "kruskal_wallis_p": NaN,
+      "effect_size": "Negligible",
+      "interpretation": "Spearman rho=0.084 (p=2.021e-01), Pearson r=0.020 (p=7.590e-01). Negligible association with oracle_gain."
+    },
+    {
+      "feature": "query_token_length",
+      "target": "oracle_gain",
+      "target_type": "continuous_quality",
+      "spearman_rho": -0.0632,
+      "spearman_p": 0.3389,
+      "pearson_r": -0.118,
+      "pearson_p": 0.0734,
+      "kruskal_wallis_h": NaN,
+      "kruskal_wallis_p": NaN,
+      "effect_size": "Negligible",
+      "interpretation": "Spearman rho=-0.063 (p=3.389e-01), Pearson r=-0.118 (p=7.341e-02). Negligible association with oracle_gain."
+    },
+    {
+      "feature": "query_token_length",
+      "target": "f1_range",
+      "target_type": "continuous_quality",
+      "spearman_rho": -0.062,
+      "spearman_p": 0.3481,
+      "pearson_r": -0.0975,
+      "pearson_p": 0.1398,
+      "kruskal_wallis_h": NaN,
+      "kruskal_wallis_p": NaN,
+      "effect_size": "Negligible",
+      "interpretation": "Spearman rho=-0.062 (p=3.481e-01), Pearson r=-0.097 (p=1.398e-01). Negligible association with f1_range."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+# Week 3 Configuration: Oracle, Epsilon Target, Heterogeneity & Human Validation
+seed: 42
+
+k_sweep:
+  - 0
+  - 2
+  - 4
+  - 5
+  - 6
+  - 8
+  - 10
+
+k_alloc:
+  - 2
+  - 4
+  - 5
+  - 6
+  - 8
+
+epsilon_candidates:
+  - 0.00
+  - 0.01
+  - 0.02
+  - 0.05
+
+# Context token costs from frozen Week-2 results for each k
+context_token_costs:
+  0: 138.8
+  2: 534.5
+  4: 946.1
+  5: 1157.0
+  6: 1359.1
+  8: 1758.5
+  10: 2137.9
+
+human_audit:
+  n_questions: 50
+  k_values:
+    - 2
+    - 5
+    - 10
+  score_min: 0
+  score_max: 2
+  random_seed: 42
+
+bootstrap:
+  n_iterations: 1000
+  seed: 42
+  confidence_level: 0.95
+
+paths:
+  week2_raw_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  week2_per_query_matrix: "results/week2/processed/dev_per_query_k_matrix.csv"
+  week2_features: "results/week2/processed/dev_retrieval_features.jsonl"
+  week2_best_static: "results/week2/processed/best_static_baseline.json"
+  week2_summary: "results/week2/processed/dev_fixed_k_summary.csv"
