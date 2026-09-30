@@ -1,0 +1,36 @@
+candidate,baseline,mean_delta_f1,ci_95_f1_low,ci_95_f1_high,statistically_detectable_f1,mean_delta_tokens,ci_95_tokens_low,ci_95_tokens_high,statistically_detectable_tokens,mean_delta_regret,ci_95_regret_low,ci_95_regret_high
+"Balanced Logistic Regression (5 feats, Baseline)",Static SARA k=8,-0.0112,-0.0442,0.0212,False,-642.4,-676.1,-609.4,True,0.0112,-0.0212,0.0442
+"Balanced Logistic Regression (5 feats, Baseline)",Static SARA k=6,-0.0016,-0.0223,0.0182,False,-243.0,-276.7,-210.0,True,0.0016,-0.0182,0.0223
+Balanced Logistic Regression (2 feats: BM25+Lex),"Balanced Logistic Regression (5 feats, Baseline)",-0.0042,-0.0177,0.0091,False,1.9,-16.3,20.8,False,0.0042,-0.0091,0.0177
+Balanced Logistic Regression (2 feats: BM25+Lex),Static SARA k=8,-0.0154,-0.047,0.0155,False,-640.6,-672.1,-608.5,True,0.0154,-0.0155,0.047
+Balanced Logistic Regression (2 feats: BM25+Lex),Static SARA k=6,-0.0058,-0.0277,0.0164,False,-241.2,-272.7,-209.1,True,0.0058,-0.0164,0.0277
+Shallow Decision Tree (5 feats),"Balanced Logistic Regression (5 feats, Baseline)",-0.0168,-0.0348,0.0001,False,-37.6,-66.5,-9.3,True,0.0168,-0.0001,0.0348
+Shallow Decision Tree (5 feats),Static SARA k=8,-0.028,-0.0602,0.0039,False,-680.0,-706.8,-653.8,True,0.028,-0.0039,0.0602
+Shallow Decision Tree (5 feats),Static SARA k=6,-0.0184,-0.0437,0.0072,False,-280.6,-307.4,-254.4,True,0.0184,-0.0072,0.0437
+Random Forest (5 feats),"Balanced Logistic Regression (5 feats, Baseline)",-0.0124,-0.03,0.0038,False,-19.3,-42.6,5.6,False,0.0124,-0.0038,0.03
+Random Forest (5 feats),Static SARA k=8,-0.0236,-0.0546,0.007,False,-661.8,-691.9,-630.9,True,0.0236,-0.007,0.0546
+Random Forest (5 feats),Static SARA k=6,-0.014,-0.0411,0.0116,False,-262.4,-292.5,-231.5,True,0.014,-0.0116,0.0411
+XGBoost (5 feats),"Balanced Logistic Regression (5 feats, Baseline)",-0.0115,-0.0313,0.0077,False,-53.4,-77.8,-29.8,True,0.0115,-0.0077,0.0313
+XGBoost (5 feats),Static SARA k=8,-0.0227,-0.0564,0.012,False,-695.8,-722.5,-667.9,True,0.0227,-0.012,0.0564
+XGBoost (5 feats),Static SARA k=6,-0.0131,-0.0428,0.0174,False,-296.4,-323.1,-268.5,True,0.0131,-0.0174,0.0428
+XGBoost (2 feats: BM25+Lex),"Balanced Logistic Regression (5 feats, Baseline)",-0.0057,-0.0277,0.0167,False,-26.5,-58.8,4.4,False,0.0057,-0.0167,0.0277
+XGBoost (2 feats: BM25+Lex),Static SARA k=8,-0.0169,-0.0505,0.0158,False,-669.0,-698.0,-639.7,True,0.0169,-0.0158,0.0505
+XGBoost (2 feats: BM25+Lex),Static SARA k=6,-0.0073,-0.0332,0.0208,False,-269.6,-298.6,-240.3,True,0.0073,-0.0208,0.0332
+LightGBM (5 feats),"Balanced Logistic Regression (5 feats, Baseline)",-0.021,-0.0381,-0.0074,True,-8.5,-34.4,20.0,False,0.021,0.0074,0.0381
+LightGBM (5 feats),Static SARA k=8,-0.0322,-0.0665,0.0017,False,-651.0,-684.0,-617.7,True,0.0322,-0.0017,0.0665
+LightGBM (5 feats),Static SARA k=6,-0.0226,-0.0478,0.0006,False,-251.6,-284.6,-218.3,True,0.0226,-0.0006,0.0478
+HistGradientBoosting (5 feats),"Balanced Logistic Regression (5 feats, Baseline)",-0.0124,-0.0323,0.0071,False,-23.1,-49.5,5.3,False,0.0124,-0.0071,0.0323
+HistGradientBoosting (5 feats),Static SARA k=8,-0.0236,-0.0568,0.0104,False,-665.5,-694.7,-634.7,True,0.0236,-0.0104,0.0568
+HistGradientBoosting (5 feats),Static SARA k=6,-0.014,-0.0427,0.0159,False,-266.1,-295.3,-235.3,True,0.014,-0.0159,0.0427
+"Small MLP (5->8->1, 5 feats)","Balanced Logistic Regression (5 feats, Baseline)",-0.0203,-0.0391,-0.0042,True,-35.5,-61.5,-10.6,True,0.0203,0.0042,0.0391
+"Small MLP (5->8->1, 5 feats)",Static SARA k=8,-0.0315,-0.0652,-0.0001,True,-678.0,-706.1,-648.7,True,0.0315,0.0001,0.0652
+"Small MLP (5->8->1, 5 feats)",Static SARA k=6,-0.0219,-0.0486,0.0021,False,-278.6,-306.7,-249.3,True,0.0219,-0.0021,0.0486
+"Calibrated Logistic Regression (Platt, 5 feats)","Balanced Logistic Regression (5 feats, Baseline)",-0.0242,-0.0516,0.0017,False,-170.0,-203.0,-136.3,True,0.0242,-0.0017,0.0516
+"Calibrated Logistic Regression (Platt, 5 feats)",Static SARA k=8,-0.0354,-0.0686,-0.0017,True,-812.4,-812.4,-812.4,True,0.0354,0.0017,0.0686
+"Calibrated Logistic Regression (Platt, 5 feats)",Static SARA k=6,-0.0258,-0.0616,0.0083,False,-413.0,-413.0,-413.0,True,0.0258,-0.0083,0.0616
+"Calibrated Random Forest (Platt, 5 feats)","Balanced Logistic Regression (5 feats, Baseline)",-0.0242,-0.0516,0.0017,False,-170.0,-203.0,-136.3,True,0.0242,-0.0017,0.0516
+"Calibrated Random Forest (Platt, 5 feats)",Static SARA k=8,-0.0354,-0.0686,-0.0017,True,-812.4,-812.4,-812.4,True,0.0354,0.0017,0.0686
+"Calibrated Random Forest (Platt, 5 feats)",Static SARA k=6,-0.0258,-0.0616,0.0083,False,-413.0,-413.0,-413.0,True,0.0258,-0.0083,0.0616
+"Calibrated XGBoost (Platt, 5 feats)","Balanced Logistic Regression (5 feats, Baseline)",-0.0242,-0.0516,0.0017,False,-170.0,-203.0,-136.3,True,0.0242,-0.0017,0.0516
+"Calibrated XGBoost (Platt, 5 feats)",Static SARA k=8,-0.0354,-0.0686,-0.0017,True,-812.4,-812.4,-812.4,True,0.0354,0.0017,0.0686
+"Calibrated XGBoost (Platt, 5 feats)",Static SARA k=6,-0.0258,-0.0616,0.0083,False,-413.0,-413.0,-413.0,True,0.0258,-0.0083,0.0616

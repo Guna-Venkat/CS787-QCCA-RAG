@@ -1,0 +1,20 @@
+system,mean_f1,mean_k,mean_context_tokens,context_reduction_pct_vs_k8,mean_regret,system_type
+Static SARA k=2,0.30383506493506496,2.0,534.5,69.6,0.18567186147186152,Static Baseline
+Static SARA k=4,0.3596008658008658,4.0,946.1,46.2,0.1299060606060606,Static Baseline
+Static SARA k=5,0.36285757575757577,5.0,1157.0,34.21,0.12664935064935065,Static Baseline
+Static SARA k=6,0.38569913419913415,6.0,1359.1,22.71,0.10380779220779221,Static Baseline
+Static SARA k=8,0.3949948051948052,8.0,1758.5,0.0,0.0945121212121212,Static Baseline
+Random Allocation,0.3709,4.9,1131.0,35.68,0.1185,Unlearned Baseline
+Oracle Sequential Ceiling,0.4069,2.56,650.3,63.02,0.0825,Theoretical Bound
+"Policy C1 [Balanced Logistic Regression (5 feats, Baseline)] (t=0.50)",0.3842,4.82,1115.9,36.54,0.1053,Learned Policy (t=0.50)
+Policy C1 [Balanced Logistic Regression (2 feats: BM25+Lex)] (t=0.50),0.38,4.83,1117.7,36.44,0.1095,Learned Policy (t=0.50)
+Policy C1 [Shallow Decision Tree (5 feats)] (t=0.50),0.3671,4.64,1078.4,38.67,0.1224,Learned Policy (t=0.50)
+Policy C1 [Random Forest (5 feats)] (t=0.50),0.3717,4.73,1096.3,37.66,0.1178,Learned Policy (t=0.50)
+Policy C1 [XGBoost (5 feats)] (t=0.50),0.3725,4.56,1062.3,39.59,0.117,Learned Policy (t=0.50)
+Policy C1 [XGBoost (2 feats: BM25+Lex)] (t=0.50),0.378,4.69,1089.1,38.06,0.1115,Learned Policy (t=0.50)
+Policy C1 [LightGBM (5 feats)] (t=0.50),0.3632,4.78,1107.0,37.05,0.1263,Learned Policy (t=0.50)
+Policy C1 [HistGradientBoosting (5 feats)] (t=0.50),0.3716,4.71,1092.7,37.86,0.1179,Learned Policy (t=0.50)
+"Policy C1 [Small MLP (5->8->1, 5 feats)] (t=0.50)",0.3638,4.65,1080.2,38.57,0.1257,Learned Policy (t=0.50)
+"Policy C1 [Calibrated Logistic Regression (Platt, 5 feats)] (t=0.50)",0.3596,4.0,946.1,46.2,0.1299,Learned Policy (t=0.50)
+"Policy C1 [Calibrated Random Forest (Platt, 5 feats)] (t=0.50)",0.3596,4.0,946.1,46.2,0.1299,Learned Policy (t=0.50)
+"Policy C1 [Calibrated XGBoost (Platt, 5 feats)] (t=0.50)",0.3596,4.0,946.1,46.2,0.1299,Learned Policy (t=0.50)

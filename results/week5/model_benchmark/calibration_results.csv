@@ -1,0 +1,51 @@
+model_name,bin,bin_range,count,mean_predicted_prob,empirical_accuracy,calibration_gap
+"Balanced Logistic Regression (5 feats, Baseline)",0,[0.0-0.2],19,0.1506,0.1579,-0.0073
+"Balanced Logistic Regression (5 feats, Baseline)",1,[0.2-0.4],62,0.3207,0.1129,0.2078
+"Balanced Logistic Regression (5 feats, Baseline)",2,[0.4-0.6],102,0.4994,0.1667,0.3328
+"Balanced Logistic Regression (5 feats, Baseline)",3,[0.6-0.8],46,0.6847,0.3696,0.3151
+"Balanced Logistic Regression (5 feats, Baseline)",4,[0.8-1.0],2,0.8079,0.5,0.3079
+Balanced Logistic Regression (2 feats: BM25+Lex),0,[0.0-0.2],6,0.1488,0.1667,-0.0178
+Balanced Logistic Regression (2 feats: BM25+Lex),1,[0.2-0.4],67,0.309,0.1045,0.2045
+Balanced Logistic Regression (2 feats: BM25+Lex),2,[0.4-0.6],103,0.4898,0.1553,0.3344
+Balanced Logistic Regression (2 feats: BM25+Lex),3,[0.6-0.8],53,0.6605,0.3585,0.302
+Balanced Logistic Regression (2 feats: BM25+Lex),4,[0.8-1.0],2,0.8218,1.0,-0.1782
+Shallow Decision Tree (5 feats),0,[0.0-0.2],66,0.0177,0.1818,-0.1642
+Shallow Decision Tree (5 feats),1,[0.2-0.4],46,0.2986,0.1739,0.1246
+Shallow Decision Tree (5 feats),2,[0.4-0.6],51,0.468,0.1961,0.2719
+Shallow Decision Tree (5 feats),3,[0.6-0.8],38,0.6809,0.2368,0.444
+Shallow Decision Tree (5 feats),4,[0.8-1.0],30,0.9055,0.2,0.7055
+Random Forest (5 feats),0,[0.0-0.2],4,0.1857,0.25,-0.0643
+Random Forest (5 feats),1,[0.2-0.4],93,0.3038,0.1183,0.1856
+Random Forest (5 feats),2,[0.4-0.6],92,0.4947,0.1848,0.3099
+Random Forest (5 feats),3,[0.6-0.8],37,0.6793,0.4054,0.2739
+Random Forest (5 feats),4,[0.8-1.0],5,0.817,0.2,0.617
+XGBoost (5 feats),0,[0.0-0.2],18,0.1756,0.1111,0.0645
+XGBoost (5 feats),1,[0.2-0.4],107,0.3147,0.1308,0.1838
+XGBoost (5 feats),2,[0.4-0.6],67,0.4895,0.2239,0.2656
+XGBoost (5 feats),3,[0.6-0.8],38,0.6725,0.3684,0.3041
+XGBoost (5 feats),4,[0.8-1.0],1,0.8008,0.0,0.8008
+XGBoost (2 feats: BM25+Lex),0,[0.0-0.2],1,0.1731,0.0,0.1731
+XGBoost (2 feats: BM25+Lex),1,[0.2-0.4],81,0.3108,0.1235,0.1873
+XGBoost (2 feats: BM25+Lex),2,[0.4-0.6],112,0.4877,0.1964,0.2913
+XGBoost (2 feats: BM25+Lex),3,[0.6-0.8],37,0.6465,0.3514,0.2952
+LightGBM (5 feats),0,[0.0-0.2],13,0.1629,0.3077,-0.1448
+LightGBM (5 feats),1,[0.2-0.4],98,0.3064,0.1735,0.1329
+LightGBM (5 feats),2,[0.4-0.6],74,0.5089,0.1081,0.4008
+LightGBM (5 feats),3,[0.6-0.8],42,0.6652,0.3571,0.3081
+LightGBM (5 feats),4,[0.8-1.0],4,0.8266,0.25,0.5766
+HistGradientBoosting (5 feats),0,[0.0-0.2],18,0.1637,0.2222,-0.0585
+HistGradientBoosting (5 feats),1,[0.2-0.4],89,0.303,0.1124,0.1906
+HistGradientBoosting (5 feats),2,[0.4-0.6],80,0.5024,0.175,0.3274
+HistGradientBoosting (5 feats),3,[0.6-0.8],43,0.6934,0.3721,0.3213
+HistGradientBoosting (5 feats),4,[0.8-1.0],1,0.8129,1.0,-0.1871
+"Small MLP (5->8->1, 5 feats)",0,[0.0-0.2],93,0.0562,0.1613,-0.1051
+"Small MLP (5->8->1, 5 feats)",1,[0.2-0.4],40,0.2914,0.125,0.1664
+"Small MLP (5->8->1, 5 feats)",2,[0.4-0.6],41,0.4867,0.2439,0.2428
+"Small MLP (5->8->1, 5 feats)",3,[0.6-0.8],31,0.707,0.2258,0.4812
+"Small MLP (5->8->1, 5 feats)",4,[0.8-1.0],26,0.8995,0.3077,0.5918
+"Calibrated Logistic Regression (Platt, 5 feats)",0,[0.0-0.2],135,0.1737,0.1481,0.0256
+"Calibrated Logistic Regression (Platt, 5 feats)",1,[0.2-0.4],96,0.2275,0.2604,-0.0329
+"Calibrated Random Forest (Platt, 5 feats)",0,[0.0-0.2],130,0.1587,0.1462,0.0125
+"Calibrated Random Forest (Platt, 5 feats)",1,[0.2-0.4],101,0.2458,0.2574,-0.0116
+"Calibrated XGBoost (Platt, 5 feats)",0,[0.0-0.2],143,0.1701,0.1608,0.0093
+"Calibrated XGBoost (Platt, 5 feats)",1,[0.2-0.4],88,0.2385,0.25,-0.0115

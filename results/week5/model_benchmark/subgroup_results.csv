@@ -1,0 +1,13 @@
+model,subgroup,mean_f1
+Balanced Logistic Regression,Non-Numerical Queries,0.39266814159292035
+Balanced Logistic Regression,High Lexical Coverage,0.39991249999999995
+Balanced Logistic Regression,Low Lexical Coverage,0.36163052631578946
+Random Forest,Non-Numerical Queries,0.3799070796460177
+Random Forest,High Lexical Coverage,0.3750698529411765
+Random Forest,Low Lexical Coverage,0.36683684210526324
+XGBoost,Non-Numerical Queries,0.3807035398230088
+XGBoost,High Lexical Coverage,0.3774897058823529
+XGBoost,Low Lexical Coverage,0.3652673684210527
+Small MLP,Non-Numerical Queries,0.37184247787610614
+Small MLP,High Lexical Coverage,0.3682235294117647
+Small MLP,Low Lexical Coverage,0.35745263157894736

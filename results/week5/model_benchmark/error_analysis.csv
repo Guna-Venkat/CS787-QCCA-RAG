@@ -1,0 +1,13 @@
+model_name,true_negative_count,true_positive_count,false_expansion_count,false_stop_count,false_expansion_pct,false_stop_pct,true_positive_rate_pct,avg_gain_captured,avg_distractor_penalty
+"Balanced Logistic Regression (5 feats, Baseline)",120,29,66,16,28.57,6.93,64.44,0.3395,0.4184
+Balanced Logistic Regression (2 feats: BM25+Lex),117,27,69,18,29.87,7.79,60.0,0.3394,0.3191
+Shallow Decision Tree (5 feats),128,16,58,29,25.11,12.55,35.56,0.3561,0.307
+Random Forest (5 feats),127,25,59,20,25.54,8.66,55.56,0.2487,0.3128
+XGBoost (5 feats),142,21,44,24,19.05,10.39,46.67,0.257,0.2441
+XGBoost (2 feats: BM25+Lex),129,23,57,22,24.68,9.52,51.11,0.3121,0.2671
+LightGBM (5 feats),118,22,68,23,29.44,9.96,48.89,0.2648,0.3342
+HistGradientBoosting (5 feats),127,23,59,22,25.54,9.52,51.11,0.2613,0.2494
+"Small MLP (5->8->1, 5 feats)",130,19,56,26,24.24,11.26,42.22,0.251,0.3468
+"Calibrated Logistic Regression (Platt, 5 feats)",186,0,0,45,0.0,19.48,0.0,0.0,0.0
+"Calibrated Random Forest (Platt, 5 feats)",186,0,0,45,0.0,19.48,0.0,0.0,0.0
+"Calibrated XGBoost (Platt, 5 feats)",186,0,0,45,0.0,19.48,0.0,0.0,0.0
