@@ -1,0 +1,6 @@
+system,mean_f1,static_f1,oracle_f1,absolute_gain_vs_static,oracle_headroom_recovered_pct
+QCCA-Rule,0.3286,0.395,0.4895,-0.0664,-70.26
+QCCA-LogReg,0.3034,0.395,0.4895,-0.0916,-96.93
+QCCA-Tree,0.3282,0.395,0.4895,-0.0668,-70.69
+Random Allocation,0.3709,0.395,0.4895,-0.0241,-25.5
+Epsilon Oracle (ε=0.01),0.4894,0.395,0.4895,0.0944,99.89

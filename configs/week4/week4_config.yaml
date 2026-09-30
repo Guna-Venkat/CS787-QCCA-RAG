@@ -1,0 +1,76 @@
+# Week 4 Configuration: Query-Conditioned Context Allocator (QCCA) Development
+seed: 42
+
+allocation:
+  k_alloc:
+    - 2
+    - 4
+    - 5
+    - 6
+    - 8
+
+target:
+  epsilon_star: 0.01
+
+cross_validation:
+  method: GroupKFold
+  n_splits: 5
+  group_column: paper_id
+  random_seed: 42
+
+models:
+  logistic_regression:
+    enabled: true
+    C_candidates:
+      - 0.01
+      - 0.1
+      - 1.0
+      - 10.0
+
+  decision_tree:
+    enabled: true
+    max_depth_candidates:
+      - 2
+      - 3
+      - 4
+
+feature_sets:
+  concentration_only:
+    - rho_1
+    - delta_12
+    - entropy_normalized
+    - n_high
+
+  full:
+    - rho_1
+    - delta_12
+    - entropy
+    - entropy_normalized
+    - query_token_length
+    - n_high
+
+random:
+  seed: 42
+
+smoke_test:
+  enabled: false
+  limit: 3
+
+context_token_costs:
+  0: 138.8
+  2: 534.5
+  4: 946.1
+  5: 1157.0
+  6: 1359.1
+  8: 1758.5
+  10: 2137.9
+
+paths:
+  features: "results/week2/processed/dev_retrieval_features.jsonl"
+  targets: "results/week3/processed/epsilon_oracle_all.csv"
+  matrix: "results/week2/processed/dev_per_query_k_matrix.csv"
+  best_static: "results/week2/processed/best_static_baseline.json"
+  oracle: "results/week3/processed/dev_quality_oracle.csv"
+  processed_dir: "results/week4/processed"
+  plots_dir: "results/week4/plots"
+  logs_dir: "results/week4/logs"

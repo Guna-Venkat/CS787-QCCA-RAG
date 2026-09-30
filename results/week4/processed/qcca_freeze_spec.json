@@ -1,0 +1,38 @@
+{
+  "epsilon_star": 0.01,
+  "k_alloc": [
+    2,
+    4,
+    5,
+    6,
+    8
+  ],
+  "primary_allocator": "LogisticRegression(penalty='l2', C=1.0, multi_class='multinomial')",
+  "features": [
+    "rho_1",
+    "delta_12",
+    "entropy",
+    "entropy_normalized",
+    "query_token_length",
+    "n_high"
+  ],
+  "preprocessing": {
+    "scaler": "StandardScaler",
+    "pipeline_nested_in_folds": true
+  },
+  "hyperparameters": {
+    "penalty": "l2",
+    "C": 1.0,
+    "multi_class": "multinomial",
+    "solver": "lbfgs",
+    "max_iter": 1000
+  },
+  "group_cv": {
+    "method": "GroupKFold",
+    "n_splits": 5,
+    "group": "paper_id"
+  },
+  "random_seed": 42,
+  "development_only": true,
+  "final_test_evaluation_completed": false
+}

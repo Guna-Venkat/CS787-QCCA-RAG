@@ -1,0 +1,102 @@
+{
+  "project": "CS787 QCCA (Query-Conditioned Evidence Allocation)",
+  "phase": "Week 4 (QCCA Development & Cross-Validation)",
+  "timestamp": "2026-09-30 18:55:58",
+  "dataset": {
+    "name": "QASPER Development Split",
+    "n_questions": 231,
+    "n_papers": 86,
+    "is_smoke_test": false
+  },
+  "epsilon_star": 0.01,
+  "k_alloc": [
+    2,
+    4,
+    5,
+    6,
+    8
+  ],
+  "best_static_k": 8,
+  "best_static_f1": 0.395,
+  "oracle_f1": 0.4895,
+  "total_oracle_headroom": 0.0945,
+  "qcca_rule_metrics": {
+    "system": "QCCA-Rule",
+    "mean_f1": 0.3286,
+    "mean_k": 3.56,
+    "mean_context_tokens": 854.4,
+    "context_reduction_pct_vs_k8": 51.41,
+    "mean_epsilon_regret": 0.1608,
+    "mean_oracle_regret": 0.1609,
+    "target_accuracy": 0.3247,
+    "oracle_headroom_recovered_pct": -70.26
+  },
+  "qcca_logreg_metrics": {
+    "system": "QCCA-LogReg",
+    "mean_f1": 0.3034,
+    "mean_k": 2.03,
+    "mean_context_tokens": 539.8,
+    "context_reduction_pct_vs_k8": 69.3,
+    "mean_epsilon_regret": 0.186,
+    "mean_oracle_regret": 0.1862,
+    "target_accuracy": 0.5671,
+    "oracle_headroom_recovered_pct": -96.96
+  },
+  "qcca_tree_metrics": {
+    "system": "QCCA-Tree",
+    "mean_f1": 0.3282,
+    "mean_k": 2.66,
+    "mean_context_tokens": 671.0,
+    "context_reduction_pct_vs_k8": 61.84,
+    "mean_epsilon_regret": 0.1612,
+    "mean_oracle_regret": 0.1613,
+    "target_accuracy": 0.4892,
+    "oracle_headroom_recovered_pct": -70.7
+  },
+  "selected_feature_set": "full",
+  "headroom_recovery": [
+    {
+      "system": "QCCA-Rule",
+      "mean_f1": 0.3286,
+      "static_f1": 0.395,
+      "oracle_f1": 0.4895,
+      "absolute_gain_vs_static": -0.0664,
+      "oracle_headroom_recovered_pct": -70.26
+    },
+    {
+      "system": "QCCA-LogReg",
+      "mean_f1": 0.3034,
+      "static_f1": 0.395,
+      "oracle_f1": 0.4895,
+      "absolute_gain_vs_static": -0.0916,
+      "oracle_headroom_recovered_pct": -96.93
+    },
+    {
+      "system": "QCCA-Tree",
+      "mean_f1": 0.3282,
+      "static_f1": 0.395,
+      "oracle_f1": 0.4895,
+      "absolute_gain_vs_static": -0.0668,
+      "oracle_headroom_recovered_pct": -70.69
+    },
+    {
+      "system": "Random Allocation",
+      "mean_f1": 0.3709,
+      "static_f1": 0.395,
+      "oracle_f1": 0.4895,
+      "absolute_gain_vs_static": -0.0241,
+      "oracle_headroom_recovered_pct": -25.5
+    },
+    {
+      "system": "Epsilon Oracle (\u03b5=0.01)",
+      "mean_f1": 0.4894,
+      "static_f1": 0.395,
+      "oracle_f1": 0.4895,
+      "absolute_gain_vs_static": 0.0944,
+      "oracle_headroom_recovered_pct": 99.89
+    }
+  ],
+  "cv_protocol": "5-Fold GroupKFold by paper_id",
+  "final_model_proposed": "QCCA-Learned (LogisticRegression C=1.0)",
+  "w5_ready": true
+}

@@ -1,0 +1,3 @@
+feature_set,feature_count,features,mean_f1,mean_k,mean_context_tokens,context_reduction_pct_vs_k8,target_accuracy,mean_epsilon_regret,oracle_headroom_recovered_pct
+concentration_only,4,"rho_1, delta_12, entropy_normalized, n_high",0.3034,2.03,539.8,69.3,0.5671,0.186,-96.96
+full,6,"rho_1, delta_12, entropy, entropy_normalized, query_token_length, n_high",0.3034,2.03,539.8,69.3,0.5671,0.186,-96.96
