@@ -12,6 +12,6 @@
   "selection_rule": "argmax_{k in {0,2,4,5,6,8}} Mean_F1_dev(k) with smaller-k tie-breaking for SARA baseline",
   "evaluated_question_count": 231,
   "seed": 42,
-  "timestamp": "2026-09-30 16:40:36",
+  "timestamp": "2026-09-30 16:48:20",
   "note": "Static SARA baseline (k=8) selected strictly from SARA candidate set {0,2,4,5,6,8}. Vanilla RAG k=10 tracked separately as reference ceiling."
 }

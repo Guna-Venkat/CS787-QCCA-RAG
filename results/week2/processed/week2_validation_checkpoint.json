@@ -1,0 +1,599 @@
+{
+  "validation_checkpoint_id": "week2_dev_fixed_k_frozen_v1",
+  "timestamp": "2026-09-30 16:47:40",
+  "num_dev_questions": 231,
+  "num_dev_papers": 86,
+  "immutable_raw_records": 1617,
+  "data_integrity_audit": {
+    "train_dev_paper_overlap": 0,
+    "test_set_access": "UNTOUCHED (0 evaluations performed on test set)",
+    "feature_availability": "VERIFIED (Computed strictly pre-generation from BM25 scores and query text)",
+    "oracle_label_protocol": "VERIFIED (Derived strictly from offline fixed-k dev matrix with smaller-k tie breaking)"
+  },
+  "fixed_k_performance_hierarchy": {
+    "vanilla_rag_ceiling_k10_f1": 0.409,
+    "best_static_sara_k8_f1": 0.395,
+    "parent_sara_k5_f1": 0.3629,
+    "pure_compression_k0_f1": 0.1388,
+    "oracle_adaptive_sara_f1": 0.5008
+  },
+  "oracle_gain_quantification": {
+    "total_oracle_gain_f1_points": 24.4367,
+    "mean_oracle_gain_per_query": 0.1058,
+    "relative_oracle_improvement_pct": 26.78
+  },
+  "category_gain_attribution": [
+    {
+      "best_k": 0,
+      "question_count": 81,
+      "question_pct": 35.06,
+      "total_f1_gain_sum": 2.8771,
+      "share_of_oracle_gain_pct": 11.77,
+      "mean_f1_gain_per_query": 0.0355
+    },
+    {
+      "best_k": 2,
+      "question_count": 55,
+      "question_pct": 23.81,
+      "total_f1_gain_sum": 8.2437,
+      "share_of_oracle_gain_pct": 33.73,
+      "mean_f1_gain_per_query": 0.1499
+    },
+    {
+      "best_k": 4,
+      "question_count": 37,
+      "question_pct": 16.02,
+      "total_f1_gain_sum": 6.309,
+      "share_of_oracle_gain_pct": 25.82,
+      "mean_f1_gain_per_query": 0.1705
+    },
+    {
+      "best_k": 5,
+      "question_count": 15,
+      "question_pct": 6.49,
+      "total_f1_gain_sum": 3.4256,
+      "share_of_oracle_gain_pct": 14.02,
+      "mean_f1_gain_per_query": 0.2284
+    },
+    {
+      "best_k": 6,
+      "question_count": 21,
+      "question_pct": 9.09,
+      "total_f1_gain_sum": 3.5813,
+      "share_of_oracle_gain_pct": 14.66,
+      "mean_f1_gain_per_query": 0.1705
+    },
+    {
+      "best_k": 8,
+      "question_count": 22,
+      "question_pct": 9.52,
+      "total_f1_gain_sum": 0.0,
+      "share_of_oracle_gain_pct": 0.0,
+      "mean_f1_gain_per_query": 0.0
+    }
+  ],
+  "samples_by_category": {
+    "k=0": [
+      {
+        "question_id": "1002",
+        "paper_id": "293",
+        "question_text": "How have the differences in communication styles between Twitter and Facebook increase the complexity of the problem?",
+        "best_sara_k": 0,
+        "best_sara_f1": 0.25,
+        "sara_k8_f1": 0.2105,
+        "f1_by_k": {
+          "0": 0.25,
+          "2": 0.2,
+          "4": 0.2,
+          "5": 0.2105,
+          "6": 0.2105,
+          "8": 0.2105,
+          "10": 0.2
+        }
+      },
+      {
+        "question_id": "1003",
+        "paper_id": "293",
+        "question_text": "What data/studies do the authors provide to support the assertion that the majority of aggressive conversations contain code-mixed languages?",
+        "best_sara_k": 0,
+        "best_sara_f1": 0.0,
+        "sara_k8_f1": 0.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "8": 0.0,
+          "10": 0.0
+        }
+      },
+      {
+        "question_id": "1013",
+        "paper_id": "298",
+        "question_text": "What are the differences with previous applications of neural networks for this task?",
+        "best_sara_k": 0,
+        "best_sara_f1": 0.0,
+        "sara_k8_f1": 0.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "8": 0.0,
+          "10": 0.1111
+        }
+      },
+      {
+        "question_id": "1028",
+        "paper_id": "304",
+        "question_text": "Will these findings be robust through different datasets and different question answering algorithms?",
+        "best_sara_k": 0,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 1.0,
+        "f1_by_k": {
+          "0": 1.0,
+          "2": 0.0,
+          "4": 1.0,
+          "5": 0.0,
+          "6": 0.0,
+          "8": 1.0,
+          "10": 0.0
+        }
+      },
+      {
+        "question_id": "1029",
+        "paper_id": "304",
+        "question_text": "What is the underlying question answering algorithm?",
+        "best_sara_k": 0,
+        "best_sara_f1": 0.0,
+        "sara_k8_f1": 0.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "8": 0.0,
+          "10": 0.0
+        }
+      }
+    ],
+    "k=2": [
+      {
+        "question_id": "1065",
+        "paper_id": "317",
+        "question_text": "What crowdsourcing platform is used for data collection and data validation?",
+        "best_sara_k": 2,
+        "best_sara_f1": 0.5,
+        "sara_k8_f1": 0.4444,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.5,
+          "4": 0.4444,
+          "5": 0.4444,
+          "6": 0.4444,
+          "8": 0.4444,
+          "10": 0.4444
+        }
+      },
+      {
+        "question_id": "1134",
+        "paper_id": "340",
+        "question_text": "Which training objectives do they combine?",
+        "best_sara_k": 2,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 0.6667,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "8": 0.6667,
+          "10": 0.0
+        }
+      },
+      {
+        "question_id": "1158",
+        "paper_id": "351",
+        "question_text": "What is the performance of the model for the German sub-task A?",
+        "best_sara_k": 2,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 0.4,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 0.4,
+          "6": 0.4,
+          "8": 0.4,
+          "10": 0.4
+        }
+      },
+      {
+        "question_id": "1161",
+        "paper_id": "351",
+        "question_text": "What are the languages used to test the model?",
+        "best_sara_k": 2,
+        "best_sara_f1": 0.75,
+        "sara_k8_f1": 0.75,
+        "f1_by_k": {
+          "0": 0.3333,
+          "2": 0.75,
+          "4": 0.75,
+          "5": 0.75,
+          "6": 0.75,
+          "8": 0.75,
+          "10": 0.75
+        }
+      },
+      {
+        "question_id": "1233",
+        "paper_id": "379",
+        "question_text": "Which baseline performs best?",
+        "best_sara_k": 2,
+        "best_sara_f1": 0.4444,
+        "sara_k8_f1": 0.0,
+        "f1_by_k": {
+          "0": 0.2,
+          "2": 0.4444,
+          "4": 0.4444,
+          "5": 0.4444,
+          "6": 0.25,
+          "8": 0.0,
+          "10": 0.25
+        }
+      }
+    ],
+    "k=4": [
+      {
+        "question_id": "1000",
+        "paper_id": "293",
+        "question_text": "What is English mixed with in the TRAC dataset?",
+        "best_sara_k": 4,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 1.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.4,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "8": 1.0,
+          "10": 0.0952
+        }
+      },
+      {
+        "question_id": "1030",
+        "paper_id": "304",
+        "question_text": "What datasets have this method been evaluated on?",
+        "best_sara_k": 4,
+        "best_sara_f1": 0.4,
+        "sara_k8_f1": 0.4,
+        "f1_by_k": {
+          "0": 0.25,
+          "2": 0.3333,
+          "4": 0.4,
+          "5": 0.3333,
+          "6": 0.0,
+          "8": 0.4,
+          "10": 0.75
+        }
+      },
+      {
+        "question_id": "105",
+        "paper_id": "28",
+        "question_text": "Which real-world datasets did they use?",
+        "best_sara_k": 4,
+        "best_sara_f1": 0.4444,
+        "sara_k8_f1": 0.4444,
+        "f1_by_k": {
+          "0": 0.1,
+          "2": 0.1538,
+          "4": 0.4444,
+          "5": 0.4444,
+          "6": 0.4444,
+          "8": 0.4444,
+          "10": 0.4
+        }
+      },
+      {
+        "question_id": "1066",
+        "paper_id": "317",
+        "question_text": "How is validation of the data performed?",
+        "best_sara_k": 4,
+        "best_sara_f1": 0.125,
+        "sara_k8_f1": 0.0667,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.125,
+          "5": 0.125,
+          "6": 0.125,
+          "8": 0.0667,
+          "10": 0.125
+        }
+      },
+      {
+        "question_id": "1067",
+        "paper_id": "317",
+        "question_text": "Is audio data per language balanced in dataset?",
+        "best_sara_k": 4,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 1.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "8": 1.0,
+          "10": 1.0
+        }
+      }
+    ],
+    "k=5": [
+      {
+        "question_id": "1004",
+        "paper_id": "294",
+        "question_text": "What is the baseline?",
+        "best_sara_k": 5,
+        "best_sara_f1": 0.8889,
+        "sara_k8_f1": 0.0,
+        "f1_by_k": {
+          "0": 0.1111,
+          "2": 0.0,
+          "4": 0.4571,
+          "5": 0.8889,
+          "6": 0.4444,
+          "8": 0.0,
+          "10": 0.2
+        }
+      },
+      {
+        "question_id": "1266",
+        "paper_id": "388",
+        "question_text": "What is the size of the dataset?",
+        "best_sara_k": 5,
+        "best_sara_f1": 0.4,
+        "sara_k8_f1": 0.4,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.2222,
+          "5": 0.4,
+          "6": 0.4,
+          "8": 0.4,
+          "10": 0.0
+        }
+      },
+      {
+        "question_id": "1377",
+        "paper_id": "423",
+        "question_text": "How are seed dictionaries obtained by fully unsupervised methods?",
+        "best_sara_k": 5,
+        "best_sara_f1": 0.4242,
+        "sara_k8_f1": 0.4242,
+        "f1_by_k": {
+          "0": 0.0625,
+          "2": 0.2286,
+          "4": 0.2286,
+          "5": 0.4242,
+          "6": 0.4242,
+          "8": 0.4242,
+          "10": 0.4242
+        }
+      },
+      {
+        "question_id": "1403",
+        "paper_id": "431",
+        "question_text": "What do FHIR and RDF stand for?",
+        "best_sara_k": 5,
+        "best_sara_f1": 0.8182,
+        "sara_k8_f1": 0.8182,
+        "f1_by_k": {
+          "0": 0.5263,
+          "2": 0.6364,
+          "4": 0.6364,
+          "5": 0.8182,
+          "6": 0.8182,
+          "8": 0.8182,
+          "10": 0.8182
+        }
+      },
+      {
+        "question_id": "1810",
+        "paper_id": "595",
+        "question_text": "How is the data automatically generated?",
+        "best_sara_k": 5,
+        "best_sara_f1": 0.8837,
+        "sara_k8_f1": 0.069,
+        "f1_by_k": {
+          "0": 0.0741,
+          "2": 0.0,
+          "4": 0.069,
+          "5": 0.8837,
+          "6": 0.8837,
+          "8": 0.069,
+          "10": 0.8837
+        }
+      }
+    ],
+    "k=6": [
+      {
+        "question_id": "1001",
+        "paper_id": "293",
+        "question_text": "Which psycholinguistic and basic linguistic features are used?",
+        "best_sara_k": 6,
+        "best_sara_f1": 0.6,
+        "sara_k8_f1": 0.4167,
+        "f1_by_k": {
+          "0": 0.1333,
+          "2": 0.1429,
+          "4": 0.1429,
+          "5": 0.1429,
+          "6": 0.6,
+          "8": 0.4167,
+          "10": 0.3478
+        }
+      },
+      {
+        "question_id": "116",
+        "paper_id": "33",
+        "question_text": "Is the semantic hierarchy representation used for any task?",
+        "best_sara_k": 6,
+        "best_sara_f1": 0.5,
+        "sara_k8_f1": 0.5,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.5,
+          "8": 0.5,
+          "10": 0.5
+        }
+      },
+      {
+        "question_id": "126",
+        "paper_id": "36",
+        "question_text": "How does the active learning model work?",
+        "best_sara_k": 6,
+        "best_sara_f1": 0.3438,
+        "sara_k8_f1": 0.1923,
+        "f1_by_k": {
+          "0": 0.12,
+          "2": 0.127,
+          "4": 0.16,
+          "5": 0.3385,
+          "6": 0.3438,
+          "8": 0.1923,
+          "10": 0.1846
+        }
+      },
+      {
+        "question_id": "127",
+        "paper_id": "36",
+        "question_text": "Which neural network architectures are employed?",
+        "best_sara_k": 6,
+        "best_sara_f1": 0.8571,
+        "sara_k8_f1": 0.5,
+        "f1_by_k": {
+          "0": 0.3333,
+          "2": 0.4286,
+          "4": 0.5,
+          "5": 0.5455,
+          "6": 0.8571,
+          "8": 0.5,
+          "10": 0.5
+        }
+      },
+      {
+        "question_id": "1282",
+        "paper_id": "394",
+        "question_text": "How does the model work if no treebank is available?",
+        "best_sara_k": 6,
+        "best_sara_f1": 0.88,
+        "sara_k8_f1": 0.1765,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0556,
+          "4": 0.1765,
+          "5": 0.1765,
+          "6": 0.88,
+          "8": 0.1765,
+          "10": 0.2703
+        }
+      }
+    ],
+    "k=8": [
+      {
+        "question_id": "1005",
+        "paper_id": "294",
+        "question_text": "What datasets did they use?",
+        "best_sara_k": 8,
+        "best_sara_f1": 1.0,
+        "sara_k8_f1": 1.0,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.6667,
+          "4": 0.6667,
+          "5": 0.75,
+          "6": 0.75,
+          "8": 1.0,
+          "10": 1.0
+        }
+      },
+      {
+        "question_id": "1132",
+        "paper_id": "340",
+        "question_text": "How do they evaluate their sentence representations?",
+        "best_sara_k": 8,
+        "best_sara_f1": 0.6047,
+        "sara_k8_f1": 0.6047,
+        "f1_by_k": {
+          "0": 0.0513,
+          "2": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.25,
+          "8": 0.6047,
+          "10": 0.2857
+        }
+      },
+      {
+        "question_id": "117",
+        "paper_id": "33",
+        "question_text": "What are the corpora used for the task?",
+        "best_sara_k": 8,
+        "best_sara_f1": 0.4762,
+        "sara_k8_f1": 0.4762,
+        "f1_by_k": {
+          "0": 0.0769,
+          "2": 0.16,
+          "4": 0.1333,
+          "5": 0.1379,
+          "6": 0.1212,
+          "8": 0.4762,
+          "10": 0.4762
+        }
+      },
+      {
+        "question_id": "1215",
+        "paper_id": "372",
+        "question_text": "What state of the art models are used in the experiments?",
+        "best_sara_k": 8,
+        "best_sara_f1": 0.8387,
+        "sara_k8_f1": 0.8387,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.2963,
+          "4": 0.2963,
+          "5": 0.2963,
+          "6": 0.2963,
+          "8": 0.8387,
+          "10": 0.2963
+        }
+      },
+      {
+        "question_id": "1379",
+        "paper_id": "423",
+        "question_text": "What methods were used for unsupervised CLWE?",
+        "best_sara_k": 8,
+        "best_sara_f1": 0.1481,
+        "sara_k8_f1": 0.1481,
+        "f1_by_k": {
+          "0": 0.0,
+          "2": 0.0779,
+          "4": 0.0769,
+          "5": 0.0,
+          "6": 0.0,
+          "8": 0.1481,
+          "10": 0.0
+        }
+      }
+    ]
+  }
+}
