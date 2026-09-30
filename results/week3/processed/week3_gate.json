@@ -1,6 +1,6 @@
 {
   "gate_name": "WEEK_3_GO_NO_GO_EVALUATION",
-  "timestamp": "2026-09-30 17:30:43",
+  "timestamp": "2026-09-30 17:58:07",
   "H1_status": "SUPPORTED",
   "H1_rationale": "Evidence requirements vary across queries: under tie-broken deployable oracle, 73.59% achieve peak F1 at k <= 4, providing +0.0945 (+23.93%) empirical headroom over static k=8 (95% CI: [+0.0693, +0.1226]). Under tie-aware analysis, static k=8 is strictly suboptimal for 29.44% of queries, and tied for maximum in 60.61%, while unique strict winner in 9.96%.",
   "epsilon_target_status": "SUPPORTED",

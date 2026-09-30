@@ -1,7 +1,7 @@
 {
   "manifest_id": "week2_frozen_input_manifest_v1",
-  "creation_timestamp": "2026-09-30 17:30:43",
-  "git_commit": "33cfae3dca55908d599af2b05b7bfd769a0272e1",
+  "creation_timestamp": "2026-09-30 17:58:07",
+  "git_commit": "1c7348c6a86f78c38053a1762e7541d24844776e",
   "source_checkpoint": "sara_qasper_proj_lr5e4_seed42",
   "rag_checkpoint": "rag_qasper_lora_r16_seed42",
   "question_count": 231,

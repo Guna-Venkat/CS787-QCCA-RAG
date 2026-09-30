@@ -1,7 +1,7 @@
 {
   "project": "CS787 QCCA (Query-Conditioned Evidence Allocation)",
   "phase": "Week 3 (Oracle, Epsilon Target, Heterogeneity & Human Validation)",
-  "timestamp": "2026-09-30 17:30:43",
+  "timestamp": "2026-09-30 17:58:07",
   "dataset": {
     "name": "QASPER Development Split",
     "n_questions": 231,
