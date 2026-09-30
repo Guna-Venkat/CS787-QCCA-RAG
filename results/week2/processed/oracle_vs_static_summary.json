@@ -1,0 +1,32 @@
+{
+  "n_questions": 231,
+  "mean_pure_compression_k0_f1": 0.1388,
+  "mean_parent_sara_k5_f1": 0.3629,
+  "mean_static_sara_k8_f1": 0.395,
+  "mean_vanilla_rag_k10_f1": 0.409,
+  "mean_oracle_sara_f1": 0.5008,
+  "oracle_sara_gain_over_k8": 0.1058,
+  "oracle_sara_pct_improvement_over_k8": 26.78,
+  "mean_oracle_overall_f1": 0.5264,
+  "oracle_overall_gain_over_k10": 0.1174,
+  "oracle_overall_pct_improvement_over_k10": 28.69,
+  "pct_questions_where_k0_equal_or_better_than_k8": 46.32,
+  "pct_questions_where_k5_equal_or_better_than_k8": 77.92,
+  "questions_within_0.01_of_sara_oracle_pct": {
+    "k=0": 35.06,
+    "k=2": 52.81,
+    "k=4": 60.17,
+    "k=5": 60.61,
+    "k=6": 63.2,
+    "k=8": 66.23
+  },
+  "questions_within_0.02_of_sara_oracle_pct": {
+    "k=0": 35.06,
+    "k=2": 52.81,
+    "k=4": 60.17,
+    "k=5": 60.61,
+    "k=6": 63.64,
+    "k=8": 66.23
+  },
+  "timestamp": "2026-09-30 16:40:36"
+}

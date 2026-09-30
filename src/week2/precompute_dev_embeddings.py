@@ -148,11 +148,20 @@ def encode_and_cache_embeddings(
     target_dtype = torch.bfloat16 if dtype_str == "bfloat16" else torch.float16
     print(f"Loading SFR compressor {model_name} on {device} (dtype: {dtype_str})...")
     t0 = time.time()
-    sfr_model = SentenceTransformer(
-        model_name,
-        device=device,
-        model_kwargs={"torch_dtype": target_dtype}
-    )
+    try:
+        sfr_model = SentenceTransformer(
+            model_name,
+            device=device,
+            local_files_only=True,
+            model_kwargs={"torch_dtype": target_dtype}
+        )
+    except Exception as e:
+        print(f"Local-only load failed ({e}), trying standard load...")
+        sfr_model = SentenceTransformer(
+            model_name,
+            device=device,
+            model_kwargs={"torch_dtype": target_dtype}
+        )
     load_time = time.time() - t0
     print(f"SFR Compressor loaded in {load_time:.2f}s.")
 

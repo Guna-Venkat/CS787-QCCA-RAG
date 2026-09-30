@@ -9,6 +9,9 @@ PYTHON_EXEC="/home/gunavenkat/sara_env/bin/python"
 CONFIG_FILE="${WORKSPACE_ROOT}/configs/week2/sweep_config.yaml"
 LIMIT="${1:-}"
 
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+
 echo "============================================================"
 echo "STAGE 2: FIXED-K DEVELOPMENT RESPONSE SWEEP"
 echo "Start Time   : $(date '+%Y-%m-%d %H:%M:%S')"
