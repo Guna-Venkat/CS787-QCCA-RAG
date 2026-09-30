@@ -1,0 +1,13 @@
+policy,baseline,mean_delta_f1,ci_95_f1_low,ci_95_f1_high,significant_f1_diff,mean_delta_tokens,ci_95_tok_low,ci_95_tok_high
+Policy A (2->4->6->8),Static k=4,-0.0278,-0.0616,0.0068,False,-103.5,-166.9,-37.4
+Policy A (2->4->6->8),Static k=6,-0.0539,-0.0922,-0.0213,True,-516.5,-578.9,-453.5
+Policy A (2->4->6->8),Static k=8,-0.0632,-0.1044,-0.0248,True,-915.9,-979.2,-853.3
+Policy B (Start k=4),Static k=4,0.0249,-0.0004,0.052,False,206.2,160.3,247.4
+Policy B (Start k=4),Static k=6,-0.0012,-0.0221,0.0204,False,-206.8,-249.7,-165.7
+Policy B (Start k=4),Static k=8,-0.0105,-0.0419,0.0207,False,-606.2,-651.9,-564.7
+"Policy C1 (Start k=4, stop k=6)",Static k=4,0.0246,-0.0006,0.0508,False,169.8,135.7,202.4
+"Policy C1 (Start k=4, stop k=6)",Static k=6,-0.0015,-0.0217,0.0182,False,-243.2,-275.3,-211.2
+"Policy C1 (Start k=4, stop k=6)",Static k=8,-0.0108,-0.0441,0.0211,False,-642.6,-674.7,-611.2
+Policy D1 (Conservative S1),Static k=4,-0.0508,-0.0878,-0.0172,True,-367.1,-393.0,-336.7
+Policy D1 (Conservative S1),Static k=6,-0.0769,-0.1171,-0.0374,True,-780.1,-806.0,-750.3
+Policy D1 (Conservative S1),Static k=8,-0.0862,-0.126,-0.0486,True,-1179.5,-1205.7,-1149.4

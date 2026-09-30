@@ -1,0 +1,4 @@
+stage,model_name,n_samples,prevalence_pos,prevalence_neg,oof_roc_auc,oof_pr_auc,oof_balanced_acc,oof_precision,oof_recall,oof_specificity,oof_f1,oof_brier_score,oof_ece,tp,fp,tn,fn,fold_roc_mean,fold_roc_std,fold_bal_mean,fold_bal_std
+Stage 1 (2->4),logistic_regression_balanced,231,0.23809523809523808,0.7619047619047619,0.4385,0.2101,0.4551,0.2019,0.3818,0.5284,0.2642,0.2549,0.2541,21,83,93,34,0.5097,0.1179,0.4819,0.1085
+Stage 2 (4->6),logistic_regression_balanced,231,0.19480519480519481,0.8051948051948052,0.6503,0.3199,0.6448,0.3053,0.6444,0.6452,0.4143,0.2307,0.2687,29,66,120,16,0.6557,0.069,0.6489,0.0319
+Stage 3 (6->8),logistic_regression_balanced,231,0.16017316017316016,0.8398268398268398,0.5341,0.2532,0.5229,0.1758,0.4324,0.6134,0.25,0.2424,0.3222,16,75,119,21,0.5626,0.0925,0.531,0.0713

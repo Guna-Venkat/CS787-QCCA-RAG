@@ -1,0 +1,7 @@
+ablation_type,Stage 1 (2->4),Stage 2 (4->6),Stage 3 (6->8)
+Only bm25_retrieval,0.5362,0.6501,0.5652
+Only evidence_structure,0.553,0.5597,0.5711
+Only lexical_coverage,0.4284,0.6228,0.5687
+Only passage_diversity,0.4041,0.6033,0.5294
+Only query_complexity,0.4073,0.535,0.5436
+Only semantic_similarity,0.5309,0.5947,0.5375

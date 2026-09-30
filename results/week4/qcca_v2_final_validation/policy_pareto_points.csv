@@ -1,0 +1,12 @@
+system,mean_f1,mean_context_tokens,context_reduction_pct_vs_k8,is_pareto_dominated,is_pareto_optimal
+Static k=2,0.30383506493506496,534.5,69.6,False,True
+Oracle Sequential Ceiling,0.4069,650.3,63.02,False,True
+QCCA-V1 (Decision Tree),0.3282,671.0,61.84,True,False
+Epsilon Oracle (epsilon=0.01),0.48939090909090904,841.3,52.16,False,True
+QCCA-V1 (Rule),0.3286,854.4,51.41,True,False
+Static k=4,0.3596008658008658,946.1,46.2,True,False
+QCCA-V2 Policy C1 (Final),0.3842,1115.9,36.54,True,False
+Random Allocation,0.3709,1131.0,35.68,True,False
+Static k=5,0.3629,1157.0,34.21,True,False
+Static k=6,0.38569913419913415,1359.1,22.71,True,False
+Static k=8,0.3949948051948052,1758.5,0.0,True,False

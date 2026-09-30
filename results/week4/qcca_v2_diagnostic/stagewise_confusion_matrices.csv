@@ -1,0 +1,13 @@
+stage,category,query_count,percentage,mean_marginal_gain,total_marginal_gain,token_cost_delta,policy_impact
+Stage 1 (2->4),TP (Beneficial Expansion),21,9.09,0.3473,7.2936,411.6,Captured +7.29 cumulative F1 gain; consumed +411.6 tokens per query.
+Stage 1 (2->4),FP (False Expansion / Wasted Context),83,35.93,-0.0509,-4.2248,411.6,Wasted +411.6 tokens per query; net marginal F1 change: -0.0509.
+Stage 1 (2->4),FN (False Stopping / Missed Gain),34,14.72,0.387,13.158,0.0,Missed opportunity cost: lost 13.16 cumulative F1; saved 411.6 tokens.
+Stage 1 (2->4),TN (True Stopping / Distractor Avoided),93,40.26,-0.036,-3.3449,0.0,Saved 411.6 tokens per query; avoided net negative/neutral evidence.
+Stage 2 (4->6),TP (Beneficial Expansion),29,12.55,0.3395,9.8448,413.0,Captured +9.84 cumulative F1 gain; consumed +413.0 tokens per query.
+Stage 2 (4->6),FP (False Expansion / Wasted Context),66,28.57,-0.0632,-4.1696,413.0,Wasted +413.0 tokens per query; net marginal F1 change: -0.0632.
+Stage 2 (4->6),FN (False Stopping / Missed Gain),16,6.93,0.3802,6.0828,0.0,Missed opportunity cost: lost 6.08 cumulative F1; saved 413.0 tokens.
+Stage 2 (4->6),TN (True Stopping / Distractor Avoided),120,51.95,-0.0477,-5.7293,0.0,Saved 413.0 tokens per query; avoided net negative/neutral evidence.
+Stage 3 (6->8),TP (Beneficial Expansion),16,6.93,0.2613,4.1804,399.4,Captured +4.18 cumulative F1 gain; consumed +399.4 tokens per query.
+Stage 3 (6->8),FP (False Expansion / Wasted Context),75,32.47,-0.0486,-3.6478,399.4,Wasted +399.4 tokens per query; net marginal F1 change: -0.0486.
+Stage 3 (6->8),FN (False Stopping / Missed Gain),21,9.09,0.3278,6.8846,0.0,Missed opportunity cost: lost 6.88 cumulative F1; saved 399.4 tokens.
+Stage 3 (6->8),TN (True Stopping / Distractor Avoided),119,51.52,-0.0443,-5.2699,0.0,Saved 399.4 tokens per query; avoided net negative/neutral evidence.

@@ -1,0 +1,6 @@
+feature,mean_coefficient,std_coefficient,odds_ratio,direction
+lex_coverage_top2,0.3794,0.1274,1.4614,Positive (Expands)
+bm25_mean_score,0.2818,0.0546,1.3255,Positive (Expands)
+sem_sim_mean_top6,0.1768,0.1237,1.1934,Positive (Expands)
+evidence_query_cluster_span,0.1467,0.1006,1.158,Positive (Expands)
+evidence_lexical_overlap_mean,-0.0087,0.1119,0.9914,Negative (Halts)

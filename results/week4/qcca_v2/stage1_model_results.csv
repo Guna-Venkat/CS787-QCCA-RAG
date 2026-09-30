@@ -1,0 +1,8 @@
+stage,model_name,oof_balanced_accuracy,oof_precision,oof_recall,oof_f1,oof_roc_auc,oof_pr_auc
+Stage 1 (2->4),majority,0.5,0.0,0.0,0.0,0.5,0.2381
+Stage 1 (2->4),logistic_regression,0.5,0.0,0.0,0.0,0.426,0.2089
+Stage 1 (2->4),logistic_regression_balanced,0.4551,0.2019,0.3818,0.2642,0.4385,0.2101
+Stage 1 (2->4),decision_tree_depth1,0.504,0.2857,0.0364,0.0645,0.4326,0.2158
+Stage 1 (2->4),decision_tree_depth2,0.4892,0.125,0.0182,0.0317,0.5275,0.269
+Stage 1 (2->4),decision_tree_depth3,0.5932,0.5385,0.2545,0.3457,0.573,0.3211
+Stage 1 (2->4),random_forest,0.5,0.0,0.0,0.0,0.5178,0.2532

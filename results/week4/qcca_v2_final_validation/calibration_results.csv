@@ -1,0 +1,4 @@
+model_name,roc_auc,pr_auc,balanced_acc,precision,recall,f1,brier_score,ece,policy_mean_f1,mean_k,mean_tokens,token_reduction_vs_k8
+Majority Baseline (Always Stop k=4),0.5,0.1948,0.5,0.0,0.0,0.0,0.1948,0.1948,0.3596,4.0,946.1,46.2
+"Logistic Regression (Unweighted, t=0.5)",0.6532,0.3056,0.4946,0.0,0.0,0.0,0.1509,0.0206,0.3596,4.02,949.7,46.0
+"Logistic Regression (Balanced, Primary)",0.6503,0.3199,0.6448,0.3053,0.6444,0.4143,0.2307,0.2687,0.3842,4.82,1115.9,36.54

@@ -1,0 +1,5 @@
+policy,mean_f1,mean_k,mean_context_tokens,context_reduction_pct_vs_k8,f1_per_1k_tokens,mean_regret,median_regret,pct_k2,pct_k4,pct_k6,pct_k8,stage1_expansion_prec,stage1_expansion_rec,stage2_expansion_prec,stage2_expansion_rec,stage3_expansion_prec,stage3_expansion_rec
+QCCA-V2 (Logistic Regression),0.3038,2.0,534.5,69.6,0.5684,0.1856,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+QCCA-V2 (Balanced LogReg),0.3318,3.5,842.6,52.08,0.3937,0.1577,0.0,55.0,19.0,22.1,3.9,0.2019,0.3818,0.3167,0.7917,0.2222,0.2
+QCCA-V2 (Decision Tree d=2),0.3067,2.08,550.5,68.69,0.5571,0.1827,0.0,96.5,3.0,0.4,0.0,0.125,0.0182,0.0,0.0,0.0,0.0
+QCCA-V2 (Ridge Regression),0.3675,5.45,1241.6,29.39,0.296,0.122,0.0,12.6,26.4,37.2,23.8,0.2327,0.8545,0.2057,0.725,0.1091,0.3333

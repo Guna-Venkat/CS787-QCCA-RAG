@@ -1,0 +1,4 @@
+comparison,mean_delta_f1,ci_95_f1_low,ci_95_f1_high,statistically_detectable_f1_diff,mean_delta_tokens,ci_95_tokens_low,ci_95_tokens_high,mean_delta_regret,ci_95_regret_low,ci_95_regret_high
+Policy C1 vs Static k=4,0.0246,-0.0017,0.0516,False,169.8,136.3,203.0,-0.0245,-0.0516,0.0017
+Policy C1 vs Static k=6,-0.0015,-0.0241,0.0195,False,-243.2,-276.6,-211.0,0.0016,-0.0194,0.0241
+Policy C1 vs Static k=8,-0.0108,-0.0451,0.0225,False,-642.6,-676.6,-610.8,0.0109,-0.0225,0.0451
