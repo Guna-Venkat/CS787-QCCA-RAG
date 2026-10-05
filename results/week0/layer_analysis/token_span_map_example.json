@@ -1,0 +1,164 @@
+{
+  "question_id": "2201",
+  "paper_id": "798",
+  "question": "Why is a Gaussian process an especially appropriate method for this classification problem?",
+  "gold_answer": "avoids the need for expensive cross-validation for hyperparameter selection",
+  "total_prompt_tokens": 2355,
+  "model_checkpoint": "mistralai/Mistral-7B-Instruct-v0.2",
+  "prompt_structure_summary": "Instruction Prefix -> Document 1..10 (Context) -> Task Specification -> Query -> Answer Closure",
+  "causal_attention_directionality_notes": [
+    "Mistral uses causal lower-triangular attention mask: token i only attends to token j <= i.",
+    "Passages precede Query in prompt: passage token states have zero attention to query tokens.",
+    "Query tokens occur after all passages: query tokens attend back to passages.",
+    "Answer tokens (if teacher-forced) occur after query: attend back to both passages and query.",
+    "Attention direction measured is therefore strictly Query -> Passage."
+  ],
+  "token_span_map": [
+    {
+      "component": "instruction_prefix",
+      "char_start": 0,
+      "char_end": 74,
+      "text_preview": "<s> [INST] Answer my questions based on the given context.\n---\n## Context",
+      "token_start": 0,
+      "token_end": 19,
+      "token_length": 19
+    },
+    {
+      "component": "passage_0",
+      "passage_rank": 1,
+      "passage_id": "798_chunk_676eb6af-fb55-4e1d-ae57-d28c4be7de3c",
+      "char_start": 74,
+      "char_end": 1103,
+      "text_preview": "Document 1. We begin by describing the classifiers we use for our experimentation, including Gaussian Processes, as well...",
+      "token_start": 19,
+      "token_end": 229,
+      "token_length": 210
+    },
+    {
+      "component": "passage_1",
+      "passage_rank": 2,
+      "passage_id": "798_chunk_7c355cea-1449-4acf-beca-5c9e2a212ea1",
+      "char_start": 1105,
+      "char_end": 1549,
+      "text_preview": "Document 2. The classifier relying on Gaussian Processes performs particularly well over the rest of the baseline classi...",
+      "token_start": 231,
+      "token_end": 315,
+      "token_length": 84
+    },
+    {
+      "component": "passage_2",
+      "passage_rank": 3,
+      "passage_id": "798_chunk_15b09ec4-a37d-4fb9-a65d-7ac406b73dea",
+      "char_start": 1551,
+      "char_end": 2791,
+      "text_preview": "Document 3. Using Gaussian Processes for Rumour Stance Classification in Social Media\tSocial media tend to be rife with ...",
+      "token_start": 317,
+      "token_end": 554,
+      "token_length": 237
+    },
+    {
+      "component": "passage_3",
+      "passage_rank": 4,
+      "passage_id": "798_chunk_75bbe849-8434-49a1-a078-e6455580406d",
+      "char_start": 2793,
+      "char_end": 4130,
+      "text_preview": "Document 4. Our work advances the state-of-the-art in tweet-level stance classification through multi-task learning and ...",
+      "token_start": 556,
+      "token_end": 818,
+      "token_length": 262
+    },
+    {
+      "component": "passage_4",
+      "passage_rank": 5,
+      "passage_id": "798_chunk_869968ed-4e5d-4e71-b958-f5fdf67edb3d",
+      "char_start": 4132,
+      "char_end": 5260,
+      "text_preview": "Document 5. We argue that this makes a more realistic classification scenario towards implementing a real-world rumour-t...",
+      "token_start": 820,
+      "token_end": 1072,
+      "token_length": 252
+    },
+    {
+      "component": "passage_5",
+      "passage_rank": 6,
+      "passage_id": "798_chunk_128d11d5-5966-4050-b1b3-510c6ecf31c6",
+      "char_start": 5262,
+      "char_end": 5935,
+      "text_preview": "Document 6. The central concept of Gaussian Process Classification (GPC;  ) is a latent function $f$ over inputs $\\mathb...",
+      "token_start": 1074,
+      "token_end": 1274,
+      "token_length": 200
+    },
+    {
+      "component": "passage_6",
+      "passage_rank": 7,
+      "passage_id": "798_chunk_2e3285a9-5a3f-4383-8814-15384ffd1e37",
+      "char_start": 5937,
+      "char_end": 7093,
+      "text_preview": "Document 7. $  The above integrals are intractable and approximation techniques are required to solve them. There exist ...",
+      "token_start": 1276,
+      "token_end": 1529,
+      "token_length": 253
+    },
+    {
+      "component": "passage_7",
+      "passage_rank": 8,
+      "passage_id": "798_chunk_31b852d7-45ad-4200-8920-649a791b10e3",
+      "char_start": 7095,
+      "char_end": 8255,
+      "text_preview": "Document 8. Figure 1 and Table 4 show how micro-averaged and macro-averaged F1 scores for the England riots dataset chan...",
+      "token_start": 1531,
+      "token_end": 1787,
+      "token_length": 256
+    },
+    {
+      "component": "passage_8",
+      "passage_rank": 9,
+      "passage_id": "798_chunk_36d936c5-b9a5-473b-9c9c-e76e6584c326",
+      "char_start": 8257,
+      "char_end": 9361,
+      "text_preview": "Document 9. into the conversational characteristics of microblogging  has motivated our research into automating stance ...",
+      "token_start": 1789,
+      "token_end": 2028,
+      "token_length": 239
+    },
+    {
+      "component": "passage_9",
+      "passage_rank": 10,
+      "passage_id": "798_chunk_a9aacf9d-da6b-4225-8e26-1602f4159fc6",
+      "char_start": 9363,
+      "char_end": 10536,
+      "text_preview": "Document 10. To assess and compare the efficiency of Gaussian Processes for rumour stance classification, we also experi...",
+      "token_start": 2030,
+      "token_end": 2301,
+      "token_length": 271
+    },
+    {
+      "component": "task_instruction",
+      "char_start": 10541,
+      "char_end": 10659,
+      "text_preview": "## Your Task\nAnswer the following question in a succinct manner. Use a single phrase or a short sentence if possible.",
+      "token_start": 2304,
+      "token_end": 2331,
+      "token_length": 27
+    },
+    {
+      "component": "query",
+      "char_start": 10659,
+      "char_end": 10760,
+      "text_preview": "Question: Why is a Gaussian process an especially appropriate method for this classification problem?",
+      "token_start": 2331,
+      "token_end": 2347,
+      "token_length": 16
+    },
+    {
+      "component": "answer_prefix_closure",
+      "char_start": 10761,
+      "char_end": 10781,
+      "text_preview": "Your Answer: [/INST]",
+      "token_start": 2348,
+      "token_end": 2355,
+      "token_length": 7
+    }
+  ]
+}

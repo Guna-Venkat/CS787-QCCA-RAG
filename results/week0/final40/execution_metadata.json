@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-05 14:51:56 UTC",
+  "model_checkpoint": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+  "base_model": "mistralai/Mistral-7B-Instruct-v0.2",
+  "tokenizer": "mistralai/Mistral-7B-Instruct-v0.2",
+  "dtype": "bfloat16",
+  "gpu": "NVIDIA TITAN RTX",
+  "selected_layers": [
+    0,
+    4,
+    8,
+    16,
+    24,
+    31
+  ],
+  "total_queries": 40,
+  "distinct_papers": 40,
+  "total_passages_analyzed": 400,
+  "forward_pass_count": 840,
+  "runtime_seconds": 4615.58,
+  "peak_vram_gb": 18.403,
+  "mean_prompt_length_tokens": 2162.0,
+  "min_prompt_length_tokens": 1604,
+  "max_prompt_length_tokens": 2635,
+  "context_truncation": false,
+  "no_mocks_verified": true,
+  "no_synthetic_values_verified": true
+}

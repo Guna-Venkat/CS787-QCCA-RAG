@@ -1,0 +1,5 @@
+{
+  "part_b_status": "PENDING_REAL_GPU_EXECUTION",
+  "part_c_status": "PENDING_REAL_GPU_EXECUTION",
+  "message": "Execution invoked without --run-gpu. No mock data written."
+}

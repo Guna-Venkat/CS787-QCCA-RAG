@@ -1,0 +1,1332 @@
+{
+  "1912": {
+    "question_id": "1912",
+    "paper_id": "638",
+    "question": "What datasets are used to evaluate the model?",
+    "gold_answer": "WN18 and FB15k",
+    "evidence_count": 1,
+    "selection_reason": "1 annotated evidence paragraph; complete BM25 retrieval",
+    "prompt_length_tokens": 450,
+    "gold_answer_tokens": 10,
+    "total_tokens": 460,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1273,
+        "token_start": 19,
+        "token_end": 258,
+        "token_length": 239
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1275,
+        "char_end": 1552,
+        "token_start": 260,
+        "token_end": 344,
+        "token_length": 84
+      },
+      {
+        "component": "passage_2",
+        "char_start": 1554,
+        "char_end": 1566,
+        "token_start": 346,
+        "token_end": 351,
+        "token_length": 5
+      },
+      {
+        "component": "passage_3",
+        "char_start": 1568,
+        "char_end": 1580,
+        "token_start": 353,
+        "token_end": 358,
+        "token_length": 5
+      },
+      {
+        "component": "passage_4",
+        "char_start": 1582,
+        "char_end": 1594,
+        "token_start": 360,
+        "token_end": 365,
+        "token_length": 5
+      },
+      {
+        "component": "passage_5",
+        "char_start": 1596,
+        "char_end": 1608,
+        "token_start": 367,
+        "token_end": 372,
+        "token_length": 5
+      },
+      {
+        "component": "passage_6",
+        "char_start": 1610,
+        "char_end": 1622,
+        "token_start": 374,
+        "token_end": 379,
+        "token_length": 5
+      },
+      {
+        "component": "passage_7",
+        "char_start": 1624,
+        "char_end": 1636,
+        "token_start": 381,
+        "token_end": 386,
+        "token_length": 5
+      },
+      {
+        "component": "passage_8",
+        "char_start": 1638,
+        "char_end": 1650,
+        "token_start": 388,
+        "token_end": 393,
+        "token_length": 5
+      },
+      {
+        "component": "passage_9",
+        "char_start": 1652,
+        "char_end": 1665,
+        "token_start": 395,
+        "token_end": 401,
+        "token_length": 6
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 1670,
+        "char_end": 1788,
+        "token_start": 404,
+        "token_end": 431,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 1788,
+        "char_end": 1843,
+        "token_start": 431,
+        "token_end": 442,
+        "token_length": 11
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 1844,
+        "char_end": 1864,
+        "token_start": 443,
+        "token_end": 450,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 1864,
+        "char_end": 1879,
+        "token_start": 450,
+        "token_end": 460,
+        "token_length": 10
+      }
+    ]
+  },
+  "2201": {
+    "question_id": "2201",
+    "paper_id": "798",
+    "question": "Why is a Gaussian process an especially appropriate method for this classification problem?",
+    "gold_answer": "avoids the need for expensive cross-validation for hyperparameter selection",
+    "evidence_count": 1,
+    "selection_reason": "1 annotated evidence paragraph; complete BM25 retrieval",
+    "prompt_length_tokens": 2355,
+    "gold_answer_tokens": 13,
+    "total_tokens": 2368,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1103,
+        "token_start": 19,
+        "token_end": 229,
+        "token_length": 210
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1105,
+        "char_end": 1549,
+        "token_start": 231,
+        "token_end": 315,
+        "token_length": 84
+      },
+      {
+        "component": "passage_2",
+        "char_start": 1551,
+        "char_end": 2791,
+        "token_start": 317,
+        "token_end": 554,
+        "token_length": 237
+      },
+      {
+        "component": "passage_3",
+        "char_start": 2793,
+        "char_end": 4130,
+        "token_start": 556,
+        "token_end": 818,
+        "token_length": 262
+      },
+      {
+        "component": "passage_4",
+        "char_start": 4132,
+        "char_end": 5260,
+        "token_start": 820,
+        "token_end": 1072,
+        "token_length": 252
+      },
+      {
+        "component": "passage_5",
+        "char_start": 5262,
+        "char_end": 5935,
+        "token_start": 1074,
+        "token_end": 1274,
+        "token_length": 200
+      },
+      {
+        "component": "passage_6",
+        "char_start": 5937,
+        "char_end": 7093,
+        "token_start": 1276,
+        "token_end": 1529,
+        "token_length": 253
+      },
+      {
+        "component": "passage_7",
+        "char_start": 7095,
+        "char_end": 8255,
+        "token_start": 1531,
+        "token_end": 1787,
+        "token_length": 256
+      },
+      {
+        "component": "passage_8",
+        "char_start": 8257,
+        "char_end": 9361,
+        "token_start": 1789,
+        "token_end": 2028,
+        "token_length": 239
+      },
+      {
+        "component": "passage_9",
+        "char_start": 9363,
+        "char_end": 10536,
+        "token_start": 2030,
+        "token_end": 2301,
+        "token_length": 271
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 10541,
+        "char_end": 10659,
+        "token_start": 2304,
+        "token_end": 2331,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 10659,
+        "char_end": 10760,
+        "token_start": 2331,
+        "token_end": 2347,
+        "token_length": 16
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 10761,
+        "char_end": 10781,
+        "token_start": 2348,
+        "token_end": 2355,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 10781,
+        "char_end": 10857,
+        "token_start": 2355,
+        "token_end": 2368,
+        "token_length": 13
+      }
+    ]
+  },
+  "883": {
+    "question_id": "883",
+    "paper_id": "254",
+    "question": "What dataset is used?",
+    "gold_answer": "ACL Anthology Reference Corpus",
+    "evidence_count": 1,
+    "selection_reason": "1 annotated evidence paragraph; complete BM25 retrieval",
+    "prompt_length_tokens": 1983,
+    "gold_answer_tokens": 7,
+    "total_tokens": 1990,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1144,
+        "token_start": 19,
+        "token_end": 295,
+        "token_length": 276
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1146,
+        "char_end": 2143,
+        "token_start": 297,
+        "token_end": 550,
+        "token_length": 253
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2145,
+        "char_end": 2765,
+        "token_start": 552,
+        "token_end": 719,
+        "token_length": 167
+      },
+      {
+        "component": "passage_3",
+        "char_start": 2767,
+        "char_end": 3106,
+        "token_start": 721,
+        "token_end": 797,
+        "token_length": 76
+      },
+      {
+        "component": "passage_4",
+        "char_start": 3108,
+        "char_end": 4434,
+        "token_start": 799,
+        "token_end": 1057,
+        "token_length": 258
+      },
+      {
+        "component": "passage_5",
+        "char_start": 4436,
+        "char_end": 4803,
+        "token_start": 1059,
+        "token_end": 1142,
+        "token_length": 83
+      },
+      {
+        "component": "passage_6",
+        "char_start": 4805,
+        "char_end": 6104,
+        "token_start": 1144,
+        "token_end": 1403,
+        "token_length": 259
+      },
+      {
+        "component": "passage_7",
+        "char_start": 6106,
+        "char_end": 6703,
+        "token_start": 1405,
+        "token_end": 1553,
+        "token_length": 148
+      },
+      {
+        "component": "passage_8",
+        "char_start": 6705,
+        "char_end": 7514,
+        "token_start": 1555,
+        "token_end": 1726,
+        "token_length": 171
+      },
+      {
+        "component": "passage_9",
+        "char_start": 7516,
+        "char_end": 8365,
+        "token_start": 1728,
+        "token_end": 1938,
+        "token_length": 210
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 8370,
+        "char_end": 8488,
+        "token_start": 1941,
+        "token_end": 1968,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 8488,
+        "char_end": 8519,
+        "token_start": 1968,
+        "token_end": 1975,
+        "token_length": 7
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 8520,
+        "char_end": 8540,
+        "token_start": 1976,
+        "token_end": 1983,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 8540,
+        "char_end": 8571,
+        "token_start": 1983,
+        "token_end": 1990,
+        "token_length": 7
+      }
+    ]
+  },
+  "105": {
+    "question_id": "105",
+    "paper_id": "28",
+    "question": "Which real-world datasets did they use?",
+    "gold_answer": "SST-2 (Stanford Sentiment Treebank, version 2), Snips",
+    "evidence_count": 2,
+    "selection_reason": "2 annotated evidence paragraphs; complete BM25 retrieval",
+    "prompt_length_tokens": 2042,
+    "gold_answer_tokens": 20,
+    "total_tokens": 2062,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 230,
+        "token_start": 19,
+        "token_end": 51,
+        "token_length": 32
+      },
+      {
+        "component": "passage_1",
+        "char_start": 232,
+        "char_end": 1167,
+        "token_start": 53,
+        "token_end": 237,
+        "token_length": 184
+      },
+      {
+        "component": "passage_2",
+        "char_start": 1169,
+        "char_end": 2295,
+        "token_start": 239,
+        "token_end": 507,
+        "token_length": 268
+      },
+      {
+        "component": "passage_3",
+        "char_start": 2297,
+        "char_end": 3487,
+        "token_start": 509,
+        "token_end": 748,
+        "token_length": 239
+      },
+      {
+        "component": "passage_4",
+        "char_start": 3489,
+        "char_end": 4068,
+        "token_start": 750,
+        "token_end": 860,
+        "token_length": 110
+      },
+      {
+        "component": "passage_5",
+        "char_start": 4070,
+        "char_end": 4555,
+        "token_start": 862,
+        "token_end": 981,
+        "token_length": 119
+      },
+      {
+        "component": "passage_6",
+        "char_start": 4557,
+        "char_end": 5359,
+        "token_start": 983,
+        "token_end": 1219,
+        "token_length": 236
+      },
+      {
+        "component": "passage_7",
+        "char_start": 5361,
+        "char_end": 6416,
+        "token_start": 1221,
+        "token_end": 1480,
+        "token_length": 259
+      },
+      {
+        "component": "passage_8",
+        "char_start": 6418,
+        "char_end": 7594,
+        "token_start": 1482,
+        "token_end": 1730,
+        "token_length": 248
+      },
+      {
+        "component": "passage_9",
+        "char_start": 7596,
+        "char_end": 8819,
+        "token_start": 1732,
+        "token_end": 1993,
+        "token_length": 261
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 8824,
+        "char_end": 8942,
+        "token_start": 1996,
+        "token_end": 2023,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 8942,
+        "char_end": 8991,
+        "token_start": 2023,
+        "token_end": 2034,
+        "token_length": 11
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 8992,
+        "char_end": 9012,
+        "token_start": 2035,
+        "token_end": 2042,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 9012,
+        "char_end": 9066,
+        "token_start": 2042,
+        "token_end": 2062,
+        "token_length": 20
+      }
+    ]
+  },
+  "2102": {
+    "question_id": "2102",
+    "paper_id": "735",
+    "question": "What's the precision of the system?",
+    "gold_answer": "0.8320 on semantic typing, 0.7194 on entity matching",
+    "evidence_count": 2,
+    "selection_reason": "2 annotated evidence paragraphs; complete BM25 retrieval",
+    "prompt_length_tokens": 2319,
+    "gold_answer_tokens": 22,
+    "total_tokens": 2341,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1347,
+        "token_start": 19,
+        "token_end": 300,
+        "token_length": 281
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1349,
+        "char_end": 2248,
+        "token_start": 302,
+        "token_end": 519,
+        "token_length": 217
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2250,
+        "char_end": 2932,
+        "token_start": 521,
+        "token_end": 734,
+        "token_length": 213
+      },
+      {
+        "component": "passage_3",
+        "char_start": 2934,
+        "char_end": 3618,
+        "token_start": 736,
+        "token_end": 908,
+        "token_length": 172
+      },
+      {
+        "component": "passage_4",
+        "char_start": 3620,
+        "char_end": 4790,
+        "token_start": 910,
+        "token_end": 1177,
+        "token_length": 267
+      },
+      {
+        "component": "passage_5",
+        "char_start": 4792,
+        "char_end": 5354,
+        "token_start": 1179,
+        "token_end": 1338,
+        "token_length": 159
+      },
+      {
+        "component": "passage_6",
+        "char_start": 5356,
+        "char_end": 6016,
+        "token_start": 1340,
+        "token_end": 1525,
+        "token_length": 185
+      },
+      {
+        "component": "passage_7",
+        "char_start": 6018,
+        "char_end": 6887,
+        "token_start": 1527,
+        "token_end": 1771,
+        "token_length": 244
+      },
+      {
+        "component": "passage_8",
+        "char_start": 6889,
+        "char_end": 7825,
+        "token_start": 1773,
+        "token_end": 2005,
+        "token_length": 232
+      },
+      {
+        "component": "passage_9",
+        "char_start": 7827,
+        "char_end": 8808,
+        "token_start": 2007,
+        "token_end": 2270,
+        "token_length": 263
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 8813,
+        "char_end": 8931,
+        "token_start": 2273,
+        "token_end": 2300,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 8931,
+        "char_end": 8976,
+        "token_start": 2300,
+        "token_end": 2311,
+        "token_length": 11
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 8977,
+        "char_end": 8997,
+        "token_start": 2312,
+        "token_end": 2319,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 8997,
+        "char_end": 9050,
+        "token_start": 2319,
+        "token_end": 2341,
+        "token_length": 22
+      }
+    ]
+  },
+  "735": {
+    "question_id": "735",
+    "paper_id": "203",
+    "question": "How do they condition the output to a given target-source class?",
+    "gold_answer": "They use three groups short/normal/long translation classes to learn length token, which is in inference used to bias network to generate desired length group.",
+    "evidence_count": 2,
+    "selection_reason": "2 annotated evidence paragraphs; complete BM25 retrieval",
+    "prompt_length_tokens": 2199,
+    "gold_answer_tokens": 31,
+    "total_tokens": 2230,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1187,
+        "token_start": 19,
+        "token_end": 246,
+        "token_length": 227
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1189,
+        "char_end": 2093,
+        "token_start": 248,
+        "token_end": 450,
+        "token_length": 202
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2095,
+        "char_end": 3305,
+        "token_start": 452,
+        "token_end": 693,
+        "token_length": 241
+      },
+      {
+        "component": "passage_3",
+        "char_start": 3307,
+        "char_end": 4540,
+        "token_start": 695,
+        "token_end": 945,
+        "token_length": 250
+      },
+      {
+        "component": "passage_4",
+        "char_start": 4542,
+        "char_end": 5669,
+        "token_start": 947,
+        "token_end": 1207,
+        "token_length": 260
+      },
+      {
+        "component": "passage_5",
+        "char_start": 5671,
+        "char_end": 6113,
+        "token_start": 1209,
+        "token_end": 1301,
+        "token_length": 92
+      },
+      {
+        "component": "passage_6",
+        "char_start": 6115,
+        "char_end": 6873,
+        "token_start": 1303,
+        "token_end": 1464,
+        "token_length": 161
+      },
+      {
+        "component": "passage_7",
+        "char_start": 6875,
+        "char_end": 7761,
+        "token_start": 1466,
+        "token_end": 1659,
+        "token_length": 193
+      },
+      {
+        "component": "passage_8",
+        "char_start": 7763,
+        "char_end": 8835,
+        "token_start": 1661,
+        "token_end": 1924,
+        "token_length": 263
+      },
+      {
+        "component": "passage_9",
+        "char_start": 8837,
+        "char_end": 9660,
+        "token_start": 1926,
+        "token_end": 2145,
+        "token_length": 219
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 9665,
+        "char_end": 9783,
+        "token_start": 2148,
+        "token_end": 2175,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 9783,
+        "char_end": 9857,
+        "token_start": 2175,
+        "token_end": 2191,
+        "token_length": 16
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 9858,
+        "char_end": 9878,
+        "token_start": 2192,
+        "token_end": 2199,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 9878,
+        "char_end": 10038,
+        "token_start": 2199,
+        "token_end": 2230,
+        "token_length": 31
+      }
+    ]
+  },
+  "1670": {
+    "question_id": "1670",
+    "paper_id": "538",
+    "question": "How does the model recognize entities and their relation to answers at inference time when answers are not accessible?",
+    "gold_answer": "gating function, Dynamic Memory",
+    "evidence_count": 3,
+    "selection_reason": "3+ annotated evidence paragraphs; multi-paragraph synthesis",
+    "prompt_length_tokens": 2458,
+    "gold_answer_tokens": 7,
+    "total_tokens": 2465,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 992,
+        "token_start": 19,
+        "token_end": 212,
+        "token_length": 193
+      },
+      {
+        "component": "passage_1",
+        "char_start": 994,
+        "char_end": 2114,
+        "token_start": 214,
+        "token_end": 469,
+        "token_length": 255
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2116,
+        "char_end": 3228,
+        "token_start": 471,
+        "token_end": 723,
+        "token_length": 252
+      },
+      {
+        "component": "passage_3",
+        "char_start": 3230,
+        "char_end": 4539,
+        "token_start": 725,
+        "token_end": 996,
+        "token_length": 271
+      },
+      {
+        "component": "passage_4",
+        "char_start": 4541,
+        "char_end": 5232,
+        "token_start": 998,
+        "token_end": 1250,
+        "token_length": 252
+      },
+      {
+        "component": "passage_5",
+        "char_start": 5234,
+        "char_end": 6205,
+        "token_start": 1252,
+        "token_end": 1490,
+        "token_length": 238
+      },
+      {
+        "component": "passage_6",
+        "char_start": 6207,
+        "char_end": 6993,
+        "token_start": 1492,
+        "token_end": 1749,
+        "token_length": 257
+      },
+      {
+        "component": "passage_7",
+        "char_start": 6995,
+        "char_end": 7911,
+        "token_start": 1751,
+        "token_end": 1947,
+        "token_length": 196
+      },
+      {
+        "component": "passage_8",
+        "char_start": 7913,
+        "char_end": 8822,
+        "token_start": 1949,
+        "token_end": 2142,
+        "token_length": 193
+      },
+      {
+        "component": "passage_9",
+        "char_start": 8824,
+        "char_end": 9918,
+        "token_start": 2144,
+        "token_end": 2397,
+        "token_length": 253
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 9923,
+        "char_end": 10041,
+        "token_start": 2400,
+        "token_end": 2427,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 10041,
+        "char_end": 10169,
+        "token_start": 2427,
+        "token_end": 2450,
+        "token_length": 23
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 10170,
+        "char_end": 10190,
+        "token_start": 2451,
+        "token_end": 2458,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 10190,
+        "char_end": 10222,
+        "token_start": 2458,
+        "token_end": 2465,
+        "token_length": 7
+      }
+    ]
+  },
+  "1379": {
+    "question_id": "1379",
+    "paper_id": "423",
+    "question": "What methods were used for unsupervised CLWE?",
+    "gold_answer": "Unsupervised CLWEs. These methods first induce a seed dictionary $D^{(1)}$ leveraging only two unaligned monolingual spaces (C1). While the algorithms for unsupervised seed dictionary induction differ, they all strongly rely on the assumption of similar topological structure between the two pretrained monolingual spaces. Once the seed dictionary is obtained, the two-step iterative self-learning procedure (C2) takes place: 1) a dictionary $D^{(k)}$ is first used to learn the joint space $\\mathbf {Y}^{(k)} = \\mathbf {X{W}}^{(k)}_x \\cup \\mathbf {Z{W}}^{(k)}_z$ ; 2) the nearest neighbours in $\\mathbf {Y}^{(k)}$ then form the new dictionary $D^{(k+1)}$ . We illustrate the general structure in Figure 1 .",
+    "evidence_count": 4,
+    "selection_reason": "3+ annotated evidence paragraphs; multi-paragraph synthesis",
+    "prompt_length_tokens": 2343,
+    "gold_answer_tokens": 188,
+    "total_tokens": 2531,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 1115,
+        "token_start": 19,
+        "token_end": 276,
+        "token_length": 257
+      },
+      {
+        "component": "passage_1",
+        "char_start": 1117,
+        "char_end": 2205,
+        "token_start": 278,
+        "token_end": 525,
+        "token_length": 247
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2207,
+        "char_end": 3375,
+        "token_start": 527,
+        "token_end": 791,
+        "token_length": 264
+      },
+      {
+        "component": "passage_3",
+        "char_start": 3377,
+        "char_end": 4509,
+        "token_start": 793,
+        "token_end": 1052,
+        "token_length": 259
+      },
+      {
+        "component": "passage_4",
+        "char_start": 4511,
+        "char_end": 5519,
+        "token_start": 1054,
+        "token_end": 1320,
+        "token_length": 266
+      },
+      {
+        "component": "passage_5",
+        "char_start": 5521,
+        "char_end": 5851,
+        "token_start": 1322,
+        "token_end": 1400,
+        "token_length": 78
+      },
+      {
+        "component": "passage_6",
+        "char_start": 5853,
+        "char_end": 7115,
+        "token_start": 1402,
+        "token_end": 1680,
+        "token_length": 278
+      },
+      {
+        "component": "passage_7",
+        "char_start": 7117,
+        "char_end": 8046,
+        "token_start": 1682,
+        "token_end": 1927,
+        "token_length": 245
+      },
+      {
+        "component": "passage_8",
+        "char_start": 8048,
+        "char_end": 8611,
+        "token_start": 1929,
+        "token_end": 2054,
+        "token_length": 125
+      },
+      {
+        "component": "passage_9",
+        "char_start": 8613,
+        "char_end": 9518,
+        "token_start": 2056,
+        "token_end": 2292,
+        "token_length": 236
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 9523,
+        "char_end": 9641,
+        "token_start": 2295,
+        "token_end": 2322,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 9641,
+        "char_end": 9696,
+        "token_start": 2322,
+        "token_end": 2335,
+        "token_length": 13
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 9697,
+        "char_end": 9717,
+        "token_start": 2336,
+        "token_end": 2343,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 9717,
+        "char_end": 10425,
+        "token_start": 2343,
+        "token_end": 2531,
+        "token_length": 188
+      }
+    ]
+  },
+  "1504": {
+    "question_id": "1504",
+    "paper_id": "470",
+    "question": "What is different in BERT-gen from standard BERT?",
+    "gold_answer": "They use a left-to-right attention mask so that the input tokens can only attend to other input tokens, and the target tokens can only attend to the input tokens and already generated target tokens.",
+    "evidence_count": 1,
+    "selection_reason": "Difficult BM25 retrieval; incomplete evidence captured in top-10",
+    "prompt_length_tokens": 2039,
+    "gold_answer_tokens": 40,
+    "total_tokens": 2079,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 471,
+        "token_start": 19,
+        "token_end": 114,
+        "token_length": 95
+      },
+      {
+        "component": "passage_1",
+        "char_start": 473,
+        "char_end": 1307,
+        "token_start": 116,
+        "token_end": 342,
+        "token_length": 226
+      },
+      {
+        "component": "passage_2",
+        "char_start": 1309,
+        "char_end": 2086,
+        "token_start": 344,
+        "token_end": 514,
+        "token_length": 170
+      },
+      {
+        "component": "passage_3",
+        "char_start": 2088,
+        "char_end": 2830,
+        "token_start": 516,
+        "token_end": 678,
+        "token_length": 162
+      },
+      {
+        "component": "passage_4",
+        "char_start": 2832,
+        "char_end": 4005,
+        "token_start": 680,
+        "token_end": 918,
+        "token_length": 238
+      },
+      {
+        "component": "passage_5",
+        "char_start": 4007,
+        "char_end": 5157,
+        "token_start": 920,
+        "token_end": 1178,
+        "token_length": 258
+      },
+      {
+        "component": "passage_6",
+        "char_start": 5159,
+        "char_end": 5864,
+        "token_start": 1180,
+        "token_end": 1373,
+        "token_length": 193
+      },
+      {
+        "component": "passage_7",
+        "char_start": 5866,
+        "char_end": 6481,
+        "token_start": 1375,
+        "token_end": 1532,
+        "token_length": 157
+      },
+      {
+        "component": "passage_8",
+        "char_start": 6483,
+        "char_end": 7407,
+        "token_start": 1534,
+        "token_end": 1765,
+        "token_length": 231
+      },
+      {
+        "component": "passage_9",
+        "char_start": 7409,
+        "char_end": 8514,
+        "token_start": 1767,
+        "token_end": 1986,
+        "token_length": 219
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 8519,
+        "char_end": 8637,
+        "token_start": 1989,
+        "token_end": 2016,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 8637,
+        "char_end": 8696,
+        "token_start": 2016,
+        "token_end": 2031,
+        "token_length": 15
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 8697,
+        "char_end": 8717,
+        "token_start": 2032,
+        "token_end": 2039,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 8717,
+        "char_end": 8916,
+        "token_start": 2039,
+        "token_end": 2079,
+        "token_length": 40
+      }
+    ]
+  },
+  "880": {
+    "question_id": "880",
+    "paper_id": "252",
+    "question": "Do all questions in the dataset allow the answers to pick from 2 options?",
+    "gold_answer": "Yes",
+    "evidence_count": 1,
+    "selection_reason": "Difficult BM25 retrieval; incomplete evidence captured in top-10",
+    "prompt_length_tokens": 2241,
+    "gold_answer_tokens": 1,
+    "total_tokens": 2242,
+    "spans": [
+      {
+        "component": "instruction",
+        "char_start": 0,
+        "char_end": 74,
+        "token_start": 0,
+        "token_end": 19,
+        "token_length": 19
+      },
+      {
+        "component": "passage_0",
+        "char_start": 74,
+        "char_end": 952,
+        "token_start": 19,
+        "token_end": 221,
+        "token_length": 202
+      },
+      {
+        "component": "passage_1",
+        "char_start": 954,
+        "char_end": 2139,
+        "token_start": 223,
+        "token_end": 491,
+        "token_length": 268
+      },
+      {
+        "component": "passage_2",
+        "char_start": 2141,
+        "char_end": 3274,
+        "token_start": 493,
+        "token_end": 764,
+        "token_length": 271
+      },
+      {
+        "component": "passage_3",
+        "char_start": 3276,
+        "char_end": 3720,
+        "token_start": 766,
+        "token_end": 876,
+        "token_length": 110
+      },
+      {
+        "component": "passage_4",
+        "char_start": 3722,
+        "char_end": 4771,
+        "token_start": 878,
+        "token_end": 1165,
+        "token_length": 287
+      },
+      {
+        "component": "passage_5",
+        "char_start": 4773,
+        "char_end": 5930,
+        "token_start": 1167,
+        "token_end": 1437,
+        "token_length": 270
+      },
+      {
+        "component": "passage_6",
+        "char_start": 5932,
+        "char_end": 6691,
+        "token_start": 1439,
+        "token_end": 1614,
+        "token_length": 175
+      },
+      {
+        "component": "passage_7",
+        "char_start": 6693,
+        "char_end": 7839,
+        "token_start": 1616,
+        "token_end": 1866,
+        "token_length": 250
+      },
+      {
+        "component": "passage_8",
+        "char_start": 7841,
+        "char_end": 9104,
+        "token_start": 1868,
+        "token_end": 2133,
+        "token_length": 265
+      },
+      {
+        "component": "passage_9",
+        "char_start": 9106,
+        "char_end": 9358,
+        "token_start": 2135,
+        "token_end": 2185,
+        "token_length": 50
+      },
+      {
+        "component": "task_instruction",
+        "char_start": 9363,
+        "char_end": 9481,
+        "token_start": 2188,
+        "token_end": 2215,
+        "token_length": 27
+      },
+      {
+        "component": "query",
+        "char_start": 9481,
+        "char_end": 9564,
+        "token_start": 2215,
+        "token_end": 2233,
+        "token_length": 18
+      },
+      {
+        "component": "answer_prefix",
+        "char_start": 9565,
+        "char_end": 9585,
+        "token_start": 2234,
+        "token_end": 2241,
+        "token_length": 7
+      },
+      {
+        "component": "gold_answer",
+        "char_start": 9585,
+        "char_end": 9589,
+        "token_start": 2241,
+        "token_end": 2242,
+        "token_length": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+signal_1,signal_2,n_samples,pearson_r,pearson_pvalue,spearman_rho,spearman_pvalue
+bm25_score,attention_share,400,0.5923,0.0,0.5488,0.0
+bm25_score,ablation_importance,400,0.1649,0.000929,0.2959,0.0
+bm25_score,is_gold_evidence,400,0.1169,0.019309,0.1003,0.045065
+attention_share,ablation_importance,400,0.507,0.0,0.6538,0.0
+attention_share,is_gold_evidence,400,0.4466,0.0,0.4421,0.0
+ablation_importance,is_gold_evidence,400,0.9928,0.0,0.7017,0.0

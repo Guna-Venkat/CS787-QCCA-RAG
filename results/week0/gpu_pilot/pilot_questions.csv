@@ -1,0 +1,11 @@
+question_id,paper_id,question,evidence_count,retrieval_any@10,retrieval_all@10,selection_reason
+1912,638,What datasets are used to evaluate the model?,1,1,1,1 annotated evidence paragraph; complete BM25 retrieval
+2201,798,Why is a Gaussian process an especially appropriate method for this classification problem?,1,1,1,1 annotated evidence paragraph; complete BM25 retrieval
+883,254,What dataset is used?,1,1,1,1 annotated evidence paragraph; complete BM25 retrieval
+105,28,Which real-world datasets did they use?,2,1,1,2 annotated evidence paragraphs; complete BM25 retrieval
+2102,735,What's the precision of the system?,2,1,1,2 annotated evidence paragraphs; complete BM25 retrieval
+735,203,How do they condition the output to a given target-source class?,2,1,1,2 annotated evidence paragraphs; complete BM25 retrieval
+1670,538,How does the model recognize entities and their relation to answers at inference time when answers are not accessible?,3,1,1,3+ annotated evidence paragraphs; multi-paragraph synthesis
+1379,423,What methods were used for unsupervised CLWE?,4,1,0,3+ annotated evidence paragraphs; multi-paragraph synthesis
+1504,470,What is different in BERT-gen from standard BERT?,1,0,0,Difficult BM25 retrieval; incomplete evidence captured in top-10
+880,252,Do all questions in the dataset allow the answers to pick from 2 options?,1,0,0,Difficult BM25 retrieval; incomplete evidence captured in top-10

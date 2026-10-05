@@ -1,0 +1,31 @@
+{
+  "model_checkpoint": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+  "tokenizer": "mistralai/Mistral-7B-Instruct-v0.2 (with added SARA tokens)",
+  "model_class": "<class 'peft.peft_model.PeftModelForCausalLM'>",
+  "dtype": "torch.bfloat16",
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA TITAN RTX",
+  "model_parameter_count": 7282126848,
+  "train_eval_state": "eval",
+  "attention_implementation": "sdpa_with_targeted_exact_causal_extraction",
+  "prompt_length_stats": {
+    "min_tokens": 450,
+    "max_tokens": 2458,
+    "mean_tokens": 2042.9,
+    "median_tokens": 2220.0
+  },
+  "truncation": false,
+  "selected_layers": [
+    0,
+    4,
+    8,
+    16,
+    24,
+    31
+  ],
+  "num_queries": 10,
+  "num_forward_passes": 110,
+  "total_runtime_seconds": 791.17,
+  "peak_vram_gb": 17.952,
+  "timestamp": "2026-10-05 12:29:20 UTC"
+}
