@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.week5.model_benchmark import (
+from src.week4.model_benchmark import (
     CONTEXT_TOKEN_COSTS,
     STAGE_2_CORE_FEATURES,
     STAGE_2_SUBSET_FEATURES,

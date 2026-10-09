@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-NOTEBOOK_PATH = PROJECT_ROOT / "notebooks/week5/week5_model_benchmark.ipynb"
+NOTEBOOK_PATH = PROJECT_ROOT / "notebooks/week4/week4_model_benchmark.ipynb"
 
 
 def build_week5_notebook():
@@ -64,7 +64,7 @@ import torch
 import xgboost as xgb
 import lightgbm as lgb
 
-from src.week5.model_benchmark import (
+from src.week4.model_benchmark import (
     CONTEXT_TOKEN_COSTS,
     DEFAULT_THRESHOLDS,
     STAGE_2_CORE_FEATURES,
@@ -156,7 +156,7 @@ Evaluates candidate models across identical paper-disjoint GroupKFold splits:
 8. HistGradientBoosting (balanced)
 9. Small MLP (PyTorch, class-weighted BCE, early stopping)
 10. Calibrated variants (Platt/sigmoid)""")
-    add_code("""from src.week5.run_benchmark import run_full_week5_benchmark
+    add_code("""from src.week4.run_benchmark import run_full_week5_benchmark
 
 # Execute the full leak-free benchmark suite
 df_model_comp, df_boot, df_policy_comp = run_full_week5_benchmark()
@@ -172,22 +172,22 @@ display(df_boot_lr[["candidate", "mean_delta_f1", "ci_95_f1_low", "ci_95_f1_high
     # Cell 7: Error Analysis & Interaction
     add_md("""## 6. Phase 4: False Expansion & Feature Interaction Analysis
 Inspects whether nonlinear models curb false expansions caused by BM25 $\\times$ Redundancy.""")
-    add_code("""df_errors = pd.read_csv(PROJECT_ROOT / "results/week5/model_benchmark/error_analysis.csv")
+    add_code("""df_errors = pd.read_csv(PROJECT_ROOT / "results/week4/model_benchmark/error_analysis.csv")
 display(df_errors)
 
-df_feat_imp = pd.read_csv(PROJECT_ROOT / "results/week5/model_benchmark/feature_importance.csv")
+df_feat_imp = pd.read_csv(PROJECT_ROOT / "results/week4/model_benchmark/feature_importance.csv")
 print("Permutation Feature Importance Across Families:")
 display(df_feat_imp)""")
 
     # Cell 8: Pareto Analysis
     add_md("""## 7. Multi-Objective Pareto Frontier Analysis
 Maps candidate learned policies against static baselines ($k=2, 4, 5, 6, 8$) and the Oracle sequential ceiling.""")
-    add_code("""df_pareto = pd.read_csv(PROJECT_ROOT / "results/week5/model_benchmark/pareto_points.csv")
+    add_code("""df_pareto = pd.read_csv(PROJECT_ROOT / "results/week4/model_benchmark/pareto_points.csv")
 display(df_pareto[["system", "mean_f1", "mean_context_tokens", "context_reduction_pct_vs_k8", "mean_regret", "is_pareto_optimal"]])""")
 
     # Cell 9: Artifact Summary
     add_md("""## 8. Verification of Generated Artifacts""")
-    add_code("""output_dir = PROJECT_ROOT / "results/week5/model_benchmark"
+    add_code("""output_dir = PROJECT_ROOT / "results/week4/model_benchmark"
 fig_dir = output_dir / "figures"
 
 print("Generated CSV Tables:")

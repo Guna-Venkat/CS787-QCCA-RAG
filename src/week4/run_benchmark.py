@@ -23,7 +23,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import precision_recall_curve, roc_curve
 
 from src.week4.qcca_v2 import compute_pareto_frontier
-from src.week5.model_benchmark import (
+from src.week4.model_benchmark import (
     CONTEXT_TOKEN_COSTS,
     DEFAULT_THRESHOLDS,
     STAGE_2_CORE_FEATURES,
@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 # Output directories
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "results/week5/model_benchmark"
+OUTPUT_DIR = PROJECT_ROOT / "results/week4/model_benchmark"
 FIG_DIR = OUTPUT_DIR / "figures"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 FIG_DIR.mkdir(parents=True, exist_ok=True)

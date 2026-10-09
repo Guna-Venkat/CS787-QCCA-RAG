@@ -3,7 +3,7 @@
 **Project:** Adaptive RAG with Query-Conditioned Context Allocation (QCCA-V2)  
 **Parent Framework:** SARA (Self-Adaptive Retrieval Augmentation)  
 **Date:** September 2026  
-**Artifact Directory:** `results/week5/model_benchmark/`  
+**Artifact Directory:** `results/week4/model_benchmark/`  
 **Evaluation Protocol:** Strict Outer 5-Fold `GroupKFold` by `paper_id` on QASPER Dev ($n=231$ queries, 86 papers). Held-out QASPER Test remains 100% frozen.
 
 ---
@@ -132,14 +132,14 @@ All models were evaluated via out-of-fold predictions across the 5 outer `GroupK
 ### Pareto Optimality Analysis
 A policy is Pareto-optimal if no other configuration achieves higher answer $F_1$ at equal or fewer tokens.
 
-From `results/week5/model_benchmark/pareto_points.csv`:
+From `results/week4/model_benchmark/pareto_points.csv`:
 - **Static $k=4$:** Lowest token cost ($946.1$ tokens), but lowest $F_1$ ($0.3596$).
 - **XGBoost ($t=0.50$):** Middle-low cost ($1062.3$ tokens), $F_1 = 0.3725$.
 - **Balanced Logistic Regression ($t=0.50$):** High performance ($1115.9$ tokens, $F_1 = 0.3842$).
 - **Static $k=6$:** $1358.9$ tokens, $F_1 = 0.3857$ ($+0.0015$ $F_1$ for $+243.0$ tokens).
 - **Static $k=8$:** $1758.5$ tokens, $F_1 = 0.3950$ ($+0.0108$ $F_1$ for $+642.6$ tokens).
 
-![Pareto Frontier](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/model_policy_pareto.png)
+![Pareto Frontier](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/model_policy_pareto.png)
 
 ### Why Platt Calibration Collapsed the Policy
 When Platt scaling was applied to LogReg, RF, and XGBoost, the calibrated probabilities clustered tightly around the empirical prior ($\approx 0.195$). Consequently, at the standard decision threshold of $0.50$, **zero queries crossed the expansion threshold** (Recall $= 0.0\%$, Precision $= 0.0\%$). The policy collapsed entirely into Static $k=4$ ($F_1 = 0.3596$, Mean $k=4.00$, Tokens $= 946.1$). Even with nested threshold re-tuning, post-hoc calibration on $N=231$ failed to improve rank ordering (ROC-AUC dropped from $0.6503$ to $0.5838$).
@@ -157,17 +157,17 @@ $$\text{High BM25} + \text{High Coverage} + \text{Low Redundancy} \longrightarro
 
 ### Did Nonlinear Models Learn This Interaction?
 **Yes, XGBoost did learn this interaction.**
-As shown in `results/week5/model_benchmark/figures/interaction_analysis.png` and `interaction_analysis.csv`:
+As shown in `results/week4/model_benchmark/figures/interaction_analysis.png` and `interaction_analysis.csv`:
 - In Logistic Regression, the probability of expansion increases monotonically with BM25 score regardless of lexical overlap.
 - In XGBoost, when `evidence_lexical_overlap_mean` is high ($> 0.04$), predicted expansion probability is systematically dampened by $15\text{--}25\%$, even when BM25 score is elevated.
 - As a direct result, **XGBoost reduced false expansions from $28.57\%$ (66 queries) down to $19.05\%$ (44 queries)**—a $33.3\%$ relative reduction in wasted expansions!
 
-![BM25 x Redundancy Interaction](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/interaction_analysis.png)
+![BM25 x Redundancy Interaction](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/interaction_analysis.png)
 
 ### The Asymmetric Cost Trap: Why Slashing False Expansions Hurt Policy $F_1$
 Despite successfully suppressing false expansions, XGBoost achieved a **lower** policy $F_1$ ($0.3725$) than Balanced Logistic Regression ($0.3842$).
 
-The breakdown in `results/week5/model_benchmark/error_analysis.csv` exposes the mathematical mechanism:
+The breakdown in `results/week4/model_benchmark/error_analysis.csv` exposes the mathematical mechanism:
 
 | Metric | Balanced LogReg | XGBoost (5 feats) | $\Delta$ (XGB - LogReg) | Impact on Utility |
 |---|---|---|---|---|
@@ -186,7 +186,7 @@ While the net point sum on these two specific bins appears marginally positive (
 
 **Scientific Takeaway:** In RAG context allocation, **false stops are more than $2.5\times$ more damaging to reader performance than false expansions**. A model that trades $17.8\%$ recall to gain $9.5\%$ precision degrades downstream user experience.
 
-![Error Breakdown](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/error_breakdown.png)
+![Error Breakdown](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/error_breakdown.png)
 
 ---
 
@@ -215,7 +215,7 @@ To ensure conclusions are not artifacts of sampling noise, we performed a **pape
 | **XGBoost (5 feats)** | -0.0223 | [-0.0543, +0.0094] | -696.2 | -39.59% |
 | **Small MLP (5 feats)** | -0.0315 | [-0.0652, -0.0001] (Significantly Worse) | -678.0 | -38.57% |
 
-![Bootstrap Distributions](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/bootstrap_comparison.png)
+![Bootstrap Distributions](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/bootstrap_comparison.png)
 
 **Key Insight:** Balanced Logistic Regression is the **only** adaptive policy whose $95\%$ bootstrap CI for $\Delta F_1$ vs Static $k=8$ crosses zero while simultaneously cutting context tokens by $> 36\%$. Nonlinear models all suffer negative $\Delta F_1$ point estimates relative to LogReg, and for LightGBM and the MLP, the performance degradation is statistically significant ($p < 0.05$).
 
@@ -234,7 +234,7 @@ To ensure that the performance of Balanced Logistic Regression is robust and not
 | **Boolean (Yes/No)** | 32 | 18.75% (6/32) | **0.5512** | 0.5420 | 0.5210 | 0.5601 |
 | **Unanswerable** | 44 | 6.82% (3/44) | **0.2310** | 0.2285 | 0.2280 | 0.2315 |
 
-![Subgroup Performance](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/subgroup_performance.png)
+![Subgroup Performance](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/subgroup_performance.png)
 
 **Observation:** Balanced Logistic Regression consistently outperforms or matches XGBoost across all 4 question categories. The superiority is particularly pronounced on **Extractive** queries ($\Delta F_1 = +0.0206$), where capturing the exact paragraph containing the entity answer is critical.
 
@@ -252,7 +252,7 @@ Permutation feature importance was computed across the 5 outer folds on out-of-f
 | `evidence_query_cluster_span` | 0.0108 $\pm$ 0.010 | 0.1175 $\pm$ 0.029 | 0.0057 $\pm$ 0.003 | 0.0159 $\pm$ 0.005 | 0.0038 $\pm$ 0.003 |
 | `evidence_lexical_overlap_mean` | 0.0009 $\pm$ 0.001 | 0.1413 $\pm$ 0.027 | 0.0264 $\pm$ 0.005 | 0.0576 $\pm$ 0.007 | 0.0454 $\pm$ 0.015 |
 
-![Feature Importance](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/model_benchmark/figures/feature_importance.png)
+![Feature Importance](file:///home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/figures/feature_importance.png)
 
 **Key Finding:**
 - In Logistic Regression, `lex_coverage_top2` dominates, while `evidence_lexical_overlap_mean` receives near-zero linear weight ($0.0009$).
