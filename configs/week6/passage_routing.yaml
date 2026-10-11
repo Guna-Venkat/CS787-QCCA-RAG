@@ -1,0 +1,71 @@
+# Week 6: Query-Conditioned Passage Fidelity Routing Configuration
+research_question: "At a fixed high-fidelity representation budget k, can we improve SARA by choosing WHICH retrieved passages remain in full text instead of automatically keeping the first k BM25-ranked passages?"
+
+seed: 42
+seeds: [42, 123, 2026]
+
+budgets: [2, 4, 6]
+
+routing_methods:
+  - "R0_bm25_prefix"
+  - "R1_semantic_topk"
+  - "R2_learned_router"
+
+encoder:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  max_seq_length: 256
+  frozen: true
+
+r1_semantic:
+  scoring_mode: "pair"  # query-passage pair representation or cosine similarity
+
+r2_model:
+  hidden_dim: 128
+  dropout: 0.1
+  use_rank_feature: true
+  rank_embedding_dim: 16
+  lr: 0.0001
+  weight_decay: 0.01
+  batch_size: 16
+  max_epochs: 15
+  patience: 3
+  pos_weight: 1.5
+
+evidence_matching:
+  min_hl_length: 15
+  min_overlap_ev: 0.3
+  min_overlap_p: 0.5
+  min_shared_words: 10
+
+bootstrap:
+  n_resamples: 2000
+  confidence_level: 0.95
+  cluster_col: "paper_id"
+
+oracle:
+  run_subset_oracle: false
+  subset_oracle_sample_size: 25
+  budget: 2
+
+paths:
+  results_root: "results/week6/passage_routing"
+  router_models_dir: "results/week6/passage_routing/router_models"
+  routing_predictions_dir: "results/week6/passage_routing/routing_predictions"
+  sara_generations_dir: "results/week6/passage_routing/sara_generations"
+  tables_dir: "results/week6/passage_routing/tables"
+  figures_dir: "results/week6/passage_routing/figures"
+  bootstrap_dir: "results/week6/passage_routing/bootstrap"
+  diagnostics_dir: "results/week6/passage_routing/diagnostics"
+  oracle_dir: "results/week6/passage_routing/oracle"
+  smoke_dir: "results/week6/passage_routing/diagnostics/smoke"
+  train_fit_manifest: "results/week5/content_allocator/w5b/splits/train_fit_manifest.csv"
+  internal_val_manifest: "results/week5/content_allocator/w5b/splits/internal_val_manifest.csv"
+  train_retrieval_file: "results/week5/train_response_surface/train_retrieval.jsonl"
+  dev_retrieval_file: "results/week2/raw/dev_retrieval.jsonl"
+  dev_fixed_k_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_sfr_embeddings_file: "results/week2/raw/dev_sfr_embeddings.pt"
+  qasper_train_split: "Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl"
+  qasper_dev_split: "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl"
+  qasper_manifest: "Baselines/SARA-main/data/manifests/qasper_split.json"
+  raw_arrow_train: "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow"
+  raw_arrow_val: "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-validation.arrow"

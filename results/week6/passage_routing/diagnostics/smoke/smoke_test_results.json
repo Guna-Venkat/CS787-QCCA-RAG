@@ -1,0 +1,69 @@
+{
+  "SMOKE_ONLY_NOT_FOR_REPORTING": true,
+  "status": "PASSED",
+  "train_samples": 16,
+  "val_samples": 8,
+  "dev_samples": 3,
+  "k_budget": 2,
+  "train_positive_rate": 0.19374999403953552,
+  "train_avg_loss_epoch_1": 0.7364449799060822,
+  "gradients_flow_verified": true,
+  "scores_vary_verified": true,
+  "invariants_verified": true,
+  "differences_from_r0_observed": true,
+  "parameter_counts": {
+    "total_parameters": 22764833,
+    "trainable_parameters": 51617,
+    "frozen_parameters": 22713216
+  },
+  "sample_assignments": [
+    {
+      "question_id": "1000",
+      "question": "What is English mixed with in the TRAC dataset?...",
+      "R0_selected_ranks": [
+        1,
+        2
+      ],
+      "R1_selected_ranks": [
+        2,
+        3
+      ],
+      "R2_selected_ranks": [
+        2,
+        8
+      ]
+    },
+    {
+      "question_id": "1001",
+      "question": "Which psycholinguistic and basic linguistic features are used?...",
+      "R0_selected_ranks": [
+        1,
+        2
+      ],
+      "R1_selected_ranks": [
+        6,
+        8
+      ],
+      "R2_selected_ranks": [
+        8,
+        9
+      ]
+    },
+    {
+      "question_id": "1002",
+      "question": "How have the differences in communication styles between Twitter and Facebook in...",
+      "R0_selected_ranks": [
+        1,
+        2
+      ],
+      "R1_selected_ranks": [
+        2,
+        4
+      ],
+      "R2_selected_ranks": [
+        2,
+        5
+      ]
+    }
+  ]
+}
