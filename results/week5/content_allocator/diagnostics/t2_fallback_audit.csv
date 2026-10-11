@@ -1,0 +1,5 @@
+model,total_queries,admissible_ge_1_count,admissible_ge_1_pct,fallback_count,fallback_rate_pct,exactly_one_count,multiple_admissible_count,k8_due_to_fallback_count,k8_due_to_admissible_count,mean_k_all,mean_k_non_fallback
+I1-T2,231,0,0.00%,231,100.00%,0,0,231,0,8.0,N/A
+I2-T2,231,52,22.51%,179,77.49%,52,0,179,0,7.55,6.0
+I3-T2,231,0,0.00%,231,100.00%,0,0,231,0,8.0,N/A
+I4-T2,231,0,0.00%,231,100.00%,0,0,231,0,8.0,N/A

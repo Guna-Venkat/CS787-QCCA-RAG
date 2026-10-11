@@ -1,0 +1,419 @@
+
+==================== CELL 2 (Exec #1) ====================
+Code: import os...
+[STREAM stderr]:
+/home/gunavenkat/Downloads/CS787-RAG-Project/sara_env/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+
+[STREAM stdout]:
+=== ENVIRONMENT METADATA ===
+Python:       3.11.16
+PyTorch:      2.14.0+cu130
+CUDA:         True (Device: NVIDIA TITAN RTX)
+Base Encoder: sentence-transformers/all-MiniLM-L6-v2
+Seeds:        [42, 123, 2026]
+Frozen eps:   0.01
+Output Dir:   results/week5/content_allocator
+
+
+==================== CELL 4 (Exec #2) ====================
+Code: print("Loading canonical datasets and verifying split isolation...")...
+[STREAM stderr]:
+2026-10-11 12:07:53,843 [INFO] Split isolation audit PASSED (TRAIN=2,088, DEV=231, overlap=0).
+
+[STREAM stdout]:
+Loading canonical datasets and verifying split isolation...
+
+--- SPLIT AUDIT ---
+TRAIN Queries: 2,088 across 772 papers
+DEV Queries:   231 across 86 papers
+Question Overlap: 0 (MUST BE 0)
+Paper Overlap:    0 (MUST BE 0)
+TEST Status:      UNTOUCHED & FROZEN (zero test files accessed)
+
+Target Budget Distributions (oracle_k_eps001):
+
+[display_data text/plain]:
+  Budget (k)  TRAIN Count TRAIN %  DEV Count   DEV %
+0        k=2         1234  59.10%        132  57.14%
+1        k=4          354  16.95%         40  17.32%
+2        k=5          163   7.81%         17   7.36%
+3        k=6          134   6.42%         19   8.23%
+4        k=8          203   9.72%         23   9.96%
+
+==================== CELL 6 (Exec #3) ====================
+Code: baseline_rows = evaluate_static_baselines(dev_bundle)...
+[STREAM stdout]:
+Frozen Reference Baseline Performance (DEV):
+
+[display_data text/plain]:
+                            model_name  mean_answer_f1  mean_selected_k  \
+0                           Static k=2          0.3038             2.00   
+1                           Static k=4          0.3596             4.00   
+2                           Static k=5          0.3629             5.00   
+3                           Static k=6          0.3857             6.00   
+4                           Static k=8          0.3950             8.00   
+5  W4 Best Allocator (Balanced LogReg)          0.3842             4.82   
+6         Quality Oracle (Upper Bound)          0.4895             3.53   
+7         Cost-Aware Oracle (eps=0.01)          0.4894             3.49   
+
+   mean_context_tokens  token_reduction_pct_vs_k8  mean_oracle_regret  \
+0                526.5                      69.92              0.1857   
+1                938.1                      46.41              0.1299   
+2               1149.0                      34.36              0.1266   
+3               1351.1                      22.82              0.1038   
+4               1750.5                       0.00              0.0945   
+5               1115.9                      36.25              0.1053   
+6                846.1                      51.67              0.0000   
+7                839.4                      52.05              0.0001   
+
+   recovered_oracle_headroom  
+0                    -0.9647  
+1                    -0.3746  
+2                    -0.3401  
+3                    -0.0984  
+4                    -0.0001  
+5                    -0.1143  
+6                     1.0000  
+7                     0.9988  
+
+==================== CELL 8 (Exec #4) ====================
+Code: tokenizer_name = config["model"]["base_encoder_name"]...
+[STREAM stdout]:
+Truncation Diagnostics (Query-Passage Pairs):
+
+[display_data text/plain]:
+   Split  total_query_passage_pairs  truncated_pairs_count  pct_truncated  \
+0  TRAIN                      20787                   6149          29.58   
+1    DEV                       2288                    608          26.57   
+
+   mean_original_tokens  mean_retained_tokens  max_seq_length  
+0                 211.6                 207.2             256  
+1                 207.3                 203.5             256  
+
+==================== CELL 10 (Exec #5) ====================
+Code: # Inspect parameter counts across conditions...
+[display_data text/plain]:
+                          Condition  total_params  trainable_params  \
+0                   I1 (Query Only)      22763397             50181   
+1             I2 (Query + Features)      22789701             76485   
+2             I3 (Query + Passages)      25529093           2815877   
+3  I4 (Query + Passages + Features)      25555397           2842181   
+
+   frozen_encoder_params  trainable_head_and_aggregator_params  
+0               22713216                                 50181  
+1               22713216                                 76485  
+2               22713216                               2815877  
+3               22713216                               2842181  
+
+==================== CELL 12 (Exec #6) ====================
+Code: train_weights = compute_train_class_weights(train_bundle["t1_labels"])...
+[STREAM stdout]:
+TRAIN-Derived Class Weights for T1 (Weighted Cross-Entropy):
+
+[display_data text/plain]:
+   Class Index Budget (k)  TRAIN Count  Class Weight (TRAIN)
+0            0        k=2         1234                0.1829
+1            1        k=4          354                0.6374
+2            2        k=5          163                1.3843
+3            3        k=6          134                1.6839
+4            4        k=8          203                1.1115
+
+==================== CELL 14 (Exec #7) ====================
+Code: train_regrets = train_bundle["t2_regrets"]...
+[STREAM stdout]:
+Empirical Regret Statistics Across Budgets:
+
+[display_data text/plain]:
+  Budget (k)  TRAIN Mean Regret  TRAIN Median Regret  DEV Mean Regret  \
+0        k=2             0.1670                  0.0           0.1857   
+1        k=4             0.1150                  0.0           0.1299   
+2        k=5             0.0969                  0.0           0.1266   
+3        k=6             0.0874                  0.0           0.1038   
+4        k=8             0.0680                  0.0           0.0945   
+
+   DEV Median Regret  
+0                0.0  
+1                0.0  
+2                0.0  
+3                0.0  
+4                0.0  
+
+==================== CELL 16 (Exec #8) ====================
+Code: SMOKE_MODE = False  # Canonical full experiment run: False...
+[STREAM stdout]:
+CANONICAL EXECUTION MODE: Full TRAIN (2,088 queries), full DEV (231 queries).
+
+
+==================== CELL 18 (Exec #9) ====================
+Code: results_t1 = {}...
+[STREAM stdout]:
+
+==============================
+Running I1-T1 across seeds [42, 123, 2026]...
+==============================
+[I1-T1 | Seed 42] Best Epoch: 05 | Dev F1: 0.3775 | Tokens: 1097.4 | Mean k: 4.79
+[I1-T1 | Seed 123] Best Epoch: 03 | Dev F1: 0.3656 | Tokens: 1019.2 | Mean k: 4.40
+[I1-T1 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3695 | Tokens: 1111.6 | Mean k: 4.87
+
+==============================
+Running I2-T1 across seeds [42, 123, 2026]...
+==============================
+[I2-T1 | Seed 42] Best Epoch: 03 | Dev F1: 0.3731 | Tokens: 1195.5 | Mean k: 5.21
+[I2-T1 | Seed 123] Best Epoch: 01 | Dev F1: 0.3737 | Tokens: 1250.9 | Mean k: 5.52
+[I2-T1 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3610 | Tokens: 1072.6 | Mean k: 4.67
+
+==============================
+Running I3-T1 across seeds [42, 123, 2026]...
+==============================
+
+[STREAM stderr]:
+/home/gunavenkat/Downloads/CS787-RAG-Project/sara_env/lib/python3.11/site-packages/torch/nn/modules/transformer.py:533: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/NestedTensorImpl.cpp:177.)
+  output = torch._nested_tensor_from_mask(
+
+[STREAM stdout]:
+[I3-T1 | Seed 42] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I3-T1 | Seed 123] Best Epoch: 02 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I3-T1 | Seed 2026] Best Epoch: 06 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+
+==============================
+Running I4-T1 across seeds [42, 123, 2026]...
+==============================
+[I4-T1 | Seed 42] Best Epoch: 05 | Dev F1: 0.3625 | Tokens: 1117.2 | Mean k: 4.87
+[I4-T1 | Seed 123] Best Epoch: 03 | Dev F1: 0.3574 | Tokens: 1035.1 | Mean k: 4.49
+[I4-T1 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3691 | Tokens: 1310.0 | Mean k: 5.78
+
+
+==================== CELL 20 (Exec #10) ====================
+Code: results_t2 = {}...
+[STREAM stdout]:
+
+==============================
+Running I1-T2 across seeds [42, 123, 2026]...
+==============================
+[I1-T2 | Seed 42] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I1-T2 | Seed 123] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I1-T2 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+
+==============================
+Running I2-T2 across seeds [42, 123, 2026]...
+==============================
+[I2-T2 | Seed 42] Best Epoch: 01 | Dev F1: 0.3957 | Tokens: 1660.1 | Mean k: 7.55
+[I2-T2 | Seed 123] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I2-T2 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+
+==============================
+Running I3-T2 across seeds [42, 123, 2026]...
+==============================
+[I3-T2 | Seed 42] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I3-T2 | Seed 123] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I3-T2 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+
+==============================
+Running I4-T2 across seeds [42, 123, 2026]...
+==============================
+[I4-T2 | Seed 42] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I4-T2 | Seed 123] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+[I4-T2 | Seed 2026] Best Epoch: 01 | Dev F1: 0.3950 | Tokens: 1750.5 | Mean k: 8.00
+
+
+==================== CELL 22 (Exec #11) ====================
+Code: model_eval_rows = []...
+[display_data text/plain]:
+  model_name condition target  mean_answer_f1  mean_selected_k  \
+0      I1-T1        I1     T1          0.3709             4.69   
+1      I1-T2        I1     T2          0.3950             8.00   
+2      I2-T1        I2     T1          0.3693             5.13   
+3      I2-T2        I2     T2          0.3952             7.85   
+4      I3-T1        I3     T1          0.3950             8.00   
+5      I3-T2        I3     T2          0.3950             8.00   
+6      I4-T1        I4     T1          0.3630             5.05   
+7      I4-T2        I4     T2          0.3950             8.00   
+
+   mean_context_tokens  token_reduction_pct_vs_k8  mean_oracle_regret  \
+0               1076.1                      38.53              0.1186   
+1               1750.5                       0.00              0.0945   
+2               1173.0                      32.99              0.1202   
+3               1720.4                       1.72              0.0943   
+4               1750.5                       0.00              0.0945   
+5               1750.5                       0.00              0.0945   
+6               1154.1                      34.07              0.1265   
+7               1750.5                       0.00              0.0945   
+
+   recovered_oracle_headroom  
+0                    -0.2550  
+1                    -0.0001  
+2                    -0.2724  
+3                     0.0024  
+4                    -0.0001  
+5                    -0.0001  
+6                    -0.3384  
+7                    -0.0001  
+
+==================== CELL 24 (Exec #12) ====================
+Code: n_bootstrap = config["evaluation"]["bootstrap_samples"] if not SMOKE_MODE else 1...
+[STREAM stdout]:
+Paper-Clustered Bootstrap Significance Results:
+
+[display_data text/plain]:
+   Model     Comparison  observed_delta_f1  ci_lower_95  ci_upper_95  p_value  \
+0  I1-T1  vs Static k=8            -0.0175      -0.0491       0.0135    0.131   
+1  I1-T2  vs Static k=8             0.0000       0.0000       0.0000    1.000   
+2  I2-T1  vs Static k=8            -0.0219      -0.0550       0.0107    0.085   
+3  I2-T2  vs Static k=8             0.0007      -0.0187       0.0190    0.477   
+4  I3-T1  vs Static k=8             0.0000       0.0000       0.0000    1.000   
+5  I3-T2  vs Static k=8             0.0000       0.0000       0.0000    1.000   
+6  I4-T1  vs Static k=8            -0.0325      -0.0638      -0.0025    0.021   
+7  I4-T2  vs Static k=8             0.0000       0.0000       0.0000    1.000   
+
+   n_bootstrap  
+0         2000  
+1         2000  
+2         2000  
+3         2000  
+4         2000  
+5         2000  
+6         2000  
+7         2000  
+
+==================== CELL 26 (Exec #13) ====================
+Code: output_tables_dir = PROJECT_ROOT / "results/week5/content_allocator/tables"...
+[STREAM stdout]:
+Saved canonical main results table to: /home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/content_allocator/tables/main_results.csv
+
+[display_data text/plain]:
+                             model_name                      condition  \
+0                            Static k=2                Static Baseline   
+1                            Static k=4                Static Baseline   
+2                            Static k=5                Static Baseline   
+3                            Static k=6                Static Baseline   
+4                            Static k=8                Static Baseline   
+5   W4 Best Allocator (Balanced LogReg)      Handcrafted Features Only   
+6          Quality Oracle (Upper Bound)        Theoretical Upper Bound   
+7          Cost-Aware Oracle (eps=0.01)  Theoretical Cost-Aware Target   
+8                                 I1-T1                             I1   
+9                                 I1-T2                             I1   
+10                                I2-T1                             I2   
+11                                I2-T2                             I2   
+12                                I3-T1                             I3   
+13                                I3-T2                             I3   
+14                                I4-T1                             I4   
+15                                I4-T2                             I4   
+
+             target  mean_answer_f1  mean_selected_k  mean_context_tokens  \
+0               N/A          0.3038             2.00                526.5   
+1               N/A          0.3596             4.00                938.1   
+2               N/A          0.3629             5.00               1149.0   
+3               N/A          0.3857             6.00               1351.1   
+4               N/A          0.3950             8.00               1750.5   
+5    Classification          0.3842             4.82               1115.9   
+6     Oracle max F1          0.4895             3.53                846.1   
+7   Oracle eps=0.01          0.4894             3.49                839.4   
+8                T1          0.3709             4.69               1076.1   
+9                T2          0.3950             8.00               1750.5   
+10               T1          0.3693             5.13               1173.0   
+11               T2          0.3952             7.85               1720.4   
+12               T1          0.3950             8.00               1750.5   
+13               T2          0.3950             8.00               1750.5   
+14               T1          0.3630             5.05               1154.1   
+15               T2          0.3950             8.00               1750.5   
+
+    token_reduction_pct_vs_k8  mean_oracle_regret  recovered_oracle_headroom  \
+0                       69.92              0.1857                    -0.9647   
+1                       46.41              0.1299                    -0.3746   
+2                       34.36              0.1266                    -0.3401   
+3                       22.82              0.1038                    -0.0984   
+4                        0.00              0.0945                    -0.0001   
+5                       36.25              0.1053                    -0.1143   
+6                       51.67              0.0000                     1.0000   
+7                       52.05              0.0001                     0.9988   
+8                       38.53              0.1186                    -0.2550   
+9                        0.00              0.0945                    -0.0001   
+10                      32.99              0.1202                    -0.2724   
+11                       1.72              0.0943                     0.0024   
+12                       0.00              0.0945                    -0.0001   
+13                       0.00              0.0945                    -0.0001   
+14                      34.07              0.1265                    -0.3384   
+15                       0.00              0.0945                    -0.0001   
+
+    zero_regret_pct  
+0             57.14  
+1             64.94  
+2             65.37  
+3             67.10  
+4             71.00  
+5             52.38  
+6            100.00  
+7            100.00  
+8               NaN  
+9               NaN  
+10              NaN  
+11              NaN  
+12              NaN  
+13              NaN  
+14              NaN  
+15              NaN  
+
+==================== CELL 28 (Exec #14) ====================
+Code: ablation_rows = []...
+[display_data text/plain]:
+  Condition                                 Input Information  T1 Answer F1  \
+0        I1                                    Query Only (q)        0.3709   
+1        I2                    Query + W4 Features (q + x_W4)        0.3693   
+2        I3                    Query + Passages (q + D1..D10)        0.3950   
+3        I4  Query + Passages + Features (q + D1..D10 + x_W4)        0.3630   
+
+   T1 Context Tokens T1 Token Reduction  T2 Answer F1  T2 Context Tokens  \
+0             1076.1              38.5%        0.3950             1750.5   
+1             1173.0              33.0%        0.3952             1720.4   
+2             1750.5               0.0%        0.3950             1750.5   
+3             1154.1              34.1%        0.3950             1750.5   
+
+  T2 Token Reduction  
+0               0.0%  
+1               1.7%  
+2               0.0%  
+3               0.0%  
+
+==================== CELL 30 (Exec #15) ====================
+Code: target_comp_rows = []...
+[display_data text/plain]:
+  Condition  T1 (Classification) F1  T2 (Regret Regression) F1  \
+0        I1                  0.3709                     0.3950   
+1        I2                  0.3693                     0.3952   
+2        I3                  0.3950                     0.3950   
+3        I4                  0.3630                     0.3950   
+
+   Delta F1 (T2 - T1)  T1 Tokens  T2 Tokens  Delta Tokens (T2 - T1)  
+0              0.0241     1076.1     1750.5                   674.4  
+1              0.0259     1173.0     1720.4                   547.4  
+2              0.0000     1750.5     1750.5                     0.0  
+3              0.0320     1154.1     1750.5                   596.4  
+
+==================== CELL 32 (Exec #16) ====================
+Code: # Inspect best performing learned model predictions vs oracle...
+[STREAM stdout]:
+Error Distribution for Best Model (I2-T2):
+
+[display_data text/plain]:
+error_type
+Over-Allocation     206
+Optimal              22
+Under-Allocation      3
+Name: count, dtype: int64
+
+==================== CELL 34 (Exec #17) ====================
+Code: fig_dir = PROJECT_ROOT / "results/week5/content_allocator/figures"...
+[display_data text/plain]:
+<Figure size 1000x600 with 1 Axes>
+[display_data image/png (base64 length: 70752)]
+[STREAM stderr]:
+/tmp/ipykernel_1407714/1434339767.py:33: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=[f"k={k}" for k in K_CLASSES], y=budget_counts.values, palette="viridis")
+
+[display_data text/plain]:
+<Figure size 1000x500 with 1 Axes>
+[display_data image/png (base64 length: 30388)]
