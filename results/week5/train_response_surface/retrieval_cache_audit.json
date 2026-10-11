@@ -1,0 +1,10 @@
+{
+  "total_expected_questions": 2088,
+  "total_retrieved_questions": 2088,
+  "unique_questions": 2088,
+  "missing_records_count": 0,
+  "duplicate_records_count": 0,
+  "invalid_passage_count_records": 0,
+  "retrieval_coverage_percentage": 100.0,
+  "output_file": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/train_response_surface/train_retrieval.jsonl"
+}

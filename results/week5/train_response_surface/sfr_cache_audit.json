@@ -1,0 +1,14 @@
+{
+  "expected_unique_passages": 12079,
+  "cached_unique_passages": 12079,
+  "missing_passages": 0,
+  "duplicates": 0,
+  "invalid_or_nan_embeddings": 0,
+  "cache_file_size_mb": 164.43,
+  "num_questions_covered": 2088,
+  "expected_questions": 2088,
+  "embedding_dim": 4096,
+  "dtype": "bfloat16",
+  "cache_coverage_percentage": 100.0,
+  "status": "COMPLETE"
+}

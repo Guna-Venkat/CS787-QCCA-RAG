@@ -1,0 +1,42 @@
+# Week 5: Train Fixed-k Response Surface Generation Configuration
+# SARA Model Inference & Ground-Truth Oracle Generation for N=2,088 Training Queries
+
+seed: 42
+
+# Evidence allocation budgets to evaluate (excluding 0 and 10 which are not in SARA candidate set)
+k_values: [2, 4, 5, 6, 8]
+num_retrieved_passages: 10
+
+# Generation settings (Strictly deterministic, identical to Week 2 dev sweep)
+generation:
+  max_new_tokens: 64
+  do_sample: false
+  temperature: 0.0
+  repetition_penalty: 1.0
+  dtype: "bfloat16"
+
+# BM25 Retrieval settings (Exact Week 2 configuration)
+retrieval:
+  retriever_name: "bm25"
+  chunk_size: 256
+  chunk_overlap: 5
+
+# Checkpoint settings (Exact Week 2 SARA checkpoint)
+models:
+  sfr_model: "Salesforce/SFR-Embedding-Mistral"
+  base_model: "mistralai/Mistral-7B-Instruct-v0.2"
+  sara_checkpoint: "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42"
+  sfr_dtype: "bfloat16"
+
+paths:
+  train_file: "Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl"
+  manifest_file: "Baselines/SARA-main/data/manifests/qasper_split.json"
+  
+  # Stored intermediate artifacts
+  train_retrieval_file: "results/week5/supervision/train_retrieval.jsonl"
+  train_sfr_embeddings_file: "results/week5/supervision/train_sfr_embeddings.pt"
+  train_fixed_k_matrix_file: "results/week5/supervision/train_fixed_k_matrix.jsonl"
+  train_per_query_matrix_file: "results/week5/supervision/train_per_query_k_matrix.csv"
+  train_supervision_table: "results/week5/supervision/train_allocation_supervision.csv"
+  
+  logs_dir: "results/week5/supervision/logs"

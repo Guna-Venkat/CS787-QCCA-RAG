@@ -1,0 +1,15 @@
+Metric,TRAIN,DEV,Interpretation
+F1 k2,0.3264,0.3038,Parallel curve (+0.0226 difficulty offset)
+F1 k4,0.3784,0.3596,Parallel curve (+0.0188 difficulty offset)
+F1 k5,0.3965,0.3629,Parallel curve (+0.0336 difficulty offset)
+F1 k6,0.4060,0.3857,Parallel curve (+0.0203 difficulty offset)
+F1 k8,0.4254,0.3950,Parallel curve (+0.0304 difficulty offset)
+Oracle F1,0.4934,0.4895,Virtually identical ceiling (0.493 vs 0.490)
+Oracle headroom,+0.0680,+0.0945,Significant positive headroom over k=8
+epsilon-oracle mean k,3.41,3.49,Identical average budget preference (~3.45)
+epsilon-oracle tokens,835.9,839.4,Identical context token consumption (~837)
+k2 target %,59.10%,57.14%,Identical dominant budget (~58%)
+k4 target %,16.95%,17.32%,Identical second-largest budget (~17%)
+k5 target %,7.81%,7.36%,Identical mid-tier budget (~7.5%)
+k6 target %,6.42%,8.23%,Identical transition budget (~7.3%)
+k8 target %,9.72%,9.96%,Identical high-fidelity tail (~9.8%)

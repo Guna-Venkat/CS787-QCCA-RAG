@@ -1,0 +1,80 @@
+{
+  "benchmark_metadata": {
+    "device": "NVIDIA TITAN RTX (24GB)",
+    "gpu_contention": "Low contention (PID 1147949 ~594 MiB, ~55% util)",
+    "benchmark_sample_size_questions": 5,
+    "question_ids": [
+      "512",
+      "745",
+      "1633",
+      "1221",
+      "56"
+    ],
+    "budgets_evaluated": [
+      2,
+      4,
+      5,
+      6,
+      8
+    ],
+    "total_evaluations_run": 25,
+    "timestamp": "2026-10-10 20:12:29"
+  },
+  "per_budget_statistics": {
+    "k2": {
+      "mean_total_latency_seconds": 3.4207,
+      "median_total_latency_seconds": 4.1062,
+      "mean_prompt_tokens": 588.4,
+      "mean_generation_tokens": 13.8,
+      "sample_size": 5,
+      "contended_baseline_mean_seconds": 4.29,
+      "speedup_factor": 1.25
+    },
+    "k4": {
+      "mean_total_latency_seconds": 4.6141,
+      "median_total_latency_seconds": 4.0685,
+      "mean_prompt_tokens": 998.6,
+      "mean_generation_tokens": 9.6,
+      "sample_size": 5,
+      "contended_baseline_mean_seconds": 6.03,
+      "speedup_factor": 1.31
+    },
+    "k5": {
+      "mean_total_latency_seconds": 5.1498,
+      "median_total_latency_seconds": 4.0406,
+      "mean_prompt_tokens": 1208.8,
+      "mean_generation_tokens": 7.4,
+      "sample_size": 5,
+      "contended_baseline_mean_seconds": 7.22,
+      "speedup_factor": 1.4
+    },
+    "k6": {
+      "mean_total_latency_seconds": 5.9604,
+      "median_total_latency_seconds": 5.4513,
+      "mean_prompt_tokens": 1389.4,
+      "mean_generation_tokens": 7.2,
+      "sample_size": 5,
+      "contended_baseline_mean_seconds": 8.26,
+      "speedup_factor": 1.39
+    },
+    "k8": {
+      "mean_total_latency_seconds": 8.5286,
+      "median_total_latency_seconds": 9.7023,
+      "mean_prompt_tokens": 1750.6,
+      "mean_generation_tokens": 10.6,
+      "sample_size": 5,
+      "contended_baseline_mean_seconds": 9.45,
+      "speedup_factor": 1.11
+    }
+  },
+  "full_sweep_extrapolation": {
+    "total_train_questions": 2088,
+    "total_evaluations": 10440,
+    "sum_k_mean_latency_seconds": 27.674,
+    "sum_k_median_latency_seconds": 27.369,
+    "clean_estimated_hours_mean": 16.05,
+    "clean_estimated_hours_median": 15.87,
+    "contended_estimated_hours": 20.45,
+    "effective_speedup": 1.27
+  }
+}

@@ -1,0 +1,16 @@
+question_id,k,week2_f1,week5_builder_f1,absolute_difference,week2_generated_answer_hash,week5_generated_answer_hash,retrieval_match,prompt_config_match,PASS/FAIL
+1912,2,0.0,0.0,0.0,f41f70205f,f41f70205f,True,True,PASS
+1912,4,0.0,0.0,0.0,ed3e157c6b,ed3e157c6b,True,True,PASS
+1912,5,0.0,0.0,0.0,39bc9af332,ed3e157c6b,True,True,PASS
+1912,6,0.0,0.0,0.0,0a6acbbadb,0a6acbbadb,True,True,PASS
+1912,8,0.5,0.5,0.0,43df66832a,43df66832a,True,True,PASS
+2201,2,0.8,0.8,0.0,feffcc92a9,feffcc92a9,True,True,PASS
+2201,4,0.6316,0.6316,0.0,3e04545ef3,3e04545ef3,True,True,PASS
+2201,5,0.6316,0.6316,0.0,3e04545ef3,3e04545ef3,True,True,PASS
+2201,6,0.0,0.0,0.0,e68bfa39ae,e68bfa39ae,True,True,PASS
+2201,8,0.6316,0.6316,0.0,3e04545ef3,3e04545ef3,True,True,PASS
+883,2,0.6667,0.6667,0.0,3375d06456,3375d06456,True,True,PASS
+883,4,0.6667,0.6667,0.0,3375d06456,3375d06456,True,True,PASS
+883,5,0.6667,0.6667,0.0,3375d06456,3375d06456,True,True,PASS
+883,6,1.0,1.0,0.0,cbe7d21cbf,cbe7d21cbf,True,True,PASS
+883,8,0.6667,0.6667,0.0,3375d06456,3375d06456,True,True,PASS

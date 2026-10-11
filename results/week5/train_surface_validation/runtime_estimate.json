@@ -1,0 +1,82 @@
+{
+  "sample_size_train_smoke": 25,
+  "runtime_by_k": {
+    "k_2": {
+      "k": 2,
+      "observations": 5,
+      "mean_generation_runtime_seconds": 4.3025,
+      "median_generation_runtime_seconds": 4.6288,
+      "p90_generation_runtime_seconds": 5.0541,
+      "mean_total_runtime_seconds": 4.3425,
+      "mean_prompt_tokens": 588.4,
+      "mean_context_tokens": 580.4,
+      "mean_generated_tokens": 13.8
+    },
+    "k_4": {
+      "k": 4,
+      "observations": 5,
+      "mean_generation_runtime_seconds": 6.0335,
+      "median_generation_runtime_seconds": 5.9238,
+      "p90_generation_runtime_seconds": 7.3916,
+      "mean_total_runtime_seconds": 6.0635,
+      "mean_prompt_tokens": 998.6,
+      "mean_context_tokens": 990.6,
+      "mean_generated_tokens": 9.6
+    },
+    "k_5": {
+      "k": 5,
+      "observations": 5,
+      "mean_generation_runtime_seconds": 7.2156,
+      "median_generation_runtime_seconds": 7.4798,
+      "p90_generation_runtime_seconds": 8.4363,
+      "mean_total_runtime_seconds": 7.2406,
+      "mean_prompt_tokens": 1208.8,
+      "mean_context_tokens": 1200.8,
+      "mean_generated_tokens": 7.8
+    },
+    "k_6": {
+      "k": 6,
+      "observations": 5,
+      "mean_generation_runtime_seconds": 8.2668,
+      "median_generation_runtime_seconds": 8.8212,
+      "p90_generation_runtime_seconds": 9.763,
+      "mean_total_runtime_seconds": 8.2868,
+      "mean_prompt_tokens": 1389.4,
+      "mean_context_tokens": 1381.4,
+      "mean_generated_tokens": 7.2
+    },
+    "k_8": {
+      "k": 8,
+      "observations": 5,
+      "mean_generation_runtime_seconds": 9.4466,
+      "median_generation_runtime_seconds": 11.3441,
+      "p90_generation_runtime_seconds": 12.4064,
+      "mean_total_runtime_seconds": 9.4566,
+      "mean_prompt_tokens": 1750.6,
+      "mean_context_tokens": 1742.6,
+      "mean_generated_tokens": 10.6
+    }
+  },
+  "per_query_sweep_seconds": {
+    "optimistic_median_sum": 38.2,
+    "central_mean_sum": 35.27,
+    "conservative_p90_sum": 43.05
+  },
+  "total_train_queries": 2088,
+  "total_target_evaluations": 10440,
+  "full_run_runtime_estimates": {
+    "optimistic_gpu_hours": 22.15,
+    "central_gpu_hours": 20.45,
+    "conservative_gpu_hours": 24.97,
+    "central_total_seconds": 73633.4
+  },
+  "peak_vram_gb": 15.09,
+  "expected_storage_mb": {
+    "train_retrieval_jsonl": 15.2,
+    "train_sfr_embeddings_pt": 171.0,
+    "train_fixed_k_results_jsonl": 16.5,
+    "train_fixed_k_matrix_csv": 0.4,
+    "total_mb": 203.1
+  },
+  "confidence_and_caveats": "Empirically measured on NVIDIA TITAN RTX during active workload (PID 810797 active). Real latency is 4.3-11.4s per eval due to concurrent compute load, yielding a central estimate of 20.44 GPU-hours for all 10,440 SARA evaluations."
+}

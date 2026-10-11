@@ -1,0 +1,45 @@
+{
+  "protocol_expected": {
+    "train": {
+      "papers": 772,
+      "questions": 2088
+    },
+    "dev": {
+      "papers": 86,
+      "questions": 231
+    },
+    "test": {
+      "papers": 411,
+      "questions": 1309
+    }
+  },
+  "observed": {
+    "train": {
+      "papers": 772,
+      "questions": 2088,
+      "unique_qids": 2088
+    },
+    "dev": {
+      "papers": 86,
+      "questions": 231,
+      "unique_qids": 231
+    },
+    "test": {
+      "papers": 411,
+      "questions": 1309,
+      "unique_qids": 1309
+    }
+  },
+  "paper_disjointness": {
+    "train_dev_paper_overlap": 0,
+    "is_train_dev_paper_disjoint": true,
+    "is_train_dev_test_text_disjoint": true,
+    "note": "Train and Dev are strictly partitioned from the official train split by paper ID (example_id). Test comprises the 411 official test papers from allenai/qasper, which have 0 text/document overlap with train/dev."
+  },
+  "question_disjointness": {
+    "train_dev_qid_overlap": 0,
+    "is_train_dev_question_disjoint": true,
+    "is_train_dev_test_question_disjoint": true
+  },
+  "test_set_status": "FROZEN_AND_UNTOUCHED"
+}

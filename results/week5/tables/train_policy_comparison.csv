@@ -1,0 +1,8 @@
+policy,mean_f1,mean_tokens,token_reduction_vs_k8_pct,mean_regret
+Static k=2,0.3264,535.2,70.06,0.167
+Static k=4,0.3784,956.4,46.49,0.115
+Static k=5,0.3965,1166.2,34.75,0.0969
+Static k=6,0.406,1373.7,23.15,0.0874
+Static k=8 (Upper Bound),0.4254,1787.4,0.0,0.068
+Quality Oracle (Strict Best F1),0.4934,842.1,52.89,0.0
+Cost-Aware Oracle (eps=0.01),0.4933,835.9,53.24,0.0
