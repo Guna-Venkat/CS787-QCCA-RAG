@@ -26,7 +26,7 @@ from src.week5.data import (
     compute_train_class_weights,
     K_CLASSES,
 )
-from src.week5.evaluation import evaluate_allocation_policy
+from src.week5.evaluation import evaluate_allocation_policy, evaluate_multilabel_diagnostics
 from src.week5.models import ContentAwareAllocator
 
 logger = logging.getLogger(__name__)
@@ -244,4 +244,176 @@ def train_allocator(
         "best_f1": early_stopping.best_f1,
         "best_tokens": early_stopping.best_tokens,
         "best_regret": early_stopping.best_regret,
+    }
+
+
+class EarlyStoppingMultiLabel:
+    """Early stopping tracker based on INTERNAL-VAL macro AUPRC (or BCE loss as tie-breaker)."""
+
+    def __init__(
+        self,
+        patience: int = 4,
+        min_delta: float = 1e-4,
+    ):
+        self.patience = patience
+        self.min_delta = min_delta
+        self.best_macro_auprc = -1.0
+        self.best_val_loss = float("inf")
+        self.best_epoch = -1
+        self.best_state_dict: Optional[Dict[str, Any]] = None
+        self.counter = 0
+        self.early_stop = False
+
+    def is_better(self, macro_auprc: float, val_loss: float) -> bool:
+        if macro_auprc > self.best_macro_auprc + self.min_delta:
+            return True
+        elif abs(macro_auprc - self.best_macro_auprc) <= self.min_delta:
+            return val_loss < self.best_val_loss - 1e-4
+        return False
+
+    def step(
+        self,
+        macro_auprc: float,
+        val_loss: float,
+        model: nn.Module,
+        epoch: int,
+    ) -> bool:
+        if self.is_better(macro_auprc, val_loss):
+            self.best_macro_auprc = macro_auprc
+            self.best_val_loss = val_loss
+            self.best_epoch = epoch
+            self.best_state_dict = copy.deepcopy(model.state_dict())
+            self.counter = 0
+            return True
+        else:
+            self.counter += 1
+            if self.counter >= self.patience:
+                self.early_stop = True
+            return False
+
+
+def train_allocator_t3(
+    model: ContentAwareAllocator,
+    train_loader: DataLoader,
+    val_loader: DataLoader,
+    epochs: int = 20,
+    lr: float = 1e-3,
+    weight_decay: float = 1e-2,
+    patience: int = 4,
+    grad_clip: float = 1.0,
+    device: str = "cuda" if torch.cuda.is_available() else "cpu",
+    pos_weight: Optional[torch.Tensor] = None,
+    verbose: bool = True,
+) -> Dict[str, Any]:
+    """Train ContentAwareAllocator for Target 3 (Multi-Label Epsilon-Admissibility).
+
+    Uses BCEWithLogitsLoss (unweighted by default).
+    Monitors INTERNAL-VAL macro AUPRC for checkpoint selection and early stopping.
+    """
+    model = model.to(device)
+    optimizer = torch.optim.AdamW(
+        [p for p in model.parameters() if p.requires_grad],
+        lr=lr,
+        weight_decay=weight_decay,
+    )
+    if pos_weight is not None:
+        criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight.to(device))
+    else:
+        criterion = nn.BCEWithLogitsLoss()
+
+    early_stopping = EarlyStoppingMultiLabel(patience=patience)
+    history: List[Dict[str, Any]] = []
+
+    for epoch in range(1, epochs + 1):
+        # 1. Training Phase
+        model.train()
+        train_loss_total = 0.0
+        n_train_batches = 0
+
+        for batch in train_loader:
+            optimizer.zero_grad()
+            outputs = model(batch)
+            logits = outputs["admissibility_logits"]
+            labels = batch["t3_labels"].to(device)
+
+            loss = criterion(logits, labels)
+            loss.backward()
+            if grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(
+                    [p for p in model.parameters() if p.requires_grad],
+                    grad_clip,
+                )
+            optimizer.step()
+
+            train_loss_total += float(loss.item())
+            n_train_batches += 1
+
+        avg_train_loss = train_loss_total / max(1, n_train_batches)
+
+        # 2. INTERNAL-VAL Evaluation Phase
+        model.eval()
+        val_loss_total = 0.0
+        n_val_batches = 0
+        all_val_probs: List[np.ndarray] = []
+        all_val_targets: List[np.ndarray] = []
+
+        with torch.no_grad():
+            for batch in val_loader:
+                outputs = model(batch)
+                logits = outputs["admissibility_logits"]
+                labels = batch["t3_labels"].to(device)
+
+                v_loss = criterion(logits, labels)
+                val_loss_total += float(v_loss.item())
+                n_val_batches += 1
+
+                probs = torch.sigmoid(logits).cpu().numpy()
+                all_val_probs.append(probs)
+                all_val_targets.append(labels.cpu().numpy())
+
+        avg_val_loss = val_loss_total / max(1, n_val_batches)
+        y_val_probs = np.concatenate(all_val_probs, axis=0)
+        y_val_targets = np.concatenate(all_val_targets, axis=0)
+
+        val_diag = evaluate_multilabel_diagnostics(y_val_targets, y_val_probs)
+        macro_auprc = val_diag["macro_auprc"]
+        macro_auroc = val_diag["macro_auroc"]
+
+        epoch_stats = {
+            "epoch": epoch,
+            "train_loss": round(avg_train_loss, 4),
+            "val_loss": round(avg_val_loss, 4),
+            "val_macro_auprc": macro_auprc,
+            "val_macro_auroc": macro_auroc,
+            "val_micro_auprc": val_diag["micro_auprc"],
+            "val_brier": val_diag["overall_brier"],
+            "val_per_budget_auprc": val_diag["per_budget_auprc"],
+            "val_per_budget_auroc": val_diag["per_budget_auroc"],
+        }
+        history.append(epoch_stats)
+
+        improved = early_stopping.step(macro_auprc, avg_val_loss, model, epoch)
+        if verbose:
+            tag = " [BEST]" if improved else ""
+            logger.info(
+                f"Epoch {epoch:02d}/{epochs:02d} | Train Loss: {avg_train_loss:.4f} | "
+                f"Val Loss: {avg_val_loss:.4f} | Val AUPRC: {macro_auprc:.4f} | "
+                f"Val AUROC: {macro_auroc:.4f}{tag}"
+            )
+
+        if early_stopping.early_stop:
+            if verbose:
+                logger.info(f"Early stopping triggered at epoch {epoch}. Best epoch was {early_stopping.best_epoch}.")
+            break
+
+    # Restore best checkpoint
+    if early_stopping.best_state_dict is not None:
+        model.load_state_dict(early_stopping.best_state_dict)
+
+    return {
+        "model": model,
+        "history": history,
+        "best_epoch": early_stopping.best_epoch,
+        "best_macro_auprc": early_stopping.best_macro_auprc,
+        "best_val_loss": early_stopping.best_val_loss,
     }

@@ -1,0 +1,53 @@
+{
+  "mean_semantic_norm_base": 2.1218,
+  "conditions": {
+    "I1": {},
+    "I2": {},
+    "I3": {
+      "42": {
+        "rank_norm_before": 0.3953,
+        "rank_norm_after": 0.4807,
+        "norm_ratio_before": 0.1863,
+        "norm_ratio_after": 0.2266,
+        "dev_logit_variance": 0.050632
+      },
+      "123": {
+        "rank_norm_before": 0.3897,
+        "rank_norm_after": 0.5578,
+        "norm_ratio_before": 0.1837,
+        "norm_ratio_after": 0.2629,
+        "dev_logit_variance": 0.090528
+      },
+      "2026": {
+        "rank_norm_before": 0.387,
+        "rank_norm_after": 0.4578,
+        "norm_ratio_before": 0.1824,
+        "norm_ratio_after": 0.2157,
+        "dev_logit_variance": 0.037887
+      }
+    },
+    "I4": {
+      "42": {
+        "rank_norm_before": 0.3953,
+        "rank_norm_after": 0.4298,
+        "norm_ratio_before": 0.1863,
+        "norm_ratio_after": 0.2026,
+        "dev_logit_variance": 0.01218
+      },
+      "123": {
+        "rank_norm_before": 0.3897,
+        "rank_norm_after": 0.5457,
+        "norm_ratio_before": 0.1837,
+        "norm_ratio_after": 0.2572,
+        "dev_logit_variance": 0.027014
+      },
+      "2026": {
+        "rank_norm_before": 0.387,
+        "rank_norm_after": 0.4275,
+        "norm_ratio_before": 0.1824,
+        "norm_ratio_after": 0.2015,
+        "dev_logit_variance": 0.00563
+      }
+    }
+  }
+}

@@ -163,7 +163,7 @@ def build_w5_dataset_bundle(
     train_feats_scaled = scaler.fit_transform(train_feats_arr)
     dev_feats_scaled = scaler.transform(dev_feats_arr)
 
-    # 3. Targets: T1 (Class index) & T2 (Regret vector)
+    # 3. Targets: T1 (Class index), T2 (Regret vector), and T3 (Multi-label Admissibility)
     train_t1 = np.array([K_TO_CLASS[int(k)] for k in df_train_sup["oracle_k_eps001"]], dtype=np.int64)
     dev_t1 = np.array([K_TO_CLASS[int(k)] for k in df_dev_sup["oracle_k_eps001"]], dtype=np.int64)
 
@@ -171,10 +171,22 @@ def build_w5_dataset_bundle(
     train_t2 = df_train_sup[regret_cols].values.astype(np.float32)
     dev_t2 = df_dev_sup[regret_cols].values.astype(np.float32)
 
+    admissibility_cols = [f"eps_good_k{k}" for k in K_CLASSES]
+    train_t3 = df_train_sup[admissibility_cols].values.astype(np.float32)
+    dev_t3 = df_dev_sup[admissibility_cols].values.astype(np.float32)
+
     # 4. Context token counts and routed F1 matrices for downstream policy lookup
     train_mat = pd.read_csv(train_mat_path)
     train_mat["question_id"] = train_mat["question_id"].astype(str)
     train_mat_map = {row["question_id"]: row for _, row in train_mat.iterrows()}
+
+    # Also build train_tokens_map for internal validation policy routing
+    train_tokens_map: Dict[Tuple[str, int], int] = {}
+    for _, row in train_mat.iterrows():
+        qid_str = str(row["question_id"])
+        for k in K_CLASSES:
+            if f"tokens_k{k}" in row:
+                train_tokens_map[(qid_str, k)] = int(row[f"tokens_k{k}"])
 
     # DEV matrix
     dev_tokens_map: Dict[Tuple[str, int], int] = {}
@@ -199,8 +211,10 @@ def build_w5_dataset_bundle(
         "features_raw": train_feats_arr,
         "t1_labels": train_t1,
         "t2_regrets": train_t2,
+        "t3_labels": train_t3,
         "supervision_df": df_train_sup,
         "train_mat_map": train_mat_map,
+        "tokens_map": train_tokens_map,
     }
 
     dev_bundle = {
@@ -213,12 +227,184 @@ def build_w5_dataset_bundle(
         "features_raw": dev_feats_arr,
         "t1_labels": dev_t1,
         "t2_regrets": dev_t2,
+        "t3_labels": dev_t3,
         "supervision_df": df_dev_sup,
         "dev_tokens_map": dev_tokens_map,
         "dev_f1_map": dev_f1_map,
+        "tokens_map": dev_tokens_map,
     }
 
     return train_bundle, dev_bundle, scaler
+
+
+def build_w5b_splits_and_bundles(
+    train_sup_path: Union[str, Path] = "results/week5/supervision/train_allocation_supervision.csv",
+    dev_sup_path: Union[str, Path] = "results/week5/supervision/dev_allocation_supervision.csv",
+    train_ret_path: Union[str, Path] = "results/week5/train_response_surface/train_retrieval.jsonl",
+    dev_ret_path: Union[str, Path] = "results/week2/raw/dev_retrieval.jsonl",
+    train_mat_path: Union[str, Path] = "results/week5/train_response_surface/train_fixed_k_matrix.csv",
+    dev_mat_path: Union[str, Path] = "results/week2/raw/dev_fixed_k_matrix.jsonl",
+    dev_feat_path: Optional[Union[str, Path]] = "results/week2/processed/dev_retrieval_features.jsonl",
+    seed: int = 42,
+    val_fraction: float = 0.15,
+    save_manifests: bool = True,
+    manifest_dir: Union[str, Path] = "results/week5/content_allocator/w5b/splits",
+) -> Tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any], StandardScaler]:
+    """Build paper-disjoint TRAIN-FIT and INTERNAL-VAL splits alongside original DEV.
+    
+    Requirements:
+    - 85% TRAIN papers -> TRAIN-FIT
+    - 15% TRAIN papers -> INTERNAL-VAL
+    - Scaler fitted ONLY on TRAIN-FIT
+    - DEV completely untouched and frozen
+    """
+    df_train_sup = pd.read_csv(train_sup_path)
+    df_dev_sup = pd.read_csv(dev_sup_path)
+    df_train_sup["question_id"] = df_train_sup["question_id"].astype(str)
+    df_dev_sup["question_id"] = df_dev_sup["question_id"].astype(str)
+    df_train_sup["paper_id"] = df_train_sup["paper_id"].astype(str)
+    df_dev_sup["paper_id"] = df_dev_sup["paper_id"].astype(str)
+
+    train_ret = load_retrieval_records(train_ret_path)
+    dev_ret = load_retrieval_records(dev_ret_path)
+
+    # Split TRAIN papers deterministically
+    unique_papers = np.sort(df_train_sup["paper_id"].unique())
+    rng = np.random.default_rng(seed)
+    shuffled_papers = rng.permutation(unique_papers)
+    n_val_papers = int(round(len(unique_papers) * val_fraction))
+    val_paper_set = set(shuffled_papers[:n_val_papers])
+    fit_paper_set = set(shuffled_papers[n_val_papers:])
+
+    assert fit_paper_set.isdisjoint(val_paper_set), "Overlap between TRAIN-FIT and INTERNAL-VAL papers!"
+
+    # Slice DataFrames
+    df_fit = df_train_sup[df_train_sup["paper_id"].isin(fit_paper_set)].copy().reset_index(drop=True)
+    df_val = df_train_sup[df_train_sup["paper_id"].isin(val_paper_set)].copy().reset_index(drop=True)
+
+    fit_qids = set(df_fit["question_id"])
+    val_qids = set(df_val["question_id"])
+    assert fit_qids.isdisjoint(val_qids), "Overlap between TRAIN-FIT and INTERNAL-VAL questions!"
+
+    if save_manifests:
+        m_path = Path(manifest_dir)
+        m_path.mkdir(parents=True, exist_ok=True)
+        df_fit[["question_id", "paper_id", "best_f1", "oracle_k_eps001"]].to_csv(
+            m_path / "train_fit_manifest.csv", index=False
+        )
+        df_val[["question_id", "paper_id", "best_f1", "oracle_k_eps001"]].to_csv(
+            m_path / "internal_val_manifest.csv", index=False
+        )
+        logger.info(f"Saved split manifests to {m_path}")
+
+    # Extract raw W4 features
+    def extract_features(qids: List[str], ret_dict: Dict[str, Any]) -> np.ndarray:
+        feats = []
+        for qid in qids:
+            f_dict = extract_w4_features_from_retrieval(ret_dict[qid])
+            feats.append([f_dict[c] for c in FEATURE_COLS])
+        return np.array(feats, dtype=np.float32)
+
+    fit_feats_raw = extract_features(df_fit["question_id"].tolist(), train_ret)
+    val_feats_raw = extract_features(df_val["question_id"].tolist(), train_ret)
+
+    # For DEV:
+    if dev_feat_path and Path(dev_feat_path).exists():
+        df_dev_feats = pd.read_json(dev_feat_path, lines=True)
+        df_dev_feats["question_id"] = df_dev_feats["question_id"].astype(str)
+        dev_feats_dict = {
+            row["question_id"]: [float(row[c]) for c in FEATURE_COLS]
+            for _, row in df_dev_feats.iterrows()
+        }
+        dev_feats_raw = np.array([dev_feats_dict[qid] for qid in df_dev_sup["question_id"]], dtype=np.float32)
+    else:
+        dev_feats_raw = extract_features(df_dev_sup["question_id"].tolist(), dev_ret)
+
+    # Fit scaler ONLY on TRAIN-FIT!
+    scaler = StandardScaler()
+    fit_feats_scaled = scaler.fit_transform(fit_feats_raw)
+    val_feats_scaled = scaler.transform(val_feats_raw)
+    dev_feats_scaled = scaler.transform(dev_feats_raw)
+
+    # Targets
+    admissibility_cols = [f"eps_good_k{k}" for k in K_CLASSES]
+    fit_t3 = df_fit[admissibility_cols].values.astype(np.float32)
+    val_t3 = df_val[admissibility_cols].values.astype(np.float32)
+    dev_t3 = df_dev_sup[admissibility_cols].values.astype(np.float32)
+
+    fit_t1 = np.array([K_TO_CLASS[int(k)] for k in df_fit["oracle_k_eps001"]], dtype=np.int64)
+    val_t1 = np.array([K_TO_CLASS[int(k)] for k in df_val["oracle_k_eps001"]], dtype=np.int64)
+    dev_t1 = np.array([K_TO_CLASS[int(k)] for k in df_dev_sup["oracle_k_eps001"]], dtype=np.int64)
+
+    regret_cols = [f"regret_k{k}" for k in K_CLASSES]
+    fit_t2 = df_fit[regret_cols].values.astype(np.float32)
+    val_t2 = df_val[regret_cols].values.astype(np.float32)
+    dev_t2 = df_dev_sup[regret_cols].values.astype(np.float32)
+
+    # Token and F1 maps
+    train_mat = pd.read_csv(train_mat_path)
+    train_mat["question_id"] = train_mat["question_id"].astype(str)
+    train_tokens_map: Dict[Tuple[str, int], int] = {}
+    for _, row in train_mat.iterrows():
+        qid_str = str(row["question_id"])
+        for k in K_CLASSES:
+            if f"tokens_k{k}" in row:
+                train_tokens_map[(qid_str, k)] = int(row[f"tokens_k{k}"])
+
+    dev_tokens_map: Dict[Tuple[str, int], int] = {}
+    with open(dev_mat_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                d = json.loads(line)
+                dev_tokens_map[(str(d["question_id"]), int(d["k"]))] = int(d.get("context_tokens", 0))
+
+    fit_bundle = {
+        "split": "train_fit",
+        "question_ids": df_fit["question_id"].tolist(),
+        "paper_ids": df_fit["paper_id"].tolist(),
+        "questions": [train_ret[qid]["question"] for qid in df_fit["question_id"]],
+        "passages": [train_ret[qid]["passages"][:10] for qid in df_fit["question_id"]],
+        "features": fit_feats_scaled,
+        "features_raw": fit_feats_raw,
+        "t1_labels": fit_t1,
+        "t2_regrets": fit_t2,
+        "t3_labels": fit_t3,
+        "supervision_df": df_fit,
+        "tokens_map": train_tokens_map,
+    }
+
+    val_bundle = {
+        "split": "internal_val",
+        "question_ids": df_val["question_id"].tolist(),
+        "paper_ids": df_val["paper_id"].tolist(),
+        "questions": [train_ret[qid]["question"] for qid in df_val["question_id"]],
+        "passages": [train_ret[qid]["passages"][:10] for qid in df_val["question_id"]],
+        "features": val_feats_scaled,
+        "features_raw": val_feats_raw,
+        "t1_labels": val_t1,
+        "t2_regrets": val_t2,
+        "t3_labels": val_t3,
+        "supervision_df": df_val,
+        "tokens_map": train_tokens_map,
+    }
+
+    dev_bundle = {
+        "split": "dev",
+        "question_ids": df_dev_sup["question_id"].tolist(),
+        "paper_ids": df_dev_sup["paper_id"].tolist(),
+        "questions": [dev_ret[qid]["question"] for qid in df_dev_sup["question_id"]],
+        "passages": [dev_ret[qid]["passages"][:10] for qid in df_dev_sup["question_id"]],
+        "features": dev_feats_scaled,
+        "features_raw": dev_feats_raw,
+        "t1_labels": dev_t1,
+        "t2_regrets": dev_t2,
+        "t3_labels": dev_t3,
+        "supervision_df": df_dev_sup,
+        "tokens_map": dev_tokens_map,
+        "dev_tokens_map": dev_tokens_map,
+    }
+
+    return fit_bundle, val_bundle, dev_bundle, scaler
 
 
 class ContentAllocatorDataset(Dataset):
@@ -255,6 +441,9 @@ class ContentAllocatorDataset(Dataset):
             "paper_id": pid,
             "t1_label": torch.tensor(t1_label, dtype=torch.long),
             "t2_regret": torch.tensor(t2_regret, dtype=torch.float32),
+            "t3_labels": torch.tensor(self.bundle["t3_labels"][idx], dtype=torch.float32)
+            if "t3_labels" in self.bundle
+            else torch.zeros(len(K_CLASSES), dtype=torch.float32),
             "condition": self.condition,
         }
 

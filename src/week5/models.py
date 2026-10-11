@@ -36,7 +36,13 @@ def mean_pooling(token_embeddings: torch.Tensor, attention_mask: torch.Tensor) -
 
 
 class PassageTransformerAggregator(nn.Module):
-    """Aggregates 10 passage-level representations via learnable rank embeddings and shallow self-attention."""
+    """Aggregates 10 passage-level representations via learnable rank embeddings and shallow self-attention.
+    
+    W5-B fix:
+    - Normal(0, 0.02) initialization for rank embeddings (norm ~0.39 vs semantic norm ~4.5)
+    - LayerNorm over (h_i + r_i)
+    - Normal(0, 0.02) initialization for pool query
+    """
 
     def __init__(
         self,
@@ -51,8 +57,12 @@ class PassageTransformerAggregator(nn.Module):
         self.d_model = d_model
         self.max_passages = max_passages
 
-        # Learnable rank embeddings for ranks 1..10
+        # Learnable rank embeddings for ranks 1..10 initialized with std=0.02
         self.rank_embeddings = nn.Embedding(max_passages, d_model)
+        nn.init.normal_(self.rank_embeddings.weight, mean=0.0, std=0.02)
+
+        # LayerNorm over semantic + rank representation
+        self.input_layer_norm = nn.LayerNorm(d_model)
 
         # Shallow Transformer encoder
         encoder_layer = nn.TransformerEncoderLayer(
@@ -65,7 +75,8 @@ class PassageTransformerAggregator(nn.Module):
         self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
 
         # Attention pooling query vector
-        self.pool_query = nn.Parameter(torch.randn(1, 1, d_model))
+        self.pool_query = nn.Parameter(torch.empty(1, 1, d_model))
+        nn.init.normal_(self.pool_query, mean=0.0, std=0.02)
 
     def forward(
         self,
@@ -80,7 +91,8 @@ class PassageTransformerAggregator(nn.Module):
         """
         B, N, D = passage_reps.shape
         ranks = torch.arange(N, device=passage_reps.device).unsqueeze(0).expand(B, N)
-        h = passage_reps + self.rank_embeddings(ranks)
+        r = self.rank_embeddings(ranks)
+        h = self.input_layer_norm(passage_reps + r)
 
         key_padding_mask = ~passage_mask if passage_mask is not None else None
         h_trans = self.transformer(h, src_key_padding_mask=key_padding_mask)
@@ -112,13 +124,13 @@ class TabularFeatureProjector(nn.Module):
 
 
 class ContentAwareAllocator(nn.Module):
-    """Unified Content-Aware Allocator supporting conditions I1, I2, I3, I4 and targets T1, T2."""
+    """Unified Content-Aware Allocator supporting conditions I1, I2, I3, I4 and targets T1, T2, T3."""
 
     def __init__(
         self,
         base_encoder_name: str = "sentence-transformers/all-MiniLM-L6-v2",
         condition: str = "I3",  # I1, I2, I3, I4
-        target_mode: str = "T1",  # T1 (classification), T2 (regret regression), or Both
+        target_mode: str = "T3",  # T1, T2, T3, or Both
         encoder_train_mode: str = "frozen",  # 'frozen' or 'top_layers'
         d_model: int = 384,
         feature_dim: int = 6,
@@ -129,7 +141,7 @@ class ContentAwareAllocator(nn.Module):
     ):
         super().__init__()
         assert condition in ["I1", "I2", "I3", "I4"], f"Unknown condition: {condition}"
-        assert target_mode in ["T1", "T2", "Both"], f"Unknown target_mode: {target_mode}"
+        assert target_mode in ["T1", "T2", "T3", "Both"], f"Unknown target_mode: {target_mode}"
         self.condition = condition
         self.target_mode = target_mode
         self.d_model = d_model
@@ -191,6 +203,18 @@ class ContentAwareAllocator(nn.Module):
         else:
             self.regret_head = None
 
+        # T3: Multi-label admissibility prediction [z2, z4, z5, z6, z8]
+        if target_mode in ["T3", "Both"]:
+            self.admissibility_head = nn.Sequential(
+                nn.Linear(self.hidden_in_dim, 128),
+                nn.LayerNorm(128),
+                nn.GELU(),
+                nn.Dropout(dropout),
+                nn.Linear(128, NUM_CLASSES),
+            )
+        else:
+            self.admissibility_head = None
+
     def _configure_encoder_training(self, mode: str) -> None:
         """Set freeze / top-layer policy on base encoder."""
         if mode == "frozen":
@@ -223,38 +247,45 @@ class ContentAwareAllocator(nn.Module):
         device = next(self.parameters()).device
 
         if self.condition in ["I1", "I2"]:
-            # Query-only condition
-            input_ids = batch["query_input_ids"].to(device)
-            attention_mask = batch["query_attention_mask"].to(device)
-
-            if self.encoder_train_mode == "frozen":
-                with torch.no_grad():
-                    out = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
+            if "query_embedding" in batch:
+                pooled = batch["query_embedding"].to(device)
             else:
-                out = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
+                # Query-only condition
+                input_ids = batch["query_input_ids"].to(device)
+                attention_mask = batch["query_attention_mask"].to(device)
 
-            pooled = mean_pooling(out.last_hidden_state, attention_mask)
+                if self.encoder_train_mode == "frozen":
+                    with torch.no_grad():
+                        out = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
+                else:
+                    out = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
+
+                pooled = mean_pooling(out.last_hidden_state, attention_mask)
 
         elif self.condition in ["I3", "I4"]:
-            # Query + Top-10 Passages condition
-            input_ids = batch["passage_input_ids"].to(device)  # (B, 10, L)
-            attention_mask = batch["passage_attention_mask"].to(device)  # (B, 10, L)
             passage_mask = batch.get("passage_mask")
             if passage_mask is not None:
                 passage_mask = passage_mask.to(device)
 
-            B, N, L = input_ids.shape
-            input_ids_flat = input_ids.view(B * N, L)
-            attention_mask_flat = attention_mask.view(B * N, L)
-
-            if self.encoder_train_mode == "frozen":
-                with torch.no_grad():
-                    out = self.encoder(input_ids=input_ids_flat, attention_mask=attention_mask_flat)
+            if "passage_embeddings" in batch:
+                reps = batch["passage_embeddings"].to(device)
             else:
-                out = self.encoder(input_ids=input_ids_flat, attention_mask=attention_mask_flat)
+                # Query + Top-10 Passages condition
+                input_ids = batch["passage_input_ids"].to(device)  # (B, 10, L)
+                attention_mask = batch["passage_attention_mask"].to(device)  # (B, 10, L)
 
-            reps_flat = mean_pooling(out.last_hidden_state, attention_mask_flat)  # (B*10, D)
-            reps = reps_flat.view(B, N, self.d_model)  # (B, 10, D)
+                B, N, L = input_ids.shape
+                input_ids_flat = input_ids.view(B * N, L)
+                attention_mask_flat = attention_mask.view(B * N, L)
+
+                if self.encoder_train_mode == "frozen":
+                    with torch.no_grad():
+                        out = self.encoder(input_ids=input_ids_flat, attention_mask=attention_mask_flat)
+                else:
+                    out = self.encoder(input_ids=input_ids_flat, attention_mask=attention_mask_flat)
+
+                reps_flat = mean_pooling(out.last_hidden_state, attention_mask_flat)  # (B*10, D)
+                reps = reps_flat.view(B, N, self.d_model)  # (B, 10, D)
 
             pooled = self.aggregator(reps, passage_mask=passage_mask)  # (B, D)
 
@@ -279,6 +310,8 @@ class ContentAwareAllocator(nn.Module):
             out["logits"] = self.classifier_head(state)
         if self.regret_head is not None:
             out["pred_regret"] = self.regret_head(state)
+        if self.admissibility_head is not None:
+            out["admissibility_logits"] = self.admissibility_head(state)
 
         return out
 
@@ -286,13 +319,31 @@ class ContentAwareAllocator(nn.Module):
         self,
         batch: Dict[str, Any],
         epsilon: float = 0.01,
+        tau: float = 0.50,
     ) -> np.ndarray:
-        """Inference policy returning selected k in {2, 4, 5, 6, 8} for each example."""
+        """Inference policy returning selected k in {2, 4, 5, 6, 8} for each example.
+        
+        For T3:
+        Smallest k such that p_k >= tau, fallback to k=8.
+        """
         self.eval()
         with torch.no_grad():
             outputs = self.forward(batch)
 
-            if self.target_mode == "T1":
+            if self.target_mode == "T3":
+                logits = outputs["admissibility_logits"]  # (B, 5)
+                probs = torch.sigmoid(logits).cpu().numpy()  # (B, 5)
+                k_preds = []
+                for row in probs:
+                    # Select smallest k with p_k >= tau
+                    valid_ks = [K_CLASSES[idx] for idx, p in enumerate(row) if p >= tau]
+                    if valid_ks:
+                        k_preds.append(min(valid_ks))
+                    else:
+                        k_preds.append(8)
+                return np.array(k_preds)
+
+            elif self.target_mode == "T1":
                 logits = outputs["logits"]  # (B, 5)
                 class_preds = torch.argmax(logits, dim=-1).cpu().numpy()
                 k_preds = np.array([CLASS_TO_K[c] for c in class_preds])
@@ -312,9 +363,25 @@ class ContentAwareAllocator(nn.Module):
                 return np.array(k_preds)
 
             else:
-                # Default to T1 if both exist
+                # Default fallback
+                if "admissibility_logits" in outputs:
+                    logits = outputs["admissibility_logits"]
+                    probs = torch.sigmoid(logits).cpu().numpy()
+                    k_preds = []
+                    for row in probs:
+                        valid_ks = [K_CLASSES[idx] for idx, p in enumerate(row) if p >= tau]
+                        k_preds.append(min(valid_ks) if valid_ks else 8)
+                    return np.array(k_preds)
                 class_preds = torch.argmax(outputs["logits"], dim=-1).cpu().numpy()
                 return np.array([CLASS_TO_K[c] for c in class_preds])
+
+    def predict_admissibility_probs(self, batch: Dict[str, Any]) -> np.ndarray:
+        """Inference method returning sigmoid probabilities (B, 5) for T3."""
+        self.eval()
+        with torch.no_grad():
+            outputs = self.forward(batch)
+            logits = outputs["admissibility_logits"]
+            return torch.sigmoid(logits).cpu().numpy()
 
     def get_parameter_counts(self) -> Dict[str, int]:
         """Return total and trainable parameter counts."""

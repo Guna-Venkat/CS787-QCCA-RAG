@@ -21,11 +21,14 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 from sklearn.metrics import (
+    average_precision_score,
     balanced_accuracy_score,
+    brier_score_loss,
     confusion_matrix,
     f1_score,
     mean_absolute_error,
     precision_recall_fscore_support,
+    roc_auc_score,
 )
 
 from src.week5.data import K_CLASSES, CLASS_TO_K
@@ -164,55 +167,235 @@ def evaluate_regression_diagnostics(
     }
 
 
+def evaluate_multilabel_diagnostics(
+    y_true: np.ndarray,
+    y_pred_probs: np.ndarray,
+    tau: float = 0.50,
+) -> Dict[str, Any]:
+    """Compute multi-label classification diagnostics for T3.
+
+    Args:
+        y_true: (N, 5) binary indicators (0 or 1)
+        y_pred_probs: (N, 5) sigmoid probabilities
+        tau: Decision threshold for binary metrics
+    """
+    y_true = np.asarray(y_true, dtype=np.int64)
+    y_pred_probs = np.asarray(y_pred_probs, dtype=np.float32)
+    assert y_true.shape == y_pred_probs.shape, f"Shape mismatch: {y_true.shape} vs {y_pred_probs.shape}"
+
+    per_budget_auroc: Dict[str, float] = {}
+    per_budget_auprc: Dict[str, float] = {}
+    per_budget_metrics: Dict[str, Dict[str, float]] = {}
+
+    aurocs: List[float] = []
+    auprcs: List[float] = []
+
+    for idx, k in enumerate(K_CLASSES):
+        yt = y_true[:, idx]
+        yp = y_pred_probs[:, idx]
+
+        # Check if both classes are present
+        if len(np.unique(yt)) > 1:
+            auc = float(roc_auc_score(yt, yp))
+            ap = float(average_precision_score(yt, yp))
+        else:
+            auc = 0.5
+            ap = float(np.mean(yt))
+
+        aurocs.append(auc)
+        auprcs.append(ap)
+        per_budget_auroc[f"k{k}"] = round(auc, 4)
+        per_budget_auprc[f"k{k}"] = round(ap, 4)
+
+        # Binary metrics at tau
+        pred_bin = (yp >= tau).astype(np.int64)
+        prec, rec, f1, _ = precision_recall_fscore_support(yt, pred_bin, average="binary", zero_division=0)
+        brier = float(np.mean((yp - yt) ** 2))
+
+        per_budget_metrics[f"k{k}"] = {
+            "precision": round(float(prec), 4),
+            "recall": round(float(rec), 4),
+            "f1": round(float(f1), 4),
+            "brier": round(brier, 4),
+            "positive_rate": round(float(np.mean(yt)), 4),
+            "predicted_positive_rate": round(float(np.mean(pred_bin)), 4),
+        }
+
+    macro_auroc = float(np.mean(aurocs))
+    macro_auprc = float(np.mean(auprcs))
+
+    try:
+        micro_auprc = float(average_precision_score(y_true, y_pred_probs, average="micro"))
+    except Exception:
+        micro_auprc = macro_auprc
+
+    overall_brier = float(np.mean((y_pred_probs - y_true) ** 2))
+
+    return {
+        "macro_auroc": round(macro_auroc, 4),
+        "macro_auprc": round(macro_auprc, 4),
+        "micro_auprc": round(micro_auprc, 4),
+        "overall_brier": round(overall_brier, 4),
+        "per_budget_auroc": per_budget_auroc,
+        "per_budget_auprc": per_budget_auprc,
+        "per_budget_metrics": per_budget_metrics,
+    }
+
+
+def select_tau_internal_val(
+    val_supervision_df: pd.DataFrame,
+    val_pred_probs: np.ndarray,
+    val_tokens_map: Optional[Dict[Tuple[str, int], int]] = None,
+    tau_grid: Optional[List[float]] = None,
+    quality_tolerance: float = 0.005,
+) -> Dict[str, Any]:
+    """Select inference probability threshold tau on INTERNAL-VAL using frozen decision rule:
+
+    Grid: tau in {0.30, 0.40, 0.50, 0.60, 0.70}
+    Rule:
+    1. Prefer policies whose INTERNAL-VAL mean answer F1 is within 0.005 absolute of static k=8 INTERNAL-VAL F1.
+    2. Among those, choose the policy with lowest mean context tokens.
+    3. If none satisfy the 0.005 quality tolerance, select the highest-F1 policy and report constraint_met = False.
+    """
+    if tau_grid is None:
+        tau_grid = [0.30, 0.40, 0.50, 0.60, 0.70]
+
+    # Evaluate static k=8 on INTERNAL-VAL as anchor
+    k8_preds = [8] * len(val_supervision_df)
+    k8_eval = evaluate_allocation_policy(val_supervision_df, k8_preds, val_tokens_map)
+    static_k8_f1 = k8_eval["mean_answer_f1"]
+
+    grid_results = []
+
+    for tau in tau_grid:
+        k_preds = []
+        fallbacks = []
+        for row in val_pred_probs:
+            valid_ks = [K_CLASSES[idx] for idx, p in enumerate(row) if p >= tau]
+            if valid_ks:
+                k_preds.append(min(valid_ks))
+                fallbacks.append(0.0)
+            else:
+                k_preds.append(8)
+                fallbacks.append(1.0)
+
+        policy_eval = evaluate_allocation_policy(val_supervision_df, k_preds, val_tokens_map)
+        fallback_rate = round(float(np.mean(fallbacks) * 100.0), 2)
+
+        grid_results.append({
+            "tau": round(float(tau), 2),
+            "mean_answer_f1": policy_eval["mean_answer_f1"],
+            "mean_context_tokens": policy_eval["mean_context_tokens"],
+            "mean_selected_k": policy_eval["mean_selected_k"],
+            "mean_oracle_regret": policy_eval["mean_oracle_regret"],
+            "fallback_rate": fallback_rate,
+            "zero_regret_pct": policy_eval["zero_regret_pct"],
+            "token_reduction_pct_vs_k8": policy_eval["token_reduction_pct_vs_k8"],
+            "policy_eval": policy_eval,
+        })
+
+    # Decision rule: within 0.005 of static k=8 F1
+    admissible = [r for r in grid_results if r["mean_answer_f1"] >= static_k8_f1 - quality_tolerance]
+
+    if admissible:
+        # Lowest mean context tokens (tie break: higher F1)
+        best_choice = sorted(admissible, key=lambda x: (x["mean_context_tokens"], -x["mean_answer_f1"]))[0]
+        constraint_met = True
+    else:
+        # Highest F1
+        best_choice = sorted(grid_results, key=lambda x: -x["mean_answer_f1"])[0]
+        constraint_met = False
+
+    return {
+        "selected_tau": best_choice["tau"],
+        "constraint_met": constraint_met,
+        "static_k8_f1": static_k8_f1,
+        "grid_results": grid_results,
+        "selected_result": best_choice,
+    }
+
+
 def compute_paper_clustered_bootstrap(
     paper_ids: List[str],
     policy_f1s: np.ndarray,
     baseline_f1s: np.ndarray,
+    policy_tokens: Optional[np.ndarray] = None,
+    baseline_tokens: Optional[np.ndarray] = None,
     n_bootstrap: int = 2000,
     seed: int = 42,
     alpha: float = 0.05,
-) -> Dict[str, float]:
-    """Compute paper-clustered bootstrap confidence interval for Delta F1.
+) -> Dict[str, Any]:
+    """Compute paper-clustered bootstrap confidence interval for Delta F1 and Delta Tokens.
 
     Resamples at the paper level (clustering questions by paper_id) to account for
     intra-paper question correlations.
     """
     rng = np.random.default_rng(seed)
-    df = pd.DataFrame({
+    df_dict = {
         "paper_id": paper_ids,
         "policy_f1": policy_f1s,
         "baseline_f1": baseline_f1s,
-    })
+    }
+    has_tokens = policy_tokens is not None and baseline_tokens is not None
+    if has_tokens:
+        df_dict["policy_tokens"] = policy_tokens
+        df_dict["baseline_tokens"] = baseline_tokens
+
+    df = pd.DataFrame(df_dict)
     unique_papers = df["paper_id"].unique()
     n_papers = len(unique_papers)
 
-    # Pre-aggregate mean F1 differences per paper for ultra-fast sampling
-    grouped = df.groupby("paper_id")[["policy_f1", "baseline_f1"]].agg(["sum", "count"])
+    # Pre-aggregate sums per paper
+    cols_to_agg = ["policy_f1", "baseline_f1"]
+    if has_tokens:
+        cols_to_agg.extend(["policy_tokens", "baseline_tokens"])
+
+    grouped = df.groupby("paper_id")[cols_to_agg].agg(["sum", "count"])
     paper_policy_sums = grouped[("policy_f1", "sum")].values
     paper_baseline_sums = grouped[("baseline_f1", "sum")].values
     paper_counts = grouped[("policy_f1", "count")].values
 
-    observed_delta = float(np.mean(policy_f1s) - np.mean(baseline_f1s))
-    bootstrap_deltas = []
+    if has_tokens:
+        paper_policy_tok_sums = grouped[("policy_tokens", "sum")].values
+        paper_baseline_tok_sums = grouped[("baseline_tokens", "sum")].values
+
+    observed_delta_f1 = float(np.mean(policy_f1s) - np.mean(baseline_f1s))
+    bootstrap_deltas_f1 = []
+    bootstrap_deltas_tok = []
 
     for _ in range(n_bootstrap):
         sampled_indices = rng.choice(n_papers, size=n_papers, replace=True)
-        tot_policy = np.sum(paper_policy_sums[sampled_indices])
-        tot_baseline = np.sum(paper_baseline_sums[sampled_indices])
         tot_q = np.sum(paper_counts[sampled_indices])
         if tot_q > 0:
-            delta_b = (tot_policy - tot_baseline) / tot_q
-            bootstrap_deltas.append(delta_b)
+            tot_p_f1 = np.sum(paper_policy_sums[sampled_indices])
+            tot_b_f1 = np.sum(paper_baseline_sums[sampled_indices])
+            bootstrap_deltas_f1.append((tot_p_f1 - tot_b_f1) / tot_q)
 
-    bootstrap_deltas = np.array(bootstrap_deltas)
-    ci_lower = float(np.percentile(bootstrap_deltas, 100.0 * (alpha / 2.0)))
-    ci_upper = float(np.percentile(bootstrap_deltas, 100.0 * (1.0 - alpha / 2.0)))
-    p_value = float(np.mean(bootstrap_deltas <= 0.0) if observed_delta > 0 else np.mean(bootstrap_deltas >= 0.0))
+            if has_tokens:
+                tot_p_tok = np.sum(paper_policy_tok_sums[sampled_indices])
+                tot_b_tok = np.sum(paper_baseline_tok_sums[sampled_indices])
+                bootstrap_deltas_tok.append((tot_p_tok - tot_b_tok) / tot_q)
 
-    return {
-        "observed_delta_f1": round(observed_delta, 4),
-        "ci_lower_95": round(ci_lower, 4),
-        "ci_upper_95": round(ci_upper, 4),
-        "p_value": round(p_value, 4),
+    boot_f1 = np.array(bootstrap_deltas_f1)
+    ci_lower_f1 = float(np.percentile(boot_f1, 100.0 * (alpha / 2.0)))
+    ci_upper_f1 = float(np.percentile(boot_f1, 100.0 * (1.0 - alpha / 2.0)))
+    p_val_f1 = float(np.mean(boot_f1 <= 0.0) if observed_delta_f1 > 0 else np.mean(boot_f1 >= 0.0))
+
+    out: Dict[str, Any] = {
+        "observed_delta_f1": round(observed_delta_f1, 4),
+        "ci_lower_95": round(ci_lower_f1, 4),
+        "ci_upper_95": round(ci_upper_f1, 4),
+        "p_value": round(p_val_f1, 4),
         "n_bootstrap": n_bootstrap,
     }
+
+    if has_tokens:
+        boot_tok = np.array(bootstrap_deltas_tok)
+        observed_delta_tok = float(np.mean(policy_tokens) - np.mean(baseline_tokens))
+        ci_lower_tok = float(np.percentile(boot_tok, 100.0 * (alpha / 2.0)))
+        ci_upper_tok = float(np.percentile(boot_tok, 100.0 * (1.0 - alpha / 2.0)))
+        out["observed_delta_tokens"] = round(observed_delta_tok, 1)
+        out["tokens_ci_lower_95"] = round(ci_lower_tok, 1)
+        out["tokens_ci_upper_95"] = round(ci_upper_tok, 1)
+
+    return out
