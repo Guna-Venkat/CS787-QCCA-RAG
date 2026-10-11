@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "tag": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "device": "cuda",
+  "n_train_samples": 16,
+  "n_dev_samples": 8,
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+  "t1_train_loss": 2.0013,
+  "t1_dev_loss": 1.6185,
+  "t1_dev_policy_f1": 0.374,
+  "t2_train_loss": 0.3447,
+  "t2_dev_loss": 0.2532,
+  "t2_dev_policy_f1": 0.4534,
+  "t1_param_counts": {
+    "total_params": 25529093,
+    "trainable_params": 2815877,
+    "frozen_encoder_params": 22713216,
+    "trainable_head_and_aggregator_params": 2815877
+  },
+  "checkpoint_restored": true,
+  "oom_detected": false
+}

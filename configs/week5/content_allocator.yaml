@@ -1,0 +1,50 @@
+# Week 5: Content-Aware Adaptive Representation Allocation Configuration
+# Evaluates whether retrieved passage semantics improve allocation over query-only and handcrafted features.
+
+experiment:
+  name: "week5_content_aware_allocator"
+  description: "Information ablation (I1-I4) across target formulations (T1-T2) for SARA adaptive evidence allocation"
+  seeds: [42, 123, 2026]
+  primary_seed: 42
+  device: "cuda"
+  epsilon: 0.01
+
+model:
+  base_encoder_name: "sentence-transformers/all-MiniLM-L6-v2"
+  encoder_train_mode: "frozen"
+  max_seq_length: 256
+  d_model: 384
+  nhead: 4
+  num_layers: 2
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_passages: 10
+  feature_dim: 6
+
+training:
+  optimizer: "adamw"
+  lr: 0.001
+  weight_decay: 0.01
+  batch_size: 32
+  max_epochs: 25
+  patience: 4
+  grad_clip: 1.0
+  loss_t1: "weighted_cross_entropy"
+  loss_t2: "smooth_l1"
+
+evaluation:
+  bootstrap_samples: 2000
+  k_classes: [2, 4, 5, 6, 8]
+  static_k8_ref_f1: 0.3950
+  oracle_ref_f1: 0.4895
+  static_k8_ref_tokens: 1750.5
+
+paths:
+  train_supervision: "results/week5/supervision/train_allocation_supervision.csv"
+  dev_supervision: "results/week5/supervision/dev_allocation_supervision.csv"
+  train_retrieval: "results/week5/train_response_surface/train_retrieval.jsonl"
+  dev_retrieval: "results/week2/raw/dev_retrieval.jsonl"
+  train_matrix: "results/week5/train_response_surface/train_fixed_k_matrix.csv"
+  dev_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_features: "results/week2/processed/dev_retrieval_features.jsonl"
+  output_dir: "results/week5/content_allocator"

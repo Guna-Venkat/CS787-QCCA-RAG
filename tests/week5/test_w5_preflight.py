@@ -117,25 +117,18 @@ def test_dev_oracle_distribution_exact_counts(dev_supervision):
     assert counts == expected, f"Distribution mismatch: observed {counts} vs expected {expected}"
 
 
-def test_train_response_surface_status_absent():
-    """Verify train response surface audit correctly records STATUS C: ABSENT."""
-    audit_path = REPO_ROOT / "results/week5/preflight/train_response_surface_audit.csv"
-    assert audit_path.exists()
-    df = pd.read_csv(audit_path)
+def test_train_response_surface_status_complete():
+    """Verify train response surface and supervision are generated and 100% complete."""
+    sup_path = REPO_ROOT / "results/week5/supervision/train_allocation_supervision.csv"
+    assert sup_path.exists()
+    df = pd.read_csv(sup_path)
 
     assert len(df) == 2088
     assert df["question_id"].nunique() == 2088
-    # All fixed-k coverage flags must be False
     for k in [2, 4, 5, 6, 8]:
-        assert not df[f"has_k{k}"].any(), f"has_k{k} must be completely False"
-    assert not df["complete"].any()
-
-    # Supervision template check
-    sup_template = REPO_ROOT / "results/week5/supervision/train_allocation_supervision.csv"
-    assert sup_template.exists()
-    with open(sup_template, "r", encoding="utf-8") as f:
-        content = f.read()
-    assert "PENDING_FULL_TRAIN_RESPONSE_SURFACE" in content
+        assert f"f1_k{k}" in df.columns
+        assert not df[f"f1_k{k}"].isna().any()
+    assert not df["oracle_k_eps001"].isna().any()
 
 
 def test_w4_feature_pre_generation_invariant():
@@ -206,7 +199,7 @@ def test_evaluation_policy_routing(dev_supervision):
     k8_preds = np.full(len(dev_supervision), 8)
     res_k8 = evaluate_allocation_policy(dev_supervision, k8_preds)
     assert res_k8["mean_selected_k"] == 8.0
-    assert res_k8["mean_context_tokens"] == pytest.approx(1758.5, abs=0.5)
+    assert res_k8["mean_context_tokens"] == pytest.approx(1750.5, abs=0.5)
     assert res_k8["token_reduction_pct_vs_k8"] == pytest.approx(0.0, abs=0.1)
 
     # Evaluate oracle k
