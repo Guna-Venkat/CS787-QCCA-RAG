@@ -1,0 +1,9 @@
+Model,Comparison,observed_delta_f1,ci_lower_95,ci_upper_95,p_value,n_bootstrap
+I1-T1,vs Static k=8,-0.0175,-0.0491,0.0135,0.131,2000
+I1-T2,vs Static k=8,0.0,0.0,0.0,1.0,2000
+I2-T1,vs Static k=8,-0.0219,-0.055,0.0107,0.085,2000
+I2-T2,vs Static k=8,0.0007,-0.0187,0.019,0.477,2000
+I3-T1,vs Static k=8,0.0,0.0,0.0,1.0,2000
+I3-T2,vs Static k=8,0.0,0.0,0.0,1.0,2000
+I4-T1,vs Static k=8,-0.0325,-0.0638,-0.0025,0.021,2000
+I4-T2,vs Static k=8,0.0,0.0,0.0,1.0,2000
