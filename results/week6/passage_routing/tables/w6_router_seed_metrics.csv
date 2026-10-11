@@ -1,0 +1,4 @@
+seed,best_epoch,val_map,val_recall_at_2,val_recall_at_4,val_recall_at_6,checkpoint_path
+42,15,0.5741118153227709,0.3233182769356403,0.5614683815648446,0.7408436686571734,results/week6/passage_routing/router_models/r2_router_seed_42.pt
+123,15,0.5746516081423637,0.3210138825090594,0.565058949624866,0.7473778900627774,results/week6/passage_routing/router_models/r2_router_seed_123.pt
+2026,12,0.5708555503301714,0.3262619302812229,0.565112540192926,0.7511866482927575,results/week6/passage_routing/router_models/r2_router_seed_2026.pt

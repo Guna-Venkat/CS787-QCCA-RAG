@@ -74,13 +74,18 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 
-# Set working directory to project root
-PROJECT_ROOT = Path.cwd()
+# Resolve Project Root across any working directory (e.g. repo root or notebooks/week6)
+_curr = Path.cwd().resolve()
+candidates = [_curr, _curr.parent, _curr.parent.parent]
+PROJECT_ROOT = next((p for p in candidates if (p / "src").is_dir() and (p / "configs").is_dir()), _curr)
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+os.chdir(PROJECT_ROOT)
+
 SARA_ROOT = PROJECT_ROOT / "Baselines/SARA-main"
 if str(SARA_ROOT) not in sys.path:
-    sys.path.insert(0, str(SARA_ROOT))
+    sys.path.append(str(SARA_ROOT))
+
 import src
 if hasattr(src, "__path__") and str(SARA_ROOT / "src") not in src.__path__:
     src.__path__.append(str(SARA_ROOT / "src"))
@@ -394,11 +399,12 @@ for k in BUDGETS:
         "per_query_tokens": r0_canonical[k]["tokens_list"],
     }
 
-# Execute R1 and R2
+# Execute R1 and R2 with per-policy resumable caching
 for r_name in ["R1_semantic_topk", "R2_learned_router"]:
     for k in BUDGETS:
         print(f"\\n--- Generating SARA Answers for {r_name} at k={k} ---")
         sel_list = routing_assignments[r_name][k]
+        policy_cache = Path(cfg["paths"]["sara_generations_dir"]) / f"cache_{r_name}_k{k}.jsonl"
         res = run_sara_generation_for_routed_policy(
             sara_model=sara_model,
             sara_tokenizer=sara_tokenizer,
@@ -407,6 +413,7 @@ for r_name in ["R1_semantic_topk", "R2_learned_router"]:
             cached_embeddings=cached_embeddings,
             k=k,
             device=DEVICE,
+            cache_path=policy_cache,
         )
         eval_results[r_name][k] = res
         print(f"  Result: F1 = {res['mean_f1']:.4f} +/- {res['std_f1']:.4f}, tokens = {res['mean_tokens']:.1f}")
@@ -546,8 +553,9 @@ df_diversity.to_csv(Path(cfg["paths"]["tables_dir"]) / "w6_routing_diversity.csv
 display(df_diversity)
 
 # Plot diversity
+df_diversity["pair"] = df_diversity["router_A"] + " vs " + df_diversity["router_B"]
 plt.figure(figsize=(10, 5))
-sns.barplot(data=df_diversity, x="k", y="disagreement_rate", hue="router_A" + " vs " + df_diversity["router_B"])
+sns.barplot(data=df_diversity, x="k", y="disagreement_rate", hue="pair")
 plt.title("Pairwise Selection Disagreement Rate across Fixed Budgets", fontsize=12)
 plt.ylabel("Disagreement Rate (Fraction !=)", fontsize=10)
 plt.xlabel("Fidelity Budget k", fontsize=10)

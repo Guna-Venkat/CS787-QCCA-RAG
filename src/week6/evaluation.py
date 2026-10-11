@@ -241,24 +241,45 @@ def compute_qa_answer_metrics(
     gold_answers: List[str],
     gold_reformatted: Optional[List[str]] = None,
 ) -> Dict[str, float]:
-    """Calculate token F1, exact match, and ROUGE-L with max reduction over gold answers."""
+    """Calculate token F1, exact match, and ROUGE-L with max reduction over gold answers.
+
+    Handles empty predictions honestly without crashing:
+    - Empty prediction against non-empty references receives F1=0, EM=0, ROUGE=0.
+    - Never calls ROUGE with an empty hypothesis.
+    """
+    pred_str = str(prediction).strip() if prediction is not None else ""
+
     targets = []
     if gold_reformatted:
-        targets.extend([str(a) for a in gold_reformatted if a is not None])
+        targets.extend([str(a).strip() for a in gold_reformatted if a is not None])
     if gold_answers:
-        targets.extend([str(a) for a in gold_answers if a is not None])
-    if not targets:
-        targets = [""]
+        targets.extend([str(a).strip() for a in gold_answers if a is not None])
+    valid_targets = [t for t in targets if t]
+
+    if not valid_targets:
+        # Unanswerable reference set
+        if pred_str == "":
+            return {"token_f1": 1.0, "exact_match": 1.0, "rouge_l": 1.0}
+        else:
+            return {"token_f1": 0.0, "exact_match": 0.0, "rouge_l": 0.0}
+
+    # Empty prediction against non-empty answer: count honestly as 0 without calling ROUGE
+    if pred_str == "":
+        return {"token_f1": 0.0, "exact_match": 0.0, "rouge_l": 0.0}
 
     f1_vals, em_vals, rouge_vals = [], [], []
-    for tgt in targets:
-        _, _, f1 = compute_f1(prediction, tgt)
+    for tgt in valid_targets:
+        _, _, f1 = compute_f1(pred_str, tgt)
         f1_vals.append(f1)
-        em = 1.0 if exact_match_score(prediction, tgt) else 0.0
+        em = 1.0 if exact_match_score(pred_str, tgt) else 0.0
         em_vals.append(em)
+
         try:
-            r = rougel_score(prediction, tgt)
-            rouge_vals.append(float(r))
+            r = rougel_score(pred_str, tgt)
+            if r is not None and not np.isnan(r):
+                rouge_vals.append(float(r))
+            else:
+                rouge_vals.append(0.0)
         except Exception:
             rouge_vals.append(0.0)
 
@@ -302,78 +323,124 @@ def run_sara_generation_for_routed_policy(
     k: int,
     device: str = "cuda" if torch.cuda.is_available() else "cpu",
     max_new_tokens: int = 64,
+    cache_path: Optional[Union[str, Path]] = None,
 ) -> Dict[str, Any]:
     """Execute real SARA generation for a routed policy at fixed budget k.
 
     Strictly preserves:
     - exactly k passages as natural text in original BM25 rank order
     - exactly 10 - k unselected passages as <COMPRESS> tokens mapped to cached SFR embeddings
+    - Resumable: skips already-completed questions if cache_path is provided.
     """
     sara_model.eval()
     pad_id = sara_tokenizer.pad_token_id if sara_tokenizer.pad_token_id is not None else sara_tokenizer.eos_token_id
+
+    completed_by_qid: Dict[str, Dict[str, Any]] = {}
+    if cache_path and Path(cache_path).exists():
+        with open(cache_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    try:
+                        rec = json.loads(line)
+                        completed_by_qid[str(rec["question_id"])] = rec
+                    except Exception:
+                        pass
+        if completed_by_qid:
+            logger.info(f"Loaded {len(completed_by_qid)} existing records from cache: {cache_path}")
 
     per_query_f1s = []
     per_query_tokens = []
     per_query_latencies = []
     predictions = []
 
-    for idx, item in enumerate(dev_records):
-        qid = str(item["question_id"])
-        question_text = item["question"]
-        passages = item["passages"][:10]
-        gold_answers = item.get("gold_answers", [])
-        gold_reformatted = item.get("gold_answers_reformatted", gold_answers)
+    try:
+        from tqdm import tqdm
+        iterator = enumerate(tqdm(dev_records, desc=f"Evaluating k={k}", leave=True))
+    except ImportError:
+        iterator = enumerate(dev_records)
 
-        selected_indices = selected_indices_list[idx]
-        validate_routing_assignment(selected_indices, k=k, total_passages=len(passages))
+    cache_file = open(cache_path, "a", encoding="utf-8") if cache_path else None
 
-        formatted_prompt, context_tokens, unselected_indices = build_routed_sara_prompt(
-            question=question_text,
-            passages=passages,
-            selected_indices=selected_indices,
-            tokenizer=sara_tokenizer,
-        )
+    try:
+        for idx, item in iterator:
+            qid = str(item["question_id"])
+            question_text = item["question"]
+            passages = item["passages"][:10]
+            gold_answers = item.get("gold_answers", [])
+            gold_reformatted = item.get("gold_answers_reformatted", gold_answers)
 
-        inputs = sara_tokenizer(formatted_prompt, return_tensors="pt").to(device)
+            selected_indices = selected_indices_list[idx]
+            validate_routing_assignment(selected_indices, k=k, total_passages=len(passages))
 
-        # Slice cached SFR embeddings for unselected passages
-        qid_embeds = cached_embeddings[qid]
-        comp_embeds = extract_routed_sara_embeddings(qid_embeds, selected_indices).to(
-            device=device, dtype=sara_model.dtype
-        )
+            # If already in cache, reuse directly without GPU forward pass
+            if qid in completed_by_qid:
+                cached_rec = completed_by_qid[qid]
+                f1_val = float(cached_rec["token_f1"])
+                tokens_val = int(cached_rec["context_tokens"])
+                lat_val = float(cached_rec.get("latency", 0.0))
 
-        t0 = time.time()
-        with torch.no_grad():
-            outputs = sara_model.generate(
-                **inputs,
-                retrieval_embeds=comp_embeds,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-                pad_token_id=pad_id,
-                eos_token_id=sara_tokenizer.eos_token_id,
+                per_query_f1s.append(f1_val)
+                per_query_tokens.append(tokens_val)
+                per_query_latencies.append(lat_val)
+                predictions.append(cached_rec)
+                continue
+
+            formatted_prompt, context_tokens, unselected_indices = build_routed_sara_prompt(
+                question=question_text,
+                passages=passages,
+                selected_indices=selected_indices,
+                tokenizer=sara_tokenizer,
             )
-        latency = time.time() - t0
 
-        pred_texts = extract_generated_text(sara_tokenizer, outputs)
-        prediction = pred_texts[0].strip() if pred_texts else ""
+            inputs = sara_tokenizer(formatted_prompt, return_tensors="pt").to(device)
 
-        qa_metrics = compute_qa_answer_metrics(
-            prediction=prediction,
-            gold_answers=gold_answers,
-            gold_reformatted=gold_reformatted,
-        )
+            # Slice cached SFR embeddings for unselected passages
+            qid_embeds = cached_embeddings[qid]
+            comp_embeds = extract_routed_sara_embeddings(qid_embeds, selected_indices).to(
+                device=device, dtype=sara_model.dtype
+            )
 
-        per_query_f1s.append(qa_metrics["token_f1"])
-        per_query_tokens.append(context_tokens)
-        per_query_latencies.append(latency)
-        predictions.append({
-            "question_id": qid,
-            "prediction": prediction,
-            "token_f1": qa_metrics["token_f1"],
-            "context_tokens": context_tokens,
-            "latency": latency,
-            "selected_ranks": [i + 1 for i in sorted(selected_indices)],
-        })
+            t0 = time.time()
+            with torch.no_grad():
+                outputs = sara_model.generate(
+                    **inputs,
+                    retrieval_embeds=comp_embeds,
+                    max_new_tokens=max_new_tokens,
+                    do_sample=False,
+                    pad_token_id=pad_id,
+                    eos_token_id=sara_tokenizer.eos_token_id,
+                )
+            latency = time.time() - t0
+
+            pred_texts = extract_generated_text(sara_tokenizer, outputs)
+            prediction = pred_texts[0].strip() if pred_texts else ""
+
+            qa_metrics = compute_qa_answer_metrics(
+                prediction=prediction,
+                gold_answers=gold_answers,
+                gold_reformatted=gold_reformatted,
+            )
+
+            per_query_f1s.append(qa_metrics["token_f1"])
+            per_query_tokens.append(context_tokens)
+            per_query_latencies.append(latency)
+
+            pred_record = {
+                "question_id": qid,
+                "prediction": prediction,
+                "token_f1": qa_metrics["token_f1"],
+                "context_tokens": context_tokens,
+                "latency": latency,
+                "selected_ranks": [i + 1 for i in sorted(selected_indices)],
+            }
+            predictions.append(pred_record)
+
+            if cache_file:
+                cache_file.write(json.dumps(pred_record) + "\n")
+                cache_file.flush()
+    finally:
+        if cache_file:
+            cache_file.close()
 
     return {
         "k": k,

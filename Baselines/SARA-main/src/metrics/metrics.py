@@ -216,6 +216,8 @@ def f1(prediction, ground_truths):
 
 
 def rougel_score(prediction, ground_truth):
+    if not str(prediction).strip() or (isinstance(ground_truth, str) and not str(ground_truth).strip()):
+        return 0.0
     from rouge import Rouge
     rouge = Rouge()
     # no normalization
