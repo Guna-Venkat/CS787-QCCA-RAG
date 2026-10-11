@@ -1,0 +1,54 @@
+{
+  "MARKER": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "STATUS": "PASSED",
+  "condition": "C1",
+  "train_examples_count": 16,
+  "val_examples_count": 8,
+  "epochs": 1,
+  "device": "cuda",
+  "parameters": {
+    "capacity_condition": "C1",
+    "total_params": 25529861,
+    "trainable_params": 4591109,
+    "trainable_pct": 17.98,
+    "encoder_total_params": 22713216,
+    "encoder_trainable_params": 1774464,
+    "encoder_frozen_params": 20938752,
+    "aggregator_params": 2766464,
+    "admissibility_head_params": 50181,
+    "head_and_aggregator_trainable_params": 2816645
+  },
+  "adaptation_health": {
+    "capacity_condition": "C1",
+    "encoder_trainable_params": 1774464,
+    "encoder_frozen_params": 20938752,
+    "head_aggregator_params": 2816645,
+    "latest_encoder_grad_norm": 2.225179,
+    "latest_head_aggregator_grad_norm": 2.143928,
+    "frozen_layers_zero_grad": true,
+    "trainable_layers_nonzero_grad": true,
+    "layer_parameter_deltas": {
+      "encoder.encoder.layer": 0.041195
+    },
+    "num_adapted_parameters_tracked": 16
+  },
+  "verifications": {
+    "forward_pass_finite": true,
+    "probs_in_range_0_1": true,
+    "train_loss_finite": true,
+    "val_loss_finite": true,
+    "frozen_embeddings_unchanged": true,
+    "frozen_layer0_unchanged": true,
+    "trainable_layer5_updated": true,
+    "trainable_head_updated": true,
+    "layer5_delta_norm": 0.011852,
+    "layer0_delta_norm": 0.0,
+    "val_logit_variance": 0.270857,
+    "checkpoint_save_load_roundtrip_ok": true,
+    "tau_policy_executed": true,
+    "selected_tau_smoke": 0.3,
+    "tau_boundary_hit": false,
+    "dev_evaluated": false,
+    "test_evaluated": false
+  }
+}

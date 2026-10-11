@@ -1,0 +1,90 @@
+{
+  "C1": {
+    "42": {
+      "capacity_condition": "C1",
+      "encoder_trainable_params": 1774464,
+      "encoder_frozen_params": 20938752,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 1.796105,
+      "latest_head_aggregator_grad_norm": 0.88616,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.572127
+      },
+      "num_adapted_parameters_tracked": 16
+    },
+    "123": {
+      "capacity_condition": "C1",
+      "encoder_trainable_params": 1774464,
+      "encoder_frozen_params": 20938752,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 0.723844,
+      "latest_head_aggregator_grad_norm": 0.523594,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.223864
+      },
+      "num_adapted_parameters_tracked": 16
+    },
+    "2026": {
+      "capacity_condition": "C1",
+      "encoder_trainable_params": 1774464,
+      "encoder_frozen_params": 20938752,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 1.68948,
+      "latest_head_aggregator_grad_norm": 0.82613,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.716493
+      },
+      "num_adapted_parameters_tracked": 16
+    }
+  },
+  "C2": {
+    "42": {
+      "capacity_condition": "C2",
+      "encoder_trainable_params": 3548928,
+      "encoder_frozen_params": 19164288,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 1.273916,
+      "latest_head_aggregator_grad_norm": 0.632511,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.949882
+      },
+      "num_adapted_parameters_tracked": 32
+    },
+    "123": {
+      "capacity_condition": "C2",
+      "encoder_trainable_params": 3548928,
+      "encoder_frozen_params": 19164288,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 1.961056,
+      "latest_head_aggregator_grad_norm": 0.682704,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.934832
+      },
+      "num_adapted_parameters_tracked": 32
+    },
+    "2026": {
+      "capacity_condition": "C2",
+      "encoder_trainable_params": 3548928,
+      "encoder_frozen_params": 19164288,
+      "head_aggregator_params": 2816645,
+      "latest_encoder_grad_norm": 4.030513,
+      "latest_head_aggregator_grad_norm": 0.841197,
+      "frozen_layers_zero_grad": true,
+      "trainable_layers_nonzero_grad": true,
+      "layer_parameter_deltas": {
+        "encoder.encoder.layer": 0.968916
+      },
+      "num_adapted_parameters_tracked": 32
+    }
+  }
+}

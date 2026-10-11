@@ -1,0 +1,6 @@
+comparison,observed_delta_f1,ci_lower_95_f1,ci_upper_95_f1,p_value_f1,significant_f1,observed_delta_tokens,ci_lower_95_tokens,ci_upper_95_tokens,aggregation
+C1 Last-1 Layer vs C0 Frozen,-0.0191,-0.0377,-0.0031,0.0085,True,-98.6,-147.9,-47.9,Across-Seed Mean per Query
+C2 Last-2 Layers vs C0 Frozen,-0.0068,-0.0312,0.0175,0.2895,False,80.1,20.2,137.7,Across-Seed Mean per Query
+C2 Last-2 Layers vs C1 Last-1 Layer,0.0123,-0.0055,0.0306,0.0905,False,178.7,130.6,228.8,Across-Seed Mean per Query
+Best Adapted (C2 Last-2 Layers) vs W4 Balanced LogReg,-0.0099,-0.0454,0.0263,0.287,False,229.6,152.6,300.2,Across-Seed Mean per Query
+Best Adapted (C2 Last-2 Layers) vs Static k=8,-0.0207,-0.0439,0.0005,0.0295,False,-412.9,-487.1,-342.6,Across-Seed Mean per Query

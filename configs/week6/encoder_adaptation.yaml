@@ -1,0 +1,76 @@
+# Week 6: Semantic Capacity and Encoder Adaptation Study Configuration
+# Investigates whether task-specific adaptation of the semantic encoder
+# allows the allocator to exploit retrieved-passage content more effectively
+# than a frozen pretrained sentence encoder.
+
+experiment:
+  name: "week6_encoder_adaptation"
+  description: "Capacity ladder (C0 Frozen, C1 Last-1 Layer, C2 Last-2 Layers) under T3 Multi-Label Epsilon-Admissibility"
+  seeds: [42, 123, 2026]
+  primary_seed: 42
+  device: "cuda"
+  epsilon: 0.01
+  tau_grid: [0.30, 0.40, 0.50, 0.60, 0.70]
+  tau_selection_tolerance: 0.005
+
+model:
+  base_encoder_name: "sentence-transformers/all-MiniLM-L6-v2"
+  max_seq_length: 256
+  d_model: 384
+  nhead: 4
+  num_layers: 2
+  dim_feedforward: 1024
+  dropout: 0.1
+  max_passages: 10
+  rank_embed_init_std: 0.02
+  condition: "I3"  # Fixed to I3 (Query + Top-10 Passages)
+  target_mode: "T3"  # Multi-label Epsilon Admissibility
+
+capacity_conditions:
+  C0:
+    name: "C0 Frozen MiniLM"
+    trainable_layers: []
+    description: "All MiniLM encoder parameters frozen (W5-B reference)"
+  C1:
+    name: "C1 Last-1 Layer Trainable"
+    trainable_layers: [5]
+    description: "Final Transformer block (layer 5) unfrozen; layers 0..4, embeddings, pooler frozen"
+  C2:
+    name: "C2 Last-2 Layers Trainable"
+    trainable_layers: [4, 5]
+    description: "Final 2 Transformer blocks (layers 4, 5) unfrozen; layers 0..3, embeddings, pooler frozen"
+
+training:
+  optimizer: "adamw"
+  encoder_lr: 2.0e-5
+  head_lr: 2.0e-4
+  weight_decay: 0.01
+  batch_size: 16
+  max_epochs: 15
+  patience: 3
+  grad_clip: 1.0
+
+evaluation:
+  bootstrap_samples: 2000
+  k_classes: [2, 4, 5, 6, 8]
+  static_k8_ref_f1: 0.3950
+  oracle_ref_f1: 0.4895
+  static_k8_ref_tokens: 1750.5
+  w4_ref_f1: 0.3842
+  w4_ref_tokens: 1115.9
+  c0_ref_f1: 0.3810
+  c0_ref_tokens: 1258.2
+  c0_ref_mean_k: 5.57
+
+paths:
+  train_fit_manifest: "results/week5/content_allocator/w5b/splits/train_fit_manifest.csv"
+  internal_val_manifest: "results/week5/content_allocator/w5b/splits/internal_val_manifest.csv"
+  train_supervision: "results/week5/supervision/train_allocation_supervision.csv"
+  dev_supervision: "results/week5/supervision/dev_allocation_supervision.csv"
+  train_retrieval: "results/week5/train_response_surface/train_retrieval.jsonl"
+  dev_retrieval: "results/week2/raw/dev_retrieval.jsonl"
+  train_matrix: "results/week5/train_response_surface/train_fixed_k_matrix.csv"
+  dev_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_features: "results/week2/processed/dev_retrieval_features.jsonl"
+  w5b_dir: "results/week5/content_allocator/w5b"
+  output_dir: "results/week6/encoder_adaptation"

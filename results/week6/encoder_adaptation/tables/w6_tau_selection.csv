@@ -1,0 +1,7 @@
+capacity_condition,seed,selected_tau,tau_boundary_hit,quality_constraint_met,static_k8_val_f1,selected_val_f1,selected_val_tokens
+C1,42,0.7,True,False,0.4457,0.4114,1315.5
+C1,123,0.7,True,False,0.4457,0.384,1170.0
+C1,2026,0.7,True,False,0.4457,0.3809,991.8
+C2,42,0.7,True,False,0.4457,0.4179,1307.3
+C2,123,0.7,True,False,0.4457,0.3933,1146.6
+C2,2026,0.7,True,False,0.4457,0.4283,1453.5
