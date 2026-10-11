@@ -1,5 +1,5 @@
-"""Generator script to produce the canonical Week 6 experiment notebook:
-notebooks/week6/week6_encoder_adaptation.ipynb
+"""Generator script to produce the canonical Week 5-C experiment notebook:
+notebooks/week5/week5c_encoder_adaptation.ipynb
 
 Covers Sections 0 through 21 with complete code and markdown cells.
 Configured with SMOKE_MODE = False as default.
@@ -11,8 +11,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-NOTEBOOK_DIR = Path("notebooks/week6")
-NOTEBOOK_PATH = NOTEBOOK_DIR / "week6_encoder_adaptation.ipynb"
+NOTEBOOK_DIR = Path("notebooks/week5")
+NOTEBOOK_PATH = NOTEBOOK_DIR / "week5c_encoder_adaptation.ipynb"
 
 
 def make_markdown_cell(source_text: str) -> dict:
@@ -45,7 +45,7 @@ def build_notebook():
     # -------------------------------------------------------------
     # Section 0 — Title / Research Question
     # -------------------------------------------------------------
-    cells.append(make_markdown_cell("""# Week 6: Semantic Capacity and Encoder Adaptation Study
+    cells.append(make_markdown_cell("""# Week 5-C: Semantic Encoder Adaptation and Capacity Study
 
 **Project:** Query-Conditioned Context Allocator (QCCA) for Efficient Retrieval-Augmented Generation  
 **Parent Architecture:** SARA — Selective and Adaptive Retrieval-augmented Generation with Context Compression  
@@ -104,26 +104,26 @@ from src.week5.data import (
     build_w5b_splits_and_bundles,
 )
 from src.week5.training import set_seed
-from src.week6.adaptation import (
+from src.week5.w5c.adaptation import (
     AdaptedContentAwareAllocator,
     audit_minilm_architecture,
     build_optimizer_param_groups,
 )
-from src.week6.evaluation import (
+from src.week5.w5c.evaluation import (
     load_c0_w5b_reference,
     load_w4_baseline_dev,
-    select_tau_w6,
-    evaluate_w6_model_on_dev,
+    select_tau_w5c,
+    evaluate_w5c_model_on_dev,
     evaluate_allocation_policy,
     run_paper_clustered_bootstrap_comparisons,
-    plot_w6_pareto_curve,
+    plot_w5c_pareto_curve,
     W4_REF_F1,
     W4_REF_TOKENS,
     C0_REF_F1,
     C0_REF_TOKENS,
 )
-from src.week6.training import train_adapted_allocator
-from src.week6.representation_analysis import compute_representation_shift
+from src.week5.w5c.training import train_adapted_allocator
+from src.week5.w5c.representation_analysis import compute_representation_shift
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -142,7 +142,7 @@ print(f"Cost-Aware Epsilon Oracle: DEV F1 = 0.4894, Tokens = 839.4, Mean k = 3.4
     # -------------------------------------------------------------
     cells.append(make_markdown_cell("""## Section 2: Experiment Configuration"""))
 
-    cells.append(make_code_cell("""with open("configs/week6/encoder_adaptation.yaml", "r", encoding="utf-8") as f:
+    cells.append(make_code_cell("""with open("configs/week5/w5c_encoder_adaptation.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 SEEDS = config["experiment"]["seeds"]
@@ -341,7 +341,7 @@ for seed in c1_seeds_to_run:
     healths_c1[seed] = train_res["adaptation_health"]
     
     # Save checkpoint
-    out_pt = Path(f"results/week6/encoder_adaptation/models/C1_seed_{seed}.pt")
+    out_pt = Path(f"results/week5/content_allocator/w5c_encoder_adaptation/models/C1_seed_{seed}.pt")
     out_pt.parent.mkdir(parents=True, exist_ok=True)
     torch.save(train_res["model"].state_dict(), out_pt)
     print(f"Saved C1 Seed {seed} model to {out_pt}")"""))
@@ -396,7 +396,7 @@ for seed in c2_seeds_to_run:
     healths_c2[seed] = train_res["adaptation_health"]
     
     # Save checkpoint
-    out_pt = Path(f"results/week6/encoder_adaptation/models/C2_seed_{seed}.pt")
+    out_pt = Path(f"results/week5/content_allocator/w5c_encoder_adaptation/models/C2_seed_{seed}.pt")
     out_pt.parent.mkdir(parents=True, exist_ok=True)
     torch.save(train_res["model"].state_dict(), out_pt)
     print(f"Saved C2 Seed {seed} model to {out_pt}")"""))
@@ -422,7 +422,7 @@ for cond, models_dict in [("C1", models_c1), ("C2", models_c2)]:
                 all_probs.append(torch.sigmoid(logits).cpu().numpy())
         val_probs = np.concatenate(all_probs, axis=0)
         
-        tau_res = select_tau_w6(
+        tau_res = select_tau_w5c(
             val_supervision_df=val_bundle["supervision_df"],
             val_pred_probs=val_probs,
             val_tokens_map=val_bundle["tokens_map"],
@@ -443,7 +443,7 @@ for cond, models_dict in [("C1", models_c1), ("C2", models_c2)]:
         })
 
 df_tau_sel = pd.DataFrame(tau_records)
-df_tau_sel.to_csv("results/week6/encoder_adaptation/tables/w6_tau_selection.csv", index=False)
+df_tau_sel.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_tau_selection.csv", index=False)
 print("=== THRESHOLD CALIBRATION ON INTERNAL-VAL ===")
 print(df_tau_sel.to_string(index=False))"""))
 
@@ -457,7 +457,7 @@ all_health = {
     "C1": {str(seed): healths_c1[seed] for seed in healths_c1},
     "C2": {str(seed): healths_c2[seed] for seed in healths_c2},
 }
-with open("results/week6/encoder_adaptation/diagnostics/representation_adaptation_health.json", "w", encoding="utf-8") as f:
+with open("results/week5/content_allocator/w5c_encoder_adaptation/diagnostics/representation_adaptation_health.json", "w", encoding="utf-8") as f:
     json.dump(all_health, f, indent=2)
 
 # 2. Compute Representation Shift on INTERNAL-VAL
@@ -476,7 +476,7 @@ for cond, models_dict in [("C1", models_c1), ("C2", models_c2)]:
         shift_records.append(shift_dict)
 
 df_rep_shift = pd.DataFrame(shift_records)
-df_rep_shift.to_csv("results/week6/encoder_adaptation/diagnostics/representation_shift.csv", index=False)
+df_rep_shift.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/diagnostics/representation_shift.csv", index=False)
 
 print("=== REPRESENTATION SHIFT DIAGNOSTICS ===")
 print(df_rep_shift[[
@@ -512,7 +512,7 @@ if c0_ref["predictions_df"] is not None:
 for cond, models_dict in [("C1", models_c1), ("C2", models_c2)]:
     for seed, m in models_dict.items():
         tau = selected_taus[(cond, seed)]
-        eval_res = evaluate_w6_model_on_dev(
+        eval_res = evaluate_w5c_model_on_dev(
             model=m,
             dev_loader=dev_loader_full,
             dev_sup_df=dev_sup_df,
@@ -523,8 +523,8 @@ for cond, models_dict in [("C1", models_c1), ("C2", models_c2)]:
         predictions_dict[f"pred_k_{cond}_seed{seed}"] = eval_res["preds_k"]
 
 df_dev_preds = pd.DataFrame(predictions_dict)
-df_dev_preds.to_csv("results/week6/encoder_adaptation/predictions/dev_predictions.csv", index=False)
-print("Saved DEV predictions to results/week6/encoder_adaptation/predictions/dev_predictions.csv")"""))
+df_dev_preds.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/predictions/dev_predictions.csv", index=False)
+print("Saved DEV predictions to results/week5/content_allocator/w5c_encoder_adaptation/predictions/dev_predictions.csv")"""))
 
     # -------------------------------------------------------------
     # Section 14 — Main Policy Table
@@ -635,7 +635,7 @@ for cond in ["C1", "C2"]:
     })
 
 df_main = pd.DataFrame(main_rows)
-df_main.to_csv("results/week6/encoder_adaptation/tables/w6_main_results.csv", index=False)
+df_main.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_main_results.csv", index=False)
 print("=== MAIN POLICY RESULTS TABLE ===")
 print(df_main.to_string(index=False))"""))
 
@@ -668,7 +668,7 @@ for (cond, seed), res in eval_results_dev.items():
     })
 
 df_seeds = pd.DataFrame(seed_rows)
-df_seeds.to_csv("results/week6/encoder_adaptation/tables/w6_seed_results.csv", index=False)
+df_seeds.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_seed_results.csv", index=False)
 print("=== PER-SEED POLICY RESULTS ===")
 print(df_seeds[[
     "capacity_condition",
@@ -703,9 +703,9 @@ if plot_data:
     plt.title("Budget Allocation Distribution across Capacity Conditions", fontweight="bold")
     plt.legend(title="Budget", bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.tight_layout()
-    plt.savefig("results/week6/encoder_adaptation/figures/w6_selected_k_distribution.png")
+    plt.savefig("results/week5/content_allocator/w5c_encoder_adaptation/figures/w5c_selected_k_distribution.png")
     plt.close()
-    print("Saved selected-k distribution plot to results/week6/encoder_adaptation/figures/w6_selected_k_distribution.png")"""))
+    print("Saved selected-k distribution plot to results/week5/content_allocator/w5c_encoder_adaptation/figures/w5c_selected_k_distribution.png")"""))
 
     # -------------------------------------------------------------
     # Section 17 — Multi-Label Diagnostics
@@ -730,7 +730,7 @@ for (cond, seed), res in eval_results_dev.items():
     })
 
 df_multi = pd.DataFrame(multi_rows)
-df_multi.to_csv("results/week6/encoder_adaptation/tables/w6_multilabel_metrics.csv", index=False)
+df_multi.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_multilabel_metrics.csv", index=False)
 print("=== MULTI-LABEL METRICS TABLE ===")
 print(df_multi[[
     "capacity_condition",
@@ -746,11 +746,11 @@ print(df_multi[[
     # -------------------------------------------------------------
     cells.append(make_markdown_cell("""## Section 18: Quality–Cost Pareto Frontier Visualization"""))
 
-    cells.append(make_code_cell("""plot_w6_pareto_curve(
+    cells.append(make_code_cell("""plot_w5c_pareto_curve(
     results_df=df_main,
-    output_path="results/week6/encoder_adaptation/figures/w6_pareto.png",
+    output_path="results/week5/content_allocator/w5c_encoder_adaptation/figures/w5c_pareto.png",
 )
-print("Pareto frontier figure saved to results/week6/encoder_adaptation/figures/w6_pareto.png")"""))
+print("Pareto frontier figure saved to results/week5/content_allocator/w5c_encoder_adaptation/figures/w5c_pareto.png")"""))
 
     # -------------------------------------------------------------
     # Section 19 — Paper-Clustered Bootstrap
@@ -801,7 +801,7 @@ df_boot = run_paper_clustered_bootstrap_comparisons(
     seed=42,
 )
 
-df_boot.to_csv("results/week6/encoder_adaptation/bootstrap/w6_bootstrap_comparisons.csv", index=False)
+df_boot.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/bootstrap/w5c_bootstrap_comparisons.csv", index=False)
 print("=== PAPER-CLUSTERED BOOTSTRAP RESULTS (ACROSS-SEED MEAN VECTORS) ===")
 print(df_boot[[
     "comparison",
@@ -857,14 +857,14 @@ for cond, label in [("C1", "C1 Last-1 Layer"), ("C2", "C2 Last-2 Layers")]:
         })
 
 df_cap_comp = pd.DataFrame(cap_rows)
-df_cap_comp.to_csv("results/week6/encoder_adaptation/tables/w6_capacity_comparison.csv", index=False)
+df_cap_comp.to_csv("results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_capacity_comparison.csv", index=False)
 print("=== CAPACITY LADDER COMPARISON SUMMARY ===")
 print(df_cap_comp.to_string(index=False))"""))
 
     # -------------------------------------------------------------
     # Section 21 — Decision for Next Week
     # -------------------------------------------------------------
-    cells.append(make_markdown_cell("""## Section 21: Pre-Registered Decision Rules for Week 7
+    cells.append(make_markdown_cell("""## Section 21: Pre-Registered Decision Rules for Week 6 (Passage Routing)
 
 Based on empirical performance against pre-registered criteria:
 - **Case 1 (Strong Adaptation Signal):** If $C_1$ or $C_2$ achieves $F_1 > 0.3842$ (surpassing $W_4$) with comparable or lower context tokens:
@@ -874,19 +874,19 @@ Based on empirical performance against pre-registered criteria:
 - **Case 3 (Overfitting / Negative Transfer):** If $C_1$ or $C_2$ underperforms $C_0$:
   $\\rightarrow$ Diagnose representation shift and feature drift before expanding capacity."""))
 
-    cells.append(make_code_cell("""print("Week 6 Notebook execution pipeline complete.")
+    cells.append(make_code_cell("""print("Week 5-C Notebook execution pipeline complete.")
 print("Generated Outputs:")
-print(" - tables/w6_main_results.csv")
-print(" - tables/w6_seed_results.csv")
-print(" - tables/w6_multilabel_metrics.csv")
-print(" - tables/w6_tau_selection.csv")
-print(" - tables/w6_capacity_comparison.csv")
+print(" - tables/w5c_main_results.csv")
+print(" - tables/w5c_seed_results.csv")
+print(" - tables/w5c_multilabel_metrics.csv")
+print(" - tables/w5c_tau_selection.csv")
+print(" - tables/w5c_capacity_comparison.csv")
 print(" - predictions/dev_predictions.csv")
-print(" - bootstrap/w6_bootstrap_comparisons.csv")
+print(" - bootstrap/w5c_bootstrap_comparisons.csv")
 print(" - diagnostics/representation_adaptation_health.json")
 print(" - diagnostics/representation_shift.csv")
-print(" - figures/w6_pareto.png")
-print(" - figures/w6_selected_k_distribution.png")"""))
+print(" - figures/w5c_pareto.png")
+print(" - figures/w5c_selected_k_distribution.png")"""))
 
     # Assemble notebook structure
     notebook = {

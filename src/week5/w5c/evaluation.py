@@ -34,7 +34,7 @@ from src.week5.evaluation import (
     evaluate_multilabel_diagnostics,
     select_tau_internal_val,
 )
-from src.week6.adaptation import AdaptedContentAwareAllocator
+from src.week5.w5c.adaptation import AdaptedContentAwareAllocator
 
 logger = logging.getLogger(__name__)
 
@@ -289,7 +289,7 @@ def run_paper_clustered_bootstrap_comparisons(
 
 def plot_w6_pareto_curve(
     results_df: pd.DataFrame,
-    output_path: Union[str, Path] = "results/week6/encoder_adaptation/figures/w6_pareto.png",
+    output_path: Union[str, Path] = "results/week5/content_allocator/w5c_encoder_adaptation/figures/w5c_pareto.png",
 ) -> None:
     """Generate high-resolution Pareto frontier plot (Answer F1 vs Context Tokens)."""
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
@@ -352,9 +352,15 @@ def plot_w6_pareto_curve(
 
     plt.xlabel("Mean Context Tokens (Cost)", fontsize=11, fontweight="bold")
     plt.ylabel("Mean Answer F1 (Quality)", fontsize=11, fontweight="bold")
-    plt.title("Week 6: Quality–Cost Pareto Frontier Across Capacity Ladder", fontsize=13, fontweight="bold")
+    plt.title("Week 5-C: Quality–Cost Pareto Frontier Across Capacity Ladder", fontsize=13, fontweight="bold")
     plt.grid(True, linestyle="--", alpha=0.4)
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()
     logger.info(f"Saved Pareto plot to {output_path}")
+
+
+# W5-C aliases
+select_tau_w5c = select_tau_w6
+evaluate_w5c_model_on_dev = evaluate_w6_model_on_dev
+plot_w5c_pareto_curve = plot_w6_pareto_curve

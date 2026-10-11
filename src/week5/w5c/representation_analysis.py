@@ -19,7 +19,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from src.week5.models import mean_pooling
-from src.week6.adaptation import AdaptedContentAwareAllocator
+from src.week5.w5c.adaptation import AdaptedContentAwareAllocator
 
 logger = logging.getLogger(__name__)
 

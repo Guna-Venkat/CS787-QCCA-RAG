@@ -26,7 +26,7 @@ from torch.utils.data import DataLoader
 
 from src.week5.evaluation import evaluate_multilabel_diagnostics
 from src.week5.training import EarlyStoppingMultiLabel, set_seed
-from src.week6.adaptation import (
+from src.week5.w5c.adaptation import (
     AdaptedContentAwareAllocator,
     build_optimizer_param_groups,
 )

@@ -1,10 +1,10 @@
-# Week 6: Semantic Capacity and Encoder Adaptation Study Configuration
+# Week 5-C: Semantic Capacity and Encoder Adaptation Study Configuration
 # Investigates whether task-specific adaptation of the semantic encoder
 # allows the allocator to exploit retrieved-passage content more effectively
-# than a frozen pretrained sentence encoder.
+# than the frozen pretrained sentence encoder evaluated in Week 5-B.
 
 experiment:
-  name: "week6_encoder_adaptation"
+  name: "week5c_encoder_adaptation"
   description: "Capacity ladder (C0 Frozen, C1 Last-1 Layer, C2 Last-2 Layers) under T3 Multi-Label Epsilon-Admissibility"
   seeds: [42, 123, 2026]
   primary_seed: 42
@@ -73,4 +73,4 @@ paths:
   dev_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
   dev_features: "results/week2/processed/dev_retrieval_features.jsonl"
   w5b_dir: "results/week5/content_allocator/w5b"
-  output_dir: "results/week6/encoder_adaptation"
+  output_dir: "results/week5/content_allocator/w5c_encoder_adaptation"

@@ -44,7 +44,7 @@ from src.week5.evaluation import (
     evaluate_allocation_policy,
     select_tau_internal_val,
 )
-from src.week6.adaptation import (
+from src.week5.w5c.adaptation import (
     MINILM_LAYER_PARAMS,
     MINILM_NUM_LAYERS,
     AdaptedContentAwareAllocator,
@@ -52,13 +52,13 @@ from src.week6.adaptation import (
     build_optimizer_param_groups,
     configure_encoder_adaptation,
 )
-from src.week6.evaluation import (
+from src.week5.w5c.evaluation import (
     C0_REF_F1,
     C0_REF_TOKENS,
     load_c0_w5b_reference,
     run_paper_clustered_bootstrap_comparisons,
 )
-from src.week6.representation_analysis import compute_representation_shift
+from src.week5.w5c.representation_analysis import compute_representation_shift
 
 
 @pytest.fixture(scope="module")
@@ -245,8 +245,8 @@ def test_11_dev_never_used_for_training_or_tau_calibration():
 
 
 def test_12_test_never_loaded():
-    """Test 12: Ensure QASPER TEST split is never accessed or referenced in Week 6 configs."""
-    cfg_path = Path("configs/week6/encoder_adaptation.yaml")
+    """Test 12: Ensure QASPER TEST split is never accessed or referenced in Week 5-C configs."""
+    cfg_path = Path("configs/week5/w5c_encoder_adaptation.yaml")
     with open(cfg_path, "r", encoding="utf-8") as f:
         content = f.read()
     assert "test_retrieval" not in content
@@ -310,7 +310,7 @@ def test_16_tau_selected_from_internal_val_only():
     })
     tokens_map = {(str(qid), k): int(k * 200) for qid in df_val["question_id"] for k in K_CLASSES}
 
-    from src.week6.evaluation import select_tau_w6
+    from src.week5.w5c.evaluation import select_tau_w6
     tau_res = select_tau_w6(val_sup, mock_probs, val_tokens_map=tokens_map)
     assert tau_res["selected_tau"] in [0.30, 0.40, 0.50, 0.60, 0.70]
     assert "tau_boundary_hit" in tau_res

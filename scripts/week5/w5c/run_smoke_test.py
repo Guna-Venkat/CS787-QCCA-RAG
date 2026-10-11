@@ -29,17 +29,17 @@ from src.week5.data import (
     build_w5b_splits_and_bundles,
 )
 from src.week5.training import set_seed
-from src.week6.adaptation import (
+from src.week5.w5c.adaptation import (
     AdaptedContentAwareAllocator,
     audit_minilm_architecture,
 )
-from src.week6.evaluation import select_tau_w6
-from src.week6.training import train_adapted_allocator
+from src.week5.w5c.evaluation import select_tau_w6
+from src.week5.w5c.training import train_adapted_allocator
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-SMOKE_OUTPUT_DIR = Path("results/week6/encoder_adaptation/diagnostics/smoke")
+SMOKE_OUTPUT_DIR = Path("results/week5/content_allocator/w5c_encoder_adaptation/diagnostics/smoke")
 
 
 def run_smoke_test() -> Dict[str, Any]:
