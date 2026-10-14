@@ -1,0 +1,2 @@
+comparison,policy_A,policy_B,delta_f1,f1_ci_lower,f1_ci_upper,p_value,significant,delta_tokens,tokens_ci_lower,tokens_ci_upper
+W4+Semantic_vs_W4+BM25,W4+Semantic,W4+BM25,-0.006021661201223993,-0.04953108290210365,0.037155645992606866,0.814,False,-19.199134199134278,-38.42617025375366,-0.2827593903988659

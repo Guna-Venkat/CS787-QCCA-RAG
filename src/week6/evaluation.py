@@ -370,7 +370,8 @@ def run_sara_generation_for_routed_policy(
             gold_reformatted = item.get("gold_answers_reformatted", gold_answers)
 
             selected_indices = selected_indices_list[idx]
-            validate_routing_assignment(selected_indices, k=k, total_passages=len(passages))
+            k_val = len(selected_indices) if k is None else k
+            validate_routing_assignment(selected_indices, k=k_val, total_passages=len(passages))
 
             # If already in cache, reuse directly without GPU forward pass
             if qid in completed_by_qid:

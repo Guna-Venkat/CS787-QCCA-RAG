@@ -1,0 +1,158 @@
+[
+  {
+    "question_id": "1912",
+    "paper_id": "638",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "jaccard_overlap": 1.0,
+    "n_changed_passages": 0
+  },
+  {
+    "question_id": "2201",
+    "paper_id": "798",
+    "predicted_k": 6,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "semantic_selected_ranks": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+    ],
+    "jaccard_overlap": 0.7142857142857143,
+    "n_changed_passages": 1
+  },
+  {
+    "question_id": "883",
+    "paper_id": "254",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "jaccard_overlap": 1.0,
+    "n_changed_passages": 0
+  },
+  {
+    "question_id": "884",
+    "paper_id": "254",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      1,
+      2,
+      7,
+      8
+    ],
+    "jaccard_overlap": 0.3333333333333333,
+    "n_changed_passages": 2
+  },
+  {
+    "question_id": "104",
+    "paper_id": "28",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      4,
+      8,
+      9,
+      10
+    ],
+    "jaccard_overlap": 0.14285714285714285,
+    "n_changed_passages": 3
+  },
+  {
+    "question_id": "105",
+    "paper_id": "28",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "jaccard_overlap": 0.6,
+    "n_changed_passages": 1
+  },
+  {
+    "question_id": "2100",
+    "paper_id": "735",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      3,
+      4,
+      9,
+      10
+    ],
+    "jaccard_overlap": 0.3333333333333333,
+    "n_changed_passages": 2
+  },
+  {
+    "question_id": "2101",
+    "paper_id": "735",
+    "predicted_k": 4,
+    "bm25_selected_ranks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "semantic_selected_ranks": [
+      1,
+      5,
+      6,
+      8
+    ],
+    "jaccard_overlap": 0.14285714285714285,
+    "n_changed_passages": 3
+  }
+]

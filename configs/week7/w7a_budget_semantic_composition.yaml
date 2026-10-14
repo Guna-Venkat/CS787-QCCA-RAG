@@ -1,0 +1,57 @@
+# Week 7-A: Modular Composition of Adaptive Budget Allocation and Semantic Passage Routing
+research_question: "Can the existing adaptive budget allocator be directly combined with semantic passage routing, without retraining the allocator, to improve the quality–context frontier?"
+experiment_name: "w7a_budget_semantic_composition"
+
+seed: 42
+test_disabled: true
+
+allowed_k_values: [2, 4, 5, 6, 8]
+
+w4_policy:
+  name: "Policy C1 Balanced Logistic Regression"
+  stage2_features:
+    - "lex_coverage_top2"
+    - "bm25_mean_score"
+    - "sem_sim_mean_top6"
+    - "evidence_query_cluster_span"
+    - "evidence_lexical_overlap_mean"
+  predictions_path: "results/week4/qcca_v2_final_validation/stage2_oof_predictions.csv"
+  historical_ref_f1: 0.3842
+  historical_ref_tokens: 1115.9
+  historical_ref_mean_k: 4.82
+
+routing:
+  bm25_prefix_name: "BM25_prefix"
+  semantic_routing_name: "R1_semantic_topk"
+  encoder_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+generation:
+  max_new_tokens: 32
+  temperature: 0.0
+  do_sample: false
+
+bootstrap:
+  n_resamples: 2000
+  confidence_level: 0.95
+  cluster_col: "paper_id"
+
+paths:
+  results_root: "results/week7/w7a_budget_semantic_composition"
+  routing_assignments_dir: "results/week7/w7a_budget_semantic_composition/routing_assignments"
+  sara_generations_dir: "results/week7/w7a_budget_semantic_composition/sara_generations"
+  tables_dir: "results/week7/w7a_budget_semantic_composition/tables"
+  figures_dir: "results/week7/w7a_budget_semantic_composition/figures"
+  bootstrap_dir: "results/week7/w7a_budget_semantic_composition/bootstrap"
+  diagnostics_dir: "results/week7/w7a_budget_semantic_composition/diagnostics"
+  smoke_dir: "results/week7/w7a_budget_semantic_composition/diagnostics/smoke"
+  logs_dir: "results/week7/w7a_budget_semantic_composition/logs"
+
+  # Canonical inputs
+  dev_retrieval_file: "results/week2/raw/dev_retrieval.jsonl"
+  dev_fixed_k_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_sfr_embeddings_file: "results/week2/raw/dev_sfr_embeddings.pt"
+  w6a_main_results: "results/week6/passage_routing/tables/w6_main_results.csv"
+  w6a_routing_assignments: "results/week6/passage_routing/routing_predictions/dev_routing_assignments.csv"
+  w6a_sara_generations: "results/week6/passage_routing/sara_generations/dev_sara_generations.jsonl"
+  sara_checkpoint: "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42"
+  qasper_dev_split: "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl"

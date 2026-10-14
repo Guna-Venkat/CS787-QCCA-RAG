@@ -1,0 +1,2 @@
+n_queries,n_wins,n_ties,n_losses,win_rate_pct,tie_rate_pct,loss_rate_pct,mean_delta_f1_overall,mean_gain_on_wins,mean_loss_on_losses
+231,38,148,45,16.450216450216452,64.06926406926407,19.480519480519483,-0.00602166261523962,0.4388696849346161,-0.4015122354030609
