@@ -1,0 +1,231 @@
+{"question_id": "1000", "prediction": "Hindi, Punjabi, Urdu, Bengali, Tamil, Telugu, Malayalam, Kannada, Marathi, Gujarati, Kannada, Kannada, Kannada, Kannada, Kannada, Kannada, Kannada,", "token_f1": 0.1111111111111111, "context_tokens": 391, "latency": 4.445313453674316, "selected_ranks": [2, 3]}
+{"question_id": "1001", "prediction": "NLP Features", "token_f1": 0.14285714285714285, "context_tokens": 498, "latency": 1.042541742324829, "selected_ranks": [1, 2]}
+{"question_id": "1002", "prediction": "The differences in communication styles between Twitter and Facebook increase the complexity of the problem by making it difficult to generalize the model across domains.", "token_f1": 0.2, "context_tokens": 663, "latency": 2.3077969551086426, "selected_ranks": [1, 2]}
+{"question_id": "1003", "prediction": "The authors provide a dataset of 100000000000000000000000000000000000000000000000000000000", "token_f1": 0.0, "context_tokens": 680, "latency": 3.7314679622650146, "selected_ranks": [1, 2]}
+{"question_id": "1004", "prediction": "The two baselines of this model are Majority Class baseline (MC) and the Random selection baseline (RAN)", "token_f1": 0.8421052631578948, "context_tokens": 643, "latency": 2.1483216285705566, "selected_ranks": [1, 4]}
+{"question_id": "1005", "prediction": "news articles dataset", "token_f1": 0.6666666666666666, "context_tokens": 554, "latency": 1.1394269466400146, "selected_ranks": [1, 2]}
+{"question_id": "1013", "prediction": "We consider all information found in a social media post, including the image, while previous approaches only considered the textual information.", "token_f1": 0.0, "context_tokens": 568, "latency": 1.9905345439910889, "selected_ranks": [1, 3]}
+{"question_id": "1028", "prediction": "No", "token_f1": 0.0, "context_tokens": 625, "latency": 1.1957223415374756, "selected_ranks": [1, 2]}
+{"question_id": "1029", "prediction": "span-based reading comprehension", "token_f1": 0.0, "context_tokens": 515, "latency": 1.2449707984924316, "selected_ranks": [1, 3]}
+{"question_id": "1030", "prediction": "SQuAD, WikiQA", "token_f1": 0.3333333333333333, "context_tokens": 537, "latency": 1.328437328338623, "selected_ranks": [1, 5]}
+{"question_id": "104", "prediction": "No", "token_f1": 0.0, "context_tokens": 605, "latency": 1.1917307376861572, "selected_ranks": [1, 4]}
+{"question_id": "105", "prediction": "sentiment analysis, Spoken Language Understanding (SLU)", "token_f1": 0.15384615384615383, "context_tokens": 385, "latency": 1.2789721488952637, "selected_ranks": [1, 4]}
+{"question_id": "1065", "prediction": "Mozilla's Common Voice initiative", "token_f1": 0.4444444444444445, "context_tokens": 666, "latency": 1.5463712215423584, "selected_ranks": [1, 4]}
+{"question_id": "1066", "prediction": "contributors mark $<$audio,transcript$>$ pairs as being either correct (up-vote) or incorrect (down-vote)", "token_f1": 0.125, "context_tokens": 553, "latency": 2.1430320739746094, "selected_ranks": [1, 3]}
+{"question_id": "1067", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 558, "latency": 1.0636513233184814, "selected_ranks": [1, 2]}
+{"question_id": "1107", "prediction": "DUC 2012", "token_f1": 0.0, "context_tokens": 451, "latency": 1.2921948432922363, "selected_ranks": [1, 6]}
+{"question_id": "1108", "prediction": "Document sentences, Document words, Topical category", "token_f1": 0.33333333333333337, "context_tokens": 553, "latency": 1.5352110862731934, "selected_ranks": [2, 3]}
+{"question_id": "1109", "prediction": "10.0000", "token_f1": 0.0, "context_tokens": 566, "latency": 1.3398451805114746, "selected_ranks": [1, 4]}
+{"question_id": "1110", "prediction": "No", "token_f1": 1.0, "context_tokens": 548, "latency": 1.064439296722412, "selected_ranks": [1, 2]}
+{"question_id": "1132", "prediction": "on the same tasks on which the model is trained", "token_f1": 0.0, "context_tokens": 296, "latency": 0.9891529083251953, "selected_ranks": [1, 3]}
+{"question_id": "1133", "prediction": "bidirectional GRU", "token_f1": 0.0, "context_tokens": 545, "latency": 1.2229106426239014, "selected_ranks": [2, 4]}
+{"question_id": "1134", "prediction": "English-to-French, English-to-German, English-to-Spanish", "token_f1": 0.0, "context_tokens": 397, "latency": 1.6045022010803223, "selected_ranks": [1, 3]}
+{"question_id": "1135", "prediction": "Wikipedia, Stanford Question Answers, Stanford Sentiment Treebank, Stanford Named Entity Recognition, Stanford CoreNLP, Stanford Paraphrase, Stanford NLI, Stanford Sentiment Treebank, Stanford NLI, Stanford Sentiment Treebank, Stanford NLI, Stanford Sentiment", "token_f1": 0.0, "context_tokens": 501, "latency": 3.403902292251587, "selected_ranks": [1, 4]}
+{"question_id": "1158", "prediction": "macro F1 score of 0.62", "token_f1": 1.0, "context_tokens": 401, "latency": 1.2193772792816162, "selected_ranks": [1, 3]}
+{"question_id": "1159", "prediction": "No", "token_f1": 1.0, "context_tokens": 405, "latency": 0.8660397529602051, "selected_ranks": [1, 2]}
+{"question_id": "116", "prediction": "No", "token_f1": 0.0, "context_tokens": 228, "latency": 0.5199594497680664, "selected_ranks": [1, 7]}
+{"question_id": "1160", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 294, "latency": 0.6436755657196045, "selected_ranks": [1, 4]}
+{"question_id": "1161", "prediction": "Hindi, English, German", "token_f1": 0.7499999999999999, "context_tokens": 306, "latency": 0.846287727355957, "selected_ranks": [1, 2]}
+{"question_id": "117", "prediction": "English, German", "token_f1": 0.17391304347826084, "context_tokens": 277, "latency": 0.7148754596710205, "selected_ranks": [1, 4]}
+{"question_id": "118", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 553, "latency": 1.0751588344573975, "selected_ranks": [1, 2]}
+{"question_id": "1187", "prediction": "No", "token_f1": 0.0, "context_tokens": 580, "latency": 1.203935146331787, "selected_ranks": [2, 3]}
+{"question_id": "1188", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 524, "latency": 1.0706579685211182, "selected_ranks": [1, 9]}
+{"question_id": "1213", "prediction": "No", "token_f1": 1.0, "context_tokens": 445, "latency": 0.9780051708221436, "selected_ranks": [1, 2]}
+{"question_id": "1214", "prediction": "20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 210, 211, 212, 213, 214", "token_f1": 0.0, "context_tokens": 417, "latency": 3.296048879623413, "selected_ranks": [1, 6]}
+{"question_id": "1215", "prediction": "LR, NBSVM, XGBoost, Bidirectional LSTM model using fastText\u2019s skipgram word vector", "token_f1": 0.2962962962962963, "context_tokens": 365, "latency": 1.826218605041504, "selected_ranks": [1, 5]}
+{"question_id": "1233", "prediction": "IR methods", "token_f1": 0.4444444444444445, "context_tokens": 508, "latency": 1.1053037643432617, "selected_ranks": [1, 2]}
+{"question_id": "1234", "prediction": "SciGPT2, SciBERT, SciBERT+, SciBERT++, SciBERT+++, SciBERT++++", "token_f1": 0.2222222222222222, "context_tokens": 512, "latency": 2.2745444774627686, "selected_ranks": [1, 2]}
+{"question_id": "1235", "prediction": "154K articles", "token_f1": 0.3076923076923077, "context_tokens": 404, "latency": 1.0637898445129395, "selected_ranks": [2, 3]}
+{"question_id": "125", "prediction": "The scoring model computes the score of a segmented sequence by summing up word scores and link scores.", "token_f1": 0.3333333333333333, "context_tokens": 525, "latency": 1.899709939956665, "selected_ranks": [1, 6]}
+{"question_id": "126", "prediction": "The model selects samples based on word score, link score and sequence score.", "token_f1": 0.07692307692307693, "context_tokens": 605, "latency": 1.8061435222625732, "selected_ranks": [1, 6]}
+{"question_id": "1264", "prediction": "No", "token_f1": 1.0, "context_tokens": 588, "latency": 1.2215933799743652, "selected_ranks": [1, 4]}
+{"question_id": "1265", "prediction": "F1-score of 0.2905", "token_f1": 0.5714285714285715, "context_tokens": 625, "latency": 1.6837520599365234, "selected_ranks": [1, 2]}
+{"question_id": "1266", "prediction": "100000000000000000000000000000000000000000000000000000000000000", "token_f1": 0.0, "context_tokens": 600, "latency": 3.6320443153381348, "selected_ranks": [2, 3]}
+{"question_id": "1267", "prediction": "non-parameter optimized linear-kernel SVM that uses TF-IDF bag-of-word vectors as inputs", "token_f1": 1.0, "context_tokens": 582, "latency": 2.1179020404815674, "selected_ranks": [2, 4]}
+{"question_id": "127", "prediction": "LSTM, gated neural network, gated combination neural network", "token_f1": 0.5454545454545454, "context_tokens": 631, "latency": 1.7167718410491943, "selected_ranks": [1, 3]}
+{"question_id": "1282", "prediction": "We use two strong baseline multi-source model transfer parsers with no supervision in the target language: zhang:15 and guo:16", "token_f1": 0.15789473684210525, "context_tokens": 545, "latency": 2.351334810256958, "selected_ranks": [2, 6]}
+{"question_id": "1283", "prediction": "10", "token_f1": 0.0, "context_tokens": 505, "latency": 1.1587779521942139, "selected_ranks": [2, 6]}
+{"question_id": "1313", "prediction": "on unlabeled data", "token_f1": 0.8, "context_tokens": 579, "latency": 1.379434585571289, "selected_ranks": [2, 3]}
+{"question_id": "1314", "prediction": "1.5%", "token_f1": 0.0, "context_tokens": 594, "latency": 1.393277645111084, "selected_ranks": [1, 4]}
+{"question_id": "1315", "prediction": "improves performance", "token_f1": 0.0, "context_tokens": 340, "latency": 0.849858283996582, "selected_ranks": [1, 2]}
+{"question_id": "1316", "prediction": "The results of our system when one of the embedding versions was not used during training.", "token_f1": 0.16666666666666666, "context_tokens": 659, "latency": 1.9842348098754883, "selected_ranks": [1, 2]}
+{"question_id": "1317", "prediction": "MVCNN has rich feature maps as input and as output of each convolution layer, and its convolution operation is more flexible to extract features of variable-range phrases, able to model dependency among all dimensions of representations.", "token_f1": 0.16666666666666666, "context_tokens": 650, "latency": 3.094059705734253, "selected_ranks": [1, 5]}
+{"question_id": "1364", "prediction": "unsupervised pre-training", "token_f1": 0.1111111111111111, "context_tokens": 396, "latency": 1.0864160060882568, "selected_ranks": [1, 2]}
+{"question_id": "1365", "prediction": "No", "token_f1": 0.0, "context_tokens": 470, "latency": 1.008833408355713, "selected_ranks": [1, 4]}
+{"question_id": "1366", "prediction": "by introducing a pre-training stage to learn a generic representation of the target task", "token_f1": 0.047619047619047616, "context_tokens": 616, "latency": 1.945767879486084, "selected_ranks": [1, 3]}
+{"question_id": "1367", "prediction": "Inducing Task-Specific Architecture in Pre-training", "token_f1": 0.31578947368421056, "context_tokens": 527, "latency": 1.7336814403533936, "selected_ranks": [1, 6]}
+{"question_id": "1377", "prediction": "by inducing a seed dictionary $D^{(1)}$ leveraging only two unaligned monolingual spaces", "token_f1": 0.2285714285714286, "context_tokens": 613, "latency": 2.060462474822998, "selected_ranks": [1, 2]}
+{"question_id": "1378", "prediction": "by measuring the cosine similarity between the aligned word vectors", "token_f1": 0.0, "context_tokens": 588, "latency": 1.671785593032837, "selected_ranks": [1, 2]}
+{"question_id": "1379", "prediction": "unsupervised CLWEs were trained with the same components C2 and C3 as supervised models", "token_f1": 0.07792207792207792, "context_tokens": 620, "latency": 2.043119430541992, "selected_ranks": [1, 2]}
+{"question_id": "1400", "prediction": "Simulation of real-time data feeds", "token_f1": 0.13333333333333333, "context_tokens": 450, "latency": 1.323718547821045, "selected_ranks": [1, 4]}
+{"question_id": "1401", "prediction": "FHIR is serialized into RDF", "token_f1": 0.1176470588235294, "context_tokens": 538, "latency": 1.3842802047729492, "selected_ranks": [1, 3]}
+{"question_id": "1402", "prediction": "FHIR makes records of events, RDF makes statements of fact. FHIR is not monotonic, RDF is.", "token_f1": 0.1904761904761905, "context_tokens": 440, "latency": 1.968691349029541, "selected_ranks": [1, 10]}
+{"question_id": "1403", "prediction": "FHIR: Fast Healthcare Interoperability Resources, RDF: Resource Description Framework", "token_f1": 0.8181818181818181, "context_tokens": 438, "latency": 1.6236896514892578, "selected_ranks": [2, 8]}
+{"question_id": "1419", "prediction": "English, Chinese", "token_f1": 0.3636363636363636, "context_tokens": 632, "latency": 1.3451740741729736, "selected_ranks": [1, 6]}
+{"question_id": "1420", "prediction": "four genres, i.e., broadcast conversation (BC), broadcast news (BN), magazine (MZ), and newswire (NW), as well as the concatenation of all genres", "token_f1": 0.0, "context_tokens": 658, "latency": 2.975742816925049, "selected_ranks": [1, 3]}
+{"question_id": "1459", "prediction": "No", "token_f1": 1.0, "context_tokens": 531, "latency": 1.1084227561950684, "selected_ranks": [2, 3]}
+{"question_id": "1460", "prediction": "LSTM", "token_f1": 0.6666666666666666, "context_tokens": 312, "latency": 0.715935230255127, "selected_ranks": [1, 6]}
+{"question_id": "1493", "prediction": "The dataset contains 10,000 tweets, 10,000 retweets, and 10,000 replies.", "token_f1": 0.0, "context_tokens": 303, "latency": 2.0018763542175293, "selected_ranks": [1, 4]}
+{"question_id": "1494", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 302, "latency": 0.6691534519195557, "selected_ranks": [1, 2]}
+{"question_id": "1495", "prediction": "January 1, 2020 until April 15, 2020", "token_f1": 1.0, "context_tokens": 443, "latency": 1.7625677585601807, "selected_ranks": [1, 2]}
+{"question_id": "1496", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 271, "latency": 0.6661121845245361, "selected_ranks": [1, 3]}
+{"question_id": "1497", "prediction": "1,232,222 tweets", "token_f1": 0.4, "context_tokens": 235, "latency": 0.9795010089874268, "selected_ranks": [1, 2]}
+{"question_id": "1502", "prediction": "1201", "token_f1": 0.0, "context_tokens": 590, "latency": 1.4164388179779053, "selected_ranks": [1, 4]}
+{"question_id": "1503", "prediction": "fastText and SVM", "token_f1": 1.0, "context_tokens": 614, "latency": 1.4249122142791748, "selected_ranks": [1, 2]}
+{"question_id": "1504", "prediction": "BERT-gen is a novel method for generating text using BERT, that can be applied in both mono and multi-modal settings.", "token_f1": 0.0, "context_tokens": 383, "latency": 2.0081777572631836, "selected_ranks": [1, 3]}
+{"question_id": "1505", "prediction": "concatenated", "token_f1": 0.0, "context_tokens": 354, "latency": 0.8748526573181152, "selected_ranks": [1, 5]}
+{"question_id": "153", "prediction": "No", "token_f1": 1.0, "context_tokens": 652, "latency": 1.3859546184539795, "selected_ranks": [1, 2]}
+{"question_id": "154", "prediction": "off-the-shelf tools", "token_f1": 0.0, "context_tokens": 619, "latency": 1.5637235641479492, "selected_ranks": [1, 2]}
+{"question_id": "155", "prediction": "Neural network with an embedding layer, a bidirectional LSTM, and two dense layers followed by a softmax output layer", "token_f1": 0.16666666666666669, "context_tokens": 503, "latency": 2.0172905921936035, "selected_ranks": [1, 2]}
+{"question_id": "156", "prediction": "OpenSMILE, FaceReader", "token_f1": 0.0, "context_tokens": 502, "latency": 1.2760884761810303, "selected_ranks": [1, 3]}
+{"question_id": "1586", "prediction": "1.5%", "token_f1": 0.0, "context_tokens": 552, "latency": 1.2814900875091553, "selected_ranks": [2, 3]}
+{"question_id": "1587", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 528, "latency": 1.1183009147644043, "selected_ranks": [1, 2]}
+{"question_id": "1632", "prediction": "downloaded from the official parliament website and further processed and parsed with a Python script", "token_f1": 0.0, "context_tokens": 597, "latency": 1.8509478569030762, "selected_ranks": [1, 4]}
+{"question_id": "1663", "prediction": "GeoQA+Q", "token_f1": 0.0, "context_tokens": 456, "latency": 1.2290632724761963, "selected_ranks": [1, 2]}
+{"question_id": "1670", "prediction": "through a focus attention mechanism", "token_f1": 0.0, "context_tokens": 590, "latency": 1.432677984237671, "selected_ranks": [1, 4]}
+{"question_id": "1682", "prediction": "1, 2, 3, 4, 5, 6, 7, 8", "token_f1": 0.0, "context_tokens": 449, "latency": 1.9022948741912842, "selected_ranks": [1, 2]}
+{"question_id": "1683", "prediction": "the method of Cavnar and Trenkle", "token_f1": 0.0, "context_tokens": 472, "latency": 1.3621089458465576, "selected_ranks": [1, 2]}
+{"question_id": "1704", "prediction": "10,000 questions", "token_f1": 0.07692307692307693, "context_tokens": 648, "latency": 1.6934716701507568, "selected_ranks": [3, 5]}
+{"question_id": "1705", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 611, "latency": 1.3117680549621582, "selected_ranks": [1, 3]}
+{"question_id": "171", "prediction": "by fine-tuning on word-alignment task", "token_f1": 0.11428571428571428, "context_tokens": 453, "latency": 1.4410183429718018, "selected_ranks": [1, 10]}
+{"question_id": "172", "prediction": "No", "token_f1": 1.0, "context_tokens": 541, "latency": 1.1547002792358398, "selected_ranks": [1, 2]}
+{"question_id": "173", "prediction": "by projecting the representations into a lower dimensional space", "token_f1": 0.2, "context_tokens": 447, "latency": 1.4067533016204834, "selected_ranks": [1, 3]}
+{"question_id": "174", "prediction": "fine-tuning, linguistic transfer of semantics, language identity removal via adversarial classifier", "token_f1": 0.0, "context_tokens": 440, "latency": 1.7834134101867676, "selected_ranks": [1, 3]}
+{"question_id": "1757", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 638, "latency": 1.435349702835083, "selected_ranks": [1, 2]}
+{"question_id": "1763", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 660, "latency": 1.6818537712097168, "selected_ranks": [1, 4]}
+{"question_id": "1779", "prediction": "by not including all desired attributes", "token_f1": 0.4444444444444444, "context_tokens": 512, "latency": 1.5356860160827637, "selected_ranks": [1, 2]}
+{"question_id": "1799", "prediction": "GloVe, Word2Vec, FastText, BERT, ELMo, SentVec, Doc2Vec, CBOW, CBOW++, SentVec++, SentVec+++, SentVec+++, SentVec+++, SentVec+++,", "token_f1": 0.0, "context_tokens": 619, "latency": 3.755276679992676, "selected_ranks": [1, 3]}
+{"question_id": "1800", "prediction": "100000000000000000000000000000000000000000000000000000000000000", "token_f1": 0.0, "context_tokens": 482, "latency": 3.5037217140197754, "selected_ranks": [1, 3]}
+{"question_id": "1801", "prediction": "subtask 1: protein-protein interactions, subtask 2: protein-disease interactions", "token_f1": 0.0, "context_tokens": 357, "latency": 1.6550817489624023, "selected_ranks": [1, 2]}
+{"question_id": "1807", "prediction": "Naive Bayes, SVM, LSTM, CNN, LSTM+CNN, LSTM+CNN+CNN, LSTM+CNN+CNN+CNN, LSTM+CNN+CNN+CNN+CNN, LSTM+CNN+CNN+", "token_f1": 0.0, "context_tokens": 358, "latency": 3.2629544734954834, "selected_ranks": [1, 3]}
+{"question_id": "1808", "prediction": "GPT-2", "token_f1": 1.0, "context_tokens": 608, "latency": 1.4567604064941406, "selected_ranks": [1, 3]}
+{"question_id": "1809", "prediction": "BERT: 86.30, 86.30, 86.30, 86.30, 86.30, 86.30, 86.30, 86.30, 86.3", "token_f1": 0.0, "context_tokens": 408, "latency": 3.3713467121124268, "selected_ranks": [1, 3]}
+{"question_id": "1810", "prediction": "The data is automatically generated according to expert-crafted grammars, and our automatic labels are validated with crowd-sourced human judgments.", "token_f1": 0.057142857142857134, "context_tokens": 471, "latency": 2.314788818359375, "selected_ranks": [1, 3]}
+{"question_id": "1828", "prediction": "1.5%", "token_f1": 0.0, "context_tokens": 375, "latency": 1.0007410049438477, "selected_ranks": [1, 3]}
+{"question_id": "1829", "prediction": "LSTM, LSTM with attention, LSTM with self-attention, LSTM with attention and self-attention, LSTM with attention and self-attention and compression tokens", "token_f1": 0.0, "context_tokens": 372, "latency": 2.284597635269165, "selected_ranks": [1, 2]}
+{"question_id": "1830", "prediction": "MS-COCO", "token_f1": 0.33333333333333337, "context_tokens": 497, "latency": 1.2116193771362305, "selected_ranks": [1, 2]}
+{"question_id": "1871", "prediction": "TS", "token_f1": 0.0, "context_tokens": 625, "latency": 1.3955867290496826, "selected_ranks": [1, 6]}
+{"question_id": "1909", "prediction": "w2v-gn-500K, w2v-gn-100K, w2v-gn-50K, w2v-gn-10K, w2v-gn-50K, w2v-gn-10K, w2", "token_f1": 0.0, "context_tokens": 493, "latency": 3.535386323928833, "selected_ranks": [1, 2]}
+{"question_id": "1910", "prediction": "Pearson and Spearman correlation", "token_f1": 0.0, "context_tokens": 470, "latency": 1.3290135860443115, "selected_ranks": [2, 7]}
+{"question_id": "1911", "prediction": "words with less than 10 occurrences in the corpus", "token_f1": 0.20000000000000004, "context_tokens": 589, "latency": 1.8643221855163574, "selected_ranks": [1, 2]}
+{"question_id": "1912", "prediction": "Freebase, WikiMovies, DBpedia, YAGO, NELL, NELL-1000, NELL-10000, NELL-100000, NELL-1000000, NELL-100", "token_f1": 0.0, "context_tokens": 437, "latency": 3.414553642272949, "selected_ranks": [1, 2]}
+{"question_id": "1917", "prediction": "By comparing the results of self-localization before and after the utterance for three places", "token_f1": 0.0, "context_tokens": 401, "latency": 1.6444306373596191, "selected_ranks": [1, 2]}
+{"question_id": "1918", "prediction": "by comparing the number of words acquired by the model with the number of words acquired by the human child", "token_f1": 0.0, "context_tokens": 528, "latency": 1.9411718845367432, "selected_ranks": [1, 3]}
+{"question_id": "1919", "prediction": "unsupervised morphological analyzer capable of using lattices", "token_f1": 0.1818181818181818, "context_tokens": 492, "latency": 1.5667624473571777, "selected_ranks": [3, 5]}
+{"question_id": "1920", "prediction": "No", "token_f1": 1.0, "context_tokens": 634, "latency": 1.4824433326721191, "selected_ranks": [1, 2]}
+{"question_id": "1926", "prediction": "BLEU score, accuracy, inference chains, entailment graph", "token_f1": 0.30769230769230765, "context_tokens": 510, "latency": 1.7537891864776611, "selected_ranks": [1, 2]}
+{"question_id": "1934", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 532, "latency": 1.2175922393798828, "selected_ranks": [2, 4]}
+{"question_id": "1958", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 654, "latency": 1.5168790817260742, "selected_ranks": [1, 3]}
+{"question_id": "1964", "prediction": "No", "token_f1": 1.0, "context_tokens": 609, "latency": 1.383556604385376, "selected_ranks": [1, 5]}
+{"question_id": "1965", "prediction": "No", "token_f1": 0.0, "context_tokens": 610, "latency": 1.3982985019683838, "selected_ranks": [1, 5]}
+{"question_id": "1984", "prediction": "The task of slot filling is to extract slot fillers from a document collection for a given query.", "token_f1": 0.16, "context_tokens": 629, "latency": 2.1506080627441406, "selected_ranks": [2, 7]}
+{"question_id": "2014", "prediction": "The dataset used to evaluate the introduced method is a collection of 100000 chat logs from a real-world customer service system.", "token_f1": 0.2631578947368421, "context_tokens": 454, "latency": 2.2456541061401367, "selected_ranks": [1, 2]}
+{"question_id": "2015", "prediction": "80.2%", "token_f1": 0.0, "context_tokens": 454, "latency": 1.3192291259765625, "selected_ranks": [1, 2]}
+{"question_id": "2023", "prediction": "WMT 2016 English-German dataset", "token_f1": 0.38095238095238093, "context_tokens": 483, "latency": 1.5665745735168457, "selected_ranks": [2, 3]}
+{"question_id": "2027", "prediction": "10.5%", "token_f1": 0.0, "context_tokens": 411, "latency": 1.3726768493652344, "selected_ranks": [1, 8]}
+{"question_id": "2028", "prediction": "linear Support Vector Machine", "token_f1": 0.0, "context_tokens": 451, "latency": 1.4312198162078857, "selected_ranks": [2, 4]}
+{"question_id": "2029", "prediction": "American or German political actors, musicians, media websites or sports clubs", "token_f1": 0.6956521739130435, "context_tokens": 600, "latency": 1.916867733001709, "selected_ranks": [2, 3]}
+{"question_id": "2030", "prediction": "hate speech, discrimination, abusive language, offensive language", "token_f1": 0.0, "context_tokens": 518, "latency": 1.6209697723388672, "selected_ranks": [1, 2]}
+{"question_id": "2031", "prediction": "9.4 macro-average F1 and 2.6 accuracies improvement over Dmu-Entnet", "token_f1": 0.04878048780487805, "context_tokens": 588, "latency": 2.2900729179382324, "selected_ranks": [1, 2]}
+{"question_id": "2032", "prediction": "For the set of a target-aspect pair (LOCATION1, safety), the sentence we generate is \u201cwhat do you think of the safety of location - 1 ?\" For the NLI task, the conditions we set when generating sentences are less strict, and the form is much simpler. The sentence created", "token_f1": 0.5079365079365079, "context_tokens": 573, "latency": 3.8190419673919678, "selected_ranks": [1, 2]}
+{"question_id": "2059", "prediction": "WN18, FB15K, WN18RR, FB15K237, WN18RR-100, FB15K237-100", "token_f1": 0.5, "context_tokens": 619, "latency": 3.234022378921509, "selected_ranks": [1, 2]}
+{"question_id": "2069", "prediction": "The text sequence associated with each vertex is the title and abstract of the paper.", "token_f1": 0.0, "context_tokens": 523, "latency": 1.8178181648254395, "selected_ranks": [2, 5]}
+{"question_id": "2100", "prediction": "consistency reasoning", "token_f1": 0.0, "context_tokens": 607, "latency": 1.4466466903686523, "selected_ranks": [3, 4]}
+{"question_id": "2101", "prediction": "DBpedia", "token_f1": 1.0, "context_tokens": 584, "latency": 1.4709913730621338, "selected_ranks": [1, 5]}
+{"question_id": "2102", "prediction": "0.80", "token_f1": 0.0, "context_tokens": 544, "latency": 1.4092988967895508, "selected_ranks": [2, 3]}
+{"question_id": "2158", "prediction": "F1 score", "token_f1": 0.0, "context_tokens": 612, "latency": 1.4819703102111816, "selected_ranks": [1, 2]}
+{"question_id": "2159", "prediction": "No", "token_f1": 1.0, "context_tokens": 460, "latency": 1.1396760940551758, "selected_ranks": [1, 8]}
+{"question_id": "2160", "prediction": "75 meetings, 70 hours of audio, 6 speakers per meeting", "token_f1": 0.6250000000000001, "context_tokens": 613, "latency": 2.02764892578125, "selected_ranks": [1, 2]}
+{"question_id": "2161", "prediction": "annotations for involvement hot spots , linguistic utterance units, and word time boundaries based on forced alignment", "token_f1": 0.13793103448275862, "context_tokens": 640, "latency": 2.342698574066162, "selected_ranks": [1, 2]}
+{"question_id": "2190", "prediction": "web domains, Chemical domain", "token_f1": 0.0, "context_tokens": 647, "latency": 1.7402925491333008, "selected_ranks": [1, 2]}
+{"question_id": "2191", "prediction": "A test to evaluate exposure bias by measuring the quality of sentence completion with unfamiliar prefixes", "token_f1": 0.23529411764705882, "context_tokens": 379, "latency": 1.6809942722320557, "selected_ranks": [1, 4]}
+{"question_id": "2192", "prediction": "LeakGAN, GAN, GAN-AC, GAN-AC, GAN-AC-MR, GAN-AC-MR, GAN-AC-MR-ME, GAN-AC-MR-ME-MR, GAN-AC-MR-ME-MR-ME", "token_f1": 0.1111111111111111, "context_tokens": 442, "latency": 3.540395975112915, "selected_ranks": [1, 4]}
+{"question_id": "2196", "prediction": "No", "token_f1": 1.0, "context_tokens": 559, "latency": 1.240462303161621, "selected_ranks": [1, 2]}
+{"question_id": "2201", "prediction": "It is an especially appropriate method for this classification problem because it avoids the need for expensive cross-validation for hyperparameter selection. Instead, the marginal likelihood of the data can be used for hyperparameter selection.", "token_f1": 0.5, "context_tokens": 529, "latency": 2.855252504348755, "selected_ranks": [1, 6]}
+{"question_id": "2202", "prediction": "Yes", "token_f1": 0.0, "context_tokens": 415, "latency": 1.0170071125030518, "selected_ranks": [1, 3]}
+{"question_id": "2239", "prediction": "No", "token_f1": 1.0, "context_tokens": 618, "latency": 1.4238426685333252, "selected_ranks": [1, 2]}
+{"question_id": "2240", "prediction": "No", "token_f1": 1.0, "context_tokens": 318, "latency": 0.8825881481170654, "selected_ranks": [1, 3]}
+{"question_id": "2262", "prediction": "CNN-MLP", "token_f1": 0.0, "context_tokens": 587, "latency": 1.5289196968078613, "selected_ranks": [1, 3]}
+{"question_id": "2293", "prediction": "Hits@1, Hits@3, Hits@10, MRR(raw), MRR", "token_f1": 0.5000000000000001, "context_tokens": 657, "latency": 2.416508436203003, "selected_ranks": [1, 6]}
+{"question_id": "283", "prediction": "cepstral mean normalization (CMN), variance with mean normalization (CMVN)", "token_f1": 0.9411764705882353, "context_tokens": 382, "latency": 1.8027455806732178, "selected_ranks": [1, 2]}
+{"question_id": "284", "prediction": "FBanks, spectrogram", "token_f1": 0.1904761904761905, "context_tokens": 496, "latency": 1.4054429531097412, "selected_ranks": [1, 2]}
+{"question_id": "285", "prediction": "6-layer bLSTM with 1024 hidden units", "token_f1": 1.0, "context_tokens": 443, "latency": 1.7080836296081543, "selected_ranks": [1, 2]}
+{"question_id": "340", "prediction": "15", "token_f1": 0.0, "context_tokens": 563, "latency": 1.309807538986206, "selected_ranks": [1, 2]}
+{"question_id": "341", "prediction": "293", "token_f1": 0.0, "context_tokens": 474, "latency": 1.2757534980773926, "selected_ranks": [1, 7]}
+{"question_id": "342", "prediction": "Yes", "token_f1": 0.5, "context_tokens": 533, "latency": 1.2440876960754395, "selected_ranks": [1, 4]}
+{"question_id": "343", "prediction": "15 types of modifications: simplification, generalization, formal to informal, informal to formal, inversion, negation, minimal change, addition, deletion, substitution, permutation, addition of a word, deletion of a word, substitution of a word, permutation", "token_f1": 0.1702127659574468, "context_tokens": 458, "latency": 3.5952870845794678, "selected_ranks": [1, 2]}
+{"question_id": "344", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 554, "latency": 1.3853747844696045, "selected_ranks": [2, 3]}
+{"question_id": "345", "prediction": "No", "token_f1": 0.0, "context_tokens": 517, "latency": 1.4464130401611328, "selected_ranks": [1, 3]}
+{"question_id": "346", "prediction": "No", "token_f1": 0.0, "context_tokens": 548, "latency": 1.3947422504425049, "selected_ranks": [1, 2]}
+{"question_id": "347", "prediction": "15", "token_f1": 0.0, "context_tokens": 526, "latency": 1.3079626560211182, "selected_ranks": [1, 3]}
+{"question_id": "348", "prediction": "No", "token_f1": 1.0, "context_tokens": 547, "latency": 1.2587246894836426, "selected_ranks": [2, 3]}
+{"question_id": "398", "prediction": "The study found that women are more likely to be depressed than men, and that depression is more common in the age group of 18-24.", "token_f1": 0.4615384615384615, "context_tokens": 517, "latency": 2.45481538772583, "selected_ranks": [1, 2]}
+{"question_id": "399", "prediction": "Multimodal framework", "token_f1": 0.0, "context_tokens": 522, "latency": 1.4060640335083008, "selected_ranks": [1, 2]}
+{"question_id": "400", "prediction": "By employing statistical techniques for fusing heterogeneous sets of features obtained by processing visual, textual and user interaction data", "token_f1": 0.0, "context_tokens": 515, "latency": 2.1539833545684814, "selected_ranks": [1, 2]}
+{"question_id": "401", "prediction": "Facial presence, emotion from facial expression, attributes contributing to the computational aesthetics, sentimental quotes", "token_f1": 0.2352941176470588, "context_tokens": 579, "latency": 2.2192602157592773, "selected_ranks": [2, 3]}
+{"question_id": "402", "prediction": "human-annotated", "token_f1": 0.0, "context_tokens": 569, "latency": 1.5181231498718262, "selected_ranks": [1, 8]}
+{"question_id": "403", "prediction": "from the profile's description", "token_f1": 0.0, "context_tokens": 510, "latency": 1.4359943866729736, "selected_ranks": [1, 3]}
+{"question_id": "404", "prediction": "Twitter", "token_f1": 0.5, "context_tokens": 513, "latency": 1.2419395446777344, "selected_ranks": [2, 4]}
+{"question_id": "405", "prediction": "Twitter", "token_f1": 0.0, "context_tokens": 559, "latency": 1.2572801113128662, "selected_ranks": [1, 4]}
+{"question_id": "406", "prediction": "profile/posted images", "token_f1": 0.0, "context_tokens": 658, "latency": 1.7103092670440674, "selected_ranks": [1, 2]}
+{"question_id": "418", "prediction": "No", "token_f1": 0.0, "context_tokens": 583, "latency": 1.4064586162567139, "selected_ranks": [1, 2]}
+{"question_id": "419", "prediction": "COHA, Google N-grams", "token_f1": 0.6, "context_tokens": 670, "latency": 1.8318500518798828, "selected_ranks": [2, 3]}
+{"question_id": "420", "prediction": "The model is based on the premise that language use can inform people's moral perception toward right or wrong, and we build our methodology by exploring moral biases learned from diachronic word embeddings.", "token_f1": 0.030769230769230767, "context_tokens": 353, "latency": 2.527294635772705, "selected_ranks": [1, 2]}
+{"question_id": "421", "prediction": "by dividing seed words into positive and negative sets, and for fine-grained categorization by splitting them into the 10 MFT categories", "token_f1": 0.16, "context_tokens": 506, "latency": 2.3798563480377197, "selected_ranks": [1, 2]}
+{"question_id": "422", "prediction": "care, fairness, loyalty, purity, sanctity, self-direction, tradition, utility, welfare", "token_f1": 0.4210526315789474, "context_tokens": 510, "latency": 2.0598490238189697, "selected_ranks": [1, 2]}
+{"question_id": "478", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 529, "latency": 1.2413897514343262, "selected_ranks": [1, 2]}
+{"question_id": "479", "prediction": "Navajo", "token_f1": 0.0, "context_tokens": 632, "latency": 1.4387493133544922, "selected_ranks": [2, 3]}
+{"question_id": "480", "prediction": "accuracy", "token_f1": 0.0, "context_tokens": 626, "latency": 1.4193024635314941, "selected_ranks": [1, 2]}
+{"question_id": "481", "prediction": "English, German, Dutch, Spanish, French, Italian, Russian, Polish, Czech, Hungarian, Romanian, Turkish, Finnish, Swedish, Danish, Norwegian, Icelandic, Latvian, Lithuan, Estonian, Slovakian, Slovenian, Czechian", "token_f1": 0.15384615384615383, "context_tokens": 461, "latency": 3.5577139854431152, "selected_ranks": [2, 3]}
+{"question_id": "545", "prediction": "by filtering out irrelevant tweets", "token_f1": 0.08695652173913045, "context_tokens": 453, "latency": 1.3682975769042969, "selected_ranks": [1, 2]}
+{"question_id": "546", "prediction": "The CNN is the best performing model and also the classifier that best serves our goals, as we want to produce accurate predictions for the pro-Russian and pro-Ukrainian class without confusing between them.", "token_f1": 0.0, "context_tokens": 493, "latency": 2.8243701457977295, "selected_ranks": [2, 7]}
+{"question_id": "547", "prediction": "Category I errors", "token_f1": 0.0, "context_tokens": 456, "latency": 1.2097444534301758, "selected_ranks": [2, 4]}
+{"question_id": "548", "prediction": "Convolutional Neural Network (CNN)", "token_f1": 1.0, "context_tokens": 287, "latency": 1.1487433910369873, "selected_ranks": [2, 4]}
+{"question_id": "549", "prediction": "Russian, English", "token_f1": 0.6666666666666666, "context_tokens": 626, "latency": 1.4782276153564453, "selected_ranks": [1, 2]}
+{"question_id": "550", "prediction": "MH17 Twitter dataset", "token_f1": 1.0, "context_tokens": 666, "latency": 1.7399013042449951, "selected_ranks": [2, 3]}
+{"question_id": "551", "prediction": "small, manually annotated datasets, or used proxies for data annotation", "token_f1": 0.052631578947368425, "context_tokens": 632, "latency": 2.0389578342437744, "selected_ranks": [1, 2]}
+{"question_id": "556", "prediction": "The HMM models are interpretable and identify spaces, indentation, and special characters in the data.", "token_f1": 0.13793103448275865, "context_tokens": 457, "latency": 1.910959005355835, "selected_ranks": [1, 6]}
+{"question_id": "557", "prediction": "the temporal dependencies", "token_f1": 0.0, "context_tokens": 414, "latency": 1.095015287399292, "selected_ranks": [3, 4]}
+{"question_id": "558", "prediction": "visualizations", "token_f1": 0.0, "context_tokens": 418, "latency": 1.0460059642791748, "selected_ranks": [2, 3]}
+{"question_id": "559", "prediction": "small", "token_f1": 0.0, "context_tokens": 413, "latency": 1.0024137496948242, "selected_ranks": [1, 2]}
+{"question_id": "631", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 499, "latency": 1.1437830924987793, "selected_ranks": [1, 4]}
+{"question_id": "632", "prediction": "Yoga-Veganism", "token_f1": 0.0, "context_tokens": 521, "latency": 1.468665599822998, "selected_ranks": [1, 2]}
+{"question_id": "636", "prediction": "BLEU", "token_f1": 0.6666666666666666, "context_tokens": 254, "latency": 0.8261044025421143, "selected_ranks": [1, 2]}
+{"question_id": "637", "prediction": "WMT14 En-Fr and En-De datasets, IWSLT De-En and En-Vi datasets", "token_f1": 1.0, "context_tokens": 530, "latency": 2.436004400253296, "selected_ranks": [1, 3]}
+{"question_id": "638", "prediction": "English-German, English-French, English-Chinese", "token_f1": 0.0, "context_tokens": 236, "latency": 1.1534559726715088, "selected_ranks": [1, 4]}
+{"question_id": "639", "prediction": "1.4 BLEU scores", "token_f1": 0.3333333333333333, "context_tokens": 598, "latency": 1.68485689163208, "selected_ranks": [1, 6]}
+{"question_id": "677", "prediction": "randomly", "token_f1": 0.0, "context_tokens": 649, "latency": 1.52947998046875, "selected_ranks": [1, 2]}
+{"question_id": "721", "prediction": "standard parametrized attention", "token_f1": 0.7499999999999999, "context_tokens": 654, "latency": 1.7235729694366455, "selected_ranks": [1, 2]}
+{"question_id": "722", "prediction": "27.32, 26.32, 28.32, 29.32, 210.32, 211.32, 212.32, 213.32, 214", "token_f1": 0.0, "context_tokens": 633, "latency": 3.966503858566284, "selected_ranks": [1, 2]}
+{"question_id": "723", "prediction": "4 training datasets of 100,000 examples", "token_f1": 0.0, "context_tokens": 655, "latency": 2.042567253112793, "selected_ranks": [1, 4]}
+{"question_id": "732", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 533, "latency": 1.220508098602295, "selected_ranks": [1, 2]}
+{"question_id": "733", "prediction": "MuST-C", "token_f1": 0.07692307692307693, "context_tokens": 397, "latency": 1.1254022121429443, "selected_ranks": [1, 5]}
+{"question_id": "734", "prediction": "by adding a length token to the positional embedding", "token_f1": 0.1111111111111111, "context_tokens": 567, "latency": 1.5921952724456787, "selected_ranks": [1, 2]}
+{"question_id": "735", "prediction": "by adding a length token to the target-source length-ratio class", "token_f1": 0.1739130434782609, "context_tokens": 438, "latency": 1.523240089416504, "selected_ranks": [1, 6]}
+{"question_id": "736", "prediction": "English, German", "token_f1": 0.0, "context_tokens": 395, "latency": 1.0777106285095215, "selected_ranks": [2, 7]}
+{"question_id": "737", "prediction": "En-It and En-De pairs", "token_f1": 0.21428571428571425, "context_tokens": 514, "latency": 1.5134086608886719, "selected_ranks": [1, 2]}
+{"question_id": "738", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 428, "latency": 1.0096147060394287, "selected_ranks": [1, 4]}
+{"question_id": "818", "prediction": "Frege's holistic and functional approach to meaning is analogical to the process of training the Skip-gram model and offers a possible explanation of its semantic properties.", "token_f1": 0.27272727272727276, "context_tokens": 571, "latency": 2.7253262996673584, "selected_ranks": [1, 2]}
+{"question_id": "819", "prediction": "The meaning of a word is given by the contexts where it occurs.", "token_f1": 0.4444444444444445, "context_tokens": 562, "latency": 1.789541482925415, "selected_ranks": [1, 4]}
+{"question_id": "877", "prediction": "It uses an entity-linking approach to properties to add new qualitative relationships without requiring new training examples.", "token_f1": 0.1, "context_tokens": 458, "latency": 1.9359359741210938, "selected_ranks": [1, 4]}
+{"question_id": "878", "prediction": "QuaSP, BiLSTM", "token_f1": 0.0, "context_tokens": 655, "latency": 1.7612314224243164, "selected_ranks": [1, 6]}
+{"question_id": "879", "prediction": "by crowdsourcing", "token_f1": 0.0, "context_tokens": 329, "latency": 0.9892089366912842, "selected_ranks": [1, 2]}
+{"question_id": "880", "prediction": "Yes", "token_f1": 1.0, "context_tokens": 591, "latency": 1.383162498474121, "selected_ranks": [1, 2]}
+{"question_id": "883", "prediction": "ACL Anthology", "token_f1": 0.6666666666666666, "context_tokens": 639, "latency": 1.6479058265686035, "selected_ranks": [1, 2]}
+{"question_id": "884", "prediction": "F-score, micro-F, macro-F and weighted-F scores", "token_f1": 0.888888888888889, "context_tokens": 572, "latency": 2.013705015182495, "selected_ranks": [1, 7]}
+{"question_id": "897", "prediction": "fluency of the language used, and the relevance of the question to the context document and answer", "token_f1": 0.631578947368421, "context_tokens": 542, "latency": 1.9481971263885498, "selected_ranks": [2, 6]}
+{"question_id": "90", "prediction": "The other experiment used the CNN-Daily dataset", "token_f1": 0.11764705882352941, "context_tokens": 510, "latency": 1.5759034156799316, "selected_ranks": [1, 2]}
+{"question_id": "91", "prediction": "10%", "token_f1": 0.0, "context_tokens": 513, "latency": 1.35097336769104, "selected_ranks": [1, 2]}
+{"question_id": "916", "prediction": "shining through and explicitation", "token_f1": 0.5, "context_tokens": 505, "latency": 1.422273874282837, "selected_ranks": [1, 3]}
+{"question_id": "917", "prediction": "English", "token_f1": 0.6666666666666666, "context_tokens": 493, "latency": 1.139099359512329, "selected_ranks": [1, 2]}
+{"question_id": "918", "prediction": "The annotator defines each markable as a certain mention type (pronoun, NP, VP or clause). The mentions can be defined further in terms of their cohesive function (antecedent, anaphoric, cataphoric, comparative, substitution, ellipsis,", "token_f1": 0.4878048780487805, "context_tokens": 579, "latency": 3.8191981315612793, "selected_ranks": [1, 2]}
+{"question_id": "919", "prediction": "NMT1, NMT2, NMT3", "token_f1": 0.0, "context_tokens": 552, "latency": 1.6124753952026367, "selected_ranks": [1, 2]}
+{"question_id": "92", "prediction": "TF-IDF, NVDM", "token_f1": 1.0, "context_tokens": 614, "latency": 1.63321852684021, "selected_ranks": [1, 2]}
+{"question_id": "920", "prediction": "chain features related to the phenomena of shining through and explicitation", "token_f1": 0.5, "context_tokens": 503, "latency": 1.64042329788208, "selected_ranks": [1, 4]}
+{"question_id": "93", "prediction": "100000", "token_f1": 0.0, "context_tokens": 514, "latency": 1.4575011730194092, "selected_ranks": [2, 4]}
+{"question_id": "94", "prediction": "1,610", "token_f1": 0.0, "context_tokens": 503, "latency": 1.3451783657073975, "selected_ranks": [1, 5]}
+{"question_id": "95", "prediction": "Tencent News", "token_f1": 0.0, "context_tokens": 544, "latency": 1.353752851486206, "selected_ranks": [1, 2]}
+{"question_id": "951", "prediction": "The neural model can be used for retrieval by using a mixture model to predict the article to feed the comprehension model.", "token_f1": 0.08333333333333333, "context_tokens": 546, "latency": 2.206324338912964, "selected_ranks": [1, 2]}
+{"question_id": "964", "prediction": "The authors' best performing system is a linear support vector machine with word unigrams and character 3-5 grams as features. The authors' best performing system is a linear support vector machine with word unigrams and character 3-5 grams as features.", "token_f1": 0.06779661016949153, "context_tokens": 513, "latency": 3.6686861515045166, "selected_ranks": [1, 2]}
+{"question_id": "965", "prediction": "variety", "token_f1": 0.0, "context_tokens": 464, "latency": 1.1150307655334473, "selected_ranks": [1, 8]}
+{"question_id": "966", "prediction": "author profiling", "token_f1": 0.0, "context_tokens": 445, "latency": 1.1975741386413574, "selected_ranks": [1, 2]}

@@ -1,0 +1,4 @@
+budget,selected_alpha,internal_val_f1,internal_val_tokens,selection_rule
+2,0.5,0.34487405387222086,525.8157894736842,Highest F1 (with 0.002 token tie-break)
+4,0.75,0.40077646576025355,942.1286549707602,Highest F1 (with 0.002 token tie-break)
+6,0.75,0.4237199658393979,1358.6052631578948,Highest F1 (with 0.002 token tie-break)

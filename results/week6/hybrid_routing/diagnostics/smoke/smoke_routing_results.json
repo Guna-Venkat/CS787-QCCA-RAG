@@ -1,0 +1,498 @@
+[
+  {
+    "question_id": "1811",
+    "paper_id": "596",
+    "question": "Do they fine-tune the used word embeddings on their medical texts?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      3,
+      4,
+      7,
+      8
+    ],
+    "R3_alpha_0.00": [
+      3,
+      4,
+      7,
+      8
+    ],
+    "R3_alpha_0.25": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "R3_alpha_0.50": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "R3_alpha_0.75": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "R5_rank_sum": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "jaccard_r0_r1": 0.3333333333333333,
+    "jaccard_r0_r3_mid": 0.6,
+    "jaccard_r1_r3_mid": 0.6
+  },
+  {
+    "question_id": "1812",
+    "paper_id": "596",
+    "question": "Which word embeddings do they use to represent medical visits?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      3,
+      5,
+      6,
+      8
+    ],
+    "R3_alpha_0.00": [
+      3,
+      5,
+      6,
+      8
+    ],
+    "R3_alpha_0.25": [
+      1,
+      3,
+      5,
+      8
+    ],
+    "R3_alpha_0.50": [
+      1,
+      3,
+      5,
+      8
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      3,
+      5,
+      8
+    ],
+    "R5_rank_sum": [
+      1,
+      3,
+      4,
+      5
+    ],
+    "jaccard_r0_r1": 0.14285714285714285,
+    "jaccard_r0_r3_mid": 0.3333333333333333,
+    "jaccard_r1_r3_mid": 0.6
+  },
+  {
+    "question_id": "1813",
+    "paper_id": "596",
+    "question": "Do they explore similarity of texts across different doctors?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_0.00": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "jaccard_r0_r1": 0.6,
+    "jaccard_r0_r3_mid": 0.6,
+    "jaccard_r1_r3_mid": 1.0
+  },
+  {
+    "question_id": "1814",
+    "paper_id": "596",
+    "question": "Which clustering technique do they use on partients' visits texts?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      2,
+      5,
+      8,
+      9
+    ],
+    "R3_alpha_0.00": [
+      2,
+      5,
+      8,
+      9
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      8,
+      9
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "jaccard_r0_r1": 0.14285714285714285,
+    "jaccard_r0_r3_mid": 0.6,
+    "jaccard_r1_r3_mid": 0.3333333333333333
+  },
+  {
+    "question_id": "1427",
+    "paper_id": "441",
+    "question": "Does the performance necessarily drop when more control is desired?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      1,
+      2,
+      8,
+      9
+    ],
+    "R3_alpha_0.00": [
+      1,
+      2,
+      8,
+      9
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      3,
+      9
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      3,
+      9
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      9
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      3,
+      9
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      3,
+      8
+    ],
+    "jaccard_r0_r1": 0.3333333333333333,
+    "jaccard_r0_r3_mid": 0.6,
+    "jaccard_r1_r3_mid": 0.6
+  },
+  {
+    "question_id": "1428",
+    "paper_id": "441",
+    "question": "How is the model trained to do only content selection?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      1,
+      2,
+      3,
+      10
+    ],
+    "R3_alpha_0.00": [
+      1,
+      2,
+      3,
+      10
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      3,
+      10
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "jaccard_r0_r1": 0.6,
+    "jaccard_r0_r3_mid": 0.6,
+    "jaccard_r1_r3_mid": 0.6
+  },
+  {
+    "question_id": "2216",
+    "paper_id": "807",
+    "question": "What meta-information is being transferred?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "R3_alpha_0.00": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "jaccard_r0_r1": 0.6,
+    "jaccard_r0_r3_mid": 1.0,
+    "jaccard_r1_r3_mid": 0.6
+  },
+  {
+    "question_id": "2217",
+    "paper_id": "807",
+    "question": "What datasets are used to evaluate the approach?",
+    "R0_bm25_prefix": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R1_semantic_topk": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "R3_alpha_0.00": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "R3_alpha_0.25": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R3_alpha_0.50": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R3_alpha_0.75": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R3_alpha_1.00": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R4_rrf": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "R5_rank_sum": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "jaccard_r0_r1": 0.6,
+    "jaccard_r0_r3_mid": 1.0,
+    "jaccard_r1_r3_mid": 0.6
+  }
+]

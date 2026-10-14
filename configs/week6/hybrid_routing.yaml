@@ -1,0 +1,58 @@
+# Week 6-B: Hybrid Lexical-Semantic Passage Fidelity Routing Configuration
+research_question: "Do lexical BM25 relevance and pretrained semantic relevance contain complementary routing information, such that combining them improves passage-fidelity routing beyond either signal alone?"
+
+seed: 42
+budgets: [2, 4, 6]
+
+alpha_grid: [0.0, 0.25, 0.5, 0.75, 1.0]
+
+score_normalization: "min_max"  # Primary: per-query min-max; optional diagnostic: z_score
+
+rrf:
+  c: 60.0  # Fixed Reciprocal Rank Fusion constant
+
+rank_sum:
+  enabled: true  # Optional parameter-light baseline: -r_bm25 - r_sem
+
+internal_val_selection:
+  primary_metric: "answer_f1"
+  secondary_metric: "context_tokens"
+  f1_tolerance: 0.002
+  tie_breaker: "simpler_endpoint"  # Closer to 0.0 or 1.0 if tied
+
+bootstrap:
+  n_resamples: 2000
+  confidence_level: 0.95
+  cluster_col: "paper_id"
+
+paths:
+  results_root: "results/week6/hybrid_routing"
+  routing_assignments_dir: "results/week6/hybrid_routing/routing_assignments"
+  sara_generations_dir: "results/week6/hybrid_routing/sara_generations"
+  tables_dir: "results/week6/hybrid_routing/tables"
+  figures_dir: "results/week6/hybrid_routing/figures"
+  bootstrap_dir: "results/week6/hybrid_routing/bootstrap"
+  diagnostics_dir: "results/week6/hybrid_routing/diagnostics"
+  smoke_dir: "results/week6/hybrid_routing/diagnostics/smoke"
+  logs_dir: "results/week6/hybrid_routing/logs"
+
+  # Canonical W6-A historical artifacts to reuse
+  w6a_main_results: "results/week6/passage_routing/tables/w6_main_results.csv"
+  w6a_routing_assignments: "results/week6/passage_routing/routing_predictions/dev_routing_assignments.csv"
+  w6a_sara_generations: "results/week6/passage_routing/sara_generations/dev_sara_generations.jsonl"
+
+  # Split manifests and retrieval files
+  train_fit_manifest: "results/week5/content_allocator/w5b/splits/train_fit_manifest.csv"
+  internal_val_manifest: "results/week5/content_allocator/w5b/splits/internal_val_manifest.csv"
+  train_retrieval_file: "results/week5/train_response_surface/train_retrieval.jsonl"
+  train_sfr_embeddings_file: "results/week5/train_response_surface/train_sfr_embeddings.pt"
+  dev_retrieval_file: "results/week2/raw/dev_retrieval.jsonl"
+  dev_fixed_k_matrix: "results/week2/raw/dev_fixed_k_matrix.jsonl"
+  dev_sfr_embeddings_file: "results/week2/raw/dev_sfr_embeddings.pt"
+
+  # QASPER splits (TEST is never referenced or loaded)
+  qasper_train_split: "Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl"
+  qasper_dev_split: "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl"
+  qasper_manifest: "Baselines/SARA-main/data/manifests/qasper_split.json"
+  raw_arrow_train: "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow"
+  raw_arrow_val: "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-validation.arrow"
