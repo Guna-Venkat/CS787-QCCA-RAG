@@ -1,0 +1,3 @@
+split,n_queries,total_words_median,total_words_p75,total_words_p90,total_words_p95,total_words_max,doc_words_mean,doc_words_p90,doc_words_max
+TRAIN,2088,1460.0,1590.0,1693.3,1750.6499999999999,2001.0,143.3001436781609,195.0,226.0
+DEV,231,1428.0,1582.5,1662.0,1721.0,1897.0,140.13073593073594,193.0,220.0

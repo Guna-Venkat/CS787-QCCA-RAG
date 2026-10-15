@@ -1,0 +1,123 @@
+# ==============================================================================
+# Week 7-D: Generator-Aligned Cross-Encoder Fidelity Router Configuration
+# ==============================================================================
+# Models joint query-document interactions to predict SARA representation fidelity:
+#   D0: Frozen Cross-Encoder Features + Tabular GBDT Anchor Policy
+#   D1: Trainable Hierarchical Cross-Encoder (Set-level Transformer aggregator + multi-task heads)
+#   D2: Listwise 7B LLM Fidelity Router (Mistral-7B-Instruct-v0.2 with LoRA/QLoRA)
+# ==============================================================================
+
+experiment:
+  name: "w7d_cross_encoder_router"
+  week: "week7"
+  subtask: "W7-D"
+  anchor_k: 4
+  budgets: [2, 4, 5, 6, 8]
+  epsilon: 0.01
+  preference_epsilon: 0.01
+  quality_tolerance_eta: 0.005
+  eta_grid: [0.000, 0.0025, 0.005, 0.01]
+  test_disabled: true
+  random_seed: 42
+
+models:
+  enable_d0: true
+  enable_d1: true
+  enable_d1b: true
+  enable_listwise_llm_router: true
+  enable_contrastive_loss: false
+  enable_passage_utility_head: true
+
+  # D0 Cross-Encoder
+  cross_encoder_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  cross_encoder_batch_size: 32
+
+  # D1 Hierarchical Cross-Encoder
+  d1_hierarchical:
+    encoder_name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    freeze_encoder: true
+    unfreeze_last_n_layers: 2
+    d_model: 384
+    meta_dim: 5          # semantic_rank, bm25_rank, sem_score, bm25_score, doc_len
+    aggregator:
+      type: "transformer" # "transformer" or "attention_pooling"
+      n_layers: 2
+      n_heads: 4
+      dim_feedforward: 512
+      dropout: 0.1
+    heads:
+      hidden_dim: 128
+      dropout: 0.1
+    loss_weights:
+      lambda_down: 1.0
+      lambda_up: 1.0
+      lambda_delta: 1.0
+      lambda_admissibility: 1.0
+      lambda_aux_k: 0.5
+      lambda_contrastive: 0.5
+    training:
+      batch_size: 16
+      learning_rate: 1.0e-4
+      learning_rate_d1b_encoder: 2.0e-5
+      weight_decay: 1.0e-4
+      epochs: 15
+      epochs_d1b: 4
+      early_stopping_patience: 4
+
+  # D2 Listwise 7B LLM Router
+  d2_listwise_llm:
+    model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    lora:
+      r: 8
+      lora_alpha: 16
+      lora_dropout: 0.05
+      target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+    quantization:
+      load_in_4bit: true
+      bnb_4bit_compute_dtype: "float16"
+      bnb_4bit_quant_type: "nf4"
+      bnb_4bit_use_double_quant: true
+    training:
+      batch_size: 1
+      gradient_accumulation_steps: 16
+      learning_rate: 5.0e-5
+      weight_decay: 0.01
+      epochs: 3
+      max_seq_length: 2048
+
+truncation:
+  document_token_cap: 256
+  max_sequence_length: 2048
+  prefix_ratio: 0.5   # First 50% from start, remaining 50% from tail of doc
+
+paths:
+  # Datasets and response surfaces
+  train_retrieval: "results/week5/train_response_surface/train_retrieval.jsonl"
+  dev_retrieval: "results/week2/raw/dev_retrieval.jsonl"
+  train_response_matrix: "results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_matrix.csv"
+  dev_response_matrix: "results/week7/w7b_semantic_budget/response_surface/dev_semantic_fixed_k_matrix.csv"
+  train_fit_manifest: "results/week5/content_allocator/w5b/splits/train_fit_manifest.csv"
+  internal_val_manifest: "results/week5/content_allocator/w5b/splits/internal_val_manifest.csv"
+  w7c_train_features: "results/week7/w7c_retrieval_aware_allocator/features/train_candidate_budget_features.parquet"
+  w7c_dev_features: "results/week7/w7c_retrieval_aware_allocator/features/dev_candidate_budget_features.parquet"
+  w7c3_main_results: "results/week7/w7c3_anchor_deviate/tables/w7c3_main_dev_results.csv"
+  w7c2_main_results: "results/week7/w7c2_utility_ranking/tables/w7c2_main_dev_results.csv"
+
+  # Output root and subdirectories
+  output_dir: "results/week7/w7d_cross_encoder_router"
+  cross_encoder_dir: "results/week7/w7d_cross_encoder_router/cross_encoder"
+  features_dir: "results/week7/w7d_cross_encoder_router/features"
+  models_dir: "results/week7/w7d_cross_encoder_router/models"
+  representations_dir: "results/week7/w7d_cross_encoder_router/representations"
+  listwise_inputs_dir: "results/week7/w7d_cross_encoder_router/listwise_inputs"
+  tables_dir: "results/week7/w7d_cross_encoder_router/tables"
+  figures_dir: "results/week7/w7d_cross_encoder_router/figures"
+  bootstrap_dir: "results/week7/w7d_cross_encoder_router/bootstrap"
+  diagnostics_dir: "results/week7/w7d_cross_encoder_router/diagnostics"
+  smoke_dir: "results/week7/w7d_cross_encoder_router/diagnostics/smoke"
+  logs_dir: "results/week7/w7d_cross_encoder_router/logs"
+
+bootstrap:
+  n_resamples: 2000
+  confidence_level: 0.95
+  random_seed: 42

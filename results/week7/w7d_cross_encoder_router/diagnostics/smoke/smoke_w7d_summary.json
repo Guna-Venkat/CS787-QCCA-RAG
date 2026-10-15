@@ -1,0 +1,90 @@
+{
+  "BANNER": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "timestamp": "2026-10-15 23:41:33",
+  "hardware": {
+    "device": "cuda",
+    "gpu_name": "NVIDIA TITAN RTX",
+    "total_vram_gb": 23.45263671875,
+    "d1_peak_vram_gb": 0.2254781723022461
+  },
+  "d0_smoke": {
+    "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "n_train_queries": 6,
+    "n_val_queries": 3,
+    "n_features": 22,
+    "val_p_down": [
+      0.8703423930454032,
+      0.8703423930454032,
+      0.8422860736337252,
+      0.8703423930454032,
+      0.8703423930454032,
+      0.6355516752887703,
+      0.8703423930454032,
+      0.8703423930454032,
+      0.8703423930454032
+    ],
+    "val_p_up": [
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15,
+      1.0000000036274914e-15
+    ]
+  },
+  "d1_smoke": {
+    "encoder": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "freeze_encoder": true,
+    "d_model": 256,
+    "total_params": 24166031,
+    "trainable_params": 1452815,
+    "batch_size": 2,
+    "train_loss": 3.1038858890533447,
+    "loss_breakdown": {
+      "loss_down": 0.68651282787323,
+      "loss_up": 0.6784152984619141,
+      "loss_delta": 0.21824169158935547,
+      "loss_admissibility": 0.6844467520713806,
+      "loss_aux_k": 1.6725386381149292,
+      "total_loss": 3.1038858890533447
+    }
+  },
+  "d2_feasibility": {
+    "status": "FEASIBLE",
+    "cuda_available": true,
+    "device_name": "NVIDIA TITAN RTX",
+    "total_vram_gb": 23.45263671875,
+    "required_vram_gb": 14.0,
+    "bitsandbytes_available": false,
+    "peft_available": true
+  },
+  "input_length_audit": [
+    {
+      "split": "TRAIN",
+      "n_queries": 6,
+      "total_words_median": 1395.0,
+      "total_words_p75": 1496.0,
+      "total_words_p90": 1538.5,
+      "total_words_p95": 1544.25,
+      "total_words_max": 1550.0,
+      "doc_words_mean": 142.7,
+      "doc_words_p90": 202.1,
+      "doc_words_max": 210.0
+    },
+    {
+      "split": "DEV",
+      "n_queries": 3,
+      "total_words_median": 1485.0,
+      "total_words_p75": 1597.5,
+      "total_words_p90": 1665.0,
+      "total_words_p95": 1687.5,
+      "total_words_max": 1710.0,
+      "doc_words_mean": 154.0,
+      "doc_words_p90": 203.9,
+      "doc_words_max": 212.0
+    }
+  ]
+}

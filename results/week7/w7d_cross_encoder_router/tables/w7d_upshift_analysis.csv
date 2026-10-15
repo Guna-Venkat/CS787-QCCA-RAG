@@ -1,0 +1,2 @@
+n_upshifted,upshift_rate_pct,fraction_gain_gt_epsilon,mean_actual_gain_vs_k4,mean_tokens_added_vs_k4,gain_per_100_added_tokens,chosen_k_distribution
+0,0.0,0.0,0.0,0.0,0.0,{}
