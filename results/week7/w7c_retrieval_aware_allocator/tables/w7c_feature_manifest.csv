@@ -1,0 +1,6 @@
+ablation,description,n_features,features
+F0,old_w4_baseline,6,"w4_bm25_mean, w4_lex_coverage_top2, w4_sem_sim_top6, w4_cluster_span, w4_lex_overlap_mean, cost_k"
+F1,query_plus_retrieval_geometry,57,"q_len_tokens, q_len_chars, q_num_sentences, q_num_noun_chunks, q_num_named_entities, q_num_conjunctions, q_num_commas_clauses, q_is_wh_question, q_is_yes_no, q_is_comparative..."
+F2,retrieval_aware,70,"q_len_tokens, q_len_chars, q_num_sentences, q_num_noun_chunks, q_num_named_entities, q_num_conjunctions, q_num_commas_clauses, q_is_wh_question, q_is_yes_no, q_is_comparative..."
+F3,set_aware,79,"q_len_tokens, q_len_chars, q_num_sentences, q_num_noun_chunks, q_num_named_entities, q_num_conjunctions, q_num_commas_clauses, q_is_wh_question, q_is_yes_no, q_is_comparative..."
+F4,sufficiency_focused,99,"q_len_tokens, q_len_chars, q_num_sentences, q_num_noun_chunks, q_num_named_entities, q_num_conjunctions, q_num_commas_clauses, q_is_wh_question, q_is_yes_no, q_is_comparative..."

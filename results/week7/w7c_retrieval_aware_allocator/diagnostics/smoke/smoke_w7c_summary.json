@@ -1,0 +1,30 @@
+{
+  "status": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "notes": "Verified end-to-end W7-C pipeline on 10 TRAIN-FIT and 5 INTERNAL-VAL queries.",
+  "n_train_fit_queries": 10,
+  "n_val_queries": 5,
+  "n_fit_candidate_rows": 50,
+  "n_val_candidate_rows": 25,
+  "f4_features_count": 99,
+  "sample_features": [
+    "q_len_tokens",
+    "q_len_chars",
+    "q_num_sentences",
+    "q_num_noun_chunks",
+    "q_num_named_entities",
+    "q_num_conjunctions",
+    "q_num_commas_clauses",
+    "q_is_wh_question",
+    "q_is_yes_no",
+    "q_is_comparative",
+    "q_is_numerical",
+    "q_is_causal_why",
+    "q_is_multi_part",
+    "q_acronym_density",
+    "q_lexical_diversity"
+  ],
+  "best_tau_val": 0.9,
+  "smoke_val_f1": 0.49000000000000005,
+  "smoke_val_tokens": 1571.4,
+  "smoke_val_k": 6.8
+}

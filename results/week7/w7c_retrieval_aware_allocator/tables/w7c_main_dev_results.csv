@@ -1,0 +1,9 @@
+method,mean_k,mean_f1,tokens,notes,ROH_sem
+B0: Static Semantic k=2,2.0,0.31181935034539665,509.6190476190476,Static baseline,-1.0391759427278076
+B1: Static Semantic k=4,4.0,0.390929417949419,921.056277056277,Static baseline,-0.11777573657172247
+B2: Static Semantic k=6,6.0,0.39573095470433267,1325.073593073593,Static baseline,-0.06185191941626168
+B3: Static Semantic k=8,8.0,0.4010414696073759,1737.4112554112555,Best static reference,0.0
+B4: W7-A (Old W4 + Semantic Routing),4.82,0.3782,1095.0,Frozen W4 composition,-0.2660361119963706
+B5: W7-B (Semantic-Aware Old W4 Features),3.48,0.3522,815.4,W4 retrained,-0.5688598370369004
+B6: Semantic Epsilon-Oracle,3.3,0.4869,775.2,Theoretical upper bound,1.0
+B7: W7-C Retrieval-Aware Semantic Sufficiency Allocator,6.848484848484849,0.3783234468893532,1503.8008658008657,Winning F4 GBDT (tau=0.80),-0.2645983178856548
