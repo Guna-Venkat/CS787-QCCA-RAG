@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "timestamp": 1792097826.4235866,
+  "marker": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "sample_queries_tested": 2,
+  "ref_k4_dev_f1": 0.390929417949419,
+  "ref_k6_dev_f1": 0.39573095470433267,
+  "smoke_e1_f1": 0.8333333333333333,
+  "smoke_e1_context_tokens": 1124.0,
+  "mean_generation_latency": 3.107456088066101,
+  "mean_preprocessing_latency": 0.0024319887161254883
+}
