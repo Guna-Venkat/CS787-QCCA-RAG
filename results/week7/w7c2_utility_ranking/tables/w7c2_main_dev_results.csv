@@ -1,0 +1,10 @@
+method,mean_k,mean_f1,tokens,notes,ROH_sem
+B0: Static Semantic k=2,2.0,0.31181935034539665,509.6190476190476,Static baseline,-1.0391759427278076
+B1: Static Semantic k=4,4.0,0.390929417949419,921.056277056277,Static baseline (Dominant),-0.11777573657172247
+B2: Static Semantic k=6,6.0,0.39573095470433267,1325.073593073593,Static baseline,-0.06185191941626168
+B3: Static Semantic k=8,8.0,0.4010414696073759,1737.4112554112555,Best static reference,0.0
+B4: W7-A (Old W4 + Semantic Routing),4.82,0.3782,1095.0,W4 composition,-0.2660361119963706
+B5: W7-B (Old Features Retrained),3.48,0.3522,815.4,W4 retrained,-0.5688598370369004
+B6: W7-C1 (Sufficiency Classifier),6.85,0.3783,1503.8,Fallback k8 failure,-0.2648714053615988
+B7: Semantic Epsilon-Oracle,3.3,0.4869,775.2,Theoretical upper bound,1.0
+B8: W7-C2 Winner (M1_Reg_delta_0.0),7.3852813852813854,0.39223299459411465,1622.0995670995671,Winning W7-C2 model (M1_Direct_Regression),-0.10259289290162343

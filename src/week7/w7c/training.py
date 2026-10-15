@@ -171,11 +171,10 @@ def get_ablation_feature_names(
     all_columns: Sequence[str],
 ) -> List[str]:
     """Return feature column names corresponding to an ablation level (F0-F5)."""
-    cols = [c for c in all_columns if c not in {
-        "split", "question_id", "paper_id", "k",
-        "target_f1", "target_tokens", "target_max_f1", "target_regret",
-        "target_log_regret", "target_sufficient", "target_oracle_k",
-    }]
+    cols = [
+        c for c in all_columns
+        if not c.startswith("target_") and c not in {"split", "question_id", "paper_id", "k"}
+    ]
 
     if ablation_name == "F0":
         # W4 baseline only

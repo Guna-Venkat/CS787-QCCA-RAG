@@ -1,0 +1,3 @@
+split,total_queries,monotonic_pct,non_monotonic_pct,reversals_F4_lt_F2,reversals_F5_lt_F4,reversals_F6_lt_F5,reversals_F8_lt_F6
+TRAIN,2088,65.22988505747126,34.770114942528735,285,207,190,258
+DEV,231,62.77056277056276,37.22943722943724,35,32,25,26

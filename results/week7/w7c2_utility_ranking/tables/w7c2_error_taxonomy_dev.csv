@@ -1,0 +1,5 @@
+category,count,pct_queries,mean_f1_regret,mean_token_penalty
+E1: Minimum-cost oracle exactly,15,6.493506493506493,0.0,0.0
+E2: Admissible but over-budget,147,63.63636363636363,5.958165579156865e-05,977.2993197278912
+E3: Under-budget & inadmissible,7,3.0303030303030303,0.4040037460205528,-351.57142857142856
+E4: Higher-budget & STILL inadmissible,62,26.83982683982684,0.30743106341806103,877.9354838709677

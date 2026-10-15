@@ -1,0 +1,50 @@
+{
+  "status": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "notes": "Verified end-to-end W7-C2 pipeline on 15 TRAIN-FIT and 5 INTERNAL-VAL queries.",
+  "n_train_fit_queries": 15,
+  "n_val_queries": 5,
+  "non_monotonic_pct": 40.0,
+  "margin_summary": {
+    "mean_margin": 0.11248366013071896,
+    "median_margin": 0.0,
+    "p25_margin": 0.0,
+    "p75_margin": 0.0,
+    "frac_below_001": 0.8,
+    "frac_below_002": 0.8,
+    "frac_below_005": 0.8
+  },
+  "winning_model": "M1_delta_0.0",
+  "smoke_val_f1": 0.44000000000000006,
+  "smoke_val_tokens": 493.2,
+  "smoke_val_k": 2.0,
+  "error_taxonomy": [
+    {
+      "category": "E1: Minimum-cost oracle exactly",
+      "count": 4,
+      "pct_queries": 80.0,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 0.0
+    },
+    {
+      "category": "E2: Admissible but over-budget",
+      "count": 0,
+      "pct_queries": 0.0,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 0.0
+    },
+    {
+      "category": "E3: Under-budget & inadmissible",
+      "count": 1,
+      "pct_queries": 20.0,
+      "mean_f1_regret": 0.25,
+      "mean_token_penalty": -558.0
+    },
+    {
+      "category": "E4: Higher-budget & STILL inadmissible",
+      "count": 0,
+      "pct_queries": 0.0,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 0.0
+    }
+  ]
+}
