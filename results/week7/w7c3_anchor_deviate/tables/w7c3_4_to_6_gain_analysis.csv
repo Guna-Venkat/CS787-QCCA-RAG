@@ -1,0 +1,8 @@
+metric,value,description
+mean_gain,0.023367069128314547,Mean downstream F1 gain from adding passages 5 and 6
+median_gain,0.0,Median gain (typically 0.0)
+std_gain,0.2200171731954549,Standard deviation of 4->6 gains
+positive_fraction,0.17768199233716475,Fraction of queries with strictly positive gain
+gain_gt_0_01,0.17337164750957854,Fraction with meaningful quality improvement (> 0.01)
+loss_lt_minus_0_01,0.11781609195402298,Fraction with meaningful quality degradation (< -0.01)
+zero_fraction,0.7001915708812261,Fraction of queries where adding passages 5 and 6 produces identical F1

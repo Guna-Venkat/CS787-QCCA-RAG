@@ -1,0 +1,159 @@
+{
+  "status": "SMOKE_ONLY_NOT_FOR_REPORTING",
+  "n_queries": 13,
+  "f1_k4_reference": 0.44229169523287165,
+  "winner_policy": {
+    "tau_down": 0.85,
+    "tau_up": 0.7,
+    "delta_up": 0.0,
+    "mean_f1": 0.44229169523287165,
+    "mean_tokens": 854.6923076923077,
+    "mean_k": 4.0
+  },
+  "oracle_diagnostics": {
+    "n_queries": 13,
+    "k2_admissible_rate": 0.6923076923076923,
+    "k2_admissible_count": 9,
+    "k4_admissible_rate": 0.6923076923076923,
+    "k4_admissible_count": 9,
+    "k4_inadequate_rate": 0.3076923076923077,
+    "k4_inadequate_count": 4,
+    "k8_inadmissible_rate": 0.46153846153846156,
+    "k8_inadmissible_count": 6,
+    "cheapest_larger_counts": {
+      "k5": 1,
+      "k6": 1,
+      "k8": 0,
+      "none": 2
+    }
+  },
+  "gain_4to6_diagnostics": {
+    "mean_gain_4to6": 0.001174315880198215,
+    "median_gain_4to6": 0.0,
+    "std_gain_4to6": 0.054146728318351135,
+    "positive_fraction": 0.15384615384615385,
+    "meaningful_gain_gt_0_01": 0.15384615384615385,
+    "meaningful_loss_lt_minus_0_01": 0.15384615384615385,
+    "zero_gain_fraction": 0.6923076923076923
+  },
+  "downshift_safety": {
+    "n_downshifted": 0,
+    "downshift_rate_pct": 0.0,
+    "precision_k2_admissible": 0.0,
+    "recall_k2_admissible": 0.0,
+    "mean_f1_at_k2": 0.0,
+    "mean_regret_vs_oracle": 0.0,
+    "mean_regret_vs_k4": 0.0,
+    "mean_tokens_saved_vs_k4": 0.0
+  },
+  "upshift_precision": {
+    "n_upshifted": 0,
+    "upshift_rate_pct": 0.0,
+    "fraction_gain_gt_epsilon": 0.0,
+    "mean_actual_gain_vs_k4": 0.0,
+    "mean_tokens_added_vs_k4": 0.0,
+    "gain_per_100_added_tokens": 0.0,
+    "chosen_k_distribution": {}
+  },
+  "sample_decisions": [
+    {
+      "question_id": "745",
+      "p_down": 0.0,
+      "p_up": 0.0,
+      "pred_deltas": {
+        "5": -0.0121,
+        "6": -0.0107,
+        "8": -0.0108
+      },
+      "chosen_k": 4
+    },
+    {
+      "question_id": "746",
+      "p_down": 0.0,
+      "p_up": 0.0,
+      "pred_deltas": {
+        "5": -0.0121,
+        "6": -0.0107,
+        "8": -0.0108
+      },
+      "chosen_k": 4
+    },
+    {
+      "question_id": "56",
+      "p_down": 0.0,
+      "p_up": 0.0,
+      "pred_deltas": {
+        "5": -0.0222,
+        "6": -0.0239,
+        "8": -0.0239
+      },
+      "chosen_k": 4
+    },
+    {
+      "question_id": "57",
+      "p_down": 0.0,
+      "p_up": 0.0,
+      "pred_deltas": {
+        "5": -0.0237,
+        "6": -0.0253,
+        "8": -0.0253
+      },
+      "chosen_k": 4
+    },
+    {
+      "question_id": "1643",
+      "p_down": 0.0,
+      "p_up": 0.0,
+      "pred_deltas": {
+        "5": -0.0236,
+        "6": -0.0239,
+        "8": -0.0239
+      },
+      "chosen_k": 4
+    }
+  ],
+  "error_taxonomy": [
+    {
+      "category": "E1: Minimum-cost oracle exactly",
+      "count": 2,
+      "pct_queries": 15.384615384615385,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 0.0
+    },
+    {
+      "category": "E2: Admissible but over-budget",
+      "count": 7,
+      "pct_queries": 53.84615384615385,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 404.14285714285717
+    },
+    {
+      "category": "E3: Under-budget & inadmissible",
+      "count": 2,
+      "pct_queries": 15.384615384615385,
+      "mean_f1_regret": 0.3088235294117646,
+      "mean_token_penalty": -359.0
+    },
+    {
+      "category": "E4: Higher-budget & STILL inadmissible",
+      "count": 2,
+      "pct_queries": 15.384615384615385,
+      "mean_f1_regret": 0.6352941176470589,
+      "mean_token_penalty": 409.0
+    },
+    {
+      "category": "E5: Anchor k=4 chosen & admissible",
+      "count": 9,
+      "pct_queries": 69.23076923076923,
+      "mean_f1_regret": 0.0,
+      "mean_token_penalty": 314.3333333333333
+    },
+    {
+      "category": "E6: Anchor k=4 chosen & inadmissible",
+      "count": 4,
+      "pct_queries": 30.76923076923077,
+      "mean_f1_regret": 0.47205882352941175,
+      "mean_token_penalty": 25.0
+    }
+  ]
+}

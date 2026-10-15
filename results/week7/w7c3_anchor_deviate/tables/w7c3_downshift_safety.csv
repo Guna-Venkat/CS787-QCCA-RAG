@@ -1,0 +1,2 @@
+n_downshifted,downshift_rate_pct,precision_k2_admissible,recall_k2_admissible,mean_f1_at_k2,mean_regret_vs_oracle,mean_regret_vs_k4,mean_tokens_saved_vs_k4
+11,4.761904761904762,0.6363636363636364,0.050359712230215826,0.5454545454545454,0.3181818181818182,0.22727272727272727,377.0

@@ -1,0 +1,7 @@
+{
+  "decision": "STOP_ADAPTIVE_K_PROCEED_TO_W7D",
+  "f1_w7c3": 0.38010690712690814,
+  "tokens_w7c3": 903.1038961038961,
+  "delta_f1_vs_k4": -0.010822510822510845,
+  "delta_tokens_vs_k4": -17.952380952380963
+}

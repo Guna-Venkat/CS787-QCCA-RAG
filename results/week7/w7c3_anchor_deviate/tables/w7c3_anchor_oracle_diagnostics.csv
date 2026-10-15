@@ -1,0 +1,9 @@
+metric,value,count,description
+k2_admissible_rate,0.6077586206896551,1269,Queries where k=2 preserves quality (safe downshift potential)
+k4_admissible_rate,0.6762452107279694,1412,Queries where anchor k=4 is epsilon-admissible
+k4_inadequate_rate,0.32375478927203066,676,Queries where anchor k=4 misses oracle by > epsilon
+k8_inadmissible_rate,0.2523946360153257,527,Queries where k=8 is NOT admissible (proof of fallback failure)
+k4_inadeq_cheapest_k5,0.27662721893491127,187,"Among k4-inadequate queries, fraction where k5 is cheapest admissible"
+k4_inadeq_cheapest_k6,0.21449704142011836,145,"Among k4-inadequate queries, fraction where k6 is cheapest admissible"
+k4_inadeq_cheapest_k8,0.27662721893491127,187,"Among k4-inadequate queries, fraction where k8 is cheapest admissible"
+k4_inadeq_cheapest_none,0.23224852071005916,157,"Among k4-inadequate queries, fraction where none is cheapest admissible"

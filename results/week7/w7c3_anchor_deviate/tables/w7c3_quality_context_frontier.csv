@@ -1,0 +1,11 @@
+method,mean_k,mean_f1,tokens,notes,ROH_sem
+B0: Static Semantic k=2,2.0,0.31181935034539665,509.6190476190476,Static baseline,-1.0376361032517798
+B1: Static Semantic k=4,4.0,0.390929417949419,921.056277056277,Static baseline (Dominant Anchor),-0.11760121778136698
+B2: Static Semantic k=6,6.0,0.39573095470433267,1325.073593073593,Static baseline,-0.06176026792273765
+B3: Static Semantic k=8,8.0,0.4010414696073759,1737.4112554112555,Best static reference,0.0
+B4: W7-A (Old W4 + Semantic),4.82,0.3782,1095.0,W4 modular composition,-0.2656419026132842
+B5: W7-B (Old Features Retrained),3.48,0.3522,815.4,W4 retrained,-0.5680169067905585
+B6: W7-C1 (Sufficiency Classifier),6.85,0.3783,1503.8,Sufficiency fallback failure,-0.2644789218279865
+B7: Semantic Epsilon-Oracle,3.3,0.4870274130246991,775.1991341991342,Theoretical upper bound,1.0
+B8: W7-C2 Winner (Direct Regression),7.39,0.3922,1622.1,"Quality recovered, over-allocated",-0.10282459267167463
+B9: W7-C3 (Anchor-and-Deviate),3.9047619047619047,0.38010690712690814,903.1038961038961,"tau_down=0.90, tau_up=0.85, delta=0.00",-0.24346493913387915

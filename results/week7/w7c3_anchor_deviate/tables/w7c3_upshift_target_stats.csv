@@ -1,0 +1,5 @@
+target,positive_rate,positive_count,total_queries
+target_y_up,0.2696360153256705,563,2088
+target_delta_5_mean,0.13553639846743296,283,2088
+target_delta_6_mean,0.17768199233716475,371,2088
+target_delta_8_mean,0.2231800766283525,466,2088
