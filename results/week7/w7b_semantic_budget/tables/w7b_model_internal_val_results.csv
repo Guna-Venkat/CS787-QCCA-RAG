@@ -1,0 +1,4 @@
+model_name,description,val_mean_f1,val_mean_tokens,val_mean_k
+multiclass_balanced_logistic_regression,"Multiclass Balanced Logistic Regression over {2,4,5,6,8}",0.3941372756540391,1208.2309941520468,5.33625730994152
+ridge_classifier,"Balanced Ridge Classifier over {2,4,5,6,8}",0.3938871987072862,1196.251461988304,5.286549707602339
+balanced_logistic_regression_cascade,"Balanced Logistic Regression (Base k=4, expand k=6)",0.38965400421437835,1150.2543859649122,5.058479532163743

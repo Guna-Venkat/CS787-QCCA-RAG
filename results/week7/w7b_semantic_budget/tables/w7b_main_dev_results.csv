@@ -1,0 +1,9 @@
+policy,routing,mean_k,answer_f1_mean,answer_f1_std,context_tokens_mean,token_reduction_pct_vs_k8,f1_per_1k_tokens
+Static semantic k=2,Semantic Top-k,2.0,0.3118,0.3833,509.6,70.67,0.6119
+Static semantic k=4,Semantic Top-k,4.0,0.3909,0.402,921.1,46.99,0.4244
+Static semantic k=5,Semantic Top-k,5.0,0.3931,0.3977,1123.0,35.37,0.3501
+Static semantic k=6,Semantic Top-k,6.0,0.3957,0.3947,1325.1,23.73,0.2986
+Static semantic k=8,Semantic Top-k,8.0,0.401,0.3963,1737.4,0.0,0.2308
+W4 old allocator + semantic routing,Semantic Top-k (W7-A),4.82,0.3782,0.3954,1095.0,36.98,0.3454
+NEW semantic-aware adaptive allocator,Semantic Top-k (W7-B),3.48,0.3522,0.3932,815.4,53.07,0.432
+Semantic epsilon-oracle (eps=0.01),Semantic Top-k (Oracle),3.3,0.4869,0.3923,775.2,55.38,0.6282

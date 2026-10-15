@@ -1,0 +1,2 @@
+n_queries,pct_lower_under_semantic,pct_unchanged,pct_higher_under_semantic,mean_delta_k,median_delta_k,mean_delta_tokens
+231,27.27272727272727,50.21645021645021,22.51082251082251,-0.19047619047619047,0.0,0.0
