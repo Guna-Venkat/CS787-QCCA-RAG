@@ -93,8 +93,14 @@ def get_non_leaking_feature_columns(df: pd.DataFrame) -> List[str]:
         "target_help_binary",
         "target_hurt_binary",
         "target_3way_label",
+        "target_dense_gold_ll",
+        "delta_gold_logprob",
+        "base_gold_logprob",
+        "promoted_gold_logprob",
         "utility_label",
+        "evidence_utilization_type",
         "promoted_prediction",
+        "base_answer_complete",
         "question_id",
         "paper_id",
         "question",
@@ -120,10 +126,12 @@ def extract_utility_targets(record: Dict[str, Any]) -> Dict[str, Any]:
     is_help = 1.0 if delta > 0.01 else 0.0
     is_hurt = 1.0 if delta < -0.01 else 0.0
     label_3way = 1 if delta > 0.01 else (2 if delta < -0.01 else 0)
+    delta_ll = float(record.get("delta_gold_logprob", record.get("delta_ll", 0.0)))
     return {
         "delta_f1": delta,
         "is_help": is_help,
         "is_hurt": is_hurt,
         "label_3way": label_3way,
+        "delta_gold_logprob": delta_ll,
     }
 

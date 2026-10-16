@@ -141,3 +141,117 @@ def stratify_by_query_type(
     ).reset_index()
 
     return grouped
+
+
+def compute_evidence_utilization_metrics(
+    promotion_records: Sequence[Dict[str, Any]],
+    epsilon_help: float = 0.01,
+    epsilon_hurt: float = -0.01,
+) -> Dict[str, Any]:
+    """Compute evidence potential and generator utilization bottleneck metrics.
+
+    Evaluates:
+    - P(AnswerChanged)
+    - P(AnswerChanged | Delta > 0)
+    - P(AnswerChanged | is_gold_evidence)
+    - P(Delta > 0.01 | is_gold_evidence)
+    - P(Delta == 0 | is_gold_evidence)
+    - Promotion Utilization Failure Rate (UFR):
+        UFR = P(y_i == y_0 | base_f1 < 1.0, is_gold_evidence == True)
+    - 4-way taxonomy distribution:
+        UTILIZED_HELPFUL, UNDERUTILIZED, TRUE_NEUTRAL, DISTRACTOR
+    """
+    total = len(promotion_records)
+    if total == 0:
+        return {}
+
+    ans_changed_count = 0
+    help_count = 0
+    ans_changed_given_help = 0
+    gold_ev_count = 0
+    ans_changed_given_gold = 0
+    help_given_gold = 0
+    zero_delta_given_gold = 0
+
+    ufr_denominator = 0  # base_f1 < 1.0 and is_gold_evidence == True
+    ufr_numerator = 0    # unchanged prediction (y_i == y_0)
+
+    tax_counts = {
+        "UTILIZED_HELPFUL": 0,
+        "UNDERUTILIZED": 0,
+        "TRUE_NEUTRAL": 0,
+        "DISTRACTOR": 0,
+    }
+
+    for r in promotion_records:
+        delta_f1 = float(r.get("delta_f1", 0.0))
+        base_f1 = float(r.get("base_f1", 0.0))
+        is_gold = bool(r.get("is_gold_evidence", False))
+        ans_changed = bool(r.get("answer_changed", False))
+
+        # Check if answer changed
+        if "answer_changed" not in r:
+            base_p = str(r.get("base_prediction", "")).strip().lower()
+            prom_p = str(r.get("promoted_prediction", "")).strip().lower()
+            ans_changed = bool(base_p != prom_p)
+
+        if ans_changed:
+            ans_changed_count += 1
+
+        is_helpful = delta_f1 > epsilon_help
+        if is_helpful:
+            help_count += 1
+            if ans_changed:
+                ans_changed_given_help += 1
+
+        if is_gold:
+            gold_ev_count += 1
+            if ans_changed:
+                ans_changed_given_gold += 1
+            if is_helpful:
+                help_given_gold += 1
+            if abs(delta_f1) <= 1e-4:
+                zero_delta_given_gold += 1
+
+            # UFR condition: base answer was not already complete (base_f1 < 1.0)
+            if base_f1 < 0.99:
+                ufr_denominator += 1
+                if not ans_changed:
+                    ufr_numerator += 1
+
+        # 4-way taxonomy assignment
+        t_type = r.get("evidence_utilization_type")
+        if not t_type:
+            if delta_f1 < epsilon_hurt:
+                t_type = "DISTRACTOR"
+            elif is_gold and is_helpful:
+                t_type = "UTILIZED_HELPFUL"
+            elif is_gold and not is_helpful:
+                t_type = "UNDERUTILIZED"
+            else:
+                t_type = "TRUE_NEUTRAL"
+
+        if t_type in tax_counts:
+            tax_counts[t_type] += 1
+
+    p_ans_changed = ans_changed_count / max(total, 1)
+    p_ans_changed_given_help = ans_changed_given_help / max(help_count, 1)
+    p_ans_changed_given_gold = ans_changed_given_gold / max(gold_ev_count, 1)
+    p_help_given_gold = help_given_gold / max(gold_ev_count, 1)
+    p_zero_given_gold = zero_delta_given_gold / max(gold_ev_count, 1)
+    ufr = ufr_numerator / max(ufr_denominator, 1)
+
+    return {
+        "total_promotions": total,
+        "prob_answer_changed": float(p_ans_changed),
+        "prob_answer_changed_given_help": float(p_ans_changed_given_help),
+        "prob_answer_changed_given_gold_evidence": float(p_ans_changed_given_gold),
+        "prob_help_given_gold_evidence": float(p_help_given_gold),
+        "prob_zero_delta_given_gold_evidence": float(p_zero_given_gold),
+        "promotion_utilization_failure_rate": float(ufr),
+        "taxonomy_distribution": {
+            k: {"count": v, "pct": float(v / max(total, 1))}
+            for k, v in tax_counts.items()
+        },
+    }
+

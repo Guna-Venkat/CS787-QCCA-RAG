@@ -44,7 +44,7 @@
 
 | Smoke Test Suite | Scope | Target Module | Status | Output Artifact |
 | :--- | :--- | :--- | :---: | :--- |
-| **PyTest Suite** | 40 Invariants | Full `src/week8/` package | **PASSED** (40/40) | Test suite passed in 5.87s |
+| **PyTest Suite** | 46 Invariants | Full `src/week8/` package | **PASSED** (46/46) | Test suite passed in 6.10s |
 | **W8-A Smoke** | Promotion Surface | Single promotion generation & cache | **VERIFIED** | Unit test & surface schema verified |
 | **W8-B Smoke** | Uncertainty & Draft | 12 features & ECE | **VERIFIED** | Invariant tests 12–19 verified |
 | **W8-C Smoke** | Utility Models | Tabular $U_0$ & text formatters | **PASSED** | `results/week8/tables/w8c_utility_predictions_smoke.csv` |
@@ -55,3 +55,22 @@
 | **W8-H Smoke** | Multi-Pass System | DAFiR generation & cost accounting | **PASSED** | `results/week8/tables/w8h_dafir1_cost_summary_smoke.csv` |
 | **W8-I Smoke** | Ablation Ladder | 12 ablation rows ($A_0..A_{11}$) | **PASSED** | `results/week8/tables/w8i_ablation_matrix_smoke.csv` |
 | **W8-J Smoke** | Final DEV & Frontiers | Bootstrap resampler & frontier plots | **PASSED** | `results/week8/figures/frontier1_representation_efficiency.png` |
+
+---
+
+## Conceptual & Empirical Refinement: Evidence Utilization Bottleneck
+
+From initial promotion surface outputs (exemplified by Q1811 vs Q1812):
+1. **Three-Layer Conceptual Framework**:
+   $$\boxed{\textbf{Selection} \longrightarrow \textbf{Fidelity} \longrightarrow \textbf{Utilization}}$$
+2. **Four-Way Evidence Potential Taxonomy**:
+   - **UTILIZED-HELPFUL**: Candidate contains gold evidence / high overlap AND $\Delta F1 > 0.01$.
+   - **UNDERUTILIZED**: Candidate contains gold evidence / high overlap BUT $\Delta F1 \le 0.01$ (e.g. Q1812: missing information was exposed, but greedy generator output remained `"GloVe"`).
+   - **TRUE-NEUTRAL**: Candidate does not add missing answer info, prediction unchanged ($|\Delta F1| \le 0.01$, e.g. Q1811: base answer already complete $F1=1.0$, controller learns safe-stop).
+   - **DISTRACTOR**: Promotion decreases answer quality ($\Delta F1 < -0.01$).
+3. **Promotion Utilization Failure Rate (UFR)**:
+   $$\text{UFR} = P(y_i = y_0 \mid F1_0 < 1.0, \text{is\_gold\_evidence} == \text{True})$$
+4. **Dense Counterfactual Signal**: $\Delta LL_i = L_i - L_0$ (normalized teacher-forced gold answer log-likelihood).
+5. **Pass-2 Draft-Aware Revision (G1)** vs **Blind Regeneration (G0)**: Pass 2 explicitly prompts the generator with draft $y_0$ and exposed evidence to directly exploit missing details.
+6. **Enrichment Tooling**: Implemented in [`src/week8/evidence_enrichment.py`](file:///home/gunavenkat/Downloads/CS787-RAG-Project/src/week8/evidence_enrichment.py) with 100% QASPER evidence paragraph match rate (2,088/2,088 queries).
+

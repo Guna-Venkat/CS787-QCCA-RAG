@@ -54,6 +54,7 @@ def run_dafir_query(
     qcla_adapter: Optional[BaseLatentAdapter] = None,
     query_embeddings_by_qid: Optional[Dict[str, torch.Tensor]] = None,
     max_promotions: int = 1,  # 1 for DAFiR-1, 2 for DAFiR-2
+    revision_mode: str = "draft_aware",  # "draft_aware" (G1) or "blind_regeneration" (G0)
     candidate_ranks: Sequence[int] = (5, 6, 7, 8, 9, 10),
     device: str = "cuda",
     max_new_tokens: int = 128,
@@ -178,6 +179,18 @@ def run_dafir_query(
             tokenizer=sara_tokenizer,
             hybrid_medium=False,
         )
+        if revision_mode in ("draft_aware", "g1"):
+            revision_instruction = (
+                f"\n\nInitial answer: {y0}\n\nAdditional evidence has now been exposed.\n"
+                "Revise the initial answer only if the additional evidence adds necessary information or corrects the answer. "
+                "Include all answer details supported by the evidence. Do not add unsupported information.\nAnswer:"
+            )
+            if prom_prompt.endswith("\nAnswer:"):
+                prom_prompt = prom_prompt[:-8].rstrip() + "\n" + revision_instruction.strip()
+            else:
+                prom_prompt = prom_prompt.rstrip() + "\n" + revision_instruction
+            prom_ctx_tokens = len(sara_tokenizer.encode(prom_prompt))
+
         cumulative_prompt_tokens += prom_ctx_tokens
         final_context_tokens = prom_ctx_tokens
 
@@ -249,6 +262,18 @@ def run_dafir_query(
                     tokenizer=sara_tokenizer,
                     hybrid_medium=False,
                 )
+                if revision_mode in ("draft_aware", "g1"):
+                    revision_instruction = (
+                        f"\n\nInitial answer: {y1}\n\nAdditional evidence has now been exposed.\n"
+                        "Revise the initial answer only if the additional evidence adds necessary information or corrects the answer. "
+                        "Include all answer details supported by the evidence. Do not add unsupported information.\nAnswer:"
+                    )
+                    if s2_prompt.endswith("\nAnswer:"):
+                        s2_prompt = s2_prompt[:-8].rstrip() + "\n" + revision_instruction.strip()
+                    else:
+                        s2_prompt = s2_prompt.rstrip() + "\n" + revision_instruction
+                    s2_ctx_tokens = len(sara_tokenizer.encode(s2_prompt))
+
                 cumulative_prompt_tokens += s2_ctx_tokens
                 final_context_tokens = s2_ctx_tokens
 

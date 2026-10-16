@@ -51,7 +51,8 @@ class MultitaskUtilityHeads(nn.Module):
         )
         self.head_help = nn.Linear(hidden_dim, 1)        # Binary logit
         self.head_hurt = nn.Linear(hidden_dim, 1)        # Binary logit
-        self.head_delta = nn.Linear(hidden_dim, 1)       # Continuous delta
+        self.head_delta = nn.Linear(hidden_dim, 1)       # Continuous delta F1
+        self.head_delta_ll = nn.Linear(hidden_dim, 1)    # Dense continuous gold log-likelihood change (Delta LL)
         self.head_3way = nn.Linear(hidden_dim, 3)        # 3 classes: 0=NEU, 1=HELP, 2=HURT
 
     def forward(self, x: torch.Tensor) -> Dict[str, torch.Tensor]:
@@ -59,6 +60,7 @@ class MultitaskUtilityHeads(nn.Module):
         logit_help = self.head_help(feat).squeeze(-1)
         logit_hurt = self.head_hurt(feat).squeeze(-1)
         pred_delta = self.head_delta(feat).squeeze(-1)
+        pred_delta_ll = self.head_delta_ll(feat).squeeze(-1)
         logits_3way = self.head_3way(feat)
 
         return {
@@ -66,6 +68,8 @@ class MultitaskUtilityHeads(nn.Module):
             "logit_hurt": logit_hurt,
             "pred_delta": pred_delta,
             "pred_delta_f1": pred_delta,
+            "pred_delta_ll": pred_delta_ll,
+            "pred_delta_gold_logprob": pred_delta_ll,
             "logits_3way": logits_3way,
             "label_logits": logits_3way,
             "prob_help": torch.sigmoid(logit_help),
@@ -83,26 +87,41 @@ class UtilityModelU0:
         self.clf_help = HistGradientBoostingClassifier(random_state=42)
         self.clf_hurt = HistGradientBoostingClassifier(random_state=42)
         self.reg_delta = HistGradientBoostingRegressor(random_state=42)
+        self.reg_delta_ll = HistGradientBoostingRegressor(random_state=42)
         self.clf_3way = HistGradientBoostingClassifier(random_state=42)
 
-    def fit(self, X: np.ndarray, y_help: np.ndarray, y_hurt: np.ndarray, y_delta: np.ndarray, y_3way: np.ndarray):
+    def fit(
+        self,
+        X: np.ndarray,
+        y_help: np.ndarray,
+        y_hurt: np.ndarray,
+        y_delta: np.ndarray,
+        y_3way: np.ndarray,
+        y_delta_ll: Optional[np.ndarray] = None,
+    ):
         self.clf_help.fit(X, y_help)
         self.clf_hurt.fit(X, y_hurt)
         self.reg_delta.fit(X, y_delta)
         self.clf_3way.fit(X, y_3way)
+        if y_delta_ll is not None:
+            self.reg_delta_ll.fit(X, y_delta_ll)
 
     def predict(self, X: np.ndarray) -> Dict[str, np.ndarray]:
         p_help = self.clf_help.predict_proba(X)[:, 1]
         p_hurt = self.clf_hurt.predict_proba(X)[:, 1]
         p_delta = self.reg_delta.predict(X)
         p_3way = self.clf_3way.predict_proba(X)
-        return {
+        res = {
             "prob_help": p_help,
             "prob_hurt": p_hurt,
             "pred_delta": p_delta,
             "pred_delta_f1": p_delta,
             "probs_3way": p_3way,
         }
+        if hasattr(self.reg_delta_ll, "is_fitted_") or hasattr(self.reg_delta_ll, "_is_fitted"):
+            res["pred_delta_ll"] = self.reg_delta_ll.predict(X)
+            res["pred_delta_gold_logprob"] = res["pred_delta_ll"]
+        return res
 
 
 # ---------------------------------------------------------------------------

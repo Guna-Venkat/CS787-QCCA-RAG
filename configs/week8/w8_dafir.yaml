@@ -109,4 +109,16 @@ bootstrap:
   n_samples: 2000
   confidence_level: 0.95
 
+evidence_utilization:
+  enabled: true
+  containment_threshold: 0.35
+  epsilon_help: 0.01
+  epsilon_hurt: -0.01
+  dense_likelihood_target: true
+  revision_modes:
+    - g0_blind_regeneration
+    - g1_draft_aware_revision
+  default_revision_mode: "draft_aware"
+
 TEST_DISABLED: true
+
