@@ -83,8 +83,11 @@ def run_self_consistency_sampling(
     top_p: float = 0.9,
     device: str = "cuda",
     smoke_limit: Optional[int] = None,
+    n_samples: Optional[int] = None,
 ) -> pd.DataFrame:
     """Execute stochastic draft sampling and compute agreement features."""
+    if n_samples is not None:
+        num_samples = n_samples
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     completed_qids = set()
     existing_rows: List[Dict[str, Any]] = []
@@ -164,7 +167,9 @@ def run_self_consistency_sampling(
             "sampled_answers": sampled_answers,
             "majority_answer": majority_answer,
             "lexical_agreement": round(lex_agreement, 4),
+            "sc_mean_pairwise_jaccard": round(lex_agreement, 4),
             "has_disagreement": disagreement,
+            "sc_disagreement_indicator": disagreement,
             "num_unique_answers": len(counts),
         }
 

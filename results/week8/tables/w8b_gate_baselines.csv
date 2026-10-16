@@ -1,0 +1,7 @@
+Gate Policy,Prom Rate,Recall,WHR,Realized F1,Headroom Ret.,Tokens,Latency/Q
+GATE-0: Always Stop (Base k=4),0.0%,0.0%,0.0%,0.3891,0.0%,927,0.0s
+GATE-1: Always Escalate + Oracle Selector,100.0%,100.0%,100.0%,0.4808,100.0%,1133,+2.8s
+GATE-2A: B0 Logistic (tau=0.20),53.8%,84.7%,76.1%,0.4588,76.1%,1037.0,+0.5s
+GATE-2B: B0-GW Logistic (tau=0.25),74.3%,94.9%,92.9%,0.4742,92.9%,1082.0,+0.5s
+GATE-2C: B2 MLP (tau=0.25),76.6%,95.9%,90.3%,0.4718,90.3%,1087.0,+0.8s
+"GATE-3: B3 B2+SC (tau=0.25, Research Ablation)",74.9%,91.8%,82.7%,0.4649,82.7%,1082.0,+8.6s (SC cost)

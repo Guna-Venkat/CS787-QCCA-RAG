@@ -165,26 +165,30 @@ def generate_draft_with_diagnostics(
     pred_texts = extract_generated_text(tokenizer, outputs.sequences)
     prediction = pred_texts[0].strip() if pred_texts else ""
 
-    # Extract per-token generation metrics from outputs.scores
-    # outputs.scores is a tuple of length T, each tensor of shape (1, vocab_size)
+    # SARA's XMistral generate() returns ONLY the continuation tokens in outputs.sequences.
+    # If a generic model includes prompt tokens, slice off input_len.
+    seq_len = outputs.sequences.shape[1]
+    input_len = inputs["input_ids"].shape[1]
+    if seq_len == len(outputs.scores):
+        gen_seq = outputs.sequences[0].tolist()
+    elif seq_len > input_len:
+        gen_seq = outputs.sequences[0, input_len:].tolist()
+    else:
+        gen_seq = outputs.sequences[0].tolist()
+
     gen_token_ids: List[int] = []
     entropies: List[float] = []
     margins: List[float] = []
     logprobs: List[float] = []
     eos_conf: float = 0.0
 
-    input_len = inputs["input_ids"].shape[1]
-    gen_seq = outputs.sequences[0, input_len:].tolist()
-
     if outputs.scores:
         for step, step_logits in enumerate(outputs.scores):
-            # step_logits: (1, vocab_size)
             logits = step_logits[0]  # (vocab_size,)
             probs = F.softmax(logits, dim=-1)
             log_probs = F.log_softmax(logits, dim=-1)
 
             # 1. Entropy: H = -sum(p * log p)
-            # Filter non-zero probs for numerical stability
             p_nz = probs[probs > 1e-12]
             ent = -torch.sum(p_nz * torch.log(p_nz)).item()
             entropies.append(ent)
@@ -194,12 +198,13 @@ def generate_draft_with_diagnostics(
             margin = (top2_vals[0] - top2_vals[1]).item()
             margins.append(margin)
 
-            # 3. Selected token logprob
+            # 3. Selected token logprob (from gen_seq if available, else greedy argmax)
             if step < len(gen_seq):
-                tok_id = gen_seq[step]
-                gen_token_ids.append(tok_id)
-                logp = log_probs[tok_id].item()
-                logprobs.append(logp)
+                tok_id = int(gen_seq[step])
+            else:
+                tok_id = int(torch.argmax(logits).item())
+            gen_token_ids.append(tok_id)
+            logprobs.append(float(log_probs[tok_id].item()))
 
         # EOS probability at last step
         last_probs = F.softmax(outputs.scores[-1][0], dim=-1)

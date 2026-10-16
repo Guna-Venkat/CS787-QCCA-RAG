@@ -236,8 +236,8 @@ for _, row in df_drafts.iterrows():
     u_rows.append(u_dict)
 
 df_u = pd.DataFrame(u_rows)
-u_feature_cols = [c for c in df_u.columns if c.startswith("u_")]
-print(f"Extracted {len(u_feature_cols)} uncertainty features:")
+u_feature_cols = [c for c in df_u.columns if c.startswith("u") and c not in ("question_id", "base_f1")]
+print(f"Extracted {len(u_feature_cols)} uncertainty features: {u_feature_cols}")
 print(df_u[u_feature_cols].describe().T[["mean", "std", "min", "max"]])"""),
 
         make_cell("code", """# Evaluate Sufficiency Classifiers (B0, B1, B2)
@@ -251,6 +251,11 @@ for model_name, metrics in results_suff.items():
     print(f"  {model_name}: Accuracy = {metrics['accuracy']:.4f}, ROC-AUC = {metrics['roc_auc']:.4f}, ECE = {metrics['ece']:.4f}")"""),
 
         make_cell("code", """# Stochastic Self-Consistency Sampling (N=3, T=0.7, top_p=0.9)
+import importlib
+import src.week8.self_consistency
+importlib.reload(src.week8.self_consistency)
+from src.week8.self_consistency import run_self_consistency_sampling
+
 sc_cache_path = REPO_ROOT / "results/week8/drafts" / f"self_consistency_{split}.jsonl"
 df_sc = run_self_consistency_sampling(
     sara_model=sara_model,
@@ -259,14 +264,16 @@ df_sc = run_self_consistency_sampling(
     semantic_scores_by_qid=semantic_scores_by_qid,
     cached_sfr_embeddings=sfr_dict,
     cache_path=sc_cache_path,
-    n_samples=3,
+    num_samples=3,
     temperature=0.7,
     top_p=0.9,
     device=device,
 )
 print(f"Self-consistency sampling complete for {len(df_sc)} queries.")
-print(f"Mean Pairwise Jaccard Agreement: {df_sc['sc_mean_pairwise_jaccard'].mean():.4f}")
-print(f"Sample Disagreement Rate:        {df_sc['sc_disagreement_indicator'].mean():.4f}")"""),
+jaccard_col = "sc_mean_pairwise_jaccard" if "sc_mean_pairwise_jaccard" in df_sc.columns else "lexical_agreement"
+disagreement_col = "sc_disagreement_indicator" if "sc_disagreement_indicator" in df_sc.columns else "has_disagreement"
+print(f"Mean Pairwise Jaccard Agreement: {df_sc[jaccard_col].mean():.4f}")
+print(f"Sample Disagreement Rate:        {df_sc[disagreement_col].mean():.4f}")"""),
     ]
     save_notebook(nb_path, cells)
 
