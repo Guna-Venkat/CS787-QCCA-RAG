@@ -1,0 +1,2 @@
+question_id,paper_id,final_answer,base_draft,promoted_indices,num_passes,final_context_tokens,cumulative_prompt_tokens,total_generated_tokens,e2e_latency_sec,token_f1,exact_match,rouge_l
+1811,596,No,No,[4],2,1062,1865,-1877,4.886758327484131,1.0,1.0,0.0

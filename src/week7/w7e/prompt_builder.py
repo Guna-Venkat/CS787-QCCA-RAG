@@ -76,15 +76,18 @@ def build_mixed_fidelity_sara_prompt(
         for idx in textual_indices:
             orig_rank = idx + 1
             if idx in full_set:
-                p_text = passages[idx].get("text", "").strip()
+                p_raw = passages[idx].get("text", "")
+                p_text = " ".join(p_raw).strip() if isinstance(p_raw, list) else str(p_raw).strip()
                 if p_text:
                     full_char_len += len(p_text)
                     text_blocks.append(f"Document {orig_rank}. {p_text}")
             elif idx in medium_set:
-                m_text = medium_texts_map.get(idx, "").strip()
+                m_raw = medium_texts_map.get(idx, "")
+                m_text = " ".join(m_raw).strip() if isinstance(m_raw, list) else str(m_raw).strip()
                 if not m_text:
                     # Fallback to full text if medium is empty
-                    m_text = passages[idx].get("text", "").strip()
+                    p_raw = passages[idx].get("text", "")
+                    m_text = " ".join(p_raw).strip() if isinstance(p_raw, list) else str(p_raw).strip()
                 if m_text:
                     medium_char_len += len(m_text)
                     text_blocks.append(f"Document {orig_rank}. {m_text}")

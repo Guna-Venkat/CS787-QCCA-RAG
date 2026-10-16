@@ -1,0 +1,4 @@
+variant,trainable_params,val_nll_loss
+qcla_0,0,2.0571
+qcla_1,20988928,1.942
+qcla_2,25183232,1.942
