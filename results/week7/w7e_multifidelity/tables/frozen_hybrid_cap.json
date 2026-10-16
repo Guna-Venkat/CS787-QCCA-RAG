@@ -1,0 +1,31 @@
+{
+  "frozen_hybrid_cap": 64,
+  "selection_rule": "highest F1 on INTERNAL-VAL; within 0.003 choose fewer tokens",
+  "timestamp": 1792111593.8063273,
+  "summary": [
+    {
+      "Hybrid cap": "M64",
+      "F1": 0.3979,
+      "Tokens": 1047.3,
+      "\u0394F1 vs k4": 0.009,
+      "\u0394tokens vs k4": 120.2,
+      "\u0394F1 vs k6": -0.0041
+    },
+    {
+      "Hybrid cap": "M96",
+      "F1": 0.4003,
+      "Tokens": 1105.8,
+      "\u0394F1 vs k4": 0.0114,
+      "\u0394tokens vs k4": 178.6,
+      "\u0394F1 vs k6": -0.0017
+    },
+    {
+      "Hybrid cap": "M128",
+      "F1": 0.3892,
+      "Tokens": 1159.7,
+      "\u0394F1 vs k4": 0.0003,
+      "\u0394tokens vs k4": 232.5,
+      "\u0394F1 vs k6": -0.0128
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Method,F1,Tokens / Placeholders,ΔF1 vs k4,ΔF1 vs k6,Type
+E0 k4 (4F+6H),0.3888,927.2 tok / 6 vectors,0.0,-0.0132,Baseline
+M2 2-vector (4F+2(2V)+4H),0.3691,931.2 tok / 8 vectors,-0.0198,-0.0329,Multi-Vector Latent
+E2 k6 (6F+4H),0.402,1344.3 tok / 4 vectors,0.0132,0.0,Baseline

@@ -23,39 +23,52 @@ representation:
 
 medium_compression:
   medium_token_caps: [64, 96, 128]
-  default_token_cap: 96
+  default_token_cap: 64 # Frozen winner from repaired INTERNAL-VAL downstream sweep (M64 F1=0.3979 within 0.003 of M96 F1=0.4003 with lower tokens)
   scorer_type: "cross_encoder" # "cross_encoder" or "semantic"
+  medium_mode: "hybrid" # "hybrid" (M1: extract + SFR embedding) or "extract_only" (M0: extract replaces SFR embedding)
   cross_encoder_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
   semantic_encoder_model: "sentence-transformers/all-MiniLM-L6-v2"
   batch_size: 32
 
 policies:
   primary_policy_e1:
-    name: "E1_primary_4F_2M_4H"
+    name: "E1_hybrid_4F_2M_4H"
+    hybrid_medium: true
+    full_ranks: [1, 2, 3, 4]
+    medium_ranks: [5, 6]
+    heavy_ranks: [7, 8, 9, 10]
+
+  extract_only_e1_m0:
+    name: "E1_extract_only_4F_2M_4H"
+    hybrid_medium: false
     full_ranks: [1, 2, 3, 4]
     medium_ranks: [5, 6]
     heavy_ranks: [7, 8, 9, 10]
 
   baseline_e0:
     name: "E0_baseline_4F_0M_6H"
+    hybrid_medium: false
     full_ranks: [1, 2, 3, 4]
     medium_ranks: []
     heavy_ranks: [5, 6, 7, 8, 9, 10]
 
   baseline_e2:
     name: "E2_baseline_6F_0M_4H"
+    hybrid_medium: false
     full_ranks: [1, 2, 3, 4, 5, 6]
     medium_ranks: []
     heavy_ranks: [7, 8, 9, 10]
 
   secondary_e3:
     name: "E3_secondary_2F_2M_6H"
+    hybrid_medium: true
     full_ranks: [1, 2]
     medium_ranks: [3, 4]
     heavy_ranks: [5, 6, 7, 8, 9, 10]
 
   secondary_e4:
     name: "E4_secondary_4F_4M_2H"
+    hybrid_medium: true
     full_ranks: [1, 2, 3, 4]
     medium_ranks: [5, 6, 7, 8]
     heavy_ranks: [9, 10]

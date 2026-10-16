@@ -1,0 +1,5 @@
+Policy,Formulation,F1,Tokens,ΔF1 vs k4,ΔF1 vs Extract-Only M64,Latent Embeddings
+Semantic k=4 (E0),4F + 0M + 6H,0.3909,921.1,0.0,0.0155,6
+Corrected Extract-Only (E1-M0),4F + 2M64 + 4H,0.3755,1158.2,-0.0155,0.0,4
+Repaired Hybrid (E1-H),4F + 2(M64+H) + 4H,0.3861,1168.2,-0.0048,0.0106,6
+Semantic k=6 (E2),6F + 0M + 4H,0.3957,1325.1,0.0048,0.0203,4

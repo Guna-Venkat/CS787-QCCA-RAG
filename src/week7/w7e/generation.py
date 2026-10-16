@@ -69,13 +69,14 @@ def execute_resumable_multifidelity_generation(
     max_new_tokens: int = 128,
     do_sample: bool = False,
     temperature: float = 0.0,
+    hybrid_medium: bool = False,
 ) -> pd.DataFrame:
     """Execute resumable generation for a multi-fidelity policy on SARA.
 
     Key guarantees:
     - Skips already completed (qid, policy_name, token_cap) tuples.
     - Appends newly generated records immediately to disk.
-    - Injects exactly SFR embeddings for HEAVY passages into SARA's retrieval_embeds.
+    - Injects exactly SFR embeddings for compressed passages into SARA's retrieval_embeds.
     - Records detailed latency and token accounting.
     """
     cache_file_path = Path(cache_path)
@@ -95,13 +96,14 @@ def execute_resumable_multifidelity_generation(
         "max_new_tokens": max_new_tokens,
         "do_sample": do_sample,
         "temperature": temperature,
+        "hybrid_medium": hybrid_medium,
     }
 
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
 
     all_records: List[Dict[str, Any]] = []
-    pbar = tqdm(records, desc=f"Generating {policy_name} (M{token_cap})", unit="query")
+    pbar = tqdm(records, desc=f"Generating {policy_name} (M{token_cap}{'-H' if hybrid_medium else ''})", unit="query")
 
     for item in pbar:
         qid = str(item["question_id"]).strip()
@@ -135,7 +137,7 @@ def execute_resumable_multifidelity_generation(
         q_med_map = medium_texts_by_qid.get(qid, {})
 
         t_pre_start = time.time()
-        formatted_prompt, context_tokens, sorted_heavy, token_breakdown = build_mixed_fidelity_sara_prompt(
+        formatted_prompt, context_tokens, compressed_indices, token_breakdown = build_mixed_fidelity_sara_prompt(
             question=question_text,
             passages=passages,
             full_indices=full_idx,
@@ -143,13 +145,14 @@ def execute_resumable_multifidelity_generation(
             heavy_indices=heavy_idx,
             medium_texts_map=q_med_map,
             tokenizer=sara_tokenizer,
+            hybrid_medium=hybrid_medium,
         )
         t_pre = time.time() - t_pre_start
 
         # Tokenize and slice embeddings
         inputs = sara_tokenizer(formatted_prompt, return_tensors="pt").to(device)
         qid_embeds = cached_sfr_embeddings[qid]
-        comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, sorted_heavy).to(
+        comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, compressed_indices).to(
             device=device, dtype=sara_model.dtype
         )
 
@@ -185,9 +188,11 @@ def execute_resumable_multifidelity_generation(
             "paper_id": pid,
             "policy_name": policy_name,
             "token_cap": token_cap,
+            "hybrid_medium": hybrid_medium,
             "full_indices": [int(x) for x in full_idx],
             "medium_indices": [int(x) for x in med_idx],
-            "heavy_indices": [int(x) for x in sorted_heavy],
+            "heavy_indices": [int(x) for x in heavy_idx],
+            "compressed_indices": [int(x) for x in compressed_indices],
             "prediction": prediction,
             "gold_answers": gold_answers,
             "token_f1": float(qa_metrics["token_f1"]),

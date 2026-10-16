@@ -62,12 +62,13 @@ def extract_medium_passage(
     token_cap: int,
     scorer: SentenceScorer,
     tokenizer: Any = None,
+    sentence_scores: Optional[Sequence[float]] = None,
 ) -> Dict[str, Any]:
     """Extract query-focused MEDIUM extractive text from passage.
 
     Algorithm:
     1. Split passage into sentences s_1 ... s_m.
-    2. Score sentences against query.
+    2. Score sentences against query (or reuse precomputed sentence_scores).
     3. Rank descending by score.
     4. Greedily collect sentences while cumulative tokens <= token_cap.
     5. If top sentence exceeds cap: deterministically truncate it.
@@ -80,6 +81,7 @@ def extract_medium_passage(
             "selected_text": "",
             "selected_sentence_ids": [],
             "sentence_scores": [],
+            "all_sentence_scores": [],
             "original_tokens": 0,
             "medium_tokens": 0,
             "compression_ratio": 0.0,
@@ -98,6 +100,7 @@ def extract_medium_passage(
             "selected_text": fallback_text,
             "selected_sentence_ids": [0],
             "sentence_scores": [0.0],
+            "all_sentence_scores": [0.0],
             "original_tokens": orig_tokens,
             "medium_tokens": m_tokens,
             "compression_ratio": float(m_tokens / max(1, orig_tokens)),
@@ -106,7 +109,10 @@ def extract_medium_passage(
         }
 
     # 2. Score sentences
-    scores = scorer.score_sentences(query, sentences)
+    if sentence_scores is not None:
+        scores = list(sentence_scores)
+    else:
+        scores = scorer.score_sentences(query, sentences)
 
     # 3. Measure token length of each sentence
     sentence_infos: List[Dict[str, Any]] = []
@@ -153,6 +159,7 @@ def extract_medium_passage(
         "selected_text": medium_text,
         "selected_sentence_ids": [int(s["orig_idx"]) for s in selected_sorted_order],
         "sentence_scores": [float(s["score"]) for s in selected_sorted_order],
+        "all_sentence_scores": [float(s) for s in scores],
         "original_tokens": orig_tokens,
         "medium_tokens": actual_m_tokens,
         "compression_ratio": comp_ratio,

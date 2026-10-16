@@ -16,6 +16,8 @@ from src.week7.w7e.fidelity_allocator import (
     allocate_e2_k6,
     allocate_e3_compact,
     allocate_e4_extended,
+    assert_multifidelity_row_invariants,
+    get_semantic_rank_order,
     validate_multifidelity_assignment,
 )
 from src.week7.w7e.generation import (
@@ -48,6 +50,8 @@ __all__ = [
     "extract_medium_passage",
     "MediumExtractionCache",
     "validate_multifidelity_assignment",
+    "assert_multifidelity_row_invariants",
+    "get_semantic_rank_order",
     "allocate_e0_k4",
     "allocate_e1_primary",
     "allocate_e2_k6",

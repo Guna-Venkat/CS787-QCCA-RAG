@@ -36,6 +36,7 @@ def build_mixed_fidelity_sara_prompt(
     heavy_indices: Sequence[int],
     medium_texts_map: Dict[int, str],
     tokenizer: Any,
+    hybrid_medium: bool = False,
 ) -> Tuple[str, int, List[int], Dict[str, int]]:
     """Format unified SARA prompt combining FULL, MEDIUM, and HEAVY representations.
 
@@ -47,9 +48,11 @@ def build_mixed_fidelity_sara_prompt(
         heavy_indices: Passage indices assigned to HEAVY compression embeddings.
         medium_texts_map: Mapping from passage index -> extractive MEDIUM string.
         tokenizer: SARA generator tokenizer.
+        hybrid_medium: If True, MEDIUM passages retain their <COMPRESS> tokens and
+            SFR embeddings in addition to having extractive text in the context.
 
     Returns:
-        (formatted_prompt, context_tokens, sorted_heavy_indices, token_breakdown)
+        (formatted_prompt, context_tokens, compressed_indices, token_breakdown)
     """
     total_passages = len(passages)
     validate_multifidelity_assignment(
@@ -61,7 +64,7 @@ def build_mixed_fidelity_sara_prompt(
 
     full_set = set(full_indices)
     medium_set = set(medium_indices)
-    sorted_heavy_indices = sorted(heavy_indices)
+    heavy_set = set(heavy_indices)
 
     # 1. Text Context: All textual passages (FULL and MEDIUM) in original ascending BM25 index order
     textual_indices = sorted(full_set | medium_set)
@@ -74,22 +77,30 @@ def build_mixed_fidelity_sara_prompt(
             orig_rank = idx + 1
             if idx in full_set:
                 p_text = passages[idx].get("text", "").strip()
-                full_char_len += len(p_text)
-                text_blocks.append(f"Document {orig_rank}. {p_text}")
+                if p_text:
+                    full_char_len += len(p_text)
+                    text_blocks.append(f"Document {orig_rank}. {p_text}")
             elif idx in medium_set:
                 m_text = medium_texts_map.get(idx, "").strip()
                 if not m_text:
                     # Fallback to full text if medium is empty
                     m_text = passages[idx].get("text", "").strip()
-                medium_char_len += len(m_text)
-                text_blocks.append(f"Document {orig_rank}. {m_text}")
+                if m_text:
+                    medium_char_len += len(m_text)
+                    text_blocks.append(f"Document {orig_rank}. {m_text}")
 
-        text_context = "\n\n".join(text_blocks)
+        text_context = "\n\n".join(text_blocks) if text_blocks else "No direct text context provided."
     else:
         text_context = "No direct text context provided."
 
-    # 2. Compressed Context: Unselected (HEAVY) passages mapped to <COMPRESS> tokens
-    num_compressed = len(sorted_heavy_indices)
+    # 2. Compressed Context: Unselected (HEAVY) passages mapped to <COMPRESS> tokens.
+    # In Hybrid MEDIUM, MEDIUM passages also retain their <COMPRESS> token representation.
+    if hybrid_medium:
+        compressed_indices = sorted(heavy_set | medium_set)
+    else:
+        compressed_indices = sorted(heavy_set)
+
+    num_compressed = len(compressed_indices)
     if num_compressed > 0:
         compress_tokens_str = "\n".join([f"{i + 1}. {COMPRESS}" for i in range(num_compressed)])
         additional_context_str = f"## Additional Context (compression tokens)\n{compress_tokens_str}\n---"
@@ -131,27 +142,28 @@ Your Answer:"""
     token_breakdown = {
         "n_full": len(full_indices),
         "n_medium": len(medium_indices),
-        "n_heavy": len(sorted_heavy_indices),
+        "n_heavy": len(heavy_indices),
+        "n_compressed": len(compressed_indices),
         "context_tokens": context_tokens,
     }
 
-    return formatted_prompt, context_tokens, sorted_heavy_indices, token_breakdown
+    return formatted_prompt, context_tokens, compressed_indices, token_breakdown
 
 
 def extract_mixed_fidelity_sara_embeddings(
     qid_embeddings: torch.Tensor,
-    heavy_indices: Sequence[int],
+    compressed_indices: Sequence[int],
 ) -> torch.Tensor:
-    """Extract cached SFR embeddings corresponding to HEAVY passages.
+    """Extract cached SFR embeddings corresponding to compressed passages.
 
     Args:
         qid_embeddings: Tensor of shape (10, 4096) for this question.
-        heavy_indices: 0-indexed passage ranks assigned to HEAVY compression.
+        compressed_indices: 0-indexed passage ranks assigned to compression tokens.
 
     Returns:
-        Tensor of shape (len(heavy_indices), 4096) in ascending rank order.
+        Tensor of shape (len(compressed_indices), 4096) in ascending rank order.
     """
-    sorted_heavy = sorted(heavy_indices)
-    if not sorted_heavy:
+    sorted_comp = sorted(compressed_indices)
+    if not sorted_comp:
         return torch.empty((0, qid_embeddings.shape[1]), dtype=qid_embeddings.dtype, device=qid_embeddings.device)
-    return qid_embeddings[sorted_heavy]
+    return qid_embeddings[sorted_comp]
