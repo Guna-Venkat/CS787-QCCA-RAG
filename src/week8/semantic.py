@@ -16,7 +16,7 @@ class SemanticScorer:
 
     def __init__(
         self,
-        model_name: str = "BAAI/bge-large-en-v1.5",
+        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
         device: Optional[str] = None,
     ):
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")

@@ -1,0 +1,2 @@
+u1_entropy_mean,u2_entropy_max,u3_margin_mean,u4_margin_min,u5_logprob_mean,u6_norm_seq_logprob,u7_answer_len,u8_eos_conf,u9_empty_answer,u10_repetition_ratio,u11_lexical_overlap,u12_semantic_sim,question_id
+0.6305925995111465,0.944513738155365,2.28125,0.9375,0.0,-100.0,0.0,0.9467459321022034,0.0,0.0,0.0,-0.017165761440992355,1811

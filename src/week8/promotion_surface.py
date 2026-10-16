@@ -50,7 +50,7 @@ def construct_single_promotion_allocation(
 
     full_indices = sorted(base_full + [promoted_idx])
     medium_indices: List[int] = []
-    heavy_indices = [idx for idx in semantic_order if idx not in full_indices]
+    heavy_indices = sorted([idx for idx in range(len(semantic_order)) if idx not in full_indices])
 
     assert len(full_indices) == 5, f"Expected 5 full passages, got {len(full_indices)}"
     assert len(heavy_indices) == 5, f"Expected 5 heavy passages, got {len(heavy_indices)}"
@@ -100,6 +100,7 @@ def run_single_promotion_surface(
     device: str = "cuda",
     max_new_tokens: int = 128,
     smoke_limit: Optional[int] = None,
+    canonical_base_k4: Optional[Dict[str, Dict[str, Any]]] = None,
 ) -> pd.DataFrame:
     """Execute resumable single-passage promotion response surface.
 
@@ -107,6 +108,7 @@ def run_single_promotion_surface(
     - Skips already completed (question_id, candidate_passage_index) records.
     - Appends immediately to disk upon each evaluation.
     - Accurately tracks base F1 (k=4) and promoted F1 (C_i).
+    - Can consume verified canonical base k=4 records to prevent redundant base generation.
     """
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     completed_keys: Set[Tuple[str, int]] = set()
@@ -138,11 +140,22 @@ def run_single_promotion_surface(
         qid_embeds = cached_sfr_embeddings[qid]
 
         sem_scores = semantic_scores_by_qid[qid]
-        semantic_order = get_semantic_rank_order(sem_scores, n_passages=len(passages))
+        semantic_order = get_semantic_rank_order(semantic_scores=sem_scores, n_passages=len(passages))
+
+        # Check if all candidate ranks are already completed for this query
+        all_completed = True
+        for rank in candidate_ranks:
+            if rank <= len(semantic_order):
+                cand_idx = semantic_order[rank - 1]
+                if (qid, cand_idx) not in completed_keys:
+                    all_completed = False
+                    break
+        if all_completed:
+            continue
 
         # 1. Base Generation (k=4: 4F + 6H)
-        base_full = list(semantic_order[:4])
-        base_heavy = list(semantic_order[4:])
+        base_full = sorted(list(semantic_order[:4]))
+        base_heavy = sorted(list(semantic_order[4:]))
         base_prompt, base_tokens, base_comp_idx, _ = build_mixed_fidelity_sara_prompt(
             question=question_text,
             passages=passages,
@@ -154,30 +167,36 @@ def run_single_promotion_surface(
             hybrid_medium=False,
         )
 
-        base_inputs = sara_tokenizer(base_prompt, return_tensors="pt").to(device)
-        base_comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, base_comp_idx).to(
-            device=device, dtype=sara_model.dtype
-        )
-
-        with torch.no_grad():
-            base_out = sara_model.generate(
-                **base_inputs,
-                retrieval_embeds=base_comp_embeds,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-                pad_token_id=pad_id,
-                eos_token_id=sara_tokenizer.eos_token_id,
+        if canonical_base_k4 is not None and qid in canonical_base_k4:
+            base_rec = canonical_base_k4[qid]
+            base_prediction = str(base_rec.get("prediction", "")).strip()
+            base_f1 = float(base_rec.get("token_f1", 0.0))
+            base_tokens = int(base_rec.get("context_tokens", base_tokens))
+        else:
+            base_inputs = sara_tokenizer(base_prompt, return_tensors="pt").to(device)
+            base_comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, base_comp_idx).to(
+                device=device, dtype=sara_model.dtype
             )
-        base_pred_texts = extract_generated_text(sara_tokenizer, base_out)
-        base_prediction = base_pred_texts[0].strip() if base_pred_texts else ""
-        del base_inputs, base_comp_embeds, base_out
 
-        base_metrics = compute_qa_answer_metrics(
-            prediction=base_prediction,
-            gold_answers=gold_answers,
-            gold_reformatted=gold_reformatted,
-        )
-        base_f1 = float(base_metrics["token_f1"])
+            with torch.no_grad():
+                base_out = sara_model.generate(
+                    **base_inputs,
+                    retrieval_embeds=base_comp_embeds,
+                    max_new_tokens=max_new_tokens,
+                    do_sample=False,
+                    pad_token_id=pad_id,
+                    eos_token_id=sara_tokenizer.eos_token_id,
+                )
+            base_pred_texts = extract_generated_text(sara_tokenizer, base_out)
+            base_prediction = base_pred_texts[0].strip() if base_pred_texts else ""
+            del base_inputs, base_comp_embeds, base_out
+
+            base_metrics = compute_qa_answer_metrics(
+                prediction=base_prediction,
+                gold_answers=gold_answers,
+                gold_reformatted=gold_reformatted,
+            )
+            base_f1 = float(base_metrics["token_f1"])
 
         # 2. Iterate through each candidate rank in {5,6,7,8,9,10}
         for rank in candidate_ranks:

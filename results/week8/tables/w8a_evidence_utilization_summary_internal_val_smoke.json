@@ -1,0 +1,31 @@
+{
+  "total_promotions": 18,
+  "counts": {
+    "UTILIZED_HELPFUL": 0,
+    "UNANNOTATED_HELPFUL": 0,
+    "UNDERUTILIZED": 0,
+    "REDUNDANT_EVIDENCE": 0,
+    "HARMFUL_EVIDENCE": 0,
+    "DISTRACTOR": 0,
+    "TRUE_NEUTRAL": 18
+  },
+  "percentages": {
+    "UTILIZED_HELPFUL": 0.0,
+    "UNANNOTATED_HELPFUL": 0.0,
+    "UNDERUTILIZED": 0.0,
+    "REDUNDANT_EVIDENCE": 0.0,
+    "HARMFUL_EVIDENCE": 0.0,
+    "DISTRACTOR": 0.0,
+    "TRUE_NEUTRAL": 100.0
+  },
+  "total_gold_promotions": 0,
+  "substantive_gold_opportunity": 0,
+  "ufr_failures_count": 0,
+  "her_successes_count": 0,
+  "real_utilization_failure_rate_ufr": 0.0,
+  "helpful_evidence_rate_her": 0.0,
+  "redundant_evidence_rate_rer": 0.0,
+  "p_answer_changed_overall": 0.0,
+  "p_answer_changed_helpful": 0.0,
+  "p_answer_changed_underutilized": 0.0
+}

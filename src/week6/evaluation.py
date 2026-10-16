@@ -37,13 +37,33 @@ if hasattr(src, "__path__") and str(SARA_ROOT / "src") not in src.__path__:
 
 try:
     from src.metrics.metrics import compute_f1, exact_match_score, rougel_score
-except ImportError:
+except (ImportError, ModuleNotFoundError):
     # Robust self-contained fallback matching SARA metrics exactly
+    try:
+        import nltk
+        from nltk.corpus import stopwords
+        try:
+            stop_words = set(stopwords.words('english'))
+        except LookupError:
+            nltk.download('stopwords', quiet=True)
+            stop_words = set(stopwords.words('english'))
+    except Exception:
+        stop_words = set()
+
     def normalize_answer(s: str) -> str:
         s = s.lower()
+        if "---Response---\n\n" in s:
+            s = s.split("---Response---\n\n")[1]
+        if "---Answer---\n\n" in s:
+            s = s.split("---Answer---\n\n")[1]
+        if "Answer: " in s:
+            s = s.split("Answer:")[1]
         exclude = set(string.punctuation)
         s = "".join(ch for ch in s if ch not in exclude)
         s = re.sub(r"\b(a|an|the)\b", " ", s)
+        if stop_words:
+            words = s.split()
+            s = " ".join(w for w in words if w not in stop_words)
         return " ".join(s.split())
 
     def compute_f1(a_gold: str, a_pred: str) -> Tuple[float, float, float]:

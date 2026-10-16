@@ -1,0 +1,2 @@
+question_id,paper_id,base_f1,final_f1,delta_f1,promoted,chosen_semantic_rank,chosen_candidate_index,final_context_tokens,cumulative_tokens
+1811,596,1.0,1.0,0.0,False,0,-1,904.0,904.0

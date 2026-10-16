@@ -1,0 +1,6 @@
+Policy,Mean_F1,Delta_F1,Context_Tokens,Promotion_Rate_Pct,Notes
+Static Semantic k=4 (Base),0.39999999999999997,0.0,895.3333333333334,0.0,Canonical baseline
+Heuristic: BM25 Rank 5,0.5,0.10000000000000003,1171.5,100.0,Standard lexical retrieval heuristic
+Heuristic: MiniLM Rank 5,0.39999999999999997,0.0,1151.0,100.0,Standard semantic relevance heuristic
+Oracle-Selective-1 (eps=0.01),0.39999999999999997,0.0,895.3333333333334,0.0,Selective promotion when utility > 0.01
+Oracle-1 (Unconditional Best),0.39999999999999997,0.0,1151.0,100.0,Always promote max-utility candidate

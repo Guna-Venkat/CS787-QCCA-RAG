@@ -61,10 +61,18 @@ def build_utility_dataset(
         df_sc["question_id"] = df_sc["question_id"].astype(str)
         merged = pd.merge(merged, df_sc, on="question_id", how="left")
 
-    # Construct the 4 multitask targets
+    # Construct the 5 multitask targets
     merged["target_continuous_delta"] = merged["delta_f1"].astype(float)
     merged["target_help_binary"] = (merged["delta_f1"] > 0.01).astype(int)
     merged["target_hurt_binary"] = (merged["delta_f1"] < -0.01).astype(int)
+    ans_chg = merged["answer_changed"].astype(int) if "answer_changed" in merged.columns else (merged["delta_f1"].abs() > 1e-4).astype(int)
+    merged["target_beneficial_change"] = ((ans_chg == 1) & (merged["delta_f1"] > 0.01)).astype(int)
+    if "delta_gold_logprob" in merged.columns:
+        merged["target_dense_gold_ll"] = merged["delta_gold_logprob"].astype(float)
+    elif "delta_ll" in merged.columns:
+        merged["target_dense_gold_ll"] = merged["delta_ll"].astype(float)
+    else:
+        merged["target_dense_gold_ll"] = merged["delta_f1"].astype(float)
 
     # 3-way label: 0=NEUTRAL, 1=HELP, 2=HURT
     def map_3way(val: float) -> int:
@@ -77,7 +85,7 @@ def build_utility_dataset(
 
     merged["target_3way_label"] = merged["delta_f1"].apply(map_3way)
 
-    logger.info("Constructed utility dataset with %d rows and 4 multitask targets.", len(merged))
+    logger.info("Constructed utility dataset with %d rows and 5 multitask targets.", len(merged))
     return merged
 
 
@@ -92,6 +100,7 @@ def get_non_leaking_feature_columns(df: pd.DataFrame) -> List[str]:
         "target_continuous_delta",
         "target_help_binary",
         "target_hurt_binary",
+        "target_beneficial_change",
         "target_3way_label",
         "target_dense_gold_ll",
         "delta_gold_logprob",

@@ -1,0 +1,2 @@
+best_gamma,val_f1_gain,hard_case_samples,type_counts,smoke_verified
+1.0,0.015,1,"{'TYPE_A_HELPFUL': 0, 'TYPE_B_DISTRACTOR_SAFE': 0, 'TYPE_C_NEUTRAL': 1}",True

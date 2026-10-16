@@ -53,6 +53,7 @@ class MultitaskUtilityHeads(nn.Module):
         self.head_hurt = nn.Linear(hidden_dim, 1)        # Binary logit
         self.head_delta = nn.Linear(hidden_dim, 1)       # Continuous delta F1
         self.head_delta_ll = nn.Linear(hidden_dim, 1)    # Dense continuous gold log-likelihood change (Delta LL)
+        self.head_beneficial_change = nn.Linear(hidden_dim, 1) # P(answer changes beneficially)
         self.head_3way = nn.Linear(hidden_dim, 3)        # 3 classes: 0=NEU, 1=HELP, 2=HURT
 
     def forward(self, x: torch.Tensor) -> Dict[str, torch.Tensor]:
@@ -61,6 +62,7 @@ class MultitaskUtilityHeads(nn.Module):
         logit_hurt = self.head_hurt(feat).squeeze(-1)
         pred_delta = self.head_delta(feat).squeeze(-1)
         pred_delta_ll = self.head_delta_ll(feat).squeeze(-1)
+        logit_beneficial = self.head_beneficial_change(feat).squeeze(-1)
         logits_3way = self.head_3way(feat)
 
         return {
@@ -70,6 +72,9 @@ class MultitaskUtilityHeads(nn.Module):
             "pred_delta_f1": pred_delta,
             "pred_delta_ll": pred_delta_ll,
             "pred_delta_gold_logprob": pred_delta_ll,
+            "logit_beneficial": logit_beneficial,
+            "prob_beneficial": torch.sigmoid(logit_beneficial),
+            "prob_answer_changes_beneficially": torch.sigmoid(logit_beneficial),
             "logits_3way": logits_3way,
             "label_logits": logits_3way,
             "prob_help": torch.sigmoid(logit_help),
@@ -90,6 +95,8 @@ class UtilityModelU0:
         self.reg_delta_ll = HistGradientBoostingRegressor(random_state=42)
         self.clf_3way = HistGradientBoostingClassifier(random_state=42)
 
+        self.fitted_delta_ll = False
+
     def fit(
         self,
         X: np.ndarray,
@@ -99,18 +106,58 @@ class UtilityModelU0:
         y_3way: np.ndarray,
         y_delta_ll: Optional[np.ndarray] = None,
     ):
-        self.clf_help.fit(X, y_help)
-        self.clf_hurt.fit(X, y_hurt)
+        # Fallback for single-class cases in tiny smoke subsets
+        if len(np.unique(y_help)) > 1:
+            self.clf_help.fit(X, y_help)
+            self.fitted_help = True
+        else:
+            self.fitted_help = False
+            self.const_help = float(y_help[0]) if len(y_help) > 0 else 0.0
+
+        if len(np.unique(y_hurt)) > 1:
+            self.clf_hurt.fit(X, y_hurt)
+            self.fitted_hurt = True
+        else:
+            self.fitted_hurt = False
+            self.const_hurt = float(y_hurt[0]) if len(y_hurt) > 0 else 0.0
+
         self.reg_delta.fit(X, y_delta)
-        self.clf_3way.fit(X, y_3way)
+        
+        if len(np.unique(y_3way)) > 1:
+            self.clf_3way.fit(X, y_3way)
+            self.fitted_3way = True
+        else:
+            self.fitted_3way = False
+            self.const_3way = int(y_3way[0]) if len(y_3way) > 0 else 0
+
         if y_delta_ll is not None:
             self.reg_delta_ll.fit(X, y_delta_ll)
+            self.fitted_delta_ll = True
+        else:
+            self.fitted_delta_ll = False
 
     def predict(self, X: np.ndarray) -> Dict[str, np.ndarray]:
-        p_help = self.clf_help.predict_proba(X)[:, 1]
-        p_hurt = self.clf_hurt.predict_proba(X)[:, 1]
+        n = len(X)
+        if getattr(self, "fitted_help", False):
+            p_help = self.clf_help.predict_proba(X)[:, 1]
+        else:
+            p_help = np.full(n, getattr(self, "const_help", 0.0))
+
+        if getattr(self, "fitted_hurt", False):
+            p_hurt = self.clf_hurt.predict_proba(X)[:, 1]
+        else:
+            p_hurt = np.full(n, getattr(self, "const_hurt", 0.0))
+
         p_delta = self.reg_delta.predict(X)
-        p_3way = self.clf_3way.predict_proba(X)
+
+        if getattr(self, "fitted_3way", False):
+            p_3way = self.clf_3way.predict_proba(X)
+        else:
+            p_3way = np.zeros((n, 3))
+            c = getattr(self, "const_3way", 0)
+            if 0 <= c < 3:
+                p_3way[:, c] = 1.0
+
         res = {
             "prob_help": p_help,
             "prob_hurt": p_hurt,
@@ -118,7 +165,7 @@ class UtilityModelU0:
             "pred_delta_f1": p_delta,
             "probs_3way": p_3way,
         }
-        if hasattr(self.reg_delta_ll, "is_fitted_") or hasattr(self.reg_delta_ll, "_is_fitted"):
+        if getattr(self, "fitted_delta_ll", False):
             res["pred_delta_ll"] = self.reg_delta_ll.predict(X)
             res["pred_delta_gold_logprob"] = res["pred_delta_ll"]
         return res

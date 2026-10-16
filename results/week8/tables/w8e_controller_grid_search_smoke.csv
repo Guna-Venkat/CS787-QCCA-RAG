@@ -1,2 +1,2 @@
 lambda_h,lambda_d,tau_h,tau_d,objective,total_queries,promoted_queries,promotion_rate,help_precision,hurt_rate,oracle_recall,near_oracle_recall,unnecessary_promotion_rate
-1.0,0.5,0.4,0.3,0.3333333333333333,12.0,6.0,0.5,0.3333333333333333,0.0,0.16666666666666666,0.16666666666666666,0.0
+1.0,0.5,0.4,0.3,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,2 +1,2 @@
 mean_final_context_tokens,mean_cumulative_prompt_tokens,mean_generated_tokens,mean_e2e_latency_sec,mean_num_passes,promotion_rate,mean_num_promotions,gpu_peak_memory_mb
-1062.0,1865.0,-1877.0,4.886758327484131,2.0,1.0,1.0,0.0
+1125.5,1944.5,-1946.0,4.514521837234497,2.0,1.0,1.0,0.0
