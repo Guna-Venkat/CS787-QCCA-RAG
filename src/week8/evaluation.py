@@ -255,3 +255,148 @@ def compute_evidence_utilization_metrics(
         },
     }
 
+
+def compute_query_grouped_selector_metrics(
+    df: pd.DataFrame,
+    selector_scores_col: Optional[str] = None,
+    selector_obj: Optional[Any] = None,
+    promotion_threshold: float = -999.0,  # Default to pure ranking among 6 candidates
+    base_k4_f1: float = 0.38884,
+    oracle_selective1_f1: float = 0.4808,
+) -> Dict[str, Any]:
+    """Compute query-grouped passage selection metrics and downstream headroom recovery.
+
+    Metrics:
+    - Top-1 Oracle Accuracy: Fraction where argmax(scores) == argmax(delta_f1)
+    - Near-Oracle Selection Rate: Fraction where Delta* - Delta_chosen <= 0.01
+    - Mean and Median Selector Regret: Delta* - Delta_chosen
+    - HELP Precision: Fraction of promoted passages where Delta > 0.01
+    - HURT Rate: Fraction of promoted passages where Delta < -0.01
+    - Oracle-Gated Downstream F1: Base F1 + Delta of chosen candidate on escalation queries (Delta* > 0.01)
+    - Selector Headroom Recovery (SHR): (F1_sim - F1_k4) / (F1_oracle_sel - F1_k4)
+    """
+    df_eval = df.copy()
+    if "question_id" not in df_eval.columns:
+        raise ValueError("DataFrame must contain 'question_id' column.")
+
+    top1_matches = 0
+    near_oracle_matches = 0
+    regrets = []
+    promoted_deltas = []
+    oracle_gated_deltas = []
+    num_queries = 0
+
+    for qid, group in df_eval.groupby("question_id"):
+        num_queries += 1
+        group = group.reset_index(drop=True)
+        deltas = group["delta_f1"].values
+        best_delta = float(np.max(deltas))
+        oracle_best_idx = int(np.argmax(deltas))
+
+        # Get selector scores
+        if selector_obj is not None:
+            scores = selector_obj.predict_scores(group)
+        elif selector_scores_col is not None and selector_scores_col in group.columns:
+            scores = group[selector_scores_col].values
+        else:
+            raise ValueError("Either selector_obj or valid selector_scores_col must be provided.")
+
+        chosen_idx = int(np.argmax(scores))
+        chosen_score = float(scores[chosen_idx])
+
+        # Action: check if STOP
+        is_promote = chosen_score >= promotion_threshold
+        chosen_delta = float(deltas[chosen_idx]) if is_promote else 0.0
+        regret = max(0.0, best_delta - chosen_delta)
+
+        # 1. Top-1 Oracle passage match
+        if chosen_idx == oracle_best_idx:
+            top1_matches += 1
+
+        # 2. Near-oracle passage match (within 0.01 F1 of best)
+        if best_delta - chosen_delta <= 0.01:
+            near_oracle_matches += 1
+
+        regrets.append(regret)
+        if is_promote:
+            promoted_deltas.append(chosen_delta)
+
+        # 3. Clean selector-only simulation under oracle gate:
+        # If query needed escalation (Delta* > 0.01), give selector all 6 candidates.
+        # If safe-stop query (Delta* <= 0.01), keep k4 (gain = 0.0).
+        if best_delta > 0.01:
+            oracle_gated_deltas.append(chosen_delta)
+        else:
+            oracle_gated_deltas.append(0.0)
+
+    top1_acc = top1_matches / max(num_queries, 1)
+    near_oracle_rate = near_oracle_matches / max(num_queries, 1)
+    mean_regret = float(np.mean(regrets)) if regrets else 0.0
+    median_regret = float(np.median(regrets)) if regrets else 0.0
+
+    n_promoted = len(promoted_deltas)
+    help_count = sum(1 for d in promoted_deltas if d > 0.01)
+    hurt_count = sum(1 for d in promoted_deltas if d < -0.01)
+    help_precision = help_count / max(n_promoted, 1)
+    hurt_rate = hurt_count / max(n_promoted, 1)
+
+    # Downstream F1 with oracle gate
+    mean_gated_gain = float(np.mean(oracle_gated_deltas)) if oracle_gated_deltas else 0.0
+    final_downstream_f1 = base_k4_f1 + mean_gated_gain
+
+    # Selector Headroom Recovery (SHR)
+    oracle_headroom = max(oracle_selective1_f1 - base_k4_f1, 1e-6)
+    achieved_gain = final_downstream_f1 - base_k4_f1
+    shr = achieved_gain / oracle_headroom
+
+    return {
+        "num_queries": num_queries,
+        "top1_oracle_accuracy": float(top1_acc),
+        "near_oracle_selection_rate": float(near_oracle_rate),
+        "mean_regret": float(mean_regret),
+        "median_regret": float(median_regret),
+        "help_precision": float(help_precision),
+        "hurt_rate": float(hurt_rate),
+        "final_downstream_f1": float(final_downstream_f1),
+        "selector_headroom_recovery": float(shr),
+    }
+
+
+def compute_calibration_metrics(
+    y_true_binary: np.ndarray,
+    y_prob: np.ndarray,
+    n_bins: int = 10,
+) -> Dict[str, Any]:
+    """Compute Expected Calibration Error (ECE), Brier Score, and Decile Calibration Table."""
+    brier = float(np.mean((y_prob - y_true_binary) ** 2))
+
+    # Equal-width bins
+    bin_limits = np.linspace(0.0, 1.0, n_bins + 1)
+    ece = 0.0
+    decile_rows = []
+
+    for b in range(n_bins):
+        low, high = bin_limits[b], bin_limits[b + 1]
+        mask = (y_prob >= low) & (y_prob < high if b < n_bins - 1 else y_prob <= high)
+        n_in_bin = int(mask.sum())
+        if n_in_bin > 0:
+            mean_prob = float(np.mean(y_prob[mask]))
+            mean_obs = float(np.mean(y_true_binary[mask]))
+            bin_err = abs(mean_prob - mean_obs)
+            ece += (n_in_bin / len(y_prob)) * bin_err
+            decile_rows.append({
+                "decile": b + 1,
+                "bin_range": f"[{low:.1f}, {high:.1f}]",
+                "count": n_in_bin,
+                "mean_pred_prob": mean_prob,
+                "observed_rate": mean_obs,
+                "calibration_error": bin_err,
+            })
+
+    return {
+        "ece": float(ece),
+        "brier_score": float(brier),
+        "decile_table": pd.DataFrame(decile_rows),
+    }
+
+
