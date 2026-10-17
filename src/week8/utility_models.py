@@ -62,34 +62,19 @@ def truncate_and_budget_tokens(
     d_tokens = tokenizer.encode(str(draft), add_special_tokens=False) if draft else []
     c_tokens = tokenizer.encode(str(candidate), add_special_tokens=False)
 
-    # Budget for prompt wrappers: [QUESTION] ... [DRAFT ANSWER] ... [CANDIDATE EVIDENCE] ...
-    overhead = 12
+    overhead = len(tokenizer.encode("[QUESTION] [DRAFT ANSWER] [CANDIDATE EVIDENCE]",
+                                    add_special_tokens=False)) + 4
     available = max_length - overhead
-
-    was_truncated = False
-
-    # 1. Truncate query if needed
-    if len(q_tokens) > max_query_tokens:
-        q_tokens = q_tokens[:max_query_tokens]
-        was_truncated = True
-
+    if available < 32:
+        raise ValueError("Token budget is too small")
+    original_lengths = (len(q_tokens), len(d_tokens), len(c_tokens))
+    q_tokens = q_tokens[:min(max_query_tokens, available // 3)]
     remaining = available - len(q_tokens)
-
-    # 2. Prioritize candidate evidence: reserve budget for candidate
-    # Candidate should get at least min(len(c_tokens), remaining - 16)
-    if len(c_tokens) + len(d_tokens) > remaining:
-        was_truncated = True
-        # Candidate gets priority: truncate draft first
-        draft_budget = min(len(d_tokens), max_draft_tokens)
-        cand_budget = remaining - draft_budget
-
-        if cand_budget < len(c_tokens):
-            # If candidate still doesn't fit, squeeze draft further (down to min 16 tokens)
-            draft_budget = max(16, remaining - len(c_tokens))
-            cand_budget = remaining - draft_budget
-
-        d_tokens = d_tokens[:draft_budget]
-        c_tokens = c_tokens[:cand_budget]
+    draft_budget = min(len(d_tokens), max_draft_tokens,
+                       max(0, remaining - min(len(c_tokens), remaining - min(16, len(d_tokens)))))
+    d_tokens = d_tokens[:draft_budget]
+    c_tokens = c_tokens[:remaining - len(d_tokens)]
+    was_truncated = original_lengths != (len(q_tokens), len(d_tokens), len(c_tokens))
 
     q_text = tokenizer.decode(q_tokens, skip_special_tokens=True)
     d_text = tokenizer.decode(d_tokens, skip_special_tokens=True) if d_tokens else ""
@@ -174,6 +159,7 @@ class MultitaskUtilityHeads(nn.Module):
             "logit_beneficial": logit_beneficial,
             "prob_beneficial": torch.sigmoid(logit_beneficial),
             "logits_3way": logits_3way,
+            "label_logits": logits_3way,
             "utility_score": utility_score,
         }
 
@@ -320,7 +306,7 @@ class BasePassageSelector:
         best_i = int(np.argmax(scores))
         best_score = float(scores[best_i])
 
-        rank_col = "candidate_passage_index" if "candidate_passage_index" in df_query.columns else "semantic_rank"
+        rank_col = "semantic_rank"
         chosen_rank = int(df_query.iloc[best_i][rank_col]) if rank_col in df_query.columns else (5 + best_i)
 
         if best_score < promotion_threshold:
@@ -348,11 +334,11 @@ class S0_Rank5Selector(BasePassageSelector):
 
     def predict_scores(self, df_query: pd.DataFrame) -> np.ndarray:
         scores = np.zeros(len(df_query))
-        rank_col = "candidate_passage_index" if "candidate_passage_index" in df_query.columns else "semantic_rank"
+        rank_col = "semantic_rank"
         if rank_col in df_query.columns:
             ranks = df_query[rank_col].values
             for i, r in enumerate(ranks):
-                if int(r) in (4, 5):
+                if int(r) == 5:
                     scores[i] = 1.0
                     return scores
         scores[0] = 1.0
@@ -409,7 +395,7 @@ class S4_MarginalInfoSelector(BasePassageSelector):
     def predict_scores(self, df_query: pd.DataFrame) -> np.ndarray:
         if "mig_score" in df_query.columns:
             return df_query["mig_score"].fillna(-999.0).values
-        return np.zeros(len(df_query))
+        raise ValueError("S4 requires computed mig_score; no zero-score fallback")
 
 
 class OracleSelector(BasePassageSelector):
@@ -426,11 +412,11 @@ class UtilityModelU0(BasePassageSelector):
     """U0: Tabular baseline using GBDT regressors/classifiers on non-leaking features."""
 
     def __init__(self, random_state: int = 42):
-        self.clf_help = HistGradientBoostingClassifier(random_state=random_state)
-        self.clf_hurt = HistGradientBoostingClassifier(random_state=random_state)
-        self.reg_delta = HistGradientBoostingRegressor(random_state=random_state)
-        self.reg_regret = HistGradientBoostingRegressor(random_state=random_state)
-        self.clf_3way = HistGradientBoostingClassifier(random_state=random_state)
+        self.clf_help = HistGradientBoostingClassifier(random_state=random_state, early_stopping=False)
+        self.clf_hurt = HistGradientBoostingClassifier(random_state=random_state, early_stopping=False)
+        self.reg_delta = HistGradientBoostingRegressor(random_state=random_state, early_stopping=False)
+        self.reg_regret = HistGradientBoostingRegressor(random_state=random_state, early_stopping=False)
+        self.clf_3way = HistGradientBoostingClassifier(random_state=random_state, early_stopping=False)
         self.feature_cols: List[str] = []
 
     def fit(
@@ -622,7 +608,7 @@ class CrossEncoderUtilityModel(BasePassageSelector, nn.Module):
         for _, row in df_query.iterrows():
             c = str(row.get("candidate_text", ""))
             if self.mode == "U1":
-                texts.append(format_u1_text(q, c))
+                texts.append(truncate_and_budget_tokens(self.tokenizer, q, "", c)[0])
             else:
                 formatted, _ = truncate_and_budget_tokens(self.tokenizer, q, d, c)
                 texts.append(formatted)
@@ -653,9 +639,13 @@ class FullHybridUtilityModelU4(BasePassageSelector, nn.Module):
         numeric_dim: int = 11,
         hidden_dim: int = 128,
         has_attribution: bool = False,
+        ce_dim: Optional[int] = None,
+        num_numeric_features: Optional[int] = None,
     ):
         super().__init__()
         self.has_attribution = has_attribution
+        cross_encoder_dim = ce_dim if ce_dim is not None else cross_encoder_dim
+        numeric_dim = num_numeric_features if num_numeric_features is not None else numeric_dim
         total_in = cross_encoder_dim + numeric_dim
 
         self.fusion = nn.Sequential(

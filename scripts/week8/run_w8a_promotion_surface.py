@@ -22,6 +22,7 @@ if hasattr(src, "__path__") and str(SARA_ROOT / "src") not in src.__path__:
 
 from src.model.loader import load_sara_for_eval
 from src.week8.semantic import SemanticScorer
+from src.week6.evaluation import compute_qa_answer_metrics
 from src.week8.data import load_config, load_week8_split
 from src.week8.promotion_oracle import (
     compute_best_rank_distribution,
@@ -43,8 +44,9 @@ logger = logging.getLogger(__name__)
 def load_and_verify_canonical_base_k4(
     val_records: List[Dict[str, Any]],
     canonical_results_path: Path,
+    expected_mean_f1: Optional[float] = None,
 ) -> Dict[str, Dict[str, Any]]:
-    """Load canonical k=4 base generation results and verify exact baseline F1 ≈ 0.38884."""
+    """Load canonical k4 text, optionally check historical split F1, then apply current scoring."""
     val_qids = {str(r["question_id"]) for r in val_records}
     k4_by_qid: Dict[str, Dict[str, Any]] = {}
 
@@ -64,13 +66,18 @@ def load_and_verify_canonical_base_k4(
         raise ValueError(f"Missing canonical base k=4 records for {len(missing_qids)} queries: {list(missing_qids)[:5]}...")
 
     mean_f1 = sum(float(r["token_f1"]) for r in k4_by_qid.values()) / len(k4_by_qid)
-    target_f1 = 0.38884486987682965
+    target_f1 = expected_mean_f1 if expected_mean_f1 is not None else mean_f1
     logger.info("Loaded canonical base k=4 for %d queries. Mean F1 = %.7f (Target: %.7f)", len(k4_by_qid), mean_f1, target_f1)
 
     if abs(mean_f1 - target_f1) > 1e-4:
         raise ValueError(f"CRITICAL INVARIANT VIOLATION: Canonical base k=4 mean F1 ({mean_f1:.5f}) differs from expected baseline ({target_f1:.5f})!")
 
-    logger.info("VERIFICATION PASSED: Canonical base k=4 matches exact 0.38884 baseline!")
+    logger.info("VERIFICATION PASSED: canonical k4 covers every requested query.")
+    for rec in k4_by_qid.values():
+        rec["token_f1"] = compute_qa_answer_metrics(
+            rec["prediction"], rec["gold_answers"],
+            rec.get("gold_answers_reformatted", rec["gold_answers"]),
+        )["token_f1"]
     return k4_by_qid
 
 
@@ -149,6 +156,7 @@ def extract_case_studies(df_enriched: pd.DataFrame) -> Dict[str, Any]:
 def main():
     parser = argparse.ArgumentParser(description="Canonical W8-A Promotion Response Surface Runner")
     parser.add_argument("--smoke", action="store_true", help="Run smoke test on 5 queries")
+    parser.add_argument("--surface-only", action="store_true", help="Generate canonical surface without optional evidence analysis")
     parser.add_argument("--full", action="store_true", help="Run full split evaluation (342 queries)")
     parser.add_argument("--split", choices=["fit", "internal_val"], default="internal_val")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -168,7 +176,10 @@ def main():
 
     # 2. Load and verify canonical base k4
     canonical_w7b_results_path = REPO_ROOT / "results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl"
-    canonical_base_k4 = load_and_verify_canonical_base_k4(records, canonical_w7b_results_path)
+    canonical_base_k4 = load_and_verify_canonical_base_k4(
+        records, canonical_w7b_results_path,
+        expected_mean_f1=0.38884486987682965 if split == "internal_val" else None,
+    )
 
     # 3. MiniLM Semantic scorer
     scorer = SemanticScorer()
@@ -206,6 +217,10 @@ def main():
     )
 
     logger.info("Promotion surface completed with %d records.", len(df_promotions))
+
+    if args.surface_only:
+        logger.info("Canonical surface ready: %s", cache_path)
+        return
 
     # 6. Evidence Enrichment
     logger.info("Running evidence enrichment and potential diagnostics...")

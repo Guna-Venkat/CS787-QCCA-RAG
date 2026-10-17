@@ -73,6 +73,15 @@ FORBIDDEN_EXACT_FEATURE_NAMES: Set[str] = {
     "draft_answer",
 }
 
+# Only measurements available before promotion may enter a learned selector.
+SAFE_NUMERIC_FEATURES = {
+    "semantic_rank", "bm25_rank", "semantic_score", "bm25_score",
+    "passage_length", "base_context_tokens", "context_tokens",
+    "query_relevance_rq", "draft_relevance_ry", "redundancy_red",
+    "candidate_diversity", "mig_score", "draft_length_words",
+    "draft_empty", "draft_query_overlap",
+}
+
 FORBIDDEN_SUBSTRINGS: Sequence[str] = (
     "target",
     "gold",
@@ -88,6 +97,8 @@ FORBIDDEN_SUBSTRINGS: Sequence[str] = (
 def assert_no_feature_leakage(feature_cols: Sequence[str]) -> None:
     """Hard assertion enforcing strict leakage prevention on feature columns."""
     for col in feature_cols:
+        if col not in SAFE_NUMERIC_FEATURES:
+            raise AssertionError(f"Feature is not approved for pre-promotion inference: {col}")
         col_lower = col.lower().strip()
         if col in FORBIDDEN_EXACT_FEATURE_NAMES:
             raise AssertionError(
@@ -113,9 +124,15 @@ def build_utility_dataset(
     if df_drafts is not None and len(df_drafts) > 0:
         df_dr = df_drafts.copy()
         df_dr["question_id"] = df_dr["question_id"].astype(str)
+        if df_dr["question_id"].duplicated().any():
+            raise ValueError("Duplicate draft question IDs")
         draft_cols = ["question_id", "draft_answer", "context_tokens"]
         df_dr_sub = df_dr[[c for c in draft_cols if c in df_dr.columns]]
-        merged = pd.merge(df_prom, df_dr_sub, on="question_id", how="inner", suffixes=("", "_draft"))
+        merged = pd.merge(df_prom, df_dr_sub, on="question_id", how="left", suffixes=("", "_draft"), validate="many_to_one")
+        if "draft_answer" not in merged or merged["draft_answer"].isna().any():
+            raise ValueError("Draft diagnostics do not cover all promotion queries")
+        if "base_prediction" in merged and not merged["draft_answer"].eq(merged["base_prediction"]).all():
+            raise ValueError("Draft answers differ from the canonical promotion-surface base")
     else:
         merged = df_prom
         if "draft_answer" not in merged.columns:
@@ -132,6 +149,9 @@ def build_utility_dataset(
         df_sc = df_self_consistency.copy()
         df_sc["question_id"] = df_sc["question_id"].astype(str)
         merged = pd.merge(merged, df_sc, on="question_id", how="left")
+
+    if "draft_answer" not in merged:
+        merged["draft_answer"] = merged["base_prediction"]
 
     # 1. Standard G0 counterfactual Delta F1
     merged["delta_f1"] = merged["delta_f1"].astype(float)
@@ -193,13 +213,8 @@ def get_non_leaking_feature_columns(df: pd.DataFrame) -> List[str]:
 
     Enforces hard assertion against leakage before returning.
     """
-    numeric_cols = [
-        c
-        for c in df.columns
-        if c not in FORBIDDEN_EXACT_FEATURE_NAMES
-        and not any(sub in c.lower() for sub in FORBIDDEN_SUBSTRINGS)
-        and pd.api.types.is_numeric_dtype(df[c])
-    ]
+    numeric_cols = [c for c in df.columns if c in SAFE_NUMERIC_FEATURES
+                    and pd.api.types.is_numeric_dtype(df[c])]
     # Enforce hard assertion check
     assert_no_feature_leakage(numeric_cols)
     return sorted(numeric_cols)

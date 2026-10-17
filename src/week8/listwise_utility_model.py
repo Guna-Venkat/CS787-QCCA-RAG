@@ -158,33 +158,12 @@ class ListwiseDraftUtilityModelU3(BasePassageSelector, nn.Module):
 
     def predict_scores(self, df_query: pd.DataFrame) -> np.ndarray:
         """Score all 6 candidates jointly given a single query's candidate rows."""
-        self.eval()
-        device = next(self.parameters()).device
-
-        q = str(df_query.iloc[0].get("question", ""))
-        d = str(df_query.iloc[0].get("draft_answer", ""))
-
-        cands = {}
-        for _, row in df_query.iterrows():
-            r = int(row.get("candidate_passage_index", row.get("semantic_rank", 5)))
-            cands[r] = str(row.get("candidate_text", ""))
-
-        prompt = format_u3_listwise_prompt(q, d, cands)
-        enc = self.tokenizer([prompt], padding=True, truncation=True, max_length=512, return_tensors="pt")
-        enc = {k: v.to(device) for k, v in enc.items()}
-
-        with torch.no_grad():
-            preds = self.forward(**enc)
-            # Scores for candidates (batch 0)
-            scores = preds["utility_scores"][0].cpu().numpy()
-
-        # If candidate rows is less or more than 6, slice/pad accordingly
-        if len(scores) > len(df_query):
-            scores = scores[:len(df_query)]
-        elif len(scores) < len(df_query):
-            pad = np.zeros(len(df_query) - len(scores))
-            scores = np.concatenate([scores, pad])
-        return scores
+        # Reuse the training tokenizer/budget and map scores by semantic rank,
+        # not by the original BM25 passage index or caller row order.
+        from src.week8.utility_training import TrainingConfig, predict_neural
+        cfg = getattr(self, 'training_config',
+                      TrainingConfig(device=str(next(self.parameters()).device)))
+        return predict_neural(self, df_query, cfg)['utility_score']
 
 
 # Aliases

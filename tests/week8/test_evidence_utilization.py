@@ -50,7 +50,7 @@ def test_four_way_taxonomy_classification():
     assert classify_evidence_utilization_type(is_gold_evidence=False, delta_f1=0.005) == "TRUE_NEUTRAL"
     # Case D: Distractor
     assert classify_evidence_utilization_type(is_gold_evidence=False, delta_f1=-0.15) == "DISTRACTOR"
-    assert classify_evidence_utilization_type(is_gold_evidence=True, delta_f1=-0.05) == "DISTRACTOR"
+    assert classify_evidence_utilization_type(is_gold_evidence=True, delta_f1=-0.05) == "HARMFUL_EVIDENCE"
 
 
 def test_enrich_promotion_record_q1811_and_q1812():

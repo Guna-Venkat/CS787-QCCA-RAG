@@ -261,8 +261,8 @@ def compute_query_grouped_selector_metrics(
     selector_scores_col: Optional[str] = None,
     selector_obj: Optional[Any] = None,
     promotion_threshold: float = -999.0,  # Default to pure ranking among 6 candidates
-    base_k4_f1: float = 0.38884,
-    oracle_selective1_f1: float = 0.4808,
+    base_k4_f1: Optional[float] = None,
+    oracle_selective1_f1: Optional[float] = None,
 ) -> Dict[str, Any]:
     """Compute query-grouped passage selection metrics and downstream headroom recovery.
 
@@ -278,6 +278,14 @@ def compute_query_grouped_selector_metrics(
     df_eval = df.copy()
     if "question_id" not in df_eval.columns:
         raise ValueError("DataFrame must contain 'question_id' column.")
+
+    if df_eval.empty:
+        raise ValueError("Cannot evaluate an empty surface")
+    if base_k4_f1 is None:
+        base_k4_f1 = float(df_eval.groupby("question_id")["base_f1"].first().mean())
+    if oracle_selective1_f1 is None:
+        best = df_eval.groupby("question_id")["delta_f1"].max()
+        oracle_selective1_f1 = base_k4_f1 + float(best.where(best > 0.01, 0.0).mean())
 
     top1_matches = 0
     near_oracle_matches = 0
@@ -301,6 +309,9 @@ def compute_query_grouped_selector_metrics(
         else:
             raise ValueError("Either selector_obj or valid selector_scores_col must be provided.")
 
+        scores = np.asarray(scores, dtype=float)
+        if scores.shape != deltas.shape or not np.isfinite(scores).all():
+            raise ValueError("Selector must return one finite score per candidate")
         chosen_idx = int(np.argmax(scores))
         chosen_score = float(scores[chosen_idx])
 
@@ -310,7 +321,7 @@ def compute_query_grouped_selector_metrics(
         regret = max(0.0, best_delta - chosen_delta)
 
         # 1. Top-1 Oracle passage match
-        if chosen_idx == oracle_best_idx:
+        if is_promote and np.isclose(chosen_delta, best_delta, atol=1e-8, rtol=0):
             top1_matches += 1
 
         # 2. Near-oracle passage match (within 0.01 F1 of best)
@@ -345,14 +356,19 @@ def compute_query_grouped_selector_metrics(
     final_downstream_f1 = base_k4_f1 + mean_gated_gain
 
     # Selector Headroom Recovery (SHR)
-    oracle_headroom = max(oracle_selective1_f1 - base_k4_f1, 1e-6)
+    oracle_headroom = oracle_selective1_f1 - base_k4_f1
     achieved_gain = final_downstream_f1 - base_k4_f1
-    shr = achieved_gain / oracle_headroom
+    shr = achieved_gain / oracle_headroom if oracle_headroom > 0 else 0.0
 
     return {
+        "base_k4_f1": base_k4_f1,
+        "oracle_selective1_f1": oracle_selective1_f1,
         "num_queries": num_queries,
         "top1_oracle_accuracy": float(top1_acc),
         "near_oracle_selection_rate": float(near_oracle_rate),
+        "mean_selected_delta_f1": float(np.sum(promoted_deltas) / num_queries),
+        "unconditional_downstream_f1": float(base_k4_f1 + np.sum(promoted_deltas) / num_queries),
+        "num_promoted": n_promoted,
         "mean_regret": float(mean_regret),
         "median_regret": float(median_regret),
         "help_precision": float(help_precision),

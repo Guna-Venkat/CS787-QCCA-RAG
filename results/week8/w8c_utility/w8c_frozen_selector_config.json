@@ -1,0 +1,76 @@
+{
+  "selected_model": "U4-A",
+  "model_file": "selected_neural.pt",
+  "models_compared": [
+    "U0",
+    "U1",
+    "U2-F",
+    "U2-A",
+    "U3",
+    "U4-A"
+  ],
+  "training_config": {
+    "n_splits": 5,
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "backbone_learning_rate": 2e-05,
+    "seed": 42,
+    "max_length": 512,
+    "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "device": "cuda"
+  },
+  "feature_columns": [
+    "base_context_tokens",
+    "bm25_rank",
+    "bm25_score",
+    "candidate_diversity",
+    "draft_empty",
+    "draft_length_words",
+    "draft_query_overlap",
+    "draft_relevance_ry",
+    "mig_score",
+    "passage_length",
+    "query_relevance_rq",
+    "redundancy_red",
+    "semantic_rank",
+    "semantic_score"
+  ],
+  "fit_oof_metrics": {
+    "base_k4_f1": 0.3856311764978589,
+    "oracle_selective1_f1": 0.48517399317796395,
+    "num_queries": 1746,
+    "top1_oracle_accuracy": 0.7416953035509737,
+    "near_oracle_selection_rate": 0.7485681557846506,
+    "mean_selected_delta_f1": 0.017139058979097288,
+    "unconditional_downstream_f1": 0.4027702354769562,
+    "num_promoted": 1746,
+    "mean_regret": 0.07912831038279744,
+    "median_regret": 0.0,
+    "help_precision": 0.145475372279496,
+    "hurt_rate": 0.10309278350515463,
+    "final_downstream_f1": 0.42446324845796907,
+    "selector_headroom_recovery": 0.3901042109839281
+  },
+  "internal_val_metrics": {
+    "base_k4_f1": 0.3890614607366954,
+    "oracle_selective1_f1": 0.4806704946080368,
+    "num_queries": 342,
+    "top1_oracle_accuracy": 0.7777777777777778,
+    "near_oracle_selection_rate": 0.7865497076023392,
+    "mean_selected_delta_f1": 0.019267229972552737,
+    "unconditional_downstream_f1": 0.40832869070924815,
+    "num_promoted": 342,
+    "mean_regret": 0.07169500248201338,
+    "median_regret": 0.0,
+    "help_precision": 0.13450292397660818,
+    "hurt_rate": 0.07017543859649122,
+    "final_downstream_f1": 0.4153226690289448,
+    "selector_headroom_recovery": 0.28666614178173183
+  },
+  "feature_policy": "canonical draft + tabular + measured MiniLM MIG; no W8-B token diagnostics or W8-D attribution",
+  "gate": "oracle epsilon=0.01; deployed controller remains W8-E",
+  "surface_sha256": {
+    "promotion_surface_fit.jsonl": "1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958",
+    "promotion_surface_internal_val.jsonl": "8d4b9806ba1501cf0300ab1ae3a6e89cbd44be88b17084fdc1a47ed19f697103"
+  }
+}
