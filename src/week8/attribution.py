@@ -22,28 +22,72 @@ import torch.nn.functional as F
 logger = logging.getLogger(__name__)
 
 
-def compute_masking_attribution_fallback(
-    sara_model: Any,
-    input_ids: torch.Tensor,
-    comp_embeds: torch.Tensor,
-    candidate_indices: Sequence[int],
-    device: str = "cuda",
-) -> List[float]:
-    """Fallback attribution: temporary zeroing of compressed slots during teacher forcing."""
-    delta_logps = []
-    base_embeds = comp_embeds.to(device)
-    with torch.no_grad():
-        out_base = sara_model(input_ids.to(device), retrieval_embeds=base_embeds)
-        base_loss = float(out_base.loss.item()) if hasattr(out_base, "loss") else 0.0
+def _masking_scores(model, input_ids, embeds, candidates, labels, device):
+    """Mean draft log-probability change, with explicit causal target masking."""
+    if labels is None:
+        raise ValueError('Explicit draft-only labels are required for masking attribution')
+    if getattr(model, 'training', False):
+        raise ValueError('Masking attribution requires model.eval()')
+    ids, labels = input_ids.to(device), labels.to(device)
+    if ids.shape != labels.shape or ids.ndim != 2 or ids.shape[0] != 1:
+        raise ValueError('Expected one input sequence and matching draft-only labels')
+    if not int((labels[:, 1:] != -100).sum()):
+        raise ValueError('No draft target tokens to score')
+    base = embeds.to(device=device, dtype=getattr(model, 'dtype', embeds.dtype))
+    if base.ndim == 3 and base.shape[0] == 1:
+        base = base[0]
+    if base.ndim != 2:
+        raise ValueError('Expected flat [compressed_slots, embedding_dim] SARA embeddings')
+    candidates = list(candidates)
+    if len(set(candidates)) != len(candidates) or any(i < 0 or i >= len(base) for i in candidates):
+        raise ValueError('Candidate compressed-slot indices are invalid')
+    kwargs = dict(input_ids=ids, attention_mask=torch.ones_like(ids), labels=labels, use_cache=False)
+    with torch.inference_mode():
+        output = model(**kwargs, retrieval_embeds=base)
+        base_loss = float(output.loss.item())
+        del output
+        result = {}
+        for i in candidates:
+            masked = base.clone()
+            masked[i, :] = 0
+            output = model(**kwargs, retrieval_embeds=masked)
+            result[i] = float(output.loss.item()) - base_loss
+            del output
+    if not np.isfinite([base_loss, *result.values()]).all():
+        raise ValueError('Non-finite draft likelihood during masking attribution')
+    return result
 
-    for idx in range(comp_embeds.shape[1]):
-        masked = base_embeds.clone()
-        masked[:, idx, :] = 0.0
-        with torch.no_grad():
-            out_m = sara_model(input_ids.to(device), retrieval_embeds=masked)
-            m_loss = float(out_m.loss.item()) if hasattr(out_m, "loss") else 0.0
-        delta_logps.append(m_loss - base_loss)
-    return delta_logps
+
+def compute_masking_attribution_fallback(
+    sara_model, input_ids, comp_embeds, candidate_indices, device='cuda', *, labels=None,
+):
+    """Return mean log-probability changes for requested compressed-slot positions.
+
+    Explicit draft-only labels are mandatory; passage indices must first be
+    mapped to positions in the compressed embedding tensor.
+    """
+    scores = _masking_scores(sara_model, input_ids, comp_embeds,
+                             candidate_indices, labels, device)
+    return [scores[i] for i in candidate_indices]
+
+
+def build_draft_teacher_forcing_inputs(tokenizer, prompt, draft_answer, device='cpu'):
+    """Keep the generation prompt IDs exact and append draft targets separately.
+
+    This avoids moving the prompt/draft boundary through whole-string
+    retokenization and introduces no second BOS at the answer boundary.
+    """
+    if not str(draft_answer).strip():
+        raise ValueError('An empty draft has no attribution target tokens')
+    prompt_ids = tokenizer(prompt, return_tensors='pt')['input_ids']
+    draft_ids = tokenizer(' ' + str(draft_answer), add_special_tokens=False,
+                          return_tensors='pt')['input_ids']
+    if not prompt_ids.shape[1] or not draft_ids.shape[1]:
+        raise ValueError('Missing prompt or draft tokens')
+    ids = torch.cat([prompt_ids, draft_ids], dim=1).to(device)
+    labels = ids.clone()
+    labels[:, :prompt_ids.shape[1]] = -100
+    return ids, labels, int(draft_ids.shape[1])
 
 
 def extract_compressed_slot_attention_features(
@@ -52,7 +96,7 @@ def extract_compressed_slot_attention_features(
     compressed_slot_indices: Sequence[int],
     query_token_indices: Optional[Sequence[int]] = None,
 ) -> torch.Tensor:
-    """Extract A1..A6 interaction features from attention tensors.
+    """Extract A1..A5 attention measurements; column A6 remains zero (not measured).
 
     Args:
         attention_tensors: [num_layers, num_heads, seq_len, seq_len]
@@ -102,126 +146,54 @@ def extract_compressed_slot_attention_features(
 
 
 def compute_masking_attribution(
-    model: Any,
-    tokenizer: Any,
-    prompt: str,
-    draft_answer: str,
-    retrieval_embeds: torch.Tensor,
-    candidate_comp_indices: Sequence[int],  # 0-indexed positions within retrieval_embeds
-    device: str = "cuda",
-) -> Dict[int, float]:
-    """Compute Delta log P(y_0) when each compressed candidate vector is zeroed out.
+    model, tokenizer, prompt, draft_answer, retrieval_embeds,
+    candidate_comp_indices, device='cuda',
+):
+    """Sum log P(draft|base) minus log P(draft|base with slot zeroed).
 
-    Teacher-forces the concatenated [prompt + draft_answer].
-    Returns dict mapping: candidate_comp_idx -> Delta log P(y_0).
+    Positive values indicate support for the existing draft, not promotion
+    utility or correctness. No gold answer is used.
     """
-    full_text = prompt + " " + draft_answer
-    inputs = tokenizer(full_text, return_tensors="pt").to(device)
-    prompt_len = tokenizer(prompt, return_tensors="pt")["input_ids"].shape[1]
-    total_len = inputs["input_ids"].shape[1]
-
-    # Target labels: mask out prompt tokens (-100), supervise draft answer tokens
-    labels = inputs["input_ids"].clone()
-    labels[0, :prompt_len] = -100
-
-    base_embeds = retrieval_embeds.to(device=device, dtype=model.dtype)
-
-    with torch.no_grad():
-        base_outputs = model(
-            **inputs,
-            retrieval_embeds=base_embeds,
-            labels=labels,
-        )
-        # Loss is mean cross-entropy over draft tokens: log P(y_0) ~ -loss * n_tokens
-        n_draft_tokens = max(1, total_len - prompt_len)
-        base_logp = -float(base_outputs.loss.item()) * n_draft_tokens
-
-    attribution_scores: Dict[int, float] = {}
-
-    for comp_idx in candidate_comp_indices:
-        masked_embeds = base_embeds.clone()
-        # Zero out this specific compressed slot
-        masked_embeds[comp_idx, :] = 0.0
-
-        with torch.no_grad():
-            masked_outputs = model(
-                **inputs,
-                retrieval_embeds=masked_embeds,
-                labels=labels,
-            )
-            masked_logp = -float(masked_outputs.loss.item()) * n_draft_tokens
-
-        # Delta log P(y_0) = base_logp - masked_logp
-        # Positive value indicates the draft was more likely WITH the compressed embedding
-        delta_logp = base_logp - masked_logp
-        attribution_scores[comp_idx] = float(delta_logp)
-
-    return attribution_scores
+    ids, labels, count = build_draft_teacher_forcing_inputs(
+        tokenizer, prompt, draft_answer, device)
+    scores = _masking_scores(model, ids, retrieval_embeds,
+                             candidate_comp_indices, labels, device)
+    return {i: value * count for i, value in scores.items()}
 
 
 def extract_generator_interaction_features(
-    model: Any,
-    tokenizer: Any,
-    prompt: str,
-    draft_answer: str,
-    retrieval_embeds: torch.Tensor,
-    candidate_passages_texts: Dict[int, str],
-    candidate_comp_indices: Dict[int, int],  # rank_idx -> comp_embed_idx
-    semantic_scorer: Any,
-    device: str = "cuda",
-) -> Dict[int, Dict[str, float]]:
-    """Compute A1..A6 interaction features for each candidate passage."""
-    features_by_rank: Dict[int, Dict[str, float]] = {}
+    model, tokenizer, prompt, draft_answer, retrieval_embeds,
+    candidate_passages_texts, candidate_comp_indices, semantic_scorer, device='cuda',
+):
+    """Measured masking fallback plus draft cosine similarity.
 
-    # 1. Masking attribution fallback (Delta log P)
-    comp_indices_list = list(candidate_comp_indices.values())
-    masking_scores = compute_masking_attribution(
-        model=model,
-        tokenizer=tokenizer,
-        prompt=prompt,
-        draft_answer=draft_answer,
-        retrieval_embeds=retrieval_embeds,
-        candidate_comp_indices=comp_indices_list,
-        device=device,
-    )
-
-    # 2. Compute semantic similarity to draft (A6)
-    cand_texts = [candidate_passages_texts[r] for r in candidate_passages_texts]
-    ranks_list = list(candidate_passages_texts.keys())
-    d_vec = semantic_scorer.encoder.encode([draft_answer] if draft_answer else ["empty"], convert_to_numpy=True)
-    c_vecs = semantic_scorer.encoder.encode(cand_texts, convert_to_numpy=True)
-
-    norm_d = np.linalg.norm(d_vec, axis=-1, keepdims=True) + 1e-12
-    norm_c = np.linalg.norm(c_vecs, axis=-1, keepdims=True) + 1e-12
-    sims_draft = np.dot(c_vecs / norm_c, (d_vec / norm_d).T).flatten()
-
-    for i, rank_idx in enumerate(ranks_list):
-        c_idx = candidate_comp_indices[rank_idx]
-        delta_logp = masking_scores.get(c_idx, 0.0)
-        sim_d = float(sims_draft[i])
-
-        # Interaction features A1..A6
-        # A1: answer-token -> compressed mean (approximated by normalized delta log P)
-        a1 = float(np.clip(delta_logp / 10.0, -1.0, 1.0))
-        # A2: answer-token -> compressed max
-        a2 = float(max(0.0, delta_logp))
-        # A3: last-four-layer mean (proxy)
-        a3 = float(delta_logp * 0.8)
-        # A4: layer-wise attention slope (proxy)
-        a4 = float(np.tanh(delta_logp))
-        # A5: query-token -> compressed
-        a5 = float(delta_logp * 0.5)
-        # A6: draft semantic similarity
-        a6 = sim_d
-
-        features_by_rank[rank_idx] = {
-            "a1_attn_mean": a1,
-            "a2_attn_max": a2,
-            "a3_attn_last4": a3,
-            "a4_attn_slope": a4,
-            "a5_attn_query": a5,
-            "a6_draft_sim": a6,
-            "masking_delta_logp": delta_logp,
+    A1..A5 attention values are NOT measured by this fallback and are omitted.
+    Empty drafts are explicitly marked unavailable, rather than scored as zeros.
+    """
+    if set(candidate_passages_texts) != set(candidate_comp_indices):
+        raise ValueError('Candidate text and compressed-slot mappings disagree')
+    ranks = sorted(candidate_passages_texts)
+    if not ranks:
+        return {}
+    available = bool(str(draft_answer).strip())
+    scores, count = {}, 0
+    if available:
+        ids, labels, count = build_draft_teacher_forcing_inputs(
+            tokenizer, prompt, draft_answer, device)
+        scores = _masking_scores(model, ids, retrieval_embeds,
+                                 [candidate_comp_indices[r] for r in ranks], labels, device)
+    from src.week8.marginal_information import compute_cosine_similarity_matrix
+    dv = semantic_scorer.encoder.encode([draft_answer] if available else ['empty'], convert_to_numpy=True)
+    cv = semantic_scorer.encoder.encode([candidate_passages_texts[r] for r in ranks], convert_to_numpy=True)
+    similarities = compute_cosine_similarity_matrix(cv, dv).flatten()
+    result = {}
+    for j, rank in enumerate(ranks):
+        mean = scores[candidate_comp_indices[rank]] if available else float('nan')
+        result[rank] = {
+            'masking_delta_logp': mean * count if available else float('nan'),
+            'masking_delta_logp_per_token': mean,
+            'masking_target_tokens': count,
+            'masking_available': int(available),
+            'a6_draft_sim': float(similarities[j]),
         }
-
-    return features_by_rank
+    return result

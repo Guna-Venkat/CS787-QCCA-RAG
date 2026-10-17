@@ -1,0 +1,1 @@
+These partial alignment/performance prototypes are excluded from gate training. Final W8-E inputs use actual greedy continuation tokens and scores, checked against canonical drafts. No W8-C/W8-D experimental results were changed.

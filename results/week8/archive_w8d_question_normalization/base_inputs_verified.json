@@ -1,0 +1,12 @@
+{
+  "fit": {
+    "candidate_rows": 10476,
+    "base_input_max_abs_difference": 0.0,
+    "source_fingerprint": "cb82ce3464718bc3e2e0e260f4f9c779f51c99b08cfc61290b79479bb07eeecf"
+  },
+  "internal_val": {
+    "candidate_rows": 2052,
+    "base_input_max_abs_difference": 0.0,
+    "source_fingerprint": "20a74e472187d910397e3faa28c01985eb8e70a024768d24cd6aa29ccce5b1e6"
+  }
+}

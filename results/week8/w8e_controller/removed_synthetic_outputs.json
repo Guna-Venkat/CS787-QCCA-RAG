@@ -1,0 +1,9 @@
+{
+  "removed": [
+    "results/week8/tables/w8e_controller_grid_search_smoke.csv",
+    "results/week8/surfaces/frozen_controller_config_smoke.json",
+    "results/week8/archive_provisional_invalidated/tables/w8e_controller_grid_search_smoke.csv",
+    "results/week8/archive_provisional_invalidated/surfaces/frozen_controller_config_smoke.json"
+  ],
+  "reason": "Synthetic/default-parameter outputs are not empirical tuning results"
+}

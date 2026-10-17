@@ -1,0 +1,49 @@
+{
+  "source_hashes_match": true,
+  "selected_policy": "E5-DraftSemantic",
+  "selected_global_quality_gap": 0.0029644316150749805,
+  "token_alignment": {
+    "fit": {
+      "queries": 1746,
+      "canonical_greedy_verified": 1746,
+      "nonempty_retokenized_draft_token_differences": [
+        "1217",
+        "203",
+        "541",
+        "1389"
+      ],
+      "decoded_canonical_text_verified": true,
+      "masking_target_note": "W8-D scores the retokenized frozen draft text; it does not claim to score original generation token IDs. W8-E uncertainty uses actual generated token IDs, including EOS where generated.",
+      "empty_draft_queries": [
+        "1872",
+        "2154"
+      ]
+    },
+    "internal_val": {
+      "queries": 342,
+      "canonical_greedy_verified": 342,
+      "nonempty_retokenized_draft_token_differences": [
+        "1155",
+        "1967"
+      ],
+      "decoded_canonical_text_verified": true,
+      "masking_target_note": "W8-D scores the retokenized frozen draft text; it does not claim to score original generation token IDs. W8-E uncertainty uses actual generated token IDs, including EOS where generated.",
+      "empty_draft_queries": []
+    }
+  },
+  "notebooks": {
+    "week8e_controller.ipynb": {
+      "executed_code_cells": 5,
+      "errors": 0
+    },
+    "week8d_generator_interaction.ipynb": {
+      "executed_code_cells": 5,
+      "errors": 0
+    },
+    "week8d_cached_closeout.ipynb": {
+      "executed_code_cells": 3,
+      "errors": 0
+    }
+  },
+  "candidate_identities_verified": true
+}

@@ -316,7 +316,7 @@ def test_19_masking_attribution_runs():
         def __init__(self):
             super().__init__()
             self.dtype = torch.float32
-        def forward(self, input_ids, retrieval_embeds=None, labels=None):
+        def forward(self, input_ids, retrieval_embeds=None, labels=None, **kwargs):
             loss = torch.tensor(1.5, requires_grad=True)
             if retrieval_embeds is not None:
                 loss = loss + 0.1 * retrieval_embeds.sum()
@@ -324,14 +324,15 @@ def test_19_masking_attribution_runs():
             out.loss = loss
             return out
 
-    model = MockSara()
+    model = MockSara().eval()
     comp_embeds = torch.randn(1, 6, 4096)
     delta_logprobs = compute_masking_attribution_fallback(
         sara_model=model,
         input_ids=torch.tensor([[1, 2, 3]]),
         comp_embeds=comp_embeds,
-        candidate_indices=[4, 5, 6, 7, 8, 9],
+        candidate_indices=[0, 1, 2, 3, 4, 5],
         device="cpu",
+        labels=torch.tensor([[-100, 2, 3]]),
     )
     assert len(delta_logprobs) == 6
 

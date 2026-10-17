@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "failed_stage": "backfill_measured_gate_inputs",
+  "exit_code": 1,
+  "log": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8e_controller/backfill_measured_gate_inputs.log"
+}

@@ -1,0 +1,64 @@
+{
+  "reason": "Align LLM prompt question stripping with canonical W7/W8-A; mathematical semantic features unchanged",
+  "splits": {
+    "fit": {
+      "old_fingerprint": "9a7cb67d51d6767757cd85d2826556f47942d56b898717d056adc056d517fa16",
+      "new_fingerprint": "cb82ce3464718bc3e2e0e260f4f9c779f51c99b08cfc61290b79479bb07eeecf",
+      "affected_queries": [
+        "1442",
+        "1489",
+        "1492",
+        "1706",
+        "1731",
+        "1751",
+        "1752",
+        "1816",
+        "2116",
+        "2136",
+        "2137",
+        "2150",
+        "2171",
+        "2272",
+        "2273",
+        "2277",
+        "245",
+        "349",
+        "374",
+        "425",
+        "453",
+        "59",
+        "608"
+      ]
+    },
+    "internal_val": {
+      "old_fingerprint": "bb51124d68dcaf55e9f86274e8b4bcefb94d8642949e506c6d3142949130de0d",
+      "new_fingerprint": "20a74e472187d910397e3faa28c01985eb8e70a024768d24cd6aa29ccce5b1e6",
+      "affected_queries": [
+        "1008",
+        "1835",
+        "2050",
+        "2097",
+        "581"
+      ]
+    }
+  },
+  "gate_retained": 1248,
+  "gate_recomputed": [
+    "245",
+    "2171",
+    "1752",
+    "2137",
+    "2272",
+    "453",
+    "59",
+    "608",
+    "374",
+    "1706",
+    "2136",
+    "2273",
+    "349",
+    "1492",
+    "1731",
+    "2116"
+  ]
+}

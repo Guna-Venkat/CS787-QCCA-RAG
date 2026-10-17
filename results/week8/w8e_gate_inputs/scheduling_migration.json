@@ -1,0 +1,6 @@
+{
+  "retained_queries": 212,
+  "legacy_source_fingerprint": "3b1185361e9e0b5c311460cbc3a0fa98640dced934a33754b1dd2def92df83fe",
+  "measurement_fingerprint": "dbe0567e4e89d43ecc79aae30195e68af4df9021921a0e68d5300cb63b43d292",
+  "reason": "Batch by measured draft token length, avoiding padded decoding work; measurement functions and input hashes unchanged"
+}

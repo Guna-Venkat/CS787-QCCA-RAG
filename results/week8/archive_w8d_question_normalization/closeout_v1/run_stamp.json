@@ -1,0 +1,13 @@
+{
+  "stamp": "4f6f89091a248d3c4aed647d112ba5f194035b915a0e899b520709a13f6cf4dc",
+  "training_config": {
+    "n_splits": 5,
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "backbone_learning_rate": 2e-05,
+    "seed": 42,
+    "max_length": 512,
+    "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "device": "cuda"
+  }
+}

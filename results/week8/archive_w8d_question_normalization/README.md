@@ -1,0 +1,1 @@
+Superseded question-normalization snapshot. Canonical W7/W8-A generation strips question whitespace; initial W8-D masking did not. Only 23 FIT and 5 INTERNAL-VAL masking queries require repair. Unchanged base model inputs and frozen encoder features are reused only after equality verification. U4-B and coefficient closeout are rerun. Original W8-C outputs are unchanged.

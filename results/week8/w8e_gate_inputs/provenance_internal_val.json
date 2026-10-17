@@ -1,0 +1,28 @@
+{
+  "source_fingerprint": "126f68a0a73ffe224d228a9f2f7e1d772025a5c7e8a691e941c3cc18a32f2eab",
+  "input_w8d_fingerprint": "20a74e472187d910397e3faa28c01985eb8e70a024768d24cd6aa29ccce5b1e6",
+  "queries": 342,
+  "feature_columns": [
+    "u1_entropy_mean",
+    "u2_entropy_max",
+    "u3_margin_mean",
+    "u4_margin_min",
+    "u5_logprob_mean",
+    "u6_seq_logprob",
+    "u7_answer_len",
+    "u8_eos_conf",
+    "u9_empty_answer",
+    "u10_repetition_ratio",
+    "u11_lexical_overlap",
+    "u12_semantic_sim"
+  ],
+  "features_are_measured": true,
+  "split": "internal_val",
+  "gold_in_features": false,
+  "diagnostic_backend": "actual greedy continuation tokens and full-vocabulary scores; canonical decoded answer checked",
+  "measurement_fingerprint": "dbe0567e4e89d43ecc79aae30195e68af4df9021921a0e68d5300cb63b43d292",
+  "compatible_prior_fingerprints": [],
+  "compatibility_note": "Retained prior actual-greedy rows have identical measurement functions and input hashes; scheduling-only changes do not invalidate measurements.",
+  "feature_csv_sha256": "3f2b6ca23129a24e2d3c3736f2e8ee32a07210508fd6e5d57f2e1d1aad77e9c2",
+  "raw_diagnostics_sha256": "f445864cde93d1dfe165bd76d7e7002d856d31f364be6cf1b062ca2cee442377"
+}
