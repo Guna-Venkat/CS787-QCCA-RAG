@@ -37,3 +37,20 @@ data/
 .vscode/
 *.swp
 *.swo
+
+# PDFs
+*.pdf
+
+# Baselines
+Baselines/
+
+# Week 8 files, experiments, and results
+configs/week8/
+notebooks/week8/
+results/week8/
+scripts/week8/
+src/week8/
+tests/week8/
+*week8*
+*w8*
+

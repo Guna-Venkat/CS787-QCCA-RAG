@@ -1,0 +1,69 @@
+{
+  "semantic_grid": [
+    {
+      "buffer": 0,
+      "threshold": 0.25,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 0,
+      "threshold": 0.35,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 0,
+      "threshold": 0.5,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 1,
+      "threshold": 0.25,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 1,
+      "threshold": 0.35,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 1,
+      "threshold": 0.5,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 2,
+      "threshold": 0.25,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 2,
+      "threshold": 0.35,
+      "max_tokens": 1024,
+      "overlap": 128
+    },
+    {
+      "buffer": 2,
+      "threshold": 0.5,
+      "max_tokens": 1024,
+      "overlap": 128
+    }
+  ],
+  "fixed_sizes": {
+    "SEM-0": 34,
+    "SEM-1": 35,
+    "SEM-2": 44,
+    "SEM-3": 204,
+    "SEM-4": 504,
+    "SEM-5": 1024,
+    "SEM-6": 425,
+    "SEM-7": 1024,
+    "SEM-8": 1024
+  }
+}
