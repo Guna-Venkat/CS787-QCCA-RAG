@@ -1,0 +1,98 @@
+{
+  "fingerprint": "2873643cd0133872e190f1836504a3f26e3a0d1c8f8fa8e9dd042d7c3a2a1846",
+  "smoke_only": false,
+  "settings": {
+    "seed": 42,
+    "epochs": 2,
+    "hidden_dim": 2048,
+    "learning_rate": 0.0001,
+    "gradient_accumulation_steps": 16,
+    "smoke": false,
+    "limit": null,
+    "variants": [
+      "qcla_0",
+      "qcla_1",
+      "qcla_2"
+    ],
+    "device": "cuda"
+  },
+  "results": [
+    {
+      "variant": "qcla_0",
+      "validation_queries": 342,
+      "trainable_params": 0,
+      "validation_f1": 0.38906146073669545,
+      "validation_query_mean_answer_nll": 1.2592023158859875,
+      "mean_final_prompt_tokens": 935.1578947368421,
+      "mean_cumulative_prompt_tokens": 935.1578947368421,
+      "mean_adapted_generation_latency_sec": 2.7111610675268745,
+      "mean_estimated_cumulative_generation_latency_sec": 2.7111610675268745,
+      "mean_conditioning_encode_seconds": 0.0,
+      "history": [],
+      "end_to_end_latency_sec": null
+    },
+    {
+      "variant": "qcla_1",
+      "validation_queries": 342,
+      "trainable_params": 52439552,
+      "validation_f1": 0.39379930923608125,
+      "validation_query_mean_answer_nll": 1.2181285950328,
+      "mean_final_prompt_tokens": 935.1578947368421,
+      "mean_cumulative_prompt_tokens": 935.1578947368421,
+      "mean_adapted_generation_latency_sec": 2.523084987854253,
+      "mean_estimated_cumulative_generation_latency_sec": 2.523084987854253,
+      "mean_conditioning_encode_seconds": 0.1023991665997262,
+      "history": [
+        {
+          "epoch": 1,
+          "fit_query_mean_answer_nll": 1.2134460121161708,
+          "seconds": 10501.163069752045
+        },
+        {
+          "epoch": 2,
+          "fit_query_mean_answer_nll": 1.205395509858796,
+          "seconds": 10279.542380020022
+        }
+      ],
+      "end_to_end_latency_sec": null
+    },
+    {
+      "variant": "qcla_2",
+      "validation_queries": 342,
+      "trainable_params": 62925312,
+      "validation_f1": 0.3989937879723073,
+      "validation_query_mean_answer_nll": 1.2195543017597836,
+      "mean_final_prompt_tokens": 935.1578947368421,
+      "mean_cumulative_prompt_tokens": 1870.3157894736842,
+      "mean_adapted_generation_latency_sec": 2.5554501687435907,
+      "mean_estimated_cumulative_generation_latency_sec": 5.247229432976159,
+      "mean_conditioning_encode_seconds": 0.2047983331994524,
+      "history": [
+        {
+          "epoch": 1,
+          "fit_query_mean_answer_nll": 1.213733507559783,
+          "seconds": 10277.23032397998
+        },
+        {
+          "epoch": 2,
+          "fit_query_mean_answer_nll": 1.205647515628555,
+          "seconds": 10295.710947718937
+        }
+      ],
+      "end_to_end_latency_sec": null
+    }
+  ],
+  "artifact_sha256": {
+    "qcla_0.pt": "55121e240600a1f2f8e0d8dd254eb2e434b2aa5fd1c8c8a63295b284757c2f4f",
+    "qcla_0_internal_val.jsonl": "4762b75f92d72c6b57b6da705a4dda31b6a6e79467a71578a3d1daf933719b22",
+    "qcla_1.pt": "7c2831584a99687d2ab29282576c5292e38b0a286d1ca5ed448d2ef092760fb7",
+    "qcla_1_internal_val.jsonl": "61cfcc18668d52fb4eefc98b1c9f0009f837c90cfe04bc0ef97a7e19eae0a05a",
+    "qcla_2.pt": "47d12112d372c24bf25ce9a1546ca4d7d291e02ec440850e358ec18879e04b2f",
+    "qcla_2_internal_val.jsonl": "406dc78234126d23619b3042f61619a2164636942a33239daf3bdbcddcd5859b"
+  },
+  "baseline_canonical_match": true,
+  "validation_status": "previously inspected development confirmation; no TEST",
+  "no_validation_selection": true,
+  "latency_note": "Measured adapted generation and batched conditioning encode time, not end-to-end deployment latency. QCLA-2 also requires the original k4 pass; output records retain its cached generation latency.",
+  "TEST_used": false
+}

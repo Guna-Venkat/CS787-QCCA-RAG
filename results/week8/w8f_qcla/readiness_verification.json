@@ -1,0 +1,14 @@
+{
+  "week8_tests_passed": 82,
+  "notebook_smoke_cells_executed": 4,
+  "notebook_errors": 0,
+  "real_gpu_smoke": true,
+  "canonical_baseline_match": true,
+  "variants": [
+    "qcla_0",
+    "qcla_1",
+    "qcla_2"
+  ],
+  "full_training_executed": false,
+  "W8E_source_guard_unchanged": true
+}

@@ -1,0 +1,4 @@
+variant,validation_queries,trainable_params,validation_f1,validation_query_mean_answer_nll,mean_final_prompt_tokens,mean_cumulative_prompt_tokens,mean_adapted_generation_latency_sec,mean_conditioning_encode_seconds,end_to_end_latency_sec
+qcla_0,2,0,0.15333333333333332,1.7986934185028076,738.0,738.0,2.729267704009544,0.0,
+qcla_1,2,52439552,0.15416666666666667,1.823067307472229,738.0,738.0,2.5703576470259577,0.24372992699500173,
+qcla_2,2,62925312,0.15384615384615383,1.80369234085083,738.0,1476.0,3.960986647522077,0.48745985399000347,

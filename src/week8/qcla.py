@@ -5,10 +5,10 @@ Architectures:
 - QCLA-1: Query-conditioned bottleneck residual adapter:
     x = [e_D, e_q, e_D * e_q, |e_D - e_q|] in R^(4 * 4096)
     g = sigmoid(MLP_g(x))
-    z_D = LayerNorm(e_D + g * MLP_f(x)) in R^4096
+    z_D = e_D + g * MLP_f(x) in R^4096
 - QCLA-2: Query + Draft-conditioned residual adapter:
     x = [e_D, e_q, e_y, e_D * e_q, e_D * e_y] in R^(5 * 4096)
-    z_D = LayerNorm(e_D + g * MLP_f(x)) in R^4096
+    z_D = e_D + g * MLP_f(x) in R^4096
 """
 
 from __future__ import annotations
@@ -71,10 +71,11 @@ class QCLA1_ResidualAdapter(BaseLatentAdapter):
             nn.Linear(512, dim),
             nn.Sigmoid(),
         )
-        self.layer_norm = nn.LayerNorm(dim)
 
         # Initialize gate to small values for near-identity initial behavior
         nn.init.constant_(self.gate_mlp[-2].bias, -2.0)
+        nn.init.zeros_(self.mlp_f[-1].weight)
+        nn.init.zeros_(self.mlp_f[-1].bias)
 
     def forward(
         self,
@@ -87,7 +88,7 @@ class QCLA1_ResidualAdapter(BaseLatentAdapter):
             e_d = e_d.unsqueeze(0)
 
         if e_q is None:
-            e_q = torch.zeros_like(e_d)
+            raise ValueError("QCLA requires a measured SFR query embedding")
         elif e_q.dim() == 1:
             e_q = e_q.unsqueeze(0)
 
@@ -101,8 +102,7 @@ class QCLA1_ResidualAdapter(BaseLatentAdapter):
         f_x = self.mlp_f(x)
         g_x = self.gate_mlp(x)
 
-        z = e_d + g_x * f_x
-        out = self.layer_norm(z)
+        out = e_d + g_x * f_x
 
         return out.squeeze(0) if orig_dim == 1 else out
 
@@ -129,8 +129,9 @@ class QCLA2_DraftConditionedAdapter(BaseLatentAdapter):
             nn.Linear(512, dim),
             nn.Sigmoid(),
         )
-        self.layer_norm = nn.LayerNorm(dim)
         nn.init.constant_(self.gate_mlp[-2].bias, -2.0)
+        nn.init.zeros_(self.mlp_f[-1].weight)
+        nn.init.zeros_(self.mlp_f[-1].bias)
 
     def forward(
         self,
@@ -143,12 +144,12 @@ class QCLA2_DraftConditionedAdapter(BaseLatentAdapter):
             e_d = e_d.unsqueeze(0)
 
         if e_q is None:
-            e_q = torch.zeros_like(e_d)
+            raise ValueError("QCLA requires a measured SFR query embedding")
         elif e_q.dim() == 1:
             e_q = e_q.unsqueeze(0)
 
         if e_y is None:
-            e_y = e_q
+            raise ValueError("QCLA-2 requires the frozen baseline draft embedding")
         elif e_y.dim() == 1:
             e_y = e_y.unsqueeze(0)
 
@@ -164,8 +165,7 @@ class QCLA2_DraftConditionedAdapter(BaseLatentAdapter):
         f_x = self.mlp_f(x)
         g_x = self.gate_mlp(x)
 
-        z = e_d + g_x * f_x
-        out = self.layer_norm(z)
+        out = e_d + g_x * f_x
 
         return out.squeeze(0) if orig_dim == 1 else out
 

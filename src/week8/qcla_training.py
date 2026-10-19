@@ -1,358 +1,159 @@
-"""QCLA (Query-Conditioned Latent Adapter) training loop for Week 8-F.
+"""Canonical semantic-k4 QCLA training with frozen SARA and real conditioning.
 
-Trains lightweight bottleneck residual adapters on top of frozen SFR passage embeddings:
-- Freezes SARA generator (Mistral-7B) and projector.
-- Transforms compressed passage embeddings via QCLA-1 or QCLA-2.
-- Minimizes negative log-likelihood (NLL) of gold answer tokens.
-- Supports batch size 1, gradient accumulation, and mixed precision.
+One example is one query. Only adapter weights receive gradients. Gold answers
+are supervised targets, never adapter inputs. QCLA-2 conditions on the saved
+unadapted k4 draft. No validation-dependent checkpoint or epoch selection.
 """
-
 from __future__ import annotations
-
-import logging
 import time
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
-
-import numpy as np
 import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader, Dataset
-from tqdm.auto import tqdm
+import torch.nn.functional as F
+from torch.utils.data import Dataset
+from src.week8.generator_features import canonical_k4_context
+from src.week6.evaluation import compute_qa_answer_metrics
 
-from src.week8.qcla import (
-    BaseLatentAdapter,
-    QCLA0_Baseline,
-    QCLA1_ResidualAdapter,
-    QCLA2_DraftConditionedAdapter,
-    build_qcla_adapter,
-)
 
-logger = logging.getLogger(__name__)
+def finite_vector(value, shape, name):
+    if value is None or tuple(value.shape) != tuple(shape) or not torch.isfinite(value).all():
+        raise ValueError(f'Missing or invalid measured {name}: expected {shape}')
+    return value.detach().float().cpu()
 
 
 class QCLATrainingDataset(Dataset):
-    """Dataset for training QCLA adapters with frozen SARA generator."""
-
-    def __init__(
-        self,
-        records: List[Dict[str, Any]],
-        sfr_embeddings_by_qid: Dict[str, torch.Tensor],
-        query_embeddings_by_qid: Optional[Dict[str, torch.Tensor]] = None,
-        draft_embeddings_by_qid: Optional[Dict[str, torch.Tensor]] = None,
-        max_samples: Optional[int] = None,
-    ):
+    def __init__(self, records, sfr_embeddings_by_qid, query_embeddings_by_qid=None,
+                 draft_embeddings_by_qid=None, max_samples=None, *, routing_by_qid=None):
         self.records = records[:max_samples] if max_samples is not None else records
         self.sfr_embeddings = sfr_embeddings_by_qid
         self.query_embeddings = query_embeddings_by_qid or {}
         self.draft_embeddings = draft_embeddings_by_qid or {}
+        self.routing = routing_by_qid or {}
+        for r in self.records:
+            q = str(r['question_id'])
+            if q not in self.routing: raise ValueError(f'{q}: missing canonical semantic routing')
+            finite_vector(self.sfr_embeddings.get(q), (10,4096), 'passage embeddings')
+            finite_vector(self.query_embeddings.get(q), (4096,), 'query embedding')
+            finite_vector(self.draft_embeddings.get(q), (4096,), 'frozen draft embedding')
+            g = self.routing[q]
+            if str(g.iloc[0].paper_id) != str(r['paper_id']): raise ValueError('Paper identity differs')
+            if str(g.iloc[0].question).strip() != str(r['question']).strip(): raise ValueError('Question differs')
 
-    def __len__(self) -> int:
-        return len(self.records)
-
-    def __getitem__(self, idx: int) -> Dict[str, Any]:
-        rec = self.records[idx]
-        qid = str(rec["question_id"]).strip()
-        # Passage embeddings [10, 4096]
-        e_passages = self.sfr_embeddings.get(qid)
-        if e_passages is None:
-            # Fallback zero tensor
-            e_passages = torch.zeros((10, 4096), dtype=torch.float32)
-
-        e_q = self.query_embeddings.get(qid)
-        if e_q is None:
-            e_q = torch.zeros(4096, dtype=torch.float32)
-
-        e_y = self.draft_embeddings.get(qid)
-        if e_y is None:
-            e_y = torch.zeros(4096, dtype=torch.float32)
-
-        return {
-            "question_id": qid,
-            "record": rec,
-            "passage_embeddings": e_passages,
-            "query_embedding": e_q,
-            "draft_embedding": e_y,
-        }
+    def __len__(self): return len(self.records)
+    def __getitem__(self, idx):
+        r = self.records[idx]; q = str(r['question_id'])
+        return dict(question_id=q, record=r, passage_embeddings=self.sfr_embeddings[q].float(),
+                    query_embedding=self.query_embeddings[q].float(), draft_embedding=self.draft_embeddings[q].float(),
+                    routing=self.routing[q])
 
 
-def train_qcla_epoch(
-    adapter: BaseLatentAdapter,
-    sara_model: Any,
-    sara_tokenizer: Any,
-    dataloader: DataLoader,
-    optimizer: torch.optim.Optimizer,
-    scaler: Optional[torch.cuda.amp.GradScaler] = None,
-    gradient_accumulation_steps: int = 4,
-    device: str = "cuda",
-    candidate_indices: Sequence[int] = (4, 5, 6, 7, 8, 9),
-    use_amp: bool = True,
-    max_steps: Optional[int] = None,
-) -> float:
-    """Run one epoch of QCLA adapter training.
-    
-    Freezes SARA model weights and optimizes only adapter parameters.
-    """
-    adapter.train()
-    # Freeze generator
-    if hasattr(sara_model, "eval"):
-        sara_model.eval()
-    for p in sara_model.parameters():
-        p.requires_grad = False
+def single_query_collate(batch):
+    if len(batch) != 1: raise ValueError('QCLA requires one complete query per batch')
+    return batch[0]
 
-    if hasattr(sara_model, "gradient_checkpointing_enable"):
-        try:
-            sara_model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
-        except Exception:
-            try:
-                sara_model.gradient_checkpointing_enable()
-            except Exception:
-                pass
 
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
+def prepare_example(batch, tokenizer, adapter, device):
+    r = batch['record']
+    _, prompt, _, compressed, embeds, full = canonical_k4_context(
+        batch['routing'], r, batch['passage_embeddings'], tokenizer)
+    # Cached SFR values are bfloat16; train adapter operations in float32.
+    transformed = adapter(embeds.to(device=device,dtype=torch.float32),
+        e_q=batch['query_embedding'].to(device=device,dtype=torch.float32),
+        e_y=batch['draft_embedding'].to(device=device,dtype=torch.float32))
+    return prompt, transformed, full, compressed
 
-    total_loss = 0.0
-    accumulated_loss = 0.0
-    num_batches = 0
-    step_count = 0
 
-    optimizer.zero_grad()
+def gold_target_inputs(tokenizer, prompt, record, device, max_target_tokens=128):
+    gold = record.get('gold_answers')
+    if not isinstance(gold,list) or not gold or not isinstance(gold[0],str) or not gold[0].strip():
+        raise ValueError('Missing real gold-answer target; no empty or fabricated target')
+    prefix = tokenizer(prompt,return_tensors='pt')['input_ids']
+    # Preserve the canonical generation prefix exactly; never append another Answer marker/BOS.
+    target = tokenizer(' '+gold[0],add_special_tokens=False)['input_ids'][:max_target_tokens-1]
+    target = torch.tensor([target+[tokenizer.eos_token_id]],dtype=torch.long)
+    ids = torch.cat([prefix,target],1).to(device)
+    return ids, target.to(device)
 
+
+def answer_loss(model, ids, targets, embeds):
+    # Compute vocabulary logits only at answer-predicting positions, rather than
+    # retaining prompt-length vocabulary tensors. The causal shift is explicit.
+    n = targets.shape[1]
+    result = model(input_ids=ids,attention_mask=torch.ones_like(ids),
+        retrieval_embeds=embeds.to(dtype=model.dtype),use_cache=False,logits_to_keep=n+1)
+    logits = result.logits[:,-n-1:-1,:].float()
+    loss = F.cross_entropy(logits.reshape(-1,logits.shape[-1]),targets.reshape(-1))
+    if not torch.isfinite(loss): raise ValueError('Nonfinite measured answer loss')
+    return loss
+
+
+def freeze_generator(model, training=False):
+    for p in model.parameters(): p.requires_grad_(False)
+    if training:
+        # HF checkpointing is active in train mode; disable frozen-generator
+        # dropout so adaptation does not change the generation environment.
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant':False})
+        model.train()
+        for module in model.modules():
+            if isinstance(module,torch.nn.Dropout): module.eval()
+    else: model.eval()
+
+
+def train_qcla_epoch(adapter,sara_model,sara_tokenizer,dataloader,optimizer,
+                     scaler=None,gradient_accumulation_steps=16,device='cuda',
+                     candidate_indices=None,use_amp=False,max_steps=None):
+    if candidate_indices is not None: raise ValueError('Hardcoded candidate allocation is unsupported')
+    if scaler is not None or use_amp: raise ValueError('Use float32 adapter operations and SARA bfloat16; no external autocast/scaler')
+    if gradient_accumulation_steps < 1: raise ValueError('Positive accumulation count required')
+    freeze_generator(sara_model,True); adapter.train(); optimizer.zero_grad(set_to_none=True)
+    total=0.; count=0; pending=0; gradient_verified=False
     for batch in dataloader:
-        step_count += 1
-        rec = batch["record"]
-        # If rec is batched as list of dicts, take first element
-        if isinstance(rec, list):
-            rec = rec[0]
-
-        qid = str(rec["question_id"])
-        question = rec.get("question", "")
-        if isinstance(question, (list, tuple)):
-            question = question[0]
-        question = str(question)
-
-        passages = rec.get("passages", [])
-        if isinstance(passages, tuple):
-            passages = list(passages)
-
-        gold_answers = rec.get("gold_answers", [])
-        if isinstance(gold_answers, tuple):
-            gold_answers = list(gold_answers)
-        raw_gold = gold_answers[0] if gold_answers else ""
-        gold_text = raw_gold[0] if isinstance(raw_gold, (list, tuple)) else str(raw_gold)
-
-        # Extract embeddings
-        e_passages = batch["passage_embeddings"].to(device)  # [1, 10, 4096]
-        if e_passages.dim() == 3:
-            e_passages = e_passages.squeeze(0)
-        e_q = batch["query_embedding"].to(device)
-        if e_q.dim() == 2:
-            e_q = e_q.squeeze(0)
-        e_y = batch["draft_embedding"].to(device)
-        if e_y.dim() == 2:
-            e_y = e_y.squeeze(0)
-
-        # 1. Transform candidate passages (indices 4..9) using adapter
-        transformed_candidates = []
-        for c_idx in candidate_indices:
-            e_D = e_passages[c_idx]
-            z_D = adapter(e_D, e_q=e_q, e_y=e_y)
-            transformed_candidates.append(z_D)
-
-        if transformed_candidates:
-            comp_embeds = torch.stack(transformed_candidates, dim=0)  # [6, 4096]
-        else:
-            comp_embeds = None
-
-        # 2. Build prompt with gold answer appended
-        from src.week7.w7e.prompt_builder import build_mixed_fidelity_sara_prompt
-        # Top-4 passages are FULL (0, 1, 2, 3), remaining 6 are HEAVY
-        full_indices = [0, 1, 2, 3]
-        heavy_indices = list(candidate_indices)
-
-        formatted_prompt, _, _, _ = build_mixed_fidelity_sara_prompt(
-            question=question,
-            passages=passages,
-            full_indices=full_indices,
-            medium_indices=[],
-            heavy_indices=heavy_indices,
-            medium_texts_map={},
-            tokenizer=sara_tokenizer,
-            hybrid_medium=False,
-        )
-
-        full_prompt_text = formatted_prompt + "\nAnswer: " + gold_text
-        prompt_inputs = sara_tokenizer(formatted_prompt + "\nAnswer: ", return_tensors="pt")
-        full_inputs = sara_tokenizer(full_prompt_text, return_tensors="pt").to(device)
-
-        prompt_len = prompt_inputs["input_ids"].shape[1]
-        input_ids = full_inputs["input_ids"]
-        labels = input_ids.clone()
-        labels[:, :prompt_len] = -100
-        if (labels != -100).sum() == 0:
-            continue
-
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
-
-        # Cast comp_embeds to model dtype
-        model_dtype = getattr(sara_model, "dtype", torch.bfloat16)
-        if comp_embeds is not None:
-            comp_embeds = comp_embeds.to(dtype=model_dtype)
-
-        # Forward pass through frozen SARA model
-        with torch.cuda.amp.autocast(enabled=use_amp and "cuda" in str(device), dtype=model_dtype):
-            outputs = sara_model(
-                input_ids=input_ids,
-                retrieval_embeds=comp_embeds,
-                labels=labels,
-            )
-            loss = outputs.loss / gradient_accumulation_steps
-
-        # Backward
-        if scaler is not None and use_amp:
-            scaler.scale(loss).backward()
-        else:
-            loss.backward()
-
-        accumulated_loss += loss.item() * gradient_accumulation_steps
-        num_batches += 1
-
-        if step_count % gradient_accumulation_steps == 0 or (max_steps and step_count >= max_steps):
-            if scaler is not None and use_amp:
-                scaler.step(optimizer)
-                scaler.update()
-            else:
-                optimizer.step()
-            optimizer.zero_grad()
-            total_loss += accumulated_loss
-            accumulated_loss = 0.0
-
-        if max_steps and step_count >= max_steps:
-            break
-
-    # Final step if remainder
-    if accumulated_loss > 0.0:
-        if scaler is not None and use_amp:
-            scaler.step(optimizer)
-            scaler.update()
-        else:
-            optimizer.step()
-        optimizer.zero_grad()
-        total_loss += accumulated_loss
-
-    avg_loss = total_loss / max(num_batches / gradient_accumulation_steps, 1)
-    return avg_loss
+        prompt, embeds, _, _ = prepare_example(batch,sara_tokenizer,adapter,device)
+        ids,targets = gold_target_inputs(sara_tokenizer,prompt,batch['record'],device)
+        loss = answer_loss(sara_model,ids,targets,embeds)
+        # Sum gradients first; normalize by actual group size, including the last partial group.
+        loss.backward(); total+=float(loss.detach()); count+=1; pending+=1
+        del loss, embeds, ids, targets
+        at_end=(count==len(dataloader)) or (max_steps is not None and count>=max_steps)
+        if pending==gradient_accumulation_steps or at_end:
+            gradients=[p.grad for p in adapter.parameters() if p.requires_grad and p.grad is not None]
+            if not gradients or not all(torch.isfinite(g).all() for g in gradients):
+                raise ValueError('Adapter gradients missing or nonfinite')
+            if not gradient_verified:
+                if not any(torch.count_nonzero(g).item() for g in gradients): raise ValueError('No nonzero adapter gradient through frozen SARA')
+                gradient_verified=True
+            for g in gradients:g.div_(pending)
+            torch.nn.utils.clip_grad_norm_(adapter.parameters(),1.)
+            optimizer.step();optimizer.zero_grad(set_to_none=True);pending=0
+        if max_steps is not None and count>=max_steps: break
+    if not count:raise ValueError('No measured training queries')
+    if any(p.grad is not None for p in sara_model.parameters()):raise ValueError('Frozen SARA received parameter gradients')
+    return total/count
 
 
-def evaluate_qcla(
-    adapter: BaseLatentAdapter,
-    sara_model: Any,
-    sara_tokenizer: Any,
-    dataloader: DataLoader,
-    device: str = "cuda",
-    candidate_indices: Sequence[int] = (4, 5, 6, 7, 8, 9),
-    use_amp: bool = True,
-    max_steps: Optional[int] = None,
-) -> float:
-    """Evaluate NLL loss of adapter on validation split."""
-    adapter.eval()
-    if hasattr(sara_model, "eval"):
-        sara_model.eval()
-
-    total_loss = 0.0
-    num_batches = 0
-    step_count = 0
-
-    with torch.no_grad():
-        for batch in dataloader:
-            step_count += 1
-            rec = batch["record"]
-            if isinstance(rec, list):
-                rec = rec[0]
-
-            question = rec.get("question", "")
-            if isinstance(question, (list, tuple)):
-                question = question[0]
-            question = str(question)
-
-            passages = rec.get("passages", [])
-            if isinstance(passages, tuple):
-                passages = list(passages)
-
-            gold_answers = rec.get("gold_answers", [])
-            if isinstance(gold_answers, tuple):
-                gold_answers = list(gold_answers)
-            raw_gold = gold_answers[0] if gold_answers else ""
-            gold_text = raw_gold[0] if isinstance(raw_gold, (list, tuple)) else str(raw_gold)
-
-            e_passages = batch["passage_embeddings"].to(device)
-            if e_passages.dim() == 3:
-                e_passages = e_passages.squeeze(0)
-            e_q = batch["query_embedding"].to(device)
-            if e_q.dim() == 2:
-                e_q = e_q.squeeze(0)
-            e_y = batch["draft_embedding"].to(device)
-            if e_y.dim() == 2:
-                e_y = e_y.squeeze(0)
-
-            transformed_candidates = []
-            for c_idx in candidate_indices:
-                e_D = e_passages[c_idx]
-                z_D = adapter(e_D, e_q=e_q, e_y=e_y)
-                transformed_candidates.append(z_D)
-
-            if transformed_candidates:
-                comp_embeds = torch.stack(transformed_candidates, dim=0)  # [6, 4096]
-            else:
-                comp_embeds = None
-
-            from src.week7.w7e.prompt_builder import build_mixed_fidelity_sara_prompt
-            full_indices = [0, 1, 2, 3]
-            heavy_indices = list(candidate_indices)
-
-            formatted_prompt, _, _, _ = build_mixed_fidelity_sara_prompt(
-                question=question,
-                passages=passages,
-                full_indices=full_indices,
-                medium_indices=[],
-                heavy_indices=heavy_indices,
-                medium_texts_map={},
-                tokenizer=sara_tokenizer,
-                hybrid_medium=False,
-            )
-
-            full_prompt_text = formatted_prompt + "\nAnswer: " + gold_text
-            prompt_inputs = sara_tokenizer(formatted_prompt + "\nAnswer: ", return_tensors="pt")
-            full_inputs = sara_tokenizer(full_prompt_text, return_tensors="pt").to(device)
-
-            prompt_len = prompt_inputs["input_ids"].shape[1]
-            input_ids = full_inputs["input_ids"]
-            labels = input_ids.clone()
-            labels[:, :prompt_len] = -100
-            if (labels != -100).sum() == 0:
-                continue
-
-            if torch.cuda.is_available():
-                torch.cuda.empty_cache()
-
-            model_dtype = getattr(sara_model, "dtype", torch.bfloat16)
-            if comp_embeds is not None:
-                comp_embeds = comp_embeds.to(dtype=model_dtype)
-
-            with torch.cuda.amp.autocast(enabled=use_amp and "cuda" in str(device), dtype=model_dtype):
-                outputs = sara_model(
-                    input_ids=input_ids,
-                    retrieval_embeds=comp_embeds,
-                    labels=labels,
-                )
-                loss = outputs.loss
-
-            total_loss += loss.item()
-            num_batches += 1
-
-            if max_steps and step_count >= max_steps:
-                break
-
-    return total_loss / max(num_batches, 1)
+@torch.no_grad()
+def evaluate_qcla(adapter,sara_model,sara_tokenizer,dataloader,device='cuda',
+                  candidate_indices=None,use_amp=False,max_steps=None,*,generate=False):
+    if candidate_indices is not None:raise ValueError('Use canonical saved routing')
+    freeze_generator(sara_model);adapter.eval();rows=[]
+    for batch in dataloader:
+        r=batch['record'];prompt,embeds,full,compressed=prepare_example(batch,sara_tokenizer,adapter,device)
+        ids,targets=gold_target_inputs(sara_tokenizer,prompt,r,device)
+        nll=float(answer_loss(sara_model,ids,targets,embeds))
+        row=dict(question_id=str(r['question_id']),paper_id=str(r['paper_id']),answer_nll=nll,
+                 full_indices=full,compressed_indices=compressed,target_tokens=targets.numel())
+        if generate:
+            prefix=sara_tokenizer(prompt,return_tensors='pt')['input_ids'].to(device)
+            start=time.perf_counter()
+            output=sara_model.generate(input_ids=prefix,attention_mask=torch.ones_like(prefix),
+                retrieval_embeds=embeds.to(dtype=sara_model.dtype),max_new_tokens=128,do_sample=False,
+                pad_token_id=sara_tokenizer.pad_token_id,eos_token_id=sara_tokenizer.eos_token_id)
+            if str(device).startswith('cuda'):torch.cuda.synchronize()
+            duration=time.perf_counter()-start
+            prediction=sara_tokenizer.decode(output[0],skip_special_tokens=True).strip()
+            metrics=compute_qa_answer_metrics(prediction,r['gold_answers'],r.get('gold_answers_reformatted',r['gold_answers']))
+            row.update(prediction=prediction,token_f1=metrics['token_f1'],
+                generation_latency_sec=duration,prompt_tokens=prefix.shape[1],
+                generated_tokens=len(output[0]),baseline_draft=str(batch['routing'].iloc[0].draft_answer))
+        rows.append(row)
+        if max_steps is not None and len(rows)>=max_steps:break
+    if not rows:raise ValueError('No measured evaluation queries')
+    return rows if generate else sum(r['answer_nll'] for r in rows)/len(rows)

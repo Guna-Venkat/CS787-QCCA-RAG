@@ -1,0 +1,85 @@
+{
+  "fingerprint": "9718900a8ab2d29ed69c42bcd1e685477412a4621aeff56e15754bc4b5ab231c",
+  "smoke_only": true,
+  "settings": {
+    "seed": 42,
+    "epochs": 1,
+    "hidden_dim": 2048,
+    "learning_rate": 0.0001,
+    "gradient_accumulation_steps": 2,
+    "smoke": true,
+    "limit": 2,
+    "variants": [
+      "qcla_0",
+      "qcla_1",
+      "qcla_2"
+    ],
+    "device": "cuda"
+  },
+  "results": [
+    {
+      "variant": "qcla_0",
+      "validation_queries": 2,
+      "trainable_params": 0,
+      "validation_f1": 0.15333333333333332,
+      "validation_query_mean_answer_nll": 1.7986934185028076,
+      "mean_final_prompt_tokens": 738.0,
+      "mean_cumulative_prompt_tokens": 738.0,
+      "mean_adapted_generation_latency_sec": 2.729267704009544,
+      "mean_conditioning_encode_seconds": 0.0,
+      "history": [],
+      "end_to_end_latency_sec": null
+    },
+    {
+      "variant": "qcla_1",
+      "validation_queries": 2,
+      "trainable_params": 52439552,
+      "validation_f1": 0.15416666666666667,
+      "validation_query_mean_answer_nll": 1.823067307472229,
+      "mean_final_prompt_tokens": 738.0,
+      "mean_cumulative_prompt_tokens": 738.0,
+      "mean_adapted_generation_latency_sec": 2.5703576470259577,
+      "mean_conditioning_encode_seconds": 0.24372992699500173,
+      "history": [
+        {
+          "epoch": 1,
+          "fit_query_mean_answer_nll": 1.9386840760707855,
+          "seconds": 11.06719134899322
+        }
+      ],
+      "end_to_end_latency_sec": null
+    },
+    {
+      "variant": "qcla_2",
+      "validation_queries": 2,
+      "trainable_params": 62925312,
+      "validation_f1": 0.15384615384615383,
+      "validation_query_mean_answer_nll": 1.80369234085083,
+      "mean_final_prompt_tokens": 738.0,
+      "mean_cumulative_prompt_tokens": 1476.0,
+      "mean_adapted_generation_latency_sec": 3.960986647522077,
+      "mean_conditioning_encode_seconds": 0.48745985399000347,
+      "history": [
+        {
+          "epoch": 1,
+          "fit_query_mean_answer_nll": 1.9386840760707855,
+          "seconds": 11.19984292506706
+        }
+      ],
+      "end_to_end_latency_sec": null
+    }
+  ],
+  "artifact_sha256": {
+    "qcla_0.pt": "e9e3f77ac4cddf2c05399e871d04495b85d3552b68687de19a7610a2ebfcae5e",
+    "qcla_0_internal_val.jsonl": "d9f483570d3c18fa0c481390445e33d7704c7bcee982fdf7b5ae36794f53cc8d",
+    "qcla_1.pt": "691e8e3b382706ef093128ddfbfec09406d00bc6ef013b4ddcc0fb3af499d91f",
+    "qcla_1_internal_val.jsonl": "7164157133a5c7dae066c6c5104a767c802cb67f899555f3997790cca4eea36e",
+    "qcla_2.pt": "742b59f36b4a3a296c7dc21c24a5fd628c962ce56d520a15ba91c580c6400d53",
+    "qcla_2_internal_val.jsonl": "ad1149992530e9cdd3f106f2439edb878e8be3e2e27f9d9bfc6d7c077c846f1c"
+  },
+  "baseline_canonical_match": true,
+  "validation_status": "previously inspected development confirmation; no TEST",
+  "no_validation_selection": true,
+  "latency_note": "Measured adapted generation and batched conditioning encode time, not end-to-end deployment latency. QCLA-2 also requires the original k4 pass; output records retain its cached generation latency.",
+  "TEST_used": false
+}

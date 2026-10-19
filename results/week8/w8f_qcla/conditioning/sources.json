@@ -1,0 +1,7 @@
+{
+  "snapshot": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+  "model": "Salesforce/SFR-Embedding-Mistral",
+  "max_tokens": 512,
+  "normalize": false,
+  "definition_sha256": "a44788efd3351732336407deb2e73066ec837311d9a11c6f44b90cdf2aa1cc03"
+}

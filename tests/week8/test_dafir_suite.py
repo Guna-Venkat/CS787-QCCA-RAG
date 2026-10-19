@@ -478,8 +478,8 @@ def test_31_qcla_residual_path_works():
     e_D = torch.randn(128)
     e_q = torch.randn(128)
     z_D = qcla1(e_D, e_q=e_q)
-    # Output should equal LayerNorm(e_D)
-    expected = qcla1.layer_norm(e_D)
+    # A closed residual gate preserves the original representation.
+    expected = e_D
     assert torch.allclose(z_D, expected, atol=1e-4)
 
 

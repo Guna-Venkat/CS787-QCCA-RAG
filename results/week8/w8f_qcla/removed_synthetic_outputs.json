@@ -1,0 +1,7 @@
+{
+  "reason": "Original smoke runner hardcoded validation losses; these tables are not measured experiments.",
+  "removed": [
+    "results/week8/tables/w8f_qcla_comparison_smoke.csv",
+    "results/week8/archive_provisional_invalidated/tables/w8f_qcla_comparison_smoke.csv"
+  ]
+}

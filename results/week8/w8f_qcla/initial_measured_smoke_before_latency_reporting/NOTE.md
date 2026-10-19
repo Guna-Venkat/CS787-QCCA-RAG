@@ -1,0 +1,1 @@
+Real initial smoke passed all three variants, including actual gradient flow and canonical baseline reproduction. Superseded only to add cumulative generation latency reporting and exclude scoring time from generation timing; these are measured results, not synthetic tables. Final smoke is rerun with the finalized source hashes.

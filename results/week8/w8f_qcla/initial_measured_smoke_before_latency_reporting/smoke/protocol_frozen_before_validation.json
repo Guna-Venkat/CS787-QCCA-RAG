@@ -1,0 +1,17 @@
+{
+  "fingerprint": "9718900a8ab2d29ed69c42bcd1e685477412a4621aeff56e15754bc4b5ab231c",
+  "seed": 42,
+  "epochs": 1,
+  "hidden_dim": 2048,
+  "learning_rate": 0.0001,
+  "gradient_accumulation_steps": 2,
+  "smoke": true,
+  "limit": 2,
+  "variants": [
+    "qcla_0",
+    "qcla_1",
+    "qcla_2"
+  ],
+  "device": "cuda",
+  "selection": "Fixed epoch budget; evaluate all three variants. No best-validation checkpoint selection."
+}
