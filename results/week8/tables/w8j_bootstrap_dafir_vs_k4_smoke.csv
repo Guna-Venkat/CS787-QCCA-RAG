@@ -1,2 +1,0 @@
-comparison,n_resamples,n_queries,n_papers,mean_treatment_f1,mean_control_f1,delta_f1,ci_f1_95,p_value_f1,delta_final_tokens,ci_final_tokens_95,delta_cum_tokens,delta_latency_sec
-DAFiR_Full_vs_Semantic_k4,50,5,4,0.414,0.3909,0.023099999999999954,"[0.023099999999999954, 0.023099999999999954]",0.0,74.0,"[74.0, 74.0]",459.0,0.0

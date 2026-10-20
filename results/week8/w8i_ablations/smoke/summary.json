@@ -1,0 +1,14 @@
+{
+  "queries": 5,
+  "smoke_only": true,
+  "TEST_used": false,
+  "artifacts": {
+    "query_results.jsonl": "33bc519c844067a78a21d5fbace9bb040840b96c06e00b69ca6e216d939dec47",
+    "benchmark.csv": "c381cbbd2aec605cb5c1184fce27f3ff92696f4e91459e0bd792b7065822846d",
+    "protocol.json": "ce5840d871652a2fc866e65812833a4b07e02e1b66ff9ca16f316c703202a483",
+    "quality_cost.png": "1aa3ecfcb73399301a80e54733f480455bf6fe16d80e7e1a4f977b2a398b85fc",
+    "report_notes.json": "f733ef1b04683baa700083df80711f583e5d69ad9c2a06ccb2f44e0b3acc1c44",
+    "paired_paper_intervals.csv": "6953a6cdf3552c37f76602e795d60555c84cf08bad496bd9744fa443a8e6354b"
+  },
+  "upstream_sources_unchanged": true
+}

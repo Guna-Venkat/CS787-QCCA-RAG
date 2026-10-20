@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-20",
+  "week8_tests_passed": 107,
+  "W8I_notebook_executed": true,
+  "W8I_full_queries": 342,
+  "W8J_notebook_executed_with_RUN_FULL_false": true,
+  "W8J_preflight_queries": 231,
+  "W8J_real_GPU_smoke_queries": 20,
+  "W8J_smoke_variants_and_modes": 8,
+  "W8J_smoke_STOP": 14,
+  "W8J_smoke_PROMOTE": 6,
+  "W8J_full_DEV_run_executed": false,
+  "TEST_used": false,
+  "completed_W8H_unchanged": true,
+  "notebook_sha256": {
+    "week8i_ablations.ipynb": "c15aa657649d931e8b975068d6eeeb5914b0a4f4c47f0101ae2bd30762932347",
+    "week8j_final_dev_evaluation.ipynb": "61a6ea9745c7e87988b2de2d5304b58ed467dbb1e92f04c0a309fbb5cc949bc8"
+  }
+}

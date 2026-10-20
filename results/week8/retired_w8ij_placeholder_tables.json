@@ -1,0 +1,20 @@
+[
+  {
+    "old_path": "results/week8/tables/w8i_ablation_matrix_smoke.csv",
+    "preserved_at": "results/week8/archive_provisional_invalidated/tables/w8i_ablation_matrix_smoke.csv",
+    "sha256": "a9fa37b535013f74b0820b091f1a9a01a2ac9e9a4c80048a6b8c6fc79604a483",
+    "reason": "Hard-coded prototype values, not measured experiment results"
+  },
+  {
+    "old_path": "results/week8/tables/w8j_dev_systems_benchmark_smoke.csv",
+    "preserved_at": "results/week8/archive_provisional_invalidated/tables/w8j_dev_systems_benchmark_smoke.csv",
+    "sha256": "d5c52d0c7382eb7a4921b919927c672802ebc5407eb1fa8e37969071b8197d09",
+    "reason": "Hard-coded prototype values, not measured experiment results"
+  },
+  {
+    "old_path": "results/week8/tables/w8j_bootstrap_dafir_vs_k4_smoke.csv",
+    "preserved_at": "results/week8/archive_provisional_invalidated/tables/w8j_bootstrap_dafir_vs_k4_smoke.csv",
+    "sha256": "7ddf4ae08ef1e28d538dfb633b5cd04ae56e362353a1576d1c0207f9ec768255",
+    "reason": "Hard-coded prototype values, not measured experiment results"
+  }
+]

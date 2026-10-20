@@ -1,0 +1,11 @@
+{
+  "status": "DEV previously inspected; frozen configurations, no tuning; TEST unused",
+  "TEST_used": false,
+  "no_winner_selection": true,
+  "cost_scope": "Actual serialized prompt tokens. Cumulative prompt tokens are a compute proxy, not FLOPs or deployment latency.",
+  "unmeasured_systems": [
+    "DAFiR-2: no frozen second-state controller",
+    "QCLA + live gate: uncalibrated draft distribution"
+  ],
+  "inference_scope": "Exploratory intervals; multiple comparisons are not confirmatory significance tests."
+}

@@ -1,0 +1,65 @@
+{
+  "split": "previously inspected INTERNAL-VAL",
+  "smoke_only": false,
+  "specifications": [
+    [
+      "frozen_controller",
+      {}
+    ],
+    [
+      "no_uncertainty_gate",
+      {
+        "gate_threshold": 0.0
+      }
+    ],
+    [
+      "no_hurt_filter",
+      {
+        "tau_hurt": 1.01
+      }
+    ],
+    [
+      "no_help_filter",
+      {
+        "tau_help": -1.0
+      }
+    ],
+    [
+      "always_draftsemantic",
+      {
+        "family": "E1"
+      }
+    ],
+    [
+      "always_rank5",
+      {
+        "family": "E1",
+        "selection": "rank5"
+      }
+    ],
+    [
+      "always_random_seed42",
+      {
+        "family": "E1",
+        "selection": "random"
+      }
+    ],
+    [
+      "query_semantic_selector",
+      {
+        "selection": "semantic"
+      }
+    ]
+  ],
+  "seed": 42,
+  "no_tuning": true,
+  "TEST_used": false,
+  "sources": {
+    "results/week8/w8h_full_system/full/summary.json": "be7bc614572289deb9dd02f9837a79e7a1286a019783d1728d30e43b49e29126",
+    "src/week8/ablation_reporting.py": "1e21154862d0f3205afafd6c3bd591b65aca2680efd2f352aa0857f2b23a2887",
+    "src/week8/final_reporting.py": "6bf1bdaa6add645263a9555493eee279400a8260b8c3d7d9ac7fe59b489c3931",
+    "scripts/week8/run_w8i_ablation_matrix.py": "faee5daa0145a049fefe66107dce3b1b96f0dcfed87cb74c742a6102fcd0d33a"
+  },
+  "measurement": "Original-SARA G0 counterfactual replay uses real saved promotion answers. W8-H G0/G1/adapters use actual generated answers. These are separate evidence types.",
+  "limitations": "No retraining ablation is claimed. DAFiR-2 and QCLA/controller stacking are unsupported. Removing a safety filter is distinct from retraining without a loss penalty."
+}
