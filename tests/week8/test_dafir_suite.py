@@ -538,9 +538,9 @@ def test_35_hard_case_labels_correct():
 def test_36_outcome_weighting_correct():
     """36. outcome weighting scales with counterfactual gain."""
     raw_queries = [
-        {"question_id": "q1", "question": "Q?", "passages": [{"text": f"Passage {i}"} for i in range(10)], "gold_answers": ["A"]},
+        {"question_id": "q1", "paper_id": "paper1", "question": "Q?", "passages": [{"text": f"Passage {i}"} for i in range(10)], "gold_answers": ["A"]},
     ]
-    records = [{"question_id": "q1", "delta_f1": 0.08, "candidate_passage_index": 4}]
+    records = [{"question_id": "q1", "paper_id": "paper1", "delta_f1": 0.08 if i == 4 else 0., "candidate_passage_index": i, "semantic_rank": i+1, "candidate_text": f"Passage {i}"} for i in range(4, 10)]
     examples, _ = build_hard_case_dataset(
         raw_queries=raw_queries,
         promotion_records=records,

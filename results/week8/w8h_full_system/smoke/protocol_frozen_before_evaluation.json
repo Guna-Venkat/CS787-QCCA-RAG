@@ -1,0 +1,23 @@
+{
+  "fingerprint": "c993c4c3faf39f0337e768358ef1d2d5a1e6b25b3e3dd8ff6100b024aff6cd1c",
+  "smoke": true,
+  "include_w8g": true,
+  "device": "cuda",
+  "seed": 42,
+  "policy": "E5-DraftSemantic",
+  "max_promotions": 1,
+  "modes": [
+    "G0",
+    "G1"
+  ],
+  "variants": [
+    "original_SARA",
+    "uniform_SFT",
+    "HC_LoRA",
+    "OW_LoRA"
+  ],
+  "queries": 3,
+  "no_validation_selection": true,
+  "QCLA_stacked": false,
+  "DAFiR2_evaluated": false
+}

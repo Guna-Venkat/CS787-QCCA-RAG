@@ -1,0 +1,13 @@
+{
+  "week8_tests_passed": 102,
+  "notebook_CPU_code_cells_executed": 3,
+  "notebook_errors": 0,
+  "real_CPU_gate_selector_actions_verified": 342,
+  "promotions_verified": 144,
+  "U4A_probability_max_abs_diff": 2.682209014892578e-07,
+  "real_full_checkpoint_GPU_smoke_completed": false,
+  "cuda_available_in_agent_session": false,
+  "full_evaluation_executed": false,
+  "completed_W8E_W8F_W8G_source_guards_unchanged": true,
+  "readiness": "code and CPU inference verified; real GPU smoke required on a working CUDA host"
+}

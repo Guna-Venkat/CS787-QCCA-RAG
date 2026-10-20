@@ -1,225 +1,121 @@
-"""Hard-Case LoRA (HC-LoRA) fine-tuning for SARA generator (Week 8-G).
+"""Additive rank-8 LoRA on frozen SARA, preserving its original PEFT adapter.
 
-Trains PEFT QLoRA adapter on Mistral-7B targeting:
-- q_proj, k_proj, v_proj, o_proj
-- r = 8, alpha = 16, dropout = 0.05
-- Train on FIT split; select checkpoint on INTERNAL-VAL.
+The original q/k/v/o projections (including trained SARA LoRA) remain intact.
+Only new residual factors are trainable. They are saved independently and need
+the original SARA checkpoint when reloaded. No merging or nested PEFT wrappers.
 """
-
 from __future__ import annotations
-
-import logging
-import os
-import time
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
-
+import math
 import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
-
-logger = logging.getLogger(__name__)
-
-
-def setup_lora_generator(
-    base_model: Any,
-    r: int = 8,
-    lora_alpha: int = 16,
-    lora_dropout: float = 0.05,
-    target_modules: Optional[Sequence[str]] = None,
-) -> Any:
-    """Wrap base Mistral model with PEFT LoRA adapter."""
-    try:
-        from peft import LoraConfig, TaskType, get_peft_model
-    except ImportError as e:
-        logger.error("PEFT library is required for LoRA fine-tuning: %s", e)
-        raise
-
-    if target_modules is None:
-        target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"]
-
-    lora_config = LoraConfig(
-        r=r,
-        lora_alpha=lora_alpha,
-        target_modules=list(target_modules),
-        lora_dropout=lora_dropout,
-        bias="none",
-        task_type=TaskType.CAUSAL_LM,
-    )
-
-    # In SARA, base_model is a wrapper (e.g. SARAForCausalLM), wrap its inner llm or generator
-    if hasattr(base_model, "llm"):
-        base_model.llm = get_peft_model(base_model.llm, lora_config)
-        base_model.llm.print_trainable_parameters()
-        return base_model
-    elif hasattr(base_model, "model"):
-        peft_model = get_peft_model(base_model, lora_config)
-        peft_model.print_trainable_parameters()
-        return peft_model
-    else:
-        peft_model = get_peft_model(base_model, lora_config)
-        peft_model.print_trainable_parameters()
-        return peft_model
+from src.week8.qcla_training import answer_loss
 
 
-def train_generator_lora_epoch(
-    sara_model: Any,
-    dataloader: DataLoader,
-    optimizer: torch.optim.Optimizer,
-    sfr_embeddings_by_qid: Dict[str, torch.Tensor],
-    scaler: Optional[torch.cuda.amp.GradScaler] = None,
-    gradient_accumulation_steps: int = 4,
-    device: str = "cuda",
-    use_amp: bool = True,
-    max_steps: Optional[int] = None,
-) -> float:
-    """Train one epoch of LoRA adapter with sample weights and SARA embedding injection."""
-    sara_model.train()
-    total_loss = 0.0
-    accumulated_loss = 0.0
-    step_count = 0
-    num_updates = 0
-
-    optimizer.zero_grad()
-
-    for batch in dataloader:
-        step_count += 1
-        qid = batch["question_id"][0] if isinstance(batch["question_id"], (list, tuple)) else batch["question_id"]
-        input_ids = batch["input_ids"].to(device)
-        if input_ids.dim() == 1:
-            input_ids = input_ids.unsqueeze(0)
-
-        attention_mask = batch["attention_mask"].to(device)
-        if attention_mask.dim() == 1:
-            attention_mask = attention_mask.unsqueeze(0)
-
-        labels = batch["labels"].to(device)
-        if labels.dim() == 1:
-            labels = labels.unsqueeze(0)
-
-        sample_weight = batch["weight"].to(device)
-        if sample_weight.dim() > 0:
-            sample_weight = sample_weight.item()
-        else:
-            sample_weight = float(sample_weight)
-
-        compressed_indices = batch.get("compressed_indices", [])
-        if isinstance(compressed_indices, torch.Tensor):
-            compressed_indices = compressed_indices.squeeze(0).tolist()
-        elif isinstance(compressed_indices, list) and len(compressed_indices) > 0 and isinstance(compressed_indices[0], list):
-            compressed_indices = compressed_indices[0]
-
-        # Extract SFR compressed embeddings
-        qid_embeds = sfr_embeddings_by_qid.get(str(qid))
-        if qid_embeds is not None and len(compressed_indices) > 0:
-            comp_embeds = qid_embeds[compressed_indices].unsqueeze(0).to(
-                device=device, dtype=getattr(sara_model, "dtype", torch.float16)
-            )
-        else:
-            comp_embeds = None
-
-        with torch.cuda.amp.autocast(enabled=use_amp and device == "cuda"):
-            outputs = sara_model(
-                input_ids=input_ids,
-                attention_mask=attention_mask,
-                retrieval_embeds=comp_embeds,
-                labels=labels,
-            )
-            # Apply outcome/hard-case sample weight
-            loss = (outputs.loss * sample_weight) / gradient_accumulation_steps
-
-        if scaler is not None and use_amp:
-            scaler.scale(loss).backward()
-        else:
-            loss.backward()
-
-        accumulated_loss += loss.item() * gradient_accumulation_steps
-
-        if step_count % gradient_accumulation_steps == 0 or (max_steps and step_count >= max_steps):
-            if scaler is not None and use_amp:
-                scaler.step(optimizer)
-                scaler.update()
-            else:
-                optimizer.step()
-            optimizer.zero_grad()
-            total_loss += accumulated_loss
-            accumulated_loss = 0.0
-            num_updates += 1
-
-        if max_steps and step_count >= max_steps:
-            break
-
-    if accumulated_loss > 0.0:
-        if scaler is not None and use_amp:
-            scaler.step(optimizer)
-            scaler.update()
-        else:
-            optimizer.step()
-        optimizer.zero_grad()
-        total_loss += accumulated_loss
-        num_updates += 1
-
-    return total_loss / max(num_updates, 1)
+class DeltaLoRALinear(torch.nn.Module):
+    def __init__(self,original,r=8,alpha=16,dropout=.05):
+        super().__init__();self.original=original;self.scale=alpha/r
+        self.in_features=original.in_features;self.out_features=original.out_features
+        device=next(original.parameters()).device
+        self.w8g_A=torch.nn.Parameter(torch.empty(r,self.in_features,device=device,dtype=torch.float32))
+        self.w8g_B=torch.nn.Parameter(torch.zeros(self.out_features,r,device=device,dtype=torch.float32))
+        torch.nn.init.kaiming_uniform_(self.w8g_A,a=math.sqrt(5))
+        self.w8g_dropout=torch.nn.Dropout(dropout)
+        for p in original.parameters():p.requires_grad_(False)
+    def forward(self,x,*args,**kwargs):
+        baseline=self.original(x,*args,**kwargs)
+        low=torch.nn.functional.linear(self.w8g_dropout(x.float()),self.w8g_A)
+        delta=torch.nn.functional.linear(low,self.w8g_B)*self.scale
+        return baseline+delta.to(baseline.dtype)
 
 
-def evaluate_generator_lora(
-    sara_model: Any,
-    dataloader: DataLoader,
-    sfr_embeddings_by_qid: Dict[str, torch.Tensor],
-    device: str = "cuda",
-    use_amp: bool = True,
-    max_steps: Optional[int] = None,
-) -> float:
-    """Evaluate validation loss on held-out split."""
-    sara_model.eval()
-    total_loss = 0.0
-    num_batches = 0
-    step_count = 0
+def setup_lora_generator(base_model,r=8,lora_alpha=16,lora_dropout=.05,target_modules=None):
+    targets=set(target_modules or ['q_proj','k_proj','v_proj','o_proj'])
+    if any(isinstance(m,DeltaLoRALinear) for m in base_model.modules()):raise ValueError('W8-G adapter already attached; reload original SARA for each variant')
+    for p in base_model.parameters():p.requires_grad_(False);p.grad=None
+    candidates=[(name,module) for name,module in base_model.named_modules()
+        if name.rsplit('.',1)[-1] in targets and '.self_attn.' in name]
+    if not candidates:raise ValueError('No real SARA attention projections found')
+    for name,module in candidates:
+        parent_name,leaf=name.rsplit('.',1);parent=base_model.get_submodule(parent_name)
+        setattr(parent,leaf,DeltaLoRALinear(module,r,lora_alpha,lora_dropout))
+    base_model._w8g_projection_names=[name for name,_ in candidates]
+    trainable=[name for name,p in base_model.named_parameters() if p.requires_grad]
+    if not trainable or any(not name.endswith(('w8g_A','w8g_B')) for name in trainable):
+        raise ValueError('Only new W8-G residual factors may be trained')
+    return base_model
 
+
+def adapter_state(model):
+    return {name:p.detach().cpu().clone() for name,p in model.named_parameters() if name.endswith(('w8g_A','w8g_B'))}
+
+
+def load_adapter_state(model,state):
+    params=dict(model.named_parameters());expected=set(adapter_state(model))
+    if set(state)!=expected:raise ValueError('W8-G checkpoint architecture mismatch')
     with torch.no_grad():
-        for batch in dataloader:
-            step_count += 1
-            qid = batch["question_id"][0] if isinstance(batch["question_id"], (list, tuple)) else batch["question_id"]
-            input_ids = batch["input_ids"].to(device)
-            if input_ids.dim() == 1:
-                input_ids = input_ids.unsqueeze(0)
+        for name,value in state.items():
+            if params[name].shape!=value.shape or not torch.isfinite(value).all():raise ValueError('Invalid adapter factor')
+            params[name].copy_(value.to(params[name].device))
 
-            attention_mask = batch["attention_mask"].to(device)
-            if attention_mask.dim() == 1:
-                attention_mask = attention_mask.unsqueeze(0)
 
-            labels = batch["labels"].to(device)
-            if labels.dim() == 1:
-                labels = labels.unsqueeze(0)
+def training_mode(model):
+    model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant':False})
+    if hasattr(model,'enable_input_require_grads'):model.enable_input_require_grads()
+    model.train()
+    # Only the new adapter's dropout is active during training.
+    for module in model.modules():
+        if isinstance(module,torch.nn.Dropout):module.eval()
+    for module in model.modules():
+        if isinstance(module,DeltaLoRALinear):module.w8g_dropout.train()
 
-            compressed_indices = batch.get("compressed_indices", [])
-            if isinstance(compressed_indices, torch.Tensor):
-                compressed_indices = compressed_indices.squeeze(0).tolist()
-            elif isinstance(compressed_indices, list) and len(compressed_indices) > 0 and isinstance(compressed_indices[0], list):
-                compressed_indices = compressed_indices[0]
 
-            qid_embeds = sfr_embeddings_by_qid.get(str(qid))
-            if qid_embeds is not None and len(compressed_indices) > 0:
-                comp_embeds = qid_embeds[compressed_indices].unsqueeze(0).to(
-                    device=device, dtype=getattr(sara_model, "dtype", torch.float16)
-                )
-            else:
-                comp_embeds = None
+def compressed_embeddings(batch,sfr_embeddings_by_qid,model,device):
+    q=str(batch['question_id']);source=sfr_embeddings_by_qid.get(q)
+    indices=batch['compressed_indices']
+    if source is None or source.shape!=(10,4096) or not torch.isfinite(source).all():raise ValueError(f'{q}: missing finite cached SFR embeddings')
+    if indices!=sorted(set(indices)) or not set(indices)<=set(range(10)):raise ValueError('Invalid compressed-slot identities')
+    return source[indices].to(device=device,dtype=model.dtype)  # flat slots x 4096
 
-            with torch.cuda.amp.autocast(enabled=use_amp and device == "cuda"):
-                outputs = sara_model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask,
-                    retrieval_embeds=comp_embeds,
-                    labels=labels,
-                )
-                loss = outputs.loss
 
-            total_loss += loss.item()
-            num_batches += 1
+def train_generator_lora_epoch(sara_model,dataloader,optimizer,sfr_embeddings_by_qid,
+        scaler=None,gradient_accumulation_steps=16,device='cuda',use_amp=False,max_steps=None):
+    if scaler is not None or use_amp:raise ValueError('W8-G uses float32 residual factors with frozen bfloat16 SARA')
+    if gradient_accumulation_steps<1:raise ValueError('Positive accumulation required')
+    training_mode(sara_model);optimizer.zero_grad(set_to_none=True)
+    total=0.;raw_total=0.;count=0;pending=0;verified=False
+    trainable=[p for p in sara_model.parameters() if p.requires_grad]
+    for batch in dataloader:
+        embeds=compressed_embeddings(batch,sfr_embeddings_by_qid,sara_model,device)
+        loss=answer_loss(sara_model,batch['input_ids'].to(device),batch['targets'].to(device),embeds)
+        weight=float(batch['weight'])
+        if not math.isfinite(weight) or weight<=0:raise ValueError('Invalid FIT-only sample weight')
+        weighted=loss*weight;weighted.backward()
+        total+=float(weighted.detach());raw_total+=float(loss.detach());count+=1;pending+=1
+        del loss,weighted,embeds
+        at_end=count==len(dataloader) or (max_steps is not None and count>=max_steps)
+        if pending==gradient_accumulation_steps or at_end:
+            grads=[p.grad for p in trainable if p.grad is not None]
+            if not grads or not all(torch.isfinite(g).all() for g in grads):raise ValueError('Missing or nonfinite W8-G gradients')
+            if not verified:
+                if not any(torch.count_nonzero(g).item() for g in grads):raise ValueError('No nonzero W8-G adapter gradients')
+                verified=True
+            for g in grads:g.div_(pending)
+            torch.nn.utils.clip_grad_norm_(trainable,1.)
+            optimizer.step();optimizer.zero_grad(set_to_none=True);pending=0
+        if max_steps is not None and count>=max_steps:break
+    if not count:raise ValueError('No real FIT examples')
+    if any(p.grad is not None for p in sara_model.parameters() if not p.requires_grad):raise ValueError('Frozen original SARA received gradients')
+    return {'query_mean_weighted_nll':total/count,'query_mean_unweighted_nll':raw_total/count,'queries':count,
+        'only_new_adapter_gradients_verified':verified}
 
-            if max_steps and step_count >= max_steps:
-                break
 
-    return total_loss / max(num_batches, 1)
+@torch.no_grad()
+def evaluate_generator_lora(sara_model,dataloader,sfr_embeddings_by_qid,device='cuda',use_amp=False,max_steps=None):
+    """Unweighted diagnostic NLL; generation-based evaluation lives in the runner."""
+    sara_model.eval();values=[]
+    for batch in dataloader:
+        embeds=compressed_embeddings(batch,sfr_embeddings_by_qid,sara_model,device)
+        values.append(float(answer_loss(sara_model,batch['input_ids'].to(device),batch['targets'].to(device),embeds)))
+        if max_steps is not None and len(values)>=max_steps:break
+    if not values:raise ValueError('No evaluation inputs')
+    return sum(values)/len(values)

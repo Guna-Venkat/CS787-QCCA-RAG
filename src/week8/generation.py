@@ -1,345 +1,138 @@
-"""Full DAFiR End-to-End Generation Engine (Week 8-H).
+"""W8-H: real frozen-controller inference and matched single-promotion prompts.
 
-Executes multi-pass selective fidelity routing:
-Pass 0: Base semantic k4 generation -> draft y0 + uncertainty diagnostics.
-Gating: Draft sufficiency check. If safe-stop -> return y0 immediately (Pass 1).
-Routing: Candidate scoring via U0/U1/U2/U4 + MIG features.
-Pass 1: Promoted regeneration -> y1 (DAFiR-1).
-Pass 2 (Optional, DAFiR-2): Second promotion if y1 is still uncertain -> y2.
-
-Fully tracks:
-- Final-context tokens
-- Cumulative prompt tokens
-- Generated tokens
-- Latency and GPU memory
-- Resumable JSONL caching
+Original SARA produces the shared draft. Actual generated token scores feed the
+frozen B0-GW gate; actual MiniLM/U4-A inference feeds selection/safety. No outcome
+column is admitted to the inference table. DAFiR-2 and automatic QCLA stacking
+are unsupported because no corresponding frozen state-specific controller exists.
 """
-
 from __future__ import annotations
-
-import json
-import logging
-import time
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple, Union
-
+from copy import deepcopy
+import json,time
+import joblib
 import numpy as np
 import pandas as pd
 import torch
-from tqdm.auto import tqdm
+from src.week8.data import PROJECT_ROOT
+from src.week8.generator_features import canonical_k4_context
+from src.week8.gate_diagnostics import logits_diagnostics,summarize_diagnostics,U_COLUMNS
+from src.week8.utility_training import load_selected_model,predict_neural,_validate_saved_routing
+from src.week8.utility_dataset import assert_no_feature_leakage
+from src.week8.semantic import SemanticScorer
+from src.week8.marginal_information import compute_mig_features_for_query
+from src.week8.selective_controller import make_decisions
+from src.week7.w7e.prompt_builder import build_mixed_fidelity_sara_prompt
 
-from src.week6.evaluation import compute_qa_answer_metrics, extract_generated_text
-from src.week7.w7e.prompt_builder import (
-    build_mixed_fidelity_sara_prompt,
-    extract_mixed_fidelity_sara_embeddings,
-)
-from src.week8.controller import DAFiRController
-from src.week8.cost_accounting import GPUTracker, QueryCostRecord
-from src.week8.draft_generation import (
-    extract_draft_uncertainty_features,
-    generate_draft_with_diagnostics,
-)
-from src.week8.qcla import BaseLatentAdapter
-
-logger = logging.getLogger(__name__)
+IDENTITY=['question_id','paper_id','semantic_rank','candidate_passage_index']
+SAFE_STATIC=IDENTITY+['question','candidate_text','bm25_rank','bm25_score','semantic_score','passage_length','base_context_tokens']
 
 
-def run_dafir_query(
-    sara_model: Any,
-    sara_tokenizer: Any,
-    query_record: Dict[str, Any],
-    sfr_embeddings_by_qid: Dict[str, torch.Tensor],
-    controller: DAFiRController,
-    candidate_scorer_fn: Callable[[Dict[str, Any], str, Sequence[int]], Dict[str, Any]],
-    qcla_adapter: Optional[BaseLatentAdapter] = None,
-    query_embeddings_by_qid: Optional[Dict[str, torch.Tensor]] = None,
-    max_promotions: int = 1,  # 1 for DAFiR-1, 2 for DAFiR-2
-    revision_mode: str = "draft_aware",  # "draft_aware" (G1) or "blind_regeneration" (G0)
-    candidate_ranks: Sequence[int] = (5, 6, 7, 8, 9, 10),
-    device: str = "cuda",
-    max_new_tokens: int = 128,
-) -> Dict[str, Any]:
-    """Execute full multi-pass DAFiR generation for a single query.
+def synchronize(device):
+    if str(device).startswith('cuda'):torch.cuda.synchronize(device)
 
-    Returns dict with final answer, metrics, and detailed cost accounting.
-    """
-    t_start = time.time()
-    qid = str(query_record["question_id"]).strip()
-    pid = str(query_record.get("paper_id", "")).strip()
-    question = query_record["question"]
-    passages = query_record["passages"]
-    gold_answers = query_record.get("gold_answers", [])
-    gold_reformatted = query_record.get("gold_answers_reformatted")
 
-    candidate_indices = [r - 1 for r in candidate_ranks]
-    base_full_indices = [0, 1, 2, 3]
-    current_heavy_indices = [idx for idx in range(10) if idx not in base_full_indices]
+@torch.inference_mode()
+def generate_continuation(model,tokenizer,prompt,embeddings,device,*,diagnostics=False):
+    prefix=tokenizer(prompt,return_tensors='pt')['input_ids'].to(device)
+    if embeddings.ndim!=2 or embeddings.shape[1]!=4096 or not torch.isfinite(embeddings).all():raise ValueError('Expected real flat compressed embeddings')
+    synchronize(device);start=time.perf_counter()
+    out=model.generate(input_ids=prefix,attention_mask=torch.ones_like(prefix),retrieval_embeds=embeddings.to(device=device,dtype=model.dtype),
+        max_new_tokens=128,do_sample=False,pad_token_id=tokenizer.pad_token_id,eos_token_id=tokenizer.eos_token_id,
+        return_dict_in_generate=True,output_scores=diagnostics)
+    synchronize(device);seconds=time.perf_counter()-start
+    # XMistral inputs_embeds generation returns continuation only, not prompt+answer.
+    tokens=out.sequences[0].tolist()
+    if len(tokens)>128:raise ValueError('SARA continuation contract changed; do not subtract prompt length')
+    if tokenizer.eos_token_id in tokens:tokens=tokens[:tokens.index(tokenizer.eos_token_id)+1]
+    result={'prediction':tokenizer.decode(tokens,skip_special_tokens=True).strip(),'generated_tokens':len(tokens),
+        'token_ids':tokens,'prompt_tokens':prefix.shape[1],'generation_seconds':seconds}
+    if diagnostics:
+        if len(out.scores)!=out.sequences.shape[1] or not tokens:raise ValueError('Token/score alignment changed')
+        begin=time.perf_counter()
+        logits=torch.stack([s[0] for s in out.scores[:len(tokens)]])
+        raw=logits_diagnostics(logits,tokens,tokenizer.eos_token_id)
+        if not raw['greedy_verified']:raise ValueError('Generated IDs do not match greedy logits')
+        result.update(diagnostics=raw,diagnostics_seconds=time.perf_counter()-begin)
+    return result
 
-    pad_id = sara_tokenizer.pad_token_id or sara_tokenizer.eos_token_id
-    model_dtype = getattr(sara_model, "dtype", torch.float16)
 
-    cumulative_prompt_tokens = 0
-    total_generated_tokens = 0
-    num_passes = 0
-    promoted_indices: List[int] = []
+class RevisionTokenizer:
+    """Insert revision instructions inside the user turn before applying chat format."""
+    def __init__(self,tokenizer,draft):self.tokenizer=tokenizer;self.draft=draft
+    def __getattr__(self,name):return getattr(self.tokenizer,name)
+    def apply_chat_template(self,messages,**kwargs):
+        messages=deepcopy(messages)
+        if messages[-1]['role']!='user':raise ValueError('Expected user context for revision')
+        messages[-1]['content']+='\n\nInitial answer (JSON string): '+json.dumps(self.draft,ensure_ascii=False)+(
+            '\nAdditional evidence has now been exposed. Revise the initial answer only if the evidence supports '
+            'a correction or necessary additional detail. Retain supported correct details. Do not add unsupported '
+            'information. Return only a succinct final answer.')
+        return self.tokenizer.apply_chat_template(messages,**kwargs)
 
-    # Retrieve SFR embeddings
-    qid_embeds = sfr_embeddings_by_qid.get(qid)
-    if qid_embeds is None:
-        qid_embeds = torch.zeros((10, 4096), dtype=torch.float32)
 
-    # Optional QCLA transformation
-    e_q = None
-    if query_embeddings_by_qid is not None:
-        e_q = query_embeddings_by_qid.get(qid)
+def promoted_prompt(record,group,embeddings,tokenizer,decision,mode,draft):
+    if mode not in ['G0','G1']:raise ValueError('Only matched G0/G1 single promotion is implemented')
+    if decision['selected_action']!='PROMOTE':raise ValueError('A STOP action must not build another generation prompt')
+    _,_,_,heavy,_,full=canonical_k4_context(group,record,embeddings,tokenizer)
+    selected=int(decision['candidate_passage_index'])
+    candidate=group[group.candidate_passage_index.astype(int)==selected]
+    if len(candidate)!=1:raise ValueError('Selected passage is not a canonical compressed candidate')
+    row=candidate.iloc[0]
+    for key in ['semantic_rank','bm25_rank']:
+        if int(row[key])!=int(decision[key]):raise ValueError('Selected passage/rank identity changed')
+    full=sorted(full+[selected]);heavy=sorted(set(range(10))-set(full))
+    if mode=='G1' and not tokenizer.chat_template:raise ValueError('Draft-aware revision requires the canonical chat template')
+    formatter=RevisionTokenizer(tokenizer,draft) if mode=='G1' else tokenizer
+    prompt,_,compressed,_=build_mixed_fidelity_sara_prompt(str(record['question']).strip(),record['passages'][:10],full,[],heavy,{},formatter,hybrid_medium=False)
+    if compressed!=heavy:raise ValueError('Compressed-slot order changed')
+    return prompt,embeddings[compressed],full,compressed
 
-    # --- PASS 0: Draft Generation ---
-    num_passes += 1
-    draft_prompt, draft_ctx_tokens, draft_comp_indices, _ = build_mixed_fidelity_sara_prompt(
-        question=question,
-        passages=passages,
-        full_indices=base_full_indices,
-        medium_indices=[],
-        heavy_indices=current_heavy_indices,
-        medium_texts_map={},
-        tokenizer=sara_tokenizer,
-        hybrid_medium=False,
-    )
-    cumulative_prompt_tokens += draft_ctx_tokens
 
-    draft_inputs = sara_tokenizer(draft_prompt, return_tensors="pt").to(device)
-    draft_comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, draft_comp_indices).to(
-        device=device, dtype=model_dtype
-    )
+class FrozenRuntimeController:
+    def __init__(self,frozen):
+        self.config=frozen['selected_config']
+        if self.config['selector']!='S3' or self.config.get('uses_attribution') or frozen['max_promotions']!=1 or frozen['oracle_gate']:
+            raise ValueError('This verified runtime supports the frozen S3 single-promotion controller only')
+        self.gate=joblib.load(PROJECT_ROOT/'results/week8/w8e_controller/b0_gw_gate.joblib')
+        name,self.selector,self.features,self.cfg=load_selected_model(PROJECT_ROOT/'results/week8/w8c_utility',device='cpu')
+        if name!='U4-A':raise ValueError('Expected the real frozen U4-A safety model')
+        assert_no_feature_leakage(self.features)
+        self.scorer=SemanticScorer(device='cpu')
 
-    if qcla_adapter is not None:
-        # Transform through QCLA
-        transformed = []
-        for i, c_idx in enumerate(draft_comp_indices):
-            e_D = draft_comp_embeds[0, i]
-            z_D = qcla_adapter(e_D, e_q=e_q)
-            transformed.append(z_D)
-        draft_comp_embeds = torch.stack(transformed, dim=0).unsqueeze(0).to(dtype=model_dtype)
+    def decide(self,record,routing,draft,raw_diagnostics):
+        start=time.perf_counter()
+        # Select columns before any features/model call. Outcomes and gold labels
+        # cannot be accidentally consumed by inference or decisions.
+        frame=routing[SAFE_STATIC].copy().sort_values('semantic_rank').reset_index(drop=True)
+        frame['draft_answer']=draft
+        passages=[p['text'] for p in record['passages'][:10]]
+        sims=self.scorer.score_query_passages(record['question'],passages).cpu().numpy()
+        full=_validate_saved_routing(frame,passages,sims)
+        candidates={int(r.semantic_rank):str(r.candidate_text) for r in frame.itertuples()}
+        feats=compute_mig_features_for_query(record['question'],draft,[passages[i] for i in full],candidates,self.scorer)
+        for i,r in frame.iterrows():
+            for key,value in feats[int(r.semantic_rank)].items():frame.loc[i,key]=value
+        words=draft.lower().split();qwords=set(record['question'].lower().split());dwords=set(words)
+        frame['draft_length_words']=len(words);frame['draft_empty']=int(not words)
+        frame['draft_query_overlap']=len(qwords&dwords)/max(len(qwords|dwords),1)
+        if not np.isfinite(frame[self.features].to_numpy(float)).all():raise ValueError('Missing real numeric selector features')
+        question=str(record['question']).strip()
+        semantic=float(self.scorer.score_query_passages(question,[draft]).cpu()[0]) if draft else 0.
+        uncertainty=summarize_diagnostics(raw_diagnostics,question,draft,semantic)
+        gate_probability=float(self.gate.predict_proba(np.asarray([[uncertainty[k] for k in U_COLUMNS]]))[:,1][0])
+        predicted=predict_neural(self.selector,frame,self.cfg)
+        table=frame[IDENTITY+['bm25_rank']].copy()
+        table['selection_score']=frame.draft_relevance_ry.to_numpy()
+        table['prob_help']=predicted['prob_help'];table['prob_hurt']=predicted['prob_hurt']
+        qid=str(record['question_id'])
+        action=make_decisions(table,{qid:gate_probability},self.config).iloc[0].to_dict()
+        # Nullable integer STOP identities serialize as JSON null, never a fake index.
+        for key in ['candidate_passage_index','semantic_rank','bm25_rank']:
+            action[key]=None if pd.isna(action[key]) else int(action[key])
+        for key in ['proposed_candidate_passage_index','proposed_semantic_rank','proposed_bm25_rank']:action[key]=int(action[key])
+        return action,{'gate_features':uncertainty,'candidate_predictions':table.to_dict('records'),
+            'decision_seconds':time.perf_counter()-start,'gate_probability':gate_probability}
 
-    with torch.no_grad():
-        draft_outputs = sara_model.generate(
-            **draft_inputs,
-            retrieval_embeds=draft_comp_embeds,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,
-            pad_token_id=pad_id,
-            eos_token_id=sara_tokenizer.eos_token_id,
-            return_dict_in_generate=True,
-            output_scores=True,
-        )
 
-    draft_gen_tokens = draft_outputs.sequences.shape[1] - draft_inputs["input_ids"].shape[1]
-    total_generated_tokens += draft_gen_tokens
-
-    draft_text_list = extract_generated_text(sara_tokenizer, draft_outputs.sequences)
-    y0 = draft_text_list[0].strip() if draft_text_list else ""
-
-    # Compute uncertainty diagnostics
-    u_features = extract_draft_uncertainty_features(
-        query=question,
-        draft_text=y0,
-        scores=draft_outputs.scores,
-        generated_token_ids=draft_outputs.sequences[0, draft_inputs["input_ids"].shape[1]:],
-        pad_token_id=pad_id,
-        eos_token_id=sara_tokenizer.eos_token_id,
-    )
-
-    current_answer = y0
-    final_context_tokens = draft_ctx_tokens
-
-    # --- CONTROLLER DECISION 1 ---
-    # Score candidates
-    scored_candidates = candidate_scorer_fn(query_record, y0, candidate_indices)
-    c1_decision = controller.evaluate_single_promotion(
-        draft_features=u_features,
-        candidate_predictions=scored_candidates,
-    )
-
-    if c1_decision["action"] == "PROMOTE" and max_promotions >= 1:
-        chosen_cand = c1_decision["chosen_candidate_idx"]
-        promoted_indices.append(chosen_cand)
-
-        # Build Promoted Context (5F + 5H)
-        num_passes += 1
-        new_full_indices = sorted(base_full_indices + [chosen_cand])
-        new_heavy_indices = [idx for idx in range(10) if idx not in new_full_indices]
-
-        prom_prompt, prom_ctx_tokens, prom_comp_indices, _ = build_mixed_fidelity_sara_prompt(
-            question=question,
-            passages=passages,
-            full_indices=new_full_indices,
-            medium_indices=[],
-            heavy_indices=new_heavy_indices,
-            medium_texts_map={},
-            tokenizer=sara_tokenizer,
-            hybrid_medium=False,
-        )
-        if revision_mode in ("draft_aware", "g1"):
-            revision_instruction = (
-                f"\n\nInitial answer: {y0}\n\nAdditional evidence has now been exposed.\n"
-                "Revise the initial answer only if the additional evidence adds necessary information or corrects the answer. "
-                "Include all answer details supported by the evidence. Do not add unsupported information.\nAnswer:"
-            )
-            if prom_prompt.endswith("\nAnswer:"):
-                prom_prompt = prom_prompt[:-8].rstrip() + "\n" + revision_instruction.strip()
-            else:
-                prom_prompt = prom_prompt.rstrip() + "\n" + revision_instruction
-            prom_ctx_tokens = len(sara_tokenizer.encode(prom_prompt))
-
-        cumulative_prompt_tokens += prom_ctx_tokens
-        final_context_tokens = prom_ctx_tokens
-
-        prom_inputs = sara_tokenizer(prom_prompt, return_tensors="pt").to(device)
-        prom_comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, prom_comp_indices).to(
-            device=device, dtype=model_dtype
-        )
-
-        if qcla_adapter is not None:
-            transformed = []
-            for i, c_idx in enumerate(prom_comp_indices):
-                e_D = prom_comp_embeds[0, i]
-                z_D = qcla_adapter(e_D, e_q=e_q)
-                transformed.append(z_D)
-            prom_comp_embeds = torch.stack(transformed, dim=0).unsqueeze(0).to(dtype=model_dtype)
-
-        with torch.no_grad():
-            prom_outputs = sara_model.generate(
-                **prom_inputs,
-                retrieval_embeds=prom_comp_embeds,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-                pad_token_id=pad_id,
-                eos_token_id=sara_tokenizer.eos_token_id,
-                return_dict_in_generate=True,
-                output_scores=True,
-            )
-
-        prom_gen_tokens = prom_outputs.sequences.shape[1] - prom_inputs["input_ids"].shape[1]
-        total_generated_tokens += prom_gen_tokens
-
-        prom_text_list = extract_generated_text(sara_tokenizer, prom_outputs.sequences)
-        y1 = prom_text_list[0].strip() if prom_text_list else ""
-        current_answer = y1
-
-        # --- OPTIONAL PASS 2 (DAFiR-2) ---
-        if max_promotions >= 2:
-            u1_features = extract_draft_uncertainty_features(
-                query=question,
-                draft_text=y1,
-                scores=prom_outputs.scores,
-                generated_token_ids=prom_outputs.sequences[0, prom_inputs["input_ids"].shape[1]:],
-                pad_token_id=pad_id,
-                eos_token_id=sara_tokenizer.eos_token_id,
-            )
-            remaining_candidates = [c for c in candidate_indices if c != chosen_cand]
-            scored_remaining = candidate_scorer_fn(query_record, y1, remaining_candidates)
-            c2_decision = controller.evaluate_second_promotion(
-                pass1_decision=c1_decision,
-                y1_features=u1_features,
-                candidate_predictions_pass2=scored_remaining,
-            )
-
-            if c2_decision["action"] == "PROMOTE_SECOND":
-                second_cand = c2_decision["chosen_second_candidate_idx"]
-                promoted_indices.append(second_cand)
-                num_passes += 1
-
-                stage2_full_indices = sorted(new_full_indices + [second_cand])
-                stage2_heavy_indices = [idx for idx in range(10) if idx not in stage2_full_indices]
-
-                s2_prompt, s2_ctx_tokens, s2_comp_indices, _ = build_mixed_fidelity_sara_prompt(
-                    question=question,
-                    passages=passages,
-                    full_indices=stage2_full_indices,
-                    medium_indices=[],
-                    heavy_indices=stage2_heavy_indices,
-                    medium_texts_map={},
-                    tokenizer=sara_tokenizer,
-                    hybrid_medium=False,
-                )
-                if revision_mode in ("draft_aware", "g1"):
-                    revision_instruction = (
-                        f"\n\nInitial answer: {y1}\n\nAdditional evidence has now been exposed.\n"
-                        "Revise the initial answer only if the additional evidence adds necessary information or corrects the answer. "
-                        "Include all answer details supported by the evidence. Do not add unsupported information.\nAnswer:"
-                    )
-                    if s2_prompt.endswith("\nAnswer:"):
-                        s2_prompt = s2_prompt[:-8].rstrip() + "\n" + revision_instruction.strip()
-                    else:
-                        s2_prompt = s2_prompt.rstrip() + "\n" + revision_instruction
-                    s2_ctx_tokens = len(sara_tokenizer.encode(s2_prompt))
-
-                cumulative_prompt_tokens += s2_ctx_tokens
-                final_context_tokens = s2_ctx_tokens
-
-                s2_inputs = sara_tokenizer(s2_prompt, return_tensors="pt").to(device)
-                s2_comp_embeds = extract_mixed_fidelity_sara_embeddings(qid_embeds, s2_comp_indices).to(
-                    device=device, dtype=model_dtype
-                )
-
-                if qcla_adapter is not None:
-                    transformed = []
-                    for i, c_idx in enumerate(s2_comp_indices):
-                        e_D = s2_comp_embeds[0, i]
-                        z_D = qcla_adapter(e_D, e_q=e_q)
-                        transformed.append(z_D)
-                    s2_comp_embeds = torch.stack(transformed, dim=0).unsqueeze(0).to(dtype=model_dtype)
-
-                with torch.no_grad():
-                    s2_outputs = sara_model.generate(
-                        **s2_inputs,
-                        retrieval_embeds=s2_comp_embeds,
-                        max_new_tokens=max_new_tokens,
-                        do_sample=False,
-                        pad_token_id=pad_id,
-                        eos_token_id=sara_tokenizer.eos_token_id,
-                        return_dict_in_generate=True,
-                    )
-
-                s2_gen_tokens = s2_outputs.sequences.shape[1] - s2_inputs["input_ids"].shape[1]
-                total_generated_tokens += s2_gen_tokens
-                s2_text_list = extract_generated_text(sara_tokenizer, s2_outputs.sequences)
-                current_answer = s2_text_list[0].strip() if s2_text_list else ""
-
-    t_total = time.time() - t_start
-
-    # Metrics
-    qa_metrics = compute_qa_answer_metrics(
-        prediction=current_answer,
-        gold_answers=gold_answers,
-        gold_reformatted=gold_reformatted,
-    )
-
-    cost_rec = QueryCostRecord(
-        question_id=qid,
-        paper_id=pid,
-        policy_name=f"DAFiR-{max_promotions}",
-        num_passes=num_passes,
-        promoted_indices=promoted_indices,
-        final_context_tokens=final_context_tokens,
-        cumulative_prompt_tokens=cumulative_prompt_tokens,
-        total_generated_tokens=total_generated_tokens,
-        e2e_latency_sec=t_total,
-    )
-
-    return {
-        "question_id": qid,
-        "paper_id": pid,
-        "final_answer": current_answer,
-        "base_draft": y0,
-        "promoted_indices": promoted_indices,
-        "num_passes": num_passes,
-        "final_context_tokens": final_context_tokens,
-        "cumulative_prompt_tokens": cumulative_prompt_tokens,
-        "total_generated_tokens": total_generated_tokens,
-        "e2e_latency_sec": t_total,
-        "token_f1": float(qa_metrics["token_f1"]),
-        "exact_match": float(qa_metrics["exact_match"]),
-        "rouge_l": float(qa_metrics["rouge_l"]),
-        "cost_record": cost_rec,
-    }
+def run_dafir_query(*args,**kwargs):
+    """Reject the retired proxy-scoring API instead of silently running a mock system."""
+    raise RuntimeError('Use run_w8h_full_evaluation.py and FrozenRuntimeController: real learned inference, canonical routing and matched G0/G1. Legacy proxy-scoring/multi-promotion execution is disabled.')

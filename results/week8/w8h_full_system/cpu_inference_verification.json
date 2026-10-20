@@ -1,0 +1,2064 @@
+{
+  "queries": 342,
+  "action_matches_saved_E5": 342,
+  "promotions": 144,
+  "U4A_probability_max_abs_diff": 2.682209014892578e-07,
+  "all_G0_G1_prompt_slot_checks_passed": true,
+  "mode": "actual CPU model inference using saved real original-SARA token diagnostics; no new SARA generation",
+  "GPU_smoke_completed": false,
+  "cuda_available_in_agent_session": false,
+  "rows": [
+    {
+      "question_id": "0",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696713533036e-08
+    },
+    {
+      "question_id": "1008",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928952302567e-07
+    },
+    {
+      "question_id": "1009",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.2154064136833433e-08
+    },
+    {
+      "question_id": "1010",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "1011",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580588597155e-08
+    },
+    {
+      "question_id": "1020",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464485865735e-08
+    },
+    {
+      "question_id": "1021",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1022",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.097819329695884e-08
+    },
+    {
+      "question_id": "1039",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225813809e-09
+    },
+    {
+      "question_id": "1040",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045080014006e-07
+    },
+    {
+      "question_id": "1041",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "1071",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225721868656e-09
+    },
+    {
+      "question_id": "1072",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1175870975183022e-08
+    },
+    {
+      "question_id": "1073",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1089",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.2107193400612282e-08
+    },
+    {
+      "question_id": "1090",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.9557774134579264e-08
+    },
+    {
+      "question_id": "1091",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "1092",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.0489096710929466e-08
+    },
+    {
+      "question_id": "1093",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.8626451478431783e-08
+    },
+    {
+      "question_id": "1111",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548357199457e-08
+    },
+    {
+      "question_id": "1112",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.043081283499947e-07
+    },
+    {
+      "question_id": "1113",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 4.470348362317633e-08
+    },
+    {
+      "question_id": "1114",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.8626451464553995e-08
+    },
+    {
+      "question_id": "1115",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.682209014892578e-07
+    },
+    {
+      "question_id": "1116",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225661153335e-09
+    },
+    {
+      "question_id": "1117",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1118",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.639127731600798e-07
+    },
+    {
+      "question_id": "1119",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464474763505e-08
+    },
+    {
+      "question_id": "1120",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045066136218e-07
+    },
+    {
+      "question_id": "1129",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548327709158e-08
+    },
+    {
+      "question_id": "113",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.72529030331914e-08
+    },
+    {
+      "question_id": "1130",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.6077032113519527e-08
+    },
+    {
+      "question_id": "1131",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "1136",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 3.4458935200057383e-08
+    },
+    {
+      "question_id": "1137",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.8428773935516034e-08
+    },
+    {
+      "question_id": "1138",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.4703483539909605e-08
+    },
+    {
+      "question_id": "114",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.005828381486773e-07
+    },
+    {
+      "question_id": "1144",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.68575477183764e-08
+    },
+    {
+      "question_id": "1145",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.210719354459433e-08
+    },
+    {
+      "question_id": "1146",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.607703209756007e-07
+    },
+    {
+      "question_id": "115",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.7939677163871246e-08
+    },
+    {
+      "question_id": "1151",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.210719346479705e-08
+    },
+    {
+      "question_id": "1152",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548261789665e-08
+    },
+    {
+      "question_id": "1153",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "1154",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3038516063698657e-08
+    },
+    {
+      "question_id": "1155",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "1162",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.1175870897120466e-08
+    },
+    {
+      "question_id": "1163",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045071687333e-07
+    },
+    {
+      "question_id": "1239",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.607703205453893e-08
+    },
+    {
+      "question_id": "1240",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.078051571240973e-08
+    },
+    {
+      "question_id": "1241",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.8428773810615944e-08
+    },
+    {
+      "question_id": "1242",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.470348353297071e-08
+    },
+    {
+      "question_id": "1248",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464485865735e-08
+    },
+    {
+      "question_id": "1249",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.793967718642265e-08
+    },
+    {
+      "question_id": "1250",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.450580599699386e-08
+    },
+    {
+      "question_id": "1251",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.192092894952701e-07
+    },
+    {
+      "question_id": "1252",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1274",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548299953582e-08
+    },
+    {
+      "question_id": "1275",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.2154064122955646e-08
+    },
+    {
+      "question_id": "1286",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.024454840403699e-08
+    },
+    {
+      "question_id": "1287",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161179969868e-08
+    },
+    {
+      "question_id": "1288",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045080014006e-07
+    },
+    {
+      "question_id": "1289",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3038516061963934e-08
+    },
+    {
+      "question_id": "1319",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.31322572880755e-09
+    },
+    {
+      "question_id": "1320",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.396983861055856e-08
+    },
+    {
+      "question_id": "1321",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1322",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.2107193561941565e-08
+    },
+    {
+      "question_id": "1369",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696715614704e-08
+    },
+    {
+      "question_id": "1370",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.215406420622237e-08
+    },
+    {
+      "question_id": "1406",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225799931213e-09
+    },
+    {
+      "question_id": "1407",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928952302567e-07
+    },
+    {
+      "question_id": "1408",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.192092894952701e-07
+    },
+    {
+      "question_id": "1409",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0430812832917802e-07
+    },
+    {
+      "question_id": "1414",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.381903240928246e-09
+    },
+    {
+      "question_id": "1415",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.2351741846282636e-08
+    },
+    {
+      "question_id": "1421",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696713533036e-08
+    },
+    {
+      "question_id": "1422",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.352761265840165e-08
+    },
+    {
+      "question_id": "1423",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.5832483732033942e-08
+    },
+    {
+      "question_id": "1427",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.381903119497602e-09
+    },
+    {
+      "question_id": "1428",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.96046448031462e-08
+    },
+    {
+      "question_id": "1473",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548305157752e-08
+    },
+    {
+      "question_id": "1474",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.381903148987901e-09
+    },
+    {
+      "question_id": "1476",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.45058059414827e-08
+    },
+    {
+      "question_id": "1477",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.5390257821510396e-08
+    },
+    {
+      "question_id": "1478",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.210719350989986e-08
+    },
+    {
+      "question_id": "1506",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.96046448031462e-08
+    },
+    {
+      "question_id": "1507",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548339852222e-08
+    },
+    {
+      "question_id": "1555",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.6763806329200825e-08
+    },
+    {
+      "question_id": "1571",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.6391277313232422e-07
+    },
+    {
+      "question_id": "1572",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.195638652452875e-08
+    },
+    {
+      "question_id": "1577",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0710209634966217e-08
+    },
+    {
+      "question_id": "1578",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548320770264e-08
+    },
+    {
+      "question_id": "1579",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.607703200943612e-08
+    },
+    {
+      "question_id": "1591",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.381903081333686e-09
+    },
+    {
+      "question_id": "1592",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.078051567077637e-08
+    },
+    {
+      "question_id": "1593",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548332913328e-08
+    },
+    {
+      "question_id": "1594",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 3.352761270697391e-08
+    },
+    {
+      "question_id": "1595",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464484477956e-08
+    },
+    {
+      "question_id": "1596",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161193847656e-07
+    },
+    {
+      "question_id": "1610",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.2107193447449816e-08
+    },
+    {
+      "question_id": "1611",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225820747895e-09
+    },
+    {
+      "question_id": "1638",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0430812844020032e-07
+    },
+    {
+      "question_id": "1639",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3038515978697207e-08
+    },
+    {
+      "question_id": "1656",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548416180055e-08
+    },
+    {
+      "question_id": "1657",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "1700",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225739215891e-09
+    },
+    {
+      "question_id": "1701",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.960464474763505e-08
+    },
+    {
+      "question_id": "1702",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0430812831530023e-07
+    },
+    {
+      "question_id": "1703",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.862645142292063e-08
+    },
+    {
+      "question_id": "1739",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.09781932865505e-08
+    },
+    {
+      "question_id": "1740",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.8626451415981737e-08
+    },
+    {
+      "question_id": "1741",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4156103129991937e-07
+    },
+    {
+      "question_id": "1742",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.9557773988862492e-08
+    },
+    {
+      "question_id": "1750",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.940696710757479e-08
+    },
+    {
+      "question_id": "1782",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.450580635087745e-09
+    },
+    {
+      "question_id": "1783",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.45058057784187e-09
+    },
+    {
+      "question_id": "1784",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3038516120944532e-08
+    },
+    {
+      "question_id": "1785",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548367607798e-08
+    },
+    {
+      "question_id": "1787",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.043081283569336e-07
+    },
+    {
+      "question_id": "1788",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.117587098385664e-08
+    },
+    {
+      "question_id": "1789",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464474763505e-08
+    },
+    {
+      "question_id": "1790",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3038516086250063e-08
+    },
+    {
+      "question_id": "1802",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.587935444223424e-08
+    },
+    {
+      "question_id": "1803",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "1811",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1175870815588462e-08
+    },
+    {
+      "question_id": "1812",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548294749412e-08
+    },
+    {
+      "question_id": "1813",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.38190324786714e-09
+    },
+    {
+      "question_id": "1814",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.3283064348039728e-08
+    },
+    {
+      "question_id": "1832",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "1835",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "1836",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903187151818e-09
+    },
+    {
+      "question_id": "1837",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225721868656e-09
+    },
+    {
+      "question_id": "1840",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225699317251e-09
+    },
+    {
+      "question_id": "1841",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580605250501e-08
+    },
+    {
+      "question_id": "1842",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225654214441e-09
+    },
+    {
+      "question_id": "186",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548260054942e-08
+    },
+    {
+      "question_id": "187",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548355464733e-08
+    },
+    {
+      "question_id": "188",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 6.705522533068109e-08
+    },
+    {
+      "question_id": "1881",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "1882",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.6391277321559095e-07
+    },
+    {
+      "question_id": "1883",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.303851596481942e-08
+    },
+    {
+      "question_id": "189",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.235174174913812e-08
+    },
+    {
+      "question_id": "1930",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.2107193402347005e-08
+    },
+    {
+      "question_id": "1931",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.024454828434107e-08
+    },
+    {
+      "question_id": "1932",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903161130966e-09
+    },
+    {
+      "question_id": "1933",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.842877384531041e-08
+    },
+    {
+      "question_id": "1943",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.1175870891916295e-08
+    },
+    {
+      "question_id": "1944",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 6.33299350114025e-08
+    },
+    {
+      "question_id": "1945",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.195638662167326e-08
+    },
+    {
+      "question_id": "1952",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.676380631705776e-08
+    },
+    {
+      "question_id": "1953",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225669826952e-09
+    },
+    {
+      "question_id": "1954",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.6763806424610617e-08
+    },
+    {
+      "question_id": "1959",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045066136218e-07
+    },
+    {
+      "question_id": "1960",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.94069672047193e-08
+    },
+    {
+      "question_id": "1966",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225697582528e-09
+    },
+    {
+      "question_id": "1967",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 4.470348355378739e-08
+    },
+    {
+      "question_id": "2",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.4901161141805952e-08
+    },
+    {
+      "question_id": "2041",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.823109619831126e-08
+    },
+    {
+      "question_id": "2042",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696724635266e-08
+    },
+    {
+      "question_id": "2049",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161199398771e-07
+    },
+    {
+      "question_id": "2050",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.2154064192344585e-08
+    },
+    {
+      "question_id": "2081",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3969838652191924e-08
+    },
+    {
+      "question_id": "2082",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 6.0535967939812085e-09
+    },
+    {
+      "question_id": "2083",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161159153187e-08
+    },
+    {
+      "question_id": "2084",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.396983865566137e-08
+    },
+    {
+      "question_id": "2085",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 4.4703483595420757e-08
+    },
+    {
+      "question_id": "2086",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696707981921e-08
+    },
+    {
+      "question_id": "2090",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3411045080014006e-07
+    },
+    {
+      "question_id": "2091",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1175870852017655e-08
+    },
+    {
+      "question_id": "2092",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225735746444e-09
+    },
+    {
+      "question_id": "2093",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225699317251e-09
+    },
+    {
+      "question_id": "2096",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 6.33299351224248e-08
+    },
+    {
+      "question_id": "2097",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "2134",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.9802322443206464e-08
+    },
+    {
+      "question_id": "2142",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.043081283569336e-07
+    },
+    {
+      "question_id": "2155",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.3132258432993e-09
+    },
+    {
+      "question_id": "2156",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.396983856545575e-08
+    },
+    {
+      "question_id": "2157",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.676380627195495e-08
+    },
+    {
+      "question_id": "2174",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.685754781552092e-08
+    },
+    {
+      "question_id": "2216",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.568167686462402e-08
+    },
+    {
+      "question_id": "2217",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.2107193426633134e-08
+    },
+    {
+      "question_id": "2222",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.7695128938510774e-08
+    },
+    {
+      "question_id": "2223",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0430812841244474e-07
+    },
+    {
+      "question_id": "2224",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.097819331083663e-08
+    },
+    {
+      "question_id": "2231",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "226",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.2351741793547042e-07
+    },
+    {
+      "question_id": "2263",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161273644936e-08
+    },
+    {
+      "question_id": "2264",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225661153335e-09
+    },
+    {
+      "question_id": "227",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161209460168e-08
+    },
+    {
+      "question_id": "2278",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.352761261676829e-08
+    },
+    {
+      "question_id": "228",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.2107193542859607e-08
+    },
+    {
+      "question_id": "2283",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903164600413e-09
+    },
+    {
+      "question_id": "229",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.842877396327161e-08
+    },
+    {
+      "question_id": "2290",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928952302567e-07
+    },
+    {
+      "question_id": "246",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 6.519258100370906e-09
+    },
+    {
+      "question_id": "247",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.381903119497602e-09
+    },
+    {
+      "question_id": "248",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161252828254e-08
+    },
+    {
+      "question_id": "249",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 6.984919242829235e-09
+    },
+    {
+      "question_id": "250",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.2351741887916e-08
+    },
+    {
+      "question_id": "251",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548280871624e-08
+    },
+    {
+      "question_id": "252",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580599699386e-08
+    },
+    {
+      "question_id": "253",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.2351741790771484e-08
+    },
+    {
+      "question_id": "254",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.0489096613784952e-08
+    },
+    {
+      "question_id": "277",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.7695128929837156e-08
+    },
+    {
+      "question_id": "286",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.0780515629143e-08
+    },
+    {
+      "question_id": "287",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "288",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696713533036e-08
+    },
+    {
+      "question_id": "289",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.769512898187886e-08
+    },
+    {
+      "question_id": "290",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.7939677151728182e-08
+    },
+    {
+      "question_id": "3",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.303851600992223e-08
+    },
+    {
+      "question_id": "316",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548339852222e-08
+    },
+    {
+      "question_id": "317",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "318",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225739215891e-09
+    },
+    {
+      "question_id": "319",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928957853683e-07
+    },
+    {
+      "question_id": "320",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.7252903057477527e-08
+    },
+    {
+      "question_id": "333",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580602474943e-08
+    },
+    {
+      "question_id": "334",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.9115548147727885e-08
+    },
+    {
+      "question_id": "335",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.980232233218416e-08
+    },
+    {
+      "question_id": "336",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.0489096651948868e-08
+    },
+    {
+      "question_id": "337",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580694068343e-09
+    },
+    {
+      "question_id": "365",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.450580609066892e-09
+    },
+    {
+      "question_id": "366",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3038515997779165e-08
+    },
+    {
+      "question_id": "367",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.685754777388755e-08
+    },
+    {
+      "question_id": "368",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903166335136e-09
+    },
+    {
+      "question_id": "369",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.117587087456906e-08
+    },
+    {
+      "question_id": "370",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.1175870816455824e-08
+    },
+    {
+      "question_id": "393",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548402302267e-08
+    },
+    {
+      "question_id": "394",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "395",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.195638655228432e-08
+    },
+    {
+      "question_id": "396",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.195638663555105e-08
+    },
+    {
+      "question_id": "397",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.96046448031462e-08
+    },
+    {
+      "question_id": "4",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.117587099426498e-08
+    },
+    {
+      "question_id": "41",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.215406420622237e-08
+    },
+    {
+      "question_id": "411",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.568167692707407e-08
+    },
+    {
+      "question_id": "412",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225770440914e-09
+    },
+    {
+      "question_id": "413",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928948139231e-07
+    },
+    {
+      "question_id": "42",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.470348358154297e-08
+    },
+    {
+      "question_id": "43",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.2154064192344585e-08
+    },
+    {
+      "question_id": "44",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696719084151e-08
+    },
+    {
+      "question_id": "454",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.215406409520007e-08
+    },
+    {
+      "question_id": "455",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928956465904e-07
+    },
+    {
+      "question_id": "462",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3038515976962484e-08
+    },
+    {
+      "question_id": "463",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.39698386504572e-08
+    },
+    {
+      "question_id": "464",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161199398771e-07
+    },
+    {
+      "question_id": "465",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.45058059414827e-08
+    },
+    {
+      "question_id": "466",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "467",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.4214386846327374e-08
+    },
+    {
+      "question_id": "468",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.9802322363409184e-08
+    },
+    {
+      "question_id": "469",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 3.5390257835388184e-08
+    },
+    {
+      "question_id": "470",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "471",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3969838574129367e-08
+    },
+    {
+      "question_id": "472",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0430812832917802e-07
+    },
+    {
+      "question_id": "473",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "474",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 4.4703483664809696e-08
+    },
+    {
+      "question_id": "475",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.313225669826952e-09
+    },
+    {
+      "question_id": "498",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696710757479e-08
+    },
+    {
+      "question_id": "499",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.4901161138336505e-08
+    },
+    {
+      "question_id": "5",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 3.16649675612124e-08
+    },
+    {
+      "question_id": "500",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.23517417179131e-08
+    },
+    {
+      "question_id": "504",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.4901161247624084e-08
+    },
+    {
+      "question_id": "531",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.2351741832404848e-08
+    },
+    {
+      "question_id": "532",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 6.70552254347645e-08
+    },
+    {
+      "question_id": "533",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928963404798e-07
+    },
+    {
+      "question_id": "534",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.980232241545089e-08
+    },
+    {
+      "question_id": "552",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.2154064122955646e-08
+    },
+    {
+      "question_id": "553",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 4.470348362317633e-08
+    },
+    {
+      "question_id": "554",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.3038515989105548e-08
+    },
+    {
+      "question_id": "555",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "581",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 3.7252902932577436e-09
+    },
+    {
+      "question_id": "582",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903117762879e-09
+    },
+    {
+      "question_id": "583",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.639127731600798e-07
+    },
+    {
+      "question_id": "595",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.38190317327403e-09
+    },
+    {
+      "question_id": "6",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "615",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548360668904e-08
+    },
+    {
+      "question_id": "633",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.192092894952701e-07
+    },
+    {
+      "question_id": "634",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.6763806440223128e-08
+    },
+    {
+      "question_id": "635",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 5.960464483784067e-08
+    },
+    {
+      "question_id": "656",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.6763806280628568e-08
+    },
+    {
+      "question_id": "657",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225737481168e-09
+    },
+    {
+      "question_id": "658",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.024454827393273e-08
+    },
+    {
+      "question_id": "659",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.5832483768463135e-08
+    },
+    {
+      "question_id": "660",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928952302567e-07
+    },
+    {
+      "question_id": "661",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "687",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580624679404e-09
+    },
+    {
+      "question_id": "688",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.7881393438168303e-07
+    },
+    {
+      "question_id": "689",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.024454834852584e-08
+    },
+    {
+      "question_id": "7",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.3038515987370825e-08
+    },
+    {
+      "question_id": "704",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580596923828e-08
+    },
+    {
+      "question_id": "705",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580602474943e-08
+    },
+    {
+      "question_id": "706",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "708",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "709",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 6.519258008430562e-09
+    },
+    {
+      "question_id": "710",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.0244548258320219e-08
+    },
+    {
+      "question_id": "711",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "715",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.778887112392443e-09
+    },
+    {
+      "question_id": "716",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.024454831903554e-08
+    },
+    {
+      "question_id": "717",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548275667453e-08
+    },
+    {
+      "question_id": "718",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "719",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580599699386e-08
+    },
+    {
+      "question_id": "720",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "73",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.235174176822008e-08
+    },
+    {
+      "question_id": "739",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161199398771e-07
+    },
+    {
+      "question_id": "74",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "75",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1175870919671871e-08
+    },
+    {
+      "question_id": "754",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "755",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.940696721859709e-08
+    },
+    {
+      "question_id": "756",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.2154064261733524e-08
+    },
+    {
+      "question_id": "757",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "758",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 9.31322583809513e-09
+    },
+    {
+      "question_id": "759",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.1920928955078125e-07
+    },
+    {
+      "question_id": "76",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 7.450580659373873e-09
+    },
+    {
+      "question_id": "760",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.2840838484353716e-08
+    },
+    {
+      "question_id": "761",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.215406422010016e-08
+    },
+    {
+      "question_id": "77",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.303851613482232e-08
+    },
+    {
+      "question_id": "8",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.1548399923150265e-07
+    },
+    {
+      "question_id": "802",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.1175870808649568e-08
+    },
+    {
+      "question_id": "803",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.09781932345088e-08
+    },
+    {
+      "question_id": "804",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.192092896062924e-07
+    },
+    {
+      "question_id": "805",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.043081283569336e-07
+    },
+    {
+      "question_id": "811",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.4901161199398771e-07
+    },
+    {
+      "question_id": "812",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464474763505e-08
+    },
+    {
+      "question_id": "813",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 7.450580596923828e-08
+    },
+    {
+      "question_id": "864",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.9802322443206464e-08
+    },
+    {
+      "question_id": "865",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464477539063e-08
+    },
+    {
+      "question_id": "866",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.381903235724075e-09
+    },
+    {
+      "question_id": "867",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 2.9802322387695312e-08
+    },
+    {
+      "question_id": "868",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 8.38190321317267e-09
+    },
+    {
+      "question_id": "869",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 4.284083834557584e-08
+    },
+    {
+      "question_id": "870",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.3819031784782e-09
+    },
+    {
+      "question_id": "871",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 8.940696716308594e-08
+    },
+    {
+      "question_id": "872",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.215406423397795e-08
+    },
+    {
+      "question_id": "949",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "950",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.2351741776893697e-08
+    },
+    {
+      "question_id": "956",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.4901161143540675e-08
+    },
+    {
+      "question_id": "957",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 1.303851605502504e-08
+    },
+    {
+      "question_id": "958",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.676380633613972e-08
+    },
+    {
+      "question_id": "959",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.960464483090178e-08
+    },
+    {
+      "question_id": "960",
+      "action_match": true,
+      "action": "PROMOTE",
+      "probability_max_abs_diff": 2.4214386967758017e-08
+    },
+    {
+      "question_id": "961",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 9.313225810339554e-09
+    },
+    {
+      "question_id": "962",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 1.0244548289545241e-08
+    },
+    {
+      "question_id": "963",
+      "action_match": true,
+      "action": "STOP",
+      "probability_max_abs_diff": 5.215406423397795e-08
+    }
+  ]
+}

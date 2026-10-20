@@ -1,0 +1,21 @@
+{
+  "reason": "Prototype proxy scores, noncanonical routing and incorrect continuation accounting do not represent the frozen learned controller. Preserved for audit, excluded from repaired experiment.",
+  "moved": [
+    {
+      "original": "results/week8/tables/w8h_dafir1_internal_val_smoke.csv",
+      "archive": "results/week8/w8h_full_system/archive_legacy/root_w8h_dafir1_internal_val_smoke.csv"
+    },
+    {
+      "original": "results/week8/tables/w8h_dafir1_cost_summary_smoke.csv",
+      "archive": "results/week8/w8h_full_system/archive_legacy/root_w8h_dafir1_cost_summary_smoke.csv"
+    },
+    {
+      "original": "results/week8/archive_provisional_invalidated/tables/w8h_dafir1_internal_val_smoke.csv",
+      "archive": "results/week8/w8h_full_system/archive_legacy/provisional_w8h_dafir1_internal_val_smoke.csv"
+    },
+    {
+      "original": "results/week8/archive_provisional_invalidated/tables/w8h_dafir1_cost_summary_smoke.csv",
+      "archive": "results/week8/w8h_full_system/archive_legacy/provisional_w8h_dafir1_cost_summary_smoke.csv"
+    }
+  ]
+}

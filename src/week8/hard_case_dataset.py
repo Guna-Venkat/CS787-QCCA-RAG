@@ -1,227 +1,94 @@
-"""Hard-Case Dataset Construction for Week 8-G.
+"""FIT-only hard-case supervision on canonical semantic passage identities.
 
-Constructs supervised fine-tuning dataset categorized by counterfactual promotion utility:
-- Type A: Helpful promotion (k4 F1 low, max_i Delta_i > 0.01) -> context has best promoted passage explicit (5F + 5H).
-- Type B: Distractor-sensitive (exists i: Delta_i < -0.01) -> standard k4 context (4F + 6H) avoiding distractor.
-- Type C: Neutral (|Delta_i| <= 0.01 for all i) -> standard k4 context (4F + 6H).
-
-Supports sample weighting:
-- Standard Hard-Case (HC): Type A and B upweighted relative to Type C.
-- Outcome-Weighted (OW): Sample weight w = 1.0 + gamma * max_i Delta_i for Type A, and safe-distractor weighting for Type B.
+Outcome labels may choose TRAINING contexts and weights. Validation contexts
+must be constructed separately from frozen predictions, never these categories.
 """
-
 from __future__ import annotations
-
-import json
-import logging
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
-
+from collections import Counter
 import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
+from src.week7.w7e.prompt_builder import build_mixed_fidelity_sara_prompt
+from src.week8.qcla_training import gold_target_inputs
 
-logger = logging.getLogger(__name__)
+CASE_TYPES=['TYPE_A_HELPFUL','TYPE_B_DISTRACTOR_SAFE','TYPE_C_NEUTRAL']
 
 
-def categorize_hard_cases(
-    promotion_records_by_qid: Dict[str, List[Dict[str, Any]]],
-    epsilon_help: float = 0.01,
-    epsilon_hurt: float = -0.01,
-) -> Dict[str, Dict[str, Any]]:
-    """Categorize each query into Type A, Type B, or Type C based on counterfactual promotion surface.
+def categorize_hard_cases(promotion_records_by_qid,epsilon_help=.01,epsilon_hurt=-.01):
+    result={}
+    for qid,rows in promotion_records_by_qid.items():
+        if not rows:raise ValueError('Missing promotion candidates')
+        if any('delta_f1' not in r or 'candidate_passage_index' not in r for r in rows):
+            raise ValueError('Real deltas and original passage identities are required')
+        values=np.asarray([r['delta_f1'] for r in rows],dtype=float)
+        if not np.isfinite(values).all():raise ValueError('Nonfinite promotion outcomes')
+        # Stable ties: semantic rank, then original passage index.
+        ordered=sorted(rows,key=lambda r:(int(r.get('semantic_rank',11)),int(r['candidate_passage_index'])))
+        best=max(ordered,key=lambda r:float(r['delta_f1']))
+        maximum=float(values.max());minimum=float(values.min())
+        kind=CASE_TYPES[0] if maximum>epsilon_help else (CASE_TYPES[1] if minimum<epsilon_hurt else CASE_TYPES[2])
+        result[str(qid)]={'question_id':str(qid),'case_type':kind,'max_delta':maximum,'min_delta':minimum,
+            'best_candidate_idx':int(best['candidate_passage_index']),'num_candidates':len(rows)}
+    return result
 
-    Args:
-        promotion_records_by_qid: Mapping from question_id -> list of candidate promotion dicts.
-        epsilon_help: Threshold for helpful promotion (> 0.01).
-        epsilon_hurt: Threshold for harmful promotion (< -0.01).
 
-    Returns:
-        Mapping from question_id -> metadata dict with type, best_candidate_idx, max_delta, min_delta.
-    """
-    categorized: Dict[str, Dict[str, Any]] = {}
+def compute_outcome_weights(delta,gamma=2.):
+    if not np.isfinite([delta,gamma]).all() or gamma<0:raise ValueError('Invalid outcome weight')
+    return 1.+gamma*max(0.,float(delta))
 
-    for qid, candidates in promotion_records_by_qid.items():
-        if not candidates:
-            continue
 
-        base_f1 = candidates[0].get("base_f1", 0.0)
-        deltas = [c.get("delta_f1", 0.0) for c in candidates]
-        cand_indices = [c.get("candidate_passage_index", c.get("candidate_index", 4)) for c in candidates]
-
-        max_delta = float(max(deltas))
-        min_delta = float(min(deltas))
-        best_cand_idx = cand_indices[int(np.argmax(deltas))]
-
-        has_help = max_delta > epsilon_help
-        has_hurt = min_delta < epsilon_hurt
-
-        if has_help:
-            case_type = "TYPE_A_HELPFUL"
-        elif has_hurt:
-            case_type = "TYPE_B_DISTRACTOR_SAFE"
-        else:
-            case_type = "TYPE_C_NEUTRAL"
-
-        categorized[qid] = {
-            "question_id": qid,
-            "case_type": case_type,
-            "base_f1": base_f1,
-            "max_delta": max_delta,
-            "min_delta": min_delta,
-            "best_candidate_idx": best_cand_idx,
-            "num_candidates": len(candidates),
-        }
-
-    return categorized
+def build_hard_case_dataset(raw_queries,promotion_records,tokenizer=None,mode='hard_case',gamma=2.,
+        type_a_weight=2.,type_b_weight=2.,type_c_weight=1.,epsilon_help=.01,epsilon_hurt=-.01):
+    if tokenizer is None:raise ValueError('The real SARA tokenizer is required')
+    if mode not in ['uniform','hard_case','outcome_weighted']:raise ValueError('Unknown supervision mode')
+    query_map={str(r['question_id']):r for r in raw_queries}
+    if len(query_map)!=len(raw_queries):raise ValueError('Duplicate training query')
+    frame=pd.DataFrame(promotion_records)
+    if frame.empty:raise ValueError('Missing FIT promotion surface; no fabricated examples')
+    frame['question_id']=frame.question_id.astype(str)
+    groups={q:g for q,g in frame.groupby('question_id',sort=True)}
+    if set(groups)!=set(query_map):raise ValueError('Promotion coverage must exactly match training query IDs')
+    categories=categorize_hard_cases({q:g.to_dict('records') for q,g in groups.items()},epsilon_help,epsilon_hurt)
+    examples=[];counts=Counter({k:0 for k in CASE_TYPES})
+    for q in sorted(query_map):
+        r=query_map[q];g=groups[q];c=categories[q]
+        if len(g)!=6 or set(g.semantic_rank.astype(int))!=set(range(5,11)) or g.candidate_passage_index.nunique()!=6:
+            raise ValueError(f'{q}: expected all six canonical semantic candidates')
+        if not g.candidate_passage_index.between(0,9).all():raise ValueError('Invalid original passage index')
+        if not g.paper_id.astype(str).eq(str(r['paper_id'])).all():raise ValueError('Training paper identity mismatch')
+        passages=r['passages'][:10]
+        if len(passages)!=10:raise ValueError('Exactly ten retrieved passages required')
+        for row in g.itertuples():
+            text=passages[int(row.candidate_passage_index)]['text']
+            if str(row.candidate_text).strip()!=str(text).strip():raise ValueError('Candidate text differs from original passage')
+        baseline_heavy=sorted(g.candidate_passage_index.astype(int).tolist())
+        baseline_full=sorted(set(range(10))-set(baseline_heavy))
+        selected=c['best_candidate_idx'] if c['case_type']==CASE_TYPES[0] else None
+        full=sorted(baseline_full+([selected] if selected is not None else []))
+        heavy=sorted(set(range(10))-set(full))
+        prompt,_,compressed,_=build_mixed_fidelity_sara_prompt(str(r['question']).strip(),passages,full,[],heavy,{},tokenizer,hybrid_medium=False)
+        if compressed!=heavy:raise ValueError('Compressed-slot order changed')
+        kind=c['case_type'];counts[kind]+=1
+        if mode=='uniform':weight=1.
+        elif mode=='hard_case':weight={CASE_TYPES[0]:type_a_weight,CASE_TYPES[1]:type_b_weight,CASE_TYPES[2]:type_c_weight}[kind]
+        else:weight=compute_outcome_weights(c['max_delta'] if kind==CASE_TYPES[0] else (-c['min_delta'] if kind==CASE_TYPES[1] else 0.),gamma)
+        if not np.isfinite(weight) or weight<=0:raise ValueError('Invalid measured training weight')
+        examples.append({'question_id':q,'paper_id':str(r['paper_id']),'case_type':kind,'record':r,
+            'prompt_text':prompt,'gold_text':r['gold_answers'][0],'weight':float(weight),'raw_weight':float(weight),
+            'baseline_full_indices':baseline_full,'full_indices':full,'compressed_indices':compressed,
+            'training_promoted_passage_index':selected,'max_delta':c['max_delta'],'min_delta':c['min_delta']})
+    return examples,dict(counts)
 
 
 class HardCasePromptDataset(Dataset):
-    """PyTorch Dataset for Hard-Case and Outcome-Weighted LoRA fine-tuning."""
-
-    def __init__(
-        self,
-        examples: List[Dict[str, Any]],
-        tokenizer: Any,
-        max_seq_len: int = 2048,
-    ):
-        self.examples = examples
-        self.tokenizer = tokenizer
-        self.max_seq_len = max_seq_len
-
-    def __len__(self) -> int:
-        return len(self.examples)
-
-    def __getitem__(self, idx: int) -> Dict[str, Any]:
-        ex = self.examples[idx]
-        prompt_text = ex["prompt_text"]
-        gold_text = ex["gold_text"]
-        weight = float(ex.get("weight", 1.0))
-        qid = ex.get("question_id", "")
-        case_type = ex.get("case_type", "TYPE_C_NEUTRAL")
-
-        full_text = prompt_text + "\nAnswer: " + gold_text
-        prompt_inputs = self.tokenizer(prompt_text + "\nAnswer: ", return_tensors="pt")
-        full_inputs = self.tokenizer(
-            full_text,
-            max_length=self.max_seq_len,
-            truncation=True,
-            return_tensors="pt",
-        )
-
-        prompt_len = min(prompt_inputs["input_ids"].shape[1], full_inputs["input_ids"].shape[1])
-        input_ids = full_inputs["input_ids"].squeeze(0)
-        attention_mask = full_inputs["attention_mask"].squeeze(0)
-
-        labels = input_ids.clone()
-        labels[:prompt_len] = -100
-
-        # Compressed indices for SARA embedding injection
-        compressed_indices = ex.get("compressed_indices", [4, 5, 6, 7, 8, 9])
-
-        return {
-            "question_id": qid,
-            "case_type": case_type,
-            "input_ids": input_ids,
-            "attention_mask": attention_mask,
-            "labels": labels,
-            "weight": torch.tensor(weight, dtype=torch.float32),
-            "compressed_indices": compressed_indices,
-        }
-
-
-def build_hard_case_dataset(
-    raw_queries: List[Dict[str, Any]],
-    promotion_records: List[Dict[str, Any]],
-    tokenizer: Optional[Any] = None,
-    mode: str = "hard_case",  # "hard_case" or "outcome_weighted"
-    gamma: float = 2.0,
-    type_a_weight: float = 2.0,
-    type_b_weight: float = 2.0,
-    type_c_weight: float = 1.0,
-    epsilon_help: float = 0.01,
-    epsilon_hurt: float = -0.01,
-) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
-    """Assemble formatted training examples with weights for HC-LoRA or OW-LoRA."""
-    from src.week7.w7e.prompt_builder import build_mixed_fidelity_sara_prompt
-
-    # Group promotion records by qid
-    prom_by_qid: Dict[str, List[Dict[str, Any]]] = {}
-    for r in promotion_records:
-        qid = str(r["question_id"]).strip()
-        prom_by_qid.setdefault(qid, []).append(r)
-
-    categorized = categorize_hard_cases(
-        prom_by_qid, epsilon_help=epsilon_help, epsilon_hurt=epsilon_hurt
-    )
-
-    query_map = {str(q["question_id"]).strip(): q for q in raw_queries}
-    examples: List[Dict[str, Any]] = []
-    type_counts = {"TYPE_A_HELPFUL": 0, "TYPE_B_DISTRACTOR_SAFE": 0, "TYPE_C_NEUTRAL": 0}
-
-    for qid, cat_info in categorized.items():
-        q_record = query_map.get(qid)
-        if q_record is None:
-            continue
-
-        c_type = cat_info["case_type"]
-        type_counts[c_type] = type_counts.get(c_type, 0) + 1
-
-        question = q_record["question"]
-        passages = q_record["passages"]
-        gold_answers = q_record.get("gold_answers", [])
-        gold_text = gold_answers[0] if gold_answers else ""
-
-        # Determine context configuration:
-        # Type A: Promote best candidate passage to FULL (5F + 5H)
-        # Type B & C: Standard k4 (4F + 6H)
-        if c_type == "TYPE_A_HELPFUL":
-            best_idx = cat_info["best_candidate_idx"]
-            full_indices = [0, 1, 2, 3, best_idx]
-            heavy_indices = [idx for idx in range(10) if idx not in full_indices]
-        else:
-            full_indices = [0, 1, 2, 3]
-            heavy_indices = [4, 5, 6, 7, 8, 9]
-
-        formatted_prompt, _, comp_indices, _ = build_mixed_fidelity_sara_prompt(
-            question=question,
-            passages=passages,
-            full_indices=full_indices,
-            medium_indices=[],
-            heavy_indices=heavy_indices,
-            medium_texts_map={},
-            tokenizer=tokenizer,
-            hybrid_medium=False,
-        )
-
-        # Compute sample weight
-        if mode == "outcome_weighted":
-            if c_type == "TYPE_A_HELPFUL":
-                sample_weight = 1.0 + gamma * max(0.0, cat_info["max_delta"])
-            elif c_type == "TYPE_B_DISTRACTOR_SAFE":
-                # Upweight safe avoidance of distractor
-                sample_weight = 1.0 + gamma * max(0.0, -cat_info["min_delta"])
-            else:
-                sample_weight = 1.0
-        else:  # hard_case
-            if c_type == "TYPE_A_HELPFUL":
-                sample_weight = type_a_weight
-            elif c_type == "TYPE_B_DISTRACTOR_SAFE":
-                sample_weight = type_b_weight
-            else:
-                sample_weight = type_c_weight
-
-        examples.append({
-            "question_id": qid,
-            "case_type": c_type,
-            "prompt_text": formatted_prompt,
-            "gold_text": gold_text,
-            "weight": float(sample_weight),
-            "compressed_indices": comp_indices,
-            "max_delta": cat_info["max_delta"],
-            "min_delta": cat_info["min_delta"],
-        })
-
-    logger.info("Built %d hard-case examples. Distribution: %s", len(examples), type_counts)
-    return examples, type_counts
+    def __init__(self,examples,tokenizer,max_seq_len=4096):
+        if not examples:raise ValueError('Empty real training dataset')
+        self.examples=examples;self.tokenizer=tokenizer;self.max_seq_len=max_seq_len
+    def __len__(self):return len(self.examples)
+    def __getitem__(self,idx):
+        ex=self.examples[idx]
+        ids,targets=gold_target_inputs(self.tokenizer,ex['prompt_text'],ex['record'],'cpu')
+        if ids.shape[1]>self.max_seq_len:raise ValueError('Input exceeds training limit; never truncate away targets or compression slots')
+        return {**ex,'input_ids':ids,'targets':targets,'attention_mask':torch.ones_like(ids),
+            'weight':float(ex['weight'])}

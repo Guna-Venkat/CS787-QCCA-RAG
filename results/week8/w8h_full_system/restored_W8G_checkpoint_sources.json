@@ -1,0 +1,18 @@
+{
+  "src/week8/hard_case_dataset.py": {
+    "expected": "099c3a306f56d696bd36f4f01f3ae5bf249c06a40c5d69fd5602115e4ce4ae03",
+    "restored": "099c3a306f56d696bd36f4f01f3ae5bf249c06a40c5d69fd5602115e4ce4ae03"
+  },
+  "src/week8/hard_case_lora.py": {
+    "expected": "7775f5295d765773fc168af21f60ca5b31286e37528d25e7b03bacedde64f6a2",
+    "restored": "7775f5295d765773fc168af21f60ca5b31286e37528d25e7b03bacedde64f6a2"
+  },
+  "src/week8/outcome_weighted_training.py": {
+    "expected": "c8d3aeaa6f4ece3a4fbad649e5cc4905352d9c3e713dad5a8ceb534dec85760b",
+    "restored": "c8d3aeaa6f4ece3a4fbad649e5cc4905352d9c3e713dad5a8ceb534dec85760b"
+  },
+  "scripts/week8/run_w8g_lora_training.py": {
+    "expected": "cd67e395806475e8ee7acce3eab7d438b82454be91a6b05655a475c2455fd827",
+    "restored": "cd67e395806475e8ee7acce3eab7d438b82454be91a6b05655a475c2455fd827"
+  }
+}
