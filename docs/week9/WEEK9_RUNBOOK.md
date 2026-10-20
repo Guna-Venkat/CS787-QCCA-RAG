@@ -13,6 +13,55 @@ FIT chooses configurations. INTERNAL-VAL is inspected development confirmation; 
 
 `k_F=4` means the original four FULL and six HEAVY passages. `retrieval_width` is W=10/20/40; `evidence_k` is K_E=0/1/2/4. F additionally measures prefix 3 so G has real adjacent-action supervision. K_E=0 returns the exact frozen draft with no additional LM calls.
 
+## Patch execution order and model roles (2026-10-20)
+
+BRANCH = gagan. Do not commit/push or run TEST as part of this patch. New manual order:
+
+W9-PRE cache → W9-PRE 1–3-query smoke → W9-PRE FIT screen → freeze model panel → A retrieval → B evidence-K → C selector → D representation → E faithfulness → F F0/F1/F2 → freeze revision mode → G optional adaptive K → H method frontier plus separate generator robustness.
+
+Reuse valid frozen A/B/C artifacts where source/config identities match. Existing smoke caches predate this patch and are preserved; they are not silently promoted or relabelled. No completed A/B/C freeze exists on this checkout. Full A results live outside the old smoke scope, so starting the documented full A run does not require deleting the old smoke.
+
+```bash
+test "$(git branch --show-current)" = "gagan"
+./sara_env/bin/python scripts/week9/run_w9pre_models.py --stage cache
+./sara_env/bin/python scripts/week9/run_w9pre_models.py --stage smoke --model M0 --model M2 --smoke-limit 2 --resume
+```
+
+Cache downloads only official required shards, preserves existing snapshots and an 8 GB free-disk reserve, and records inaccessible/gated/disk-limited models. It does not load models. Precision smoke tries FP16, then int8, then NF4 only on runtime/memory failure. There is one live large model at a time. Strict representative ceiling is <20,000,000,000 allocated bytes; reserved memory is also recorded. Functional empty/format/reasoning/termination flags must be inspected separately from memory/load PASS.
+
+Only after reviewing smoke failures, manually run a screen for feasible models. Current defaults intentionally omit DeepSeek from the reading screen: NF4/FP32 fixes numerical validity but the bounded diagnostic has no final answers. M0 and Qwen2.5 are reading-screen candidates, not frozen model selections:
+
+```bash
+./sara_env/bin/python scripts/week9/run_w9pre_models.py --stage screen --model M0 --model M2 --resume
+```
+
+The FIT-only nominal 48-query subset contains whole papers and uses seeded answer-type/difficulty strata. It is fixed in `results/week9/preflight/preflight_query_ids.json`, before any model results. Original W9 chunk sentence boundaries form fixed copied-span PRE evidence when D/E is unavailable. P0 uses raw text, P1 query-only spans, P2 draft-aware spans, P3 evidence regeneration (F0), and P4 evidence-anchored draft revision (F2). Textual evidence is identical across models. T0–T4 additionally test actual model extraction and revision on 1–3 FIT queries. PRE is not a replacement for later SANE extraction experiments. Draft tokens are charged whenever a path requires the canonical first pass; rule-based PRE extraction has no LM cost.
+
+Inspect each `screen/<model>/<precision>/qualitative_sample.json`. Raw reasoning is stored only in permission-restricted `private_raw_outputs.jsonl`, never public results. Count all reasoning tokens; missing final-answer boundaries produce an empty final answer, not a score for the reasoning. Qwen3 uses its official non-thinking switch; DeepSeek has no such switch. Deterministic DeepSeek decoding deliberately differs from its card's sampling recommendation.
+
+Before panel freeze, create `qualitative_review.json` with `approved_model_ids` and `evidence_hash` equal to the W9 `digest()` of the parsed `textual_fit_evidence.json`. Approve only after reviewing unsupported answers. Then repeat the same screen command with `--freeze`. This reuses verified rows. Selection uses evidence-conditioned FIT F1, qualitative admissibility, one global .003 tolerance, then cumulative tokens, latency, VRAM and simpler non-reasoning behavior. At most two alternatives plus canonical Mistral are frozen. A smoke never selects a panel.
+
+Separate roles are `first_pass_sara_model`, `extractor_model`, `revision_model`. First pass remains the existing trained Mistral/SARA checkpoint. For later textual D/E/F robustness, copy a configuration with the same FIT-frozen method and add:
+
+```yaml
+textual_model_roles:
+  frozen_panel: results/week9/preflight/frozen_model_panel.json
+  first_pass_sara_model: mistralai/Mistral-7B-Instruct-v0.2
+  extractor_model: Qwen/Qwen2.5-7B-Instruct
+  revision_model: Qwen/Qwen2.5-7B-Instruct
+```
+
+Use a separate output root for each model, with verified upstream A/B/C freezes/pools copied together without changing their content. D/E/F role settings are frozen with their protocol; confirmation cannot change them. Textual role runs receive source text/evidence only, never the SARA projector output. Canonical SARA draft cost uses its own tokenizer. Alternative extraction/revision tokenizers and character/word lengths remain explicit. Start with same-model extraction/revision; independent roles are supported through sequential unload/load, without automatically launching a Cartesian grid. H's main method run rejects alternate role configurations. Its second view consumes explicit same-split exports with `model_id,model_revision,quantization,first_pass_sara_model,model_panel_hash,frozen_method_hash,rows`; configure matching verified hashes and `generator_robustness_exports`. Rows must include unique query/paper IDs, split, current evaluation hash and actual measured costs. No robustness result is invented while exports are pending.
+
+Baseline-only audit (no generation):
+
+```bash
+./sara_env/bin/python scripts/week9/audit_w9_baselines.py --split internal_val
+./sara_env/bin/python scripts/week9/audit_w9_baselines.py --split dev
+```
+
+The final W8-H/J/G exports were recovered byte-for-byte from committed `main` history into `results/week9/baselines/imported_w8/<commit>/`, without switching or modifying branches or W8 files. Their import manifest pins Git blob IDs, commit and SHA256. Same-split original SARA/G0 and HC-LoRA/G0 are available; direct HC-LoRA k4 is INTERNAL-VAL only. Do not substitute W8-E or transfer INTERNAL-VAL rows to DEV. All original notebook entries, fixed W4 summaries and available query-level BM25/semantic outcomes are inventoried. Summary-only rows have no fabricated query IDs or paired intervals. Full-FIT trained external baselines are not FIT-OOF model-selection candidates. See `WEEK9_PATCH_IMPLEMENTATION_AUDIT.md` for actual checks and unresolved artifact availability.
+
 ## W9-A: chunking and retrieval
 
 First full command:
@@ -106,7 +155,7 @@ Requires frozen A-D. Open `notebooks/week9/week9e_extraction_faithfulness.ipynb`
   --split fit --config configs/week9/w9f.yaml --resume
 ```
 
-Requires frozen A-E and E extraction rows on this split. Open `notebooks/week9/week9f_revision.ipynb`. F0/F1 share identical frozen evidence. Prefixes 0,1,2,3,4 allow sequential marginal supervision. The evidence at the B-frozen K is reused directly from E; other prefixes are extracted once and shared between modes. Utilization is a labelled lexical diagnostic, not causal attribution. Inspect unchanged-incomplete cases and question 1812 if present.
+Requires frozen A-E and E extraction rows on this split. Open `notebooks/week9/week9f_revision.ipynb`. F0/F1/F2 share identical frozen evidence. F0/F1 prompts are unchanged; F2 makes source evidence primary and treats the draft as a correctable prior. Prefixes 0,1,2,3,4 allow sequential marginal supervision. The evidence at the B-frozen K is reused directly from E; other prefixes are extracted once and shared between modes. Utilization is a labelled lexical diagnostic, not causal attribution. Inspect unchanged-incomplete cases and question 1812 if present.
 
 ```bash
 ./sara_env/bin/python scripts/week9/run_w9f_revision.py \
@@ -130,7 +179,7 @@ Repeat these two commands for B (`run_w9b_ke_surface.py`, `w9b.yaml`), C (`run_w
 
 ## W9-G: preregistered go/no-go, then sequential verification
 
-Requires global frozen A-F plus the five complete outer-heldout F surfaces above.
+Requires global frozen A-F plus the five complete outer-heldout F surfaces above. Global and fold-local G validate `revision/frozen_revision_mode.json`; utility targets use that exact F0/F1/F2 generation mode.
 
 ```bash
 ./sara_env/bin/python scripts/week9/run_w9g_adaptive_ke.py \
@@ -150,9 +199,7 @@ For each outer fold, run G training with `--paper-fold i --fold-role train --fre
 
 ## W9-H: final frontier
 
-Requires all global FIT freezes plus outer A-G freezes and held-out outcomes. B0/B1 reuse canonical k4/k6; B2/B3 use real W8 E1 and the frozen selected E5 replay; B4 requires a genuine QCLA-1 paper-OOF export. No full-FIT QCLA scores are accepted as held-out results.
-
-**Current artifact gap:** the repository contains QCLA-1 INTERNAL-VAL outcomes, but no QCLA-1 FIT-OOF export. Set `baselines.qcla_fit_oof` in all relevant YAMLs before starting H. Its JSONL rows require `question_id,paper_id,fold,prediction,prompt_tokens,cumulative_prompt_tokens,generated_tokens,generation_passes,generation_latency_sec`. The matching `.oof.json` sidecar must have `paper_grouped:true`, `training_split:"fit"` and `folds:{"0":{"training_papers":[...],"heldout_papers":[...]},...}` from real training. Fold QCLA training must exclude ALL outer-heldout papers. This implementation does not retune or overwrite W8 systems. Missing artifacts raise FileNotFoundError.
+Requires all global FIT freezes plus outer A-G freezes and held-out outcomes. Core method selection retains semantic k4/k6 and W9 B5–B9 (+ B10 with complete coverage). F0/F1/F2 are also reported as controlled ablations; they do not silently override the F-frozen final mode. The baseline registry adds all available same-split historical families to reporting, with separate main, extended and unpaired/missing tables. Missing QCLA FIT-OOF is no longer a global H blocker; a full-FIT QCLA export cannot enter honest OOF selection. W8 original_SARA_G0 must come from final H/J predictions and retain its actual frozen policy/prompt provenance. Earlier E1/E5 remain legacy code adapters, never substitutes for that baseline.
 
 For each fold:
 
@@ -161,7 +208,7 @@ For each fold:
   --split fit --config configs/week9/w9h.yaml --resume --paper-fold 0 --fold-role heldout
 ```
 
-Repeat with fold indices 1-4 after their prerequisites. This evaluates B0-B9 and B10 only where the fold's G passed. B10 enters the global frontier only with complete outer-fold coverage.
+Repeat with fold indices 1-4 after their prerequisites. This evaluates the core W9 policies, reports F0/F1/F2 ablations, and includes B10 only where the fold's G passed. B10 enters the global frontier only with complete outer-fold coverage.
 
 Collect verified OOF outcomes, apply the .003 tolerance ONCE globally, and freeze the winning architecture using its FULL-FIT frozen components:
 
@@ -174,7 +221,7 @@ Open `notebooks/week9/week9h_final.ipynb`. Important comparisons use 10,000 pair
 
 ## INTERNAL-VAL and DEV confirmation
 
-Freeze each phase on FIT FIRST. Then run that phase on INTERNAL-VAL, in A→H order, by replacing `--split fit` with `--split internal_val` and omitting `--freeze`. No component is reselected. H additionally requires its global FIT-OOF final freeze before confirmation. DEV similarly uses `--split dev`; H requires explicit real B2/B3/QCLA DEV exports when unavailable. DEV is inspected, not blind. Gold annotations are read for evaluation only after inference.
+Freeze each phase on FIT FIRST. Then run that phase on INTERNAL-VAL, in A→H order, by replacing `--split fit` with `--split internal_val` and omitting `--freeze`. No component is reselected. H additionally requires its global FIT-OOF final freeze before confirmation. DEV similarly uses `--split dev`; H reports available same-split registered baselines and lists missing historical predictions separately; no required row is fabricated. DEV is inspected, not blind. Gold annotations are read for evaluation only after inference.
 
 ## Explicit final TEST interface (DO NOT RUN during implementation)
 
@@ -192,5 +239,13 @@ Every phase supports `--split --config --resume --smoke-limit --seed --start-ind
 - Evidence density is a coarse paragraph overlap proxy, not exact-token annotation.
 - Long MiniLM inputs use explicit mean pooling over encoder windows; this is part of the documented project variant.
 - Saved initial k4 continuation IDs are used on FIT/INTERNAL-VAL. Where original continuation IDs are absent, retokenized counts are explicitly labelled; some old W8 promotion generated counts remain null.
-- No GPU generator call has been smoke-tested in this implementation session. Run a bounded B smoke only AFTER A is fully inspected and frozen, and A full candidate rows exist.
-- Full W8 test collection has a pre-existing missing `compute_outcome_weights` import in `test_w8g_repaired.py`; the other 82 tests pass.
+- W9-PRE has bounded textual GPU smoke evidence; no full W9 generation experiment has been run. This does not qualify the complete A→H SARA pipeline. Run a bounded B smoke only AFTER A is fully inspected and frozen, and A full candidate rows exist.
+- All 82 W8 tests present on `gagan` pass. This branch does not contain `test_w8g_repaired.py`; no claim is made about tests from another branch.
+
+## Additional bounded DeepSeek precision diagnostic
+
+```bash
+./sara_env/bin/python scripts/week9/run_w9pre_models.py --stage smoke --model M3 --config configs/week9/w9pre_deepseek_nf4_fp32.yaml --smoke-limit 1 --resume
+```
+
+This records `nf4_fp32` separately: NF4 weights, double quantization, FP32 compute and unquantized modules, with all generated tokens charged. It is not reported as FP16/NF4. A numerical PASS without an identifiable final answer is not interface qualification. Increasing a reasoning budget would be a new explicit FIT-only configuration with a new cache identity; no extra budget has been hidden in these results.

@@ -1,0 +1,72 @@
+{
+  "models": [
+    {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "local_cache_path": "/home/gunavenkat/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+      "download_status": "COMPLETE",
+      "disk_size": 15231271888,
+      "license": "Apache-2.0",
+      "gated": false,
+      "access_status": "existing official snapshot verified"
+    },
+    {
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+      "local_cache_path": "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a",
+      "download_status": "COMPLETE",
+      "disk_size": 14483498016,
+      "license": "Apache-2.0",
+      "gated": false,
+      "access_status": "existing official snapshot verified"
+    },
+    {
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": null,
+      "local_cache_path": null,
+      "download_status": "ACCESS_OR_NETWORK_ERROR",
+      "disk_size": null,
+      "license": "Llama-3.1",
+      "gated": true,
+      "access_status": "GatedRepoError",
+      "error": "401 Client Error. (Request ID: Root=1-6ad7a8d1-2a1633ba7b094e1b340b28a8;b897874a-b66f-4e8a-9ce0-5fba92067447)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct/resolve/0e9e39f249a16976918f6564b8830bc894c89659/model.safetensors.index.json.\nAccess to model meta-llama/Llama-3.1-8B-Instruct is restricted. You must have access to it and be authenticated to access"
+    },
+    {
+      "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+      "revision": "916b56a44061fd5cd7d6a8fb632557ed4f724f60",
+      "local_cache_path": "/home/gunavenkat/.cache/huggingface/hub/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-7B/snapshots/916b56a44061fd5cd7d6a8fb632557ed4f724f60",
+      "download_status": "COMPLETE",
+      "disk_size": 15231271850,
+      "license": "MIT (upstream Qwen Apache-2.0)",
+      "gated": false,
+      "access_status": "official snapshot verified",
+      "official_weight_bytes": 15231271850,
+      "free_disk_before": 38011404288
+    },
+    {
+      "model_id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "local_cache_path": null,
+      "download_status": "INSUFFICIENT_DISK",
+      "disk_size": null,
+      "license": "Apache-2.0",
+      "gated": false,
+      "access_status": "metadata accessible",
+      "official_weight_bytes": 16381516776,
+      "free_disk_before": 22770769920
+    },
+    {
+      "model_id": "google/gemma-3-12b-it",
+      "revision": null,
+      "local_cache_path": null,
+      "download_status": "ACCESS_OR_NETWORK_ERROR",
+      "disk_size": null,
+      "license": "Gemma terms",
+      "gated": true,
+      "access_status": "GatedRepoError",
+      "error": "401 Client Error. (Request ID: Root=1-6ad7a984-7aaaea6c5fd55156253ac9a1;f5a3b28b-2b91-4eb8-9a78-26120aba3b2d)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-3-12b-it/resolve/96b6f1eccf38110c56df3a15bffe176da04bfd80/model.safetensors.index.json.\nAccess to model google/gemma-3-12b-it is restricted. You must have access to it and be authenticated to access it. Please log in."
+    }
+  ],
+  "one_model_at_a_time": true,
+  "no_cache_deleted": true
+}

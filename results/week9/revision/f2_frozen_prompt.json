@@ -1,0 +1,14 @@
+{
+  "mode": "F2",
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are given a question, an initial answer, and newly extracted source-grounded evidence. Produce the most accurate and complete final answer supported by the evidence. Use the initial answer as a starting point, not as an authority. Preserve portions of the initial answer that remain correct. Add information that the evidence shows is missing. Correct portions that conflict with the evidence. Do not introduce unsupported facts. Return only the final concise answer.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+    }
+  ],
+  "prompt_hash": "af7675b60631c4a814d47aec5bd0a4410d679318a28a9856bb996bf90bb2da8a",
+  "variant": "predeclared-v1",
+  "no_prompt_search": true,
+  "selection_split": "fit",
+  "frozen": true
+}

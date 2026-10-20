@@ -20,7 +20,7 @@ from .evidence_alignment import retrieval_metrics
 from .selection import select, validate_selection
 from .cost_accounting import QueryCost
 from .extraction import extract
-from .revision import revise, revision_messages
+from .revision import revise, revision_messages, normalize_mode, read_revision_mode, write_revision_freeze
 from .backend import SaraBackend, CachedClient, checkpoint_hashes, load_tokenizer
 from .evaluation import answer_f1, annotate_outcome, policy_summary, choose_global, paired_paper_bootstrap, selector_diagnostics
 from .ke_surface import surface_analysis
@@ -77,7 +77,7 @@ def dependencies(cfg, phase, split):
     if split != 'fit' and not (phase == 'h' and split == 'fit_heldout'):
         frozen[phase] = load_frozen(frozen_path(cfg, phase), phase)
     for artifact in frozen.values():
-        if any(cfg[k] != value for k,value in artifact['protocol'].items()):
+        if any(cfg.get(k) != value for k,value in artifact['protocol'].items()):
             raise ValueError('Backend/decoding/controlled scoring differs from FIT-frozen components')
     return frozen
 
@@ -102,18 +102,14 @@ def build_identity(cfg, phase, split, seed, paths, frozen, artifact_split=None):
         p = rows_path(cfg, name, artifact_split or split)
         if name not in ('g',) and p.exists():
             inputs.append(p)
-    if phase == 'h' and split in ('fit','internal_val'):
-        baseline_dir = ROOT / 'results/week8/w8e_controller'
-        inputs.append(baseline_dir/'frozen_controller.json')
-        selected = json.loads((baseline_dir/'frozen_controller.json').read_text())['selected_policy']
-        suffix = 'fit_oof' if split=='fit' else 'internal_val'
-        inputs.extend(baseline_dir/f'{name}_{suffix}_replay.csv' for name in ('E1',selected))
-        qcla_path = cfg['baselines'].get('qcla_fit_oof' if split=='fit' else 'qcla_internal_val')
-        if not qcla_path:
-            raise FileNotFoundError('H requires a real QCLA-1 FIT OOF export; configure baselines.qcla_fit_oof')
-        inputs.append(resolve(qcla_path))
-        if split=='fit':
-            inputs.extend([resolve(qcla_path).with_suffix('.oof.json'),baseline_dir/'gate_paper_folds.csv'])
+    if phase=='h':
+        from .baseline_registry import baseline_source_paths
+        inputs.extend(baseline_source_paths())
+        inputs.extend(resolve(p) for p in cfg.get('generator_robustness_exports',[]))
+        if cfg.get('generator_robustness_exports'):
+            inputs.append(resolve(cfg.get('robustness_panel','results/week9/preflight/frozen_model_panel.json')))
+    if cfg.get('textual_model_roles'):
+        inputs.append(resolve(cfg['textual_model_roles']['frozen_panel']))
     models = checkpoint_hashes(cfg)
     models.update(encoder_fingerprints(cfg))
     for artifact in frozen.values():
@@ -258,14 +254,16 @@ def interventions(phase, cfg, frozen):
             format=f, revision=False) for i, f in enumerate(('extractive','structured','sane_blueprint'))]
     if phase == 'f':
         return [dict(policy=f'F{i}-K_E={k}', selector=selector, evidence_k=k, representation='draft',
-            format=frozen['e']['settings']['format'], revision=bool(i)) for i in (0,1) for k in (0,1,2,3,4)]
+            format=frozen['e']['settings']['format'], revision=f'F{i}') for i in (0,1,2) for k in (0,1,2,3,4)]
     if phase == 'h':
         result = [dict(policy='B5-SANE-adapted', selector='SANE-adapted', evidence_k=count,
                        representation='query', revision=False, sane_reference=True)]
-        for i, r, revision in [(6,'raw',False),(7,'query',False),(8,'draft',False),(9,'draft',True)]:
+        for i, r, revision in [(6,'raw',False),(7,'query',False),(8,'draft',False),(9,'draft',read_revision_mode(cfg,frozen['f']))]:
             result.append(dict(policy='B'+str(i), selector=selector, evidence_k=count,
                 representation=r, revision=revision,
                 format=frozen['e']['settings']['format'] if i==9 else 'sane_blueprint'))
+        for mode in ('F0','F1','F2'):
+            result.append(dict(policy='W9-'+mode,selector=selector,evidence_k=count,representation='draft',format=frozen['e']['settings']['format'],revision=mode))
         return result
     raise ValueError(phase)
 
@@ -273,13 +271,20 @@ def interventions(phase, cfg, frozen):
 def run_intervention(record, pool, spec, encoder, backend, call_cache, embeddings, cfg, extraction_cache,
                      frozen_evidence=None, prepare_only=False):
     inf = record['inference']
-    prompt, comp, tokens = canonical_context(record, embeddings, backend.tokenizer, backend.device, backend.model.dtype)
+    textual=getattr(backend,'text_only',False)
+    if textual:
+        import torch
+        context_tokenizer=backend.canonical_tokenizer
+        prompt,comp,tokens=canonical_context(record,embeddings,context_tokenizer,'cpu',torch.float16)
+    else:
+        context_tokenizer=backend.tokenizer
+        prompt,comp,tokens=canonical_context(record,embeddings,backend.tokenizer,backend.device,backend.model.dtype)
     cost = QueryCost(initial_draft_prompt_tokens=tokens,
         initial_draft_generated_tokens=len(record['canonical'].get('saved_generated_token_ids',
-            backend.tokenizer.encode(inf['initial_draft'], add_special_tokens=False))),
+            context_tokenizer.encode(inf['initial_draft'], add_special_tokens=False))),
         final_prompt_tokens=tokens, retrieval_query_time=pool['retrieval_query_time'])
     cost.index_time_embedding_cost=pool.get('index_time_embedding_seconds')
-    selector_client = CachedClient(backend, call_cache, inf, cost, 'selector')
+    selector_client = CachedClient(backend, call_cache, inf, cost, 'selector',evidence_ids=[c['chunk_id'] for c in pool['candidates']])
     started = time.perf_counter()
     # Project surfaces use one fixed ranked prefix to make sequential states
     # well defined. The separately labelled SANE baseline retains exact k.
@@ -308,7 +313,7 @@ def run_intervention(record, pool, spec, encoder, backend, call_cache, embedding
                 dict(draft_aware=representation=='draft', format=format_name))
             ext = extraction_cache.rows.get(key)
             ext_cost = QueryCost(num_lm_calls=0)
-            client = CachedClient(backend, call_cache, inf, ext_cost, 'extraction')
+            client = CachedClient(backend, call_cache, inf, ext_cost, 'extraction',evidence_ids=ids)
             if frozen_evidence is not None:
                 ext = frozen_evidence
                 if ext['selected_chunk_ids'] != ids:
@@ -319,7 +324,8 @@ def run_intervention(record, pool, spec, encoder, backend, call_cache, embedding
                 ext = extraction_cache.put(key, dict(value, question_id=inf['question_id'], paper_id=inf['paper_id'],
                     extraction_prompt_tokens=ext_cost.extraction_prompt_tokens,
                     extraction_generated_tokens=ext_cost.extraction_generated_tokens,
-                    extraction_call_count=ext_cost.num_lm_calls, extraction_latency=client.latency))
+                    extraction_call_count=ext_cost.num_lm_calls, extraction_latency=client.latency,model_calls=ext_cost.model_calls))
+            cost.model_calls.extend(ext.get('model_calls',[]))
             cost.extraction_prompt_tokens += ext['extraction_prompt_tokens']
             cost.extraction_generated_tokens += ext['extraction_generated_tokens']
             cost.num_lm_calls += ext['extraction_call_count']
@@ -331,8 +337,8 @@ def run_intervention(record, pool, spec, encoder, backend, call_cache, embedding
         # Reference-style SANE answer sees evidence only; project regeneration also
         # retains canonical compressed context to isolate the intervention.
         revision_client = CachedClient(backend, call_cache, inf, cost, 'revision',
-            context=None if spec.get('sane_reference') else prompt,
-            retrieval_embeds=None if spec.get('sane_reference') else comp)
+            context=None if spec.get('sane_reference') or textual else prompt,
+            retrieval_embeds=None if spec.get('sane_reference') or textual else comp,evidence_ids=ids,revision_mode=normalize_mode(spec['revision']))
         proposed_prompt_tokens = (len(backend.tokenizer.encode(revision_client.prepare_prompt(
             revision_messages(inf, evidence, spec['revision'])))) if evidence.strip() else 0)
         result['proposed_features'] = online_features(inf, selected[-1], encoder,
@@ -377,7 +383,10 @@ def run_generation(cfg, phase, records, paths, frozen, cache, call_cache, extrac
             if key in cache.rows:
                 continue
             if backend is None:
-                backend = SaraBackend(cfg)
+                if cfg.get('textual_model_roles'):
+                    from .text_model_roles import TextRoleBackend
+                    backend=TextRoleBackend(cfg)
+                else:backend=SaraBackend(cfg)
                 encoder = LocalEncoder(cfg['encoder'],cfg['encoder_device'])
             # F0/F1 retrieve the SAME extraction artifact committed by E for the
             # chosen K, and otherwise commit once then reuse across F0/F1 prefixes.
@@ -398,6 +407,7 @@ def run_generation(cfg, phase, records, paths, frozen, cache, call_cache, extrac
             row = run_intervention(record,pool,spec,encoder,backend,call_cache,
                 embeddings,cfg,extraction_cache,frozen_ext)
             cache.put(key,row)
+    if backend is not None and hasattr(backend,'close'):backend.close()
     return {}
 
 
@@ -405,8 +415,8 @@ def run_g(cfg, split, frozen, directory, cache, headroom_rows=None, allowed_qids
     """Replay true sequential prefix outcomes; labels train only inside FIT folds."""
     import joblib
     all_rows = load_phase(cfg, 'f', split)
-    mode = frozen['f']['settings']['revision']
-    rows = [r for r in all_rows if r['specification']['revision'] == mode]
+    mode = read_revision_mode(cfg,frozen['f'])
+    rows = [r for r in all_rows if normalize_mode(r['specification']['revision']) == mode]
     if allowed_qids is not None:
         rows = [r for r in rows if r['question_id'] in allowed_qids]
     by_key = {(r['question_id'],r['evidence_k']):r for r in rows}
@@ -425,7 +435,7 @@ def run_g(cfg, split, frozen, directory, cache, headroom_rows=None, allowed_qids
         gate['analysis_role'] = 'outer_fit_oof' if headroom_rows is not None else 'outer_training_only'
         atomic_json(directory/'w9g_gate.json',gate)
         if not gate['proceed']:
-            return dict(status=gate['status'], gate=gate)
+            return dict(status=gate['status'], gate=gate,revision=mode)
         actions = training_actions(rows)
         predictions, fold_ids, models, model = train_oof(actions,cfg['adaptive']['folds'])
         actions.assign(predicted_utility=predictions,fold=fold_ids).to_csv(directory/'fit_oof_actions.csv',index=False)
@@ -451,7 +461,7 @@ def run_g(cfg, split, frozen, directory, cache, headroom_rows=None, allowed_qids
         source = by_key[(decision['question_id'],decision['evidence_k'])]
         if source['selected_chunk_ids']!=decision['selected_chunk_ids']:
             raise ValueError('Sequential prefix identity differs from measured outcome')
-        key = cache.key(source['question_id'],source['paper_id'],decision['selected_chunk_ids'],'sequential_stop')
+        key = cache.key(source['question_id'],source['paper_id'],decision['selected_chunk_ids'],dict(operation='sequential_stop',revision_mode=mode))
         attempted = [by_key[(decision['question_id'],j)] for j in range(1,decision['attempted_count']+1)]
         # Deployed verifier proposes/extracts each prefix, then generates once.
         # Count rejected-proposal extraction and all earlier proposal calls too.
@@ -464,6 +474,9 @@ def run_g(cfg, split, frozen, directory, cache, headroom_rows=None, allowed_qids
         cost.selector_generated_tokens=first['selector_generated_tokens']
         cost.num_lm_calls=1+int(first['selector_prompt_tokens']>0)+sum(r['extraction']['extraction_call_count'] for r in attempted)+int(cost.revision_prompt_tokens>0)
         cost.extraction_latency=sum(r['extraction']['extraction_latency'] for r in attempted)
+        cost.model_calls=[c for c in first.get('model_calls',[]) if c.get('stage')=='selector']
+        cost.model_calls.extend(c for r in attempted for c in r.get('extraction',{}).get('model_calls',[]))
+        cost.model_calls.extend(c for c in source.get('model_calls',[]) if c.get('stage')=='revision')
         cache.put(key,dict(source,**cost.to_dict(),policy='SequentialStop',decision=decision,
             analysis_role='paper_grouped_verifier_oof' if split=='fit' else 'confirmation',
             verifier_latency=None, verifier_latency_note='Cached replay; verifier overhead not measured'))
@@ -471,7 +484,7 @@ def run_g(cfg, split, frozen, directory, cache, headroom_rows=None, allowed_qids
                 lambda_cost=cfg['adaptive']['lambda_cost'])
 
 
-def baseline_rows(cfg, split, records, tokenizer, paths, required_policies=('B0','B1','B2','B3','B4')):
+def baseline_rows(cfg, split, records, tokenizer, paths, required_policies=('B0','B1')):
     """Strict adapters for real frozen baselines. Missing OOF QCLA is a blocker."""
     canonical = read_jsonl(paths['canonical'])
     wanted = {r['inference']['question_id']:r for r in records}
@@ -630,13 +643,18 @@ def summarize(cfg, phase, split, rows, directory, extra, records, frozen):
             atomic_json(directory/'w9e_qualitative_sample.json',sample)
         if phase=='f':
             atomic_json(directory/'w9f_utilization_comparisons.json',
-                {str(k):paired_paper_bootstrap(by_policy[f'F1-K_E={k}'],by_policy[f'F0-K_E={k}'],seed=cfg['_seed'])
-                 for k in (1,2,3,4)})
+                {f'{a}-{b}/K={k}':paired_paper_bootstrap(by_policy[f'{a}-K_E={k}'],by_policy[f'{b}-K_E={k}'],seed=cfg['_seed'])
+                 for a,b in [('F1','F0'),('F2','F0'),('F2','F1')] for k in (1,2,3,4)})
         if phase=='h':
+            from .baseline_registry import final_tables
+            final_tables(cfg,split,records,rows,directory)
             atomic_json(directory/'w9h_paired_bootstrap.json',
                 {name:paired_paper_bootstrap(group,by_policy['B0'],seed=cfg['_seed']) for name,group in by_policy.items() if name!='B0'})
         if split=='fit':
             options=summaries
+            if phase=='h':
+                # External trained baselines are reported, not selected as honest outer-OOF W9 architectures.
+                options=[r for r in summaries if r['policy'] not in ('B2','B3','B4') and not r['policy'].startswith('W9-F')]
             if phase=='c':
                 # More elaborate selectors must clear the global tolerance over DraftSemantic.
                 baseline=next(s for s in summaries if s['policy']=='DraftSemantic')
@@ -644,7 +662,7 @@ def summarize(cfg, phase, split, rows, directory, extra, records, frozen):
             if phase=='f':
                 # One controlled revision decision, using the FIT-frozen K from B.
                 k=frozen['b']['settings']['evidence_k']
-                options=[s for s in summaries if s['policy'] in (f'F0-K_E={k}',f'F1-K_E={k}')]
+                options=[s for s in summaries if s['policy'] in (f'F0-K_E={k}',f'F1-K_E={k}',f'F2-K_E={k}')]
             winner=choose_global(options,cfg['quality_tolerance'])
             chosen=by_policy[winner['policy']][0]
             settings=dict(policy=winner['policy'])
@@ -655,7 +673,7 @@ def summarize(cfg, phase, split, rows, directory, extra, records, frozen):
             if phase=='e':
                 settings.update(format=chosen['specification']['format'])
             if phase=='f':
-                settings.update(revision=chosen['specification']['revision'])
+                settings.update(revision=normalize_mode(chosen['specification']['revision']))
             if phase=='h':
                 # Outer folds may select different K/format settings. Deploy the
                 # selected architecture with its FULL-FIT frozen components.
@@ -692,6 +710,8 @@ def main(phase, argv=None):
     args=parser(phase).parse_args(argv)
     branch_guard()
     cfg=load_config(args.config)
+    if phase=='h' and cfg.get('textual_model_roles'):
+        raise ValueError('H method comparison keeps canonical SARA fixed; use separately verified generator_robustness_exports')
     if cfg['phase']!=phase:
         raise ValueError('Wrong phase config')
     cfg['_seed']=args.seed
@@ -831,6 +851,7 @@ def main(phase, argv=None):
             raise ValueError('H freeze requires --collect-oof; ordinary FIT outcomes are not held out')
         freeze(frozen_path(cfg,phase),phase,settings,manifest_value,complete,
             analysis_role='fit_oof' if phase=='h' else 'fit_fixed')
+        if phase=='f':write_revision_freeze(cfg,settings)
     print(f'W9-{phase.upper()}: {len(rows)} saved real rows; complete={complete}; artifacts={directory}')
 
 
@@ -868,7 +889,7 @@ def collect_oof(cfg, records):
     for policy in policies:
         if {r['question_id'] for r in all_rows if r['policy']==policy}!=set(expected):
             raise ValueError('Incomplete outer OOF policy coverage')
-    required={'B0','B1','B2','B3','B4','B5-SANE-adapted','B6','B7','B8','B9'}
+    required={'B0','B1','B5-SANE-adapted','B6','B7','B8','B9','W9-F0','W9-F1','W9-F2'}
     if not required<=policies:
         raise ValueError('Missing required final frontier policy')
     # Adaptive proceeds in some outer folds only: no full-coverage B10 means it
@@ -969,7 +990,7 @@ def run_online_adaptive(record,pool,encoder,backend,calls,embeddings,cfg,extract
     verifier_seconds=0.
     for count in range(1,min(4,len(pool['candidates']))+1):
         spec=dict(policy='B10',selector=frozen['c']['settings']['selector'],evidence_k=count,
-            representation='draft',format=frozen['e']['settings']['format'],revision=frozen['f']['settings']['revision'])
+            representation='draft',format=frozen['e']['settings']['format'],revision=read_revision_mode(cfg,frozen['f']))
         prepared=run_intervention(record,pool,spec,encoder,backend,calls,embeddings,cfg,extraction_cache,prepare_only=True)
         row,proposal_cost=prepared['result'],prepared['cost']
         # One ranked selection for all prefixes; cache reuse does not multiply its
@@ -979,6 +1000,7 @@ def run_online_adaptive(record,pool,encoder,backend,calls,embeddings,cfg,extract
             cost.selector_generated_tokens=proposal_cost.selector_generated_tokens
             cost.num_lm_calls+=int(proposal_cost.selector_prompt_tokens>0)
             cost.selection_latency=proposal_cost.selection_latency
+        cost.model_calls.extend(c for c in proposal_cost.model_calls if c.get('stage')=='extraction' or count==1 and c.get('stage')=='selector')
         cost.extraction_prompt_tokens+=proposal_cost.extraction_prompt_tokens
         cost.extraction_generated_tokens+=proposal_cost.extraction_generated_tokens
         cost.num_lm_calls+=row['extraction']['extraction_call_count']
@@ -996,8 +1018,8 @@ def run_online_adaptive(record,pool,encoder,backend,calls,embeddings,cfg,extract
         result=dict(question_id=inf['question_id'],paper_id=inf['paper_id'],policy='B10',prediction=inf['initial_draft'],
             evidence_k=0,selected_chunk_ids=[],evidence_text='',faithfulness=None,promotion_rate=0.,extraction_rate=bool(proposals))
     else:
-        client=CachedClient(backend,calls,inf,cost,'revision',context=prompt,retrieval_embeds=comp)
-        result=dict(selected,prediction=revise(inf,selected['evidence_text'],client,frozen['f']['settings']['revision']))
+        client=CachedClient(backend,calls,inf,cost,'revision',context=prompt,retrieval_embeds=comp,evidence_ids=selected['selected_chunk_ids'],revision_mode=read_revision_mode(cfg,frozen['f']))
+        result=dict(selected,prediction=revise(inf,selected['evidence_text'],client,read_revision_mode(cfg,frozen['f'])))
         cost.revision_latency=client.latency
     result.update(cost.to_dict(),policy='B10',proposals=proposals,verifier_latency=verifier_seconds,
                   measured_end_to_end_latency=None)
@@ -1022,8 +1044,8 @@ def collect_f_headroom(cfg, records):
             m=json.loads((phase_dir(local,phase,'fit')/f'w9{phase}_manifest.json').read_text())
             if m['paper_fold']['training_papers']!=meta['training_papers']:
                 raise ValueError('Headroom component was selected on held-out papers')
-        mode=load_frozen(frozen_path(local,'f'),'f')['settings']['revision']
-        rows=[r for r in load_phase(local,'f','fit_heldout') if r['specification']['revision']==mode]
+        mode=read_revision_mode(local,load_frozen(frozen_path(local,'f'),'f'))
+        rows=[r for r in load_phase(local,'f','fit_heldout') if normalize_mode(r['specification']['revision'])==mode]
         for r in rows:
             key=(r['question_id'],r['evidence_k'])
             if key in seen or expected.get(r['question_id'])!=r['paper_id'] or r['paper_id'] not in meta['heldout_papers']:

@@ -1,0 +1,13 @@
+{
+  "latest_split": "dev",
+  "split_manifest": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/dev/baseline_manifest.json",
+  "families": [
+    "ORIGINAL_SARA",
+    "BM25_FIXED",
+    "SEMANTIC_FIXED",
+    "W8_INTERVENTION",
+    "HC_LORA",
+    "W8_SECONDARY"
+  ],
+  "note": "Split-specific manifests preserve separate query sets."
+}

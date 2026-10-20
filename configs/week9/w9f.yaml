@@ -88,3 +88,9 @@ baselines:
   qcla_dev: null
   qcla_test: null
 phase: f
+first_pass_sara_model: mistralai/Mistral-7B-Instruct-v0.2
+textual_model_roles: null
+revision_modes:
+- F0
+- F1
+- F2

@@ -16,7 +16,9 @@ def annotate_outcome(row, inference, evaluation):
     changed = row['prediction'].strip() != inference['initial_draft'].strip()
     evidence = row.get('evidence_text', '')
     answer_words = set(row['prediction'].lower().split()) - set(inference['initial_draft'].lower().split())
-    return dict(row, f1=score, initial_f1=base, delta_f1=score-base,
+    from src.week6.evaluation import compute_qa_answer_metrics
+    em=compute_qa_answer_metrics(row['prediction'],evaluation['answers'],evaluation['answers_reformatted'])['exact_match']
+    return dict(row, exact_match=float(em), f1=score, initial_f1=base, delta_f1=score-base,
         answer_changed=changed, help=score-base > .01, hurt=score-base < -.01,
         unchanged_and_correct=not changed and score >= 1-1e-8,
         unchanged_but_incomplete=not changed and score < 1-1e-8,
@@ -35,7 +37,7 @@ def policy_summary(rows):
     selected = df[df.evidence_actual_count > 0] if 'evidence_actual_count' in df else df
     result['help_selected_rate'] = float(selected.help.mean()) if len(selected) and 'help' in selected else None
     result['hurt_selected_rate'] = float(selected.hurt.mean()) if len(selected) and 'hurt' in selected else None
-    for name in ['help', 'hurt', 'answer_changed', 'unchanged_and_correct', 'unchanged_but_incomplete',
+    for name in ['exact_match','help', 'hurt', 'answer_changed', 'unchanged_and_correct', 'unchanged_but_incomplete',
         'beneficial_revision', 'harmful_revision', 'evidence_utilization_proxy',
         'final_prompt_tokens', 'total_query_prompt_tokens', 'total_query_generated_tokens', 'num_lm_calls',
         'retrieval_query_time', 'selection_latency', 'extraction_latency', 'revision_latency',

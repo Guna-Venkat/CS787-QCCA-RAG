@@ -1,0 +1,4 @@
+# Private model reasoning is retained locally for audit, not publication.
+**/private_raw_outputs.jsonl
+# Superseded diagnostic caches remain on disk for audit only.
+archive*/

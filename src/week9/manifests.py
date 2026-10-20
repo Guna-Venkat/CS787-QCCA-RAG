@@ -29,6 +29,8 @@ def freeze(path, phase, settings, run_manifest, complete, analysis_role='fit_fix
             'encoder','checkpoint','max_new_tokens','extraction_max_tokens','query_draft_alpha')},
         output_hashes={p: file_hash(p) for p in run_manifest['output_paths']},
         timestamp=datetime.now(timezone.utc).isoformat())
+    if phase in 'defgh' and run_manifest['config'].get('textual_model_roles'):
+        value['protocol']['textual_model_roles']=run_manifest['config']['textual_model_roles']
     path = Path(path)
     if path.exists() and json.loads(path.read_text())['settings_hash'] != value['settings_hash']:
         raise FileExistsError('Refusing to overwrite a different frozen decision')
