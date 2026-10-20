@@ -1,0 +1,9 @@
+variant,context,queries,downstream_f1,gain_over_original_same_policy,help_rate_vs_original,hurt_rate_vs_original,mean_final_prompt_tokens,mean_cumulative_prompt_tokens,mean_estimated_cumulative_generation_latency_sec,generation_promote_rate,end_to_end_latency_sec
+original_SARA,frozen_controller,2,0.6333333333333333,0.0,0.0,0.0,925.0,1456.5,3.731882333755493,0.5,
+original_SARA,k4,2,0.6333333333333333,0.0,0.0,0.0,812.0,812.0,2.1462334394454956,0.0,
+uniform_SFT,frozen_controller,2,0.6333333333333333,0.0,0.0,0.0,925.0,1456.5,3.620029008947313,0.5,
+uniform_SFT,k4,2,0.6333333333333333,0.0,0.0,0.0,812.0,812.0,2.095122871513013,0.0,
+HC_LoRA,frozen_controller,2,0.6333333333333333,0.0,0.0,0.0,925.0,1456.5,3.6501056609558873,0.5,
+HC_LoRA,k4,2,0.6333333333333333,0.0,0.0,0.0,812.0,812.0,2.1334618425462395,0.0,
+OW_LoRA,frozen_controller,2,0.6333333333333333,0.0,0.0,0.0,925.0,1456.5,3.6761811324977316,0.5,
+OW_LoRA,k4,2,0.6333333333333333,0.0,0.0,0.0,812.0,812.0,2.155942073499318,0.0,

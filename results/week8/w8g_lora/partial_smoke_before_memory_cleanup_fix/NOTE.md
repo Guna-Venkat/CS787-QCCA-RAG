@@ -1,0 +1,1 @@
+Initial real uniform-SFT training and generation passed. The independent-next-variant memory check caught retained references from Python locals() inspection. Source cleanup was corrected; this partial run is superseded by the complete three-variant smoke. No synthetic data are present.

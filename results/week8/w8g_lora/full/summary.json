@@ -1,0 +1,250 @@
+{
+  "fingerprint": "01f28da49f5c586dc2bb7927e0f414fcf99955f93145a321098de2e08ec291b3",
+  "smoke_only": false,
+  "settings": {
+    "smoke": false,
+    "epochs": 2,
+    "seed": 42,
+    "gamma": 2.0,
+    "learning_rate": 0.0001,
+    "gradient_accumulation_steps": 16,
+    "r": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "variants": [
+      "original_SARA",
+      "uniform_SFT",
+      "HC_LoRA",
+      "OW_LoRA"
+    ],
+    "frozen_policy": "E5-DraftSemantic",
+    "device": "cuda"
+  },
+  "results": {
+    "original_SARA": {
+      "frozen_controller": {
+        "queries": 342,
+        "downstream_f1": 0.4000796417305824,
+        "gain_over_original_same_policy": 0.0,
+        "help_rate_vs_original": 0.0,
+        "hurt_rate_vs_original": 0.0,
+        "mean_final_prompt_tokens": 1017.593567251462,
+        "mean_cumulative_prompt_tokens": 1416.111111111111,
+        "mean_estimated_cumulative_generation_latency_sec": 3.9312970275767367,
+        "generation_promote_rate": 0.42105263157894735,
+        "end_to_end_latency_sec": null
+      },
+      "k4": {
+        "queries": 342,
+        "downstream_f1": 0.38906146073669545,
+        "gain_over_original_same_policy": 0.0,
+        "help_rate_vs_original": 0.0,
+        "hurt_rate_vs_original": 0.0,
+        "mean_final_prompt_tokens": 935.1578947368421,
+        "mean_cumulative_prompt_tokens": 935.1578947368421,
+        "mean_estimated_cumulative_generation_latency_sec": 2.6917792642325686,
+        "generation_promote_rate": 0.0,
+        "end_to_end_latency_sec": null
+      }
+    },
+    "uniform_SFT": {
+      "frozen_controller": {
+        "queries": 342,
+        "downstream_f1": 0.4123400135787131,
+        "gain_over_original_same_policy": 0.012260371848130584,
+        "help_rate_vs_original": 0.08771929824561403,
+        "hurt_rate_vs_original": 0.05555555555555555,
+        "mean_final_prompt_tokens": 1017.593567251462,
+        "mean_cumulative_prompt_tokens": 1416.111111111111,
+        "mean_estimated_cumulative_generation_latency_sec": 4.0463583956857905,
+        "generation_promote_rate": 0.42105263157894735,
+        "end_to_end_latency_sec": null
+      },
+      "k4": {
+        "queries": 342,
+        "downstream_f1": 0.406721600310514,
+        "gain_over_original_same_policy": 0.017660139573818533,
+        "help_rate_vs_original": 0.19883040935672514,
+        "hurt_rate_vs_original": 0.1608187134502924,
+        "mean_final_prompt_tokens": 935.1578947368421,
+        "mean_cumulative_prompt_tokens": 935.1578947368421,
+        "mean_estimated_cumulative_generation_latency_sec": 2.8871331697344176,
+        "generation_promote_rate": 0.0,
+        "end_to_end_latency_sec": null
+      }
+    },
+    "HC_LoRA": {
+      "frozen_controller": {
+        "queries": 342,
+        "downstream_f1": 0.409214702647154,
+        "gain_over_original_same_policy": 0.009135060916571574,
+        "help_rate_vs_original": 0.08771929824561403,
+        "hurt_rate_vs_original": 0.06140350877192982,
+        "mean_final_prompt_tokens": 1017.593567251462,
+        "mean_cumulative_prompt_tokens": 1416.111111111111,
+        "mean_estimated_cumulative_generation_latency_sec": 4.151085684841161,
+        "generation_promote_rate": 0.42105263157894735,
+        "end_to_end_latency_sec": null
+      },
+      "k4": {
+        "queries": 342,
+        "downstream_f1": 0.41502733428989314,
+        "gain_over_original_same_policy": 0.02596587355319773,
+        "help_rate_vs_original": 0.2134502923976608,
+        "hurt_rate_vs_original": 0.15204678362573099,
+        "mean_final_prompt_tokens": 935.1578947368421,
+        "mean_cumulative_prompt_tokens": 935.1578947368421,
+        "mean_estimated_cumulative_generation_latency_sec": 3.0466242693841172,
+        "generation_promote_rate": 0.0,
+        "end_to_end_latency_sec": null
+      }
+    },
+    "OW_LoRA": {
+      "frozen_controller": {
+        "queries": 342,
+        "downstream_f1": 0.40355296902445725,
+        "gain_over_original_same_policy": 0.0034733272938748424,
+        "help_rate_vs_original": 0.07309941520467836,
+        "hurt_rate_vs_original": 0.05847953216374269,
+        "mean_final_prompt_tokens": 1017.593567251462,
+        "mean_cumulative_prompt_tokens": 1416.111111111111,
+        "mean_estimated_cumulative_generation_latency_sec": 4.097549551683315,
+        "generation_promote_rate": 0.42105263157894735,
+        "end_to_end_latency_sec": null
+      },
+      "k4": {
+        "queries": 342,
+        "downstream_f1": 0.4039862772133389,
+        "gain_over_original_same_policy": 0.014924816476643468,
+        "help_rate_vs_original": 0.195906432748538,
+        "hurt_rate_vs_original": 0.14035087719298245,
+        "mean_final_prompt_tokens": 935.1578947368421,
+        "mean_cumulative_prompt_tokens": 935.1578947368421,
+        "mean_estimated_cumulative_generation_latency_sec": 2.9662299208909446,
+        "generation_promote_rate": 0.0,
+        "end_to_end_latency_sec": null
+      }
+    }
+  },
+  "history": {
+    "uniform_SFT": [
+      {
+        "epoch": 1,
+        "query_mean_weighted_nll": 1.0852132653348139,
+        "query_mean_unweighted_nll": 1.0852132653348139,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 11285.535833651084
+      },
+      {
+        "epoch": 2,
+        "query_mean_weighted_nll": 0.8924277213139125,
+        "query_mean_unweighted_nll": 0.8924277213139125,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 11326.814597951015
+      }
+    ],
+    "HC_LoRA": [
+      {
+        "epoch": 1,
+        "query_mean_weighted_nll": 1.0918287648309986,
+        "query_mean_unweighted_nll": 1.085634524543009,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 11851.506577492924
+      },
+      {
+        "epoch": 2,
+        "query_mean_weighted_nll": 0.90099919293075,
+        "query_mean_unweighted_nll": 0.8975249703210498,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 11870.289508851012
+      }
+    ],
+    "OW_LoRA": [
+      {
+        "epoch": 1,
+        "query_mean_weighted_nll": 1.0164582966522817,
+        "query_mean_unweighted_nll": 1.0875250335389648,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 12021.736903021927
+      },
+      {
+        "epoch": 2,
+        "query_mean_weighted_nll": 0.8331595109298267,
+        "query_mean_unweighted_nll": 0.9092086678327361,
+        "queries": 1746,
+        "only_new_adapter_gradients_verified": true,
+        "seconds": 12015.20893261407
+      }
+    ]
+  },
+  "training_proofs": {
+    "uniform_SFT": {
+      "fresh_SARA_initialization": true,
+      "zero_residual_identity_checks": 4,
+      "original_parameter_versions_unchanged": true,
+      "only_new_LoRA_trainable": true,
+      "trainable_params": 6815744,
+      "case_counts": {
+        "TYPE_A_HELPFUL": 528,
+        "TYPE_B_DISTRACTOR_SAFE": 230,
+        "TYPE_C_NEUTRAL": 988
+      },
+      "raw_FIT_weight_mean": 1.0
+    },
+    "HC_LoRA": {
+      "fresh_SARA_initialization": true,
+      "zero_residual_identity_checks": 4,
+      "original_parameter_versions_unchanged": true,
+      "only_new_LoRA_trainable": true,
+      "trainable_params": 6815744,
+      "case_counts": {
+        "TYPE_A_HELPFUL": 528,
+        "TYPE_B_DISTRACTOR_SAFE": 230,
+        "TYPE_C_NEUTRAL": 988
+      },
+      "raw_FIT_weight_mean": 1.434135166093929
+    },
+    "OW_LoRA": {
+      "fresh_SARA_initialization": true,
+      "zero_residual_identity_checks": 4,
+      "original_parameter_versions_unchanged": true,
+      "only_new_LoRA_trainable": true,
+      "trainable_params": 6815744,
+      "case_counts": {
+        "TYPE_A_HELPFUL": 528,
+        "TYPE_B_DISTRACTOR_SAFE": 230,
+        "TYPE_C_NEUTRAL": 988
+      },
+      "raw_FIT_weight_mean": 1.2925990599658321
+    }
+  },
+  "artifact_sha256": {
+    "original_SARA_predictions.jsonl": "5dd29ebd7efe261911121c85e4ea8e465c6c7ed16076d7e10b5303a6beafec0e",
+    "uniform_SFT.pt": "e60558b44ead91248190a606e4e727be04b4d9320ed3f2b9f123c58b2926c9c4",
+    "uniform_SFT_predictions.jsonl": "df78bd373d21825ce27bbb208d29cde1d59b9e1f092ce5f96bdcdbbc6e19456a",
+    "uniform_SFT_fit_examples.json": "da5a85c63040b39551b8fe511277b359fb4940b8dd698ac4974b2264cb09aa13",
+    "HC_LoRA.pt": "ba8775b25d25efe59bb9bf4a37c3ebc69d37e475b07dde2520abe5fa4bf33475",
+    "HC_LoRA_predictions.jsonl": "ed7c121dd26da0b3741c00610758d1be1c3b3a0376770338ccd7db11acd5c402",
+    "HC_LoRA_fit_examples.json": "14033752d6d9361482c9da9907bf11af7b3b0c2b45286c862de71897ec5f05b2",
+    "OW_LoRA.pt": "ca32ab4aa3086566f906e2345ea996b52c5f203dc800da25ab0d73d5008f5d14",
+    "OW_LoRA_predictions.jsonl": "ccb950340df23237bb6e3d379b3a241942ab71c26e587217284d7590dc856ad0",
+    "OW_LoRA_fit_examples.json": "df9feccedf3c2596663c6e331871c8edcd18e7bbca211546abf681233de5bc38",
+    "comparison.csv": "89b43bad81e6b71c0c63e1a30311c10e1f62a34d0c1b5b9549a386a3df1a4c94"
+  },
+  "no_validation_selection": true,
+  "TEST_used": false,
+  "frozen_policy_unchanged": true,
+  "evaluation_note": "Original policy and original draft are frozen. STOP returns original draft; only promoted revision uses adapted SARA. k4 is a separate adapted direct-generation experiment.",
+  "latency_note": "New pass timings and saved original-draft timings are components, not measured end-to-end deployment latency. Original baseline timing is cached historical data."
+}

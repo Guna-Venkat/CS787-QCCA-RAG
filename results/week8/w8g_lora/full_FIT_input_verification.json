@@ -1,0 +1,38 @@
+{
+  "uniform": {
+    "queries": 1746,
+    "case_counts": {
+      "TYPE_A_HELPFUL": 528,
+      "TYPE_B_DISTRACTOR_SAFE": 230,
+      "TYPE_C_NEUTRAL": 988
+    },
+    "max_training_input_tokens": 1560,
+    "max_target_tokens": 128,
+    "normalized_weight_mean": 1.0,
+    "all_compression_slots_checked": true
+  },
+  "hard_case": {
+    "queries": 1746,
+    "case_counts": {
+      "TYPE_A_HELPFUL": 528,
+      "TYPE_B_DISTRACTOR_SAFE": 230,
+      "TYPE_C_NEUTRAL": 988
+    },
+    "max_training_input_tokens": 1560,
+    "max_target_tokens": 128,
+    "normalized_weight_mean": 1.0,
+    "all_compression_slots_checked": true
+  },
+  "outcome_weighted": {
+    "queries": 1746,
+    "case_counts": {
+      "TYPE_A_HELPFUL": 528,
+      "TYPE_B_DISTRACTOR_SAFE": 230,
+      "TYPE_C_NEUTRAL": 988
+    },
+    "max_training_input_tokens": 1560,
+    "max_target_tokens": 128,
+    "normalized_weight_mean": 1.0,
+    "all_compression_slots_checked": true
+  }
+}

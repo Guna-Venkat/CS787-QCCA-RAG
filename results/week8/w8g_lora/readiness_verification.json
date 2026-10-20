@@ -1,0 +1,15 @@
+{
+  "week8_tests_passed": 93,
+  "real_gpu_smoke_variants": [
+    "uniform_SFT",
+    "HC_LoRA",
+    "OW_LoRA"
+  ],
+  "all_original_SARA_parameters_unchanged": true,
+  "nonzero_new_LoRA_gradients_verified": true,
+  "notebook_smoke_cells_executed": 4,
+  "notebook_errors": 0,
+  "full_FIT_examples_checked": 1746,
+  "full_training_executed": false,
+  "frozen_W8E_and_completed_W8F_fingerprints_unchanged": true
+}

@@ -1,0 +1,100 @@
+{
+  "type_counts": {
+    "TYPE_A_HELPFUL": 1,
+    "TYPE_B_DISTRACTOR_SAFE": 1,
+    "TYPE_C_NEUTRAL": 1
+  },
+  "raw_weight_mean": 1.6666666666666667,
+  "examples": [
+    {
+      "question_id": "10",
+      "paper_id": "1",
+      "case_type": "TYPE_A_HELPFUL",
+      "baseline_full_indices": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "full_indices": [
+        0,
+        6,
+        7,
+        8,
+        9
+      ],
+      "compressed_indices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "training_promoted_passage_index": 0,
+      "raw_weight": 2.0,
+      "weight": 1.2,
+      "max_delta": 0.15151515151515102,
+      "min_delta": -0.056818181818181004
+    },
+    {
+      "question_id": "1007",
+      "paper_id": "295",
+      "case_type": "TYPE_C_NEUTRAL",
+      "baseline_full_indices": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "full_indices": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "compressed_indices": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        9
+      ],
+      "training_promoted_passage_index": null,
+      "raw_weight": 1.0,
+      "weight": 0.6,
+      "max_delta": 0.0,
+      "min_delta": 0.0
+    },
+    {
+      "question_id": "1018",
+      "paper_id": "300",
+      "case_type": "TYPE_B_DISTRACTOR_SAFE",
+      "baseline_full_indices": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "full_indices": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "compressed_indices": [
+        0,
+        1,
+        5,
+        6,
+        8,
+        9
+      ],
+      "training_promoted_passage_index": null,
+      "raw_weight": 2.0,
+      "weight": 1.2,
+      "max_delta": 0.0,
+      "min_delta": -0.6666666666666661
+    }
+  ]
+}

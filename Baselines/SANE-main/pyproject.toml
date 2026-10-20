@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sane"
+version = "0.1.0"
+description = "Select-And-Extract: A Lightweight Plugin for Retrieval-Augmented Generation"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.0.0",
+    "numpy>=1.26.0",
+    "tiktoken>=0.5.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.66.0",
+    "datasets>=2.14",
+    "pymupdf>=1.23",
+]
+
+[project.optional-dependencies]
+full = [
+    "nltk>=3.8",
+]
+
+[tool.setuptools.packages.find]
+include = ["sane*"]

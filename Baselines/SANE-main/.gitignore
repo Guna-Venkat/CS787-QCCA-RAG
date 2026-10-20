@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+
+# Claude
+.claude/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+~/.mem-ds/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.env.local
+
+# Test outputs
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Benchmark data cache (downloaded datasets)
+data/
+*.csv
+*.jsonl
+.cache/
+cache/
+
+# Third-party libraries and benchmarks — clone via docs/setup.md
+third_party/
+
+# Generated outputs
+output/
+outputs/
+processed_data/
+
+# Partial downloads
+*.part
+omw-1.4/
+
+# Run logs
+logs/
+
+# Paper drafts
+docs/paper/

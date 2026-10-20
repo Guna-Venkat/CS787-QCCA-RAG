@@ -1,0 +1,36 @@
+llm:
+  model: deepseek-v4-flash
+  max_tokens: 65536
+  temperature: 0.0
+  max_retries: 1
+  retry_base_s: 1.0
+  retry_max_s: 30.0
+judge:
+  model: deepseek-v4-flash
+  max_tokens: 10
+  temperature: 0.0
+embedding:
+  provider: api
+  api:
+    model: Qwen3-Embedding-0.6B
+    dimension: 1024
+    api_key: not-needed
+method:
+  method: rag
+  k: 5
+  rag_user_only: true
+  rag_chunk_size: 2048
+  rag_recent_n: 3
+  w: 20
+  sane:
+    extraction_enabled: true
+    extraction_model: ''
+    extraction_base_url: ''
+    extraction_max_tokens: 4096
+    extraction_prompt: ''
+    selection_enabled: true
+    synopsis_keyword_top_n: 10
+    synopsis_show_keywords: true
+    synopsis_show_labels: true
+    synopsis_include_excerpt: true
+    synopsis_full_text: false

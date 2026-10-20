@@ -1,0 +1,7 @@
+{
+  "reason": "Old runner hardcoded +0.015 F1 gain and fabricated missing-data promotion records. These tables are not measured results.",
+  "removed": [
+    "results/week8/tables/w8g_ow_lora_results_smoke.csv",
+    "results/week8/archive_provisional_invalidated/tables/w8g_ow_lora_results_smoke.csv"
+  ]
+}

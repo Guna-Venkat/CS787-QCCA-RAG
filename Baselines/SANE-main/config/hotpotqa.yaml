@@ -1,0 +1,23 @@
+llm:
+  model: deepseek-v4-flash
+  max_tokens: 512
+  temperature: 0.0
+  max_retries: 1
+  retry_base_s: 1.0
+  retry_max_s: 30.0
+embedding:
+  provider: api
+  api:
+    model: Qwen3-Embedding-0.6B
+    dimension: 1024
+    api_key: not-needed
+method:
+  method: rag
+  rag_chunk_size: 512
+  k: 3
+  rag_user_only: false
+  w: 10
+  sane:
+    extraction_enabled: true
+    selection_enabled: true
+    synopsis_include_excerpt: true

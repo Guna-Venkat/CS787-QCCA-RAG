@@ -1,0 +1,29 @@
+{
+  "fingerprint": "b2e2c39af8754ff61d6ffcbc332298e373db924b48c773e2292b2a8416cf4fd3",
+  "smoke": true,
+  "epochs": 1,
+  "seed": 42,
+  "gamma": 2.0,
+  "learning_rate": 0.0001,
+  "gradient_accumulation_steps": 3,
+  "r": 8,
+  "alpha": 16,
+  "dropout": 0.05,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "variants": [
+    "original_SARA",
+    "uniform_SFT",
+    "HC_LoRA",
+    "OW_LoRA"
+  ],
+  "frozen_policy": "E5-DraftSemantic",
+  "device": "cuda",
+  "fit_queries": 3,
+  "validation_queries": 2,
+  "no_validation_selection": true
+}
