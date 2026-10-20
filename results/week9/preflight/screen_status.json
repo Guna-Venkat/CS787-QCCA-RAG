@@ -1,0 +1,44 @@
+[
+  {
+    "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+    "status": "PASS",
+    "precision": "fp16",
+    "peak_memory_allocated": 14582899200
+  },
+  {
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "status": "FAIL",
+    "precision": "fp16",
+    "peak_memory_allocated": 15344150016,
+    "peak_memory_reserved": 15565062144,
+    "dtype": "float16",
+    "quantization": "none",
+    "prompt_tokens": null,
+    "generated_tokens": null,
+    "reason": "RuntimeError: Numerically invalid generation scores; do not interpret this precision as a quality result"
+  },
+  {
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "status": "FAIL",
+    "precision": "int8",
+    "peak_memory_allocated": 8907489792,
+    "peak_memory_reserved": 14348713984,
+    "dtype": "float16",
+    "quantization": "bitsandbytes-LLM.int8",
+    "prompt_tokens": null,
+    "generated_tokens": null,
+    "reason": "RuntimeError: Numerically invalid generation scores; do not interpret this precision as a quality result"
+  },
+  {
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "status": "FAIL",
+    "precision": "nf4",
+    "peak_memory_allocated": 5744190976,
+    "peak_memory_reserved": 14405337088,
+    "dtype": "float16",
+    "quantization": "bitsandbytes-NF4-double-quant",
+    "prompt_tokens": null,
+    "generated_tokens": null,
+    "reason": "RuntimeError: Numerically invalid generation scores; do not interpret this precision as a quality result"
+  }
+]

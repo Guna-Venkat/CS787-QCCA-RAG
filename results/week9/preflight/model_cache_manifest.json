@@ -8,7 +8,7 @@
       "disk_size": 15231271888,
       "license": "Apache-2.0",
       "gated": false,
-      "access_status": "existing official snapshot verified"
+      "access_status": "official snapshot verified"
     },
     {
       "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
@@ -18,7 +18,7 @@
       "disk_size": 14483498016,
       "license": "Apache-2.0",
       "gated": false,
-      "access_status": "existing official snapshot verified"
+      "access_status": "official snapshot verified"
     },
     {
       "model_id": "meta-llama/Llama-3.1-8B-Instruct",
