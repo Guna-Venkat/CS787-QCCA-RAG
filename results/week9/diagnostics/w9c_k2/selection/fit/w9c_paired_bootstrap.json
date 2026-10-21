@@ -1,0 +1,42 @@
+{
+  "BM25": {
+    "point_estimate": -0.002846998389568104,
+    "ci95": [
+      -0.013851075800097595,
+      0.008055115734340817
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "QuerySemantic": {
+    "point_estimate": -0.001513911174755637,
+    "ci95": [
+      -0.0120883421945352,
+      0.009120759716781543
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "QueryDraft": {
+    "point_estimate": -0.0009093238864331288,
+    "ci95": [
+      -0.00974225320612618,
+      0.008016423932886372
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "SANE-adapted": {
+    "point_estimate": 0.0013318305603667953,
+    "ci95": [
+      -0.0097227180036723,
+      0.012181461062861134
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  }
+}
