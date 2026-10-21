@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "max_new_tokens": 128,
+  "query_id": "512",
+  "calls": [
+    {
+      "prompt_tokens": 2122,
+      "generated_tokens": 20,
+      "peak_memory_allocated": 15121328640,
+      "peak_memory_reserved": 15497953280,
+      "dtype": "torch.float16",
+      "attention_backend": "efficient_sdpa",
+      "latency": 2.4632911139924545,
+      "content": "BLEU and ROUGE (1, 2, L) scores with multiple references"
+    },
+    {
+      "prompt_tokens": 3173,
+      "generated_tokens": 20,
+      "peak_memory_allocated": 15380951552,
+      "peak_memory_reserved": 15978201088,
+      "dtype": "torch.float16",
+      "attention_backend": "efficient_sdpa",
+      "latency": 1.5578180919983424,
+      "content": "BLEU and ROUGE (1, 2, L) scores with multiple references"
+    },
+    {
+      "prompt_tokens": 5409,
+      "generated_tokens": 20,
+      "peak_memory_allocated": 15941215232,
+      "peak_memory_reserved": 16791896064,
+      "dtype": "torch.float16",
+      "attention_backend": "efficient_sdpa",
+      "latency": 2.3406510339991655,
+      "content": "BLEU and ROUGE (1, 2, L) scores with multiple references"
+    }
+  ]
+}

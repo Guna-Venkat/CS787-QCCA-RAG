@@ -63,3 +63,30 @@ def aligned(left, right):
     b = {(str(r['question_id']), str(r['paper_id'])) for r in right}
     if a != b:
         raise ValueError('Query/paper identities are not aligned')
+
+
+def verify_phase_sources(hashes, phase):
+    """Strict sources, with one pinned inference-only compatibility seal for A.
+
+    The seal preserves historical A provenance and its row fingerprints. It is
+    valid only for the exact audited old/new source bundles, never for B-H.
+    Frozen model/input/output hashes and row checksums remain mandatory.
+    """
+    current = source_hashes()
+    if hashes == current:
+        verify_sources(hashes)
+        return
+    if phase != 'a':
+        raise ValueError(f'Stale W9-{phase.upper()} source fingerprints')
+    path = ROOT / 'results/week9/patch_verification/w9b_cuda_memory_fix/a_source_compatibility.json'
+    if not path.is_file():
+        raise ValueError('A source compatibility seal missing; no automatic stale-cache reuse')
+    proof = json.loads(path.read_text())
+    allowed = {'src/week9/backend.py', 'src/week9/provenance.py',
+               'src/week9/config.py', 'src/week9/runner.py'}
+    changed = {p for p in set(hashes) | set(current) if hashes.get(p) != current.get(p)}
+    if (proof.get('migration_id') != 'w9b-titan-fp16-sdpa-v1' or
+            proof.get('phase') != 'a' or not proof.get('a_algorithm_ast_verified') or
+            proof.get('original_sources') != hashes or proof.get('approved_sources') != current or
+            not changed <= allowed or not changed):
+        raise ValueError('A source bundle differs from the exact audited inference-only patch')

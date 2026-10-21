@@ -265,3 +265,30 @@ W9-B is ready for a manual run, with DraftSemantic fixed and K_E=[0,1,2,4]. The 
 ```
 
 Use RUN_FULL=True, RUN_SMOKE=False and FREEZE_FIT=False for the deliberate notebook run. Inspect the completed surface before freezing B. Do not alter A after starting B.
+
+## W9-B TITAN RTX OOM correction (2026-10-21)
+
+The default BF16 SARA load used an unsupported dtype for efficient SDPA on the TITAN RTX. The fallback math attention exhausted memory at the K=4 prompt. The W9 SARA backend now explicitly loads FP16 and requires PyTorch efficient SDPA on CUDA, with no silent fallback to quadratic math attention. Checkpoint/projector weights, prompts, evidence counts and generation budgets are unchanged. This is a precision change; fresh B outputs must not mix with the original BF16 prefix.
+
+The original small B prefix is preserved under `results/week9/patch_verification/w9b_cuda_memory_fix/archived_bf16_prefix/`. The manual B command above starts fresh FP16 caches with current source fingerprints; its `--resume` then resumes this FP16 run. Restart the notebook kernel, rerun setup, keep RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False and run the execution cell. A does not need rerunning.
+
+Historical A provenance, caches and frozen configuration are byte unchanged. Because the global source bundle includes generation-only code, a narrowly pinned compatibility seal permits read-only A loading for this exact old/new source pair. AST checks confirm A execution, chunking, retrieval, scoring and identity creation are unchanged. B-H retain strict source checks; any future source change invalidates the seal. Do not rerun A under the new global source identity in its historical output directory. The proof and reproducible check are in `results/week9/patch_verification/w9b_cuda_memory_fix/a_source_compatibility.json` and `verify_a_compatibility.py`.
+
+A bounded real FIT query 512 passed K=0/1/2/4 with the trained SARA model, canonical compressed embeddings and the full 128-token answer limit. At K=4 the prompt was 5,409 tokens, peak allocated memory 15,941,215,232 bytes (14.85 GiB), peak reserved 16,791,896,064 bytes (15.64 GiB), and the answer was nonempty. This verifies the failing first query, not every FIT prompt. Measurements: `results/week9/patch_verification/w9b_cuda_memory_fix/smoke/verification.json`. The smoke uses separate caches and does not freeze B.
+
+
+## W9-C readiness after completed B (2026-10-21)
+
+B is complete and its cost-aware primary result is frozen at K_E=0. F1 is .385631 for K0, .380967 for K1, .385004 for K2 and .380388 for K4. Do not reinterpret K2 as the primary winner. At K0, selector comparisons are identical saved drafts.
+
+The user explicitly authorized a separate **conditional selector diagnostic at K_E=2**. Open `notebooks/week9/week9c_selector.ipynb`; it now uses `configs/week9/w9c_k2_diagnostic.yaml` and writes only C diagnostic outputs under `results/week9/diagnostics/w9c_k2/selection/fit/`. The primary config `configs/week9/w9c.yaml` is preserved. A separate B configuration in the diagnostic root pins K2, labels itself diagnostic-only and hashes the primary K0 freeze and diagnostic config. A/B source results are linked without duplication; do not run A or B under that diagnostic root.
+
+For the deliberate full diagnostic, set RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False and SPLIT='fit'. Keep `--resume`. Notebook preflight verifies the diagnostic label, K2 and frozen prerequisites before loading the generator, and rejects FREEZE_FIT=True. Full and smoke outputs are separate. No automatic primary selector freeze or D-H promotion is authorized by this diagnostic; review its results first. The FIT-selected positive budget is exploratory and does not establish held-out superiority.
+
+```bash
+./sara_env/bin/python scripts/week9/run_w9c_selection.py --split fit --config configs/week9/w9c_k2_diagnostic.yaml --resume
+```
+
+Readiness evidence and the reproducible setup are in `results/week9/patch_verification/w9c_readiness/`. The B freeze was created with analyze-only; no B generations were repeated.
+
+W9-C bounded GPU verification passed: five selector rows on FIT query 512, peak allocated memory 14.33 GiB, with DraftSemantic reproducing the corresponding saved B K2 output. Three distinct cached LM calls cover the five selector policies, including SANE selection. All 80 W9 code tests passed (the existing notebook-default check was excluded for user-enabled B flags). Final evidence: `results/week9/patch_verification/w9c_readiness/readiness.json`.

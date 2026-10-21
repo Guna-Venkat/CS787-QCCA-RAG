@@ -52,10 +52,8 @@ def load_phase(cfg, phase, split, filters=None):
     path = rows_path(cfg, phase, split)
     rows = list(read_rows(path, filters)) if phase == 'a' else read_jsonl(path)
     meta = json.loads(path.with_suffix('.identity.json').read_text())
-    if meta['source_hashes'] != source_hashes():
-        raise ValueError(f'Stale W9-{phase.upper()} source fingerprints')
-    from .provenance import verify_sources
-    verify_sources(meta['source_hashes'])
+    from .provenance import verify_phase_sources
+    verify_phase_sources(meta['source_hashes'], phase)
     for name, value in meta['input_hashes'].items():
         if file_hash(name) != value:
             raise ValueError('Upstream input fingerprint changed')

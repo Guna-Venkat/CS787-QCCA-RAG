@@ -1,0 +1,42 @@
+{
+  "BM25": {
+    "point_estimate": 0.1941176470588235,
+    "ci95": [
+      0.1941176470588235,
+      0.1941176470588235
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "QuerySemantic": {
+    "point_estimate": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "QueryDraft": {
+    "point_estimate": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  },
+  "SANE-adapted": {
+    "point_estimate": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "resamples": 10000,
+    "cluster": "paper_id",
+    "seed": 42
+  }
+}

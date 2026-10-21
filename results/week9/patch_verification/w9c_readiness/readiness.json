@@ -1,0 +1,28 @@
+{
+  "ready": true,
+  "scope": "FIT-only conditional K=2 selector diagnostic; not primary architecture selection",
+  "primary_b_budget": 0,
+  "diagnostic_budget": 2,
+  "primary_b_sha256": "3a850a087d3b6232ef29d45629a3160ec7cb1ff64967feb4a5587a185172dd24",
+  "frozen_a_sha256": "24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142",
+  "question_id": "512",
+  "selectors": [
+    "BM25",
+    "QuerySemantic",
+    "DraftSemantic",
+    "QueryDraft",
+    "SANE-adapted"
+  ],
+  "smoke_queries": 1,
+  "smoke_rows": 5,
+  "model_calls": 3,
+  "peak_allocated_gib": 14.32627534866333,
+  "draft_semantic_reproduces_b": true,
+  "unit_tests_passed": 80,
+  "unit_tests_deselected": 1,
+  "deselection_reason": "Existing notebook-defaults check conflicts with user-enabled B run flags",
+  "full_experiment_launched": false,
+  "primary_c_frozen": false,
+  "config": "configs/week9/w9c_k2_diagnostic.yaml",
+  "notebook": "notebooks/week9/week9c_selector.ipynb"
+}

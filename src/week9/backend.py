@@ -1,6 +1,7 @@
 """Local deterministic SARA backend and independently resumable LM calls."""
 from __future__ import annotations
 import time
+from contextlib import nullcontext
 import json
 from pathlib import Path
 from .provenance import ROOT, digest, file_hash
@@ -37,14 +38,18 @@ class SaraBackend:
             src.__path__.append(path)
         from src.model.loader import load_sara_for_eval
         self.device = cfg['device']
-        self.model, self.tokenizer = load_sara_for_eval(str(resolve(cfg['checkpoint'])), device=self.device)
+        import torch
+        # TITAN RTX cannot use the efficient SDPA kernel with BF16. Explicit
+        # FP16 keeps the trained SARA checkpoint and avoids quadratic math SDPA.
+        self.model, self.tokenizer = load_sara_for_eval(str(resolve(cfg['checkpoint'])),
+            device=self.device, dtype=torch.float16, attn_implementation='sdpa')
         self.model.eval()
         self.answer_max_tokens = cfg['max_new_tokens']
 
     def identity(self):
         from .model_registry import CANONICAL
         if not hasattr(self,'_identity'):
-            self._identity=dict(model_id=CANONICAL,model_revision=digest(checkpoint_hashes(self.cfg)),dtype=str(getattr(self.model,'dtype','unknown')),quantization='none',interface='trained_SARA')
+            self._identity=dict(model_id=CANONICAL,model_revision=digest(checkpoint_hashes(self.cfg)),dtype=str(getattr(self.model,'dtype','unknown')),quantization='none',interface='trained_SARA',attention_backend='efficient_sdpa' if str(self.device).startswith('cuda') else 'cpu_sdpa')
         return self._identity
 
     def render(self, messages):
@@ -63,7 +68,11 @@ class SaraBackend:
             torch.cuda.synchronize()
             torch.cuda.reset_peak_memory_stats()
         started = time.perf_counter()
-        with torch.inference_mode():
+        # Fail explicitly if this hardware/runtime cannot provide efficient
+        # attention, rather than silently allocating a quadratic math matrix.
+        from torch.nn.attention import sdpa_kernel, SDPBackend
+        attention = sdpa_kernel(SDPBackend.EFFICIENT_ATTENTION) if str(self.device).startswith('cuda') else nullcontext()
+        with torch.inference_mode(), attention:
             output = self.model.generate(**inputs, **kwargs, do_sample=False, max_new_tokens=max_tokens,
                 pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
                 eos_token_id=self.tokenizer.eos_token_id)

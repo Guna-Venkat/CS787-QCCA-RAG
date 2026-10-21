@@ -24,27 +24,25 @@ Next: W9-B manual FIT run. Confirmation and TEST remain unrun by this audit.
 
 ## W9-B
 
-Status: READY FOR MANUAL FIT RUN; not executed.
-Frozen retrieval: W9-A FIXED-5 / SEMANTIC @20. Selector: DraftSemantic.
-Grid: K_E = 0,1,2,4. K=0 reuses the canonical draft; positive budgets use raw chunks at this stage.
-Analysis: exact argmax (smallest tied K) and epsilon=.01 smallest near-best K, without predictor training.
-Interpretation: median unit is 1,022 tokens; 256/1,746 FIT queries have fewer than four candidates. Notebook reports requested/actual counts and a full-four-candidate subgroup.
-Verification: frozen A and B dependency/protocol checks pass; B notebook runs safely with full/smoke flags disabled.
-Next: manually execute notebooks/week9/week9b_evidence_k_surface.ipynb or the B CLI from the runbook; inspect complete results before freezing B.
+Status: COMPLETE AND FROZEN (FIT).
+Coverage: 1,746 queries x four budgets = 6,984 validated rows; canonical K=0 and FP16 positive-budget runs.
+Frozen primary choice: K_E=0, policy K_E=0. Frozen A remains FIXED-5 / SEMANTIC @20.
+FIT mean F1: K0 .385631; K1 .380967; K2 .385004; K4 .380388. Raw evidence does not improve the aggregate fixed-budget baseline.
+Artifact: results/week9/frozen/w9b_frozen_config.json.
+Decision: Preserve the primary K=0 result. User authorized a separately labelled K=2 selector diagnostic; this does not replace B's cost-aware decision.
 
 ## W9-C
 
-Status: IMPLEMENTED; manual execution pending.
-Hypothesis: DraftSemantic is the simple baseline to beat.
-Prerequisites: see WEEK9_RUNBOOK.md and enforced phase dependencies.
-Implementation status: source, CLI, YAML, notebook and invariant checks present.
-Full-run status: NOT RUN
-Frozen/not frozen: NOT FROZEN
-Key artifact paths: results/week9/selection/fit/; results/week9/frozen/w9c_frozen_config.json
-Key results: none; full experiment not executed.
-Audit notes: No generator experiment run. Gold restricted to evaluation/training targets.
-Decision: Await complete FIT evidence and manual review.
-Next action: Finish and freeze prerequisite phases, then run this phase manually.
+Status: K=2 diagnostic prepared; manual full execution pending.
+Primary-path interpretation: K=0 makes selectors identical, so a primary selector comparison would be redundant.
+Diagnostic: fixed K=2, all five selectors, original frozen A retrieval, raw evidence, canonical SARA FP16 efficient SDPA.
+Configuration: configs/week9/w9c_k2_diagnostic.yaml.
+Notebook: notebooks/week9/week9c_selector.ipynb, labelled diagnostic only; flags disabled by default and FREEZE_FIT must stay False.
+Outputs: results/week9/diagnostics/w9c_k2/selection/fit/ (smoke results remain in its smoke subdirectory).
+Provenance: separate diagnostic B configuration labelled fit_diagnostic_fixed_k, anchored to primary frozen B; upstream A/B data shared through links without duplication or mutation.
+Full-run status: NOT RUN. No primary C selector frozen; no automatic D-H promotion.
+Verification: see results/week9/patch_verification/w9c_readiness/; bounded one-query real GPU check covers all five selectors.
+Next action: Review readiness audit, then manually execute the diagnostic with RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False, SPLIT='fit'.
 
 ## W9-D
 

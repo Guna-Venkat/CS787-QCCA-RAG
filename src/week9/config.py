@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 import yaml
-from .provenance import ROOT, digest, verify_sources, file_hash
+from .provenance import ROOT, digest, verify_sources, verify_phase_sources, file_hash
 
 PHASES = 'abcdefgh'
 PREREQUISITES = {'a': [], 'b': ['a'], 'c': ['a', 'b'], 'd': ['a', 'c'],
@@ -28,7 +28,7 @@ def load_frozen(path, phase=None):
         raise ValueError(f'Not a complete FIT-frozen artifact: {path}')
     if phase and value['phase'] != phase:
         raise ValueError('Frozen phase mismatch')
-    verify_sources(value['source_hashes'])
+    verify_phase_sources(value['source_hashes'], value['phase'])
     if digest(value['settings']) != value['settings_hash']:
         raise ValueError('Frozen settings hash mismatch')
     for name, expected in {**value['input_hashes'], **value.get('model_hashes',{}), **value.get('output_hashes',{})}.items():
