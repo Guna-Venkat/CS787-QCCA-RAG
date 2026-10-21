@@ -131,11 +131,22 @@ def source_document(record, raw_path):
 
 
 def evaluation_evidence(record, raw_path):
-    """Exact paper and question lookup; no ambiguous global question-string map."""
+    """Paper-local evidence lookup; repeated questions must agree on evidence.
+
+    QASPER can contain distinct question IDs with identical question text. Without
+    a raw question ID in the reformatted artifact, only identical evidence sets
+    are safe to resolve; never select the first conflicting annotation.
+    """
     paper = raw_dataset(str(raw_path))[int(record['inference']['paper_id'])]
     question = record['inference']['question']
     indices = [i for i, q in enumerate(paper['qas']['question']) if q.strip() == question]
-    if len(indices) != 1:
-        raise ValueError('Raw question alignment must be unique within its paper')
-    annotations = paper['qas']['answers'][indices[0]]['answer']
-    return list(dict.fromkeys(e for a in annotations for e in a.get('evidence', []) if e.strip()))
+    if not indices:
+        raise ValueError('Raw question alignment missing within its paper')
+    evidence = []
+    for index in indices:
+        annotations = paper['qas']['answers'][index]['answer']
+        evidence.append(list(dict.fromkeys(
+            e for a in annotations for e in a.get('evidence', []) if e.strip())))
+    if any(set(items) != set(evidence[0]) for items in evidence[1:]):
+        raise ValueError('Raw question alignment has conflicting evidence within its paper')
+    return evidence[0]

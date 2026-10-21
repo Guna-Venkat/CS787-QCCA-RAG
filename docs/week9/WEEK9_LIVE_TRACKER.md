@@ -13,31 +13,24 @@ Next: manually screen M0/M2 on the fixed 49-query, 14-paper FIT subset; inspect 
 
 ## W9-A
 
-Status: IMPLEMENTED; manual execution pending.
-Hypothesis: Semantic boundaries can improve evidence acquisition.
-Prerequisites: see WEEK9_RUNBOOK.md and enforced phase dependencies.
-Implementation status: source, CLI, YAML, notebook and invariant checks present.
-Full-run status: NOT RUN
-Frozen/not frozen: NOT FROZEN
-Key artifact paths: results/week9/retrieval/fit/; results/week9/frozen/w9a_frozen_config.json
-Key results: none; full experiment not executed.
-Audit notes: Final real two-query smoke and resume passed: 342 retrieval rows, 38 chunk manifests, 707 unique embeddings. Final source/row checksums verified under results/week9/implementation_verification/. No configuration frozen.
-Decision: Await complete FIT evidence and manual review.
-Next action: Run the first A command in the runbook.
+Status: COMPLETE FIT, AUDITED AND FROZEN (2026-10-21).
+Saved results: 298,566 rows = 1,746 queries × 171 configurations; 656 papers.
+Frozen primary: FIXED-5 / SEMANTIC @20, using the existing global .003 recall-tolerance/token-cost rule.
+All-gold recall: 0.878716 on 1,682 evidence-annotated queries. Mean retrieved tokens: 5,600.47.
+Artifacts: results/week9/frozen/w9a_frozen_config.json; results/week9/retrieval/fit/freeze_audit/.
+Audit: SEM-5/7/8 saturate at W20 for 97–98% of queries. SEM-4/RRF@20 is a Pareto alternative, not the preregistered primary winner. Nominal median matching does not equal full length-distribution matching.
+Decision: No retrospective primary change. Runtime source hashes and cached outcomes remain unchanged.
+Next: W9-B manual FIT run. Confirmation and TEST remain unrun by this audit.
 
 ## W9-B
 
-Status: IMPLEMENTED; manual execution pending.
-Hypothesis: Small evidence budgets may preserve factual specificity.
-Prerequisites: see WEEK9_RUNBOOK.md and enforced phase dependencies.
-Implementation status: source, CLI, YAML, notebook and invariant checks present.
-Full-run status: NOT RUN
-Frozen/not frozen: NOT FROZEN
-Key artifact paths: results/week9/ke_surface/fit/; results/week9/frozen/w9b_frozen_config.json
-Key results: none; full experiment not executed.
-Audit notes: No generator experiment run. Gold restricted to evaluation/training targets.
-Decision: Await complete FIT evidence and manual review.
-Next action: Finish and freeze prerequisite phases, then run this phase manually.
+Status: READY FOR MANUAL FIT RUN; not executed.
+Frozen retrieval: W9-A FIXED-5 / SEMANTIC @20. Selector: DraftSemantic.
+Grid: K_E = 0,1,2,4. K=0 reuses the canonical draft; positive budgets use raw chunks at this stage.
+Analysis: exact argmax (smallest tied K) and epsilon=.01 smallest near-best K, without predictor training.
+Interpretation: median unit is 1,022 tokens; 256/1,746 FIT queries have fewer than four candidates. Notebook reports requested/actual counts and a full-four-candidate subgroup.
+Verification: frozen A and B dependency/protocol checks pass; B notebook runs safely with full/smoke flags disabled.
+Next: manually execute notebooks/week9/week9b_evidence_k_surface.ipynb or the B CLI from the runbook; inspect complete results before freezing B.
 
 ## W9-C
 

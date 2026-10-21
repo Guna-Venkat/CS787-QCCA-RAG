@@ -54,3 +54,8 @@ tests/week8/
 *week8*
 *w8*
 
+# Week 9 generated retrieval caches (large; retain summaries and configs)
+results/week9/**/w9a_retrieval_results*
+results/week9/**/w9a_chunk_manifest*
+results/week9/**/w9a_embeddings*
+results/week9/**/*.lock

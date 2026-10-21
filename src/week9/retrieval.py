@@ -52,7 +52,7 @@ class LocalEncoder:
         return unit_vectors([np.mean(vectors[a:b], axis=0) for a,b in groups])
 
 
-def rank_candidates(query, paper_id, chunks, encoder, method, width, vectors=None):
+def rank_candidates(query, paper_id, chunks, encoder, method, width, vectors=None, *, query_vector=None, sparse_scores=None, dense_scores=None):
     assert_inference_clean(chunks)
     if width < 1 or method not in ('BM25', 'SEMANTIC', 'RRF'):
         raise ValueError('Invalid retrieval method/width')
@@ -63,11 +63,14 @@ def rank_candidates(query, paper_id, chunks, encoder, method, width, vectors=Non
         raise ValueError('Duplicate chunks')
     if not chunks:
         return []
-    sparse = bm25(query, [c['text'] for c in chunks])
+    sparse = bm25(query, [c['text'] for c in chunks]) if sparse_scores is None else sparse_scores
     dense = None
     if method != 'BM25':
-        vectors = unit_vectors(encoder.encode([c['text'] for c in chunks]) if vectors is None else vectors)
-        dense = vectors @ unit_vectors(encoder.encode([query]))[0]
+        if dense_scores is None:
+            vectors = unit_vectors(encoder.encode([c['text'] for c in chunks]) if vectors is None else vectors)
+            dense = vectors @ unit_vectors(encoder.encode([query]) if query_vector is None else [query_vector])[0]
+        else:
+            dense = dense_scores
     def ranks(scores):
         order = sorted(range(len(chunks)), key=lambda i: (-scores[i], ids[i]))
         return {i: r+1 for r, i in enumerate(order)}

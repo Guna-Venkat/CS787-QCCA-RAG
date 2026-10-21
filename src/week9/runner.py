@@ -11,12 +11,13 @@ import pandas as pd
 from .provenance import ROOT, digest, file_hash, branch_guard, source_hashes
 from .config import load_config, load_frozen, check_test, PREREQUISITES
 from .caching import RowCache, read_jsonl, atomic_json
+from .retrieval_cache import RetrievalCache, read_rows
 from .data import resolve, load_records, source_document, evaluation_evidence
 from .manifests import manifest, freeze
-from .retrieval import LocalEncoder, rank_candidates, unit_vectors
+from .retrieval import LocalEncoder, rank_candidates, unit_vectors, bm25
 from .chunking import locate_passages, original_chunks, fixed_chunks
 from .semantic_chunking import semantic_chunks
-from .evidence_alignment import retrieval_metrics
+from .evidence_alignment import retrieval_metrics, alignment
 from .selection import select, validate_selection
 from .cost_accounting import QueryCost
 from .extraction import extract
@@ -43,12 +44,13 @@ def phase_dir(cfg, phase, split, smoke=False):
 
 
 def rows_path(cfg, phase, split, smoke=False):
-    return phase_dir(cfg, phase, split, smoke) / (FILENAMES[phase] + '.jsonl')
+    suffix = '_compact.sqlite3' if phase == 'a' else '.jsonl'
+    return phase_dir(cfg, phase, split, smoke) / (FILENAMES[phase] + suffix)
 
 
-def load_phase(cfg, phase, split):
+def load_phase(cfg, phase, split, filters=None):
     path = rows_path(cfg, phase, split)
-    rows = read_jsonl(path)
+    rows = list(read_rows(path, filters)) if phase == 'a' else read_jsonl(path)
     meta = json.loads(path.with_suffix('.identity.json').read_text())
     if meta['source_hashes'] != source_hashes():
         raise ValueError(f'Stale W9-{phase.upper()} source fingerprints')
@@ -143,30 +145,35 @@ def cached_embeddings(chunks, encoder, cache):
 
 
 def run_a(cfg, records, paths, cache, directory, encoder, frozen, index_cache, chunk_cache):
-    """Index first, FIT-match fixed token medians, then audit all retrieval widths."""
+    """Index once; reuse query/ranking/alignment work across the frozen grid."""
+    started_run = time.perf_counter()
     documents = {}
     grid = cfg['semantic_grid'] if 'a' not in frozen else frozen['a']['settings']['semantic_grid']
-    # Cache chunk manifests by query so query-specific original passage IDs survive.
+
+    def document_for(record):
+        qid = record['inference']['question_id']
+        if qid not in documents:
+            doc = source_document(record, paths['raw'])
+            documents[qid] = (doc, locate_passages(doc, record['original_passages']))
+        return documents[qid]
+
     for record_index, record in enumerate(records):
         inf = record['inference']
         qid, pid = inf['question_id'], inf['paper_id']
         if record_index % 25 == 0:
-            print(f'W9-A indexing {record_index+1}/{len(records)}: question {qid}',flush=True)
-        document = source_document(record, paths['raw'])
-        lineage = locate_passages(document, record['original_passages'])
-        documents[qid] = (document, lineage)
+            print(f'W9-A indexing {record_index+1}/{len(records)}: question {qid}', flush=True)
         variants = [('ORIG', None)] + [('SEM-' + str(i), setting) for i, setting in enumerate(grid)]
         for name, setting in variants:
             key = chunk_cache.key(qid, pid, [], name)
             if key not in chunk_cache.rows:
-                started=time.perf_counter()
+                document, lineage = document_for(record)
+                started = time.perf_counter()
                 chunks = original_chunks(document, lineage, encoder.tokenizer) if setting is None else semantic_chunks(
                     document, lineage, encoder.tokenizer, encoder, **setting)
                 chunk_cache.put(key, dict(question_id=qid, paper_id=pid, representation=name,
                     index_chunking_seconds=time.perf_counter()-started,
                     chunks=[dict(c, question_id=qid) for c in chunks]))
     lengths = defaultdict(list)
-    # Do not let multiple questions from the same paper overweight matching sizes.
     seen = set()
     for row in chunk_cache.rows.values():
         ident = (row['paper_id'], row['representation'])
@@ -175,46 +182,78 @@ def run_a(cfg, records, paths, cache, directory, encoder, frozen, index_cache, c
             seen.add(ident)
     sizes = ({name: max(1, int(np.median(values))) for name, values in lengths.items() if name.startswith('SEM-')}
              if 'a' not in frozen else frozen['a']['settings']['fixed_sizes'])
-    for record in records:
+    expected_per_query = (1 + 2*len(grid))*3*len(cfg['retrieval_widths'])
+    print(f'W9-A retrieval: {len(cache.rows)} cached rows; {len(records)} queries, {expected_per_query} configurations/query', flush=True)
+    for number, record in enumerate(records, 1):
         inf = record['inference']
         qid, pid = inf['question_id'], inf['paper_id']
-        document, lineage = documents[qid]
+        count = cache.rows.count(question_id=qid)
+        if count > expected_per_query:
+            raise ValueError('Duplicate/unexpected retrieval configuration count')
+        if count == expected_per_query:
+            if number % 25 == 0 or number == len(records):
+                print(f'W9-A retrieval {number}/{len(records)}: question {qid} already complete; rows={len(cache.rows)}', flush=True)
+            continue
+        print(f'W9-A retrieval {number}/{len(records)}: question {qid}, {count}/{expected_per_query} cached', flush=True)
         for name, size in sizes.items():
             variant = name.replace('SEM-', 'FIXED-')
             key = chunk_cache.key(qid, pid, [], variant)
             if key not in chunk_cache.rows:
-                started=time.perf_counter()
+                document, lineage = document_for(record)
+                started = time.perf_counter()
                 chunks = fixed_chunks(document, lineage, encoder.tokenizer, size, cfg['fixed_overlap'])
                 chunk_cache.put(key, dict(question_id=qid, paper_id=pid, representation=variant,
                     index_chunking_seconds=time.perf_counter()-started,
                     chunks=[dict(c, question_id=qid) for c in chunks]))
         evidence = evaluation_evidence(record, paths['raw'])
-        variants = [r for r in chunk_cache.rows.values() if r['question_id'] == qid]
+        query_vector = None
+        variants = list(chunk_cache.rows.query(question_id=qid))
         for row in variants:
             chunks = row['chunks']
-            vectors = cached_embeddings(chunks, encoder, index_cache)
-            embedding_seconds=sum(index_cache.rows[index_cache.key('INDEX',pid,[c['chunk_id']],'chunk_embedding')]['index_embedding_seconds'] for c in chunks)
+            ids = [c['chunk_id'] for c in chunks]
+            pending = []
             for method in ('BM25', 'SEMANTIC', 'RRF'):
                 for width in cfg['retrieval_widths']:
                     operation = dict(representation=row['representation'], retriever=method, retrieval_width=width)
-                    key = cache.key(qid, pid, [c['chunk_id'] for c in chunks], operation)
-                    if key in cache.rows:
-                        continue
-                    started = time.perf_counter()
-                    ranked = rank_candidates(inf['question'], pid, chunks, encoder, method, width, vectors)
-                    elapsed = time.perf_counter()-started
-                    metrics = retrieval_metrics(ranked, chunks, evidence)
+                    key = cache.key(qid, pid, ids, operation)
+                    if key not in cache.rows:
+                        pending.append((method, width, operation, key))
+            if not pending:
+                continue
+            vectors = cached_embeddings(chunks, encoder, index_cache)
+            embedding_seconds = sum(index_cache.rows[index_cache.key('INDEX', pid, [c['chunk_id']], 'chunk_embedding')]['index_embedding_seconds'] for c in chunks)
+            started = time.perf_counter()
+            if query_vector is None:
+                query_vector = encoder.encode([inf['question']])[0]
+            sparse = bm25(inf['question'], [c['text'] for c in chunks])
+            dense = unit_vectors(vectors) @ unit_vectors([query_vector])[0]
+            prepare_seconds = time.perf_counter()-started
+            labels = {c['chunk_id']: alignment(c, evidence) for c in chunks}
+            for method in ('BM25', 'SEMANTIC', 'RRF'):
+                group = [entry for entry in pending if entry[0] == method]
+                if not group:
+                    continue
+                started = time.perf_counter()
+                ranked = rank_candidates(inf['question'], pid, chunks, encoder, method,
+                    max(entry[1] for entry in group), vectors, sparse_scores=sparse, dense_scores=dense)
+                elapsed = prepare_seconds + time.perf_counter()-started
+                for _, width, operation, key in group:
+                    selected = ranked[:width]
                     cache.put(key, dict(question_id=qid, paper_id=pid, **operation,
-                        retrieval_actual_count=len(ranked), available_chunks=len(chunks), candidates=ranked,
+                        retrieval_actual_count=len(selected), available_chunks=len(chunks), candidates=selected,
                         index_time_embedding_seconds=embedding_seconds,
                         index_time_chunking_seconds=row['index_chunking_seconds'],
-                        retrieval_query_time=elapsed, **metrics))
+                        retrieval_query_time=elapsed,
+                        retrieval_timing_basis='Shared query/scoring preparation plus max-width ranking; not standalone policy latency',
+                        **retrieval_metrics(selected, chunks, evidence, alignments=labels)))
+        print(f'W9-A completed {number}/{len(records)}: question {qid}; saved rows={len(cache.rows)}; elapsed={time.perf_counter()-started_run:.0f}s', flush=True)
     return dict(semantic_grid=grid, fixed_sizes=sizes)
 
 
 def get_pool(cfg, frozen, split, qid):
     settings = frozen['a']['settings']
-    rows = load_phase(cfg, 'a', split)
+    filters = {k: settings[k] for k in ('representation','retriever','retrieval_width')}
+    rows = load_phase(cfg, 'a', split, dict(filters, question_id=qid))
     found = [r for r in rows if r['question_id'] == qid and all(r[k] == settings[k] for k in
             ('representation','retriever','retrieval_width'))]
     if len(found) != 1:
@@ -360,9 +399,9 @@ def run_intervention(record, pool, spec, encoder, backend, call_cache, embedding
 def run_generation(cfg, phase, records, paths, frozen, cache, call_cache, extraction_cache):
     import torch
     # Load frozen A pools once, not once per query.
-    retrieval_rows = load_phase(cfg, 'a', paths['split'])
-    pools = retrieval_rows
     choice = frozen['a']['settings']
+    retrieval_rows = load_phase(cfg, 'a', paths['split'], {k:choice[k] for k in ('representation','retriever','retrieval_width')})
+    pools = retrieval_rows
     pools = {r['question_id']: r for r in pools if all(r[k]==choice[k] for k in
              ('representation','retriever','retrieval_width'))}
     if set(r['inference']['question_id'] for r in records)-set(pools):
@@ -791,7 +830,7 @@ def main(phase, argv=None):
             rows=list(combined.rows.values())
         extra={'analysis_role':'fit_oof'}
     elif args.analyze_only:
-        rows=read_jsonl(result_path)
+        rows=list(read_rows(result_path, metrics_only=True)) if phase=='a' else read_jsonl(result_path)
         saved=json.loads(result_path.with_suffix('.identity.json').read_text())
         if saved!=identity:
             raise ValueError('Analysis inputs/source/config changed')
@@ -800,11 +839,12 @@ def main(phase, argv=None):
         if phase=='g':
             extra=json.loads((directory/'w9g_settings.json').read_text())
     else:
-        with RowCache(result_path,identity,args.resume) as cache:
+        cache_class = RetrievalCache if phase=='a' else RowCache
+        with cache_class(result_path,identity,args.resume) as cache:
             if phase=='a':
                 encoder=LocalEncoder(cfg['encoder'],cfg['encoder_device'])
-                with RowCache(directory/'w9a_embeddings.jsonl',identity,args.resume) as index_cache, \
-                     RowCache(directory/'w9a_chunk_manifest.jsonl',identity,args.resume) as chunk_cache:
+                with RetrievalCache(directory/'w9a_embeddings_compact.sqlite3',identity,args.resume) as index_cache, \
+                     RetrievalCache(directory/'w9a_chunk_manifest_compact.sqlite3',identity,args.resume) as chunk_cache:
                     extra=run_a(cfg,records,paths,cache,directory,encoder,frozen,index_cache,chunk_cache)
                 atomic_json(directory/'w9a_index_settings.json',extra)
             elif phase=='g':
@@ -826,7 +866,7 @@ def main(phase, argv=None):
                     for row in load_phase(cfg,'g',artifact_split):
                         key=cache.key(row['question_id'],row['paper_id'],row['selected_chunk_ids'],'B10')
                         cache.put(key,dict(row,policy='B10'))
-            rows=list(cache.rows.values())
+            rows=list(cache.metric_rows()) if phase=='a' else list(cache.rows.values())
     # Results from resume may cover earlier slices: validate against full split
     # before claiming complete. Smoke artifacts always remain nonfreezable.
     available={r['question_id'] for r in rows}

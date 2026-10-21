@@ -1,0 +1,179 @@
+{
+  "frozen": true,
+  "complete": true,
+  "phase": "a",
+  "selection_split": "fit",
+  "analysis_role": "fit_fixed",
+  "settings": {
+    "semantic_grid": [
+      {
+        "buffer": 0,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 0,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 0,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      }
+    ],
+    "fixed_sizes": {
+      "SEM-0": 27,
+      "SEM-1": 27,
+      "SEM-2": 30,
+      "SEM-3": 81,
+      "SEM-4": 205,
+      "SEM-5": 1022,
+      "SEM-6": 258,
+      "SEM-7": 1024,
+      "SEM-8": 1024
+    },
+    "representation": "FIXED-5",
+    "retriever": "SEMANTIC",
+    "retrieval_width": 20
+  },
+  "settings_hash": "0b0fc4bf67f7fbea990baa11cba80215e66e722663ee8c43e4520637e262b389",
+  "source_hashes": {
+    "Baselines/SANE-main/config/default.yaml": "6146c3171c5064100dc399a936be14ee4ec7f54b86a1ea4bdb404872f6f0f7ab",
+    "Baselines/SANE-main/config/financebench.yaml": "08ef4d727e4c794e082ad2840e606a5d41d336df4767c56cd4e96565f26a7d4e",
+    "Baselines/SANE-main/config/hotpotqa.yaml": "c84e630e7f7d3f995c0ffd1a4ae9ceedf390f4de399f318739a42a6e8cb212ab",
+    "Baselines/SANE-main/config/longmemeval.yaml": "ba1fa5b1d1c9873d3ea7611812e9bbd737f3acbf2b05056996f8d3904c13a02f",
+    "Baselines/SANE-main/config/musique.yaml": "5b76190f9fcbad8e227a94be3fd4009e73bcf251c7bf73351e9d656b1e6b4ac0",
+    "Baselines/SANE-main/sane/agents/sane_agent.py": "7104dd76143057d24f85f7a893b6173ff899ca4d2b96540a812aa6208099c0d6",
+    "Baselines/SANE-main/sane/agents/sane_helpers.py": "ce3e28d0d8a9fbcc239cedda95ae8478e8340be86266a496136053a39f55c9aa",
+    "Baselines/SANE-main/sane/agents/sane_prompts.py": "6f62295123ca331632e6c3593451ac549ccc47e626550d84b37828537d1b8a93",
+    "Baselines/SARA-main/src/model/loader.py": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+    "Baselines/SARA-main/src/model/xMistral/modeling_xmistral.py": "85aabecd09eb2aef670c17b47f218a99f3da006a90074441fe63ebaf16f15604",
+    "Baselines/papers/SANE.pdf": "2163309b8fa6594265c05893fa2877ca4f6b0a5ea08268847506a3a1a6128a1c",
+    "Baselines/papers/SemRAG.pdf": "31c3c9a7c25209ddba1e7ca1f1cefb7429d9234301772282c98fbd45eee99898",
+    "scripts/week9/audit_w9_baselines.py": "322d14c7b2808e949733c3394c9f742fc16f727fb687d5ebd8455e4b07f3b4d2",
+    "scripts/week9/run_w9_test.py": "6e7f097de88730c0cf33e69ea9e2d228531bcd6bd3c4e1c3740e1bb04f67e293",
+    "scripts/week9/run_w9a_retrieval.py": "334d785de6a35b662030099ef2afc145976bfacc16ff56cf1793b5d5def3af3f",
+    "scripts/week9/run_w9b_ke_surface.py": "0a375e3048ef92c5080c3425b153e6b7c8f50af24d0003a23d3a1a8718ec9adf",
+    "scripts/week9/run_w9c_selection.py": "2ce8203e86000dd7eb13c3a649ad972afd1ea8634df41a16bbb3221fe9c985c3",
+    "scripts/week9/run_w9d_representation.py": "c17b29e82d51150f86f4ebb770e049e393c6c881a8d10c9bc5aa661be471ad90",
+    "scripts/week9/run_w9e_extraction_faithfulness.py": "a9725b7ce17b480e985fa90e7bc345a23eb37566454cb79e28684fba1a6d8507",
+    "scripts/week9/run_w9f_revision.py": "7a02a35c0023df46ea9ad613c032f79ebff165439e19143e58aadd72979578cc",
+    "scripts/week9/run_w9g_adaptive_ke.py": "3deb815a05de56679b91f92b2c481c28cbcad334a7a91898fb4b35e8b1dc17f1",
+    "scripts/week9/run_w9h_final.py": "c2d27f7011e0a4162a7733b206d7260029263ff08e4f260e8ba0760dd562c9ca",
+    "scripts/week9/run_w9pre_models.py": "720318668a366963134af1087c755545c0b06d8ea8036863d7ca3ac17f9dc36e",
+    "src/week6/evaluation.py": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+    "src/week7/w7e/prompt_builder.py": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+    "src/week8/semantic.py": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+    "src/week9/__init__.py": "8ada5b08d8bea282bd03ebad194dd8cc16c9e15203e782a71e0341569fca4c60",
+    "src/week9/adaptive_ke.py": "456395db91966fd3fd70ee514e5f8930148df98e74594c6c7cce5c83852ee318",
+    "src/week9/backend.py": "6e0c99ea21dcf01cbe61d2712fa83b207b3c64aa773fe163364627d29f8a1bd6",
+    "src/week9/baseline_registry.py": "6513f19a94a3a949b819a275ce459985def5f64bc5d03a38ac30b2e305ee39a2",
+    "src/week9/blueprints.py": "ee47e9e96f7da3fe950f40489b2fd1c7163e11f0408b2f5adeffe81f29c72aac",
+    "src/week9/caching.py": "6d69fc8ed1e70f6357a0d7a9de2df0716c15b67074f975284fff2fa4614c90fb",
+    "src/week9/chunking.py": "175dabb565f62c6523c5ebfe354a0a85b740639587fd60fc39b38ab1586533e4",
+    "src/week9/config.py": "ffe40d724ad3c4431d45d8124d4d6bb91649b4332be4b8236f50e94f1baed0ca",
+    "src/week9/cost_accounting.py": "a51961080391b09302f195aa54d49e3f9d75a7028bca6fafb387e6cd7294d7de",
+    "src/week9/data.py": "76ef011a27f1196d2aad4718c03d1ce3a27de7414915314ec1d44f475bce6ec2",
+    "src/week9/evaluation.py": "609018a7671ac987fa0cddc76f67e5dc59adb218aac5a6deab4a81fbe0930633",
+    "src/week9/evidence_alignment.py": "1c89c7c3fbe20c9d0c5ce252c5ee46bcdded7381774acd77eb2d6eb45b9cef2d",
+    "src/week9/extraction.py": "ef2d8226483cee73bf6d8a7c2e58312773d3065facb536e3622106c2533e4470",
+    "src/week9/faithfulness.py": "7c5a21895276fdaaab87d00fb839bfc08d6551a7db6ef1b31c8da6ee6bfebda4",
+    "src/week9/ke_surface.py": "cd3ca805b5c547b6fa3cee9e4cdfe27e046832a06481e1ba0bf1ac5e467537ea",
+    "src/week9/manifests.py": "2321081aa099b032783cab099460bd3302ab368b92ecb040d194dc67bfbfb63f",
+    "src/week9/model_preflight.py": "d7fab343485aaf019b5e1543cb947604bf5a5114ea71c5c02d1f5d605212b46f",
+    "src/week9/model_registry.py": "a8d16f590dfd85f722ff113b485f217b9188fdcd75b5107a6c350a4aff2f9067",
+    "src/week9/model_runtime.py": "e8b20983650177ef5cfd33fba8f9cc6a29659c7067e82daa4e18c3a36f67d872",
+    "src/week9/provenance.py": "1a57537c10a3bdaa77d15d3984af3c1a24f95731d03c0c016ac3b33d6dc30a12",
+    "src/week9/retrieval.py": "d92f0322ca09240b83d1ed982acadbbcb7d9758abd562db309f2d51071a53fb6",
+    "src/week9/retrieval_cache.py": "fe4d057dd3f1c7d5bab17fcc583f5930bfe855cabf8d44e3fe279986022d8198",
+    "src/week9/revision.py": "ab2452491677bf3ee09438fe0c970bc21c59ac791c5938301f998c077f5ae77c",
+    "src/week9/runner.py": "8da3740330dda3d5194113cb91b7287408075b21b4e1da5faa061f83b05ba0ac",
+    "src/week9/sane_adapter.py": "1c72b7ec59188cdde2aaf8b1a086e9fe8ffffc18320c360e1f417ecf744d194b",
+    "src/week9/selection.py": "f5a4d41add0185e1870c8002f2f313a7156a49d2902bb651868595d2b2e858c0",
+    "src/week9/semantic_chunking.py": "4a46e734b2da87c49d0f77c174c1412bf29118bead4d79d6480662f781d7eefe",
+    "src/week9/text_model_roles.py": "ce765cdceacc59ff3fe1526ab2fdb1c1588529070f13ac569a77402243f05ed5"
+  },
+  "input_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/train_response_surface/train_retrieval.jsonl": "fc3566dbbdfe7b46e5a3727b70d86a3b6fca5931625dc25c279aa243656443c7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl": "f49122e54ef7ce47d0e882a85d1a58be11c0da68c7458d132038dd220caaddc7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl": "2ee73dd961afc6cb432682ed087cd932a9ce44425b804be2e3f582fbe9bd7a4e",
+    "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/content_allocator/w5b/splits/train_fit_manifest.csv": "1b7071a7198ab02a69757e0939569bf2f2b9ccbbb8b0a449c4b1d8d025ade1ef",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/surfaces/promotion_surface_fit.jsonl": "1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8e_gate_inputs/canonical_diagnostics_fit.jsonl": "6e5c6b40df549deb42aef2c2245e84ee08102544c2f7f8bfd6e94b9e6a60de4c"
+  },
+  "model_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/chat_template.jinja": "796853172235ab3aaa4810013ddfe2eab481bda3306dad4f700c00d436eed596",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+  },
+  "protocol": {
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+    "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+    "max_new_tokens": 128,
+    "extraction_max_tokens": 1024,
+    "query_draft_alpha": 0.5
+  },
+  "output_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/retrieval/fit/w9a_retrieval_results_compact.sqlite3": "8d4b9eaef1821751f3ffcfa33a9b0b553d43e709696386f5590c61ff83f7edb7"
+  },
+  "timestamp": "2026-10-21T12:41:28.581705+00:00"
+}

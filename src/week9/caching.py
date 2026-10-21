@@ -8,6 +8,9 @@ from .provenance import digest
 
 
 def read_jsonl(path):
+    if Path(path).suffix == '.sqlite3':
+        from .retrieval_cache import read_rows
+        return list(read_rows(path))
     with Path(path).open(encoding='utf-8') as f:
         return [json.loads(line) for line in f if line.strip()]
 

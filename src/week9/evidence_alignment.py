@@ -23,18 +23,19 @@ def alignment(chunk, evidence):
     return set(touched), min(len(text.split()), max(fractions, default=0))
 
 
-def retrieval_metrics(ranked, all_chunks, evidence):
+def retrieval_metrics(ranked, all_chunks, evidence, *, alignments=None):
     n = len(evidence)
-    labels = [alignment(c, evidence)[0] for c in ranked]
+    cached = alignments if alignments is not None else {c['chunk_id']: alignment(c, evidence) for c in all_chunks}
+    labels = [cached[c['chunk_id']][0] for c in ranked]
     retrieved = set().union(*labels) if labels else set()
     # Evaluate only answer annotations with evidence; missing annotation != retrieval success.
     any_recall = float(bool(retrieved)) if n else None
     all_recall = float(len(retrieved) == n) if n else None
-    relevant_universe = sum(bool(alignment(c, evidence)[0]) for c in all_chunks)
+    relevant_universe = sum(bool(cached[c['chunk_id']][0]) for c in all_chunks)
     gains = [int(bool(x)) for x in labels]
     dcg = sum(g/math.log2(i+2) for i, g in enumerate(gains))
     ideal = sum(1/math.log2(i+2) for i in range(min(relevant_universe, len(ranked))))
-    overlap = sum(alignment(c, evidence)[1] for c in ranked)
+    overlap = sum(cached[c['chunk_id']][1] for c in ranked)
     word_count = sum(len(c['text'].split()) for c in ranked)
     lengths = [c['token_length'] for c in all_chunks]
     return dict(any_gold_evidence_recall=any_recall, all_gold_evidence_recall=all_recall,

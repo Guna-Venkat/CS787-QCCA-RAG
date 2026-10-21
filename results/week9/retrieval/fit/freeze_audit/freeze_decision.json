@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "frozen_file": "results/week9/frozen/w9a_frozen_config.json",
+  "frozen_sha256": "24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142",
+  "selection_split": "fit",
+  "selected": {
+    "representation": "FIXED-5",
+    "retriever": "SEMANTIC",
+    "retrieval_width": 20
+  },
+  "best_global_recall": 0.8787158145065398,
+  "recall_tolerance": 0.003,
+  "unique_minimum_token_cost_within_tolerance": true,
+  "timing_tie_break_needed": false,
+  "source_hashes_unchanged": true,
+  "orig_partition_variations": [],
+  "recall_annotated_queries": 1682,
+  "all_queries": 1746,
+  "queries_with_pool_fewer_than_4": 256,
+  "w9b_prerequisites": "PASS",
+  "w9b_selector": "DraftSemantic",
+  "w9b_evidence_counts": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "epsilon_oracle": 0.01,
+  "model_generations": 0,
+  "full_w9b_run_launched": false,
+  "w9b_notebook_safe_default_execution": "PASS",
+  "w9b_oracle_pool_subgroup_fixture_check": "PASS",
+  "epsilon_oracle_regression_test": "PASS",
+  "runtime_source_files_changed_by_audit": false
+}

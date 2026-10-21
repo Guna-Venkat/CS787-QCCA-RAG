@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "branch": "gagan",
+  "code_tests_passed": 79,
+  "notebook_default_test": "excluded: user intentionally enabled full run",
+  "original_code_equivalence_cases": 324,
+  "old_active_cache_bytes": 10119879751,
+  "new_active_cache_bytes": 3200471040,
+  "redundant_files_removed_bytes": 12309888736,
+  "net_reclaimed_bytes": 9109417696,
+  "disk_free_bytes": 19188121600,
+  "preserved_retrieval_rows": 128304,
+  "queries_with_results": 751,
+  "fully_completed_queries": 750,
+  "all_completed_payloads_preserved": true,
+  "model_caches_datasets_w8_untouched": true,
+  "full_run_launched": false,
+  "commit_or_push_performed": false
+}

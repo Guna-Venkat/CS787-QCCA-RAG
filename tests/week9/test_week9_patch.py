@@ -168,3 +168,22 @@ def test_spoofed_label_cannot_inject_alternative_checkpoint(tmp_path):
     (tmp_path/'adapter_config.json').write_text(json.dumps({'base_model_name_or_path':MODELS[1].model_id}))
     with pytest.raises(ValueError,match='Mistral-specific'):
         SaraBackend({'checkpoint':str(tmp_path),'first_pass_sara_model':CANONICAL})
+
+
+@pytest.mark.parametrize('evidence, expected, error', [
+    ([['first', 'second', 'first', ' ']], ['first', 'second'], None),
+    ([['first', 'second'], ['second', 'first']], ['first', 'second'], None),
+    ([['first'], ['different']], None, 'conflicting evidence'),
+    ([], None, 'alignment missing'),
+])
+def test_raw_evidence_duplicate_question_safety(monkeypatch, evidence, expected, error):
+    from src.week9 import data
+    paper = {'qas': {'question': [' Same question? '] * len(evidence),
+        'answers': [{'answer': [{'evidence': items}]} for items in evidence]}}
+    monkeypatch.setattr(data, 'raw_dataset', lambda path: [paper])
+    record = {'inference': {'paper_id': '0', 'question': 'Same question?'}}
+    if error:
+        with pytest.raises(ValueError, match=error):
+            data.evaluation_evidence(record, 'unused')
+    else:
+        assert data.evaluation_evidence(record, 'unused') == expected

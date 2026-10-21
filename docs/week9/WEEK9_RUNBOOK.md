@@ -249,3 +249,19 @@ Every phase supports `--split --config --resume --smoke-limit --seed --start-ind
 ```
 
 This records `nf4_fp32` separately: NF4 weights, double quantization, FP32 compute and unquantized modules, with all generated tokens charged. It is not reported as FP16/NF4. A numerical PASS without an identifiable final answer is not interface qualification. Increasing a reasoning budget would be a new explicit FIT-only configuration with a new cache identity; no extra budget has been hidden in these results.
+
+## W9-A compact cache and interrupted-run continuation
+
+W9-A now stores losslessly compressed, indexed `_compact.sqlite3` caches. Resume reuses completed queries and prints retrieval progress. For the 2026-10-21 interrupted FIT run, see `W9A_STORAGE_OPTIMIZATION.md`; its verified conversion preserves all completed payloads and removes redundant JSONL/recovery files. Use `RUN_FULL=True`, `RUN_SMOKE=False`, `FREEZE_FIT=False`, restart the kernel and retain `--resume`. Review complete A results before freezing. Summaries remain CSV; large caches and SQLite journals stay ignored by Git.
+
+## Completed A audit and current B starting point (2026-10-21)
+
+The complete FIT A grid is audited and frozen to **FIXED-5 / SEMANTIC @20**, following the original .003 recall-tolerance then retrieved-token-cost rule. SEM-4/RRF@20 remains a useful Pareto diagnostic; it was not substituted after inspecting results. See `results/week9/retrieval/fit/freeze_audit/W9A_FREEZE_AUDIT.md` for chunk lengths, saturation, nominal median-matched controls, token-budget comparisons and the 3-D Pareto table/plot.
+
+W9-B is ready for a manual run, with DraftSemantic fixed and K_E=[0,1,2,4]. The notebook includes both exact and epsilon=.01 oracle distributions, actual evidence counts, and a subgroup with at least four available candidates. Positive budgets currently use raw ~1,022-token chunks; this is not yet a test of one short extracted evidence unit. No B run was launched by the A audit.
+
+```bash
+./sara_env/bin/python scripts/week9/run_w9b_ke_surface.py --split fit --config configs/week9/w9b.yaml --resume
+```
+
+Use RUN_FULL=True, RUN_SMOKE=False and FREEZE_FIT=False for the deliberate notebook run. Inspect the completed surface before freezing B. Do not alter A after starting B.
