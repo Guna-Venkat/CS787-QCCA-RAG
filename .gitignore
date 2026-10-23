@@ -59,3 +59,4 @@ results/week9/**/w9a_retrieval_results*
 results/week9/**/w9a_chunk_manifest*
 results/week9/**/w9a_embeddings*
 results/week9/**/*.lock
+results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl

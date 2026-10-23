@@ -33,30 +33,26 @@ Decision: Preserve the primary K=0 result. User authorized a separately labelled
 
 ## W9-C
 
-Status: K=2 diagnostic prepared; manual full execution pending.
-Primary-path interpretation: K=0 makes selectors identical, so a primary selector comparison would be redundant.
-Diagnostic: fixed K=2, all five selectors, original frozen A retrieval, raw evidence, canonical SARA FP16 efficient SDPA.
-Configuration: configs/week9/w9c_k2_diagnostic.yaml.
-Notebook: notebooks/week9/week9c_selector.ipynb, labelled diagnostic only; flags disabled by default and FREEZE_FIT must stay False.
-Outputs: results/week9/diagnostics/w9c_k2/selection/fit/ (smoke results remain in its smoke subdirectory).
-Provenance: separate diagnostic B configuration labelled fit_diagnostic_fixed_k, anchored to primary frozen B; upstream A/B data shared through links without duplication or mutation.
-Full-run status: NOT RUN. No primary C selector frozen; no automatic D-H promotion.
-Verification: see results/week9/patch_verification/w9c_readiness/; bounded one-query real GPU check covers all five selectors.
-Next action: Review readiness audit, then manually execute the diagnostic with RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False, SPLIT='fit'.
+Status: COMPLETE AND FROZEN FOR THE K=2 DIAGNOSTIC ONLY.
+Coverage: 1,746 FIT queries x five selectors = 8,730 verified rows.
+FIT F1: BM25 .382157; QuerySemantic .383490; DraftSemantic .385004; QueryDraft .384095; SANE-adapted .386336.
+Cost-aware controlled selector: DraftSemantic. SANE's +.001332 F1 is below .003 and its paper-bootstrap CI [-.009723, .012181] includes zero; no reliable selector breakthrough established.
+Validation: DraftSemantic reproduces B K2 selections and predictions on all 1,746 queries.
+Artifact: results/week9/diagnostics/w9c_k2/frozen/w9c_frozen_config.json, labelled fit_diagnostic_fixed_k and diagnostic_only.
+Primary policy: B K=0 remains frozen and unchanged; no primary C selector was substituted.
+Next: controlled D representation diagnostic at K=2 with DraftSemantic, explicitly authorized by user.
 
 ## W9-D
 
-Status: IMPLEMENTED; manual execution pending.
-Hypothesis: Draft conditioning may improve compact evidence extraction.
-Prerequisites: see WEEK9_RUNBOOK.md and enforced phase dependencies.
-Implementation status: source, CLI, YAML, notebook and invariant checks present.
-Full-run status: NOT RUN
-Frozen/not frozen: NOT FROZEN
-Key artifact paths: results/week9/extraction/fit/; results/week9/frozen/w9d_frozen_config.json
-Key results: none; full experiment not executed.
-Audit notes: No generator experiment run. Gold restricted to evaluation/training targets.
-Decision: Await complete FIT evidence and manual review.
-Next action: Finish and freeze prerequisite phases, then run this phase manually.
+Status: READY FOR MANUAL FIT DIAGNOSTIC; bounded GPU check passed, full run not launched.
+Design: D0 saved canonical draft; D1 raw chunks; D2 query-only joint extraction; D3 draft-aware joint extraction. Positive arms hold K=2, DraftSemantic, selected chunk IDs and canonical SARA generation fixed.
+Extraction: existing SANE blueprint, max 1,024 generated tokens per joint extraction; answer max 128. Compression and factual support must be measured, not assumed.
+Configuration: configs/week9/w9d_k2_diagnostic.yaml.
+Notebook: notebooks/week9/week9d_representation.ipynb.
+Outputs: results/week9/diagnostics/w9c_k2/extraction/fit/; bounded smoke stays in smoke/.
+Frozen state: diagnostic C prerequisites frozen; D NOT FROZEN. Primary K=0 remains intact.
+Verification: one real query/all four arms passed at 14.37 GiB peak; identical positive-arm chunks and D1 reproduces C. One extraction hit its token cap and D3 had zero exact-span support; notebook reports these model-quality diagnostics. 80 code tests and safe notebook execution passed. Evidence: results/week9/patch_verification/w9d_readiness/. No production Python source change or previous experiment rerun required.
+Execution: RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False, SPLIT='fit'. No automatic promotion to primary E-H.
 
 ## W9-E
 

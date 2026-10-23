@@ -1,0 +1,210 @@
+{
+  "ready": true,
+  "scope": "FIT K=2 DraftSemantic representation diagnostic only",
+  "smoke_queries": 1,
+  "smoke_rows": 4,
+  "question_id": "512",
+  "same_selected_chunks": true,
+  "raw_arm_reproduces_c": true,
+  "primary_b_budget": 0,
+  "primary_b_unchanged": true,
+  "full_d_launched": false,
+  "d_frozen": false,
+  "peak_allocated_gib": 14.372199058532715,
+  "model_calls": 5,
+  "extraction_calls": [
+    {
+      "prompt_tokens": 3337,
+      "generated_tokens": 1024,
+      "latency": 41.44664736499544
+    },
+    {
+      "prompt_tokens": 3377,
+      "generated_tokens": 208,
+      "latency": 8.914238520999788
+    }
+  ],
+  "extraction_audits": {
+    "D2": {
+      "rows": [
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "The difference between the predicted distribution and the target distribution, INLINEFORM0",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": "The objective of the proposed model is to optimize the conditional probability",
+          "fact_directly_copied": true,
+          "fact_entailment": "verbatim"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the inputs are semantic frames containing specific slots and corresponding values",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The inputs are semantic frames containing specific slots and corresponding values",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the probability of activating inter-layer and inner-layer teacher forcing is set to 0.5",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": "The probability of activating inter-layer and inner-layer teacher forcing is set to 0.5",
+          "fact_directly_copied": true,
+          "fact_entailment": "verbatim"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the models are trained for 20 training epochs without early stop",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": "The models are trained for 20 training epochs without early stop",
+          "fact_directly_copied": true,
+          "fact_entailment": "verbatim"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "The evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": "The evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "the decoder in the baseline seq2seq model has hidden layers of size 400",
+          "source_identity_valid": true,
+          "exact_span_supported": true,
+          "structured_fact": "The decoder in the baseline seq2seq model has hidden layers of size 400",
+          "fact_directly_copied": false,
+          "fact_entailment": "unmeasured"
+        }
+      ],
+      "exact_span_support_rate": 0.6923076923076923,
+      "unsupported_structured_fact_rate": null,
+      "unsupported_fact_note": "Entailment not measured; exact quotes alone do not establish fact support.",
+      "empty_extraction": false,
+      "invalid_format": false
+    },
+    "D3": {
+      "rows": [
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "\u2014",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": null,
+          "fact_directly_copied": null,
+          "fact_entailment": null
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "\u2014",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": null,
+          "fact_directly_copied": null,
+          "fact_entailment": null
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "\u2014",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": null,
+          "fact_directly_copied": null,
+          "fact_entailment": null
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "support_span": "\u2014",
+          "source_identity_valid": true,
+          "exact_span_supported": false,
+          "structured_fact": null,
+          "fact_directly_copied": null,
+          "fact_entailment": null
+        }
+      ],
+      "exact_span_support_rate": 0.0,
+      "unsupported_structured_fact_rate": null,
+      "unsupported_fact_note": "Entailment not measured; exact quotes alone do not establish fact support.",
+      "empty_extraction": false,
+      "invalid_format": false
+    }
+  },
+  "unit_tests_passed": 80,
+  "unit_tests_deselected": 1,
+  "deselection_reason": "User-enabled B/C notebook flags conflict with existing safe-defaults test",
+  "config": "configs/week9/w9d_k2_diagnostic.yaml",
+  "notebook": "notebooks/week9/week9d_representation.ipynb",
+  "extraction_token_cap_reached": [
+    true,
+    false
+  ],
+  "extraction_quality_note": "One query-only extraction reached the 1024-token cap and ended in a partial row; draft-aware table had zero exact-span support. These observed model outputs are retained and reported, not silently repaired. GPU/code readiness does not imply extraction-quality success."
+}

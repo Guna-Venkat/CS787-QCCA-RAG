@@ -292,3 +292,20 @@ For the deliberate full diagnostic, set RUN_FULL=True, RUN_SMOKE=False, FREEZE_F
 Readiness evidence and the reproducible setup are in `results/week9/patch_verification/w9c_readiness/`. The B freeze was created with analyze-only; no B generations were repeated.
 
 W9-C bounded GPU verification passed: five selector rows on FIT query 512, peak allocated memory 14.33 GiB, with DraftSemantic reproducing the corresponding saved B K2 output. Three distinct cached LM calls cover the five selector policies, including SANE selection. All 80 W9 code tests passed (the existing notebook-default check was excluded for user-enabled B flags). Final evidence: `results/week9/patch_verification/w9c_readiness/readiness.json`.
+
+
+## W9-D controlled representation diagnostic (2026-10-22)
+
+Completed C covers all 8,730 expected outcomes. The original C rule retains DraftSemantic: SANE's +.001332 F1 is below .003 and its paired paper-bootstrap CI includes zero. The explicitly authorized controlled branch now freezes C as diagnostic-only DraftSemantic, while the main B artifact remains K=0. C's DraftSemantic selections and predictions reproduce B K2 on all 1,746 FIT queries.
+
+Open `notebooks/week9/week9d_representation.ipynb`. It uses `configs/week9/w9d_k2_diagnostic.yaml` with the same separate root `results/week9/diagnostics/w9c_k2`, retaining C provenance. D outputs go under `extraction/fit/`. The primary config and primary frozen artifacts are not replaced. Set RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False, SPLIT='fit'; keep `--resume`. Notebook preflight checks both diagnostic prerequisites and the preserved primary K=0 before loading a model.
+
+D0 reuses the saved draft. D1 appends the two selected raw chunks. D2 and D3 use the same selected chunks, one joint SANE-blueprint extraction with max 1,024 tokens (query only versus query plus initial draft), then the same canonical SARA context and 128-token answer limit. Full prompts are preserved; CUDA uses the verified FP16 efficient-attention path. This tests the extraction intervention including its instructions/format, rather than proving token length alone causes any gain. Tables remain as generated for diagnostic measurement; quote support is distinct from fact entailment. The notebook checks chunk identity across D1/D2/D3, displays paired comparisons against D0, and reports actual extraction lengths, invalid formats, empty extractions and exact-span support.
+
+```bash
+./sara_env/bin/python scripts/week9/run_w9d_representation.py --split fit --config configs/week9/w9d_k2_diagnostic.yaml --resume
+```
+
+The user authorized diagnostic continuation only. Do not automatically promote its selector or representation into primary E-H; inspect full D results before any later freeze. Audit/setup files: `results/week9/patch_verification/w9d_readiness/`. Smoke and full caches are separate.
+
+W9-D GPU smoke passed all four arms on one real FIT query (14.37 GiB peak allocation). One query-only extraction reached the 1,024-token cap and ended mid-row; the draft-aware table had zero exact-span support. These are retained model outcomes for the experiment, not hidden successes. The notebook reports cap-hit and zero-support rates alongside compression and downstream F1. Full-run extraction quality and runtime are not established by one query. All notebook cells passed with execution disabled; 80 code tests passed (one existing notebook-default check excluded for user-enabled B/C flags). See `results/week9/patch_verification/w9d_readiness/README.md`.
