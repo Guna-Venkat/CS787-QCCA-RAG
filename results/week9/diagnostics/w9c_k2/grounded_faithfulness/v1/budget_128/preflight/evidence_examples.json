@@ -1,0 +1,537 @@
+[
+  {
+    "question_id": "2038",
+    "policy": "E0",
+    "evidence": {
+      "text": "[2d82490f2fc7e53780cd88ce] An overview of the provided dataset is given in Table TABREF16 .\n[b490e4a32a6f10cdcfc2978b] Overall results between the monolingual and multilingual model are close, but the advantage of our multilingual All-in-1 approach is that it is a single model that can be applied to all four languages.",
+      "items": [
+        {
+          "source_chunk_id": "2d82490f2fc7e53780cd88ce",
+          "source_paper_id": "700",
+          "question_id": "2038",
+          "char_start": 72,
+          "char_end": 136,
+          "support_span": "An overview of the provided dataset is given in Table TABREF16 .",
+          "exact_source_text": "An overview of the provided dataset is given in Table TABREF16 .",
+          "support_valid": true,
+          "support_tokens": 16,
+          "token_count": 16
+        },
+        {
+          "source_chunk_id": "b490e4a32a6f10cdcfc2978b",
+          "source_paper_id": "700",
+          "question_id": "2038",
+          "char_start": 2900,
+          "char_end": 3101,
+          "support_span": "Overall results between the monolingual and multilingual model are close, but the advantage of our multilingual All-in-1 approach is that it is a single model that can be applied to all four languages.",
+          "exact_source_text": "Overall results between the monolingual and multilingual model are close, but the advantage of our multilingual All-in-1 approach is that it is a single model that can be applied to all four languages.",
+          "support_valid": true,
+          "support_tokens": 47,
+          "token_count": 47
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 110,
+      "support_tokens": 63,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "b7b251892dede52d156e93c6f09055d36292c2d0a6e83a75e53dc2a62d4ce56c",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "2d82490f2fc7e53780cd88ce",
+        "char_start": 72,
+        "char_end": 136,
+        "canonical_source_substring": "An overview of the provided dataset is given in Table TABREF16 ."
+      },
+      {
+        "source_chunk_id": "b490e4a32a6f10cdcfc2978b",
+        "char_start": 2900,
+        "char_end": 3101,
+        "canonical_source_substring": "Overall results between the monolingual and multilingual model are close, but the advantage of our multilingual All-in-1 approach is that it is a single model that can be applied to all four languages."
+      }
+    ]
+  },
+  {
+    "question_id": "2038",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "[{\"source_chunk_id\":\"2d82490f2fc7e53780cd88ce\",\"support_span\":\"meaningless\",\"fact\":\"meaningless\"}]",
+      "items": [
+        {
+          "source_chunk_id": "2d82490f2fc7e53780cd88ce",
+          "source_paper_id": "700",
+          "question_id": "2038",
+          "char_start": 0,
+          "char_end": 11,
+          "support_span": "meaningless",
+          "exact_source_text": "meaningless",
+          "support_valid": true,
+          "support_tokens": 3,
+          "token_count": 3,
+          "fact": "meaningless",
+          "fact_tokens": 3,
+          "fact_support_mode": "copied_contiguous_subspan_whitespace_normalized"
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 45,
+      "support_tokens": 3,
+      "fact_tokens": 3,
+      "num_supported_items": 1,
+      "num_accepted_items": 1,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 1,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "9a4b44b0aa87e0704e1f9f818d9fdaf1b667f97cd316df6d9905a94a11d74652",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "2d82490f2fc7e53780cd88ce",
+        "char_start": 0,
+        "char_end": 11,
+        "canonical_source_substring": "meaningless"
+      }
+    ]
+  },
+  {
+    "question_id": "2038",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "b490e4a32a6f10cdcfc2978b",
+            "support_span": "the final label distribution for the data is given in Figure FIGREF17 ",
+            "fact": "final label distribution for the data is given in Figure FIGREF17 "
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "2038",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": true,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "1583",
+    "policy": "E0",
+    "evidence": {
+      "text": "[e24199b6da10f0fae1547068] We also conduct extensive experiments to investigate our model's effectiveness and robustness.\n[e24199b6da10f0fae1547068] We conducted extensive experiments to validate our claim that both explicit and implicit structures are indispensable in such a task, and demonstrate the effectiveness and robustness of our model.",
+      "items": [
+        {
+          "source_chunk_id": "e24199b6da10f0fae1547068",
+          "source_paper_id": "503",
+          "question_id": "1583",
+          "char_start": 810,
+          "char_end": 904,
+          "support_span": "We also conduct extensive experiments to investigate our model's effectiveness and robustness.",
+          "exact_source_text": "We also conduct extensive experiments to investigate our model's effectiveness and robustness.",
+          "support_valid": true,
+          "support_tokens": 16,
+          "token_count": 16
+        },
+        {
+          "source_chunk_id": "e24199b6da10f0fae1547068",
+          "source_paper_id": "503",
+          "question_id": "1583",
+          "char_start": 5320,
+          "char_end": 5516,
+          "support_span": "We conducted extensive experiments to validate our claim that both explicit and implicit structures are indispensable in such a task, and demonstrate the effectiveness and robustness of our model.",
+          "exact_source_text": "We conducted extensive experiments to validate our claim that both explicit and implicit structures are indispensable in such a task, and demonstrate the effectiveness and robustness of our model.",
+          "support_valid": true,
+          "support_tokens": 35,
+          "token_count": 35
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 100,
+      "support_tokens": 51,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "ee6834df94dd304ed70cc955346f380c0ddae183d6dfe1bb57a44ec2e449772d",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "e24199b6da10f0fae1547068",
+        "char_start": 810,
+        "char_end": 904,
+        "canonical_source_substring": "We also conduct extensive experiments to investigate our model's effectiveness and robustness."
+      },
+      {
+        "source_chunk_id": "e24199b6da10f0fae1547068",
+        "char_start": 5320,
+        "char_end": 5516,
+        "canonical_source_substring": "We conducted extensive experiments to validate our claim that both explicit and implicit structures are indispensable in such a task, and demonstrate the effectiveness and robustness of our model."
+      }
+    ]
+  },
+  {
+    "question_id": "1583",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "e24199b6da10f0fae1547068",
+            "support_span": "Existing approaches build models based on conditional random fields (CRF) or structural support vector machines (SSVM) to explicitly model the sentiment information with structured outputs, where each targeted sentiment prediction corresponds to exactly one fixed output.",
+            "fact": "Existing approaches build models based on conditional random fields (CRF) or structural support vector machines (SSVM) to explicitly model the sentiment information with structured outputs, where each targeted sentiment prediction corresponds to exactly one fixed output."
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "1583",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "1583",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "567",
+    "policy": "E0",
+    "evidence": {
+      "text": "[dc4a521868372dacca2f219f] For the SR and HATE datasets, the authors reported their trained best logistic regression model's results on their respective datasets.\n[4093084f447b7849e57bda19] in what way?",
+      "items": [
+        {
+          "source_chunk_id": "dc4a521868372dacca2f219f",
+          "source_paper_id": "153",
+          "question_id": "567",
+          "char_start": 3116,
+          "char_end": 3251,
+          "support_span": "For the SR and HATE datasets, the authors reported their trained best logistic regression model's results on their respective datasets.",
+          "exact_source_text": "For the SR and HATE datasets, the authors reported their trained best logistic regression model's results on their respective datasets.",
+          "support_valid": true,
+          "support_tokens": 27,
+          "token_count": 27
+        },
+        {
+          "source_chunk_id": "4093084f447b7849e57bda19",
+          "source_paper_id": "153",
+          "question_id": "567",
+          "char_start": 753,
+          "char_end": 765,
+          "support_span": "in what way?",
+          "exact_source_text": "in what way?",
+          "support_valid": true,
+          "support_tokens": 4,
+          "token_count": 4
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 80,
+      "support_tokens": 31,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "73e17b4e958080467ee16bc5f9c1a62e851107301900c3f53a4f7cdcf5ecfd14",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "dc4a521868372dacca2f219f",
+        "char_start": 3116,
+        "char_end": 3251,
+        "canonical_source_substring": "For the SR and HATE datasets, the authors reported their trained best logistic regression model's results on their respective datasets."
+      },
+      {
+        "source_chunk_id": "4093084f447b7849e57bda19",
+        "char_start": 753,
+        "char_end": 765,
+        "canonical_source_substring": "in what way?"
+      }
+    ]
+  },
+  {
+    "question_id": "567",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "dc4a521868372dacca2f219f",
+            "support_span": "F1: 0.8200",
+            "fact": "0.8200"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "567",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "567",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "dc4a521868372dacca2f219f",
+            "support_span": "100k parameters",
+            "normalized_claim": "100k parameters",
+            "evidence_type": "answer_detail",
+            "relevance": "direct"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  }
+]

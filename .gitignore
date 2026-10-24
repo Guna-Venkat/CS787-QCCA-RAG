@@ -60,3 +60,8 @@ results/week9/**/w9a_chunk_manifest*
 results/week9/**/w9a_embeddings*
 results/week9/**/*.lock
 results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl
+
+# W9-E grounded full-run caches; keep compact preflight evidence and summaries
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/grounded_e_results.jsonl
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/lm_calls.jsonl
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/evidence_objects.jsonl

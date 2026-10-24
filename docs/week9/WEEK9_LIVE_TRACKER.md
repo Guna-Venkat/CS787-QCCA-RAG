@@ -56,17 +56,19 @@ Execution: RUN_FULL=True, RUN_SMOKE=False, FREEZE_FIT=False, SPLIT='fit'. No aut
 
 ## W9-E
 
-Status: IMPLEMENTED; manual execution pending.
-Hypothesis: Structured evidence may improve support and compression.
-Prerequisites: see WEEK9_RUNBOOK.md and enforced phase dependencies.
-Implementation status: source, CLI, YAML, notebook and invariant checks present.
-Full-run status: NOT RUN
-Frozen/not frozen: NOT FROZEN
-Key artifact paths: results/week9/faithfulness/fit/; results/week9/frozen/w9e_frozen_config.json
-Key results: none; full experiment not executed.
-Audit notes: No generator experiment run. Gold restricted to evaluation/training targets.
-Decision: Await complete FIT evidence and manual review.
-Next action: Finish and freeze prerequisite phases, then run this phase manually.
+Status: GROUNDED COMPACT V1 IMPLEMENTED; full run NOT STARTED. Preflight quality warnings require review.
+Scope: E-only nested package leaves existing A-D code, results, freezes and global source fingerprints untouched. Dedicated E hashes cover the new code.
+Controlled inputs: complete D0-D3 are pinned read-only in an E-local input seal. FIXED-5 / SEMANTIC@20, DraftSemantic, K=2, canonical answer generation remain fixed; primary B stays K=0.
+Policies: E0 deterministic compact verbatim spans; E1-Q query-only supported structured facts; E1-QD draft-aware equivalent; E2 minimal supported blueprint. Facts use a conservative copied-subspan variant, not unconstrained paraphrases.
+Budgets: final whole evidence object 128 tokens, optional separate 64 config; intermediate generation 256 tokens; answer generation 128. No cap increases or raw/synthetic fallbacks.
+Fail-closed: unusable evidence returns y0 without an answer call; extraction cost remains charged.
+Preflight: FIT queries 2038, 1583, 567; 12 rows, 13 new model calls, 14.21 GiB peak. Accepted spans verified exact and final evidence max 110 tokens. E0 accepted 3/3; E1-Q 1/3; E1-QD/E2 0/3. Eight failures retained y0. Do not equate code readiness with successful structured extraction.
+Gate: default full disabled; warnings (including malformed/unsupported output) require deliberate acknowledgment after review. No method/prompt selected using F1; no prompt repair attempted.
+Notebook: notebooks/week9/week9e_extraction_faithfulness.ipynb (existing notebook patched).
+Config: configs/week9/w9e_grounded.yaml; alternate configs/week9/w9e_grounded_64.yaml requires its own preflight.
+Artifacts: results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/.
+Verification: 103 passed, 1 existing global safe-default test deselected for user-enabled B/C/D flags; dedicated E safe path passes. Independent source/budget/cache checks passed.
+Details/manual instructions: docs/week9/W9E_GROUNDED_IMPLEMENTATION.md. Review quality warnings before investing in a full run; no F/G or TEST work authorized here.
 
 ## W9-F
 
