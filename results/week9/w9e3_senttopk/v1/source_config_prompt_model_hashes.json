@@ -1,0 +1,32 @@
+{
+  "config_hash": "d1195dc72bd7ff95e628e8f07f6124044720181b0b61a6d1433ef5b65e5563c1",
+  "source_bundle_hash": "1da8d2163560cd6a817b249cedca7bcf8ace7f9e1ee58f1c964775563d1bcab9",
+  "historical_source_bundle_hash": "000d1cf4f2c0d9be29c515ea5d7fd82328857ada3ef12f1815393c2b42cd317c",
+  "old_e_source_bundle_hash": "3234a3a380a99d58a9779d32cb9f6976255c31bde09f40fd1c5b0ca316a9cb56",
+  "answer_prompt_source_hash": "ab2452491677bf3ee09438fe0c970bc21c59ac791c5938301f998c077f5ae77c",
+  "model_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/chat_template.jinja": "796853172235ab3aaa4810013ddfe2eab481bda3306dad4f700c00d436eed596",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+  },
+  "encoder_identity_hash": "6612a227092388b432c9be212df25b07c5162b8f2ffb2d21dd11c76fff51cf3b",
+  "note": "Every generated row additionally records its actual final prompt, evidence and output hashes."
+}

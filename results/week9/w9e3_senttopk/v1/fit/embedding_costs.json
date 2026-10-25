@@ -1,0 +1,7 @@
+{
+  "unique_sentence_embeddings": 65966,
+  "unique_query_embeddings": 1664,
+  "sentence_index_unique_origin_seconds": 234.3505959416373,
+  "query_embeddings_unique_origin_seconds": 12.845897273800801,
+  "note": "Sentence embeddings are reusable preprocessing/index cost. Query embeddings are online conceptual cost even when cached. Current-run lookup/compute is recorded separately in each row; no cache hit erases origin computation."
+}

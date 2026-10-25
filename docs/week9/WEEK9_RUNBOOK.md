@@ -319,3 +319,17 @@ Default evidence budget is 128 whole-object tokens (alternate 64 config), with a
 The actual three-query FIT preflight passed implementation invariants but raised severe structured-output warnings: E0 accepted 3/3, E1-Q 1/3, E1-QD and E2 0/3. **Do not interpret this as a clean full-run recommendation.** The notebook displays quality and source examples before full execution; full runs require a current preflight and explicit ACK_PREFLIGHT_WARNINGS=True after review. RUN_FULL=False and RUN_SMOKE=False remain the defaults. No prompts were repaired/tuned and no full run was launched.
 
 For full details, inventory, exact templates, metrics, tests and the manual command see `docs/week9/W9E_GROUNDED_IMPLEMENTATION.md`. New E artifacts are isolated under `results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/`; no primary representation is selected or automatically promoted to F-H.
+
+## W9-E3 — separate semantic sentence suppression (2026-10-24)
+
+The existing E notebook now ends with a new **W9-E3 — Semantic Sentence Suppression** section. E0/E1-Q/E1-QD/E2 remain unchanged. Both old run flags were restored to False to prevent accidental old-policy execution; new RUN_E3_FULL/RUN_E3_SMOKE also default False. New config: `configs/week9/w9e3_senttopk.yaml`; all new artifacts live under `results/week9/w9e3_senttopk/v1/`.
+
+E3 uses the identical saved K=2/DraftSemantic chunks, canonical frozen MiniLM snapshot, query-only cosine ranking, exact source sentences and source-order presentation, with k={1,2,3,4,6,8}. No extraction LM, new model, MMR or revision-mode experiment. Complete FIT results alone select/freeze global k and compute intervention-only/full-action oracles, paired intervals and a retrospective dynamic-k GO/NO-GO; no controller is trained or run.
+
+The two-query smoke passed all six k values: 12 answer calls, zero extraction calls, 13.88 GiB peak; old artifacts and source identities are unchanged. Full E3 was not launched. See `docs/week9/W9E3_SENTTOPK.md` for exact protocol, encoder revision, cost accounting, tests, remaining risks and artifacts.
+
+For deliberate manual execution, keep old RUN_FULL/RUN_SMOKE=False; set only RUN_E3_FULL=True, RUN_E3_SMOKE=False in the appended section, or run:
+
+```bash
+./sara_env/bin/python -m src.week9.senttopk_e3.runner --config configs/week9/w9e3_senttopk.yaml --stage full --resume
+```

@@ -65,3 +65,10 @@ results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl
 results/week9/diagnostics/**/grounded_faithfulness/**/fit/grounded_e_results.jsonl
 results/week9/diagnostics/**/grounded_faithfulness/**/fit/lm_calls.jsonl
 results/week9/diagnostics/**/grounded_faithfulness/**/fit/evidence_objects.jsonl
+
+# W9-E3 sentence index and full answer caches; keep identities/smoke/summaries
+results/week9/w9e3_senttopk/**/sentence_cache/*.sqlite3*
+results/week9/w9e3_senttopk/**/sentence_cache/inventories.jsonl
+results/week9/w9e3_senttopk/**/sentence_cache/scores.jsonl
+results/week9/w9e3_senttopk/**/fit/results.jsonl
+results/week9/w9e3_senttopk/**/fit/lm_calls.jsonl

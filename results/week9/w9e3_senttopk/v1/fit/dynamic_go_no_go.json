@@ -1,0 +1,29 @@
+{
+  "recommendation": "GO",
+  "controller_trained_or_run": false,
+  "comparator_best_point_estimate_k": 3,
+  "oracle_f1_gain": 0.12514235100555937,
+  "cost_reductions": {
+    "evidence": 0.5570453380550767,
+    "final_prompt": 0.07733079010334687,
+    "cumulative_prompt": 0.33026997050827855
+  },
+  "gain_criterion": true,
+  "cost_criterion": true,
+  "heterogeneity_criterion": false,
+  "intervention_epsilon_mass": {
+    "1": 0.6494845360824743,
+    "2": 0.0990836197021764,
+    "3": 0.07216494845360824,
+    "4": 0.05326460481099656,
+    "6": 0.06872852233676977,
+    "8": 0.0572737686139748
+  },
+  "help_hurt_rate_range": 0.0715922107674685,
+  "criterion3_definition": {
+    "min_mass": 0.15,
+    "help_hurt_range": 0.05,
+    "min_oracle_gain": 0.003
+  },
+  "interpretation": "Retrospective headroom recommendation only; GO does not establish a deployable dynamic controller or authorize training."
+}

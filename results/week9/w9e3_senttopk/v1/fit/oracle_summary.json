@@ -1,0 +1,128 @@
+{
+  "intervention_only": {
+    "exact": {
+      "f1": 0.48891000408064783,
+      "mean_k": 2.1827033218785794,
+      "median_k": 1.0,
+      "mean_evidence_tokens": 71.58591065292096,
+      "mean_final_prompt_tokens": 1059.0223367697595,
+      "mean_cumulative_prompt_tokens": 1999.5664375715921,
+      "mean_cumulative_generated_tokens": 39.65864833906071,
+      "mean_lm_calls": 2.0,
+      "distribution": {
+        "1": 1120,
+        "2": 175,
+        "3": 125,
+        "4": 100,
+        "6": 121,
+        "8": 105
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    },
+    "epsilon": {
+      "f1": 0.4888271962474663,
+      "mean_k": 2.147766323024055,
+      "median_k": 1.0,
+      "mean_evidence_tokens": 70.40549828178695,
+      "mean_final_prompt_tokens": 1057.8419243986255,
+      "mean_cumulative_prompt_tokens": 1998.386025200458,
+      "mean_cumulative_generated_tokens": 39.63001145475372,
+      "mean_lm_calls": 2.0,
+      "distribution": {
+        "1": 1134,
+        "2": 173,
+        "3": 126,
+        "4": 93,
+        "6": 120,
+        "8": 100
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    }
+  },
+  "full_action": {
+    "exact": {
+      "f1": 0.5152470505920258,
+      "mean_k": 1.3190148911798396,
+      "median_k": 0.0,
+      "mean_evidence_tokens": 44.651775486827034,
+      "mean_final_prompt_tokens": 1003.2846506300115,
+      "mean_cumulative_prompt_tokens": 1365.020618556701,
+      "mean_cumulative_generated_tokens": 28.721076746849942,
+      "mean_lm_calls": 1.3848797250859106,
+      "distribution": {
+        "0": 1074,
+        "1": 206,
+        "2": 114,
+        "3": 89,
+        "4": 78,
+        "6": 95,
+        "8": 90
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    },
+    "epsilon": {
+      "f1": 0.515166367405855,
+      "mean_k": 1.2806414662084764,
+      "median_k": 0.0,
+      "mean_evidence_tokens": 43.55670103092783,
+      "mean_final_prompt_tokens": 1001.8052691867125,
+      "mean_cumulative_prompt_tokens": 1357.0824742268042,
+      "mean_cumulative_generated_tokens": 28.43069873997709,
+      "mean_lm_calls": 1.3768613974799542,
+      "distribution": {
+        "0": 1088,
+        "1": 206,
+        "2": 112,
+        "3": 88,
+        "4": 71,
+        "6": 95,
+        "8": 86
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    }
+  },
+  "local_window_intervention_only": {
+    "exact": {
+      "f1": 0.4771418387982371,
+      "mean_k": 1.84077892325315,
+      "median_k": 1.0,
+      "mean_evidence_tokens": 59.233676975945016,
+      "mean_final_prompt_tokens": 1046.6701030927834,
+      "mean_cumulative_prompt_tokens": 1987.2142038946163,
+      "mean_cumulative_generated_tokens": 39.148911798396334,
+      "mean_lm_calls": 2.0,
+      "distribution": {
+        "1": 1178,
+        "2": 185,
+        "3": 136,
+        "4": 112,
+        "6": 135
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    },
+    "epsilon": {
+      "f1": 0.477068502824331,
+      "mean_k": 1.8150057273768614,
+      "median_k": 1.0,
+      "mean_evidence_tokens": 58.3631156930126,
+      "mean_final_prompt_tokens": 1045.799541809851,
+      "mean_cumulative_prompt_tokens": 1986.343642611684,
+      "mean_cumulative_generated_tokens": 39.105956471935855,
+      "mean_lm_calls": 2.0,
+      "distribution": {
+        "1": 1192,
+        "2": 182,
+        "3": 137,
+        "4": 104,
+        "6": 131
+      },
+      "deployable": false,
+      "cost_note": "Costs of retrospectively chosen actions, excluding the cost of searching the oracle; not inference-time achievable costs."
+    }
+  }
+}

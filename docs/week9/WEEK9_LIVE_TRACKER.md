@@ -111,3 +111,17 @@ Key results: none; full experiment not executed.
 Audit notes: No generator experiment run. Gold restricted to evaluation/training targets.
 Decision: QCLA without FIT-OOF is reporting-only. Final W8 G0/HC predictions are registered through checksummed read-only imports from committed main history; direct HC k4 remains INTERNAL-VAL only. No substitution or automatic winner from another generator.
 Next action: Finish and freeze prerequisite phases, then run this phase manually.
+
+## W9-E3 — appended semantic sentence suppression
+
+Status: IMPLEMENTED AND SMOKE-VERIFIED; full surface NOT RUN.
+This is a separate E3-SentTopK experiment; no earlier E0/E1-Q/E1-QD/E2 policy/result is changed.
+Inputs: identical frozen FIXED-5 / SEMANTIC@20 / DraftSemantic requested K=2 chunks; primary K=0 stays fixed. D/E query/paper/chunk/hash identities are hard-checked read-only.
+Method: academic-offset-rules-v1 sentence inventory; canonical MiniLM query-only cosine; top-k selection then source-order presentation. Grid {1,2,3,4,6,8}; no extraction LM, MMR or new model/revision mode.
+Config: configs/week9/w9e3_senttopk.yaml. Package: src/week9/senttopk_e3/.
+Notebook: appended W9-E3 section in notebooks/week9/week9e_extraction_faithfulness.ipynb. Old and new execution flags default False.
+Artifacts: results/week9/w9e3_senttopk/v1/ (separate from every earlier E artifact).
+Smoke: FIT queries 594/1204, 151 candidate sentences, 12 answers, zero extraction calls, 18–196 evidence tokens, 13.88 GiB peak. Source, rank and presentation checks passed; old artifact hashes remain unchanged.
+Tests: 119 passed, one existing global notebook-default test deselected due to user-enabled B/C/D flags; dedicated E3 safe notebook path passed.
+Next: manual full six-k surface. Only complete FIT results select/freeze k, compute paired CIs and intervention/full-action oracles, and recommend dynamic GO/NO-GO. No k frozen or dynamic controller built/run from smoke.
+Protocol, exact revision, tests, limitations and manual command: docs/week9/W9E3_SENTTOPK.md.
