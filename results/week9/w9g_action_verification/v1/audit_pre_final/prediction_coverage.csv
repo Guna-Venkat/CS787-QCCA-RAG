@@ -1,0 +1,11 @@
+model,outer_fold,expected_predictions,actual_predictions
+logistic,0,350,350
+logistic,1,349,349
+logistic,2,349,349
+logistic,3,349,349
+logistic,4,349,349
+hist_gradient_boosting,0,350,350
+hist_gradient_boosting,1,349,349
+hist_gradient_boosting,2,349,349
+hist_gradient_boosting,3,349,349
+hist_gradient_boosting,4,349,349

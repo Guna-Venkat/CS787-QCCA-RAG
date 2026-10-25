@@ -1,0 +1,4 @@
+comparison,post_selection,descriptive,preregistered_comparison,point_estimate,ci95_low,ci95_high,cluster,papers,resamples,seed
+Logistic - D0,True,True,True,0.0038120764555066005,-0.005019389471817261,0.012492006908273522,paper_id,656,10000,42
+Logistic - F0,True,True,True,-0.0005807634469299568,-0.010087242245649105,0.008748717018343923,paper_id,656,10000,42
+Logistic - F2-A,True,True,False,-0.0001725126797252881,-0.008564878543536061,0.008058467206190944,paper_id,656,10000,42

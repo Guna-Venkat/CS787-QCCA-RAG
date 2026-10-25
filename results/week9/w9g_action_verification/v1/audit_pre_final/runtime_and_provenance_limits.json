@@ -1,0 +1,10 @@
+{
+  "candidate_latency": "Saved F0 generation latency, inherited per query; not a new generation measurement",
+  "prediction_latency": "Recorded batch prediction time amortized per outer-heldout query",
+  "feature_computation_latency": "Not measured separately; unknown, not zero",
+  "preprocessing_latency": "Not measured separately",
+  "measured_end_to_end_latency": null,
+  "inner_probabilities": "Not archived. Inner grid cannot be independently rescored; verify source/data access, saved partitions, grid metadata and decisions instead.",
+  "fold_estimators": "Not archived; final full-FIT pipelines are archived. Historical per-fold fitted statistics cannot be recovered without forbidden unnecessary OOF retraining.",
+  "existing_full_fit": "OOF runner already fits final estimators on all FIT; not used for OOF predictions. Export/refit code must retain this distinction."
+}

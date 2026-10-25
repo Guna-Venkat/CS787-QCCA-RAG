@@ -1,0 +1,748 @@
+{
+  "synthetic_rows": 60,
+  "synthetic_papers": 20,
+  "real_classifier_fits": 0,
+  "preprocessing_fits_on_synthetic_training_partitions": 52,
+  "fresh_pipeline_instances": 52,
+  "validation_prediction_calls": 50,
+  "inner_and_deployment_threshold_calls": 12,
+  "all_preprocessing_training_only": true,
+  "no_prediction_on_fit_rows": true,
+  "outer_heldout_label_reads_during_inner_threshold_selection": 0,
+  "full_fit_estimators_never_used_for_oof_predictions": true,
+  "fits": [
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "outer",
+      "outer_fold": 0,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "outer",
+      "outer_fold": 1,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "outer",
+      "outer_fold": 2,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "outer",
+      "outer_fold": 3,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "outer",
+      "outer_fold": 4,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "logistic",
+      "role": "final",
+      "outer_fold": -1,
+      "inner_fold": -1,
+      "training_rows": 60,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 0,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "outer",
+      "outer_fold": 0,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 1,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "outer",
+      "outer_fold": 1,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 2,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "outer",
+      "outer_fold": 2,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 3,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "outer",
+      "outer_fold": 3,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 0,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 1,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 2,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "inner",
+      "outer_fold": 4,
+      "inner_fold": 3,
+      "training_rows": 36,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "outer",
+      "outer_fold": 4,
+      "inner_fold": -1,
+      "training_rows": 48,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "role": "final",
+      "outer_fold": -1,
+      "inner_fold": -1,
+      "training_rows": 60,
+      "outer_heldout_overlap": 0,
+      "preprocessing_training_rows_only": true
+    }
+  ],
+  "predictions": [
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    },
+    {
+      "validation_rows": 12,
+      "fit_prediction_row_overlap": 0
+    }
+  ],
+  "threshold_calls": [
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 60,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": true
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 48,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": false
+    },
+    {
+      "training_queries": 60,
+      "outside_allowed_label_reads": 0,
+      "pooled_deployment_selection": true
+    }
+  ],
+  "note": "Runtime call-path test only. Original estimator/preprocessor recipes are constructed; classifier steps are replaced by non-learning test doubles. No study controller is retrained."
+}
