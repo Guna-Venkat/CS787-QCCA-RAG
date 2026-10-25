@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "split": "fit",
+  "controller_training_started": true,
+  "lm_calls": 0,
+  "selected_model": "logistic",
+  "protocol_hash": "51a6b494838fea9ca1cbb21e3c14e1638fa502df3e2ec542a7ca3a8905038591",
+  "measured_end_to_end_latency": null,
+  "cost_note": "All queries pay saved F0 generation plus feature/verifier overhead, including KEEP outcomes.",
+  "artifact_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/threshold_selection.csv": "f514b76f1ba5f10ebafe4757286fa1863832c4aac08f788490e032eff2880836",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/logistic_deployment.json": "efa4a521471f2b9a6496c249b2121df438c61f381685251bd750843a68c4a2b7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/hist_gradient_boosting.joblib": "161e20b364e4c77b2a4792022714ef41a1de9f3fe3ce958449727bbe0d7099e5",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/hist_gradient_boosting_deployment.json": "7c08523761487f87d0cab2b2092277f7a66b1839c867d6331dc80867e31cd6d4",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/summary.csv": "4fdb1036b65e5b8b08711e0f2fab77ae0f8909e7db3411df1c798c72bf84df75",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/bootstrap.csv": "68a67c6c926ff817d0a46a574d653a0fd1b7428356a5ee4e3b512b64975b383c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/fold_assignments.csv": "d699b17606bd218e3a6725d8f808803439678056c432c2829de081ec4976688a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/logistic.joblib": "a600e090daa90f297fde08af4d56047e6a8893e7a61ff428c3084d0051d2b819",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/frozen_verifier.json": "71faafbf3dbb5d0f7c7aae6852114754d7261e1dcdcf24249f4d1e7b51035690",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/protocol.json": "341ced5c0f203bd14c9394c6a905d754c65b2f6ae4332c92664e08bd58a49a8b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/oof_predictions.csv": "05e835f259996df69c934d5f1b58ef230a1f4d5c46fea75362184d28c83c5ea8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/controller_fit_oof/fold_audit.json": "805ed72dff3d8c34343332da7053cc0ee319a9d2e851be24b20abae5e796b1f1"
+  }
+}

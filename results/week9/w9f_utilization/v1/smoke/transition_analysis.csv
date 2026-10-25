@@ -1,0 +1,16 @@
+policy,f0_state,n_queries,mean_delta_vs_d0,mean_delta_vs_f0,preserve_rate,help_rate,hurt_rate,f0_hurt_queries,f0_help_queries,partial_rescue_rate,full_recovery_rate,hurt_rescue_rate,help_retention_rate,lost_gain_rate,diminished_gain_rate
+D0,HELP,1,0.0,-1.0,1.0,0.0,0.0,0.0,1.0,,,,0.0,1.0,1.0
+D0,HURT,0,,,,,,,,,,,,,
+D0,UNCHANGED,1,0.0,0.0,1.0,0.0,0.0,0.0,0.0,,,,,,
+F0,HELP,1,1.0,0.0,0.0,1.0,0.0,0.0,1.0,,,,1.0,0.0,0.0
+F0,HURT,0,,,,,,,,,,,,,
+F0,UNCHANGED,1,0.0,0.0,1.0,0.0,0.0,0.0,0.0,,,,,,
+F1,HELP,1,0.0,-1.0,1.0,0.0,0.0,0.0,1.0,,,,0.0,1.0,1.0
+F1,HURT,0,,,,,,,,,,,,,
+F1,UNCHANGED,1,0.0,0.0,1.0,0.0,0.0,0.0,0.0,,,,,,
+F2-A,HELP,1,0.0,-1.0,1.0,0.0,0.0,0.0,1.0,,,,0.0,1.0,1.0
+F2-A,HURT,0,,,,,,,,,,,,,
+F2-A,UNCHANGED,1,0.0,0.0,1.0,0.0,0.0,0.0,0.0,,,,,,
+F2-B,HELP,1,1.0,0.0,0.0,1.0,0.0,0.0,1.0,,,,1.0,0.0,0.0
+F2-B,HURT,0,,,,,,,,,,,,,
+F2-B,UNCHANGED,1,0.0,0.0,1.0,0.0,0.0,0.0,0.0,,,,,,

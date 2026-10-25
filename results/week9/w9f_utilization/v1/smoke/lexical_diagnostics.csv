@@ -1,0 +1,11 @@
+question_id,paper_id,policy,answer_evidence_token_overlap,added_answer_token_count,removed_answer_token_count,added_tokens_in_evidence,added_token_evidence_fraction
+218,62,D0,0.0,0,0,0,
+218,62,F0,0.0,0,0,0,
+218,62,F1,0.0,0,0,0,
+218,62,F2-A,0.0,0,0,0,
+218,62,F2-B,0.0,0,0,0,
+1876,625,D0,0.0,0,0,0,
+1876,625,F0,0.0,1,1,0,0.0
+1876,625,F1,0.0,0,0,0,
+1876,625,F2-A,0.0,0,0,0,
+1876,625,F2-B,0.0,1,1,0,0.0

@@ -1,0 +1,95 @@
+{
+  "feature_columns": [
+    "normalized_equal",
+    "token_edit_distance",
+    "token_jaccard",
+    "added_token_count",
+    "removed_token_count",
+    "initial_answer_length",
+    "candidate_answer_length",
+    "answer_length_difference",
+    "answer_length_ratio",
+    "changed_fraction",
+    "one_answer_substring",
+    "initial_evidence_overlap",
+    "candidate_evidence_overlap",
+    "evidence_overlap_delta",
+    "added_tokens_in_evidence_fraction",
+    "removed_tokens_absent_evidence_fraction",
+    "initial_generated_tokens",
+    "candidate_generated_tokens",
+    "top_sentence_cosine",
+    "second_sentence_cosine",
+    "third_sentence_cosine",
+    "mean_selected_cosine",
+    "min_selected_cosine",
+    "next_unselected_cosine",
+    "selected_vs_next_margin",
+    "evidence_tokens",
+    "mean_source_chunk_rank",
+    "selected_chunk_count",
+    "query_tokens",
+    "question_mark",
+    "starts_wh_question",
+    "starts_auxiliary_question"
+  ],
+  "groups": {
+    "V0": [
+      "normalized_equal",
+      "token_edit_distance",
+      "token_jaccard",
+      "added_token_count",
+      "removed_token_count",
+      "initial_answer_length",
+      "candidate_answer_length",
+      "answer_length_difference",
+      "answer_length_ratio",
+      "changed_fraction",
+      "one_answer_substring"
+    ],
+    "V1_lexical": [
+      "initial_evidence_overlap",
+      "candidate_evidence_overlap",
+      "evidence_overlap_delta",
+      "added_tokens_in_evidence_fraction",
+      "removed_tokens_absent_evidence_fraction"
+    ],
+    "V2_length": [
+      "initial_generated_tokens",
+      "candidate_generated_tokens"
+    ],
+    "V3": [
+      "top_sentence_cosine",
+      "second_sentence_cosine",
+      "third_sentence_cosine",
+      "mean_selected_cosine",
+      "min_selected_cosine",
+      "next_unselected_cosine",
+      "selected_vs_next_margin",
+      "evidence_tokens",
+      "mean_source_chunk_rank",
+      "selected_chunk_count"
+    ],
+    "V4": [
+      "query_tokens",
+      "question_mark",
+      "starts_wh_question",
+      "starts_auxiliary_question"
+    ]
+  },
+  "availability": {
+    "V0": "Available from actual y0/y1 answer strings",
+    "V1_lexical": "Available from frozen E3 evidence",
+    "V1_semantic": "Not computed: q/answer/evidence MiniLM similarities are optional future features; no encoder loaded by preflight/scaffold.",
+    "V2_confidence": "Unavailable: saved outputs lack reliable logprob/entropy/EOS fields. No generation backfill.",
+    "V2_length": "Only saved generation lengths, not confidence measurements",
+    "V3": "Existing E3 rank/cosine/length data; raw chunk/paper IDs are metadata, never numeric predictors",
+    "V4": "Generic deterministic question form and length; no gold answer types"
+  },
+  "excluded_metadata_columns": [
+    "question_id",
+    "paper_id"
+  ],
+  "no_outcomes_in_features": true,
+  "missing_values": "Absent rank/length features remain missing; imputation must fit only within training folds."
+}

@@ -333,3 +333,14 @@ For deliberate manual execution, keep old RUN_FULL/RUN_SMOKE=False; set only RUN
 ```bash
 ./sara_env/bin/python -m src.week9.senttopk_e3.runner --config configs/week9/w9e3_senttopk.yaml --stage full --resume
 ```
+
+## W9-F after completed E3
+
+Use the patched `notebooks/week9/week9f_revision.ipynb` and
+`configs/week9/w9f_utilization.yaml` for frozen E3-k3 utilization. The separate
+`src.week9.utilization_f.runner` verifies saved evidence and aliases equivalent
+E3-k3 as F0; F1/F2-A/F2-B are the only new revision conditions. Both notebook
+generation flags default off. Do not use the historical F prefix surface for
+this controlled experiment. Full instructions, prompt definitions and limits:
+[W9F_UTILIZATION.md](W9F_UTILIZATION.md). W9-G remains OFF until the completed
+W9-F intervention artifact exists; no controller is trained here.

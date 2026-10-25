@@ -1,0 +1,108 @@
+{
+  "branch": "gagan",
+  "full_w9f_started": false,
+  "controller_trained_or_run": false,
+  "f0_alias_queries_verified": 1746,
+  "smoke_queries": 2,
+  "smoke_rows": 10,
+  "new_revision_calls": 6,
+  "extraction_lm_calls": 0,
+  "evidence_identical": true,
+  "all_source_artifacts_unchanged": true,
+  "no_wrapper_or_reasoning_outputs": true,
+  "peak_allocated_gpu_gib": 13.839714050292969,
+  "protocol_hash": "3f407df26188a45b2f9125491d49c95c4c5a8ffc6c185c741c80d6586025ed68",
+  "inspections": [
+    {
+      "question_id": "1876",
+      "paper_id": "625",
+      "question": "Do the authors give any examples of major events which draw the public's attention and the impact they have on stock price?",
+      "initial_draft": "No",
+      "source_chunk_ids": [
+        "eab474845d3a7a49f4867c7b",
+        "a1178d7ae3477cb995c7781d"
+      ],
+      "selected_sentence_ids": [
+        "6ad2aa47a339610a207c97b1",
+        "529feaee3ecbbe4edfd5fd9b",
+        "f18c600c3d308e7f1a85704d"
+      ],
+      "evidence_hash": "6c6652787aa626354cecaab05a9c992adf9a7e8f5c044486d76987823f8add8d",
+      "exact_evidence": "or its stock won’t override the overall stock market or sector’s impact on the stock return.\n\nPredicting stock price direction using Twitter sentiment is challenging but promising.\n\nWhich stock and what to predict is more important than how to predict.",
+      "evidence_tokens": 53,
+      "answers": {
+        "D0": {
+          "prediction": "No",
+          "f1": 0.0,
+          "final_prompt_tokens": 876
+        },
+        "F0": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 990
+        },
+        "F1": {
+          "prediction": "No",
+          "f1": 0.0,
+          "final_prompt_tokens": 1047
+        },
+        "F2-A": {
+          "prediction": "No",
+          "f1": 0.0,
+          "final_prompt_tokens": 1069
+        },
+        "F2-B": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 1080
+        }
+      }
+    },
+    {
+      "question_id": "218",
+      "paper_id": "62",
+      "question": "Did the authors use crowdsourcing platforms?",
+      "initial_draft": "Yes",
+      "source_chunk_ids": [
+        "aacad95c56493862a0c1588f",
+        "7267726e51af53815438acfd"
+      ],
+      "selected_sentence_ids": [
+        "808c3dd318b0bad0f74b86bb",
+        "91328a7552ae527a7df1cf81",
+        "a1392154638a17edddfff85f"
+      ],
+      "evidence_hash": "bd3461485e78c8c89ca68f590101a44d95c8609d49033b6256fd29e1eeb915bf",
+      "exact_evidence": "We paired Turkers at random and let them alternate between the tourist and guide role across different HITs.\n\nTurkers successfully completed INLINEFORM0 of all finished tasks (we use this statistic as the human success rate).\n\nTurkers use diverse discourse, with a vocabulary size of more than 10K (calculated over all successful dialogues).",
+      "evidence_tokens": 80,
+      "answers": {
+        "D0": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 767
+        },
+        "F0": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 892
+        },
+        "F1": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 949
+        },
+        "F2-A": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 971
+        },
+        "F2-B": {
+          "prediction": "Yes",
+          "f1": 1.0,
+          "final_prompt_tokens": 982
+        }
+      }
+    }
+  ],
+  "interpretation": "Mechanics only. No prompt/mode is selected from smoke. F2-B changing an answer does not prove evidence support or general correction ability."
+}

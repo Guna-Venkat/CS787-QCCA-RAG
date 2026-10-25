@@ -72,3 +72,7 @@ results/week9/w9e3_senttopk/**/sentence_cache/inventories.jsonl
 results/week9/w9e3_senttopk/**/sentence_cache/scores.jsonl
 results/week9/w9e3_senttopk/**/fit/results.jsonl
 results/week9/w9e3_senttopk/**/fit/lm_calls.jsonl
+
+# W9-F full answer caches; preserve smoke, identities, summaries and freezes
+results/week9/w9f_utilization/**/fit/results.jsonl
+results/week9/w9f_utilization/**/fit/lm_calls.jsonl
