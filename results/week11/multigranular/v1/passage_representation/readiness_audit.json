@@ -1,0 +1,9 @@
+{
+  "all_150_P0_rankings_and_metrics_match_A": true,
+  "all_checksums_valid": true,
+  "checked_rows": 600,
+  "code_config_unchanged": true,
+  "driver_sha256": "fac9cc05bdeca1cb3b27bf7672aece7bd3c64a26640abf51f9d9d97d49dd1c51",
+  "no_duplicate_keys": true,
+  "reference_overlap_rankings_exact": 403
+}

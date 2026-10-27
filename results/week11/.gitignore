@@ -10,3 +10,11 @@
 *.lock
 .pending-*
 *.partial
+# Executed notebook copies and recurring detailed monitor logs are local artifacts.
+/executed_notebooks/
+/monitoring/history.jsonl
+# Dense per-query exports are reproducible from local immutable checkpoint rows.
+/multigranular/*/*/recall_at_k_df.csv
+/multigranular/*/*/first_rank_df.csv
+/multigranular/*/*/*_per_query_df.csv
+/multigranular/*/*/per_query_representation_df.csv

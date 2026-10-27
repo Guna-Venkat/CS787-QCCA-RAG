@@ -1,0 +1,170 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PASSAGE_any_gold_recall_recall_curves.csv",
+    "dataset": "HotpotQA / PASSAGE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PASSAGE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PASSAGE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PROPOSITION_any_gold_recall_recall_curves.csv",
+    "dataset": "HotpotQA / PROPOSITION",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PROPOSITION_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_PROPOSITION_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_SENTENCE_any_gold_recall_recall_curves.csv",
+    "dataset": "HotpotQA / SENTENCE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_SENTENCE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_SENTENCE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PASSAGE_any_gold_recall_recall_curves.csv",
+    "dataset": "QASPER / PASSAGE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PASSAGE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PASSAGE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PROPOSITION_any_gold_recall_recall_curves.csv",
+    "dataset": "QASPER / PROPOSITION",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PROPOSITION_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_PROPOSITION_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_SENTENCE_any_gold_recall_recall_curves.csv",
+    "dataset": "QASPER / SENTENCE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_SENTENCE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_SENTENCE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PASSAGE_any_gold_recall_recall_curves.csv",
+    "dataset": "SciFact / PASSAGE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PASSAGE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PASSAGE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PROPOSITION_any_gold_recall_recall_curves.csv",
+    "dataset": "SciFact / PROPOSITION",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PROPOSITION_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_PROPOSITION_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_SENTENCE_any_gold_recall_recall_curves.csv",
+    "dataset": "SciFact / SENTENCE",
+    "name": "recall_curves",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_SENTENCE_any_gold_recall_recall_curves.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_SENTENCE_any_gold_recall_recall_curves.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_any_gold.csv",
+    "dataset": "HotpotQA",
+    "name": "any_gold",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_any_gold.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_any_gold.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_any_gold.csv",
+    "dataset": "QASPER",
+    "name": "any_gold",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_any_gold.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_any_gold.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_any_gold.csv",
+    "dataset": "SciFact",
+    "name": "any_gold",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_any_gold.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_any_gold.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_evidence_coverage_coverage_tokens.csv",
+    "dataset": "HotpotQA",
+    "name": "coverage_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_evidence_coverage_coverage_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_evidence_coverage_coverage_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_evidence_coverage_coverage_tokens.csv",
+    "dataset": "QASPER",
+    "name": "coverage_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_evidence_coverage_coverage_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_evidence_coverage_coverage_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_evidence_coverage_coverage_tokens.csv",
+    "dataset": "SciFact",
+    "name": "coverage_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_evidence_coverage_coverage_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_evidence_coverage_coverage_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_retriever_granularity.csv",
+    "dataset": "HotpotQA",
+    "name": "retriever_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_retriever_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_any_gold_recall_retriever_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_retriever_granularity.csv",
+    "dataset": "QASPER",
+    "name": "retriever_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_retriever_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_any_gold_recall_retriever_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_retriever_granularity.csv",
+    "dataset": "SciFact",
+    "name": "retriever_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_retriever_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_any_gold_recall_retriever_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_count_first_rank.csv",
+    "dataset": "HotpotQA",
+    "name": "first_rank",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_count_first_rank.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_count_first_rank.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_count_first_rank.csv",
+    "dataset": "QASPER",
+    "name": "first_rank",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_count_first_rank.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_count_first_rank.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_count_first_rank.csv",
+    "dataset": "SciFact",
+    "name": "first_rank",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_count_first_rank.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_count_first_rank.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_redundancy_redundancy.csv",
+    "dataset": "HotpotQA",
+    "name": "redundancy",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_redundancy_redundancy.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/HotpotQA_redundancy_redundancy.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_redundancy_redundancy.csv",
+    "dataset": "QASPER",
+    "name": "redundancy",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_redundancy_redundancy.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/QASPER_redundancy_redundancy.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_redundancy_redundancy.csv",
+    "dataset": "SciFact",
+    "name": "redundancy",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_redundancy_redundancy.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval/figures/SciFact_redundancy_redundancy.png"
+  }
+]

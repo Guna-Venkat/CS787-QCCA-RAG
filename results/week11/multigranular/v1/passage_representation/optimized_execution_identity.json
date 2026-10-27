@@ -1,0 +1,12 @@
+{
+  "driver_sha256": "fac9cc05bdeca1cb3b27bf7672aece7bd3c64a26640abf51f9d9d97d49dd1c51",
+  "optimization": "one-pass passage grouping + same cached vectors; no score/metric changes",
+  "reference_identity": {
+    "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+    "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+    "dataset_hash": "1135f00c9403d2adb58b8398ae460d7758f9b8a5b9c072ff6039d4f8cb41955c",
+    "model_hash": "88d29515023872052fd24951250a7092c284f5b84dcfe7fb4784c6a80a881318",
+    "phase": "B",
+    "synthetic": false
+  }
+}

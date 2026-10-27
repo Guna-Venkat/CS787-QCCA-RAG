@@ -1,0 +1,21 @@
+{
+  "all_checksums_valid": true,
+  "checked_rows": 1350,
+  "code_config_dataset_match": true,
+  "cohort_matches_setup": true,
+  "complete": true,
+  "configs": 27,
+  "configs_per_query": 9,
+  "metrics_in_range_and_monotone": true,
+  "no_duplicate_keys": true,
+  "no_gold_query_counts": {
+    "QASPER": 2,
+    "SciFact": 25
+  },
+  "queries": 150,
+  "reviewer": "agent delegated by user",
+  "rows_per_config": 50,
+  "timestamp": 1793136806.1591609,
+  "unmapped_query_count": 7,
+  "writer_finished": true
+}
