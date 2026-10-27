@@ -1,0 +1,12 @@
+/multigranular/*/*/rows/
+# Synthetic fixtures, duplicated test figures and intermediate caches stay local.
+/multigranular/*/smoke/
+# Large per-unit inventories and historical byte snapshots can be rebuilt locally.
+/multigranular/*/setup/historical_sha256.json
+/multigranular/*/setup/hierarchy_stats_df.csv
+# Figure source tables duplicate the result tables. Keep the compact PNGs/index.
+/multigranular/*/*/figures/*.csv
+# Writer locks and unfinished atomic writes are never progress records.
+*.lock
+.pending-*
+*.partial

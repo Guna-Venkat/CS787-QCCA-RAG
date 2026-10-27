@@ -1,0 +1,153 @@
+{
+  "branch": "gagan",
+  "completed_phase": "0",
+  "kind": "Reviewed progress snapshot; runtime status/checkpoints are authoritative",
+  "next_flags": {
+    "OVERWRITE": false,
+    "RESUME": true,
+    "RUN_FULL": true,
+    "RUN_SMOKE": false
+  },
+  "next_notebook": "notebooks/week11/week11_A_retrieval_granularity.ipynb",
+  "next_phase": "A",
+  "pending_optional": [
+    "LLMLingua-2 qualification; not needed for A"
+  ],
+  "phase_a_started": false,
+  "phases": [
+    {
+      "freeze_exists": true,
+      "full_status": "COMPLETE",
+      "next_action": "Review/freeze manually",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_0_setup_and_data.ipynb",
+      "number_completed": 150,
+      "number_expected": 150.0,
+      "phase": "0",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/setup"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_A_retrieval_granularity.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "A",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_B_passage_representation.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "B",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_C_granularity_budget.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "C",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/granularity_budget"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_D_reader_granularity.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "D",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_E_compressor_reader.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "E",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/compressor_reader"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_F_retriever_robustness.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "F",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_G_hierarchical_fidelity.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "G",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/hierarchical"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_H_oracle_and_interactions.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "H",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle"
+    },
+    {
+      "freeze_exists": false,
+      "full_status": "NOT_STARTED",
+      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_I_final_report.ipynb",
+      "number_completed": 0,
+      "number_expected": null,
+      "phase": "I",
+      "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/final_report"
+    }
+  ],
+  "queries_per_dataset": 50,
+  "setup_audit": {
+    "actual_queries": 150,
+    "cache_shards_verified": {
+      "datasets/documents": 5722,
+      "datasets/queries": 150,
+      "hierarchy": 5722
+    },
+    "code_matches": true,
+    "configuration_matches": true,
+    "dataset_bytes_match": true,
+    "phase_a_started": false,
+    "queries_per_dataset": {
+      "HotpotQA": 50,
+      "QASPER": 50,
+      "SciFact": 50
+    },
+    "retrieval_weight_bytes_present": {
+      "MiniLM": 90868376,
+      "SFR": 14221351888
+    },
+    "setup_complete": true,
+    "setup_status_sha256": "436e9ba45cbefae347853329f8a67fa6e1ab1b5b247db02ecf545b0b67b95da2",
+    "source_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+    "synthetic": false
+  },
+  "setup_queries": 150,
+  "updated_at": "2026-10-27T17:31:16.065624+00:00",
+  "validation": {
+    "full_experiments_started": false,
+    "historical_rehash_skipped": 1,
+    "passed": 88
+  },
+  "version": "v1"
+}

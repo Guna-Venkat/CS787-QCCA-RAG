@@ -1,0 +1,45 @@
+version: v1
+output_root: results/week11/multigranular/v1
+cache_root: cache/week11/v1
+verification_dataset: SciFact
+primary_reader: Qwen
+seed: 42
+epsilon: 0.01
+bootstrap_resamples: 10000
+characterization_queries_per_dataset: 50
+query_sampling: sha256(dataset,query_id,seed), independent of labels
+retrieval_width: 20
+budgets:
+- 256
+- 512
+- 1024
+- FULL
+selectors:
+- lexical
+- semantic
+- hybrid
+retrievers:
+- BM25
+- MiniLM
+- SFR
+retrieval_granularities:
+- PASSAGE
+- SENTENCE
+- PROPOSITION
+generation:
+  max_new_tokens: 128
+  max_context: 8192
+  dtype: float16
+  quantization: null
+  do_sample: false
+  seed: 42
+  device: cuda
+  attention: efficient_sdpa
+includes:
+- week11_datasets.yaml
+- week11_retrievers.yaml
+- week11_readers.yaml
+- week11_granularity.yaml
+- week11_compressors.yaml
+- week11_runs.yaml
+candidate_context_token_ceiling: 6144

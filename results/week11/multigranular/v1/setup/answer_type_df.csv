@@ -1,0 +1,9 @@
+dataset,answer_type,count
+HotpotQA,bridge,42
+HotpotQA,comparison,8
+QASPER,free_form,18
+QASPER,yes_no,9
+QASPER,extractive,23
+SciFact,REFUTE,9
+SciFact,NOT_ENOUGH_INFO,25
+SciFact,SUPPORT,16

@@ -1,0 +1,20 @@
+{
+  "branch": "gagan",
+  "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+  "phase": "0",
+  "rationale": "Verified 150/150 real development queries, dataset bytes, current code/config hashes, 11594 cached shard checksums, and local MiniLM/SFR weight files. Setup is ready for Phase A; no outcome-based configuration selected and no Phase A run started.",
+  "reviewed_config": {
+    "dataset_splits": {
+      "HotpotQA": "dev",
+      "QASPER": "dev",
+      "SciFact": "dev"
+    },
+    "queries_per_dataset": 50,
+    "review_basis": "User requested setup completion/readiness check; see setup/readiness_audit.json",
+    "stage": "setup_and_data",
+    "winning_configuration_selected": false
+  },
+  "source_result_hash": "436e9ba45cbefae347853329f8a67fa6e1ab1b5b247db02ecf545b0b67b95da2",
+  "timestamp": "2026-10-27T17:29:58.917771+00:00"
+}

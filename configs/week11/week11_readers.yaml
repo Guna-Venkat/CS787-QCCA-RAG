@@ -1,0 +1,7 @@
+readers:
+- Mistral
+- Qwen
+- Llama
+shared_budget_policy: max actual token count across all frozen reader tokenizers;
+  identical source-order text
+qwen_thinking: false

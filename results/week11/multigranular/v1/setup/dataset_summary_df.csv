@@ -1,0 +1,4 @@
+dataset,split,n_queries,candidate_corpus,synthetic,available_queries
+HotpotQA,dev,50,provided ten distractor paragraphs,False,7405
+QASPER,dev,50,complete matching scientific paper,False,231
+SciFact,dev,50,all corpus abstracts; never only cited/gold documents,False,300

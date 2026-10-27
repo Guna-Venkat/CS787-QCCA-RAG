@@ -1,0 +1,10 @@
+token_compressor:
+  id: microsoft/llmlingua-2-xlm-roberta-large-meetingbank
+  revision: null
+  qualified: false
+  status: PENDING_DEPENDENCY_AND_QUALIFICATION
+exact_text_sentence_k: 8
+sara_checkpoint: Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42
+sara_k: 4
+sara_n: 10
+learned_compressor_status: FUTURE_WORK; faithful SeleCom not implemented

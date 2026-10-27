@@ -1,0 +1,8 @@
+namespace,path,files
+datasets,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/datasets,5874
+hierarchy,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/hierarchy,5723
+embeddings,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/embeddings,0
+index/bm25,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/index/bm25,0
+index/sfr,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/index/sfr,0
+index/minilm,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/index/minilm,0
+selections,/home/gunavenkat/Downloads/CS787-RAG-Project/cache/week11/v1/selections,0
