@@ -1,0 +1,101 @@
+{
+  "generator_panel_changed": false,
+  "gpu": "NVIDIA TITAN RTX",
+  "identity": {
+    "attention": "efficient_sdpa",
+    "checkpoint_signature": {
+      "config.json": {
+        "mtime_ns": 1793086621304086589,
+        "size": 728
+      },
+      "generation_config.json": {
+        "mtime_ns": 1793086621202095841,
+        "size": 239
+      },
+      "model-00001-of-00005.safetensors": {
+        "mtime_ns": 1793086765205628599,
+        "size": 3996250744
+      },
+      "model-00002-of-00005.safetensors": {
+        "mtime_ns": 1793086765267624237,
+        "size": 3993160032
+      },
+      "model-00003-of-00005.safetensors": {
+        "mtime_ns": 1793086765729591729,
+        "size": 3959604768
+      },
+      "model-00004-of-00005.safetensors": {
+        "mtime_ns": 1793086764146703204,
+        "size": 3187841392
+      },
+      "model-00005-of-00005.safetensors": {
+        "mtime_ns": 1793086732542986678,
+        "size": 1244659840
+      },
+      "model.safetensors.index.json": {
+        "mtime_ns": 1793086621751046044,
+        "size": 32878
+      },
+      "tokenizer.json": {
+        "mtime_ns": 1793086652253363097,
+        "size": 11422654
+      },
+      "tokenizer_config.json": {
+        "mtime_ns": 1793086622069017213,
+        "size": 9732
+      },
+      "vocab.json": {
+        "mtime_ns": 1793086622547973854,
+        "size": 2776833
+      }
+    },
+    "evidence_hash": "9776b4ee6f2d4823ac75b8dc83da04dbcea42f128b2cbff00081b126128f0050",
+    "max_new_tokens": 128,
+    "precision": "fp16",
+    "question_hash": "77e328666c6fd2046f03767c65d94327cf0bbb5308222f90b9cc1043f67de276",
+    "reader": {
+      "id": "Qwen/Qwen3-8B",
+      "required_for_r": false,
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    "runtime_sha256": "1abe4072138e145938ac72383a69415af090a68ca9191c0694cec8f657dd215b",
+    "setup_sha256": "5b983ba28502a37866fb66f26a78f647bc5c2f91935461881c40b9876af775db"
+  },
+  "measurements": [
+    {
+      "generated_tokens": 19,
+      "prompt_tokens": 43,
+      "seconds": 1.9304819219978526,
+      "variant": "no_evidence"
+    },
+    {
+      "generated_tokens": 15,
+      "prompt_tokens": 2245,
+      "seconds": 1.1073309109779075,
+      "variant": "full"
+    },
+    {
+      "generated_tokens": 20,
+      "prompt_tokens": 256,
+      "seconds": 0.7499425400746986,
+      "variant": "qcs256"
+    }
+  ],
+  "passed": true,
+  "peak_allocated_bytes": 17628246016,
+  "quality_scored": false,
+  "question_id": "404",
+  "weight_sha256": {
+    "config.json": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+    "generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+    "model-00001-of-00005.safetensors": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+    "model-00002-of-00005.safetensors": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+    "model-00003-of-00005.safetensors": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+    "model-00004-of-00005.safetensors": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+    "model-00005-of-00005.safetensors": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+    "model.safetensors.index.json": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  }
+}

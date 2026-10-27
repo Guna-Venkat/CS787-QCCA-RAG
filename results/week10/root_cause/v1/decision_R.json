@@ -1,0 +1,9 @@
+{
+  "GO_NEXT": false,
+  "execution_freeze_hash": "6d603f7220cf6545e64a32227fad18497ea7d56dec8013925d08ab503fbd0488",
+  "preregistered_material_f1": 0.01,
+  "preregistered_material_recall": 0.03,
+  "ready_for_review": true,
+  "reason": "Review matched recall, downstream deltas, confidence intervals and resource costs; no automatic bottleneck claim",
+  "required_repeatability": "at least two k values with positive paper CI"
+}

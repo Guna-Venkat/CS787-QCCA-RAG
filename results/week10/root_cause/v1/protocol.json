@@ -1,0 +1,131 @@
+{
+  "study": "W10 oracle-gap root cause",
+  "phase_order": [
+    "0",
+    "R",
+    "C",
+    "G",
+    "D",
+    "RCA",
+    "P-conditional"
+  ],
+  "development_only": true,
+  "qasper_test_closed": true,
+  "default_full_flags": false,
+  "models": {
+    "Mistral": {
+      "id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+      "required_for_r": true
+    },
+    "MiniLM": {
+      "id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "required_for_r": true
+    },
+    "SFR": {
+      "id": "Salesforce/SFR-Embedding-Mistral",
+      "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+      "required_for_r": true
+    },
+    "Qwen": {
+      "id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "required_for_r": false
+    },
+    "Llama": {
+      "id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "required_for_r": false
+    }
+  },
+  "R": {
+    "corpus": "Complete raw paper matching project DEV IDs in raw TRAIN",
+    "chunker": "llama_index SentenceSplitter(separator=newline,chunk_size=256,chunk_overlap=0)",
+    "retrievers": [
+      "BM25-project-Okapi",
+      "MiniLM",
+      "SFR-instruct-query"
+    ],
+    "ranking": "score descending, source order, chunk ID",
+    "presentation": "retriever rank held consistent",
+    "k": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "n": 10,
+    "reader": "Same local trained SARA Mistral checkpoint for FULL and SARA",
+    "full": "k text; no latent vectors",
+    "sara": "k text + remaining top10 SFR latents",
+    "interpretation": "FULL vs SARA includes tail exposure; C additionally matches the whole top10 pool",
+    "material_gain": {
+      "f1": 0.01,
+      "recall": 0.03,
+      "positive_paper_ci": true,
+      "repeat_at_least_k": 2
+    },
+    "gold_evidence_mapping": "Exact normalized source spans; union selected-chunk character coverage. Unmapped spans remain missed, reported separately; no-gold queries undefined, excluded from recall means."
+  },
+  "C": {
+    "pool": "R-frozen top10",
+    "reader": "same local trained SARA Mistral",
+    "arms": [
+      "no-evidence",
+      "FULL-top10",
+      "SARA-k4-n10",
+      "LEAD256",
+      "QCS256"
+    ],
+    "budget": "LEAD/QCS share 256-token ceiling; exact sentences can underfill; also report natural points",
+    "QCS": "query-conditioned exact-source textual surrogate, NOT SeleCom or latent query-conditioned compression",
+    "selecom": "released weights verified; faithful adapter gated by Turing attention/memory smoke"
+  },
+  "G": {
+    "panel_status": "provisional compatible older candidates, not guaranteed stronger; freeze after feasibility",
+    "panel": [
+      "Mistral",
+      "Qwen3-8B nonthinking",
+      "Llama3.1-8B"
+    ],
+    "contemporary_candidate": "Qwen3.5-9B audited; architecture/runtime not integrated",
+    "evidence": [
+      "none",
+      "full",
+      "QCS256"
+    ],
+    "same_text_hash_required": true
+  },
+  "D": {
+    "subset": 24,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.9
+    },
+    "main_decoding": "greedy",
+    "paired_baseline_per_seed": true
+  },
+  "statistics": {
+    "cluster": "paper_id",
+    "resamples": 10000,
+    "seed": 42,
+    "epsilon": 0.01,
+    "oracle_is_deployable": false
+  },
+  "resume": {
+    "unit": "query/action/seed",
+    "atomic": true,
+    "checksum": true,
+    "identity": "source/config/data/weights/revisions/packages",
+    "complete_answers": "skip before model load",
+    "changed_inputs": "fail; new version required"
+  },
+  "confirmation": "New external source only; no claim paper-held-out development is blind",
+  "policy": "disabled until R/C/G/D reviewed; stop if strong fixed upstream configuration suffices"
+}

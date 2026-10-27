@@ -1,0 +1,7 @@
+{
+  "GO_NEXT": true,
+  "execution_freeze_hash": "6d603f7220cf6545e64a32227fad18497ea7d56dec8013925d08ab503fbd0488",
+  "phase": "C",
+  "reason": "Reviewed C: FULL F1=.407095, SARA=.381233, QCS256=.344075, LEAD256=.321490; FULL-QCS paired CI is positive, while FULL-SARA CI includes zero. Proceed with the preregistered reader isolation using unchanged SFR/evidence; the available Mistral/Qwen readers passed qualification; Llama is explicitly pending gated access. The full three-reader study remains incomplete. No claim of a sole bottleneck, SeleCom reproduction, or confirmed improvement.",
+  "retriever": "SFR"
+}

@@ -1,0 +1,10 @@
+{
+  "report_hashes": {
+    "bootstrap.csv": "d153b16f7cc01f19d61f08701a9bc29efac56babc089986e8d29e24e62b186dd",
+    "decision_R.json": "f241abe9bf579c91ab07907a46fa928bda7e740280e1f4dc462da3242ad9df9e",
+    "oracle_diagnostics.json": "acf3bd40a972d1e49abddbb9550a5c4cc16dd2fc5ab3f4d28e98d156f7e956d1",
+    "retrieval_summary.csv": "5c99aefbee4e2bedb4fc12bde80345e86aa4ab9dab4b6097d1a6d126ae75d8fd",
+    "summary.csv": "5fa7fed8d47b4f4b7c0de23f5504bba88a369880b67683eb8f226a3358135766"
+  },
+  "stamp": "e2c80c5b7bd602aef78962195a45a2212395fd912b51c19c833e3959e70b4828"
+}

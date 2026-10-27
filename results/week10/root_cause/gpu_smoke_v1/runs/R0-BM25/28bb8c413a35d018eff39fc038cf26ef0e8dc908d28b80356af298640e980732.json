@@ -1,0 +1,133 @@
+{
+  "checksum": "d24b65a22c1c2435b77f490e9cd3e10dd67f7df81727f088940da91eada5f871",
+  "identity": "afa3a4b6f9498147f7a81019ec407b939ce3278d41f9168cb0c5577bad70f792",
+  "key": "1912",
+  "row": {
+    "candidate_corpus_hash": "85db0633ceaf34d29654578c8aeb7c55a697775331d5aa992a594f4d8a890256",
+    "cost": {
+      "ranking_total_seconds": 0.00045641197357326746
+    },
+    "paper_id": "638",
+    "question_id": "1912",
+    "ranked": [
+      {
+        "char_end": 1187,
+        "char_start": 0,
+        "chunk_id": "ed52460778239c38135e0f8846f1a466ce6fb1663b77afb50ef11a1c56aadfdd",
+        "order": 0,
+        "paper_id": "638",
+        "rank": 1,
+        "score": 2.7484171853710775,
+        "text": "Link Prediction using Embedded Knowledge Graphs\tRecent studies on knowledge base completion, the task of recovering missing facts based on observed facts, demonstrate the importance of learning embeddings from multi-step relations. Due to the size of knowledge bases, previous works manually design relation paths of observed triplets in symbolic space (e.g. random walk) to learn multi-step relations during training. However, these approaches suffer some limitations as most paths are not informative, and it is prohibitively expensive to consider all possible paths. To address the limitations, we propose learning to traverse in vector space directly without the need of symbolic space guidance. To remember the connections between related observed triplets and be able to adaptively change relation paths in vector space, we propose Implicit ReasoNets (IRNs), that is composed of a global memory and a controller module to learn multi-step relation paths in vector space and infer missing facts jointly without any human-designed procedure. Without using any axillary information, our proposed model achieves state-of-the-art results on popular knowledge base completion benchmarks."
+      },
+      {
+        "char_end": 1454,
+        "char_start": 1189,
+        "chunk_id": "c2dce6ce498d0ee98c199248a1c3ab985ebcd6dff08c6de732900eec21e64a83",
+        "order": 1,
+        "paper_id": "638",
+        "rank": 2,
+        "score": 0.25615913126764744,
+        "text": "Acknowledgments\tWe thank Scott Wen-Tau Yih, Kristina Toutanova, Jian Tang, Greg Yang, Adith Swaminathan, Xiaodong He, and Zachary Lipton for their thoughtful feedback and discussions.  Inference Steps in KBC Analysis: Applying IRNs to a Shortest Path Synthesis Task"
+      }
+    ],
+    "retrieval_metrics": [
+      {
+        "actual_k": 1,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": null,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 1,
+        "mean_lexical_jaccard": null,
+        "mrr": 0.0,
+        "retrieved_tokens": 235,
+        "unmapped_gold_spans": 1
+      },
+      {
+        "actual_k": 2,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": 0.9583333333333334,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 2,
+        "mean_lexical_jaccard": 0.041666666666666664,
+        "mrr": 0.0,
+        "retrieved_tokens": 315,
+        "unmapped_gold_spans": 1
+      },
+      {
+        "actual_k": 2,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": 0.9583333333333334,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 4,
+        "mean_lexical_jaccard": 0.041666666666666664,
+        "mrr": 0.0,
+        "retrieved_tokens": 315,
+        "unmapped_gold_spans": 1
+      },
+      {
+        "actual_k": 2,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": 0.9583333333333334,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 6,
+        "mean_lexical_jaccard": 0.041666666666666664,
+        "mrr": 0.0,
+        "retrieved_tokens": 315,
+        "unmapped_gold_spans": 1
+      },
+      {
+        "actual_k": 2,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": 0.9583333333333334,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 8,
+        "mean_lexical_jaccard": 0.041666666666666664,
+        "mrr": 0.0,
+        "retrieved_tokens": 315,
+        "unmapped_gold_spans": 1
+      },
+      {
+        "actual_k": 2,
+        "all_recall": 0.0,
+        "any_recall": 0.0,
+        "candidate_diversity": 0.9583333333333334,
+        "coverage": 0.0,
+        "duplicate_rate": 0.0,
+        "evidence_mapping": "Exact canonical-source spans after whitespace/BIBREF normalization; repeated occurrences treated as alternatives. Full-span union coverage defines recall; unmapped gold remains missed. Diversity is lexical Jaccard proxy.",
+        "first_gold_rank": null,
+        "gold_span_count": 1,
+        "k": 10,
+        "mean_lexical_jaccard": 0.041666666666666664,
+        "mrr": 0.0,
+        "retrieved_tokens": 315,
+        "unmapped_gold_spans": 1
+      }
+    ]
+  }
+}

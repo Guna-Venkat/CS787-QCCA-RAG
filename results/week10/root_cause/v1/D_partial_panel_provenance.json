@@ -1,0 +1,38 @@
+{
+  "active_readers": [
+    "Mistral",
+    "Qwen"
+  ],
+  "available_panel_complete": true,
+  "coverage": {
+    "Mistral": {
+      "complete": true,
+      "expected": 693,
+      "saved": 693
+    },
+    "Qwen": {
+      "complete": true,
+      "expected": 693,
+      "saved": 693
+    }
+  },
+  "dataset_audit_sha256": "d6f1aba9f41d5098d1fde8aed3bb8f7d6e8ede94d8e4b78b8be9f6b9d3bbb0c2",
+  "diagnostics_sha256": "49fe0f05a48f2b886733f39711b2e8790740f0286921e7209ee017e9b469e221",
+  "execution_freeze_hash": "6d603f7220cf6545e64a32227fad18497ea7d56dec8013925d08ab503fbd0488",
+  "full_panel_complete": false,
+  "gate_exception": "D may run after available G panel; original full-panel freeze_G.json is not created or replaced.",
+  "pending_readers": {
+    "Llama": {
+      "model": {
+        "id": "meta-llama/Llama-3.1-8B-Instruct",
+        "required_for_r": false,
+        "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      },
+      "reason": "GatedRepoError; explicitly deferred by user. No placeholder predictions or scores.",
+      "status": "PENDING_ACCESS"
+    }
+  },
+  "policy_training_authorized": false,
+  "qasper_test_used": false,
+  "user_authorization": "User explicitly authorized executing the notebook without Llama, marking it pending until access is granted; complete the available study first."
+}

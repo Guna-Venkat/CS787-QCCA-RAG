@@ -1,0 +1,31 @@
+{
+  "hardware": "TITAN RTX 24GB / RAM64GB",
+  "precision": "FP16, no quantization",
+  "models_serial": true,
+  "embedding_batch_size": 1,
+  "reader_batch_size": 1,
+  "prompt_cap": 8192,
+  "answer_cap": 128,
+  "flash_attention2": "not supported on Turing; PyTorch efficient SDPA required",
+  "status": "analytical only; representative GPU memory smoke still needed for new models",
+  "estimated_dev231_gpu_hours": {
+    "R": [
+      5,
+      12
+    ],
+    "C": [
+      1,
+      3
+    ],
+    "G": [
+      2,
+      6
+    ],
+    "D": [
+      0.1,
+      0.5
+    ]
+  },
+  "note": "Planning ranges, not measured; 2088 training queries about9x DEV. Hashing/loading/indexing additional.",
+  "selecom": "0.6B+7B ~15.5GB FP16 weights plus activations/projector; peak and custom attention port unverified"
+}

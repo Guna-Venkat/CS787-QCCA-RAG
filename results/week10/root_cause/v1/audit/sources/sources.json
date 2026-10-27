@@ -1,0 +1,52 @@
+{
+  "sara.pdf": {
+    "url": "https://arxiv.org/pdf/2507.05633",
+    "sha256": "67adde43cc17cf56953c9afe5272370e2e86fd52dd23f38043a760476c64988b",
+    "bytes": 1300489
+  },
+  "selecom.html": {
+    "url": "https://arxiv.org/html/2602.15856v1",
+    "sha256": "b4cd2fa420312d9ad608648f78632e663599c497c63af513e2b554e401c790bb",
+    "bytes": 488912
+  },
+  "acc.pdf": {
+    "url": "https://aclanthology.org/2025.findings-emnlp.1307.pdf",
+    "sha256": "f2db67b2d0f21a1c71bfe773443b1f7b297bd6ba1148793c429eb975b03259ca",
+    "bytes": 1167379
+  },
+  "sparkle.pdf": {
+    "url": "https://aclanthology.org/2026.acl-long.1793.pdf",
+    "sha256": "4e52db3aa3d0fc6adf12852408002afddca71f64b42384f7bb57b02432a3395d",
+    "bytes": 2819225
+  },
+  "sane.html": {
+    "url": "https://arxiv.org/html/2608.00658v1",
+    "sha256": "ef2eeaac551eb6016d1be11abf8d48b22891596b670dd8e921733a6b5b0840ac",
+    "bytes": 303619
+  },
+  "sara_readme.md": {
+    "url": "https://raw.githubusercontent.com/Ahren09/SARA/main/README.md",
+    "sha256": "2826e0ec58ee00330b4e8d4d424da6083d4d688fdfb75a3983aaa05c6799d517",
+    "bytes": 8022
+  },
+  "sara_data.py": {
+    "url": "https://raw.githubusercontent.com/Ahren09/SARA/main/src/utils/data_utils.py",
+    "sha256": "f0b8bf8d7d575789690ce4e6250c20ce18f522459027ed6b62e280d608a79d7f",
+    "bytes": 20098
+  },
+  "sara_tree.json": {
+    "url": "https://api.github.com/repos/Ahren09/SARA/git/trees/main?recursive=1",
+    "sha256": "89e2c1bfc743f073e4ba4cec1838ebb251d16ac64ba3e667ae52b6c01ef7caae",
+    "bytes": 59390
+  },
+  "qwen.json": {
+    "url": "https://huggingface.co/api/models/Qwen/Qwen3-8B",
+    "sha256": "98c1cb747a63b53b129c8e4e3d8b3587fa62fa97c76fa7c1a57ef580a9dcf393",
+    "bytes": 9563
+  },
+  "llama.json": {
+    "url": "https://huggingface.co/api/models/meta-llama/Llama-3.1-8B-Instruct",
+    "sha256": "b890d43cc3ada3c45d985b58093273642c11b6f6af1cef74e1b2b6a9e9c42e3d",
+    "bytes": 23145
+  }
+}

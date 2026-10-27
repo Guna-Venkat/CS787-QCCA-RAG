@@ -1,0 +1,2829 @@
+{
+  "annotation_audit": [
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "638",
+      "question_id": "1912",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "798",
+      "question_id": "2201",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "254",
+      "question_id": "883",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "254",
+      "question_id": "884",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "28",
+      "question_id": "104",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8571428571428571,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": true,
+      "paper_id": "28",
+      "question_id": "105",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "735",
+      "question_id": "2100",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "735",
+      "question_id": "2101",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.42857142857142855,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "735",
+      "question_id": "2102",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "732",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9333333333333333,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "733",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.3125,
+      "gold_evidence_spans": 5,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "734",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7142857142857143,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "735",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "736",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9333333333333333,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "737",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "203",
+      "question_id": "738",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "361",
+      "question_id": "1187",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "361",
+      "question_id": "1188",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "720",
+      "question_id": "2069",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": true,
+      "paper_id": "33",
+      "question_id": "116",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9666666666666667,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "33",
+      "question_id": "117",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7777777777777778,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "33",
+      "question_id": "118",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "538",
+      "question_id": "1670",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "423",
+      "question_id": "1377",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9090909090909091,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "423",
+      "question_id": "1378",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.34210526315789475,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "423",
+      "question_id": "1379",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "520",
+      "question_id": "1632",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9545454545454546,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "470",
+      "question_id": "1504",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7058823529411765,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "470",
+      "question_id": "1505",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "594",
+      "question_id": "1807",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "790",
+      "question_id": "2190",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "252",
+      "question_id": "877",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "252",
+      "question_id": "878",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9428571428571428,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "252",
+      "question_id": "879",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "252",
+      "question_id": "880",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "821",
+      "question_id": "2239",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "821",
+      "question_id": "2240",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9090909090909091,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "867",
+      "question_id": "2293",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9696969696969697,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "394",
+      "question_id": "1282",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "394",
+      "question_id": "1283",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8888888888888888,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "643",
+      "question_id": "1926",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9459459459459459,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "340",
+      "question_id": "1132",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.17857142857142858,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "340",
+      "question_id": "1133",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7777777777777778,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "340",
+      "question_id": "1134",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "340",
+      "question_id": "1135",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "794",
+      "question_id": "2196",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9333333333333333,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "431",
+      "question_id": "1400",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.975,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "431",
+      "question_id": "1401",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9047619047619048,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "431",
+      "question_id": "1402",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9230769230769231,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "431",
+      "question_id": "1403",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "772",
+      "question_id": "2158",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "772",
+      "question_id": "2159",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "772",
+      "question_id": "2160",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9629629629629629,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "772",
+      "question_id": "2161",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "372",
+      "question_id": "1213",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "372",
+      "question_id": "1214",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8823529411764706,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "372",
+      "question_id": "1215",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8421052631578947,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "692",
+      "question_id": "2023",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "665",
+      "question_id": "1964",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "665",
+      "question_id": "1965",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "545",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "546",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8846153846153846,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "547",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "548",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "549",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "550",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "150",
+      "question_id": "551",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4782608695652174,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "549",
+      "question_id": "1704",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "549",
+      "question_id": "1705",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": true,
+      "paper_id": "36",
+      "question_id": "125",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9019607843137255,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "36",
+      "question_id": "126",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "36",
+      "question_id": "127",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "572",
+      "question_id": "1757",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 6,
+      "multiple_annotations": false,
+      "paper_id": "293",
+      "question_id": "1000",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.3076923076923077,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "293",
+      "question_id": "1001",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6363636363636364,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "293",
+      "question_id": "1002",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "293",
+      "question_id": "1003",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9705882352941176,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "640",
+      "question_id": "1917",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "640",
+      "question_id": "1918",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "640",
+      "question_id": "1919",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "640",
+      "question_id": "1920",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "110",
+      "question_id": "418",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8571428571428571,
+      "gold_evidence_spans": 5,
+      "multiple_annotations": false,
+      "paper_id": "110",
+      "question_id": "419",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9791666666666666,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "110",
+      "question_id": "420",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9375,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "110",
+      "question_id": "421",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9166666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "110",
+      "question_id": "422",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "676",
+      "question_id": "1984",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "304",
+      "question_id": "1028",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "304",
+      "question_id": "1029",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "304",
+      "question_id": "1030",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9333333333333333,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "438",
+      "question_id": "1419",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "438",
+      "question_id": "1420",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "467",
+      "question_id": "1493",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "467",
+      "question_id": "1494",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "467",
+      "question_id": "1495",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "467",
+      "question_id": "1496",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "467",
+      "question_id": "1497",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "604",
+      "question_id": "1828",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "604",
+      "question_id": "1829",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "604",
+      "question_id": "1830",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": true,
+      "paper_id": "24",
+      "question_id": "90",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.38235294117647056,
+      "gold_evidence_spans": 6,
+      "multiple_annotations": true,
+      "paper_id": "24",
+      "question_id": "91",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "24",
+      "question_id": "92",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "24",
+      "question_id": "93",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "24",
+      "question_id": "94",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "24",
+      "question_id": "95",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "175",
+      "question_id": "636",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8888888888888888,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "175",
+      "question_id": "637",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8333333333333334,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "175",
+      "question_id": "638",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "175",
+      "question_id": "639",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7058823529411765,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "259",
+      "question_id": "897",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9565217391304348,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "637",
+      "question_id": "1909",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "637",
+      "question_id": "1910",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "637",
+      "question_id": "1911",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "687",
+      "question_id": "2014",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.05263157894736842,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "687",
+      "question_id": "2015",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "234",
+      "question_id": "818",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8181818181818182,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "234",
+      "question_id": "819",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "660",
+      "question_id": "1958",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4230769230769231,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "282",
+      "question_id": "964",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "282",
+      "question_id": "965",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "282",
+      "question_id": "966",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "332",
+      "question_id": "1107",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8846153846153846,
+      "gold_evidence_spans": 18,
+      "multiple_annotations": false,
+      "paper_id": "332",
+      "question_id": "1108",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "332",
+      "question_id": "1109",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "332",
+      "question_id": "1110",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "388",
+      "question_id": "1264",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "388",
+      "question_id": "1265",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9090909090909091,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "388",
+      "question_id": "1266",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9166666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "388",
+      "question_id": "1267",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9285714285714286,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "419",
+      "question_id": "1364",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9166666666666666,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "419",
+      "question_id": "1365",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9743589743589743,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "419",
+      "question_id": "1366",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9444444444444444,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "419",
+      "question_id": "1367",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "317",
+      "question_id": "1065",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "317",
+      "question_id": "1066",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "317",
+      "question_id": "1067",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "505",
+      "question_id": "1586",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "505",
+      "question_id": "1587",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 6,
+      "multiple_annotations": true,
+      "paper_id": "49",
+      "question_id": "171",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "49",
+      "question_id": "172",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "49",
+      "question_id": "173",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "49",
+      "question_id": "174",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4166666666666667,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "340",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4117647058823529,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "341",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "342",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "343",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "344",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "345",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "346",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "347",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "92",
+      "question_id": "348",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8888888888888888,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "379",
+      "question_id": "1233",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "379",
+      "question_id": "1234",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9090909090909091,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "379",
+      "question_id": "1235",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "404",
+      "question_id": "1313",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.1111111111111111,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "404",
+      "question_id": "1314",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9411764705882353,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "404",
+      "question_id": "1315",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "404",
+      "question_id": "1316",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "404",
+      "question_id": "1317",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "351",
+      "question_id": "1158",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "351",
+      "question_id": "1159",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "351",
+      "question_id": "1160",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5714285714285714,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "351",
+      "question_id": "1161",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "294",
+      "question_id": "1004",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "294",
+      "question_id": "1005",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "799",
+      "question_id": "2202",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "575",
+      "question_id": "1763",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "791",
+      "question_id": "2191",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "791",
+      "question_id": "2192",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "595",
+      "question_id": "1808",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.3076923076923077,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "595",
+      "question_id": "1809",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "595",
+      "question_id": "1810",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "186",
+      "question_id": "677",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 4,
+      "multiple_annotations": false,
+      "paper_id": "129",
+      "question_id": "478",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "129",
+      "question_id": "479",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "129",
+      "question_id": "480",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "129",
+      "question_id": "481",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "590",
+      "question_id": "1799",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "199",
+      "question_id": "721",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.25,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "199",
+      "question_id": "722",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "199",
+      "question_id": "723",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.42857142857142855,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "696",
+      "question_id": "2031",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9230769230769231,
+      "gold_evidence_spans": 8,
+      "multiple_annotations": false,
+      "paper_id": "696",
+      "question_id": "2032",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "542",
+      "question_id": "1682",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.4230769230769231,
+      "gold_evidence_spans": 10,
+      "multiple_annotations": false,
+      "paper_id": "542",
+      "question_id": "1683",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.972972972972973,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "621",
+      "question_id": "1871",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "715",
+      "question_id": "2059",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "535",
+      "question_id": "1663",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "45",
+      "question_id": "153",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.75,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "45",
+      "question_id": "154",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5263157894736842,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "45",
+      "question_id": "155",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 2,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9411764705882353,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": true,
+      "paper_id": "45",
+      "question_id": "156",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "591",
+      "question_id": "1800",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "591",
+      "question_id": "1801",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7083333333333334,
+      "gold_evidence_spans": 3,
+      "multiple_annotations": false,
+      "paper_id": "152",
+      "question_id": "556",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "152",
+      "question_id": "557",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "152",
+      "question_id": "558",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "152",
+      "question_id": "559",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "469",
+      "question_id": "1502",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "469",
+      "question_id": "1503",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "647",
+      "question_id": "1934",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.1111111111111111,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "695",
+      "question_id": "2027",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "695",
+      "question_id": "2028",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.8823529411764706,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "695",
+      "question_id": "2029",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "695",
+      "question_id": "2030",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "837",
+      "question_id": "2262",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "78",
+      "question_id": "283",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9523809523809523,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "78",
+      "question_id": "284",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "78",
+      "question_id": "285",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "298",
+      "question_id": "1013",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.875,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "266",
+      "question_id": "916",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "266",
+      "question_id": "917",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.90625,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "266",
+      "question_id": "918",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9583333333333334,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "266",
+      "question_id": "919",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6666666666666666,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "266",
+      "question_id": "920",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "583",
+      "question_id": "1779",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "276",
+      "question_id": "951",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.9583333333333334,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "398",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "399",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7777777777777778,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "400",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7727272727272727,
+      "gold_evidence_spans": 6,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "401",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.7692307692307693,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "402",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 1.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "403",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.6,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "404",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "405",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5714285714285714,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "105",
+      "question_id": "406",
+      "question_type": "free_form"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "173",
+      "question_id": "631",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 1,
+      "multiple_annotations": false,
+      "paper_id": "173",
+      "question_id": "632",
+      "question_type": "extractive"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.0,
+      "gold_evidence_spans": 0,
+      "multiple_annotations": false,
+      "paper_id": "454",
+      "question_id": "1459",
+      "question_type": "yes_no"
+    },
+    {
+      "annotations": 1,
+      "answer_count": 1,
+      "answer_evidence_lexical_overlap": 0.5,
+      "gold_evidence_spans": 2,
+      "multiple_annotations": false,
+      "paper_id": "454",
+      "question_id": "1460",
+      "question_type": "extractive"
+    }
+  ],
+  "canonical_decoding": "greedy; repeats are sampling diagnostics only",
+  "em_stability": [
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1757",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "734",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "636",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2059",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1215",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "878",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2159",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1403",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1705",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2029",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "401",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "126",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2015",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "342",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "879",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2201",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1029",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "418",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "405",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1379",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "105",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2192",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1161",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "558",
+      "sign_stable": true
+    }
+  ],
+  "oracle_by_seed": {
+    "42": {
+      "answer_type_gain_contribution": {
+        "unknown": null
+      },
+      "best_fixed": "full",
+      "best_fixed_f1": 0.26084111844442154,
+      "concentration": {
+        "1": null,
+        "10": null,
+        "20": null,
+        "5": null
+      },
+      "deployable": false,
+      "epsilon": 0.01,
+      "epsilon_action_distribution": {
+        "full": 19,
+        "no_evidence": 5
+      },
+      "epsilon_mean_k": 7.916666666666667,
+      "epsilon_mean_prompt_tokens": 0.0,
+      "epsilon_median_k": 10.0,
+      "epsilon_oracle_f1": 0.26084111844442154,
+      "exact_action_distribution": {
+        "full": 19,
+        "no_evidence": 5
+      },
+      "exact_oracle_f1": 0.26084111844442154,
+      "oracle_headroom": 0.0,
+      "paper_gain_contribution": {
+        "105": null,
+        "110": null,
+        "152": null,
+        "175": null,
+        "203": null,
+        "252": null,
+        "28": null,
+        "304": null,
+        "351": null,
+        "36": null,
+        "372": null,
+        "423": null,
+        "431": null,
+        "549": null,
+        "572": null,
+        "687": null,
+        "695": null,
+        "715": null,
+        "772": null,
+        "791": null,
+        "798": null,
+        "92": null
+      },
+      "positive_gain_at_most_001_fraction": 0.0,
+      "top10_percent_gain_contribution": null
+    },
+    "43": {
+      "answer_type_gain_contribution": {
+        "unknown": 1.0
+      },
+      "best_fixed": "full",
+      "best_fixed_f1": 0.2782019046878265,
+      "concentration": {
+        "1": 0.7227926078028752,
+        "10": 1.0,
+        "20": 1.0,
+        "5": 1.0
+      },
+      "deployable": false,
+      "epsilon": 0.01,
+      "epsilon_action_distribution": {
+        "full": 17,
+        "no_evidence": 7
+      },
+      "epsilon_mean_k": 7.083333333333333,
+      "epsilon_mean_prompt_tokens": 0.0,
+      "epsilon_median_k": 10.0,
+      "epsilon_oracle_f1": 0.28845022118614305,
+      "exact_action_distribution": {
+        "full": 17,
+        "no_evidence": 7
+      },
+      "exact_oracle_f1": 0.28845022118614305,
+      "oracle_headroom": 0.010248316498316491,
+      "paper_gain_contribution": {
+        "105": 0.0,
+        "110": 0.7227926078028752,
+        "152": 0.0,
+        "175": 0.0,
+        "203": 0.0,
+        "252": 0.0,
+        "28": 0.0,
+        "304": 0.0,
+        "351": 0.0,
+        "36": 0.0,
+        "372": 0.0,
+        "423": 0.0,
+        "431": 0.27720739219712476,
+        "549": 0.0,
+        "572": 0.0,
+        "687": 0.0,
+        "695": 0.0,
+        "715": 0.0,
+        "772": 0.0,
+        "791": 0.0,
+        "798": 0.0,
+        "92": 0.0
+      },
+      "positive_gain_at_most_001_fraction": 0.0,
+      "top10_percent_gain_contribution": 1.0
+    },
+    "44": {
+      "answer_type_gain_contribution": {
+        "unknown": null
+      },
+      "best_fixed": "full",
+      "best_fixed_f1": 0.28416948446403734,
+      "concentration": {
+        "1": null,
+        "10": null,
+        "20": null,
+        "5": null
+      },
+      "deployable": false,
+      "epsilon": 0.01,
+      "epsilon_action_distribution": {
+        "full": 20,
+        "no_evidence": 4
+      },
+      "epsilon_mean_k": 8.333333333333334,
+      "epsilon_mean_prompt_tokens": 0.0,
+      "epsilon_median_k": 10.0,
+      "epsilon_oracle_f1": 0.28416948446403734,
+      "exact_action_distribution": {
+        "full": 20,
+        "no_evidence": 4
+      },
+      "exact_oracle_f1": 0.28416948446403734,
+      "oracle_headroom": 0.0,
+      "paper_gain_contribution": {
+        "105": null,
+        "110": null,
+        "152": null,
+        "175": null,
+        "203": null,
+        "252": null,
+        "28": null,
+        "304": null,
+        "351": null,
+        "36": null,
+        "372": null,
+        "423": null,
+        "431": null,
+        "549": null,
+        "572": null,
+        "687": null,
+        "695": null,
+        "715": null,
+        "772": null,
+        "791": null,
+        "798": null,
+        "92": null
+      },
+      "positive_gain_at_most_001_fraction": 0.0,
+      "top10_percent_gain_contribution": null
+    }
+  },
+  "sample": 24,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "semantic_correct_but_f1_lower": "UNMEASURED: requires preregistered human audit; no LLM judge invented",
+  "stability": [
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0002469135802469131,
+      "question_id": "1757",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 4.334974499301257e-05,
+      "question_id": "734",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.00491084007567524,
+      "question_id": "636",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0002040608101214151,
+      "question_id": "2059",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.012087567537303001,
+      "question_id": "1215",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 2.242882853151105e-05,
+      "question_id": "878",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2159",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 0.6666666666666666,
+      "delta_variance": 0.0010330578512396642,
+      "question_id": "1403",
+      "sign_stable": false
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.004651910292935935,
+      "question_id": "1705",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.024962030867482762,
+      "question_id": "2029",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0024832074743928417,
+      "question_id": "401",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.005727044169536379,
+      "question_id": "126",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "2015",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.002391584782060972,
+      "question_id": "342",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0005773464850859543,
+      "question_id": "879",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.003669865334467519,
+      "question_id": "2201",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1029",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 0.6666666666666666,
+      "delta_variance": 0.016563925981915396,
+      "question_id": "418",
+      "sign_stable": false
+    },
+    {
+      "action": "full",
+      "agreement": 0.6666666666666666,
+      "delta_variance": 0.0005844108408210974,
+      "question_id": "405",
+      "sign_stable": false
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 6.92852273559674e-06,
+      "question_id": "1379",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.03534779932286858,
+      "question_id": "105",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 0.6666666666666666,
+      "delta_variance": 0.01981789307082326,
+      "question_id": "2192",
+      "sign_stable": false
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0,
+      "question_id": "1161",
+      "sign_stable": true
+    },
+    {
+      "action": "full",
+      "agreement": 1.0,
+      "delta_variance": 0.0008840458534294812,
+      "question_id": "558",
+      "sign_stable": true
+    }
+  ]
+}
