@@ -1,0 +1,30 @@
+{
+  "branch": "gagan",
+  "h0_passed": true,
+  "h0_stage": "v2",
+  "w8_provenance": "RECOVERED_EXACT",
+  "w8_commit": "fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d",
+  "w8_parent_commit": "6b39cd26c56085f96c7a9711ed4a3a84d634bd33",
+  "w8_recovered_sources_count": 24,
+  "final_confirmation_started": false,
+  "test_outcomes_used": false,
+  "all_producers_count": 12,
+  "all_producers_executable": true,
+  "dry_runs_passed": true,
+  "synthetic_fixture_passed": true,
+  "non_test_replay_passed": true,
+  "tests_passed": 80,
+  "freeze_manifest_path": "results/week9/w9h_final/v2/w9h_pretest_freeze_manifest.json",
+  "freeze_manifest_sha256": "376d1ad7c331c71e7bec01d9086b4e1c99ea5a2fb643266ae9602044da9767e6",
+  "v1_freeze_sha256": "0df18e811072a72a1fca5fe862a5d90fe1d45a2617c3f34af3142f23eaab4c08",
+  "v1_freeze_unmodified": true,
+  "no_scientific_method_or_threshold_changed": true,
+  "preflight_summary": {
+    "dry_runs_count": 12,
+    "w8_recovery_classification": "RECOVERED_EXACT",
+    "non_test_replay_f0_matches": 1746,
+    "non_test_replay_g2_matches": 1746,
+    "synthetic_systems_count": 12,
+    "test_access_only_path_existence": true
+  }
+}

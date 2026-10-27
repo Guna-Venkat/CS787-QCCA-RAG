@@ -1,0 +1,17 @@
+{
+  "schema": "W9-H-v1",
+  "output_root": "results/week9/w9h_final/v1",
+  "confirmation_split": "test",
+  "primary_system": "W9-PRIMARY",
+  "sentence_k": 3,
+  "primary_mode": "F0",
+  "safe_mode": "F2-A",
+  "verifier_threshold": 0.70,
+  "seed": 42,
+  "bootstrap_resamples": 10000,
+  "test_draft_provenance": "User confirmed synthetic fixture in this task; file not opened",
+  "materialization_spec": null,
+  "test_query_count": null,
+  "run_final_confirmation": false,
+  "run_robustness": false
+}

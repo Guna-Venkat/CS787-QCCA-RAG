@@ -1,0 +1,10 @@
+{
+  "all_producers": 12,
+  "blockers": [],
+  "complete": true,
+  "final_confirmation_started": false,
+  "freeze_sha256": "376d1ad7c331c71e7bec01d9086b4e1c99ea5a2fb643266ae9602044da9767e6",
+  "passed": true,
+  "test_outcomes_used": false,
+  "w8_provenance": "RECOVERED_EXACT"
+}

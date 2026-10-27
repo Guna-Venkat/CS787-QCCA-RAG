@@ -1,0 +1,14 @@
+{
+  "compact_lm_calls": 2.0,
+  "cumulative_prompt_reduction": 0.4942560138614852,
+  "e3_evidence_tokens": 95.3170359052712,
+  "evidence_suppression": 0.9535245295275869,
+  "f1_delta_vs_d1": -0.0011399822976350116,
+  "final_prompt_reduction": 0.6460854601797117,
+  "help_rate_delta_vs_d1": -0.12987012987012986,
+  "hurt_rate_delta_vs_d1": -0.08938120702826585,
+  "interpretation": "Evidence exposure, final prompt, cumulative prompt and LM calls are different quantities.",
+  "raw_lm_calls": 2.0,
+  "raw_selected_chunk_tokens": 2050.910618792972,
+  "retained_fraction": 0.04647547047241308
+}

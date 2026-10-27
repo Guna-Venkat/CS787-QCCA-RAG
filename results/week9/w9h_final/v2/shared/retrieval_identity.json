@@ -1,0 +1,7 @@
+{
+  "input_hashes": {
+    "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-test.arrow": "1d2141e6278f7f809c10fcd6dac63636305dcf161f7a94c15a0ff68a8251cca5",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_test.jsonl": "9fe1cdbe727f9d8fee6564a30a435838d747d56a1c08381503915437f737d154"
+  },
+  "sha256": "d509351d4cbbb1606983cc395fd5447fd036d5273ff26f406583f9fc54ba3012"
+}

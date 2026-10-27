@@ -1,0 +1,16 @@
+{
+  "artifact_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/evidence_compression.json": "3f42ea4af18d6b1d2de1e377b704b939dd759f140788b99c7865abcd7d85f3ab",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/final_verdict.json": "4371f0db604caa1f088da1bb24a0ee1aaf9e484d8ea7ca417f2824a174597963",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/paired_bootstrap.csv": "276bf9033fea87a7445fb40178955fa97c7743355c184e9c6fa8b0de4d526a7a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/pareto_quality_cost.csv": "4fd94e36e9a7f6557de5c484e5919a3b1988d5b2ec3cb5c2010c346f8e9b6c5e",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/pareto_quality_safety.csv": "0853f9e4cd4e22176ca7593018f506a4524d0bf0fdbc6d00ea3871ac1397d94c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/per_query_predictions.csv": "8bbc77a310d5b636a8798fd005d7a9540028d3c8c59e1bc35074d53e6fb20bbf",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/summary_cost.csv": "7b967c3ea8bf7625cb930d9b20b66f68262b9887ac396a9c61bc96db99fd3e27",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/summary_quality.csv": "cbddfc6fa0b2b96300043c71efaabfde2e74cb525f669443d56eec7840f02118",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/summary_safety.csv": "17264f8bbf9e0ee991fde425936842f3d2d57047549d15c259ebbc4b029ed9f2",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/table1_primary.csv": "0ae59bce2a43a56704ab0b3255a045633c7e7456cc83a41914317f81d08d9ef7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v2/report/table2_extended.csv": "657aae00d9ebf7aba2201eb25ed3b3032bd8e6a4f0044ec36716d1daaf23922f"
+  },
+  "freeze_digest": "53837a207faf8f49690bf1883c87d95b013c295f08d533025dc9333218a32240"
+}

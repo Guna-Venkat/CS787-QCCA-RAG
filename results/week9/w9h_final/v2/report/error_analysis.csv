@@ -1,0 +1,140 @@
+category,question_id,paper_id,question,y0,evidence,f0_answer,f2_answer,g2_accept,evaluation
+W9 helps D0,40,13,What is their definition of hate speech?,"Hate speech is a form of online harassment that discriminates against people based on their race, ethnicity, national origin, sexual orientation, gender identity, religious affiliation, age, disability, or serious disease.","Hate speech may not represent the general opinion, yet it promotes the dehumanization of people who are typically from minority groups ,  and can incite hate crime .
+
+Related Work	There is little consensus on the difference between profanity and hate speech and, how to define the latter .
+
+The detection of hate speech targets is yet another challenging aspect of the annotation.","Hate speech may not represent the general opinion, yet it promotes the dehumanization of people who are typically from minority groups ,  and can incite hate crime .","Hate speech is a form of online harassment that discriminates against people based on their race, ethnicity, national origin, sexual orientation, gender identity, religious affiliation, age, disability, or serious disease.",True,"{""answers"": [""rely on the general public opinion and common linguistic knowledge to assess how people view and react to hate speech""], ""answers_reformatted"": [""rely on the general public opinion and common linguistic knowledge to assess how people view and react to hate speech""]}"
+W9 helps D0,452,145,What other scenarios can the bias mitigation methods be applied to?,sentiment analysis,"This method is inspired by the fact that model bias mainly rises from the imbalance of labels and the limited size of data samples.
+
+Also, we found our proposed methods can reduce gender biases up to 90-98%, improving the robustness of the models.
+
+We believe that a meaningful extension of our work can be developing bias mitigation methods that maintain (or even increase) the classification performance and reduce the bias at the same time.",other identity problems like racial and to different tasks like sentiment analysis,sentiment analysis,True,"{""answers"": [""sentiment analysis , other identity problems like racial""], ""answers_reformatted"": [""sentiment analysis , other identity problems like racial""]}"
+W9 helps D0,721,218,what surface-form features were used?,"INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, word embeddings distributed as part of ConceptNet 5.5, word clusters, negation","From these resources, the following domain-specific features were generated:   INLINEFORM0 -grams generalized over domain terms (or domain generalized INLINEFORM1 -grams, for short): INLINEFORM
+
+This indicates that the features in this group capture similar information.
+
+Among the domain-specific features, the INLINEFORM1 -grams generalized over domain terms are the most useful.","INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, general-domain word clusters, negation","INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, word embeddings distributed as part of ConceptNet 5.5, word clusters, negation, INLINEFORM0 -grams generalized over domain terms",False,"{""answers"": [""INLINEFORM0 -grams, General-domain word embeddings, General-domain word clusters, Negation: presence of simple negators, the number of tokens with all characters in upper case, the number of hashtags, presence of positive and negative emoticons, whether the last token is a positive or negative emoticon, the number of elongated words, presence of exclamation and question marks, whether the last token contains an exclamation or question mark""], ""answers_reformatted"": [""INLINEFORM0 -grams, General-domain word embeddings, General-domain word clusters, Negation: presence of simple negators, the number of tokens with all characters in upper case, the number of hashtags, presence of positive and negative emoticons, whether the last token is a positive or negative emoticon, the number of elongated words, presence of exclamation and question marks, whether the last token contains an exclamation or question mark""]}"
+W9 helps D0,1273,405,What is the proposed algorithm or model architecture?,Graph-Based Method,"For this purpose, we take advantage of the content-  and graph-based  methods that we previously developed.
+
+Methods	In this section, we summarize the content-based method from  (Section SECREF2 ) and the graph-based method from  (Section SECREF3 ).
+
+We then present the fusion method proposed in this paper, aiming at taking advantage of both sources of information (Section SECREF6 ).",The proposed algorithm is a fusion of the content-based and graph-based methods.,Graph-Based Method,False,"{""answers"": [""They combine content- and graph-based methods in new ways.""], ""answers_reformatted"": [""They combine content- and graph-based methods in new ways.""]}"
+W9 helps D0,760,232,by how much did their system improve?,2.23 BLEU points,"The average improvement for CH-EN and EN-JA translation is up to 3.99 BLEU points (32.71 vs. 28.72) and 3.59 BLEU (25.99 vs. 22.40) points, respectively.
+
+In CH-EN translation, the average improvement is up to 2.23 BLEU points (34.94 vs. 32.71).
+
+In EN-JA translation, the improvement can reach 1.96 BLEU points (27.95 vs. 25.99).","3.99 BLEU points (32.71 vs. 28.72) and 3.59 BLEU (25.99 vs. 22.40) points, respectively.",3.99 BLEU points,False,"{""answers"": [""The average improvement for CH-EN is 3.99 BLEU points, for EN-JA it is 3.59 BLEU points.""], ""answers_reformatted"": [""The average improvement for CH-EN is 3.99 BLEU points, for EN-JA it is 3.59 BLEU points.""]}"
+W9 hurts D0,505,157,what are the recent models they compare with?,"LSTMs, RHNs, NAS","All our results are well below the previous state of the are for models without dynamic evaluation or caching.
+
+Deeper models have gradually degrading perplexity, with RHNs lagging all of them by a significant margin.
+
+Nevertheless, we match their smaller RHN with our models which are very close to each other.","Answer the question using the additional source-grounded evidence. Return only a concise complete answer.
+
+Additional evidence:
+All our results are well below the previous state of the are for models without dynamic evaluation or caching.
+
+Deeper models have gradually degrading perplexity, with RHNs lagging all of them by a significant margin.
+
+Nevertheless, we match their smaller RHN with our models which are very close to each other.","LSTMs, RHNs, NAS",True,"{""answers"": [""Recurrent Highway Networks, NAS, ""], ""answers_reformatted"": [""Recurrent Highway Networks, NAS, ""]}"
+W9 hurts D0,579,181,What are the propaganda types?,18 propaganda techniques,"Research on detecting propaganda has focused primarily on classifying entire articles as propagandistic/non-propagandistic , , .
+
+Therefore, we propose a novel task: identifying specific instances of propaganda techniques used within an article.
+
+Conclusions	We have argued for a new way to study propaganda in news media: by focusing on identifying the instances of use of specific propaganda techniques.","loaded language, appeal to authority, slogans, logical fallacies, straw man, hidden ad-hominem fallacies, red herring",18 propaganda techniques,False,"{""answers"": [""annotated according to eighteen persuasion techniques ""], ""answers_reformatted"": [""annotated according to eighteen persuasion techniques ""]}"
+W9 hurts D0,1001,310,What are the BLEU performance improvements they achieve?,11.03% and 14.7%,"For the statistical machine translation and neural machine translation evaluation we use the BLEU score  as an evaluation metric, computed using the multi-bleu script from Moses  .
+
+The BLEU scores for the NMT models were higher than for SMT models, for both en–ta and en–hi pairs, as can be seen in Table TABREF23 .
+
+Our model achieved a marked percentage increase in the BLEU score for both en–ta and en–hi language pairs.","11.0% and 14.7% for en–ta and en–hi pairs respectively, due to the use of parallel-sentence pairs extracted from comparable corpora using the neural architecture.",11.03% and 14.7%,False,"{""answers"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""], ""answers_reformatted"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""]}"
+W9 hurts D0,607,187,what languages did they evaluate on?,"English, German, Spanish, French, Chinese","Table 4 shows quantitative results of the three models averaged over a corpus of 300 test stimuli for all languages.
+
+In addition, some features in other languages were not straightforwardly translatable into English.
+
+Comparing results across languages we observe that scores for English exceed scores for all other languages.","English, German, Spanish, French, Italian","English, German, Spanish, French, Chinese",False,"{""answers"": [""Arabic, Chinese, French, English, and German""], ""answers_reformatted"": [""Arabic, Chinese, French, English, and German""]}"
+W9 hurts D0,523,160,Which behavioural features are used?,"frequency of tweets posted, followers/following ratio, mention interaction graph","This category consists of measuring behavioural features to capture different properties related to the user and their behaviour.
+
+The ten most important features are shown in Table TABREF22 .
+
+Unlike previous efforts, these properties do not only focus on lexical keyword analysis of the messages, but also add a contextual and psychological dimension.","The mention interaction graph, frequency of tweets posted, followers/following ratio, and the number of mentions a single user makes are used as behavioural features.","frequency of tweets posted, followers/following ratio, mention interaction graph",True,"{""answers"": [""frequency of tweets posted, followers/following ratio, degree of influence each user has over their network""], ""answers_reformatted"": [""frequency of tweets posted, followers/following ratio, degree of influence each user has over their network""]}"
+F2 rescues F0 harm,505,157,what are the recent models they compare with?,"LSTMs, RHNs, NAS","All our results are well below the previous state of the are for models without dynamic evaluation or caching.
+
+Deeper models have gradually degrading perplexity, with RHNs lagging all of them by a significant margin.
+
+Nevertheless, we match their smaller RHN with our models which are very close to each other.","Answer the question using the additional source-grounded evidence. Return only a concise complete answer.
+
+Additional evidence:
+All our results are well below the previous state of the are for models without dynamic evaluation or caching.
+
+Deeper models have gradually degrading perplexity, with RHNs lagging all of them by a significant margin.
+
+Nevertheless, we match their smaller RHN with our models which are very close to each other.","LSTMs, RHNs, NAS",True,"{""answers"": [""Recurrent Highway Networks, NAS, ""], ""answers_reformatted"": [""Recurrent Highway Networks, NAS, ""]}"
+F2 rescues F0 harm,579,181,What are the propaganda types?,18 propaganda techniques,"Research on detecting propaganda has focused primarily on classifying entire articles as propagandistic/non-propagandistic , , .
+
+Therefore, we propose a novel task: identifying specific instances of propaganda techniques used within an article.
+
+Conclusions	We have argued for a new way to study propaganda in news media: by focusing on identifying the instances of use of specific propaganda techniques.","loaded language, appeal to authority, slogans, logical fallacies, straw man, hidden ad-hominem fallacies, red herring",18 propaganda techniques,False,"{""answers"": [""annotated according to eighteen persuasion techniques ""], ""answers_reformatted"": [""annotated according to eighteen persuasion techniques ""]}"
+F2 rescues F0 harm,1001,310,What are the BLEU performance improvements they achieve?,11.03% and 14.7%,"For the statistical machine translation and neural machine translation evaluation we use the BLEU score  as an evaluation metric, computed using the multi-bleu script from Moses  .
+
+The BLEU scores for the NMT models were higher than for SMT models, for both en–ta and en–hi pairs, as can be seen in Table TABREF23 .
+
+Our model achieved a marked percentage increase in the BLEU score for both en–ta and en–hi language pairs.","11.0% and 14.7% for en–ta and en–hi pairs respectively, due to the use of parallel-sentence pairs extracted from comparable corpora using the neural architecture.",11.03% and 14.7%,False,"{""answers"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""], ""answers_reformatted"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""]}"
+F2 rescues F0 harm,607,187,what languages did they evaluate on?,"English, German, Spanish, French, Chinese","Table 4 shows quantitative results of the three models averaged over a corpus of 300 test stimuli for all languages.
+
+In addition, some features in other languages were not straightforwardly translatable into English.
+
+Comparing results across languages we observe that scores for English exceed scores for all other languages.","English, German, Spanish, French, Italian","English, German, Spanish, French, Chinese",False,"{""answers"": [""Arabic, Chinese, French, English, and German""], ""answers_reformatted"": [""Arabic, Chinese, French, English, and German""]}"
+F2 rescues F0 harm,523,160,Which behavioural features are used?,"frequency of tweets posted, followers/following ratio, mention interaction graph","This category consists of measuring behavioural features to capture different properties related to the user and their behaviour.
+
+The ten most important features are shown in Table TABREF22 .
+
+Unlike previous efforts, these properties do not only focus on lexical keyword analysis of the messages, but also add a contextual and psychological dimension.","The mention interaction graph, frequency of tweets posted, followers/following ratio, and the number of mentions a single user makes are used as behavioural features.","frequency of tweets posted, followers/following ratio, mention interaction graph",True,"{""answers"": [""frequency of tweets posted, followers/following ratio, degree of influence each user has over their network""], ""answers_reformatted"": [""frequency of tweets posted, followers/following ratio, degree of influence each user has over their network""]}"
+G2 rejects F0 harm,579,181,What are the propaganda types?,18 propaganda techniques,"Research on detecting propaganda has focused primarily on classifying entire articles as propagandistic/non-propagandistic , , .
+
+Therefore, we propose a novel task: identifying specific instances of propaganda techniques used within an article.
+
+Conclusions	We have argued for a new way to study propaganda in news media: by focusing on identifying the instances of use of specific propaganda techniques.","loaded language, appeal to authority, slogans, logical fallacies, straw man, hidden ad-hominem fallacies, red herring",18 propaganda techniques,False,"{""answers"": [""annotated according to eighteen persuasion techniques ""], ""answers_reformatted"": [""annotated according to eighteen persuasion techniques ""]}"
+G2 rejects F0 harm,1001,310,What are the BLEU performance improvements they achieve?,11.03% and 14.7%,"For the statistical machine translation and neural machine translation evaluation we use the BLEU score  as an evaluation metric, computed using the multi-bleu script from Moses  .
+
+The BLEU scores for the NMT models were higher than for SMT models, for both en–ta and en–hi pairs, as can be seen in Table TABREF23 .
+
+Our model achieved a marked percentage increase in the BLEU score for both en–ta and en–hi language pairs.","11.0% and 14.7% for en–ta and en–hi pairs respectively, due to the use of parallel-sentence pairs extracted from comparable corpora using the neural architecture.",11.03% and 14.7%,False,"{""answers"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""], ""answers_reformatted"": [""11.03% and 14.7% for en\u2013ta and en\u2013hi pairs respectively""]}"
+G2 rejects F0 harm,607,187,what languages did they evaluate on?,"English, German, Spanish, French, Chinese","Table 4 shows quantitative results of the three models averaged over a corpus of 300 test stimuli for all languages.
+
+In addition, some features in other languages were not straightforwardly translatable into English.
+
+Comparing results across languages we observe that scores for English exceed scores for all other languages.","English, German, Spanish, French, Italian","English, German, Spanish, French, Chinese",False,"{""answers"": [""Arabic, Chinese, French, English, and German""], ""answers_reformatted"": [""Arabic, Chinese, French, English, and German""]}"
+G2 rejects F0 harm,73,23,What is symbolic rewriting?,rewriting of terms in a given set of ground and nonground terms,"Can Neural Networks Learn Symbolic Rewriting?
+
+This work investigates if the current neural architectures are adequate for learning symbolic rewriting.
+
+In particular: Can NMT models learn symbolic rewriting?",rewriting of terms,rewriting of terms in a given set of ground and nonground terms,False,"{""answers"": [""It is a process of translating a set of formal symbolic data to another set of formal symbolic data.""], ""answers_reformatted"": [""It is a process of translating a set of formal symbolic data to another set of formal symbolic data.""]}"
+G2 rejects F0 harm,1253,397,How long are the two unlabelled corpora?,142 million sentences,"Decoding the subsequent 30 words, which was adopted from the skip-thought training code, gave reasonably good performance.
+
+To compare the effect of different corpora, we also trained two models on Amazon Book Review dataset (without ratings) which is the largest subset of the Amazon Review dataset  with 142 million sentences, about twice as large as BookCorpus.
+
+Prior work suggests that incorporating word-level information helps the model to perform better on cosine distance based semantic textual similarity tasks.",100 million sentences,142 million sentences,False,"{""answers"": [""Amazon Review dataset  with 142 million sentences, about twice as large as BookCorpus""], ""answers_reformatted"": [""Amazon Review dataset  with 142 million sentences, about twice as large as BookCorpus""]}"
+G2 misses F0 help,721,218,what surface-form features were used?,"INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, word embeddings distributed as part of ConceptNet 5.5, word clusters, negation","From these resources, the following domain-specific features were generated:   INLINEFORM0 -grams generalized over domain terms (or domain generalized INLINEFORM1 -grams, for short): INLINEFORM
+
+This indicates that the features in this group capture similar information.
+
+Among the domain-specific features, the INLINEFORM1 -grams generalized over domain terms are the most useful.","INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, general-domain word clusters, negation","INLINEFORM0 -grams, INLINEFORM1 -grams, non-contiguous word INLINEFORM3 -grams, character INLINEFORM5 -grams, unigram stems, general-domain word embeddings, word embeddings distributed as part of ConceptNet 5.5, word clusters, negation, INLINEFORM0 -grams generalized over domain terms",False,"{""answers"": [""INLINEFORM0 -grams, General-domain word embeddings, General-domain word clusters, Negation: presence of simple negators, the number of tokens with all characters in upper case, the number of hashtags, presence of positive and negative emoticons, whether the last token is a positive or negative emoticon, the number of elongated words, presence of exclamation and question marks, whether the last token contains an exclamation or question mark""], ""answers_reformatted"": [""INLINEFORM0 -grams, General-domain word embeddings, General-domain word clusters, Negation: presence of simple negators, the number of tokens with all characters in upper case, the number of hashtags, presence of positive and negative emoticons, whether the last token is a positive or negative emoticon, the number of elongated words, presence of exclamation and question marks, whether the last token contains an exclamation or question mark""]}"
+G2 misses F0 help,1273,405,What is the proposed algorithm or model architecture?,Graph-Based Method,"For this purpose, we take advantage of the content-  and graph-based  methods that we previously developed.
+
+Methods	In this section, we summarize the content-based method from  (Section SECREF2 ) and the graph-based method from  (Section SECREF3 ).
+
+We then present the fusion method proposed in this paper, aiming at taking advantage of both sources of information (Section SECREF6 ).",The proposed algorithm is a fusion of the content-based and graph-based methods.,Graph-Based Method,False,"{""answers"": [""They combine content- and graph-based methods in new ways.""], ""answers_reformatted"": [""They combine content- and graph-based methods in new ways.""]}"
+G2 misses F0 help,760,232,by how much did their system improve?,2.23 BLEU points,"The average improvement for CH-EN and EN-JA translation is up to 3.99 BLEU points (32.71 vs. 28.72) and 3.59 BLEU (25.99 vs. 22.40) points, respectively.
+
+In CH-EN translation, the average improvement is up to 2.23 BLEU points (34.94 vs. 32.71).
+
+In EN-JA translation, the improvement can reach 1.96 BLEU points (27.95 vs. 25.99).","3.99 BLEU points (32.71 vs. 28.72) and 3.59 BLEU (25.99 vs. 22.40) points, respectively.",3.99 BLEU points,False,"{""answers"": [""The average improvement for CH-EN is 3.99 BLEU points, for EN-JA it is 3.59 BLEU points.""], ""answers_reformatted"": [""The average improvement for CH-EN is 3.99 BLEU points, for EN-JA it is 3.59 BLEU points.""]}"
+G2 misses F0 help,641,197,How are labels for trolls obtained?,labels for trolls are not available,"In particular, we show how to classify trolls according to their political role ---left, news feed, right--- by using features extracted from social media, i.e., Twitter, in two scenarios: (i) in a traditional supervised learning scenario, where labels for trolls are available, and (ii) in a distant supervision scenario, where labels for trolls are not available, and we rely on more-commonly-available labels for news outlets mentioned by the trolls.
+
+A more realistic scenario assumes that labels for troll accounts are not available.
+
+By combining these labels with a citation graph from the troll accounts to news media, we can infer the final labeling on the accounts themselves without any need for manual labeling.",labels for news media are available,labels for trolls are not available,False,"{""answers"": [""the ground truth labels for the troll users are available, we leverage more persistent entities and their labels: news media. We assume a learning scenario with distant supervision where labels for news media are available. By combining these labels with a citation graph from the troll accounts to news media, we can infer the final labeling on the accounts themselves""], ""answers_reformatted"": [""the ground truth labels for the troll users are available, we leverage more persistent entities and their labels: news media. We assume a learning scenario with distant supervision where labels for news media are available. By combining these labels with a citation graph from the troll accounts to news media, we can infer the final labeling on the accounts themselves""]}"
+G2 misses F0 help,279,88,What contribute to improve the accuracy on legal question answering task?,additional statistical features from information retrieval task integrated into Convolutional Neural Network,"Legal Question Answering using Ranking SVM and Deep Convolutional Neural Network	This paper presents a study of employing Ranking SVM and Convolutional Neural Network for two missions: legal information retrieval and question answering in the Competition on Legal Information Extraction/Entailment.
+
+For the legal question answering task, additional statistical features from information retrieval task integrated into Convolutional Neural Network contribute to higher accuracy.
+
+Given a legal question, retrieving relevant legal articles and deciding whether the content of a relevant article can be used to answer the question are two vital steps in building a legal question answering system.",additional statistical features from information retrieval task,additional statistical features from information retrieval task integrated into Convolutional Neural Network,False,"{""answers"": [""Adding more features to the traditional sets such as TF-IDF, BM25 and PL2F as well as using voting in a ranking system help to improve accuracy on a legal question answering task""], ""answers_reformatted"": [""Adding more features to the traditional sets such as TF-IDF, BM25 and PL2F as well as using voting in a ranking system help to improve accuracy on a legal question answering task""]}"

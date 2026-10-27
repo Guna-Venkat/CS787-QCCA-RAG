@@ -1,0 +1,13 @@
+system,executable,exact_method_recovered,same_test_membership,f1_em_comparable,final_prompt_comparable,cumulative_prompt_comparable,lm_calls_comparable,latency_comparable,pairable_with_primary,notes
+D0,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+semantic_k4,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+semantic_k2,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+semantic_k5,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+semantic_k6,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+semantic_k8,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+BM25_k8,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+D1,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+W9-PRIMARY,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+W9-SAFE,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+W9-VERIFY,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
+original_SARA_G0,True,True,ENFORCED_AT_H2_IDS_DEFERRED,True,True,True,True,False,CONTRACT_ENFORCED_AT_H2,Actual LM prompts summed. Latency stage-scoped; no common measured end-to-end. No TEST outputs observed.
