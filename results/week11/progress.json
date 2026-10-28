@@ -20,37 +20,37 @@
     {
       "freeze_exists": true,
       "full_status": "COMPLETE",
-      "next_action": "Review/freeze manually",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_0_setup_and_data.ipynb",
       "number_completed": 150,
-      "number_expected": 150.0,
+      "number_expected": 150,
       "phase": "0",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/setup"
     },
     {
       "freeze_exists": true,
       "full_status": "COMPLETE",
-      "next_action": "Review/freeze manually",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_A_retrieval_granularity.ipynb",
       "number_completed": 1350,
-      "number_expected": 1350.0,
+      "number_expected": 1350,
       "phase": "A",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retrieval"
     },
     {
       "freeze_exists": true,
       "full_status": "COMPLETE",
-      "next_action": "Review/freeze manually",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_B_passage_representation.ipynb",
       "number_completed": 600,
-      "number_expected": 600.0,
+      "number_expected": 600,
       "phase": "B",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation"
     },
     {
       "freeze_exists": true,
-      "full_status": "COMPLETE_AVAILABLE_TEXT",
-      "next_action": "Audited; LLMLingua conditions explicitly pending",
+      "full_status": "COMPLETE_AVAILABLE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_C_granularity_budget.ipynb",
       "number_completed": 5550,
       "number_expected": 5550,
@@ -60,10 +60,10 @@
     {
       "freeze_exists": false,
       "full_status": "RUNNING",
-      "next_action": "Agent monitoring; resume cached C Qwen answers and fixed evidence selections",
+      "next_action": "Durable continuation; no duplicate launch needed",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_D_reader_granularity.ipynb",
       "number_completed": 0,
-      "number_expected": 16650,
+      "number_expected": null,
       "phase": "D",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity"
     },
@@ -123,5 +123,7 @@
   "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
   "running_phase": "D",
   "sample_queries_per_dataset": 50,
-  "updated_at": "2026-10-28T09:18:41.753153+00:00"
+  "supervisor": "operations/week11/continue_study.py",
+  "supervisor_state": "RUNNING",
+  "updated_at": "2026-10-28T09:44:51.594866+00:00"
 }

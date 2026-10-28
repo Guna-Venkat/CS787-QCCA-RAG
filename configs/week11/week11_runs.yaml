@@ -1,6 +1,145 @@
-finalist_run_ids: []
-finalist_configurations: {}
+finalist_run_ids:
+- 39d891f9fed0db18d8c2
+- a0788207676a3dd94c29
+- 5ef43643d916e4c17721
+- fc9352ab57c0ab40eb3b
+- ecbe1962e8a80f2318cc
+finalist_configurations:
+  39d891f9fed0db18d8c2:
+    retriever: SFR
+    reader: Qwen
+    granularity: PASSAGE
+    selector: semantic
+    budget: 1024
+    compressor: C0
+    representation: P0
+    strategy: null
+    pool_width: 20
+  a0788207676a3dd94c29:
+    retriever: SFR
+    reader: Qwen
+    granularity: SENTENCE
+    selector: semantic
+    budget: 1024
+    compressor: C0
+    representation: P0
+    strategy: null
+    pool_width: 20
+  5ef43643d916e4c17721:
+    retriever: SFR
+    reader: Qwen
+    granularity: PROPOSITION
+    selector: semantic
+    budget: 1024
+    compressor: C0
+    representation: P0
+    strategy: null
+    pool_width: 20
+  fc9352ab57c0ab40eb3b:
+    retriever: SFR
+    reader: Qwen
+    granularity: SENTENCE
+    selector: hybrid
+    budget: 256
+    compressor: C0
+    representation: P0
+    strategy: null
+    pool_width: 20
+  ecbe1962e8a80f2318cc:
+    retriever: SFR
+    reader: Qwen
+    granularity: PASSAGE
+    selector: semantic
+    budget: FULL
+    compressor: C0
+    representation: P0
+    strategy: null
+    pool_width: 20
 analysis_comparison_family: exploratory
-interaction_contrasts: []
+interaction_contrasts:
+- name: QASPER_reader_by_granularity_512
+  dataset: QASPER
+  actions:
+  - f70536eca71d35e6b7a0
+  - ef60a00131da95cb0a02
+  - 015e3dba7459d9196744
+  - ae55497fa1819eecab94
+- name: QASPER_granularity_by_budget
+  dataset: QASPER
+  actions:
+  - 9fa7fa1136c2cdf1a4b9
+  - 39d891f9fed0db18d8c2
+  - 12bb8307375436eba99c
+  - a0788207676a3dd94c29
+- name: QASPER_compressor_by_budget
+  dataset: QASPER
+  actions:
+  - 4043cb2bb162608c9705
+  - c55c2cc46b508361dd08
+  - c0e284f6ff1027450ac4
+  - ae874a989b8c57264be3
+- name: QASPER_retriever_by_granularity
+  dataset: QASPER
+  actions:
+  - 8603dec831a84395948a
+  - 7aa17908c2f61a860df7
+  - 39d891f9fed0db18d8c2
+  - a0788207676a3dd94c29
+- name: HotpotQA_reader_by_granularity_512
+  dataset: HotpotQA
+  actions:
+  - f70536eca71d35e6b7a0
+  - ef60a00131da95cb0a02
+  - 015e3dba7459d9196744
+  - ae55497fa1819eecab94
+- name: HotpotQA_granularity_by_budget
+  dataset: HotpotQA
+  actions:
+  - 9fa7fa1136c2cdf1a4b9
+  - 39d891f9fed0db18d8c2
+  - 12bb8307375436eba99c
+  - a0788207676a3dd94c29
+- name: HotpotQA_compressor_by_budget
+  dataset: HotpotQA
+  actions:
+  - 4043cb2bb162608c9705
+  - c55c2cc46b508361dd08
+  - c0e284f6ff1027450ac4
+  - ae874a989b8c57264be3
+- name: HotpotQA_retriever_by_granularity
+  dataset: HotpotQA
+  actions:
+  - 8603dec831a84395948a
+  - 7aa17908c2f61a860df7
+  - 39d891f9fed0db18d8c2
+  - a0788207676a3dd94c29
+- name: SciFact_reader_by_granularity_512
+  dataset: SciFact
+  actions:
+  - f70536eca71d35e6b7a0
+  - ef60a00131da95cb0a02
+  - 015e3dba7459d9196744
+  - ae55497fa1819eecab94
+- name: SciFact_granularity_by_budget
+  dataset: SciFact
+  actions:
+  - 9fa7fa1136c2cdf1a4b9
+  - 39d891f9fed0db18d8c2
+  - 12bb8307375436eba99c
+  - a0788207676a3dd94c29
+- name: SciFact_compressor_by_budget
+  dataset: SciFact
+  actions:
+  - 4043cb2bb162608c9705
+  - c55c2cc46b508361dd08
+  - c0e284f6ff1027450ac4
+  - ae874a989b8c57264be3
+- name: SciFact_retriever_by_granularity
+  dataset: SciFact
+  actions:
+  - 8603dec831a84395948a
+  - 7aa17908c2f61a860df7
+  - 39d891f9fed0db18d8c2
+  - a0788207676a3dd94c29
 history_trajectory_records: []
 allow_pending_conditions: true

@@ -21,7 +21,38 @@ in-notebook review disabled. Originals keep their safe defaults. Copies are unde
 `results/week11/monitoring/`. Launch dependent phases only after an audited review
 and completion of the previous writer. Never run two GPU phases together.
 
-## Current continuation
+## Durable continuation added 2026-10-28
+
+`continue_study.py --execute` is now a separate, durable supervisor for D through
+I. It adopts an existing active writer instead of launching a duplicate, waits for
+the notebook and report to finish, runs `review_generation.py` for D/E/F/G and
+saved-source audits for H/I, writes interpretations/flags, and records explicit
+mechanical continuation reviews before the next phase. These are operational
+audits under the user's delegation, not fresh human scientific reviews or
+independent confirmation. It stops on errors, identity drift, or less than 10 GiB
+free before launching a phase. It does not delete outputs or train a controller.
+
+Five F finalists were **manually** selected from actual saved C actions before
+D/E outcomes, recorded in `results/week11/F_MANUAL_FINALIST_REVIEW.json`, and
+supplied in the scoped configuration fields. They are three matched semantic
+1,024-token granularities, a cheap 256-token hybrid sentence condition, and the
+FULL semantic passage reference. All use Qwen/P0. This selection is exploratory;
+the supervisor does not select or add winners. Twelve explicit exploratory
+interaction contrasts were also specified before D/E/F completion.
+
+State: `results/week11/monitoring/continuation_state.json`; log:
+`results/week11/monitoring/continuation.log`. The separate passive 15-minute monitor
+continues to record counts/GPU/disk in `latest.json`. Neither process supplies
+Codex app wake-up notifications. A host reboot still stops local processes;
+restart the same supervisor after checking its saved error/status. Completed
+results remain resumable. Do not edit its pinned drivers while it is running.
+
+Read-only plan: `sara_env/bin/python operations/week11/continue_study.py --plan`.
+Tests: `sara_env/bin/python -m unittest operations.week11.test_continuation -v`.
+All six deterministic operational tests passed without loading models or running
+notebooks; fixture results are temporary and never enter the real study.
+
+## Earlier continuation record (superseded by durable supervisor above)
 
 - 0: audited and frozen. A: 1,350/1,350 rows audited and frozen. B: 600/600 rows
   audited and frozen. Full A/B interpretations and flags are in each phase's

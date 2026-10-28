@@ -1,0 +1,69 @@
+{
+  "analysis_contrasts": "Twelve explicit difference-in-differences contrasts specified before D/E/F completion; all exploratory, no raw-score pooling.",
+  "decision": "Agent manually reviewed C and chose five actual saved Qwen actions before D/E outcomes; no automatic outcome-ranking selection",
+  "rationale": "Three matched 1024-token semantic passage/sentence/proposition controls retain the strong Hotpot region and isolate granularity; a 256-token hybrid sentence condition represents the economical competitive SciFact point; FULL semantic passages preserve the high-QASPER-context reference. Apply the same five settings to every dataset and all three retrievers, holding Qwen/P0 fixed. Selection is exploratory based on the same C pilot, not independent confirmation. Do not infer one universal winner or add outcome-selected E methods automatically.",
+  "selected": [
+    {
+      "action_id": "39d891f9fed0db18d8c2",
+      "budget": 1024,
+      "compressor": "C0",
+      "granularity": "PASSAGE",
+      "pool_width": 20,
+      "reader": "Qwen",
+      "representation": "P0",
+      "retriever": "SFR",
+      "selector": "semantic",
+      "strategy": null
+    },
+    {
+      "action_id": "a0788207676a3dd94c29",
+      "budget": 1024,
+      "compressor": "C0",
+      "granularity": "SENTENCE",
+      "pool_width": 20,
+      "reader": "Qwen",
+      "representation": "P0",
+      "retriever": "SFR",
+      "selector": "semantic",
+      "strategy": null
+    },
+    {
+      "action_id": "5ef43643d916e4c17721",
+      "budget": 1024,
+      "compressor": "C0",
+      "granularity": "PROPOSITION",
+      "pool_width": 20,
+      "reader": "Qwen",
+      "representation": "P0",
+      "retriever": "SFR",
+      "selector": "semantic",
+      "strategy": null
+    },
+    {
+      "action_id": "fc9352ab57c0ab40eb3b",
+      "budget": 256,
+      "compressor": "C0",
+      "granularity": "SENTENCE",
+      "pool_width": 20,
+      "reader": "Qwen",
+      "representation": "P0",
+      "retriever": "SFR",
+      "selector": "hybrid",
+      "strategy": null
+    },
+    {
+      "action_id": "ecbe1962e8a80f2318cc",
+      "budget": "FULL",
+      "compressor": "C0",
+      "granularity": "PASSAGE",
+      "pool_width": 20,
+      "reader": "Qwen",
+      "representation": "P0",
+      "retriever": "SFR",
+      "selector": "semantic",
+      "strategy": null
+    }
+  ],
+  "source_summary_sha256": "baf829885575aef77a6b0c2d516adf6d56faff1c2be0f474c98e7d8a050ed045",
+  "timestamp_utc": "2026-10-28T09:40:12.864785+00:00"
+}

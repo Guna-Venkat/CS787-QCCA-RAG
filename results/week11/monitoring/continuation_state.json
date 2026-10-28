@@ -1,0 +1,11 @@
+{
+  "current_phase": "D",
+  "driver_sha256": "b611d3e8f9061ce2be0f6b2fe3aedec1817697b58bfe2d5f5d1ae21080190061",
+  "mode": "User-authorized notebook sequence; mechanical audits; no automatic finalist selection",
+  "phases": {},
+  "pid": 115814,
+  "review_driver_sha256": "e5aff36f0a80108672b76fd3548fb8f98698e2728fda02679829bbf24cf0e339",
+  "started_utc": "2026-10-28T09:44:51.570721+00:00",
+  "status": "RUNNING",
+  "updated_utc": "2026-10-28T09:44:51.592670+00:00"
+}
