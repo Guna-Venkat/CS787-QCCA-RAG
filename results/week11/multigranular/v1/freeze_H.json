@@ -1,0 +1,16 @@
+{
+  "branch": "gagan",
+  "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "config_hash": "707dc3ccb5a359333258a8ca03ee80049f84224cb4ce13f26063f80d9ddf6dd6",
+  "phase": "H",
+  "rationale": "Authorized durable continuation after mechanical audit passed: complete frozen cohort/action surface, checksums, identities, budgets and baseline pairs (or saved-source aggregate hash for H/I). Preserve row flags and exploratory statistical caveats in INTERPRETATION.md. Explicitly waive only pending optional components; no automatic winner selection or deployability claim.",
+  "reviewed_config": {
+    "available_surface_only": true,
+    "continuation_mode": "Predeclared operational review under user delegation; not an independent scientific confirmation",
+    "mechanical_audit": "readiness_audit.json",
+    "promote_single_winner": false,
+    "waive_pending": []
+  },
+  "source_result_hash": "b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26",
+  "timestamp": "2026-10-28T20:14:53.173766+00:00"
+}

@@ -18,3 +18,5 @@
 /multigranular/*/*/first_rank_df.csv
 /multigranular/*/*/*_per_query_df.csv
 /multigranular/*/*/per_query_representation_df.csv
+# Final retrieval export repeats A/B per-query records; summaries remain tracked.
+/multigranular/*/final_report/retrieval_saved_df.csv

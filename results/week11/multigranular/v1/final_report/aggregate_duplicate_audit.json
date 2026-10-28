@@ -1,0 +1,19 @@
+{
+  "I_status_sha256": "b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26",
+  "conflicting_duplicate_keys": {
+    "evidence_hash": 0,
+    "model_hash": 0,
+    "prediction": 0,
+    "source_hash": 0,
+    "task_score": 0
+  },
+  "core_scores_changed": false,
+  "driver_sha256": "31dba2b1dac2cdf2231e65cd984a269248f5128c230e44300cfa2238ea43c61a",
+  "generation_started": false,
+  "queries_per_condition": 50,
+  "repeated_rows": 6600,
+  "source_rows": 31900,
+  "timestamp_utc": "2026-10-28T20:20:29.680778+00:00",
+  "unique_conditions": 506,
+  "unique_query_action_rows": 25300
+}

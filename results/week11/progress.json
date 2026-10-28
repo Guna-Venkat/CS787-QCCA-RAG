@@ -2,6 +2,7 @@
   "C_logical_rows_available": 5550,
   "C_logical_rows_configured": 6150,
   "E_import_recovery": "results/week11/monitoring/import_recovery.json",
+  "aggregate_unique_query_action_rows": 25300,
   "authorization": "User explicitly delegated full sequential execution, reviews, fixes, and 15\u201320 minute monitoring on 2026-10-28",
   "branch": "gagan",
   "completed_phases": [
@@ -12,10 +13,13 @@
     "D",
     "E",
     "F",
-    "G"
+    "G",
+    "H",
+    "I"
   ],
   "executed_notebook_C": "results/week11/executed_notebooks/week11_C_granularity_budget.ipynb",
   "full_dataset_expansion": false,
+  "generation_running": false,
   "monitor_interval_seconds": 900,
   "monitor_mode": "passive local recorder plus active agent review/continuation",
   "pending_optional": [
@@ -103,22 +107,22 @@
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/hierarchical"
     },
     {
-      "freeze_exists": false,
-      "full_status": "RUNNING",
-      "next_action": "Durable continuation; no duplicate launch needed",
+      "freeze_exists": true,
+      "full_status": "COMPLETE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_H_oracle_and_interactions.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 31900,
+      "number_expected": 31900,
       "phase": "H",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle"
     },
     {
-      "freeze_exists": false,
-      "full_status": "NOT_STARTED",
-      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "freeze_exists": true,
+      "full_status": "COMPLETE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_I_final_report.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 31900,
+      "number_expected": 31900,
       "phase": "I",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/final_report"
     }
@@ -128,9 +132,14 @@
   "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
   "report_D": "results/week11/multigranular/v1/reader_granularity/RESEARCH_REVIEW.md",
   "report_E": "results/week11/multigranular/v1/compressor_reader/RESEARCH_REVIEW.md",
-  "running_phase": "H",
+  "report_F": "results/week11/multigranular/v1/retriever_robustness/RESEARCH_REVIEW.md",
+  "report_G": "results/week11/multigranular/v1/hierarchical/RESEARCH_REVIEW.md",
+  "report_H": "results/week11/multigranular/v1/oracle/RESEARCH_REVIEW.md",
+  "report_I": "results/week11/multigranular/v1/final_report/RESEARCH_REVIEW.md",
+  "running_phase": null,
   "sample_queries_per_dataset": 50,
+  "study_report": "results/week11/multigranular/v1/final_report/RESEARCH_REVIEW.md",
   "supervisor": "operations/week11/continue_study.py",
-  "supervisor_state": "RUNNING",
-  "updated_at": "2026-10-28T20:12:07.236762+00:00"
+  "supervisor_state": "COMPLETE_AVAILABLE_STUDY",
+  "updated_at": "2026-10-28T20:17:39.310029+00:00"
 }

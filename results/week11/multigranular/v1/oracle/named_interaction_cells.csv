@@ -1,0 +1,13 @@
+name,cell_A,cell_B,cell_C,cell_D,formula
+QASPER_reader_by_granularity_512,Mistral/SFR/PASSAGE/C0/512,Mistral/SFR/SENTENCE/C0/512,Qwen/SFR/PASSAGE/C0/512,Qwen/SFR/SENTENCE/C0/512,(A - B) - (C - D)
+QASPER_granularity_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/256,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
+QASPER_compressor_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C2/256,Qwen/SFR/SENTENCE/C2/1024,(A - B) - (C - D)
+QASPER_retriever_by_granularity,Qwen/BM25/PASSAGE/C0/1024,Qwen/BM25/SENTENCE/C0/1024,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
+HotpotQA_reader_by_granularity_512,Mistral/SFR/PASSAGE/C0/512,Mistral/SFR/SENTENCE/C0/512,Qwen/SFR/PASSAGE/C0/512,Qwen/SFR/SENTENCE/C0/512,(A - B) - (C - D)
+HotpotQA_granularity_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/256,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
+HotpotQA_compressor_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C2/256,Qwen/SFR/SENTENCE/C2/1024,(A - B) - (C - D)
+HotpotQA_retriever_by_granularity,Qwen/BM25/PASSAGE/C0/1024,Qwen/BM25/SENTENCE/C0/1024,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
+SciFact_reader_by_granularity_512,Mistral/SFR/PASSAGE/C0/512,Mistral/SFR/SENTENCE/C0/512,Qwen/SFR/PASSAGE/C0/512,Qwen/SFR/SENTENCE/C0/512,(A - B) - (C - D)
+SciFact_granularity_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/256,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
+SciFact_compressor_by_budget,Qwen/SFR/PASSAGE/C0/256,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C2/256,Qwen/SFR/SENTENCE/C2/1024,(A - B) - (C - D)
+SciFact_retriever_by_granularity,Qwen/BM25/PASSAGE/C0/1024,Qwen/BM25/SENTENCE/C0/1024,Qwen/SFR/PASSAGE/C0/1024,Qwen/SFR/SENTENCE/C0/1024,(A - B) - (C - D)
