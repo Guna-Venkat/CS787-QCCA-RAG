@@ -6,7 +6,8 @@
   "completed_phases": [
     "0",
     "A",
-    "B"
+    "B",
+    "C"
   ],
   "executed_notebook_C": "results/week11/executed_notebooks/week11_C_granularity_budget.ipynb",
   "full_dataset_expansion": false,
@@ -47,22 +48,22 @@
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation"
     },
     {
-      "freeze_exists": false,
-      "full_status": "RUNNING",
-      "next_action": "Agent monitoring; no user action required",
+      "freeze_exists": true,
+      "full_status": "COMPLETE_AVAILABLE_TEXT",
+      "next_action": "Audited; LLMLingua conditions explicitly pending",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_C_granularity_budget.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 5550,
+      "number_expected": 5550,
       "phase": "C",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/granularity_budget"
     },
     {
       "freeze_exists": false,
-      "full_status": "NOT_STARTED",
-      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "full_status": "RUNNING",
+      "next_action": "Agent monitoring; resume cached C Qwen answers and fixed evidence selections",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_D_reader_granularity.ipynb",
       "number_completed": 0,
-      "number_expected": null,
+      "number_expected": 16650,
       "phase": "D",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity"
     },
@@ -119,7 +120,8 @@
   ],
   "report_A": "results/week11/multigranular/v1/retrieval/INTERPRETATION.md",
   "report_B": "results/week11/multigranular/v1/passage_representation/INTERPRETATION.md",
-  "running_phase": "C",
+  "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
+  "running_phase": "D",
   "sample_queries_per_dataset": 50,
-  "updated_at": "2026-10-27T21:57:06.628381+00:00"
+  "updated_at": "2026-10-28T09:18:41.753153+00:00"
 }
