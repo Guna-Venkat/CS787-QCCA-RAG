@@ -1,6 +1,6 @@
 {
-  "child_pid": 371755,
-  "current_phase": "F",
+  "child_pid": 396544,
+  "current_phase": "G",
   "driver_sha256": "d978d7310efa1f111c22b391c978612537dc793958c3bba776e5b59eefda68c5",
   "mode": "User-authorized notebook sequence; mechanical audits; no automatic finalist selection",
   "operational_dependencies": {
@@ -82,11 +82,44 @@
       },
       "completed_utc": "2026-10-28T19:01:35.268970+00:00",
       "status": "AUDITED_FROZEN"
+    },
+    "F": {
+      "audit": {
+        "Qwen_C_results_exactly_reused": 0,
+        "audit_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
+        "checks_passed": true,
+        "checksums_verified": 2400,
+        "config_hash": "206d77b76db11b70acd2239c7471569c1c5017bf44d763411d5033de01c16184",
+        "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+        "counts_per_dataset": {
+          "HotpotQA": 800,
+          "QASPER": 800,
+          "SciFact": 800
+        },
+        "counts_per_reader": {
+          "Qwen": 2400
+        },
+        "expected": 2400,
+        "flags": {
+          "empty_evidence_strict_prefix": 0,
+          "generation_cap_reached": 0,
+          "invalid_verification_label": 0,
+          "unmapped_gold_annotation": 112
+        },
+        "pending": [],
+        "phase": "F",
+        "physical_generation_calls": 519,
+        "queries": 150,
+        "status_sha256": "7f826258f9cab1c14fb54a30d4ba0641f72883fe06cf9ad43d3a03b924ef6f6f",
+        "timestamp_utc": "2026-10-28T19:24:06.064121+00:00"
+      },
+      "completed_utc": "2026-10-28T19:24:06.163896+00:00",
+      "status": "AUDITED_FROZEN"
     }
   },
   "pid": 340808,
   "review_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
   "started_utc": "2026-10-28T18:26:57.914188+00:00",
   "status": "RUNNING",
-  "updated_utc": "2026-10-28T19:01:35.307672+00:00"
+  "updated_utc": "2026-10-28T19:24:06.201056+00:00"
 }

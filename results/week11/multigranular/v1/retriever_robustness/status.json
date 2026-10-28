@@ -1,0 +1,10 @@
+{
+  "completed": 2400,
+  "executable_complete": true,
+  "expected": 2400,
+  "full_condition_surface_complete": true,
+  "pending": [],
+  "selection_hash": "d1299652f58ee3defb7b68ef80ce699809d115ca72db0f5c726f9ec2a031ff06",
+  "source_result_hash": "59a662914b7917c4fd7238ee2b907f6d200afa157c8a3cff3890d8fd51754018",
+  "synthetic": false
+}

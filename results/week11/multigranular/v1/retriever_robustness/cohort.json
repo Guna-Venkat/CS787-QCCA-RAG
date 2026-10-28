@@ -1,0 +1,910 @@
+{
+  "available_queries": {
+    "HotpotQA": 7405,
+    "QASPER": 231,
+    "SciFact": 300
+  },
+  "sampling": "sha256(dataset,query_id,seed), independent of labels",
+  "selected": [
+    {
+      "cluster_id": "45",
+      "dataset": "QASPER",
+      "document_id": "45",
+      "query_id": "155"
+    },
+    {
+      "cluster_id": "549",
+      "dataset": "QASPER",
+      "document_id": "549",
+      "query_id": "1705"
+    },
+    {
+      "cluster_id": "590",
+      "dataset": "QASPER",
+      "document_id": "590",
+      "query_id": "1799"
+    },
+    {
+      "cluster_id": "203",
+      "dataset": "QASPER",
+      "document_id": "203",
+      "query_id": "736"
+    },
+    {
+      "cluster_id": "715",
+      "dataset": "QASPER",
+      "document_id": "715",
+      "query_id": "2059"
+    },
+    {
+      "cluster_id": "604",
+      "dataset": "QASPER",
+      "document_id": "604",
+      "query_id": "1830"
+    },
+    {
+      "cluster_id": "105",
+      "dataset": "QASPER",
+      "document_id": "105",
+      "query_id": "404"
+    },
+    {
+      "cluster_id": "203",
+      "dataset": "QASPER",
+      "document_id": "203",
+      "query_id": "737"
+    },
+    {
+      "cluster_id": "594",
+      "dataset": "QASPER",
+      "document_id": "594",
+      "query_id": "1807"
+    },
+    {
+      "cluster_id": "591",
+      "dataset": "QASPER",
+      "document_id": "591",
+      "query_id": "1801"
+    },
+    {
+      "cluster_id": "772",
+      "dataset": "QASPER",
+      "document_id": "772",
+      "query_id": "2161"
+    },
+    {
+      "cluster_id": "361",
+      "dataset": "QASPER",
+      "document_id": "361",
+      "query_id": "1188"
+    },
+    {
+      "cluster_id": "696",
+      "dataset": "QASPER",
+      "document_id": "696",
+      "query_id": "2032"
+    },
+    {
+      "cluster_id": "394",
+      "dataset": "QASPER",
+      "document_id": "394",
+      "query_id": "1283"
+    },
+    {
+      "cluster_id": "549",
+      "dataset": "QASPER",
+      "document_id": "549",
+      "query_id": "1704"
+    },
+    {
+      "cluster_id": "665",
+      "dataset": "QASPER",
+      "document_id": "665",
+      "query_id": "1964"
+    },
+    {
+      "cluster_id": "372",
+      "dataset": "QASPER",
+      "document_id": "372",
+      "query_id": "1214"
+    },
+    {
+      "cluster_id": "129",
+      "dataset": "QASPER",
+      "document_id": "129",
+      "query_id": "480"
+    },
+    {
+      "cluster_id": "351",
+      "dataset": "QASPER",
+      "document_id": "351",
+      "query_id": "1161"
+    },
+    {
+      "cluster_id": "110",
+      "dataset": "QASPER",
+      "document_id": "110",
+      "query_id": "420"
+    },
+    {
+      "cluster_id": "404",
+      "dataset": "QASPER",
+      "document_id": "404",
+      "query_id": "1317"
+    },
+    {
+      "cluster_id": "298",
+      "dataset": "QASPER",
+      "document_id": "298",
+      "query_id": "1013"
+    },
+    {
+      "cluster_id": "361",
+      "dataset": "QASPER",
+      "document_id": "361",
+      "query_id": "1187"
+    },
+    {
+      "cluster_id": "454",
+      "dataset": "QASPER",
+      "document_id": "454",
+      "query_id": "1460"
+    },
+    {
+      "cluster_id": "317",
+      "dataset": "QASPER",
+      "document_id": "317",
+      "query_id": "1066"
+    },
+    {
+      "cluster_id": "129",
+      "dataset": "QASPER",
+      "document_id": "129",
+      "query_id": "478"
+    },
+    {
+      "cluster_id": "276",
+      "dataset": "QASPER",
+      "document_id": "276",
+      "query_id": "951"
+    },
+    {
+      "cluster_id": "175",
+      "dataset": "QASPER",
+      "document_id": "175",
+      "query_id": "638"
+    },
+    {
+      "cluster_id": "720",
+      "dataset": "QASPER",
+      "document_id": "720",
+      "query_id": "2069"
+    },
+    {
+      "cluster_id": "92",
+      "dataset": "QASPER",
+      "document_id": "92",
+      "query_id": "343"
+    },
+    {
+      "cluster_id": "423",
+      "dataset": "QASPER",
+      "document_id": "423",
+      "query_id": "1377"
+    },
+    {
+      "cluster_id": "252",
+      "dataset": "QASPER",
+      "document_id": "252",
+      "query_id": "879"
+    },
+    {
+      "cluster_id": "637",
+      "dataset": "QASPER",
+      "document_id": "637",
+      "query_id": "1909"
+    },
+    {
+      "cluster_id": "203",
+      "dataset": "QASPER",
+      "document_id": "203",
+      "query_id": "732"
+    },
+    {
+      "cluster_id": "687",
+      "dataset": "QASPER",
+      "document_id": "687",
+      "query_id": "2014"
+    },
+    {
+      "cluster_id": "695",
+      "dataset": "QASPER",
+      "document_id": "695",
+      "query_id": "2028"
+    },
+    {
+      "cluster_id": "647",
+      "dataset": "QASPER",
+      "document_id": "647",
+      "query_id": "1934"
+    },
+    {
+      "cluster_id": "150",
+      "dataset": "QASPER",
+      "document_id": "150",
+      "query_id": "551"
+    },
+    {
+      "cluster_id": "467",
+      "dataset": "QASPER",
+      "document_id": "467",
+      "query_id": "1493"
+    },
+    {
+      "cluster_id": "791",
+      "dataset": "QASPER",
+      "document_id": "791",
+      "query_id": "2192"
+    },
+    {
+      "cluster_id": "293",
+      "dataset": "QASPER",
+      "document_id": "293",
+      "query_id": "1003"
+    },
+    {
+      "cluster_id": "105",
+      "dataset": "QASPER",
+      "document_id": "105",
+      "query_id": "398"
+    },
+    {
+      "cluster_id": "92",
+      "dataset": "QASPER",
+      "document_id": "92",
+      "query_id": "342"
+    },
+    {
+      "cluster_id": "467",
+      "dataset": "QASPER",
+      "document_id": "467",
+      "query_id": "1496"
+    },
+    {
+      "cluster_id": "175",
+      "dataset": "QASPER",
+      "document_id": "175",
+      "query_id": "636"
+    },
+    {
+      "cluster_id": "595",
+      "dataset": "QASPER",
+      "document_id": "595",
+      "query_id": "1809"
+    },
+    {
+      "cluster_id": "735",
+      "dataset": "QASPER",
+      "document_id": "735",
+      "query_id": "2102"
+    },
+    {
+      "cluster_id": "332",
+      "dataset": "QASPER",
+      "document_id": "332",
+      "query_id": "1109"
+    },
+    {
+      "cluster_id": "110",
+      "dataset": "QASPER",
+      "document_id": "110",
+      "query_id": "421"
+    },
+    {
+      "cluster_id": "572",
+      "dataset": "QASPER",
+      "document_id": "572",
+      "query_id": "1757"
+    },
+    {
+      "cluster_id": "5a7736bc554299373536021b",
+      "dataset": "HotpotQA",
+      "document_id": "5a7736bc554299373536021b",
+      "query_id": "5a7736bc554299373536021b"
+    },
+    {
+      "cluster_id": "5ac2e97d554299657fa290c0",
+      "dataset": "HotpotQA",
+      "document_id": "5ac2e97d554299657fa290c0",
+      "query_id": "5ac2e97d554299657fa290c0"
+    },
+    {
+      "cluster_id": "5ae455d45542996836b02c7b",
+      "dataset": "HotpotQA",
+      "document_id": "5ae455d45542996836b02c7b",
+      "query_id": "5ae455d45542996836b02c7b"
+    },
+    {
+      "cluster_id": "5ab56f3e5542992aa134a317",
+      "dataset": "HotpotQA",
+      "document_id": "5ab56f3e5542992aa134a317",
+      "query_id": "5ab56f3e5542992aa134a317"
+    },
+    {
+      "cluster_id": "5ae26c435542994d89d5b420",
+      "dataset": "HotpotQA",
+      "document_id": "5ae26c435542994d89d5b420",
+      "query_id": "5ae26c435542994d89d5b420"
+    },
+    {
+      "cluster_id": "5a78f59755429970f5fffdf8",
+      "dataset": "HotpotQA",
+      "document_id": "5a78f59755429970f5fffdf8",
+      "query_id": "5a78f59755429970f5fffdf8"
+    },
+    {
+      "cluster_id": "5abda2b755429933744ab80f",
+      "dataset": "HotpotQA",
+      "document_id": "5abda2b755429933744ab80f",
+      "query_id": "5abda2b755429933744ab80f"
+    },
+    {
+      "cluster_id": "5a7f7ca25542994857a76747",
+      "dataset": "HotpotQA",
+      "document_id": "5a7f7ca25542994857a76747",
+      "query_id": "5a7f7ca25542994857a76747"
+    },
+    {
+      "cluster_id": "5a7fa08d55429969796c1af7",
+      "dataset": "HotpotQA",
+      "document_id": "5a7fa08d55429969796c1af7",
+      "query_id": "5a7fa08d55429969796c1af7"
+    },
+    {
+      "cluster_id": "5ab9d6ef5542994dbf01985b",
+      "dataset": "HotpotQA",
+      "document_id": "5ab9d6ef5542994dbf01985b",
+      "query_id": "5ab9d6ef5542994dbf01985b"
+    },
+    {
+      "cluster_id": "5ab7b0575542992aa3b8c83d",
+      "dataset": "HotpotQA",
+      "document_id": "5ab7b0575542992aa3b8c83d",
+      "query_id": "5ab7b0575542992aa3b8c83d"
+    },
+    {
+      "cluster_id": "5abab18d55429901930fa89e",
+      "dataset": "HotpotQA",
+      "document_id": "5abab18d55429901930fa89e",
+      "query_id": "5abab18d55429901930fa89e"
+    },
+    {
+      "cluster_id": "5ae47ae05542995ad6573d4f",
+      "dataset": "HotpotQA",
+      "document_id": "5ae47ae05542995ad6573d4f",
+      "query_id": "5ae47ae05542995ad6573d4f"
+    },
+    {
+      "cluster_id": "5a7b57155542992d025e680f",
+      "dataset": "HotpotQA",
+      "document_id": "5a7b57155542992d025e680f",
+      "query_id": "5a7b57155542992d025e680f"
+    },
+    {
+      "cluster_id": "5a722c2255429971e9dc932c",
+      "dataset": "HotpotQA",
+      "document_id": "5a722c2255429971e9dc932c",
+      "query_id": "5a722c2255429971e9dc932c"
+    },
+    {
+      "cluster_id": "5ae322b75542994393b9e622",
+      "dataset": "HotpotQA",
+      "document_id": "5ae322b75542994393b9e622",
+      "query_id": "5ae322b75542994393b9e622"
+    },
+    {
+      "cluster_id": "5ac285335542996773102552",
+      "dataset": "HotpotQA",
+      "document_id": "5ac285335542996773102552",
+      "query_id": "5ac285335542996773102552"
+    },
+    {
+      "cluster_id": "5a81dbfc55429903bc27b9f2",
+      "dataset": "HotpotQA",
+      "document_id": "5a81dbfc55429903bc27b9f2",
+      "query_id": "5a81dbfc55429903bc27b9f2"
+    },
+    {
+      "cluster_id": "5ae65b845542992ae0d162f1",
+      "dataset": "HotpotQA",
+      "document_id": "5ae65b845542992ae0d162f1",
+      "query_id": "5ae65b845542992ae0d162f1"
+    },
+    {
+      "cluster_id": "5a8e3ed7554299068b959e82",
+      "dataset": "HotpotQA",
+      "document_id": "5a8e3ed7554299068b959e82",
+      "query_id": "5a8e3ed7554299068b959e82"
+    },
+    {
+      "cluster_id": "5abb23035542992ccd8e7f22",
+      "dataset": "HotpotQA",
+      "document_id": "5abb23035542992ccd8e7f22",
+      "query_id": "5abb23035542992ccd8e7f22"
+    },
+    {
+      "cluster_id": "5ab4bea15542990594ba9cae",
+      "dataset": "HotpotQA",
+      "document_id": "5ab4bea15542990594ba9cae",
+      "query_id": "5ab4bea15542990594ba9cae"
+    },
+    {
+      "cluster_id": "5abe5ee955429976d4830b03",
+      "dataset": "HotpotQA",
+      "document_id": "5abe5ee955429976d4830b03",
+      "query_id": "5abe5ee955429976d4830b03"
+    },
+    {
+      "cluster_id": "5a7e1cad55429965cec5ea75",
+      "dataset": "HotpotQA",
+      "document_id": "5a7e1cad55429965cec5ea75",
+      "query_id": "5a7e1cad55429965cec5ea75"
+    },
+    {
+      "cluster_id": "5a7fd7a25542992e7d278dc3",
+      "dataset": "HotpotQA",
+      "document_id": "5a7fd7a25542992e7d278dc3",
+      "query_id": "5a7fd7a25542992e7d278dc3"
+    },
+    {
+      "cluster_id": "5a7b4d765542995eb53be8fe",
+      "dataset": "HotpotQA",
+      "document_id": "5a7b4d765542995eb53be8fe",
+      "query_id": "5a7b4d765542995eb53be8fe"
+    },
+    {
+      "cluster_id": "5adf92f15542995534e8c7f3",
+      "dataset": "HotpotQA",
+      "document_id": "5adf92f15542995534e8c7f3",
+      "query_id": "5adf92f15542995534e8c7f3"
+    },
+    {
+      "cluster_id": "5ac02c4a5542992a796decbd",
+      "dataset": "HotpotQA",
+      "document_id": "5ac02c4a5542992a796decbd",
+      "query_id": "5ac02c4a5542992a796decbd"
+    },
+    {
+      "cluster_id": "5ae122465542997b2ef7d0f4",
+      "dataset": "HotpotQA",
+      "document_id": "5ae122465542997b2ef7d0f4",
+      "query_id": "5ae122465542997b2ef7d0f4"
+    },
+    {
+      "cluster_id": "5ab9c292554299131ca423f5",
+      "dataset": "HotpotQA",
+      "document_id": "5ab9c292554299131ca423f5",
+      "query_id": "5ab9c292554299131ca423f5"
+    },
+    {
+      "cluster_id": "5ae72fc5554299572ea54770",
+      "dataset": "HotpotQA",
+      "document_id": "5ae72fc5554299572ea54770",
+      "query_id": "5ae72fc5554299572ea54770"
+    },
+    {
+      "cluster_id": "5ab3b2fb554299753aec59af",
+      "dataset": "HotpotQA",
+      "document_id": "5ab3b2fb554299753aec59af",
+      "query_id": "5ab3b2fb554299753aec59af"
+    },
+    {
+      "cluster_id": "5ae534bb5542990ba0bbb21d",
+      "dataset": "HotpotQA",
+      "document_id": "5ae534bb5542990ba0bbb21d",
+      "query_id": "5ae534bb5542990ba0bbb21d"
+    },
+    {
+      "cluster_id": "5abd2af955429933744ab74b",
+      "dataset": "HotpotQA",
+      "document_id": "5abd2af955429933744ab74b",
+      "query_id": "5abd2af955429933744ab74b"
+    },
+    {
+      "cluster_id": "5a852cd05542997b5ce3ffb0",
+      "dataset": "HotpotQA",
+      "document_id": "5a852cd05542997b5ce3ffb0",
+      "query_id": "5a852cd05542997b5ce3ffb0"
+    },
+    {
+      "cluster_id": "5abd01205542992ac4f3819b",
+      "dataset": "HotpotQA",
+      "document_id": "5abd01205542992ac4f3819b",
+      "query_id": "5abd01205542992ac4f3819b"
+    },
+    {
+      "cluster_id": "5ab2f53d5542991669774157",
+      "dataset": "HotpotQA",
+      "document_id": "5ab2f53d5542991669774157",
+      "query_id": "5ab2f53d5542991669774157"
+    },
+    {
+      "cluster_id": "5a807ca5554299485f598613",
+      "dataset": "HotpotQA",
+      "document_id": "5a807ca5554299485f598613",
+      "query_id": "5a807ca5554299485f598613"
+    },
+    {
+      "cluster_id": "5add23e45542992ae4cec4a1",
+      "dataset": "HotpotQA",
+      "document_id": "5add23e45542992ae4cec4a1",
+      "query_id": "5add23e45542992ae4cec4a1"
+    },
+    {
+      "cluster_id": "5ae3d6bd5542991a06ce9a2b",
+      "dataset": "HotpotQA",
+      "document_id": "5ae3d6bd5542991a06ce9a2b",
+      "query_id": "5ae3d6bd5542991a06ce9a2b"
+    },
+    {
+      "cluster_id": "5ae5a3bb55429960a22e0314",
+      "dataset": "HotpotQA",
+      "document_id": "5ae5a3bb55429960a22e0314",
+      "query_id": "5ae5a3bb55429960a22e0314"
+    },
+    {
+      "cluster_id": "5a8ae00e5542992d82986fc7",
+      "dataset": "HotpotQA",
+      "document_id": "5a8ae00e5542992d82986fc7",
+      "query_id": "5a8ae00e5542992d82986fc7"
+    },
+    {
+      "cluster_id": "5a874ec35542994846c1cd57",
+      "dataset": "HotpotQA",
+      "document_id": "5a874ec35542994846c1cd57",
+      "query_id": "5a874ec35542994846c1cd57"
+    },
+    {
+      "cluster_id": "5a8141cc55429938b6142316",
+      "dataset": "HotpotQA",
+      "document_id": "5a8141cc55429938b6142316",
+      "query_id": "5a8141cc55429938b6142316"
+    },
+    {
+      "cluster_id": "5a8edb5c55429917b4a5bde9",
+      "dataset": "HotpotQA",
+      "document_id": "5a8edb5c55429917b4a5bde9",
+      "query_id": "5a8edb5c55429917b4a5bde9"
+    },
+    {
+      "cluster_id": "5adfdc7d55429942ec259b64",
+      "dataset": "HotpotQA",
+      "document_id": "5adfdc7d55429942ec259b64",
+      "query_id": "5adfdc7d55429942ec259b64"
+    },
+    {
+      "cluster_id": "5a7b116a554299042af8f6c4",
+      "dataset": "HotpotQA",
+      "document_id": "5a7b116a554299042af8f6c4",
+      "query_id": "5a7b116a554299042af8f6c4"
+    },
+    {
+      "cluster_id": "5a75d9b4554299109176e5a7",
+      "dataset": "HotpotQA",
+      "document_id": "5a75d9b4554299109176e5a7",
+      "query_id": "5a75d9b4554299109176e5a7"
+    },
+    {
+      "cluster_id": "5ab29ec6554299194fa93473",
+      "dataset": "HotpotQA",
+      "document_id": "5ab29ec6554299194fa93473",
+      "query_id": "5ab29ec6554299194fa93473"
+    },
+    {
+      "cluster_id": "5ae1b943554299492dc91b7f",
+      "dataset": "HotpotQA",
+      "document_id": "5ae1b943554299492dc91b7f",
+      "query_id": "5ae1b943554299492dc91b7f"
+    },
+    {
+      "cluster_id": "922",
+      "dataset": "SciFact",
+      "document_id": "922",
+      "query_id": "922"
+    },
+    {
+      "cluster_id": "575",
+      "dataset": "SciFact",
+      "document_id": "575",
+      "query_id": "575"
+    },
+    {
+      "cluster_id": "727",
+      "dataset": "SciFact",
+      "document_id": "727",
+      "query_id": "727"
+    },
+    {
+      "cluster_id": "728",
+      "dataset": "SciFact",
+      "document_id": "728",
+      "query_id": "728"
+    },
+    {
+      "cluster_id": "936",
+      "dataset": "SciFact",
+      "document_id": "936",
+      "query_id": "936"
+    },
+    {
+      "cluster_id": "312",
+      "dataset": "SciFact",
+      "document_id": "312",
+      "query_id": "312"
+    },
+    {
+      "cluster_id": "269",
+      "dataset": "SciFact",
+      "document_id": "269",
+      "query_id": "269"
+    },
+    {
+      "cluster_id": "502",
+      "dataset": "SciFact",
+      "document_id": "502",
+      "query_id": "502"
+    },
+    {
+      "cluster_id": "1137",
+      "dataset": "SciFact",
+      "document_id": "1137",
+      "query_id": "1137"
+    },
+    {
+      "cluster_id": "128",
+      "dataset": "SciFact",
+      "document_id": "128",
+      "query_id": "128"
+    },
+    {
+      "cluster_id": "1150",
+      "dataset": "SciFact",
+      "document_id": "1150",
+      "query_id": "1150"
+    },
+    {
+      "cluster_id": "544",
+      "dataset": "SciFact",
+      "document_id": "544",
+      "query_id": "544"
+    },
+    {
+      "cluster_id": "1163",
+      "dataset": "SciFact",
+      "document_id": "1163",
+      "query_id": "1163"
+    },
+    {
+      "cluster_id": "51",
+      "dataset": "SciFact",
+      "document_id": "51",
+      "query_id": "51"
+    },
+    {
+      "cluster_id": "535",
+      "dataset": "SciFact",
+      "document_id": "535",
+      "query_id": "535"
+    },
+    {
+      "cluster_id": "507",
+      "dataset": "SciFact",
+      "document_id": "507",
+      "query_id": "507"
+    },
+    {
+      "cluster_id": "729",
+      "dataset": "SciFact",
+      "document_id": "729",
+      "query_id": "729"
+    },
+    {
+      "cluster_id": "837",
+      "dataset": "SciFact",
+      "document_id": "837",
+      "query_id": "837"
+    },
+    {
+      "cluster_id": "146",
+      "dataset": "SciFact",
+      "document_id": "146",
+      "query_id": "146"
+    },
+    {
+      "cluster_id": "94",
+      "dataset": "SciFact",
+      "document_id": "94",
+      "query_id": "94"
+    },
+    {
+      "cluster_id": "1368",
+      "dataset": "SciFact",
+      "document_id": "1368",
+      "query_id": "1368"
+    },
+    {
+      "cluster_id": "142",
+      "dataset": "SciFact",
+      "document_id": "142",
+      "query_id": "142"
+    },
+    {
+      "cluster_id": "820",
+      "dataset": "SciFact",
+      "document_id": "820",
+      "query_id": "820"
+    },
+    {
+      "cluster_id": "1199",
+      "dataset": "SciFact",
+      "document_id": "1199",
+      "query_id": "1199"
+    },
+    {
+      "cluster_id": "1062",
+      "dataset": "SciFact",
+      "document_id": "1062",
+      "query_id": "1062"
+    },
+    {
+      "cluster_id": "440",
+      "dataset": "SciFact",
+      "document_id": "440",
+      "query_id": "440"
+    },
+    {
+      "cluster_id": "268",
+      "dataset": "SciFact",
+      "document_id": "268",
+      "query_id": "268"
+    },
+    {
+      "cluster_id": "75",
+      "dataset": "SciFact",
+      "document_id": "75",
+      "query_id": "75"
+    },
+    {
+      "cluster_id": "1100",
+      "dataset": "SciFact",
+      "document_id": "1100",
+      "query_id": "1100"
+    },
+    {
+      "cluster_id": "384",
+      "dataset": "SciFact",
+      "document_id": "384",
+      "query_id": "384"
+    },
+    {
+      "cluster_id": "56",
+      "dataset": "SciFact",
+      "document_id": "56",
+      "query_id": "56"
+    },
+    {
+      "cluster_id": "362",
+      "dataset": "SciFact",
+      "document_id": "362",
+      "query_id": "362"
+    },
+    {
+      "cluster_id": "577",
+      "dataset": "SciFact",
+      "document_id": "577",
+      "query_id": "577"
+    },
+    {
+      "cluster_id": "960",
+      "dataset": "SciFact",
+      "document_id": "960",
+      "query_id": "960"
+    },
+    {
+      "cluster_id": "1041",
+      "dataset": "SciFact",
+      "document_id": "1041",
+      "query_id": "1041"
+    },
+    {
+      "cluster_id": "914",
+      "dataset": "SciFact",
+      "document_id": "914",
+      "query_id": "914"
+    },
+    {
+      "cluster_id": "1107",
+      "dataset": "SciFact",
+      "document_id": "1107",
+      "query_id": "1107"
+    },
+    {
+      "cluster_id": "1024",
+      "dataset": "SciFact",
+      "document_id": "1024",
+      "query_id": "1024"
+    },
+    {
+      "cluster_id": "294",
+      "dataset": "SciFact",
+      "document_id": "294",
+      "query_id": "294"
+    },
+    {
+      "cluster_id": "1196",
+      "dataset": "SciFact",
+      "document_id": "1196",
+      "query_id": "1196"
+    },
+    {
+      "cluster_id": "1194",
+      "dataset": "SciFact",
+      "document_id": "1194",
+      "query_id": "1194"
+    },
+    {
+      "cluster_id": "3",
+      "dataset": "SciFact",
+      "document_id": "3",
+      "query_id": "3"
+    },
+    {
+      "cluster_id": "1099",
+      "dataset": "SciFact",
+      "document_id": "1099",
+      "query_id": "1099"
+    },
+    {
+      "cluster_id": "1232",
+      "dataset": "SciFact",
+      "document_id": "1232",
+      "query_id": "1232"
+    },
+    {
+      "cluster_id": "1121",
+      "dataset": "SciFact",
+      "document_id": "1121",
+      "query_id": "1121"
+    },
+    {
+      "cluster_id": "549",
+      "dataset": "SciFact",
+      "document_id": "549",
+      "query_id": "549"
+    },
+    {
+      "cluster_id": "57",
+      "dataset": "SciFact",
+      "document_id": "57",
+      "query_id": "57"
+    },
+    {
+      "cluster_id": "517",
+      "dataset": "SciFact",
+      "document_id": "517",
+      "query_id": "517"
+    },
+    {
+      "cluster_id": "808",
+      "dataset": "SciFact",
+      "document_id": "808",
+      "query_id": "808"
+    },
+    {
+      "cluster_id": "233",
+      "dataset": "SciFact",
+      "document_id": "233",
+      "query_id": "233"
+    }
+  ]
+}
