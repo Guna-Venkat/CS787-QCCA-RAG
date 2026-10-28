@@ -11,7 +11,8 @@
     "C",
     "D",
     "E",
-    "F"
+    "F",
+    "G"
   ],
   "executed_notebook_C": "results/week11/executed_notebooks/week11_C_granularity_budget.ipynb",
   "full_dataset_expansion": false,
@@ -92,19 +93,19 @@
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness"
     },
     {
-      "freeze_exists": false,
-      "full_status": "RUNNING",
-      "next_action": "Durable continuation; no duplicate launch needed",
+      "freeze_exists": true,
+      "full_status": "COMPLETE_AVAILABLE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_G_hierarchical_fidelity.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 3150,
+      "number_expected": 3150,
       "phase": "G",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/hierarchical"
     },
     {
       "freeze_exists": false,
-      "full_status": "NOT_STARTED",
-      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "full_status": "RUNNING",
+      "next_action": "Durable continuation; no duplicate launch needed",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_H_oracle_and_interactions.ipynb",
       "number_completed": 0,
       "number_expected": null,
@@ -127,9 +128,9 @@
   "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
   "report_D": "results/week11/multigranular/v1/reader_granularity/RESEARCH_REVIEW.md",
   "report_E": "results/week11/multigranular/v1/compressor_reader/RESEARCH_REVIEW.md",
-  "running_phase": "G",
+  "running_phase": "H",
   "sample_queries_per_dataset": 50,
   "supervisor": "operations/week11/continue_study.py",
   "supervisor_state": "RUNNING",
-  "updated_at": "2026-10-28T19:24:06.193532+00:00"
+  "updated_at": "2026-10-28T20:12:07.236762+00:00"
 }

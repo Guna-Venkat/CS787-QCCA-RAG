@@ -1,0 +1,8 @@
+{
+  "driver_sha256": "1e7fc9c819787cefeca83b17ad897fbffa70cc0d693d5fb63f4f3071199c1f8b",
+  "fixed_granularity_comparisons": 96,
+  "hierarchy_comparisons": 48,
+  "primary_scores_changed": false,
+  "source_status_sha256": "fd494c4ac5d604f6ddcea74d1a346be84961696d4ba9e2551653bbca9d8ebdaa",
+  "timestamp_utc": "2026-10-28T20:13:25.697068+00:00"
+}

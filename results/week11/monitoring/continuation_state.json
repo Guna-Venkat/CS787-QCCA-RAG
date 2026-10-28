@@ -1,6 +1,6 @@
 {
-  "child_pid": 396544,
-  "current_phase": "G",
+  "child_pid": 432374,
+  "current_phase": "H",
   "driver_sha256": "d978d7310efa1f111c22b391c978612537dc793958c3bba776e5b59eefda68c5",
   "mode": "User-authorized notebook sequence; mechanical audits; no automatic finalist selection",
   "operational_dependencies": {
@@ -115,11 +115,46 @@
       },
       "completed_utc": "2026-10-28T19:24:06.163896+00:00",
       "status": "AUDITED_FROZEN"
+    },
+    "G": {
+      "audit": {
+        "Qwen_C_results_exactly_reused": 0,
+        "audit_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
+        "checks_passed": true,
+        "checksums_verified": 3150,
+        "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+        "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+        "counts_per_dataset": {
+          "HotpotQA": 1050,
+          "QASPER": 1050,
+          "SciFact": 1050
+        },
+        "counts_per_reader": {
+          "Qwen": 3150
+        },
+        "expected": 3150,
+        "flags": {
+          "empty_evidence_strict_prefix": 297,
+          "generation_cap_reached": 0,
+          "invalid_verification_label": 0,
+          "unmapped_gold_annotation": 147
+        },
+        "pending": [
+          "LLMLingua-2"
+        ],
+        "phase": "G",
+        "physical_generation_calls": 1863,
+        "queries": 150,
+        "status_sha256": "fd494c4ac5d604f6ddcea74d1a346be84961696d4ba9e2551653bbca9d8ebdaa",
+        "timestamp_utc": "2026-10-28T20:12:07.100659+00:00"
+      },
+      "completed_utc": "2026-10-28T20:12:07.208102+00:00",
+      "status": "AUDITED_FROZEN"
     }
   },
   "pid": 340808,
   "review_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
   "started_utc": "2026-10-28T18:26:57.914188+00:00",
   "status": "RUNNING",
-  "updated_utc": "2026-10-28T19:24:06.201056+00:00"
+  "updated_utc": "2026-10-28T20:12:07.242915+00:00"
 }
