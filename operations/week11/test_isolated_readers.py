@@ -1,5 +1,11 @@
 """Owned-process lifecycle tests; fixture worker loads no model or CUDA."""
 import unittest
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import textwrap
 from operations.week11.isolated_readers import _ProcessReader, ReaderProcessError, _RemoteTokenizer
 
 
@@ -18,6 +24,28 @@ class IsolatedReaderTests(unittest.TestCase):
     def test_worker_initialization_error_propagates(self):
         with self.assertRaisesRegex(ReaderProcessError,'fixture initialization failure'):
             _ProcessReader('fixture',True)
+
+    def test_spawn_repairs_preimported_foreign_src_namespace(self):
+        root=Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory() as directory:
+            temp=Path(directory);foreign=temp/'foreign';(foreign/'src').mkdir(parents=True)
+            (foreign/'src/__init__.py').write_text('# foreign fixture namespace\n')
+            script=temp/'spawn_check.py'
+            script.write_text(textwrap.dedent(f'''
+                import sys,json
+                sys.path.insert(0,{str(root)!r})
+                from operations.week11.isolated_readers import _ProcessReader
+                sys.path.insert(0,{str(foreign)!r})
+                import src
+                if __name__=='__main__':
+                    reader=_ProcessReader('fixture')
+                    try:
+                        assert reader.bootstrap['src_search_paths'][0]=={str(root/'src')!r}
+                        print(json.dumps(reader.generate('q','source','qa')))
+                    finally:reader.close()
+            '''))
+            result=subprocess.run([sys.executable,str(script)],capture_output=True,text=True,check=True,timeout=30)
+            self.assertEqual(json.loads(result.stdout),dict(prediction='q|source|qa'))
 
     def test_specialist_tokenizer_adapter_preserves_encode_arguments(self):
         class Owner:

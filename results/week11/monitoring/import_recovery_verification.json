@@ -1,0 +1,30 @@
+{
+  "GPU_after": "288 MiB",
+  "SARA_bootstrap": {
+    "project_root": "/home/gunavenkat/Downloads/CS787-RAG-Project",
+    "reader_module": "/home/gunavenkat/Downloads/CS787-RAG-Project/src/week10/root_cause/runtime.py",
+    "src_search_paths": [
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/src"
+    ]
+  },
+  "SARA_evidence_tokens": 1132,
+  "SARA_query_id": "2028",
+  "SARA_text_and_latent_generation_succeeded": true,
+  "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "driver_sha256": "7acef234308c7f7ae6f5253671cf0b2b43db757155015402eb439815f35987cb",
+  "extra_operational_lm_calls": 3,
+  "mode": "operational import/SARA qualification only; no scientific outcome rows written",
+  "passed": true,
+  "public_bootstrap": {
+    "project_root": "/home/gunavenkat/Downloads/CS787-RAG-Project",
+    "reader_module": "/home/gunavenkat/Downloads/CS787-RAG-Project/src/week11/readers.py",
+    "src_search_paths": [
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/src"
+    ]
+  },
+  "public_prediction_and_token_counts_exact": true,
+  "public_query_id": "5a874ec35542994846c1cd57",
+  "timestamp_utc": "2026-10-28T18:26:03.507004+00:00",
+  "verification_driver_sha256": "211865f0e84784cdbff90c95d707b61a7eb0acdfbb0b2c23ed09ff814b284c2f",
+  "workers_exited": true
+}

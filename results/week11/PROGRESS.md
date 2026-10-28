@@ -1,8 +1,8 @@
 # Week 11 progress
 
-Updated 2026-10-28T14:43:56.221428+00:00. Branch `gagan`. Frozen pilot: 50 development queries per dataset.
+Updated 2026-10-28T18:27:03.984516+00:00. Branch `gagan`. Frozen pilot: 50 development queries per dataset.
 
-Current phase: **D**. State: **RUNNING**.
+Current phase: **E**. State: **RUNNING**.
 
 A durable operational supervisor now runs the authorized notebook sequence. Every generation phase receives checksum/cohort/budget/baseline audits before a recorded mechanical continuation review. F uses the five manually reviewed actual C actions; the supervisor never selects new winners. Errors stop advancement. LLMLingua conditions remain explicitly pending.
 
@@ -18,9 +18,9 @@ A durable operational supervisor now runs the authorized notebook sequence. Ever
 
 | C | COMPLETE_AVAILABLE | 5550 | 5550 | True |
 
-| D | RUNNING | 0 | — | False |
+| D | COMPLETE_AVAILABLE | 16650 | 16650 | True |
 
-| E | NOT_STARTED | 0 | — | False |
+| E | RUNNING | 0 | — | False |
 
 | F | NOT_STARTED | 0 | — | False |
 

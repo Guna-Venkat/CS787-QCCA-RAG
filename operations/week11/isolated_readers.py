@@ -5,6 +5,31 @@ generation time or measured end-to-end latency. Only operational placement chang
 """
 import multiprocessing
 import traceback
+import importlib
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def _bootstrap_project():
+    """Spawn may inherit a SARA-first path; pin project subpackages explicitly."""
+    project = str(ROOT)
+    sys.path[:] = [project] + [p for p in sys.path if p != project]
+    package = importlib.import_module('src')
+    source = str(ROOT/'src')
+    # Preserve the separately namespaced SARA src.model extension, but resolve
+    # week11/week10 from the project even if src was imported before this worker.
+    package.__path__ = [source] + [p for p in package.__path__ if p != source]
+    importlib.invalidate_caches()
+    return dict(project_root=project,src_search_paths=list(package.__path__))
+
+
+def _verify_module(module_name, relative):
+    module=importlib.import_module(module_name)
+    if Path(module.__file__).resolve() != (ROOT/relative).resolve():
+        raise ImportError('Canonical reader module resolved outside the project: '+module_name)
+    return str(Path(module.__file__).resolve())
 
 
 class ReaderProcessError(RuntimeError):
@@ -14,17 +39,20 @@ class ReaderProcessError(RuntimeError):
 def _worker(connection, kind, payload):
     reader = None
     try:
+        bootstrap = _bootstrap_project()
         if kind == 'text':
+            bootstrap['reader_module'] = _verify_module('src.week11.readers','src/week11/readers.py')
             from src.week11.readers import Reader
             reader = Reader(*payload)
         elif kind == 'sara':
+            bootstrap['reader_module'] = _verify_module('src.week10.root_cause.runtime','src/week10/root_cause/runtime.py')
             from src.week10.root_cause.runtime import SaraReader
             reader = SaraReader(*payload)
         elif kind == 'fixture':
             reader = _Fixture(*payload)
         else:
             raise ValueError('Unknown canonical reader kind')
-        connection.send(('ready', None))
+        connection.send(('ready', bootstrap))
         while True:
             method, args, kwargs = connection.recv()
             if method == 'close':
@@ -54,7 +82,7 @@ class _ProcessReader:
         self.process = context.Process(target=_worker, args=(child, kind, payload))
         self.process.start();child.close()
         self.closed = False
-        try:self._receive('ready')
+        try:self.bootstrap = self._receive('ready')
         except BaseException:
             self.close();raise
 

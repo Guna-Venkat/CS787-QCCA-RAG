@@ -83,6 +83,26 @@ input/output, after checking the existing writer/continuation locks. The supervi
 and passive monitor retain singleton locks. A reboot still requires restarting
 the same continuation process; completed rows remain resumable.
 
+### E import recovery and full D research review
+
+D completed and froze all 16,650 available rows. Its full manual research review
+is `reader_granularity/RESEARCH_REVIEW.md`: 333 conditions, matched reader and
+granularity comparisons, eight additional exploratory interaction tests, cost
+accounting, flagged examples and label-compliance diagnostics. All eight direct
+QA interaction intervals include zero; point-estimate changes are not a confirmed
+interaction or universal reader winner. D primary scores/status remain unchanged.
+
+E stopped at 152 cached rows when a spawned worker could not import `src.week11`.
+The worker now pins the project root and `src` search path and verifies canonical
+reader module locations. It preserves the SARA namespace extension. A deliberately
+preimported foreign `src` package is covered by a real spawn regression test.
+All 13 operational tests passed. A saved public-reader output replayed exactly;
+SARA text and latent generation plus canonical token counting succeeded. Three
+additional operational qualification calls are recorded separately in
+`monitoring/import_recovery_verification.json`; E scientific rows are untouched.
+Original failure artifacts are archived locally. The same supervisor resumes E
+and continues F/G/H/I with the frozen settings and mechanical gates.
+
 ## Earlier continuation record (superseded by durable supervisor above)
 
 - 0: audited and frozen. A: 1,350/1,350 rows audited and frozen. B: 600/600 rows

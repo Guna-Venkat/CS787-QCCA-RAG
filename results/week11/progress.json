@@ -1,13 +1,15 @@
 {
   "C_logical_rows_available": 5550,
   "C_logical_rows_configured": 6150,
+  "E_import_recovery": "results/week11/monitoring/import_recovery.json",
   "authorization": "User explicitly delegated full sequential execution, reviews, fixes, and 15\u201320 minute monitoring on 2026-10-28",
   "branch": "gagan",
   "completed_phases": [
     "0",
     "A",
     "B",
-    "C"
+    "C",
+    "D"
   ],
   "executed_notebook_C": "results/week11/executed_notebooks/week11_C_granularity_budget.ipynb",
   "full_dataset_expansion": false,
@@ -58,19 +60,19 @@
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/granularity_budget"
     },
     {
-      "freeze_exists": false,
-      "full_status": "RUNNING",
-      "next_action": "Durable continuation; no duplicate launch needed",
+      "freeze_exists": true,
+      "full_status": "COMPLETE_AVAILABLE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_D_reader_granularity.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 16650,
+      "number_expected": 16650,
       "phase": "D",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity"
     },
     {
       "freeze_exists": false,
-      "full_status": "NOT_STARTED",
-      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "full_status": "RUNNING",
+      "next_action": "Durable continuation; no duplicate launch needed",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_E_compressor_reader.ipynb",
       "number_completed": 0,
       "number_expected": null,
@@ -121,9 +123,10 @@
   "report_A": "results/week11/multigranular/v1/retrieval/INTERPRETATION.md",
   "report_B": "results/week11/multigranular/v1/passage_representation/INTERPRETATION.md",
   "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
-  "running_phase": "D",
+  "report_D": "results/week11/multigranular/v1/reader_granularity/RESEARCH_REVIEW.md",
+  "running_phase": "E",
   "sample_queries_per_dataset": 50,
   "supervisor": "operations/week11/continue_study.py",
   "supervisor_state": "RUNNING",
-  "updated_at": "2026-10-28T14:43:56.219185+00:00"
+  "updated_at": "2026-10-28T18:27:03.982257+00:00"
 }

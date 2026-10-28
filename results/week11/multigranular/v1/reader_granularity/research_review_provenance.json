@@ -1,0 +1,12 @@
+{
+  "additional_comparisons": "post-hoc exploratory; frozen primary scores unchanged",
+  "comparisons": 36,
+  "driver_sha256": "1d7246b27afcf2a964b0231c9795462cd37cfa634f644908099b1888c0c43adf",
+  "granularity_comparisons": 18,
+  "interactions": 8,
+  "resamples": 10000,
+  "seed": 42,
+  "source_status_sha256": "b8fa21f6a5da304df60e466595c91daa7f48b2e64d44cd6a235f18ae7dbdb787",
+  "source_summary_sha256": "7386ff8055c7e26c143185b4f136e47217a8a5b6a92782f46c847f99f3b0e3b4",
+  "timestamp_utc": "2026-10-28T18:30:26.579937+00:00"
+}
