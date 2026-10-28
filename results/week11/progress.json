@@ -9,7 +9,8 @@
     "A",
     "B",
     "C",
-    "D"
+    "D",
+    "E"
   ],
   "executed_notebook_C": "results/week11/executed_notebooks/week11_C_granularity_budget.ipynb",
   "full_dataset_expansion": false,
@@ -70,19 +71,19 @@
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity"
     },
     {
-      "freeze_exists": false,
-      "full_status": "RUNNING",
-      "next_action": "Durable continuation; no duplicate launch needed",
+      "freeze_exists": true,
+      "full_status": "COMPLETE_AVAILABLE",
+      "next_action": "Audited/frozen",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_E_compressor_reader.ipynb",
-      "number_completed": 0,
-      "number_expected": null,
+      "number_completed": 4150,
+      "number_expected": 4150,
       "phase": "E",
       "result_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/compressor_reader"
     },
     {
       "freeze_exists": false,
-      "full_status": "NOT_STARTED",
-      "next_action": "Open notebook; inspect safe smoke, then explicitly opt in",
+      "full_status": "RUNNING",
+      "next_action": "Durable continuation; no duplicate launch needed",
       "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/notebooks/week11/week11_F_retriever_robustness.ipynb",
       "number_completed": 0,
       "number_expected": null,
@@ -124,9 +125,10 @@
   "report_B": "results/week11/multigranular/v1/passage_representation/INTERPRETATION.md",
   "report_C": "results/week11/multigranular/v1/granularity_budget/INTERPRETATION.md",
   "report_D": "results/week11/multigranular/v1/reader_granularity/RESEARCH_REVIEW.md",
-  "running_phase": "E",
+  "report_E": "results/week11/multigranular/v1/compressor_reader/RESEARCH_REVIEW.md",
+  "running_phase": "F",
   "sample_queries_per_dataset": 50,
   "supervisor": "operations/week11/continue_study.py",
   "supervisor_state": "RUNNING",
-  "updated_at": "2026-10-28T18:27:03.982257+00:00"
+  "updated_at": "2026-10-28T19:01:35.300854+00:00"
 }

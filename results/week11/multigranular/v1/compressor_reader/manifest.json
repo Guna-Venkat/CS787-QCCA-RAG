@@ -1,0 +1,527 @@
+{
+  "branch": "gagan",
+  "configuration": {
+    "allow_pending_conditions": true,
+    "analysis_comparison_family": "exploratory",
+    "bootstrap_resamples": 10000,
+    "budgets": [
+      256,
+      512,
+      1024,
+      "FULL"
+    ],
+    "cache_root": "cache/week11/v1",
+    "candidate_context_token_ceiling": 6144,
+    "characterization_queries_per_dataset": 50,
+    "datasets": {
+      "HotpotQA": {
+        "corpus": "provided ten distractor paragraphs",
+        "path": "data/week11/hotpot_dev_distractor_v1.json",
+        "source": "https://hotpotqa.github.io/",
+        "split": "dev"
+      },
+      "QASPER": {
+        "corpus": "complete matching scientific paper",
+        "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+        "raw_path": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+        "split": "dev"
+      },
+      "SciFact": {
+        "corpus": "all corpus abstracts; never only cited/gold documents",
+        "corpus_path": "data/week11/scifact/corpus.jsonl",
+        "labels": [
+          "SUPPORT",
+          "REFUTE",
+          "NOT_ENOUGH_INFO"
+        ],
+        "path": "data/week11/scifact/claims_dev.jsonl",
+        "source": "https://github.com/allenai/scifact",
+        "split": "dev"
+      }
+    },
+    "density_gamma": 1.0,
+    "epsilon": 0.01,
+    "exact_text_sentence_k": 8,
+    "finalist_configurations": {
+      "39d891f9fed0db18d8c2": {
+        "budget": 1024,
+        "compressor": "C0",
+        "granularity": "PASSAGE",
+        "pool_width": 20,
+        "reader": "Qwen",
+        "representation": "P0",
+        "retriever": "SFR",
+        "selector": "semantic",
+        "strategy": null
+      },
+      "5ef43643d916e4c17721": {
+        "budget": 1024,
+        "compressor": "C0",
+        "granularity": "PROPOSITION",
+        "pool_width": 20,
+        "reader": "Qwen",
+        "representation": "P0",
+        "retriever": "SFR",
+        "selector": "semantic",
+        "strategy": null
+      },
+      "a0788207676a3dd94c29": {
+        "budget": 1024,
+        "compressor": "C0",
+        "granularity": "SENTENCE",
+        "pool_width": 20,
+        "reader": "Qwen",
+        "representation": "P0",
+        "retriever": "SFR",
+        "selector": "semantic",
+        "strategy": null
+      },
+      "ecbe1962e8a80f2318cc": {
+        "budget": "FULL",
+        "compressor": "C0",
+        "granularity": "PASSAGE",
+        "pool_width": 20,
+        "reader": "Qwen",
+        "representation": "P0",
+        "retriever": "SFR",
+        "selector": "semantic",
+        "strategy": null
+      },
+      "fc9352ab57c0ab40eb3b": {
+        "budget": 256,
+        "compressor": "C0",
+        "granularity": "SENTENCE",
+        "pool_width": 20,
+        "reader": "Qwen",
+        "representation": "P0",
+        "retriever": "SFR",
+        "selector": "hybrid",
+        "strategy": null
+      }
+    },
+    "finalist_run_ids": [
+      "39d891f9fed0db18d8c2",
+      "a0788207676a3dd94c29",
+      "5ef43643d916e4c17721",
+      "fc9352ab57c0ab40eb3b",
+      "ecbe1962e8a80f2318cc"
+    ],
+    "generation": {
+      "attention": "efficient_sdpa",
+      "device": "cuda",
+      "do_sample": false,
+      "dtype": "float16",
+      "max_context": 8192,
+      "max_new_tokens": 128,
+      "quantization": null,
+      "seed": 42
+    },
+    "hierarchical": {
+      "full_head_passages": 1,
+      "sentence_passages": 3,
+      "token_tail_fraction": 0.25
+    },
+    "hierarchical_strategies": [
+      "H0",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5"
+    ],
+    "hierarchy": {
+      "chunker": "exact-word-boundary-token-ceiling-v1",
+      "max_passage_tokens": 256,
+      "native_passages": "HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper passages",
+      "overlap": 0,
+      "propositions": "PROPOSITION_RULE_V1",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "tokenizer": "Qwen pinned revision"
+    },
+    "history_trajectory_records": [],
+    "hybrid_weight": 0.5,
+    "interaction_contrasts": [
+      {
+        "actions": [
+          "f70536eca71d35e6b7a0",
+          "ef60a00131da95cb0a02",
+          "015e3dba7459d9196744",
+          "ae55497fa1819eecab94"
+        ],
+        "dataset": "QASPER",
+        "name": "QASPER_reader_by_granularity_512"
+      },
+      {
+        "actions": [
+          "9fa7fa1136c2cdf1a4b9",
+          "39d891f9fed0db18d8c2",
+          "12bb8307375436eba99c",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "QASPER",
+        "name": "QASPER_granularity_by_budget"
+      },
+      {
+        "actions": [
+          "4043cb2bb162608c9705",
+          "c55c2cc46b508361dd08",
+          "c0e284f6ff1027450ac4",
+          "ae874a989b8c57264be3"
+        ],
+        "dataset": "QASPER",
+        "name": "QASPER_compressor_by_budget"
+      },
+      {
+        "actions": [
+          "8603dec831a84395948a",
+          "7aa17908c2f61a860df7",
+          "39d891f9fed0db18d8c2",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "QASPER",
+        "name": "QASPER_retriever_by_granularity"
+      },
+      {
+        "actions": [
+          "f70536eca71d35e6b7a0",
+          "ef60a00131da95cb0a02",
+          "015e3dba7459d9196744",
+          "ae55497fa1819eecab94"
+        ],
+        "dataset": "HotpotQA",
+        "name": "HotpotQA_reader_by_granularity_512"
+      },
+      {
+        "actions": [
+          "9fa7fa1136c2cdf1a4b9",
+          "39d891f9fed0db18d8c2",
+          "12bb8307375436eba99c",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "HotpotQA",
+        "name": "HotpotQA_granularity_by_budget"
+      },
+      {
+        "actions": [
+          "4043cb2bb162608c9705",
+          "c55c2cc46b508361dd08",
+          "c0e284f6ff1027450ac4",
+          "ae874a989b8c57264be3"
+        ],
+        "dataset": "HotpotQA",
+        "name": "HotpotQA_compressor_by_budget"
+      },
+      {
+        "actions": [
+          "8603dec831a84395948a",
+          "7aa17908c2f61a860df7",
+          "39d891f9fed0db18d8c2",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "HotpotQA",
+        "name": "HotpotQA_retriever_by_granularity"
+      },
+      {
+        "actions": [
+          "f70536eca71d35e6b7a0",
+          "ef60a00131da95cb0a02",
+          "015e3dba7459d9196744",
+          "ae55497fa1819eecab94"
+        ],
+        "dataset": "SciFact",
+        "name": "SciFact_reader_by_granularity_512"
+      },
+      {
+        "actions": [
+          "9fa7fa1136c2cdf1a4b9",
+          "39d891f9fed0db18d8c2",
+          "12bb8307375436eba99c",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "SciFact",
+        "name": "SciFact_granularity_by_budget"
+      },
+      {
+        "actions": [
+          "4043cb2bb162608c9705",
+          "c55c2cc46b508361dd08",
+          "c0e284f6ff1027450ac4",
+          "ae874a989b8c57264be3"
+        ],
+        "dataset": "SciFact",
+        "name": "SciFact_compressor_by_budget"
+      },
+      {
+        "actions": [
+          "8603dec831a84395948a",
+          "7aa17908c2f61a860df7",
+          "39d891f9fed0db18d8c2",
+          "a0788207676a3dd94c29"
+        ],
+        "dataset": "SciFact",
+        "name": "SciFact_retriever_by_granularity"
+      }
+    ],
+    "learned_compressor_status": "FUTURE_WORK; faithful SeleCom not implemented",
+    "models": {
+      "Llama": {
+        "id": "meta-llama/Llama-3.1-8B-Instruct",
+        "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      },
+      "MiniLM": {
+        "id": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "output_root": "results/week11/multigranular/v1",
+    "passage_pooling_beta": 5.0,
+    "primary_reader": "Qwen",
+    "query_sampling": "sha256(dataset,query_id,seed), independent of labels",
+    "qwen_thinking": false,
+    "readers": [
+      "Mistral",
+      "Qwen",
+      "Llama"
+    ],
+    "retrieval_granularities": [
+      "PASSAGE",
+      "SENTENCE",
+      "PROPOSITION"
+    ],
+    "retrieval_width": 20,
+    "retrievers": [
+      "BM25",
+      "MiniLM",
+      "SFR"
+    ],
+    "sara_checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+    "sara_k": 4,
+    "sara_n": 10,
+    "seed": 42,
+    "selectors": [
+      "lexical",
+      "semantic",
+      "hybrid"
+    ],
+    "shared_budget_policy": "max actual token count across all frozen reader tokenizers; identical source-order text",
+    "token_compressor": {
+      "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+      "qualified": false,
+      "revision": null,
+      "status": "PENDING_DEPENDENCY_AND_QUALIFICATION"
+    },
+    "verification_dataset": "SciFact",
+    "version": "v1"
+  },
+  "cuda": "13.0",
+  "environment": {
+    "llmlingua": null,
+    "numpy": "1.26.4",
+    "pandas": "3.0.6",
+    "sentence-transformers": "5.7.0",
+    "torch": "2.14.0",
+    "transformers": "4.57.6"
+  },
+  "git_commit": "eccc02c939e9e6b5edcd587f964055a976662a19",
+  "gpu": "NVIDIA TITAN RTX",
+  "identity": {
+    "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+    "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+    "dataset_hash": "1135f00c9403d2adb58b8398ae460d7758f9b8a5b9c072ff6039d4f8cb41955c",
+    "model_hash": "dfcad44eb08e611822d454a81937e7b2ec4f221d4c7155647fd477f0d1cc681d",
+    "phase": "E",
+    "synthetic": false
+  },
+  "models": {
+    "Llama": {
+      "files": {
+        "config.json": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e",
+        "generation_config.json": "189fb0c0d7fd8a527db217c0a60a0e013f0394cd8800f9697a666a9e75e5f7fd",
+        "model-00001-of-00004.safetensors": "2b1879f356aed350030bb40eb45ad362c89d9891096f79a3ab323d3ba5607668",
+        "model-00002-of-00004.safetensors": "09d433f650646834a83c580877bd60c6d1f88f7755305c12576b5c7058f9af15",
+        "model-00003-of-00004.safetensors": "fc1cdddd6bfa91128d6e94ee73d0ce62bfcdb7af29e978ddcab30c66ae9ea7fa",
+        "model-00004-of-00004.safetensors": "92ecfe1a2414458b4821ac8c13cf8cb70aed66b5eea8dc5ad9eeb4ff309d6d7b",
+        "model.safetensors.index.json": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b",
+        "original/params.json": "b15b6b31b2043c0400b028ecc25c8946e21d76ac260e9ac6a357ed8727c8865f",
+        "original/tokenizer.model": "82e9d31979e92ab929cd544440f129d9ecd797b69e327f80f17e1c50d5551b55",
+        "special_tokens_map.json": "6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec",
+        "tokenizer.json": "79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4",
+        "tokenizer_config.json": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+      },
+      "model": {
+        "id": "meta-llama/Llama-3.1-8B-Instruct",
+        "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      }
+    },
+    "MiniLM": {
+      "files": {
+        "1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+        "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+        "config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+        "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+        "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+        "sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+        "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+        "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+        "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+      },
+      "model": {
+        "id": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      }
+    },
+    "Mistral": {
+      "files": {
+        "config.json": "2e97da1b1d2b7e7669f0991c186904538c27d4ea56c4fc74e89215e2b2013922",
+        "generation_config.json": "104f69e9625993a0839aff79b17f7a0aa73b0954ef8f7e7665aa50b5ef1d4454",
+        "model-00001-of-00003.safetensors": "63654d601820b88b1fa8b4a98df5714f700fbc5b3df2cc4ecbabdced35096d31",
+        "model-00002-of-00003.safetensors": "a42716540ecb2385d371f2109835921ff535406cac8fe8ff28f2f0b5fc7895bd",
+        "model-00003-of-00003.safetensors": "5f86e15cb3ed9078e30ae6e72445e109d0e337d9cde59b9aeea4ce8e44e54a5d",
+        "model.safetensors.index.json": "6d32424091caba25230b09cbae985a5f9252ecce3a722b03b88df17ad05be459",
+        "special_tokens_map.json": "6fa06efa2785e450051989a6f8fb4416b10149ded485ddd3f127a40734f5cfd0",
+        "tokenizer.json": "11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+        "tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+        "tokenizer_config.json": "475361439e5c012de9dffdedc416a66a50f1a29f7aa80b375ba014fb13d6bb8a"
+      },
+      "model": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      }
+    },
+    "Qwen": {
+      "files": {
+        "config.json": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30",
+        "generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+        "model-00001-of-00005.safetensors": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+        "model-00002-of-00005.safetensors": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+        "model-00003-of-00005.safetensors": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+        "model-00004-of-00005.safetensors": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+        "model-00005-of-00005.safetensors": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+        "model.safetensors.index.json": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc",
+        "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "model": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      }
+    },
+    "SARA_checkpoint": {
+      "adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+      "adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+      "added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+      "args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+      "config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+      "sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+      "sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+      "special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+      "tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+      "tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f",
+      "training_args.bin": "25fc5564a6f4ce63ef31dd83c655ec41c7dd955fead10dbda0cdeaf000187abb"
+    },
+    "SFR": {
+      "files": {
+        "1_Pooling/config.json": "ea1a7cf5a5462e27cc161814b5b5ad3e30fe16f3d3e5b6f443525d06e19e62a0",
+        "config.json": "6a9fc3fa5c0a0d741bbab96346355de703891821b82a27d238d05b0ac867126f",
+        "config_sentence_transformers.json": "c2daab5beaed69ff90d3b8e6334fd44962f72a49c2d5f31de246d1bf908d6a8d",
+        "model-00001-of-00003.safetensors": "afbfcebcf9df8c0af538cd5b6f616bd1d7a9739eba4b81d871545b1b562d6b0a",
+        "model-00002-of-00003.safetensors": "841e0ce0c37d7e05c7cdce5ab9b614ee2b38a5f4f860c245e614970aff627d40",
+        "model-00003-of-00003.safetensors": "f5d5a7317a86d186c4febf39d7734736c14b4fface62bfc1d905678b197cfb3a",
+        "model.safetensors.index.json": "49cd10183a5735b1f3e9227600ca8d5596c26cb4e53537f25d3a39c81dbee170",
+        "modules.json": "8f4b264b80206c830bebbdcae377e137925650a433b689343a63bdc9b3145460",
+        "sentence_bert_config.json": "bb32879957e4e8ac77577968f85cbbb625bda26684c6fb49c9cf240d83b54870",
+        "special_tokens_map.json": "35e7e566342a030b1c035f811204838d135e2aa5bac84de2109b660862abdc90",
+        "tokenizer.json": "386301223a5f22111c12f2d93d44ecdeadcf80443c71e25071881e10c25cefa6",
+        "tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+        "tokenizer_config.json": "66349eabf13ba871e41d17be5168d1871773ec2eba580172107e300879d7a6a7"
+      },
+      "model": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    }
+  },
+  "phase": "E",
+  "relevant_dirty_hashes": {
+    "Baselines/SARA-main/src/metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Baselines/SARA-main/src/metrics/metrics.py": "1fcd588acf11213b2d1288e904604180d523510ca7ae5188c997d99e14968f77",
+    "Baselines/SARA-main/src/metrics/metrics_conditional_perplexity.py": "75a0a5515129c794ffe8c394a99fb5e5ea2032600ce9a5c823a6251778c2e1c4",
+    "Baselines/SARA-main/src/metrics/metrics_confidence.py": "56f0ea034679185e7194932a5c206e45d5d2170a92714e1390ef4ba7c7b53dbc",
+    "Baselines/SARA-main/src/metrics/metrics_distance.py": "60feb8aec0f77b80fb01330b0201f5f1b4aa2fce6c02a0e159df859552a73e22",
+    "Baselines/SARA-main/src/metrics/metrics_instructrag.py": "9ea37c9a2824671ff86c645313fe091114262fd150b4a42a3bc162dee633a132",
+    "Baselines/SARA-main/src/model/__init__.py": "fdfc18ce06f958eb22c0b20ca717b54d3f8969b29f3d1bd4c8cb6e741818c31f",
+    "Baselines/SARA-main/src/model/loader.py": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+    "Baselines/SARA-main/src/model/prompt_builder.py": "dc0a4ef72f9e04f9ef8b2c2d452aba484bdd24194be620537529089e3ef23ef9",
+    "Baselines/SARA-main/src/model/retriever.py": "4f4bba3b61cf561838b184b8d3b76ec7ba4f250aa749d51e349022c9ca7c2b26",
+    "scripts/week11/build_notebooks.py": "fe821131ea977d807e704634c8a0fbb80adc91c5b5f427ab894a7d0a71972f2b",
+    "scripts/week11/check_token_compressor.py": "2f0a60b6e2b8360c7fc3a78bfc4ec9fbf978a671eeace5fe06ccc073d810f116",
+    "scripts/week11/prepare_datasets.py": "e4488911456b28cb9d01a52f63945f13d083e7d29c589ff2f15f4bb0738dd630",
+    "scripts/week11/validate_analysis_smoke.py": "fd3476aa1f5ec5e9b0b4334615d3ff7685f546429669d9e3d64c45257fb87132",
+    "scripts/week11/validate_notebooks.py": "8321dcf71e3c43e04773c8c85aa397b21632d9266e537394a1cb18d70b047d15",
+    "scripts/week11/write_guide.py": "3c1afbed822093d8b4ee99b72da5cfc09f283810e42538bbb552860d98ba910f",
+    "src/week10/__init__.py": "a0c6c308837c55019ee0a282fb8b94f0adb3e01efd889c8083c2aa466489e182",
+    "src/week10/root_cause/__init__.py": "e44f11798a11c71819ddb673986e6f426d5acabb4d6c4026eb5e8ed7012fb11e",
+    "src/week10/root_cause/analysis.py": "533dcb8c5200b159155136a407d274bccdb5cbcaa8289ab870ca6b7cd1f24878",
+    "src/week10/root_cause/data.py": "14ff0829cf29fc8f59869c5c9467bd8fab74df43c09f20db9c6421a07b61ac84",
+    "src/week10/root_cause/dataset_audit.py": "d6f1aba9f41d5098d1fde8aed3bb8f7d6e8ede94d8e4b78b8be9f6b9d3bbb0c2",
+    "src/week10/root_cause/encoding.py": "c73be6e8ec0adf3eb34e3b3272e0e2a14538793ae6be4c4b1c83b9ff83b6c42f",
+    "src/week10/root_cause/preflight.py": "0404b7d21da063fc8dfb0eac838090d3b447cf818f80647ef02eb2849f6e6361",
+    "src/week10/root_cause/protocol.py": "489f72b7fb2ec85c0c2daaf05765f227acd20dc4d8f13aca5852d070987044b3",
+    "src/week10/root_cause/report.py": "bb099b4663e8054828caa78ea880a8a104bfbae4e8246ed2e450dd6cc1b121ec",
+    "src/week10/root_cause/runner.py": "ff7cdb09e62c405048224cd461822eddc2f3bd68637868c1e67d6bc9daa0702e",
+    "src/week10/root_cause/runtime.py": "1abe4072138e145938ac72383a69415af090a68ca9191c0694cec8f657dd215b",
+    "src/week10/root_cause/smoke.py": "afd713f7d5eede569255c5c62bd6e871d63ea657a023f9113bedbca8362b51b6",
+    "src/week10/root_cause/storage.py": "64eab844936371ba55dde8745ea70aa86b80d22cc338b681c48720d769a37a33",
+    "src/week11/__init__.py": "56e82aa61e9858084ff35120ea50d73176a35b12b5eecd9eb5c55aad62401581",
+    "src/week11/bootstrap.py": "0702336530e4130cbdb55b05ea44e09d82685b0c1b260693a6d902ac402065d1",
+    "src/week11/budgets.py": "a35e65ea2a24706701824bd20df495a70c609865190be8b79fee396b2132163e",
+    "src/week11/cache.py": "0fdbe0c0f449a18af0c984730259c77ea9e37b8896e8ccfbaa050613e594ccaa",
+    "src/week11/catalog.py": "7b1da1a075753e51a1ee5687a1bff633843992559f79a77f4c2d331adf07ea71",
+    "src/week11/compressors.py": "df24bf84d27c1a4a04eee29e3f2c9ef1185d04d789fb0498ef9e38f92ec53e70",
+    "src/week11/dashboard.py": "08ce82b9a12466c206d117f08f0ca97e424768147fa1b9b3f4fe35fd3701249b",
+    "src/week11/datasets.py": "b63e6706c9ed7bdbab14d1c2466d6b618c84d95e4c5483b8d1aefa60c717f907",
+    "src/week11/embeddings.py": "24210268a127b868b95ffa4add237bc2079022a425cf58ba0b5941f89e0138e2",
+    "src/week11/evaluation.py": "2bc3db70ed428b6320e3b85dd219307bbcc4e192ee6815f5874f00f953d86e76",
+    "src/week11/factorial.py": "f48ad5033ed29a3b980db1e8e2c08ea16edb515413dfbabe4c7874118f55f7e5",
+    "src/week11/fixtures.py": "54ac51f1317b02867f383b0a6a5c9bc4c900e1b279840246dadade9237b9e0ea",
+    "src/week11/generation.py": "dd2d65424d9a522523464288b0ac3c0a35a44d18fee3de60a9b3c2dd6801ffb3",
+    "src/week11/hierarchical.py": "0bc5eb38603add7c73fcde710b302c0cb8e83e3fff6878480ed23e51269fa52f",
+    "src/week11/hierarchy.py": "29332314a9e085f590860b4b3a55be38888f0623974f9540c7f1c545ed73d019",
+    "src/week11/oracle.py": "2a18bb8eee183450573e91448bbd2ccc77ff42117e0e582d3de334aaa4b28e2f",
+    "src/week11/planning.py": "f5281d82ad85eac3d75be09dbaf47efc8e265130821f995d4422bffc16cf5c9a",
+    "src/week11/plotting.py": "8e7906be2079f588a93c7a9db61a580e1d832181d628ebec4b6e3f84541863c0",
+    "src/week11/prompts.py": "2a3bdb16d524534ca1bc6b6b37e874555bb9e7317728300bbc1e292292cb764f",
+    "src/week11/propositions.py": "678be5b1df40bd0c4da43da19bd32ebcdd067dff692afd65206b45745ac203b6",
+    "src/week11/protocol.py": "3277e8daeed10c8efcdf8bd8d81657055e3538c9092889e719497533cc779407",
+    "src/week11/provenance.py": "fa83949c4ef23ff9b92b82b7b6f1dd1115b9671e2bfb80be62a4b4f272320fb2",
+    "src/week11/qasper_adapter.py": "49349552f80c6b3d139bf14b8390b02f0f6d3095d6a7f213cd1507ee57f7a19d",
+    "src/week11/readers.py": "b52b3928caa306f09acf0b8083f53bdd7e62b6c76f8952b7efe005e8b03d9f57",
+    "src/week11/reporting.py": "f49c4653dc69697740178b013555fe2afd62823472f0269740f3b80add3a7cd8",
+    "src/week11/retrievers.py": "1962a2830e167532c8fd329a13c5ce4ebba90755256df708a1d54f2dd8bd1dc5",
+    "src/week11/runner.py": "5c93c15677fe047bccb1b2227f2d2630d6dcb615695db74b247d5974c508329b",
+    "src/week11/selectors.py": "f5f9f6f6ee567363a04f8e1275c83229eed0445fa41cac22fe5c974c44d29c40",
+    "src/week6/evaluation.py": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+    "src/week6/routing.py": "7bf448621c9d49d0a0a43ddba5a716e81e656b0ba08efa715beabe77f1ac2b9d",
+    "src/week9/backend.py": "02903e6ff27ceef0da809b76daa26f781a813fa9ba513e60964696c36b620e30",
+    "src/week9/data.py": "76ef011a27f1196d2aad4718c03d1ce3a27de7414915314ec1d44f475bce6ec2",
+    "src/week9/evaluation.py": "609018a7671ac987fa0cddc76f67e5dc59adb218aac5a6deab4a81fbe0930633",
+    "src/week9/provenance.py": "b10a9cad02806c21dc4147fd047281b33867e35356035262b55084afdbb7e306",
+    "src/week9/retrieval.py": "d92f0322ca09240b83d1ed982acadbbcb7d9758abd562db309f2d51071a53fb6",
+    "src/week9/senttopk_e3/sentences.py": "9ff672d6ee70a51d9bcd274dd5a550590fcb1e61ca5750c866b1fb9b917636e1"
+  },
+  "run_id": "4d23252da828c9622a2e95dd0fdad6d0844662d1ae10bffcb4b9e601b4d7aa9b",
+  "timestamp": "2026-10-28T16:49:25.759037+00:00"
+}

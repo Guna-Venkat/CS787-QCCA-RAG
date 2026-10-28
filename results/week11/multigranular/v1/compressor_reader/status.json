@@ -1,0 +1,12 @@
+{
+  "completed": 4150,
+  "executable_complete": true,
+  "expected": 4150,
+  "full_condition_surface_complete": false,
+  "pending": [
+    "LLMLingua-2"
+  ],
+  "selection_hash": "34468515a2c7769d42dd714c3f8f6e97f7a4157f5f5e3a02ac2791e670661101",
+  "source_result_hash": "54d483675f61a594c3919c4d09a7ecbb74acdc7c7827a5d0be0c3e182d317a63",
+  "synthetic": false
+}
