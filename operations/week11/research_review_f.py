@@ -27,7 +27,6 @@ def main():
     cols=['dataset','retriever','evidence_granularity','selector','budget','task_score','delta_task_score','HELP','HURT','actual_evidence_tokens','prompt_tokens','generated_tokens']
     passage=comparisons[(comparisons.granularity=='PASSAGE')&(comparisons.budget.astype(str)=='1024')]
     hot=identity[identity.dataset=='HotpotQA'];assert hot.same_candidate_set.eq(50).all() and hot.same_evidence.eq(50).all() and hot.same_prediction.eq(50).all()
-    significant=comparisons[(comparisons.ci_low>0)|(comparisons.ci_high<0)] if 'ci_low' in comparisons else pd.DataFrame()
     lines=['# Week 11 F — retriever robustness: research review',
     '## Completion and protocol',
     'All 2,400 checksummed logical rows are complete: 150 frozen development queries, 50 per dataset, 48 dataset/condition summaries. Qwen is held fixed. Five manually reviewed representation/budget configurations are each evaluated under BM25, MiniLM and SFR, plus one no-evidence baseline per dataset. All policies use the same source corpus and pool-width policy (20), P0 passages, frozen semantic/hybrid downstream selection and decoding. No old result is overwritten.',
@@ -40,6 +39,7 @@ def main():
     '## Matched passage/1024 retriever contrasts',passage.to_markdown(index=False,floatfmt='.6f'),
     '## All 45 matched retriever contrasts',
     'Paired bootstrap uses 10,000 resamples, seed 42; QASPER clusters by paper (40 clusters for 50 queries), other datasets by query/claim (50). These are nominal exploratory 95% intervals without multiple-comparison adjustment. The contrast direction is explicitly named. No inference of superiority is made from point estimates alone.',comparisons.to_markdown(index=False,floatfmt='.6f'),
+    'The only contrast whose nominal interval strictly excludes zero is SciFact hybrid sentence/256, MiniLM minus SFR: −0.08, CI [−0.16, −0.02]. This is one exploratory result among 45 unadjusted comparisons. BM25 minus SFR passage/1024 is +0.08 with CI [0.00, 0.18], which does not establish a positive lower bound.',
     '## Candidate/evidence identity diagnostic',identity.to_markdown(index=False),
     'Candidate identity compares sets rather than retrieval rank order. Evidence hashes check the actual generator exposure; prediction equality is separate. Shared predictions from a cache are not independent repeated model experiments.',
     '## Flags and cost',

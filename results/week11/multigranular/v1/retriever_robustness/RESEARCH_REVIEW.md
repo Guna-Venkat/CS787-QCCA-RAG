@@ -82,6 +82,8 @@ Paired bootstrap uses 10,000 resamples, seed 42; QASPER clusters by paper (40 cl
 | SciFact   | SENTENCE      | semantic   | 1024     | BM25_minus_SFR    |     0.660000 |      0.620000 |  0.040000 | -0.040000 |  0.120000 |       10000 |     42 | query_or_claim_id |
 | SciFact   | SENTENCE      | semantic   | 1024     | MiniLM_minus_SFR  |     0.640000 |      0.620000 |  0.020000 | -0.060000 |  0.100000 |       10000 |     42 | query_or_claim_id |
 
+The only contrast whose nominal interval strictly excludes zero is SciFact hybrid sentence/256, MiniLM minus SFR: −0.08, CI [−0.16, −0.02]. This is one exploratory result among 45 unadjusted comparisons. BM25 minus SFR passage/1024 is +0.08 with CI [0.00, 0.18], which does not establish a positive lower bound.
+
 ## Candidate/evidence identity diagnostic
 
 | dataset   | granularity   | selector   | budget   | comparison     |   queries |   same_candidate_set |   same_evidence |   same_prediction |
