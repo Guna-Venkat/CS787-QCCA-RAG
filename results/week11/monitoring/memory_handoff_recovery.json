@@ -1,0 +1,28 @@
+{
+  "checkpoint_root": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/rows",
+  "checksums_verified": 11100,
+  "completed_rows": 11100,
+  "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "correction": "Canonical readers now run in owned spawned processes, joined on close; no weight, prompt, evidence, decoding, evaluation or core configuration changes",
+  "extra_operational_lm_calls": 3,
+  "failure": "Llama pre-load guard reported 10.4 GB free versus 20.4 GB required; no Llama rows generated",
+  "flags": {
+    "Mistral_HotpotQA_cap_hits": 4,
+    "Mistral_QASPER_cap_hits": 58,
+    "Mistral_SciFact_cap_hits": 264,
+    "Mistral_SciFact_invalid_format": 1849
+  },
+  "isolation_driver_sha256": "c9e01965b16414e1b06c0fc34d5263e9db2d500932e83b5fa05d6674083504dd",
+  "launcher_sha256": "75e63ba9792134d37bba9f73ef4c4e67ef5b3dde6f21b1e742b8f88c82366eed",
+  "preserved_failure_artifacts": "results/week11/executed_notebooks/recovery_20261028_memory_handoff",
+  "primary_metrics_changed": false,
+  "remaining_rows": 5550,
+  "replay_receipt": "results/week11/monitoring/reader_isolation_verification.json",
+  "saved_counts": {
+    "Mistral": 5550,
+    "Qwen": 5550
+  },
+  "status": "RECOVERY_VERIFIED_READY_TO_RESUME",
+  "tests_passed": 12,
+  "timestamp_utc": "2026-10-28T14:43:10.052449+00:00"
+}

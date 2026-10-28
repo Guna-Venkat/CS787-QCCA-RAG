@@ -1,11 +1,16 @@
 {
   "current_phase": "D",
-  "driver_sha256": "b611d3e8f9061ce2be0f6b2fe3aedec1817697b58bfe2d5f5d1ae21080190061",
+  "driver_sha256": "d978d7310efa1f111c22b391c978612537dc793958c3bba776e5b59eefda68c5",
   "mode": "User-authorized notebook sequence; mechanical audits; no automatic finalist selection",
+  "operational_dependencies": {
+    "isolated_readers.py": "c9e01965b16414e1b06c0fc34d5263e9db2d500932e83b5fa05d6674083504dd",
+    "label_compliance.py": "f5fce3ca9c8f27c5e7795af94bcff59a521b146e00f4763c8b6d32a5874adcb7",
+    "run_phase.py": "75e63ba9792134d37bba9f73ef4c4e67ef5b3dde6f21b1e742b8f88c82366eed"
+  },
   "phases": {},
-  "pid": 115814,
-  "review_driver_sha256": "e5aff36f0a80108672b76fd3548fb8f98698e2728fda02679829bbf24cf0e339",
-  "started_utc": "2026-10-28T09:44:51.570721+00:00",
+  "pid": 213839,
+  "review_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
+  "started_utc": "2026-10-28T14:43:56.193169+00:00",
   "status": "RUNNING",
-  "updated_utc": "2026-10-28T09:44:51.592670+00:00"
+  "updated_utc": "2026-10-28T14:43:56.217127+00:00"
 }

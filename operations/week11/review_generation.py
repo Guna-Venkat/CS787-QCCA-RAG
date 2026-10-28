@@ -85,6 +85,8 @@ def audit(phase):
         physical_generation_calls=int(df.physical_lm_calls.sum()),flags=counts,pending=status.get('pending',[]),
         core_code_hash=identity['code_hash'],config_hash=identity['config_hash'],status_sha256=file_hash(root/'status.json'),audit_driver_sha256=file_hash(Path(__file__)))
     atomic(root/'readiness_audit.json',result)
+    from operations.week11.label_compliance import diagnose
+    label_diagnostic=diagnose(rows,root)
     text=[f'# Week 11 {phase} — audited pilot results',
         f"{len(rows):,} available logical rows completed; 50 queries per dataset. Pending components: {status.get('pending',[])}. This is the frozen development pilot, not full-dataset confirmation.",
         'Source/config/code identities, checksums, full action membership, budgets and same-reader/checkpoint HELP/HURT pairs passed. No scientific outputs were replaced.']
@@ -125,6 +127,10 @@ def audit(phase):
         f"Cost: {int(df.physical_lm_calls.sum()):,} physical calls for {len(rows):,} logical rows. Cache hits retain conceptual per-policy LM costs. Cached original timing fields are not measured end-to-end latency; that field remains null.",
         'Oracles are retrospective ceilings and do not establish a deployable controller. Specialist/public-reader surfaces are separated in the saved reports.',
         '## Complete condition summary',summary[cols+['dataset','prompt_tokens','generated_tokens']+(['invalid_label_rate'] if 'invalid_label_rate' in summary else [])].to_markdown(index=False,floatfmt='.6f')]
+    if not label_diagnostic.empty:
+        text += ['## Post-hoc label-format diagnostic — not primary rescoring',
+            'SciFact strict scores require the whole stripped output to be one exact label. A label followed by an explanation is invalid under the frozen rule. Substantial format failures confound reader comparisons: low strict accuracy cannot be attributed solely to evidence utilization or reasoning. The separate anchored leading-label diagnostic accepts only an unambiguous label at the start, followed by a boundary/punctuation; it does not search explanations for labels. It was introduced after inspecting Mistral format failures and is exploratory. Primary scores, predictions, bootstrap comparisons and oracles remain unchanged. A prospective output-format protocol requires a new version.',
+            label_diagnostic.to_markdown(index=False,floatfmt='.6f')]
     (root/'INTERPRETATION.md').write_text('\n\n'.join(text)+'\n')
     print(json.dumps(result,indent=2))
     return result

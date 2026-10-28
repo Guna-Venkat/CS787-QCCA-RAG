@@ -60,11 +60,22 @@ def execute(phase, cfg=None, **kwargs):
         return execute_b(cfg, **kwargs)
     return execute_reference(phase, cfg, **kwargs)
 '''
+    isolated_readers = args.phase in ('C','D','E','F','G')
+    if isolated_readers:
+        imports = next(cell for cell in notebook.cells if cell.cell_type == 'code' and 'cfg = load()' in cell.source)
+        imports.source += '''
+# Operational reader isolation: canonical weights, prompts and decoding unchanged.
+# Each owned worker exits after a reader closes, releasing its CUDA context.
+from operations.week11.isolated_readers import install
+install()
+'''
     state = dict(phase=args.phase, pid=os.getpid(), notebook=str(destination),
                  source_notebook_sha256=file_hash(source),
                  launcher_sha256=file_hash(Path(__file__)),
                  start_utc=datetime.now(timezone.utc).isoformat(), status='RUNNING',
                  cached_b=args.cached_b,
+                 reader_execution='isolated_process_canonical_reader' if isolated_readers else 'reference',
+                 isolated_reader_driver_sha256=file_hash(ROOT/'operations/week11/isolated_readers.py') if isolated_readers else None,
                  authorization='User delegated sequential full runs, interpretation, fixes and reviews on 2026-10-28')
 
     def save(**changes):

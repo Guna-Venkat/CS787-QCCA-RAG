@@ -126,6 +126,7 @@ def main():
         frozen_config={p:digest(scientific_config(cfg,p)) for p in ['D','E','F','G','H','I']}
         state=dict(pid=os.getpid(),status='RUNNING',started_utc=utc(),driver_sha256=file_hash(Path(__file__)),
             review_driver_sha256=file_hash(ROOT/'operations/week11/review_generation.py'),
+            operational_dependencies={name:file_hash(ROOT/'operations/week11'/name) for name in ['run_phase.py','isolated_readers.py','label_compliance.py']},
             mode='User-authorized notebook sequence; mechanical audits; no automatic finalist selection',phases={})
         state_path=MONITOR/'continuation_state.json'
         def save(**changes):
@@ -136,6 +137,7 @@ def main():
                 cfg=load();assert digest(code_identity())==frozen_code
                 assert digest(scientific_config(cfg,phase))==frozen_config[phase]
                 assert file_hash(ROOT/'operations/week11/review_generation.py')==state['review_driver_sha256']
+                assert all(file_hash(ROOT/'operations/week11'/name)==sha for name,sha in state['operational_dependencies'].items())
                 save(current_phase=phase);progress(cfg,phase,'RUNNING')
                 # Adopt the already-running authorized D job; never duplicate a writer.
                 while owner_active(phase) or writer_active(output(cfg,phase)/'run.lock'):

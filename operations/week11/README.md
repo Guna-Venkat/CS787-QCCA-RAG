@@ -52,6 +52,37 @@ Tests: `sara_env/bin/python -m unittest operations.week11.test_continuation -v`.
 All six deterministic operational tests passed without loading models or running
 notebooks; fixture results are temporary and never enter the real study.
 
+### Reader-switch recovery and compliance flag (2026-10-28)
+
+D stopped after Mistral and cached Qwen completed (11,100 rows) because the Llama
+pre-load memory guard saw 10.4 GB free versus 20.4 GB required. No Llama results
+were lost. The operational launcher now installs `isolated_readers.py`: each
+canonical reader executes in an owned spawned process that exits on close. This
+keeps weights, prompts, seeds, decoding and scoring unchanged and releases the
+entire CUDA context at handoff. The SARA specialist uses the same isolation and
+its canonical tokenizer through IPC. IPC overhead is not reported as generation
+time or measured end-to-end latency. Core frozen source/config identities remain
+unchanged; operational driver hashes are recorded separately.
+
+Two cached Mistral responses and token counts replayed exactly; a fresh Llama
+qualification generation succeeded. Both workers exited and GPU memory returned
+to about 291 MiB. Three extra operational calls are recorded in
+`monitoring/reader_isolation_verification.json`. All 12 operational tests passed.
+Original error logs/notebook copies are archived under local executed notebooks.
+
+Mistral has 1,849/1,850 invalid strict-label SciFact outputs and 326 generation-cap
+hits across its full surface. Verification reader rankings are therefore heavily
+confounded by label compliance. `label_compliance.py` adds a separately labelled,
+post-hoc anchored-leading-label diagnostic; it never changes strict primary
+scores, bootstrap results, oracle results or inference. A prospective parser or
+prompt change requires a new version. Partial findings are recorded in D's
+`PARTIAL_PROGRESS_REVIEW.md`; final audits include this caveat and diagnostics.
+
+For long-lived launches use a separate OS session (`setsid -f`) with redirected
+input/output, after checking the existing writer/continuation locks. The supervisor
+and passive monitor retain singleton locks. A reboot still requires restarting
+the same continuation process; completed rows remain resumable.
+
 ## Earlier continuation record (superseded by durable supervisor above)
 
 - 0: audited and frozen. A: 1,350/1,350 rows audited and frozen. B: 600/600 rows
