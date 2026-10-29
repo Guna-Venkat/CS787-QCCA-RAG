@@ -1,0 +1,3 @@
+*.json
+!source_lock.json
+scifact/

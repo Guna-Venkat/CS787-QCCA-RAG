@@ -1,0 +1,14 @@
+/cache/
+/qbgf/*/smoke/
+/qbgf/*/generation/
+/qbgf/*/development/*/rows/
+/qbgf/*/development/*/prepared/
+/qbgf/*/canonical_inputs/
+/qbgf/*/canonical_references/
+/qbgf/*/lora/corpus/
+/qbgf/*/lora/checkpoints/
+/qbgf/*/lora/adapter/
+*.partial
+*.lock
+
+*.log

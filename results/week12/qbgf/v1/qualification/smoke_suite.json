@@ -1,0 +1,60 @@
+{
+  "confirmation_used": false,
+  "full_runs_started": false,
+  "identity": {
+    "code_hash": "37e44de2c40ca58e102ac775cfe6a0e14e1fd0e034c9bf42a0462fa512a4296c",
+    "config_hash": "78b26c03f1b5d46acfe1acc899ff2e7fa65f2c4a9bdb1b7cd7751697fd76cc49",
+    "extra": {},
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "packages": {
+      "numpy": "1.26.4",
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "source_files": {
+      "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "W12_cohorts": "9eeb3afcf3c27b090931fe51116d4a29df055c02e0fea3ce7df66a9b2d2ff1ca"
+    }
+  },
+  "steps": [
+    {
+      "name": "real_qbgf",
+      "seconds": 56.35285544395447,
+      "status": "PASS"
+    },
+    {
+      "name": "canonical_sara",
+      "seconds": 89.98969149589539,
+      "status": "PASS"
+    },
+    {
+      "name": "canonical_rag",
+      "seconds": 73.45239472389221,
+      "status": "PASS"
+    },
+    {
+      "name": "real_qlora_synthetic",
+      "seconds": 20.742138385772705,
+      "status": "PASS"
+    }
+  ],
+  "unique_real_development_queries": 3
+}
