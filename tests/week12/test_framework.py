@@ -232,3 +232,9 @@ class CanonicalPinTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as d:
    p=Path(d);(p/'adapter_config.json').write_text(json.dumps(dict(base_model_name_or_path='wrong/model')))
    with self.assertRaisesRegex(ValueError,'adapter base'):assert_base_pin(load(),p)
+
+class TrainingQuestionGroupsTests(unittest.TestCase):
+ def test_duplicate_normalized_questions_group_together(self):
+  from src.week12.lora import training_groups
+  rows=[dict(query_id='a',question='Who discovered X?',cluster_id='a'),dict(query_id='b',question='  WHO discovered   X? ',cluster_id='b'),dict(query_id='c',question='Different question?',cluster_id='c')]
+  result=training_groups(rows,'HotpotQA');self.assertEqual(result[0]['cluster_id'],result[1]['cluster_id']);self.assertNotEqual(result[0]['cluster_id'],result[2]['cluster_id'])

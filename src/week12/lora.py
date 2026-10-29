@@ -18,6 +18,13 @@ def tiny_smoke(cfg):
     result=dict(synthetic=True,real_Qwen_weights_loaded=False,steps=2,losses=losses,base_unchanged=base_unchanged,adapter_changed=adapter_changed,full_training_started=False)
     atomic(root(cfg)/'smoke'/'tiny_lora.json',result);return result
 
+def training_groups(examples,dataset):
+    """Normalized duplicate Hotpot questions share a split group, irrespective of ID."""
+    from .data import qhash
+    for example in examples:
+        if dataset=='HotpotQA':example['cluster_id']='question:'+qhash(example['question'])
+    return examples
+
 def corpus_sources(cfg):
     from .data import development_examples,qhash
     from src.week11.datasets import hotpot,scifact,read_jsonl
@@ -49,6 +56,7 @@ def corpus_sources(cfg):
             from .data import components
             groups=components([dict(query_id=str(r['id']),split_documents=list(map(str,r.get('cited_doc_ids',[])))) for r in native]);
             for e in xs:e['cluster_id']=groups[e['query_id']]
+        xs=training_groups(xs,dataset)
         xs=[e for e in xs if qhash(e['question']) not in blocked_q];xs.sort(key=lambda e:digest([dataset,e['cluster_id'],e['query_id'],cfg['seed']]))
         groups=sorted({e['cluster_id'] for e in xs},key=lambda g:digest([g,42]));val_groups=set(groups[:max(1,len(groups)//5)])
         train=[e for e in xs if e['cluster_id'] not in val_groups][:cfg['training_queries_per_dataset']];valid=[e for e in xs if e['cluster_id'] in val_groups][:max(10,cfg['training_queries_per_dataset']//10)]
