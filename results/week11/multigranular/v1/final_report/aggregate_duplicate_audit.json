@@ -8,12 +8,12 @@
     "task_score": 0
   },
   "core_scores_changed": false,
-  "driver_sha256": "31dba2b1dac2cdf2231e65cd984a269248f5128c230e44300cfa2238ea43c61a",
+  "driver_sha256": "2d21b9d4304137c8ba6be9b68339219ae11590116e22146e1e72a3978098a0e2",
   "generation_started": false,
   "queries_per_condition": 50,
   "repeated_rows": 6600,
   "source_rows": 31900,
-  "timestamp_utc": "2026-10-28T20:20:29.680778+00:00",
+  "timestamp_utc": "2026-10-29T03:29:24.828271+00:00",
   "unique_conditions": 506,
   "unique_query_action_rows": 25300
 }
