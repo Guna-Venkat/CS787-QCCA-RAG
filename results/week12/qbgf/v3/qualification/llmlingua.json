@@ -1,0 +1,45 @@
+{
+  "full_run_started": false,
+  "model": {
+    "allow_download": false,
+    "expected_weight_GiB": 2.5,
+    "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+    "revision": null
+  },
+  "reason": "MISSING_DEPENDENCY; no automatic installation",
+  "resource_before": {
+    "CPU_RAM_available_GiB": 55.95527267456055,
+    "GPU_memory": "24576 MiB, 23725 MiB",
+    "HF_cache_GiB": 70.30884454399347,
+    "disk_free_GiB": 17.196197509765625,
+    "expected_LLMLingua_weight_GiB": 2.5,
+    "models": {
+      "Mistral": {
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a",
+        "status": "CACHED",
+        "weight_files": 3
+      },
+      "Qwen": {
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "status": "CACHED",
+        "weight_files": 5
+      },
+      "SFR": {
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+        "status": "CACHED",
+        "weight_files": 3
+      }
+    },
+    "packages": {
+      "bitsandbytes": "0.50.2",
+      "llmlingua": null,
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    }
+  },
+  "status": "NOT_QUALIFIED"
+}

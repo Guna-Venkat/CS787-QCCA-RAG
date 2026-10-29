@@ -12,3 +12,8 @@
 *.lock
 
 *.log
+
+# Large immutable metadata transported as lossless gzip copies.
+/W12_SPLIT_FREEZE*.json
+/qbgf/v*/protocol/W12_SPLIT_FREEZE.json
+/qbgf/v*/protocol/exposure_manifest.json

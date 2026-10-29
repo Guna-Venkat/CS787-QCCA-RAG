@@ -1,0 +1,42 @@
+{
+  "canonical_k": 5,
+  "identity": {
+    "code_hash": "a8b00f0998bfa458367d6fca43874aa9c227c8b4c4715681c3caddb986b6e6e0",
+    "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+    "extra": {},
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "packages": {
+      "numpy": "1.26.4",
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "source_files": {
+      "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+    }
+  },
+  "max_new_tokens": 64,
+  "n": 10,
+  "real_queries": 1,
+  "split": "development",
+  "status": "PASS",
+  "system": "SARA_CANONICAL_BM25_K5_N10"
+}

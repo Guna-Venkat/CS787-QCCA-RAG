@@ -1,0 +1,42 @@
+[
+  {
+    "notebook": "week12_0_protocol_and_split_audit.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_A_qbgf_algorithm.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_B_baseline_qualification.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_C_validation_surface.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_D_qbgf_ablations.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_E_llmlingua2.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_F_lora_training.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_G_lora_validation.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_H_validation_analysis.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "week12_I_week13_freeze.ipynb",
+    "status": "PASS"
+  }
+]

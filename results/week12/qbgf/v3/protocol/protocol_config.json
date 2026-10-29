@@ -1,0 +1,150 @@
+{
+  "allow_download": false,
+  "bootstrap_resamples": 10000,
+  "budgets": [
+    256,
+    1024
+  ],
+  "cache_root": "results/week12/cache/v3",
+  "candidate_width": 10,
+  "confirmation_counts": {
+    "HotpotQA": 200,
+    "QASPER": 100,
+    "SciFact": 50
+  },
+  "datasets": {
+    "HotpotQA": {
+      "corpus": "provided ten distractor paragraphs",
+      "path": "data/week11/hotpot_dev_distractor_v1.json",
+      "source": "https://hotpotqa.github.io/",
+      "split": "dev"
+    },
+    "QASPER": {
+      "corpus": "complete matching scientific paper",
+      "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+      "raw_path": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+      "split": "dev"
+    },
+    "SciFact": {
+      "corpus": "all corpus abstracts; never only cited/gold documents",
+      "corpus_path": "data/week11/scifact/corpus.jsonl",
+      "labels": [
+        "SUPPORT",
+        "REFUTE",
+        "NOT_ENOUGH_INFO"
+      ],
+      "path": "data/week11/scifact/claims_dev.jsonl",
+      "source": "https://github.com/allenai/scifact",
+      "split": "dev"
+    }
+  },
+  "generation": {
+    "do_sample": false,
+    "enable_thinking": false,
+    "max_context": 8192,
+    "max_new_tokens_qa": 128,
+    "max_new_tokens_verification": 16,
+    "precision": "float16",
+    "seed": 42
+  },
+  "help_epsilon": 0.01,
+  "hierarchy": {
+    "chunker": "exact-word-boundary-token-ceiling-v1",
+    "max_passage_tokens": 256,
+    "native_passages": "HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper passages",
+    "overlap": 0,
+    "propositions": "PROPOSITION_RULE_V1",
+    "sentence_splitter": "academic-offset-rules-v1",
+    "tokenizer": "Qwen pinned revision"
+  },
+  "historical_config": "configs/week11/week11_base.yaml",
+  "labels": [
+    "SUPPORT",
+    "REFUTE",
+    "NOT_ENOUGH_INFO"
+  ],
+  "llmlingua": {
+    "allow_download": false,
+    "expected_weight_GiB": 2.5,
+    "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+    "revision": null
+  },
+  "lora": {
+    "alpha": 16,
+    "batch_size": 1,
+    "checkpoint_objective": "dataset-balanced validation answer NLL; minimize; ties earliest checkpoint",
+    "dataset_balanced": true,
+    "dropout": 0.05,
+    "epochs": 1,
+    "evidence_mode_sampling": "one deterministic mode-budget per source query; sha256(seed,dataset,query_id) modulo six",
+    "gradient_accumulation_steps": 16,
+    "learning_rate": 0.0002,
+    "load_best_model_at_end": true,
+    "max_length": 2048,
+    "mode": "qlora_nf4",
+    "modes": [
+      "RAW_SKIP",
+      "FIXED_SENTENCE",
+      "QBGF_FULL"
+    ],
+    "overwrite": false,
+    "r": 8,
+    "resume": true,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "minimum_qasper_confirm_papers": 20,
+  "minimum_qasper_unused_papers": 200,
+  "models": {
+    "Mistral": {
+      "id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+    },
+    "Qwen": {
+      "id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    "SFR": {
+      "id": "Salesforce/SFR-Embedding-Mistral",
+      "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+    }
+  },
+  "output_root": "results/week12/qbgf/v3",
+  "readers": [
+    "Qwen"
+  ],
+  "sara": {
+    "canonical_k": 5,
+    "canonical_label": "SARA_CANONICAL_BM25_K5_N10",
+    "canonical_n": 10,
+    "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+    "historical_sfr_k": 6
+  },
+  "schema": "W12-QBGF-v3",
+  "secondary_budgets": [
+    512
+  ],
+  "seed": 42,
+  "selection_rule": {
+    "quality_margin_macro_f1": 0.01,
+    "quality_margin_qa": 0.003,
+    "rule": "Validation-only: retain simple fixed sentence policy unless candidate is feasible, noninferior within preregistered margin and Pareto improves tokens; if no clear support retain simple baseline. No confirmation outcomes."
+  },
+  "split_protocol": "TRAIN_VAL_CONFIRM_v2",
+  "statistics": {
+    "accuracy_secondary": true,
+    "holm_scope": "all_datasets_budgets_prespecified_primary",
+    "p_value": "paired cluster label-swap randomization; two-sided; 10000 draws +1 correction",
+    "primary_metric": {
+      "HotpotQA": "f1",
+      "QASPER": "f1",
+      "SciFact": "macro_f1"
+    }
+  },
+  "tau_p": 5,
+  "tau_s": 5,
+  "training_data_policy": "ALL_ELIGIBLE_TRAIN",
+  "training_queries_per_dataset": null
+}
