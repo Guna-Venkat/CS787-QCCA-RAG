@@ -16,8 +16,13 @@ def assert_base_pin(cfg,checkpoint):
 def prepare(cfg,examples,system):
     if system not in ['SARA_CANONICAL_BM25_K5_N10','CANONICAL_RAG_BM25']:raise ValueError('Unqualified historical SFR variant cannot impersonate original SARA')
     if cfg['sara']['canonical_k']!=5 or cfg['sara']['canonical_n']!=10:raise ValueError('Canonical SARA is fixed BM25 k5/n10')
-    q={e['query_id'] for e in examples if e['dataset']=='QASPER'};path=ROOT/cfg['datasets']['QASPER']['path'];guard('QASPER','dev',path)
-    rows=[json.loads(l) for l in path.read_text().splitlines() if l.strip()];rows=[r for r in rows if str(r['id']) in q];assert len(rows)==len(q)
+    q={e['query_id'] for e in examples if e['dataset']=='QASPER'}
+    if cfg.get('split_protocol'):
+        rows=[dict(id=e['query_id'],example_id=e['paper_id'],question=e['question'],answer=e['evaluation']['gold_answer'],context=e['metadata']['canonical_context']) for e in examples if e['dataset']=='QASPER']
+    else:
+        path=ROOT/cfg['datasets']['QASPER']['path'];guard('QASPER','dev',path)
+        rows=[json.loads(l) for l in path.read_text().splitlines() if l.strip()];rows=[r for r in rows if str(r['id']) in q]
+    assert len(rows)==len(q)
     out=root(cfg)/'canonical_inputs';out.mkdir(parents=True,exist_ok=True)
     receipt=out/(system+'_preparation.json');input_hash=digest([rows,cfg['models']['SFR'],system])
     if receipt.exists():

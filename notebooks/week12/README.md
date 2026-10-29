@@ -1,66 +1,64 @@
-# Week 12 — QBGF development, safe execution guide
+# Week 12 — corrected TRAIN → VAL → confirmation protocol
 
-Open **week12_0_protocol_and_split_audit.ipynb**, then A, B, C, D, E, F, G, H, I. Every notebook supports Run All with its default smoke-only flags. Setup is derived before the cell that needs it.
+Active protocol: **v3** (`configs/week12/protocol.yaml`). Existing v1 results are historical development; v2 is a metadata-only superseded split audit. Neither contributes final method-selection outcomes. The original 50-query W11 cohort is **HISTORICAL_DEVELOPMENT / HYPOTHESIS_GENERATION**.
 
-**No full run is enabled by the implementation.** W12-C is development/validation, not confirmation. QASPER TEST is permanently blocked. Reserved Week13 confirmation candidates are never evaluated in Week12 and are not certified fresh until the historical-exposure audit is reviewed.
+| Dataset | All eligible TRAIN | Frozen VAL | Frozen CONFIRM |
+|---|---:|---:|---:|
+| QASPER | 2,178 | 1,005 | 0 |
+| HotpotQA | 90,447 | 7,155 | 200 |
+| SciFact | 531 | 177 | 50 |
 
-## What to change manually
+QASPER has no credible fresh confirmation pool: only 39 unused TRAIN questions on 30 papers remain outside the historical source-paper union. The prospectively specified requirement is 200 unused papers, giving at least 20 independent confirmation papers at 10%. QASPER TEST is permanently blocked. QASPER uses eligible official TRAIN and official validation for development only. HotpotQA/SciFact use group-disjoint held-out official DEV subsets because no official TEST scorer/labels are locally configured. No confirmation example was evaluated.
 
-| Notebook | Default | Manual action for real work |
-|---|---|---|
-| 0 | Metadata/split audit; no generation | Run All; inspect `results/week12/W12_SPLIT_AUDIT.md` |
-| A | Synthetic algorithm inspection | Optional `RUN_REAL_MODEL_SMOKE=True` for the same three development queries |
-| B | Synthetic checks + resources/inventory | Optional `RUN_REAL_MODEL_SMOKE=True`; `RUN_CANONICAL_SMOKE=True` qualifies one QASPER query per specialist |
-| C | Synthetic development surface | Set **`RUN_FULL=True`**; effective smoke is then disabled automatically. Includes separate canonical QASPER references after qualification. |
-| D | Synthetic ablations | Set **`RUN_FULL=True`** after C; no automatic winner promotion |
-| E | Qualification, no installation/download/full run | Requires official package and a pinned checkpoint revision before qualification. `ALLOW_LLMLINGUA_DOWNLOAD=False` remains default. Only after qualification set `RUN_LLMLINGUA_FULL=True`. |
-| F | Two-step random miniature-Qwen LoRA smoke | Prepare missing TRAIN files first, then set **`RUN_FULL_LORA_TRAIN=True`**. The notebook displays corpus counts/lengths/groups before the manually opted-in training starts. |
-| G | Synthetic 2×2 schema/pipeline check | Set **`RUN_FULL=True`** only after full LoRA training completes. Real 2×2 uses NF4 for BOTH base and LoRA. |
-| H | Synthetic saved-result analysis | Set `RUN_SMOKE=False` to analyze real development results; no generation |
-| I | Read analysis; final method unset | Set `RUN_SMOKE=False`, then supply `FINAL_METHOD`, `FINAL_REASON`, and optional `RETAIN_LORA`. Selection is manual and checked against the preregistered conservative rule. No confirmation evaluation. |
+TRAIN may reuse historical training data; historical QASPER validation papers are excluded from gradients. SciFact grouping joins shared cited documents across official TRAIN and DEV; Hotpot grouping joins normalized duplicate questions. A shared indexed background document is not equated with an exposed labeled question. See the exposure audit and frozen membership for precise exclusions.
 
-`RESUME=True` and `OVERWRITE=False` stay enabled. A validated query/action shard is reused without generation. Preparation resumes too. Failed unfinished rows are not considered complete. A changed scientific identity requires a new configured output version; it never overwrites old results.
+## Run All and manual flags
 
-## Terminal equivalents
+Every notebook defaults to synthetic smoke or metadata, **RUN_FULL=False**, **RESUME=True**, **OVERWRITE=False**. C/D/E/G use only frozen VAL; F uses TRAIN gradients and VAL checkpoint selection; H/I read saved VAL results. No notebook evaluates confirmation.
+
+1. `week12_0_protocol_and_split_audit.ipynb`: Run All. Inspect counts, exposure, group overlaps and QASPER status. No generation/training.
+2. `week12_A_qbgf_algorithm.ipynb`: algorithm/synthetic smoke. Optional `RUN_REAL_MODEL_SMOKE=True`: at most three VAL queries total.
+3. `week12_B_baseline_qualification.ipynb`: qualification/smoke only. Optional `RUN_CANONICAL_SMOKE=True` qualifies original adapted Mistral references on one QASPER VAL query each. Both remain separate specialist references.
+4. `week12_C_validation_surface.ipynb`: manually set **RUN_FULL=True** for the entire frozen VAL surface. Full canonical references require B qualification.
+5. `week12_D_qbgf_ablations.ipynb`: manually set **RUN_FULL=True**, VAL only.
+6. Optional E: LLMLingua remains **NOT_QUALIFIED** until official dependency + pinned model revision qualify. Full work requires **RUN_LLMLINGUA_FULL=True**. Downloads remain explicitly opt-in. Changing frozen scientific config requires a new output version.
+7. F: first inspect counts, available disk and workload. For real training set **RUN_TINY_LORA_SMOKE=False**, **RUN_FULL_LORA_TRAIN=True**. Corpus preparation resumes by source query. No 500-query cap. The notebook shows group, evidence-mode, sampling, token length and optimizer-step tables before training.
+8. `week12_G_lora_validation.ipynb`: after full training, manually set **RUN_FULL=True** for RAW_SKIP/QBGF × BASE_NF4/LORA_NF4 on VAL.
+9. `week12_H_validation_analysis.ipynb`: set **RUN_SMOKE=False** to read real VAL results. No generation.
+10. I: set **RUN_SMOKE=False**, supply **FINAL_METHOD**, **FINAL_REASON**, optional **RETAIN_LORA**. Paired conservative gates apply. Writes immutable final freeze; never evaluates confirmation.
+
+Changing RUN_FULL automatically disables effective synthetic smoke for C/D/G. Keep resume enabled. A changed scientific identity fails instead of overwriting completed rows. Complete checksum-validated query/action rows are reused.
+
+## LoRA policy
+
+All eligible TRAIN queries enter the pool, with exactly one deterministic evidence mode/budget per original TRAIN query: hash(seed,dataset,query_id) modulo the six RAW_SKIP/FIXED_SENTENCE/QBGF × 256/1024 conditions. VAL checkpoint examples use fixed QBGF-256. No oracle evidence is used.
+
+Dataset probability is 1/3 each; within a dataset sample uniformly with replacement. One epoch is 93,156 draws, so approximately 31,052 draws/dataset and 5,823 optimizer updates at accumulation 16. All queries are eligible; balanced replacement does **not** guarantee every unique Hotpot query is visited in one epoch. Planned and completed schedule contributions are recorded separately. Mixed accumulation steps can contain several datasets.
+
+Checkpoint objective: minimum equal-dataset mean query-mean answer NLL on frozen VAL; ties retain the earlier checkpoint. One epoch is the preregistered stopping rule. VAL task scores and SciFact format compliance are also saved. Both base and adapted G readers use identical NF4 precision/evidence. LoRA retention requires paired VAL support, not training loss.
+
+This is a much larger workload than v1. No full runtime or disk-feasibility claim follows from three-query smoke. About 18 GiB free was measured after data preparation; arrange additional cache/checkpoint capacity before full corpus preparation/training if needed.
+
+## Metadata and fresh checkout
+
+Full immutable IDs/groups are in `results/week12/W12_SPLIT_FREEZE.json` and the matching active protocol file. Lossless `.json.gz` copies are tracked to avoid committing 108 MiB raw JSON files. Restore with:
 
 ```bash
-# Bounded real model smoke: THREE development queries total
-sara_env/bin/python scripts/week12/run.py --phase B --real-smoke --limit 3
-
-# Manual development runs — do not run these for smoke qualification
-sara_env/bin/python scripts/week12/run.py --phase C --full --explicit
-sara_env/bin/python scripts/week12/run.py --phase D --full --explicit
-
-# Explicit data preparation, only if needed
+sara_env/bin/python scripts/week12/restore_metadata.py
+# Only when official TRAIN files are absent:
 sara_env/bin/python scripts/week12/prepare_training_data.py --download
-# Or provide existing official files:
-# ... --hotpot-path /path/train.json --scifact-path /path/claims_train.jsonl
-
-# Manual TRAIN/FIT preparation and full training, isolated from SFR GPU work
-sara_env/bin/python scripts/week12/run.py --phase F --full --explicit --prepare-corpus
-sara_env/bin/python scripts/week12/run.py --phase F --full --explicit --train
-sara_env/bin/python scripts/week12/run.py --phase G --full --explicit
 ```
 
-Canonical QASPER specialists use their own Mistral checkpoints, original BM25 top10/chunk256 interface and 64-token greedy answer cap. They are side-by-side references, not matched public-Qwen competitors. SARA is k5/n10; k6/SFR variants remain unavailable until historical pool parity is established. No “QBGF beats SARA” claim is supported merely by the combined table.
+Sources are pinned by exact content SHA-256 (including Arrow files and dataset metadata), not by a mutable dataset name alone. Repeated notebook 0 execution reads the existing freeze and verifies hashes; it never resplits after outcomes. A changed split/config requires a new version.
 
-## Estimated manual workload
+## Week 13 — after final freeze only
 
-Frozen development cohort: 50 queries each for QASPER/HotpotQA/SciFact.
+1. Finish all desired VAL experiments, review H, freeze the final method/LoRA decision in I.
+2. Run the readiness-only command (no generation):
+   `sara_env/bin/python scripts/week13/run_confirmation.py`
+3. Only after review, the user manually runs:
+   `sara_env/bin/python scripts/week13/run_confirmation.py --full --explicit`
+4. One frozen confirmation campaign, resuming unfinished shards only; no tuning or configuration edits afterward. All applicable methods see identical frozen confirmation IDs. QASPER has no confirmation rows; historical QASPER TEST is never rerun.
+5. Analyze saved confirmation results with dataset-specific metrics, paired grouped bootstrap and the frozen primary family. Do not mix VAL and CONFIRM or compare specialist SARA as a controlled Qwen ablation.
 
-- C: 2,400 logical rows, including natural top10 SFR/BM25 Qwen references; canonical Mistral references add 100 QASPER rows.
-- D: 2,100 rows, including 300 QBGF-FULL rows shared with C; compatible answers reuse the generation cache.
-- E: optional 300 rows if LLMLingua-2 qualifies.
-- G: optional 1,200 NF4 rows for the matched LoRA 2×2.
-- H/I: saved-result analysis only.
-- Training cap: up to 500 TRAIN queries per dataset and six deterministic evidence/budget conditions per query, subject to actual disjoint-data availability. This is not a confirmed corpus size; F displays actual counts before training.
-
-These are logical policy rows, not independent questions or a promised number of physical model calls. Baseline generation and compatible cache reuse affect physical counts. No serving-latency claim is made.
-
-## Scientific safeguards
-
-QBGF optimizes a relevance surrogate under additive token-ID block costs, including source separators. The generator consumes those exact IDs, rather than retokenizing concatenated blocks. All prospective matched text policies use this serialization. RAW_STRICT is a separately labelled historical whole-text control reproducing W11's strict-prefix allocation on the fixed W12 pool; RAW_SKIP and fixed sentences are prospective fairer controls.
-
-Fixed sentences use skip-to-fit. C2 retains the top-eight cap and H3 its first-three-passage sentence/remaining-clause ordering; both are new-protocol ports, not direct reuse of old W11 scores. NONE and natural references keep their own explicit scope. NO_QUERY removes query-dependent allocation weights and sentence ordering inside the same query-retrieved pool; it does not remove query-dependent retrieval. NO_MASS uses uniform k/m sentence coverage while retaining query-ranked source selection. QBGF-BM25 changes retrieval AND relevance scoring and is secondary sensitivity analysis.
-
-The 39-member primary statistical family is frozen across all three datasets and both budgets, including optional arms. Unavailable hypotheses are pending; p=1 is used internally for conservative Holm multiplicity accounting, never presented as an observed test. SciFact primary utility is macro-F1, recomputed in each cluster bootstrap; accuracy and query-level correct/incorrect HELP/HURT are separate. Strict label parsing trims whitespace only and never repairs explanations.
+Full flags remain disabled. The agent has run tests and bounded smoke only.

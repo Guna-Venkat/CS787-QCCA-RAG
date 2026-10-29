@@ -177,12 +177,12 @@ class AdditionalSafetyTests(unittest.TestCase):
  def test_comparison_ids_unique(self):
   r=registry(load(),True,True);self.assertEqual(len(r),len({s['id'] for s in r}))
  def test_fixed_cohort_has_no_query_overlap(self):
-  c=load();p=ROOT/c['output_root']/'protocol/cohorts.json'
+  c=load(ROOT/'configs/week12/protocol_v1.yaml');p=ROOT/c['output_root']/'protocol/cohorts.json'
   if not p.exists():self.skipTest('Run notebook 0 first')
   x=json.loads(p.read_text())
   for d in c['datasets']:self.assertFalse({v['question_hash'] for v in x['development'][d]} & {v['question_hash'] for v in x['confirmation'][d]})
  def test_confirmation_reservation_is_not_evaluation_authority(self):
-  c=load();p=ROOT/c['output_root']/'protocol/W12_CONFIRMATION_FREEZE.json'
+  c=load(ROOT/'configs/week12/protocol_v1.yaml');p=ROOT/c['output_root']/'protocol/W12_CONFIRMATION_FREEZE.json'
   if not p.exists():self.skipTest('Run notebook 0 first')
   x=json.loads(p.read_text());self.assertFalse(x['confirmation_evaluation_enabled']);self.assertEqual(x['history_status'],'REVIEW_REQUIRED');self.assertEqual(x['ids_hash'],digest(x['ids']))
  def test_pinned_encoder_reader(self):

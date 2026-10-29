@@ -14,6 +14,9 @@ def fixture_examples():
     return [qa,next(e for e in xs if e['dataset']=='HotpotQA'),next(e for e in xs if e['dataset']=='SciFact')]
 def examples(cfg,synthetic=False,limit=None):
     if synthetic:return fixture_examples()[:limit or 3]
+    if limit and cfg.get('split_protocol'):
+        from .splits import load_examples
+        return load_examples(cfg,'VAL',per_dataset_limit=1)[:limit]
     from .data import development_examples
     xs=development_examples(cfg)
     if limit:
@@ -23,7 +26,7 @@ def examples(cfg,synthetic=False,limit=None):
 
 def directory(cfg,phase,synthetic=False,real_smoke=False):
     ident=identity(cfg)
-    return root(cfg)/('smoke/synthetic/'+ident['code_hash'][:12] if synthetic else 'smoke/real/'+ident['code_hash'][:12] if real_smoke else 'development')/phase
+    return root(cfg)/('smoke/synthetic/'+ident['code_hash'][:12] if synthetic else 'smoke/real/'+ident['code_hash'][:12] if real_smoke else ('validation' if cfg.get('split_protocol') else 'development'))/phase
 
 def phase_methods(phase):return ABLATIONS if phase=='D' else ['LLMLINGUA2'] if phase=='E' else ['RAW_SKIP','QBGF_FULL'] if phase=='G' else MAIN
 
@@ -83,7 +86,7 @@ def evaluate_result(cfg,e,sel,result,baseline):
     from src.week11.evaluation import evidence_metrics
     evmetrics=evidence_metrics(sel['units'],e) if sel['source_support'] is not None else dict(any_gold_recall=None,all_gold_recall=None,evidence_coverage=None,gold_annotation_count=None,unmapped_gold=None)
     raw=result.get('raw_prediction',result['prediction']);base=baseline or dict(score=metrics['task_score'],prediction=result['prediction'])
-    return dict(dataset=e['dataset'],query_id=e['query_id'],paper_id=e['paper_id'],cluster_id=e['cluster_id'],split='development',answer_type=e['evaluation'].get('answer_type','unknown'),method=sel['method'],budget=sel['budget'],prediction=result['prediction'],raw_prediction=raw,gold=e['evaluation']['gold_label'] if e['task_type']=='verification' else e['evaluation']['gold_answer'],**metrics,**behavioral(metrics['task_score'],base['score'],e['task_type']=='verification',cfg['help_epsilon']),answer_changed=result['prediction']!=base['prediction'],format_compliant=result['prediction'] in cfg['labels'] if e['task_type']=='verification' else None,evidence_tokens=sel['evidence_tokens'],unused_budget=sel['unused_budget'],budget_utilization=sel['evidence_tokens']/sel['budget'] if isinstance(sel['budget'],int) and sel['budget'] else None,compression_ratio=compression(sel['evidence_tokens'],sel['raw_reference_tokens']),compression_reference='complete frozen retrieved top10 source pool under additive block serialization',selected_unit_ids=sel['selected_unit_ids'],choices=sel['choices'],evidence_hash=sel['evidence_hash'],source_hash=sel['lineage']['source_hash'],candidate_ids=sel['lineage']['candidate_ids'],candidate_content_hashes=sel['lineage']['candidate_content_hashes'],source_support=sel['source_support'],preparation_seconds=sel['lineage'].get('preparation_seconds'),selection_seconds=sel.get('selection_seconds'),compression_seconds=sel.get('compression_seconds'),embedding_original_compute_seconds=sel['lineage'].get('embedding_original_compute_seconds'),embedding_lookup_compute_seconds=sel['lineage'].get('embedding_lookup_compute_seconds'),**evmetrics,end_to_end_latency=None,num_lm_calls=1,cumulative_prompt_tokens=result['prompt_tokens'],**{k:v for k,v in result.items() if k not in ('prediction','raw_prediction')})
+    return dict(dataset=e['dataset'],query_id=e['query_id'],paper_id=e['paper_id'],cluster_id=e['cluster_id'],split='VALIDATION' if cfg.get('split_protocol') else 'development',answer_type=e['evaluation'].get('answer_type','unknown'),method=sel['method'],budget=sel['budget'],prediction=result['prediction'],raw_prediction=raw,gold=e['evaluation']['gold_label'] if e['task_type']=='verification' else e['evaluation']['gold_answer'],**metrics,**behavioral(metrics['task_score'],base['score'],e['task_type']=='verification',cfg['help_epsilon']),answer_changed=result['prediction']!=base['prediction'],format_compliant=result['prediction'] in cfg['labels'] if e['task_type']=='verification' else None,evidence_tokens=sel['evidence_tokens'],unused_budget=sel['unused_budget'],budget_utilization=sel['evidence_tokens']/sel['budget'] if isinstance(sel['budget'],int) and sel['budget'] else None,compression_ratio=compression(sel['evidence_tokens'],sel['raw_reference_tokens']),compression_reference='complete frozen retrieved top10 source pool under additive block serialization',selected_unit_ids=sel['selected_unit_ids'],choices=sel['choices'],evidence_hash=sel['evidence_hash'],source_hash=sel['lineage']['source_hash'],candidate_ids=sel['lineage']['candidate_ids'],candidate_content_hashes=sel['lineage']['candidate_content_hashes'],source_support=sel['source_support'],preparation_seconds=sel['lineage'].get('preparation_seconds'),selection_seconds=sel.get('selection_seconds'),compression_seconds=sel.get('compression_seconds'),embedding_original_compute_seconds=sel['lineage'].get('embedding_original_compute_seconds'),embedding_lookup_compute_seconds=sel['lineage'].get('embedding_lookup_compute_seconds'),**evmetrics,end_to_end_latency=None,num_lm_calls=1,cumulative_prompt_tokens=result['prompt_tokens'],**{k:v for k,v in result.items() if k not in ('prediction','raw_prediction')})
 
 def generate(cfg,phase,synthetic=False,real_smoke=False):
     from .reader import Reader

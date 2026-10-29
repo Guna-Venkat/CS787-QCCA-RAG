@@ -2,7 +2,7 @@
 from pathlib import Path
 import nbformat as nb
 ROOT=Path(__file__).resolve().parents[2]
-NAMES={'0':'protocol_and_split_audit','A':'qbgf_algorithm','B':'baseline_qualification','C':'fixed_policy_development','D':'qbgf_ablations','E':'llmlingua2','F':'lora_training','G':'lora_ablation','H':'analysis','I':'week13_freeze'}
+NAMES={'0':'protocol_and_split_audit','A':'qbgf_algorithm','B':'baseline_qualification','C':'validation_surface','D':'qbgf_ablations','E':'llmlingua2','F':'lora_training','G':'lora_validation','H':'validation_analysis','I':'week13_freeze'}
 IMPORTS="""from pathlib import Path
 import sys, json, subprocess
 import pandas as pd
@@ -23,17 +23,18 @@ def main():
  out=ROOT/'notebooks/week12';out.mkdir(parents=True,exist_ok=True)
  for phase,title in NAMES.items():
   flags='RUN_SMOKE = True\nRUN_FULL = False\nRESUME = True\nOVERWRITE = False\nSMOKE_LIMIT = 3\nRUN_REAL_MODEL_SMOKE = False\nRUN_CANONICAL_SMOKE = False\nALLOW_LLMLINGUA_DOWNLOAD = False\nRUN_LLMLINGUA_SMOKE = True\nRUN_LLMLINGUA_FULL = False\nRUN_TINY_LORA_SMOKE = True\nRUN_FULL_LORA_TRAIN = False\nFINAL_METHOD = None\nFINAL_REASON = None\nRETAIN_LORA = False\n'
-  intro=f'# Week12 {phase} — {title.replace("_"," ")}\n\nRun All is safe by default: synthetic smoke or read-only metadata. Full work requires changing the FLAGS cell yourself. The agent has not enabled full runs. Completed checksummed rows resume automatically; a changed scientific identity fails instead of overwriting. QASPER TEST and all Week13 confirmation outcomes are blocked.\n\nW12-C is DEVELOPMENT/VALIDATION, not prospective confirmation. W12-I freezes the reviewed method; Week13 is the future locked evaluation. No outcome from reserved confirmation may inform selection.\n'
+  intro=f'# Week12 {phase} — {title.replace("_"," ")}\n\nRun All is safe by default: synthetic smoke or read-only metadata. Full work requires changing the FLAGS cell yourself. The agent has not enabled full runs. Completed checksummed rows resume automatically; a changed scientific identity fails instead of overwriting. QASPER TEST and all Week13 confirmation outcomes are blocked.\n\nW12-C uses the full frozen VALIDATION split. The historical W11 pilot is hypothesis generation only. W12-I freezes the reviewed method; Week13 is the future locked evaluation. No outcome from reserved confirmation may inform selection.\n'
   cells=[nb.v4.new_markdown_cell(intro),nb.v4.new_code_cell(flags),nb.v4.new_code_cell(IMPORTS)]
   if phase=='0':body="""from src.week12.data import audit
-from src.week12.qualification import resources, inventory
-from src.week12.statistics import registry
-cohorts=audit(cfg)
-display(pd.DataFrame(inventory(cfg)))
-display(pd.DataFrame(registry(cfg,llm=True,lora=True)))
-display(pd.DataFrame([{'dataset':d,'development':len(cohorts['development'][d]),'reserved_candidate_confirmation':len(cohorts['confirmation'][d]),'history_status':'REVIEW_REQUIRED'} for d in cfg['datasets']]))
-display(resources(cfg))
-display(Markdown((ROOT/'results/week12/W12_SPLIT_AUDIT.md').read_text()))
+from src.week12.splits import read_freeze
+freeze=audit(cfg)
+summary=json.loads((root(cfg)/'protocol/split_summary.json').read_text())
+display(pd.DataFrame(summary['counts']))
+display(pd.DataFrame(summary['official_counts']))
+display(summary['overlap_matrix'])
+print('QASPER_FRESH_CONFIRMATION_AVAILABLE =',summary['QASPER_FRESH_CONFIRMATION_AVAILABLE'])
+print('W11 cohort: HISTORICAL_DEVELOPMENT / HYPOTHESIS_GENERATION')
+display(Markdown((ROOT/'results/week12/W12_DATA_EXPOSURE_AUDIT.md').read_text()))
 """
   elif phase=='E':body="""from src.week12.qualification import qualify_llm
 qualification=qualify_llm(cfg,allow_download=ALLOW_LLMLINGUA_DOWNLOAD,smoke=RUN_LLMLINGUA_SMOKE)
@@ -46,9 +47,11 @@ else: print('No full LLMLingua experiment requested.')
 """
   elif phase=='F':body="""from src.week12.lora import tiny_smoke
 from src.week12.protocol import atomic
-print('Training inputs and split groups:', root(cfg)/'protocol/cohorts.json')
-cohort_path=root(cfg)/'protocol/cohorts.json'
-if cohort_path.exists(): display(json.loads(cohort_path.read_text())['training'])
+from src.week12.splits import read_freeze
+frozen=read_freeze(cfg)
+counts=[{'dataset':d,'TRAIN':len(p['TRAIN']),'VAL':len(p['VAL']),'CONFIRM':len(p['CONFIRM']),'TRAIN_groups':len({r['group'] for r in p['TRAIN']}),'sampling_probability':1/len(cfg['datasets'])} for d,p in frozen['datasets'].items()]
+display(pd.DataFrame(counts))
+print('ALL eligible TRAIN queries; one deterministic evidence condition/query. VAL is never used for gradients.')
 if RUN_TINY_LORA_SMOKE: display(tiny_smoke(cfg))
 if RUN_FULL_LORA_TRAIN:
     command=[str(ROOT/'sara_env/bin/python'),str(ROOT/'scripts/week12/run.py'),'--phase','F','--full','--explicit']
@@ -58,7 +61,8 @@ if RUN_FULL_LORA_TRAIN:
     display(panel.groupby(['dataset','partition','mode','budget']).tokens.agg(['count','mean','max']))
     display(panel[['dataset','partition','target']].value_counts().head(30))
     display(panel.groupby(['dataset','partition']).cluster_id.nunique())
-    print('The displayed corpus is TRAIN/FIT only; confirmation and development groups excluded. Starting manually opted-in training.')
+    display(json.loads((root(cfg)/'lora/corpus/training_plan.json').read_text()))
+    print('Gradients: TRAIN only. Checkpoint selection: frozen VAL only. Starting manually opted-in training.')
     subprocess.run(command+['--train'],cwd=ROOT,check=True)
 else: print('Full LoRA training disabled. Tiny smoke uses random miniature Qwen, not the real reader.')
 """

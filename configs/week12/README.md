@@ -1,14 +1,13 @@
-# Frozen Week12 design
+# Active Week12 protocol — v3
 
-See `protocol.yaml`, `notebooks/week12/README.md`, and the implementation report under `results/week12/`.
+`protocol.yaml` implements TRAIN → VAL → frozen confirmation. v1 is historical development; v2 is a superseded metadata-only split audit. See the active notebook guide and `results/week12/W12_CORRECTED_PROTOCOL_REPORT.md`.
 
-- Primary reader: pinned Qwen3-8B FP16; SFR pinned from W11.
-- N=10; tau_p=tau_s=5; budgets 256/1024.
-- NO_QUERY: uniform passage weights, uniform sentence mass, source-order sentence choices; upstream query-dependent retrieval held fixed.
-- NO_MASS: R_i * min(k,m_i)/m_i; query-ranked sentence choices unchanged.
-- Greedy: deterministic feasible marginal utility/token upgrades; no fitted controller.
-- Source/cost ties: unit source order then stable ID; DP ties at 1e-12 prefer fewer tokens then lexicographic option indices. Equivalent sentence k values are deduplicated.
-- Exact DP objective is the additive relevance surrogate. It does not optimize true F1 or model factual support.
-- Final selection defaults to fixed semantic sentences. Non-simple candidates must pass the documented conservative paired noninferiority/token admissibility checks over all six dataset/budget cells; smoke cannot freeze a winner. This may remain inconclusive on 50-query cells.
-- LoRA is NF4 QLoRA with a matched BASE_NF4 control, not a causal comparison against the FP16 main surface.
-- Candidate confirmation reservations have `history_status=REVIEW_REQUIRED`. No Week12 entrypoint evaluates confirmation data. Unknown historical exposure remains a blocker for Week13.
+- All eligible frozen TRAIN examples; no final 500-query cap. One deterministic evidence mode/budget per source query; equal dataset sampling probability.
+- Full frozen VAL replaces the W11 50-query pilot for C/D/E/G/H/I and checkpoint selection. W11 remains hypothesis generation only.
+- QASPER TEST permanently blocked. No credible fresh QASPER confirmation is available. HotpotQA/SciFact confirmation is reserved before any v3 training or validation outcome and excluded from all Week12 scoring/gradients.
+- Dataset versions are content-addressed by SHA-256. Membership and group hashes are immutable; changing a scientific configuration requires a new version.
+- Pinned Qwen3-8B FP16/SFR; N=10; tau_p=tau_s=5; primary budgets 256/1024. Secondary 512 is declared only, not silently added to primary surfaces.
+- QBGF is exact multiple-choice knapsack over additive Qwen token-ID costs and relevance mass, not downstream oracle F1. Source order and exact spans are preserved. RAW_SKIP and strong fixed sentence controls remain mandatory.
+- NO_QUERY removes allocation conditioning within the same query-retrieved pool. NO_MASS uses uniform k/m coverage but retains query ranking. BM25 is a secondary retrieval-plus-relevance sensitivity.
+- LoRA checkpoint selection minimizes equal-dataset mean VAL answer NLL, with task metrics/compliance recorded; one epoch, no confirmation access. G uses matched NF4 base/adapted readers and identical evidence.
+- Final method/LoRA retention uses paired VAL evidence, token admissibility and simplicity. No full run or final method freeze was produced by the agent. Week13 execution remains blocked until I creates the final immutable freeze.

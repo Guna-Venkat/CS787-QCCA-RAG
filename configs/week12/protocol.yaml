@@ -1,6 +1,6 @@
-schema: W12-QBGF-v1
-output_root: results/week12/qbgf/v1
-cache_root: results/week12/cache/v1
+schema: W12-QBGF-v3
+output_root: results/week12/qbgf/v3
+cache_root: results/week12/cache/v3
 seed: 42
 candidate_width: 10
 budgets:
@@ -54,9 +54,8 @@ datasets:
 confirmation_counts:
   QASPER: 100
   HotpotQA: 200
-  SciFact: 100
-development_queries_per_dataset: 50
-training_queries_per_dataset: 500
+  SciFact: 50
+training_queries_per_dataset: null
 allow_download: false
 generation:
   max_new_tokens_qa: 128
@@ -105,6 +104,11 @@ lora:
   - QBGF_FULL
   resume: true
   overwrite: false
+  evidence_mode_sampling: one deterministic mode-budget per source query; sha256(seed,dataset,query_id)
+    modulo six
+  checkpoint_objective: dataset-balanced validation answer NLL; minimize; ties earliest
+    checkpoint
+  load_best_model_at_end: true
 sara:
   checkpoint: Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42
   canonical_label: SARA_CANONICAL_BM25_K5_N10
@@ -117,3 +121,9 @@ selection_rule:
   rule: 'Validation-only: retain simple fixed sentence policy unless candidate is
     feasible, noninferior within preregistered margin and Pareto improves tokens;
     if no clear support retain simple baseline. No confirmation outcomes.'
+split_protocol: TRAIN_VAL_CONFIRM_v2
+training_data_policy: ALL_ELIGIBLE_TRAIN
+secondary_budgets:
+- 512
+minimum_qasper_unused_papers: 200
+minimum_qasper_confirm_papers: 20

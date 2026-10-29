@@ -26,6 +26,9 @@ def training_groups(examples,dataset):
     return examples
 
 def corpus_sources(cfg):
+    if cfg.get('split_protocol'):
+        from .splits import load_examples
+        return [dict(example=e,partition='train' if role=='TRAIN' else 'validation') for role in ('TRAIN','VAL') for e in load_examples(cfg,role)]
     from .data import development_examples,qhash
     from src.week11.datasets import hotpot,scifact,read_jsonl
     from src.week11.qasper_adapter import load as qload
@@ -65,6 +68,9 @@ def corpus_sources(cfg):
     return records
 
 def prepare_corpus(cfg):
+    if cfg.get('split_protocol'):
+        from .training_v2 import prepare_corpus as prepare
+        return prepare(cfg)
     from transformers import AutoTokenizer
     from .laboratory import Lab
     from .algorithm import choose,validate_spans
@@ -95,8 +101,13 @@ def train(cfg,explicit=False):
     from transformers import AutoModelForCausalLM,AutoTokenizer,BitsAndBytesConfig,Trainer,TrainingArguments
     from transformers.trainer_utils import get_last_checkpoint
     from peft import prepare_model_for_kbit_training,get_peft_model,LoraConfig
+    torch.manual_seed(cfg['seed'])
+    if torch.cuda.is_available():torch.cuda.manual_seed_all(cfg['seed'])
     rows=json.loads((root(cfg)/'lora/corpus/rows.json').read_text());train_rows=[r for r in rows if r['partition']=='train'];val_rows=[r for r in rows if r['partition']=='validation']
     assert not {(r['dataset'],r['cluster_id']) for r in train_rows}&{(r['dataset'],r['cluster_id']) for r in val_rows}
+    if cfg.get('split_protocol'):
+        from .training_v2 import validate_rows
+        validate_rows(cfg,rows)
     out=root(cfg)/'lora';ident=identity(cfg,dict(corpus_hash=digest(rows),reader_precision='NF4 both base and adapted in 2x2'));immutable(out/'train_identity.json',ident)
     if (out/'complete.json').exists():return json.loads((out/'complete.json').read_text())
     spec=cfg['models']['Qwen'];quant=BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type='nf4',bnb_4bit_compute_dtype=torch.bfloat16,bnb_4bit_use_double_quant=True)
@@ -108,8 +119,21 @@ def train(cfg,explicit=False):
     class BalancedTrainer(Trainer):
         def get_train_dataloader(self):
             from collections import Counter
-            counts=Counter(x['dataset'] for x in train_rows);weights=[1/counts[x['dataset']] for x in train_rows]
-            sampler=torch.utils.data.WeightedRandomSampler(weights,len(weights),generator=torch.Generator().manual_seed(cfg['seed']))
+            from .training_v2 import balancing
+            indices,plan=balancing(train_rows,cfg['lora']['gradient_accumulation_steps'],cfg['seed'])
+            atomic(out/'sampling_plan.json',plan)
+            sampler=indices
             return self.accelerator.prepare(torch.utils.data.DataLoader(train_rows,batch_size=self.args.per_device_train_batch_size,sampler=sampler,collate_fn=collate))
-    args=TrainingArguments(output_dir=str(out/'checkpoints'),num_train_epochs=cfg['lora']['epochs'],per_device_train_batch_size=cfg['lora']['batch_size'],per_device_eval_batch_size=1,gradient_accumulation_steps=cfg['lora']['gradient_accumulation_steps'],learning_rate=cfg['lora']['learning_rate'],eval_strategy='epoch',save_strategy='steps',save_steps=100,save_total_limit=2,logging_steps=10,bf16=True,gradient_checkpointing=True,report_to=[],remove_unused_columns=False,seed=cfg['seed'],data_seed=cfg['seed'])
-    trainer=BalancedTrainer(model=model,args=args,train_dataset=train_rows,eval_dataset=val_rows,data_collator=collate);last=get_last_checkpoint(str(out/'checkpoints')) if (out/'checkpoints').exists() else None;trainer.train(resume_from_checkpoint=last);trainer.save_model(str(out/'adapter'));tok.save_pretrained(out/'adapter');result=dict(complete=True,identity_hash=digest(ident),adapter_hash=digest({p.name:sha(p) for p in (out/'adapter').glob('*') if p.is_file()}));immutable(out/'complete.json',result);return result
+        def evaluate(self,eval_dataset=None,ignore_keys=None,metric_key_prefix='eval'):
+            if not cfg.get('split_protocol'):return super().evaluate(eval_dataset,ignore_keys,metric_key_prefix)
+            from .training_v2 import validation_metrics
+            result=validation_metrics(self.model,tok,val_rows,cfg)
+            atomic(out/'validation_metrics'/('step_'+str(self.state.global_step)+'.json'),dict(step=self.state.global_step,**result))
+            metrics={'eval_loss':result['eval_loss']};self.log(metrics);self.control=self.callback_handler.on_evaluate(self.args,self.state,self.control,metrics);return metrics
+    args=TrainingArguments(output_dir=str(out/'checkpoints'),num_train_epochs=cfg['lora']['epochs'],per_device_train_batch_size=cfg['lora']['batch_size'],per_device_eval_batch_size=1,gradient_accumulation_steps=cfg['lora']['gradient_accumulation_steps'],learning_rate=cfg['lora']['learning_rate'],eval_strategy='epoch',save_strategy='epoch',load_best_model_at_end=True,metric_for_best_model='eval_loss',greater_is_better=False,save_total_limit=2,logging_steps=10,bf16=True,gradient_checkpointing=True,report_to=[],remove_unused_columns=False,seed=cfg['seed'],data_seed=cfg['seed'])
+    trainer=BalancedTrainer(model=model,args=args,train_dataset=train_rows,eval_dataset=val_rows,data_collator=collate);last=get_last_checkpoint(str(out/'checkpoints')) if (out/'checkpoints').exists() else None;trainer.train(resume_from_checkpoint=last);trainer.save_model(str(out/'adapter'));tok.save_pretrained(out/'adapter');atomic(out/'training_history.json',dict(log_history=trainer.state.log_history,chosen_checkpoint=trainer.state.best_model_checkpoint,objective=cfg['lora'].get('checkpoint_objective'),stopping_criterion='fixed one epoch; no confirmation access',completed_optimizer_steps=trainer.state.global_step))
+    if cfg.get('split_protocol'):
+        from .training_v2 import balancing
+        _,plan=balancing(train_rows,cfg['lora']['gradient_accumulation_steps'],cfg['seed']);plan.update(completed=True,completed_optimizer_steps=trainer.state.global_step,epochs_completed=trainer.state.epoch,counts_status='Completed fixed one-epoch deterministic balanced schedule; dataset update counts may overlap for mixed accumulation steps')
+        atomic(out/'sampling_actual.json',plan)
+    result=dict(complete=True,identity_hash=digest(ident),adapter_hash=digest({p.name:sha(p) for p in (out/'adapter').glob('*') if p.is_file()}));immutable(out/'complete.json',result);return result

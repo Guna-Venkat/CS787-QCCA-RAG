@@ -8,8 +8,12 @@ from .protocol import ROOT,root,Store,identity,immutable,atomic,digest,sha,utc
 from .statistics import metric,paired,registry,holm,pareto,components,reduce
 
 def read_rows(cfg,synthetic=False):
-    prefix=root(cfg)/'smoke/synthetic'/identity(cfg)['code_hash'][:12] if synthetic else root(cfg)/'development';rows=[]
+    prefix=root(cfg)/'smoke/synthetic'/identity(cfg)['code_hash'][:12] if synthetic else root(cfg)/('validation' if cfg.get('split_protocol') else 'development');rows=[]
     for p in prefix.glob('*/rows/identity.json'):rows+=Store(p.parent,json.loads(p.read_text())).rows()
+    if not synthetic and cfg.get('split_protocol'):
+        from .protocol import cohort
+        allowed={d:{v['query_id'] for v in ids} for d,ids in cohort(cfg).items()}
+        if any(r['query_id'] not in allowed[r['dataset']] or r.get('split')!='VALIDATION' for r in rows):raise ValueError('Analysis accepts frozen VAL rows only, never confirmation or historical pilot rows')
     dedup={}
     for r in rows:
         k=(r['dataset'],r['query_id'],r['method'],str(r['budget']),r['reader']);old=dedup.get(k)
@@ -37,10 +41,11 @@ def analyze(cfg,synthetic=False):
         name=cfg['statistics']['primary_metric'][dataset];summaries.append(dict(dataset=dataset,method=method,budget=budget,reader=reader,n_queries=len(g),quality=metric(g,name),metric=name,accuracy=metric(g,'accuracy') if dataset=='SciFact' else None,HELP=np.mean([r['HELP'] for r in g]),HURT=np.mean([r['HURT'] for r in g]),NEUTRAL=np.mean([r['NEUTRAL'] for r in g]),answer_changed=np.mean([r['answer_changed'] for r in g]),evidence_tokens=np.mean([r['evidence_tokens'] for r in g]),prompt_tokens=np.mean([r['prompt_tokens'] for r in g]),unused_budget=np.mean([r['unused_budget'] for r in g if r['unused_budget'] is not None]) if any(r['unused_budget'] is not None for r in g) else None,budget_utilization=np.mean([r['budget_utilization'] for r in g if r['budget_utilization'] is not None]) if any(r['budget_utilization'] is not None for r in g) else None,generated_tokens=np.mean([r['generated_tokens'] for r in g]),conceptual_lm_calls=1,compression_ratio=np.mean([r['compression_ratio'] for r in g if r['compression_ratio'] is not None]) if any(r['compression_ratio'] is not None for r in g) else None,format_compliance=np.mean([r['format_compliant'] for r in g]) if dataset=='SciFact' else None,invalid_outputs=sum(r['prediction']=='INVALID_OUTPUT' for r in g),synthetic=synthetic))
     frame=pd.DataFrame(summaries);frame.to_csv(folder/'summary.csv',index=False)
     specs=registry(cfg,llm=True,lora=True);immutable(root(cfg)/'protocol'/'primary_comparisons.json',specs);comparisons=[];raw=[]
-    expected=1 if synthetic else cfg['development_queries_per_dataset']
+    from .protocol import cohort
+    expected={d:1 for d in cfg['datasets']} if synthetic else {d:len(v) for d,v in cohort(cfg).items()}
     for spec in specs:
         a=groups.get((spec['dataset'],spec['left'],str(spec['budget']),spec['reader']),[]);b=groups.get((spec['dataset'],spec['right'],str(spec['budget']),spec.get('right_reader',spec['reader'])),[])
-        ok=len(a)==len(b)==expected
+        ok=len(a)==len(b)==expected[spec['dataset']]
         if ok:result=paired(a,b,spec['metric'],cfg['bootstrap_resamples'],cfg['seed']);raw.append(result['raw_p']);comparisons.append(dict(spec,status='COMPLETE',**result))
         else:raw.append(1.);comparisons.append(dict(spec,status='PENDING_INCOMPLETE_OR_UNQUALIFIED',raw_p=None,point=None,ci_low=None,ci_high=None))
     adjusted=holm(raw)
@@ -67,7 +72,7 @@ def analyze(cfg,synthetic=False):
     for dataset in cfg['datasets']:
         for budget in cfg['budgets']:
             cells=[groups.get((dataset,mode,str(budget),reader),[]) for mode,reader in [('QBGF_FULL','LORA_NF4'),('QBGF_FULL','BASE_NF4'),('RAW_SKIP','LORA_NF4'),('RAW_SKIP','BASE_NF4')]]
-            if all(len(c)==expected for c in cells):
+            if all(len(c)==expected[dataset] for c in cells):
                 values=[metric(c,cfg['statistics']['primary_metric'][dataset]) for c in cells]
                 lora.append(dict(dataset=dataset,budget=budget,selection_effect=values[1]-values[3],adaptation_RAW=values[2]-values[3],adaptation_QBGF=values[0]-values[1],combined=values[0]-values[3],interaction=values[0]-values[1]-values[2]+values[3],**{'interaction_'+k:v for k,v in interaction(cells,cfg['statistics']['primary_metric'][dataset],cfg['bootstrap_resamples']).items()}))
     pd.DataFrame(lora).to_csv(folder/'lora_decomposition.csv',index=False)
@@ -121,18 +126,24 @@ def freeze_final(cfg,method,reason,retain_lora=False):
     if method is None:return dict(status='REVIEW_REQUIRED',reason='No automatic winner selection. Supply method and evidence-based rationale after development analysis.')
     if method not in ['QBGF_FULL','FIXED_SENTENCE','C2','H3','RAW_SKIP']:raise ValueError('Unsupported final policy')
     if not reason:raise ValueError('Explicit review rationale required')
-    if not (root(cfg)/'development/C/status.json').exists():raise ValueError('Full development results required, never freeze synthetic smoke')
-    s=json.loads((root(cfg)/'development/C/status.json').read_text());assert s['complete'] and s['full_generation']
+    base=root(cfg)/('validation' if cfg.get('split_protocol') else 'development')
+    if not (base/'C/status.json').exists():raise ValueError('Full development results required, never freeze synthetic smoke')
+    s=json.loads((base/'C/status.json').read_text());assert s['complete'] and s['full_generation']
     if retain_lora and method!='QBGF_FULL':raise ValueError('Only the registered QBGF LoRA policy has a matched 2x2 evaluation')
     if retain_lora and not (root(cfg)/'lora/complete.json').exists():raise ValueError('Cannot retain untrained LoRA')
     groups={}
     for r in read_rows(cfg,False):groups.setdefault((r['dataset'],r['method'],str(r['budget']),r['reader']),[]).append(r)
+    from .protocol import cohort
+    expected_ids={d:{r['query_id'] for r in rows} for d,rows in cohort(cfg).items()}
+    for d,ids in expected_ids.items():
+        for b in cfg['budgets']:
+            if {r['query_id'] for r in groups.get((d,method,str(b),'BASE_FP16'),[])}!=ids:raise ValueError('Final selection requires the entire frozen VAL split, including for the simple baseline')
     decision=[];any_cost_gain=False
     if method!='FIXED_SENTENCE':
         for d in cfg['datasets']:
             for b in cfg['budgets']:
                 a=groups.get((d,method,str(b),'BASE_FP16'),[]);z=groups.get((d,'FIXED_SENTENCE',str(b),'BASE_FP16'),[])
-                if len(a)!=50 or len(z)!=50:raise ValueError('Complete paired development surface required for final selection')
+                if {r['query_id'] for r in a}!={v['query_id'] for v in __import__('src.week12.protocol',fromlist=['cohort']).cohort(cfg)[d]} or {r['query_id'] for r in z}!={r['query_id'] for r in a}:raise ValueError('Complete paired development surface required for final selection')
                 ci=paired(a,z,cfg['statistics']['primary_metric'][d],cfg['bootstrap_resamples'],cfg['seed']);margin=cfg['selection_rule']['quality_margin_macro_f1' if d=='SciFact' else 'quality_margin_qa']
                 if ci['ci_low'] < -margin:raise ValueError('Preregistered noninferiority gate not met; retain simpler sentence policy')
                 token_delta=sum(r['prompt_tokens'] for r in a)/len(a)-sum(r['prompt_tokens'] for r in z)/len(z)
@@ -140,8 +151,35 @@ def freeze_final(cfg,method,reason,retain_lora=False):
                 any_cost_gain=any_cost_gain or token_delta<0;decision.append(dict(dataset=d,budget=b,token_delta=token_delta,margin=margin,**ci))
         if not any_cost_gain:raise ValueError('No token advantage established; retain simpler policy')
     if retain_lora:
-        gstatus=root(cfg)/'development/G/status.json'
+        supported_gain=False
+        for d in cfg['datasets']:
+            for b in cfg['budgets']:
+                adapted=groups.get((d,'QBGF_FULL',str(b),'LORA_NF4'),[]);base_rows=groups.get((d,'QBGF_FULL',str(b),'BASE_NF4'),[])
+                if not adapted or not base_rows:raise ValueError('Complete VAL 2x2 required for LoRA retention')
+                ci=paired(adapted,base_rows,cfg['statistics']['primary_metric'][d],cfg['bootstrap_resamples'],cfg['seed'])
+                margin=cfg['selection_rule']['quality_margin_macro_f1' if d=='SciFact' else 'quality_margin_qa']
+                if ci['ci_low'] < -margin:raise ValueError('VAL cannot rule out LoRA harm; do not retain adapter')
+                supported_gain=supported_gain or ci['ci_low']>0
+        if not supported_gain:raise ValueError('No paired VAL gain supports retaining LoRA')
+        gstatus=base/'G/status.json'
         if not gstatus.exists() or not json.loads(gstatus.read_text()).get('complete'):raise ValueError('Mandatory real LoRA 2x2 must be complete before retaining adapter')
     import subprocess
-    obj=dict(method=method,selection_evidence=decision,rationale=reason,retain_lora=retain_lora,protocol=cfg,identity=identity(cfg),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),confirmation_ids_hash=json.loads((root(cfg)/'protocol/W12_CONFIRMATION_FREEZE.json').read_text())['ids_hash'],timestamp=utc(),confirmation_evaluation_enabled=False,confirmation_history_review='REQUIRED_BEFORE_WEEK13',prompt_source_hash=sha(ROOT/'src/week12/reader.py'))
+    obj=dict(method=method,selection_evidence=decision,rationale=reason,retain_lora=retain_lora,protocol=cfg,identity=identity(cfg),git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),confirmation_ids_hash=confirmation_hash(cfg),timestamp=utc(),confirmation_evaluation_enabled=False,confirmation_history_review='REQUIRED_BEFORE_WEEK13',prompt_source_hash=sha(ROOT/'src/week12/reader.py'))
+    obj.update(phase='VALIDATION_ONLY',baseline_configurations=cfg,tokenizer=cfg['models']['Qwen'],reader='LORA_NF4' if retain_lora else 'BASE_FP16',retriever='SFR',candidate_width=cfg['candidate_width'],budgets=cfg['budgets'],parser_hash=sha(ROOT/'src/week12/reader.py'),metrics=cfg['statistics'],adapter_hash=json.loads((root(cfg)/'lora/complete.json').read_text())['adapter_hash'] if retain_lora else None,adapter_checkpoint=str(root(cfg)/'lora/adapter') if retain_lora else None)
+    from .runner import MAIN
+    pairs=[(m,'BASE_FP16') for m in MAIN]
+    qual_path=root(cfg)/'qualification/llmlingua.json'
+    if qual_path.exists() and json.loads(qual_path.read_text())['status']=='QUALIFIED':pairs.append(('LLMLINGUA2','BASE_FP16'))
+    if retain_lora:pairs += [(m,r) for m in ['RAW_SKIP','QBGF_FULL'] for r in ['BASE_NF4','LORA_NF4']]
+    obj['confirmation_methods']=pairs
+    if cfg.get('split_protocol'):
+        from .splits import read_freeze
+        freeze=read_freeze(cfg);obj.update(split_hash=freeze['split_hash'],confirmation_ids={d:[r['query_id'] for r in p['CONFIRM']] for d,p in freeze['datasets'].items()},confirmation_history_review='LOCAL_ARTIFACT_AUDIT_COMPLETE_WITH_DOCUMENTED_LIMITATIONS')
+        immutable(ROOT/'results/week12/W13_FINAL_METHOD_FREEZE.json',obj)
     return immutable(root(cfg)/'W13_FINAL_METHOD_FREEZE.json',obj)
+
+def confirmation_hash(cfg):
+    if cfg.get('split_protocol'):
+        from .splits import read_freeze
+        return digest({d:p['CONFIRM'] for d,p in read_freeze(cfg)['datasets'].items()})
+    return json.loads((root(cfg)/'protocol/W12_CONFIRMATION_FREEZE.json').read_text())['ids_hash']

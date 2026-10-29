@@ -22,22 +22,35 @@ def w11_examples():
     from src.week11.protocol import load
     from src.week11.datasets import load_dataset
     c=load();return c,{d:load_dataset(d,c) for d in c['datasets']}
-def native_qasper(path):
+def native_qasper(path,allowed_ids=None):
     guard('QASPER','validation',path)
     from datasets import Dataset
     from src.week11.datasets import normalize,document
+    from src.week10.root_cause.data import evidence_occurrences
     out=[]
     for paper in Dataset.from_file(str(path)):
-        pid=paper['id'];text=paper['title']+'\n'+paper['abstract']+'\n\n'+'\n\n'.join(str(n)+'\n'+'\n'.join(p) for n,p in zip(paper['full_text']['section_name'],paper['full_text']['paragraphs']))
+        pid=str(paper['id']);context=[paper['title']+'\t'+paper['abstract']]
+        for name,paras in zip(paper['full_text']['section_name'],paper['full_text']['paragraphs']):
+            if paras and paras!=['']:context.append(re.sub(r'BIBREF\d+','',str(name)+'\t'+' '.join(paras)))
+        text='\n\n'.join(context)
         for j,q in enumerate(paper['qas']['question']):
-            refs=[]
+            qid=str(paper['qas']['question_id'][j])
+            if allowed_ids is not None and qid not in allowed_ids:continue
+            refs=[];evidence=set();types=[]
             for a in paper['qas']['answers'][j]['answer']:
                 v='Unanswerable' if a['unanswerable'] else 'Yes' if a['yes_no'] is True else 'No' if a['yes_no'] is False else a['free_form_answer'] or ', '.join(a['extractive_spans'])
                 if v:refs.append(v)
-            ex=normalize('QASPER','dev',paper['qas']['question_id'][j],q,[document('QASPER',pid,text)],refs or ['Unanswerable'],metadata={'official_split':'validation','native_paper_id':pid});out.append(ex)
+                evidence.update(t for t in a.get('evidence',[]) if t.strip());types.append('unanswerable' if a['unanswerable'] else 'yes_no' if a['yes_no'] is not None else 'free_form' if a['free_form_answer'] else 'extractive')
+            spans=[]
+            for i,(t,occ) in enumerate(zip(sorted(evidence),evidence_occurrences(text,sorted(evidence)))):
+                spans.append(dict(document_id=pid,evidence_id=f'{pid}:gold{i}',text=t,alternatives=occ,start_char=occ[0][0] if occ else None,end_char=occ[0][1] if occ else None,unmapped=not bool(occ)))
+            ex=normalize('QASPER','dev',qid,q,[document('QASPER',pid,text)],refs or ['Unanswerable'],gold=spans,answer_type=types[0] if len(set(types))==1 else 'mixed',metadata={'official_split':path.stem,'native_paper_id':pid,'canonical_context':context});out.append(ex)
     return out
 
 def audit(cfg):
+    if cfg.get('split_protocol')=='TRAIN_VAL_CONFIRM_v2':
+        from .splits import audit as corrected_audit
+        return corrected_audit(cfg)
     c,all_examples=w11_examples();out=root(cfg)/'protocol';out.mkdir(parents=True,exist_ok=True)
     # Project QASPER TRAIN is raw official TRAIN; all these questions are historically exposed.
     used={d:set() for d in cfg['datasets']};used_questions={d:set() for d in cfg['datasets']};used_docs={d:set() for d in cfg['datasets']}
@@ -100,6 +113,9 @@ def audit(cfg):
     (ROOT/'results/week12/W12_SPLIT_AUDIT.md').write_text('\n\n'.join(text)+'\n');return obj
 
 def development_examples(cfg):
+    if cfg.get('split_protocol')=='TRAIN_VAL_CONFIRM_v2':
+        from .splits import load_examples
+        return load_examples(cfg,'VAL')
     from .protocol import cohort
     _,all_examples=w11_examples();ids=cohort(cfg)
     from src.week11.datasets import read_jsonl

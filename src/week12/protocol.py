@@ -42,7 +42,7 @@ def cached_sha(path):
     return _SHA_CACHE[key]
 
 def code_hash():
-    paths=sorted(list((ROOT/'src/week12').glob('*.py'))+[ROOT/'scripts/week12/run.py']) # notebook builders, validators and smoke tooling do not alter experiment identity
+    paths=sorted(list((ROOT/'src/week12').glob('*.py'))+[ROOT/'scripts/week12/run.py',ROOT/'scripts/week13/run_confirmation.py']) # notebook builders, validators and smoke tooling do not alter experiment identity
     deps=['src/week10/root_cause/encoding.py','src/week10/root_cause/runtime.py','src/week11/hierarchy.py','src/week11/propositions.py','src/week11/evaluation.py','src/week11/datasets.py','src/week11/qasper_adapter.py','src/week11/readers.py','src/week11/budgets.py','src/week9/senttopk_e3/sentences.py','src/week6/evaluation.py','src/week2/precompute_dev_embeddings.py','src/week2/sweep_runner.py','src/week9/final_h05/historical_backend.py','src/week9/final_h05/literal.py','Baselines/SARA-main/src/model/loader.py']
     paths+= [ROOT/x for x in deps]
     return digest({str(p.relative_to(ROOT)):sha(p) for p in paths})
@@ -57,6 +57,8 @@ def identity(cfg,extra=None):
                 if p.exists():inputs[str(p)]=cached_sha(p)
     cohort_path=root(cfg)/'protocol/cohorts.json'
     if cohort_path.exists():inputs['W12_cohorts']=cached_sha(cohort_path)
+    split_path=root(cfg)/'protocol/W12_SPLIT_FREEZE.json'
+    if split_path.exists():inputs['W12_split_freeze']=cached_sha(split_path)
     return dict(config_hash=digest(cfg),code_hash=code_hash(),models=cfg['models'],packages=versions,source_files=inputs,extra=extra or {})
 def root(cfg):return ROOT/cfg['output_root']
 class Store:
@@ -83,6 +85,11 @@ def authorize(full=False,smoke=True,explicit=False,limit=3):
     if smoke and not 1<=limit<=3:raise ValueError('Real/synthetic smoke maximum is three queries TOTAL')
 def cohort(cfg,kind='development'):
     if kind=='confirmation':raise RuntimeError('Week13 confirmation locked: Week12 never evaluates confirmation data')
+    if cfg.get('split_protocol')=='TRAIN_VAL_CONFIRM_v2':
+        from .splits import read_freeze
+        if kind not in ('development','validation','train'):raise ValueError('Unknown data role')
+        role='TRAIN' if kind=='train' else 'VAL'
+        return {d:p[role] for d,p in read_freeze(cfg)['datasets'].items()}
     p=root(cfg)/'protocol'/'cohorts.json'
     if not p.exists():raise RuntimeError('Run notebook 0 first')
     obj=json.loads(p.read_text());assert obj['protocol_hash']==digest(cfg)
@@ -90,7 +97,11 @@ def cohort(cfg,kind='development'):
 def require_full(cfg,phase):
     c=cohort(cfg)
     if not c:raise RuntimeError('No audited development cohort')
-    freeze=json.loads((root(cfg)/'protocol'/'W12_CONFIRMATION_FREEZE.json').read_text())
-    if freeze['protocol_hash']!=digest(cfg):raise ValueError('Protocol changed after cohort freeze')
+    if cfg.get('split_protocol')=='TRAIN_VAL_CONFIRM_v2':
+        from .splits import read_freeze
+        read_freeze(cfg)
+    else:
+        freeze=json.loads((root(cfg)/'protocol'/'W12_CONFIRMATION_FREEZE.json').read_text())
+        if freeze['protocol_hash']!=digest(cfg):raise ValueError('Protocol changed after cohort freeze')
     if phase=='G' and not (root(cfg)/'lora'/'complete.json').exists():raise RuntimeError('Full LoRA training not complete; base results stay usable')
     return c
