@@ -8,7 +8,7 @@ def condition(cfg,dataset,query_id,role='TRAIN'):
     modes=[(m,b) for m in cfg['lora']['modes'] for b in cfg['budgets']]
     return modes[int(digest([cfg['seed'],dataset,str(query_id)]),16)%len(modes)] if role=='TRAIN' else ('QBGF_FULL',256)
 
-def balancing(rows,accumulation=16,seed=42):
+def balanced_smoke_sampler(rows,accumulation=16,seed=42):
     import torch
     counts=Counter(r['dataset'] for r in rows)
     if not counts:raise ValueError('Empty TRAIN corpus')
@@ -18,6 +18,10 @@ def balancing(rows,accumulation=16,seed=42):
     for start in range(0,len(indices),accumulation):
         for d in {rows[i]['dataset'] for i in indices[start:start+accumulation]}:touched[d]+=1
     return indices,dict(raw_eligible_examples=dict(counts),sampling_probabilities={d:1/len(counts) for d in counts},effective_samples_per_epoch=len(indices),planned_sample_counts=dict(actual),planned_optimizer_updates_with_dataset=touched,planned_fractional_update_contribution={d:v/accumulation for d,v in actual.items()},note='All eligible queries are in the sampling pool. Replacement balancing need not visit every unique query in one epoch. Planned counts are not claimed as completed updates.')
+
+def balancing(rows,accumulation=16,seed=42):
+    from .scheduling import full_coverage
+    return full_coverage(rows,accumulation,seed)
 
 def prepare_corpus(cfg):
     from transformers import AutoTokenizer

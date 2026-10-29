@@ -6,7 +6,7 @@ from src.week12.protocol import load,authorize,require_full
 from src.week12.runner import execute,prepare,generate
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--phase',choices=list('0ABCDEFGHI'),required=True);p.add_argument('--full',action='store_true');p.add_argument('--explicit',action='store_true');p.add_argument('--real-smoke',action='store_true');p.add_argument('--limit',type=int,default=3);p.add_argument('--internal-stage',choices=['prepare','generate']);p.add_argument('--canonical',choices=['SARA_CANONICAL_BM25_K5_N10','CANONICAL_RAG_BM25']);p.add_argument('--train',action='store_true');p.add_argument('--prepare-corpus',action='store_true');args=p.parse_args();cfg=load();authorize(args.full,not args.full,args.explicit,args.limit)
+ p=argparse.ArgumentParser();p.add_argument('--phase',choices=list('0ABCDEFGHI'),required=True);p.add_argument('--full',action='store_true');p.add_argument('--explicit',action='store_true');p.add_argument('--real-smoke',action='store_true');p.add_argument('--limit',type=int,default=3);p.add_argument('--internal-stage',choices=['prepare','generate']);p.add_argument('--canonical',choices=['SARA_CANONICAL_BM25_K5_N10','CANONICAL_RAG_BM25']);p.add_argument('--train',action='store_true');p.add_argument('--prepare-corpus',action='store_true');p.add_argument('--include-secondary',action='store_true',help='Explicit opt-in to secondary C/D surfaces; CORE_FINAL defaults True');args=p.parse_args();cfg=load();authorize(args.full,not args.full,args.explicit,args.limit)
  if args.full:require_full(cfg,args.phase)
  if args.canonical:
   from src.week12.runner import examples
@@ -35,8 +35,8 @@ def main():
   print(train(cfg,explicit=args.full and args.explicit));return
  if args.internal_stage:
   if not args.full and not args.real_smoke:raise ValueError('Internal real execution needs bounded real-smoke or manual full flags')
-  if args.internal_stage=='prepare':prepare(cfg,args.phase,False,args.real_smoke,args.limit)
-  else:generate(cfg,args.phase,False,args.real_smoke)
+  if args.internal_stage=='prepare':prepare(cfg,args.phase,False,args.real_smoke,args.limit,not args.include_secondary)
+  else:generate(cfg,args.phase,False,args.real_smoke,not args.include_secondary)
  else:
-  result=execute(args.phase,cfg,full=args.full,smoke=not args.full,explicit=args.explicit,limit=args.limit,real_smoke=args.real_smoke);print('Returned',len(result),'rows/items; completed shards reused.')
+  result=execute(args.phase,cfg,full=args.full,smoke=not args.full,explicit=args.explicit,limit=args.limit,real_smoke=args.real_smoke,core_final=not args.include_secondary);print('Returned',len(result),'rows/items; completed shards reused.')
 if __name__=='__main__':main()

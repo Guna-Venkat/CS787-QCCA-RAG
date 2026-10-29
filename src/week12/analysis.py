@@ -169,7 +169,10 @@ def freeze_final(cfg,method,reason,retain_lora=False):
     from .runner import MAIN
     pairs=[(m,'BASE_FP16') for m in MAIN]
     qual_path=root(cfg)/'qualification/llmlingua.json'
-    if qual_path.exists() and json.loads(qual_path.read_text())['status']=='QUALIFIED':pairs.append(('LLMLINGUA2','BASE_FP16'))
+    from .compression_runtime import status as compressor_status
+    compressor_lock=compressor_status(cfg)
+    obj['llmlingua_effective_spec']=compressor_lock
+    if compressor_lock['status']=='QUALIFIED':pairs.append(('LLMLINGUA2','BASE_FP16'))
     if retain_lora:pairs += [(m,r) for m in ['RAW_SKIP','QBGF_FULL'] for r in ['BASE_NF4','LORA_NF4']]
     obj['confirmation_methods']=pairs
     if cfg.get('split_protocol'):

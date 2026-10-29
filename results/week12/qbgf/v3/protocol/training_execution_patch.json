@@ -1,0 +1,11 @@
+{
+  "CORE_FINAL_default": true,
+  "frozen_config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+  "full_coverage": true,
+  "loss_weight_formula": "N/(D*N_d)",
+  "policy": "FULL_COVERAGE_LOSS_WEIGHTED_V1",
+  "replacement": false,
+  "scientific_parameters_or_split_ids_changed": false,
+  "split_hash": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117",
+  "user_authorized": true
+}

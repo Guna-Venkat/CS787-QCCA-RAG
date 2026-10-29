@@ -38,7 +38,8 @@ class CorrectedSplitTests(unittest.TestCase):
   c=load();self.assertEqual(condition(c,'QASPER','q'),condition(c,'QASPER','q'));self.assertIn(condition(c,'QASPER','q'),[(m,b) for m in c['lora']['modes'] for b in c['budgets']])
  def test_checkpoint_val_condition_is_fixed(self):self.assertEqual(condition(load(),'SciFact','123','VAL'),('QBGF_FULL',256))
  def test_balanced_dataset_probability_not_dataset_size(self):
-  rows=[dict(dataset=d) for d,n in [('a',5000),('b',500),('c',50)] for _ in range(n)];indices,plan=balancing(rows)
+  rows=[dict(dataset=d) for d,n in [('a',5000),('b',500),('c',50)] for _ in range(n)];from src.week12.training_v2 import balanced_smoke_sampler
+  indices,plan=balanced_smoke_sampler(rows)
   self.assertEqual(set(plan['sampling_probabilities'].values()),{1/3});self.assertEqual(len(indices),5550)
   for n in plan['planned_sample_counts'].values():self.assertLess(abs(n/5550-1/3),.025)
  def test_freeze_immutable(self):

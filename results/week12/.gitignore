@@ -17,3 +17,6 @@
 /W12_SPLIT_FREEZE*.json
 /qbgf/v*/protocol/W12_SPLIT_FREEZE.json
 /qbgf/v*/protocol/exposure_manifest.json
+
+/tools/
+/qbgf/*/lora/coverage_events.jsonl

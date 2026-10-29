@@ -1,0 +1,66 @@
+[
+  {
+    "CORE_FINAL": true,
+    "additional_call_upper_bound": 83370,
+    "logical_rows": 91707,
+    "methods": [
+      "NONE",
+      "RAW_SKIP",
+      "FIXED_SENTENCE",
+      "C2",
+      "H3",
+      "QBGF_FULL"
+    ],
+    "note": "Warm generation reuse of compatible C QBGF in D; other identical/empty evidence may reduce calls further. No empirical full-run time estimate.",
+    "phase": "C",
+    "queries": 8337
+  },
+  {
+    "CORE_FINAL": false,
+    "additional_call_upper_bound": 125055,
+    "logical_rows": 133392,
+    "methods": [
+      "NONE",
+      "RAW_STRICT",
+      "RAW_SKIP",
+      "FIXED_SENTENCE",
+      "C2",
+      "H3",
+      "QBGF_FULL",
+      "STRONG_SFR_RAG",
+      "BM25_QWEN_REFERENCE"
+    ],
+    "note": "Warm generation reuse of compatible C QBGF in D; other identical/empty evidence may reduce calls further. No empirical full-run time estimate.",
+    "phase": "C",
+    "queries": 8337
+  },
+  {
+    "CORE_FINAL": true,
+    "additional_call_upper_bound": 16674,
+    "logical_rows": 33348,
+    "methods": [
+      "QBGF_FULL",
+      "QBGF_NO_QUERY"
+    ],
+    "note": "Warm generation reuse of compatible C QBGF in D; other identical/empty evidence may reduce calls further. No empirical full-run time estimate.",
+    "phase": "D",
+    "queries": 8337
+  },
+  {
+    "CORE_FINAL": false,
+    "additional_call_upper_bound": 100044,
+    "logical_rows": 116718,
+    "methods": [
+      "QBGF_FULL",
+      "QBGF_NO_QUERY",
+      "QBGF_SENTENCE_ONLY",
+      "QBGF_PASSAGE_ONLY",
+      "QBGF_NO_MASS",
+      "QBGF_GREEDY",
+      "QBGF_BM25"
+    ],
+    "note": "Warm generation reuse of compatible C QBGF in D; other identical/empty evidence may reduce calls further. No empirical full-run time estimate.",
+    "phase": "D",
+    "queries": 8337
+  }
+]

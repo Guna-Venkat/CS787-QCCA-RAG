@@ -22,7 +22,7 @@ print('MODE:', 'MANUAL FULL DEVELOPMENT' if RUN_FULL else 'SMOKE ONLY' if effect
 def main():
  out=ROOT/'notebooks/week12';out.mkdir(parents=True,exist_ok=True)
  for phase,title in NAMES.items():
-  flags='RUN_SMOKE = True\nRUN_FULL = False\nRESUME = True\nOVERWRITE = False\nSMOKE_LIMIT = 3\nRUN_REAL_MODEL_SMOKE = False\nRUN_CANONICAL_SMOKE = False\nALLOW_LLMLINGUA_DOWNLOAD = False\nRUN_LLMLINGUA_SMOKE = True\nRUN_LLMLINGUA_FULL = False\nRUN_TINY_LORA_SMOKE = True\nRUN_FULL_LORA_TRAIN = False\nFINAL_METHOD = None\nFINAL_REASON = None\nRETAIN_LORA = False\n'
+  flags='CORE_FINAL = True\nRUN_SMOKE = True\nRUN_FULL = False\nRESUME = True\nOVERWRITE = False\nSMOKE_LIMIT = 3\nRUN_REAL_MODEL_SMOKE = False\nRUN_CANONICAL_SMOKE = False\nALLOW_LLMLINGUA_DOWNLOAD = False\nRUN_LLMLINGUA_SMOKE = True\nRUN_LLMLINGUA_FULL = False\nRUN_TINY_LORA_SMOKE = True\nRUN_FULL_LORA_TRAIN = False\nFINAL_METHOD = None\nFINAL_REASON = None\nRETAIN_LORA = False\n'
   intro=f'# Week12 {phase} — {title.replace("_"," ")}\n\nRun All is safe by default: synthetic smoke or read-only metadata. Full work requires changing the FLAGS cell yourself. The agent has not enabled full runs. Completed checksummed rows resume automatically; a changed scientific identity fails instead of overwriting. QASPER TEST and all Week13 confirmation outcomes are blocked.\n\nW12-C uses the full frozen VALIDATION split. The historical W11 pilot is hypothesis generation only. W12-I freezes the reviewed method; Week13 is the future locked evaluation. No outcome from reserved confirmation may inform selection.\n'
   cells=[nb.v4.new_markdown_cell(intro),nb.v4.new_code_cell(flags),nb.v4.new_code_cell(IMPORTS)]
   if phase=='0':body="""from src.week12.data import audit
@@ -49,7 +49,7 @@ else: print('No full LLMLingua experiment requested.')
 from src.week12.protocol import atomic
 from src.week12.splits import read_freeze
 frozen=read_freeze(cfg)
-counts=[{'dataset':d,'TRAIN':len(p['TRAIN']),'VAL':len(p['VAL']),'CONFIRM':len(p['CONFIRM']),'TRAIN_groups':len({r['group'] for r in p['TRAIN']}),'sampling_probability':1/len(cfg['datasets'])} for d,p in frozen['datasets'].items()]
+counts=[{'dataset':d,'TRAIN':len(p['TRAIN']),'VAL':len(p['VAL']),'CONFIRM':len(p['CONFIRM']),'TRAIN_groups':len({r['group'] for r in p['TRAIN']}),'loss_weight':sum(len(x['TRAIN']) for x in frozen['datasets'].values())/(len(cfg['datasets'])*len(p['TRAIN']))} for d,p in frozen['datasets'].items()]
 display(pd.DataFrame(counts))
 print('ALL eligible TRAIN queries; one deterministic evidence condition/query. VAL is never used for gradients.')
 if RUN_TINY_LORA_SMOKE: display(tiny_smoke(cfg))
@@ -74,7 +74,7 @@ display(result['specialist_references'])
 for f in result['figures']:
     display(Image(filename=f['png']))
 """+("display(freeze_final(cfg,FINAL_METHOD,FINAL_REASON,RETAIN_LORA))\n" if phase=='I' else '')
-  else:body=f"""result=execute('{phase}',cfg,full=RUN_FULL,smoke=effective_smoke,explicit=RUN_FULL,limit=SMOKE_LIMIT,real_smoke=RUN_REAL_MODEL_SMOKE)
+  else:body=f"""result=execute('{phase}',cfg,full=RUN_FULL,smoke=effective_smoke,explicit=RUN_FULL,limit=SMOKE_LIMIT,real_smoke=RUN_REAL_MODEL_SMOKE,core_final=CORE_FINAL)
 display(pd.DataFrame(result))
 print('SYNTHETIC rows are pipeline checks, never findings. Completed real rows are reused by identity.')
 """
@@ -99,11 +99,11 @@ finally: lab.close()
         subprocess.run([str(ROOT/'sara_env/bin/python'),str(ROOT/'scripts/week12/run.py'),'--phase','B','--canonical',system],cwd=ROOT,check=True)
 else: print('Canonical Mistral references: source inventory shown; execution smoke explicitly opt-in.')
 """
-  if phase=='C':body+="""if RUN_FULL:
+  if phase=='C':body+="""if RUN_FULL and not CORE_FINAL:
     for system in ['SARA_CANONICAL_BM25_K5_N10','CANONICAL_RAG_BM25']:
         subprocess.run([str(ROOT/'sara_env/bin/python'),str(ROOT/'scripts/week12/run.py'),'--phase','C','--canonical',system,'--full','--explicit'],cwd=ROOT,check=True)
 """
-  cells+=[nb.v4.new_markdown_cell('## Execute / resume\n\nAll necessary setup is derived above. No follow-on cell silently enables a full run.'),nb.v4.new_code_cell(body),nb.v4.new_markdown_cell('## Interpretation and next step\n\nUse the method registry and primary comparison table. No automatic winner promotion. Compare QBGF with RAW_SKIP and fixed sentences; relevance mass is a surrogate, not predicted F1. Macro-F1 is recomputed per resample. QASPER/Mistral specialists are separate from Qwen comparisons. All confirmation data remain locked.')]
+  cells+=[nb.v4.new_markdown_cell('## Execute / resume\n\nAll necessary setup is derived above. CORE_FINAL=True restricts C/D to preregistered primary methods and budgets; secondary sensitivities require CORE_FINAL=False. No follow-on cell silently enables a full run.'),nb.v4.new_code_cell(body),nb.v4.new_markdown_cell('## Interpretation and next step\n\nUse the method registry and primary comparison table. No automatic winner promotion. Compare QBGF with RAW_SKIP and fixed sentences; relevance mass is a surrogate, not predicted F1. Macro-F1 is recomputed per resample. QASPER/Mistral specialists are separate from Qwen comparisons. All confirmation data remain locked.')]
   path=out/f'week12_{phase}_{title}.ipynb';notebook=nb.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'sara_env','language':'python','name':'sara_env'}});nb.write(notebook,path)
  print('Created 10 smoke-only notebooks; no experiment executed.')
 if __name__=='__main__':main()

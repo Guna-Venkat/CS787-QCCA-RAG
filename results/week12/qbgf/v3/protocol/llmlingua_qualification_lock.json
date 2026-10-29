@@ -1,0 +1,37 @@
+{
+  "checksum": "42c3e17e85e96bedcda414fae1259ae0daa9d651aafe67078ac5732951f43032",
+  "frozen_science_config_unchanged": true,
+  "id": "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank",
+  "package_versions": {
+    "llmlingua": "0.2.2",
+    "nltk": "3.9.2",
+    "numpy": "1.26.4",
+    "tiktoken": "0.14.0",
+    "torch": "2.14.0",
+    "transformers": "4.57.6"
+  },
+  "python": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/tools/llmlingua_env/bin/python",
+  "reason": null,
+  "revision": "5f0c82792b7ea14c6484e015b6a072009496b7f2",
+  "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--microsoft--llmlingua-2-bert-base-multilingual-cased-meetingbank/snapshots/5f0c82792b7ea14c6484e015b6a072009496b7f2",
+  "source": "https://github.com/microsoft/LLMLingua",
+  "status": "QUALIFIED",
+  "synthetic_budget_checks": [
+    {
+      "budget": 256,
+      "compressed_qwen_tokens": 250,
+      "raw_qwen_tokens": 2041,
+      "retry_factor": 0.8,
+      "seconds": 6.121563900000183
+    },
+    {
+      "budget": 1024,
+      "compressed_qwen_tokens": 875,
+      "raw_qwen_tokens": 2041,
+      "retry_factor": 0.8,
+      "seconds": 6.137272986001335
+    }
+  ],
+  "weight_sha256": "22b9ecde52fec5c97e8c54a293be768727df95a81c6c8dccb03f262a50c58324",
+  "worker_sha256": "3807f6bc50cee9f25205c6602f914ab6c815247b1f82239837a241c4f2063dea"
+}

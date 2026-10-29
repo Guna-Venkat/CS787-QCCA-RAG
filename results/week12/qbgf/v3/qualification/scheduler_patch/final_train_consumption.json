@@ -1,0 +1,19 @@
+{
+  "applied_optimizer_steps": 0,
+  "optimizer_contributions": {
+    "HotpotQA": 0,
+    "QASPER": 0,
+    "SciFact": 0
+  },
+  "repeats": {
+    "HotpotQA": 0,
+    "QASPER": 0,
+    "SciFact": 0
+  },
+  "status": "NOT_STARTED",
+  "unique_examples_seen": {
+    "HotpotQA": 0,
+    "QASPER": 0,
+    "SciFact": 0
+  }
+}

@@ -113,10 +113,23 @@ def train(cfg,explicit=False):
     spec=cfg['models']['Qwen'];quant=BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type='nf4',bnb_4bit_compute_dtype=torch.bfloat16,bnb_4bit_use_double_quant=True)
     model=AutoModelForCausalLM.from_pretrained(spec['id'],revision=spec['revision'],local_files_only=True,quantization_config=quant,device_map={'':0},attn_implementation='sdpa');model=prepare_model_for_kbit_training(model);model=get_peft_model(model,LoraConfig(r=cfg['lora']['r'],lora_alpha=cfg['lora']['alpha'],lora_dropout=cfg['lora']['dropout'],target_modules=cfg['lora']['target_modules'],task_type='CAUSAL_LM'));model.config.use_cache=False
     tok=AutoTokenizer.from_pretrained(spec['id'],revision=spec['revision'],local_files_only=True);tok.pad_token=tok.eos_token
+    from .scheduling import full_coverage,CoverageLedger
+    indices,schedule=full_coverage(train_rows,cfg['lora']['gradient_accumulation_steps'],cfg['seed'])
+    loss_weights=schedule['effective_loss_weights']
+    ledger=CoverageLedger(out/'coverage_events.jsonl',[(r['dataset'],r['query_id']) for r in train_rows],loss_weights)
     def collate(batch):
         width=max(len(x['input_ids']) for x in batch)
-        return {k:torch.tensor([x[k]+[(-100 if k=='labels' else 0 if k=='attention_mask' else tok.pad_token_id)]*(width-len(x[k])) for x in batch]) for k in ['input_ids','labels','attention_mask']}
+        data={k:torch.tensor([x[k]+[(-100 if k=='labels' else 0 if k=='attention_mask' else tok.pad_token_id)]*(width-len(x[k])) for x in batch]) for k in ['input_ids','labels','attention_mask']}
+        data.update(_datasets=[x['dataset'] for x in batch],_queries=[x['query_id'] for x in batch],_weights=torch.tensor([loss_weights[x['dataset']] for x in batch],dtype=torch.float32))
+        return data
     class BalancedTrainer(Trainer):
+        def compute_loss(self,model,inputs,return_outputs=False,num_items_in_batch=None):
+            ds=inputs.pop('_datasets');qs=inputs.pop('_queries');weights=inputs.pop('_weights')
+            outputs=model(**inputs)
+            if len(ds)!=1:raise ValueError('Frozen scheduler uses the registered batch_size=1, accumulation=16')
+            loss=outputs.loss*weights[0]
+            if model.training and torch.is_grad_enabled():ledger.forward(ds,qs,weights.detach().cpu().tolist())
+            return (loss,outputs) if return_outputs else loss
         def get_train_dataloader(self):
             from collections import Counter
             from .training_v2 import balancing
@@ -131,9 +144,16 @@ def train(cfg,explicit=False):
             atomic(out/'validation_metrics'/('step_'+str(self.state.global_step)+'.json'),dict(step=self.state.global_step,**result))
             metrics={'eval_loss':result['eval_loss']};self.log(metrics);self.control=self.callback_handler.on_evaluate(self.args,self.state,self.control,metrics);return metrics
     args=TrainingArguments(output_dir=str(out/'checkpoints'),num_train_epochs=cfg['lora']['epochs'],per_device_train_batch_size=cfg['lora']['batch_size'],per_device_eval_batch_size=1,gradient_accumulation_steps=cfg['lora']['gradient_accumulation_steps'],learning_rate=cfg['lora']['learning_rate'],eval_strategy='epoch',save_strategy='epoch',load_best_model_at_end=True,metric_for_best_model='eval_loss',greater_is_better=False,save_total_limit=2,logging_steps=10,bf16=True,gradient_checkpointing=True,report_to=[],remove_unused_columns=False,seed=cfg['seed'],data_seed=cfg['seed'])
-    trainer=BalancedTrainer(model=model,args=args,train_dataset=train_rows,eval_dataset=val_rows,data_collator=collate);last=get_last_checkpoint(str(out/'checkpoints')) if (out/'checkpoints').exists() else None;trainer.train(resume_from_checkpoint=last);trainer.save_model(str(out/'adapter'));tok.save_pretrained(out/'adapter');atomic(out/'training_history.json',dict(log_history=trainer.state.log_history,chosen_checkpoint=trainer.state.best_model_checkpoint,objective=cfg['lora'].get('checkpoint_objective'),stopping_criterion='fixed one epoch; no confirmation access',completed_optimizer_steps=trainer.state.global_step))
-    if cfg.get('split_protocol'):
-        from .training_v2 import balancing
-        _,plan=balancing(train_rows,cfg['lora']['gradient_accumulation_steps'],cfg['seed']);plan.update(completed=True,completed_optimizer_steps=trainer.state.global_step,epochs_completed=trainer.state.epoch,counts_status='Completed fixed one-epoch deterministic balanced schedule; dataset update counts may overlap for mixed accumulation steps')
-        atomic(out/'sampling_actual.json',plan)
+    trainer=BalancedTrainer(model=model,args=args,train_dataset=train_rows,eval_dataset=val_rows,data_collator=collate)
+    trainer.model_accepts_loss_kwargs=False
+    from transformers import TrainerCallback
+    class CoverageCallback(TrainerCallback):
+        def on_step_end(self,args,state,control,**kwargs):
+            ledger.step(state.global_step,not trainer.accelerator.optimizer_step_was_skipped)
+            return control
+    trainer.add_callback(CoverageCallback())
+    last=get_last_checkpoint(str(out/'checkpoints')) if (out/'checkpoints').exists() else None;trainer.train(resume_from_checkpoint=last);trainer.save_model(str(out/'adapter'));tok.save_pretrained(out/'adapter');atomic(out/'training_history.json',dict(log_history=trainer.state.log_history,chosen_checkpoint=trainer.state.best_model_checkpoint,objective=cfg['lora'].get('checkpoint_objective'),stopping_criterion='fixed one epoch; no confirmation access',completed_optimizer_steps=trainer.state.global_step))
+    actual=ledger.summary()
+    if any(actual['missing_train_examples'].values()):raise ValueError('Full training ended without consuming every eligible TRAIN example')
+    atomic(out/'sampling_actual.json',dict(actual,complete=True,completed_optimizer_steps=trainer.state.global_step,epochs_completed=trainer.state.epoch))
     result=dict(complete=True,identity_hash=digest(ident),adapter_hash=digest({p.name:sha(p) for p in (out/'adapter').glob('*') if p.is_file()}));immutable(out/'complete.json',result);return result

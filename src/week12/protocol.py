@@ -42,7 +42,7 @@ def cached_sha(path):
     return _SHA_CACHE[key]
 
 def code_hash():
-    paths=sorted(list((ROOT/'src/week12').glob('*.py'))+[ROOT/'scripts/week12/run.py',ROOT/'scripts/week13/run_confirmation.py']) # notebook builders, validators and smoke tooling do not alter experiment identity
+    paths=sorted(list((ROOT/'src/week12').glob('*.py'))+[ROOT/'scripts/week12/run.py',ROOT/'scripts/week13/run_confirmation.py',ROOT/'scripts/week12/llmlingua_worker.py']) # notebook builders, validators and smoke tooling do not alter experiment identity
     deps=['src/week10/root_cause/encoding.py','src/week10/root_cause/runtime.py','src/week11/hierarchy.py','src/week11/propositions.py','src/week11/evaluation.py','src/week11/datasets.py','src/week11/qasper_adapter.py','src/week11/readers.py','src/week11/budgets.py','src/week9/senttopk_e3/sentences.py','src/week6/evaluation.py','src/week2/precompute_dev_embeddings.py','src/week2/sweep_runner.py','src/week9/final_h05/historical_backend.py','src/week9/final_h05/literal.py','Baselines/SARA-main/src/model/loader.py']
     paths+= [ROOT/x for x in deps]
     return digest({str(p.relative_to(ROOT)):sha(p) for p in paths})
@@ -59,6 +59,8 @@ def identity(cfg,extra=None):
     if cohort_path.exists():inputs['W12_cohorts']=cached_sha(cohort_path)
     split_path=root(cfg)/'protocol/W12_SPLIT_FREEZE.json'
     if split_path.exists():inputs['W12_split_freeze']=cached_sha(split_path)
+    compressor_lock=root(cfg)/'protocol/llmlingua_qualification_lock.json'
+    if compressor_lock.exists():inputs['LLMLingua_qualification_lock']=cached_sha(compressor_lock)
     return dict(config_hash=digest(cfg),code_hash=code_hash(),models=cfg['models'],packages=versions,source_files=inputs,extra=extra or {})
 def root(cfg):return ROOT/cfg['output_root']
 class Store:

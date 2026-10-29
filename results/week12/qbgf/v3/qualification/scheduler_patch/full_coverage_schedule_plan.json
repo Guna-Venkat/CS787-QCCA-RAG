@@ -1,0 +1,48 @@
+{
+  "effective_loss_weights": {
+    "HotpotQA": 0.3433170807213064,
+    "QASPER": 14.257116620752985,
+    "SciFact": 58.47834274952919
+  },
+  "effective_samples_per_epoch": 93156,
+  "note": "One deterministic permutation, every eligible query once. w_d=N/(D*N_d) multiplies query-mean answer NLL. Update coefficients use actual accumulation-window size, including the short last window; these are loss coefficients, not measured gradient norms or Adam parameter changes.",
+  "objective_weight_mass": {
+    "HotpotQA": 31052.0,
+    "QASPER": 31052.0,
+    "SciFact": 31052.0
+  },
+  "optimizer_steps": 5823,
+  "planned_optimizer_loss_coefficient_mass": {
+    "HotpotQA": 1941.0074878134385,
+    "QASPER": 1940.749999999961,
+    "SciFact": 1940.7499999999793
+  },
+  "planned_optimizer_updates_with_dataset": {
+    "HotpotQA": 5823,
+    "QASPER": 1842,
+    "SciFact": 509
+  },
+  "planned_repeats": {
+    "HotpotQA": 0,
+    "QASPER": 0,
+    "SciFact": 0
+  },
+  "planned_sample_counts": {
+    "HotpotQA": 90447,
+    "QASPER": 2178,
+    "SciFact": 531
+  },
+  "planned_unique_seen": {
+    "HotpotQA": 90447,
+    "QASPER": 2178,
+    "SciFact": 531
+  },
+  "policy": "FULL_COVERAGE_LOSS_WEIGHTED_V1",
+  "raw_eligible_examples": {
+    "HotpotQA": 90447,
+    "QASPER": 2178,
+    "SciFact": 531
+  },
+  "replacement": false,
+  "seed": 42
+}

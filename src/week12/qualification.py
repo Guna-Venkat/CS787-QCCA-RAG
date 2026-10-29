@@ -21,9 +21,17 @@ def inventory(cfg):
         if p.exists():
             rec=json.loads(p.read_text())
             if rec.get('status')=='PASS' and rec.get('identity')==identity(cfg):row['status']='REAL_SMOKE_PASSED';row['qualification_receipt']=str(p)
+    from .compression_runtime import status
+    compressed=status(cfg)
+    for row in rows:
+        if row['id']=='LLMLINGUA2':
+            row['status']=compressed['status'];row['effective_model']=compressed.get('id');row['effective_revision']=compressed.get('revision')
     return rows
 
 def qualify_llm(cfg,allow_download=False,smoke=True):
+    from .compression_runtime import status
+    locked=status(cfg)
+    if locked['status']=='QUALIFIED':return locked
     before=resources(cfg);spec=cfg['llmlingua'];result=dict(status='NOT_QUALIFIED',reason=None,model=spec,resource_before=before,full_run_started=False)
     if not importlib.util.find_spec('llmlingua'):result['reason']='MISSING_DEPENDENCY; no automatic installation'
     elif not spec.get('revision'):result['reason']='PINNED_REVISION_REQUIRED; choose before outcomes'
@@ -39,9 +47,11 @@ def qualify_llm(cfg,allow_download=False,smoke=True):
                 out=compress_llm(cfg,text,64,tok,path);assert out['evidence_tokens']<=64
             result.update(status='QUALIFIED',reason=None,snapshot=path,smoke=smoke)
         except Exception as e:result['reason']=f'{type(e).__name__}: {e}'
-    atomic(root(cfg)/'qualification'/'llmlingua.json',result);return result
+    atomic(root(cfg)/'qualification'/'execution'/identity(cfg)['code_hash'][:12]/'llmlingua.json',result);return result
 
 def compress_llm(cfg,text,budget,tok,path=None):
+    from .compression_runtime import status,compress
+    if status(cfg)['status']=='QUALIFIED':return compress(cfg,text,budget,tok)
     from llmlingua import PromptCompressor
     from huggingface_hub import snapshot_download
     import time
