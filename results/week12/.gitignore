@@ -20,3 +20,5 @@
 
 /tools/
 /qbgf/*/lora/coverage_events.jsonl
+
+/qbgf/*/qualification/execution/
