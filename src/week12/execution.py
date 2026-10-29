@@ -1,6 +1,6 @@
 """Execution subsets of existing preregistration; no scientific/split config edits."""
 CORE_C=('NONE','RAW_SKIP','FIXED_SENTENCE','C2','H3','QBGF_FULL')
-CORE_D=('QBGF_FULL','QBGF_NO_QUERY')
+CORE_D=('QBGF_FULL','QBGF_NO_QUERY','QBGF_SENTENCE_ONLY','QBGF_PASSAGE_ONLY')
 
 def methods(phase,core_final=True):
     from .runner import MAIN,ABLATIONS

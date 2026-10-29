@@ -50,6 +50,19 @@ def analyze(cfg,synthetic=False):
         else:raw.append(1.);comparisons.append(dict(spec,status='PENDING_INCOMPLETE_OR_UNQUALIFIED',raw_p=None,point=None,ci_low=None,ci_high=None))
     adjusted=holm(raw)
     for c,p in zip(comparisons,adjusted):c['holm_adjusted_p']=p if c['status']=='COMPLETE' else None;c['family_size']=len(specs)
+    from .statistics import fusion_registry
+    fusion_specs=fusion_registry(cfg);immutable(root(cfg)/'protocol/fusion_diagnostic_comparisons.json',fusion_specs)
+    fusion=[];fusion_raw=[]
+    for spec in fusion_specs:
+        a=groups.get((spec['dataset'],spec['left'],str(spec['budget']),spec['reader']),[]);b=groups.get((spec['dataset'],spec['right'],str(spec['budget']),spec['reader']),[])
+        if len(a)==len(b)==expected[spec['dataset']]:
+            result=paired(a,b,spec['metric'],cfg['bootstrap_resamples'],cfg['seed']);fusion_raw.append(result['raw_p']);fusion.append(dict(spec,status='COMPLETE',**result))
+        else:fusion_raw.append(1.);fusion.append(dict(spec,status='PENDING_INCOMPLETE',raw_p=None,point=None,ci_low=None,ci_high=None))
+    # Preserve original primary-family correction; additionally guard joint claims across all 51 contrasts.
+    joint=holm(raw+fusion_raw)
+    for row,pvalue in zip(comparisons+fusion,joint):
+        row['joint_family_size']=len(joint);row['joint_holm_adjusted_p']=pvalue if row['status']=='COMPLETE' else None
+    pd.DataFrame(fusion).to_csv(folder/'fusion_diagnostic_comparisons.csv',index=False)
     paired_df=pd.DataFrame(comparisons);paired_df.to_csv(folder/'primary_comparisons.csv',index=False)
     perclass=[]
     for (dataset,method,budget,reader),g in groups.items():
@@ -120,7 +133,7 @@ def analyze(cfg,synthetic=False):
     reference_frame=pd.DataFrame(references);reference_frame.to_csv(folder/'specialist_references.csv',index=False)
     atomic(folder/'figures.json',figures);atomic(folder/'status.json',dict(saved_result_analysis_only=True,synthetic=synthetic,n_rows=len(rows),n_conditions=len(summaries),primary_family_size=len(specs),no_confirmation_outcomes=True))
     (folder/'REPORT.md').write_text('# Week12 '+('SYNTHETIC SMOKE ONLY' if synthetic else 'development analysis')+'\n\n'+(frame.to_markdown(index=False) if not frame.empty else 'No completed rows. No results fabricated.')+'\n\nHolm family is fixed across datasets/budgets, including reserved optional arms at p=1 internally. Missing tests are pending, never observed p=1 claims. Macro-F1 is recomputed per cluster resample. Prompt/evidence Pareto comparisons stay within reader precision. End-to-end latency is unmeasured.\n')
-    return dict(summary=frame,comparisons=paired_df,specialist_references=reference_frame,figures=figures,folder=str(folder))
+    return dict(summary=frame,comparisons=paired_df,fusion_comparisons=pd.DataFrame(fusion),specialist_references=reference_frame,figures=figures,folder=str(folder))
 
 def freeze_final(cfg,method,reason,retain_lora=False):
     if method is None:return dict(status='REVIEW_REQUIRED',reason='No automatic winner selection. Supply method and evidence-based rationale after development analysis.')

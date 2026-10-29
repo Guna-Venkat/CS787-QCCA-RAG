@@ -58,3 +58,8 @@ def behavioral(score,baseline,classification=False,epsilon=.01):
     d=score-baseline;e=0 if classification else epsilon
     return dict(delta_task_score=d,HELP=d>e,HURT=d<-e,NEUTRAL=abs(d)<=e)
 def compression(tokens,reference):return None if reference<=0 else 1-tokens/reference
+
+
+def fusion_registry(cfg):
+    """Prospective fusion diagnostics, preserving the frozen original 39 contrasts."""
+    return [dict(id=f'{d}:{b}:QBGF_FULL-{other}',dataset=d,budget=b,left='QBGF_FULL',right=other,reader='BASE_FP16',metric=cfg['statistics']['primary_metric'][d]) for d in cfg['datasets'] for b in cfg['budgets'] for other in ['QBGF_SENTENCE_ONLY','QBGF_PASSAGE_ONLY']]

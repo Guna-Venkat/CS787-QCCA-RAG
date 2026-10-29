@@ -24,6 +24,7 @@ def main():
  for phase,title in NAMES.items():
   flags='CORE_FINAL = True\nRUN_SMOKE = True\nRUN_FULL = False\nRESUME = True\nOVERWRITE = False\nSMOKE_LIMIT = 3\nRUN_REAL_MODEL_SMOKE = False\nRUN_CANONICAL_SMOKE = False\nALLOW_LLMLINGUA_DOWNLOAD = False\nRUN_LLMLINGUA_SMOKE = True\nRUN_LLMLINGUA_FULL = False\nRUN_TINY_LORA_SMOKE = True\nRUN_FULL_LORA_TRAIN = False\nFINAL_METHOD = None\nFINAL_REASON = None\nRETAIN_LORA = False\n'
   intro=f'# Week12 {phase} — {title.replace("_"," ")}\n\nRun All is safe by default: synthetic smoke or read-only metadata. Full work requires changing the FLAGS cell yourself. The agent has not enabled full runs. Completed checksummed rows resume automatically; a changed scientific identity fails instead of overwriting. QASPER TEST and all Week13 confirmation outcomes are blocked.\n\nW12-C uses the full frozen VALIDATION split. The historical W11 pilot is hypothesis generation only. W12-I freezes the reviewed method; Week13 is the future locked evaluation. No outcome from reserved confirmation may inform selection.\n'
+  if phase=='D':intro+='\nCORE D includes QBGF_FULL, QBGF_NO_QUERY, QBGF_SENTENCE_ONLY and QBGF_PASSAGE_ONLY at both 256 and 1024. NO_MASS, GREEDY and BM25 stay secondary. NO_QUERY removes allocation conditioning within the same query-dependent SFR pool; it does not remove query information from retrieval.\n'
   cells=[nb.v4.new_markdown_cell(intro),nb.v4.new_code_cell(flags),nb.v4.new_code_cell(IMPORTS)]
   if phase=='0':body="""from src.week12.data import audit
 from src.week12.splits import read_freeze
@@ -70,6 +71,7 @@ else: print('Full LoRA training disabled. Tiny smoke uses random miniature Qwen,
 result=analyze(cfg,synthetic=effective_smoke)
 display(result['summary'])
 display(result['comparisons'])
+display(result['fusion_comparisons'])
 display(result['specialist_references'])
 for f in result['figures']:
     display(Image(filename=f['png']))

@@ -14,7 +14,7 @@ TRAIN may reuse historical training data; historical QASPER validation papers ar
 
 ## Run All and manual flags
 
-**CORE_FINAL=True is the default.** C runs NONE, RAW_SKIP, FIXED_SENTENCE, H3 and QBGF at 256/1024, plus C2 at its preregistered primary budget 256. D runs QBGF and NO_QUERY at 256/1024, reusing compatible C answers. Natural-budget references, RAW_STRICT and other ablation/sensitivity arms remain available with explicit CORE_FINAL=False (`--include-secondary` in the CLI); they are not automatically launched. The primary comparison family remains unchanged, with optional E/G arms pending until explicitly run.
+**CORE_FINAL=True is the default.** C runs NONE, RAW_SKIP, FIXED_SENTENCE, H3 and QBGF at 256/1024, plus C2 at its preregistered primary budget 256. D runs QBGF_FULL, QBGF_NO_QUERY, QBGF_SENTENCE_ONLY and QBGF_PASSAGE_ONLY at 256/1024, reusing compatible C answers. NO_MASS, GREEDY and BM25 remain secondary. Natural-budget references, RAW_STRICT and other ablation/sensitivity arms remain available with explicit CORE_FINAL=False (`--include-secondary` in the CLI); they are not automatically launched. The original 39-contrast primary family remains intact, with optional E/G arms pending until explicitly run. Twelve prospective fusion diagnostics compare QBGF with the sentence-only/passage-only controls; analysis also provides joint Holm correction over all 51 contrasts.
 
 Every notebook defaults to synthetic smoke or metadata, **RUN_FULL=False**, **RESUME=True**, **OVERWRITE=False**. C/D/E/G use only frozen VAL; F uses TRAIN gradients and VAL checkpoint selection; H/I read saved VAL results. No notebook evaluates confirmation.
 
@@ -68,3 +68,5 @@ Sources are pinned by exact content SHA-256 (including Arrow files and dataset m
 Full flags remain disabled. The agent has run tests and bounded smoke only.
 
 Read actual TRAIN coverage without launching a model: `sara_env/bin/python scripts/week12/training_coverage.py`. Before training this reports zero actual consumption; during interrupted work the durable ledger retains the physical repeats.
+
+Final pre-run CORE D patch and revised cost: `results/week12/W12_CORE_D_FUSION_PATCH.md`. No split, retriever, QBGF definition or confirmation identity changed.

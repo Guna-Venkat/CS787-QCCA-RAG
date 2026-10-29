@@ -34,11 +34,11 @@ class SchedulerCoreTests(unittest.TestCase):
    log=CoverageLedger(Path(d)/'events.jsonl',[('A','train')],{'A':1.})
    with self.assertRaises(ValueError):log.forward(['A'],['confirm'],[1.])
  def test_core_methods_and_secondary_explicit(self):
-  self.assertEqual(methods('D'),['QBGF_FULL','QBGF_NO_QUERY']);self.assertNotIn('RAW_STRICT',methods('C'));self.assertIn('RAW_STRICT',methods('C',False));self.assertIn('QBGF_BM25',methods('D',False))
+  self.assertEqual(methods('D'),['QBGF_FULL','QBGF_NO_QUERY','QBGF_SENTENCE_ONLY','QBGF_PASSAGE_ONLY']);self.assertNotIn('RAW_STRICT',methods('C'));self.assertIn('RAW_STRICT',methods('C',False));self.assertIn('QBGF_BM25',methods('D',False))
  def test_core_budgets_c2_only_registered_primary(self):
   c=load();self.assertEqual(budgets(c,'C','C2'),[256]);self.assertEqual(budgets(c,'C','C2',False),[256,1024]);self.assertEqual(budgets(c,'D','QBGF_NO_QUERY'),[256,1024])
  def test_cost_audit_exact_counts(self):
-  p=cost_plan(load(),dict(QASPER=1005,HotpotQA=7155,SciFact=177));core=[r for r in p if r['CORE_FINAL']];self.assertEqual([r['logical_rows'] for r in core],[91707,33348]);self.assertEqual(sum(r['additional_call_upper_bound'] for r in core),100044)
+  p=cost_plan(load(),dict(QASPER=1005,HotpotQA=7155,SciFact=177));core=[r for r in p if r['CORE_FINAL']];self.assertEqual([r['logical_rows'] for r in core],[91707,66696]);self.assertEqual(sum(r['additional_call_upper_bound'] for r in core),133392)
  def test_secondary_path_is_distinct(self):
   from src.week12.runner import directory
   c=load();self.assertNotEqual(directory(c,'C'),directory(c,'C',core_final=False))
@@ -54,3 +54,15 @@ class SchedulerCoreTests(unittest.TestCase):
  def test_schedule_is_independent_of_corpus_storage_order(self):
   rows=self.rows();rev=list(reversed(rows));ix,p=full_coverage(rows);jx,q=full_coverage(rev)
   self.assertEqual([(rows[i]['dataset'],rows[i]['query_id']) for i in ix],[(rev[i]['dataset'],rev[i]['query_id']) for i in jx])
+
+ def test_core_fusion_diagnostics_cover_both_budgets_and_all_datasets(self):
+  from src.week12.statistics import registry,fusion_registry
+  c=load();specs=fusion_registry(c);self.assertEqual(len(registry(c,True,True)),39);self.assertEqual(len(specs),12)
+  self.assertEqual({s['right'] for s in specs},{'QBGF_SENTENCE_ONLY','QBGF_PASSAGE_ONLY'});self.assertEqual({s['budget'] for s in specs},{256,1024})
+ def test_core_d_surface_includes_both_fusion_controls(self):
+  from src.week12.runner import execute
+  rows=execute('D',load(),smoke=True,limit=3);self.assertEqual(len(rows),24)
+  for d in load()['datasets']:
+   for m in methods('D'):
+    self.assertEqual({r['budget'] for r in rows if r['dataset']==d and r['method']==m},{256,1024})
+  self.assertFalse(any(r['method'] in ('QBGF_NO_MASS','QBGF_GREEDY','QBGF_BM25') for r in rows))

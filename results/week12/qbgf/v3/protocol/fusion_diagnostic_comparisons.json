@@ -1,0 +1,110 @@
+[
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_SENTENCE_ONLY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_PASSAGE_ONLY"
+  }
+]
