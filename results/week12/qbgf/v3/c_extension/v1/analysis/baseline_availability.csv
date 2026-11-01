@@ -1,0 +1,6 @@
+method,status,scope,n_queries
+BM25_PLAIN_RAG,COMPLETE,"same frozen VAL IDs, BASE_FP16, 256/1024 whole-passage RAW_SKIP",
+SFR_PLAIN_RAG,COMPLETE,"same frozen VAL IDs, BASE_FP16, 256/1024 whole-passage RAW_SKIP",
+SARA_CANONICAL_BM25_K5_N10,COMPLETE,"QASPER only; adapted Mistral/SARA k5/n10; natural specialist reference, not budget matched",1005.0
+SARA_SFR_K5_N10,COMPLETE,"QASPER only; adapted Mistral/SARA k5/n10; natural specialist reference, not budget matched",1005.0
+HISTORICAL_SFR_SARA_K6,HISTORICAL_ONLY_NOT_WEEK12_PAIRED,Existing W10 findings only. Different cohorts/prompt/checkpoint conditions must not enter fresh VAL tables or CIs. No new result fabricated.,

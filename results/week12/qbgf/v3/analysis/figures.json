@@ -1,0 +1,233 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_budget.csv",
+    "dataset": "QASPER",
+    "name": "quality_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_prompt_tokens.csv",
+    "dataset": "QASPER",
+    "name": "quality_prompt_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_prompt_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_quality_prompt_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_pareto.csv",
+    "dataset": "QASPER",
+    "name": "pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_representation_choices.csv",
+    "dataset": "QASPER",
+    "name": "representation_choices",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_representation_choices.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_representation_choices.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_budget_utilization.csv",
+    "dataset": "QASPER",
+    "name": "budget_utilization",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_budget_utilization.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_budget_utilization.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_query_conditioning.csv",
+    "dataset": "QASPER",
+    "name": "query_conditioning",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_query_conditioning.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_query_conditioning.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_raw_strict_skip.csv",
+    "dataset": "QASPER",
+    "name": "raw_strict_skip",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_raw_strict_skip.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_raw_strict_skip.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_sentence.csv",
+    "dataset": "QASPER",
+    "name": "qbgf_sentence",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_sentence.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_sentence.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_h3.csv",
+    "dataset": "QASPER",
+    "name": "qbgf_h3",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_h3.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_qbgf_h3.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_help_hurt.csv",
+    "dataset": "QASPER",
+    "name": "help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_budget.csv",
+    "dataset": "HotpotQA",
+    "name": "quality_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_prompt_tokens.csv",
+    "dataset": "HotpotQA",
+    "name": "quality_prompt_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_prompt_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_quality_prompt_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_pareto.csv",
+    "dataset": "HotpotQA",
+    "name": "pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_representation_choices.csv",
+    "dataset": "HotpotQA",
+    "name": "representation_choices",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_representation_choices.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_representation_choices.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_budget_utilization.csv",
+    "dataset": "HotpotQA",
+    "name": "budget_utilization",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_budget_utilization.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_budget_utilization.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_query_conditioning.csv",
+    "dataset": "HotpotQA",
+    "name": "query_conditioning",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_query_conditioning.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_query_conditioning.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_raw_strict_skip.csv",
+    "dataset": "HotpotQA",
+    "name": "raw_strict_skip",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_raw_strict_skip.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_raw_strict_skip.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_sentence.csv",
+    "dataset": "HotpotQA",
+    "name": "qbgf_sentence",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_sentence.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_sentence.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_h3.csv",
+    "dataset": "HotpotQA",
+    "name": "qbgf_h3",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_h3.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_qbgf_h3.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_help_hurt.csv",
+    "dataset": "HotpotQA",
+    "name": "help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_budget.csv",
+    "dataset": "SciFact",
+    "name": "quality_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_prompt_tokens.csv",
+    "dataset": "SciFact",
+    "name": "quality_prompt_tokens",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_prompt_tokens.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_quality_prompt_tokens.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_pareto.csv",
+    "dataset": "SciFact",
+    "name": "pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_representation_choices.csv",
+    "dataset": "SciFact",
+    "name": "representation_choices",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_representation_choices.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_representation_choices.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_budget_utilization.csv",
+    "dataset": "SciFact",
+    "name": "budget_utilization",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_budget_utilization.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_budget_utilization.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_query_conditioning.csv",
+    "dataset": "SciFact",
+    "name": "query_conditioning",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_query_conditioning.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_query_conditioning.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_raw_strict_skip.csv",
+    "dataset": "SciFact",
+    "name": "raw_strict_skip",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_raw_strict_skip.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_raw_strict_skip.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_sentence.csv",
+    "dataset": "SciFact",
+    "name": "qbgf_sentence",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_sentence.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_sentence.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_h3.csv",
+    "dataset": "SciFact",
+    "name": "qbgf_h3",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_h3.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_qbgf_h3.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_help_hurt.csv",
+    "dataset": "SciFact",
+    "name": "help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_primary_intervals.csv",
+    "dataset": "HotpotQA",
+    "name": "primary_intervals",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_primary_intervals.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/HotpotQA_primary_intervals.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_primary_intervals.csv",
+    "dataset": "QASPER",
+    "name": "primary_intervals",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_primary_intervals.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/QASPER_primary_intervals.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_primary_intervals.csv",
+    "dataset": "SciFact",
+    "name": "primary_intervals",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_primary_intervals.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/qbgf/v3/analysis/figures/SciFact_primary_intervals.png"
+  }
+]

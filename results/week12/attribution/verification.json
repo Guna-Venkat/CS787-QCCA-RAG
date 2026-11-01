@@ -1,0 +1,23 @@
+{
+  "unit_tests_passed": 136,
+  "notebooks_passed": [
+    "week12_0_protocol_and_split_audit.ipynb",
+    "week12_A_qbgf_algorithm.ipynb",
+    "week12_B_baseline_qualification.ipynb",
+    "week12_C_EXT_baseline_extension.ipynb",
+    "week12_C_validation_surface.ipynb",
+    "week12_D_qbgf_ablations.ipynb",
+    "week12_E_llmlingua2.ipynb",
+    "week12_F_lora_training.ipynb",
+    "week12_G_lora_validation.ipynb",
+    "week12_H_validation_analysis.ipynb",
+    "week12_I_week13_freeze.ipynb",
+    "week12_J_attribution_setup.ipynb",
+    "week12_K_causal_evidence_ablation.ipynb",
+    "week12_L_attribution_analysis.ipynb"
+  ],
+  "real_cached_cells_validated": 600,
+  "real_attribution_queries_generated": 0,
+  "confirmation_query_and_group_overlap": 0,
+  "C_D_identity_preserved": true
+}

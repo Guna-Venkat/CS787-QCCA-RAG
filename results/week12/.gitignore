@@ -34,3 +34,12 @@
 /qbgf/*/c_extension/*/specialists/*/canonical_inputs/
 /qbgf/*/c_extension/*/specialists/*/canonical_references/
 /qbgf/*/c_extension/*/specialists/*/qualification_smoke/
+
+# Attribution study: preserve freezes/summaries; keep detailed resume shards local.
+/attribution/smoke/
+/attribution/v*/prepared/
+/attribution/v*/perturbations/
+/attribution/v*/generation/
+/attribution/v*/completed_cells/
+# Dense per-query choice table is reproducible from saved C/D rows; keep summaries/plots.
+/qbgf/*/analysis/allocation.csv

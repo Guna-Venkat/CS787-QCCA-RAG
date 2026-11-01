@@ -87,3 +87,17 @@ I requires the two complete matched controls and canonical BM25 SARA before fina
 freeze. Historical W10 SFR-SARA k6 remains historical, never a newly paired score.
 Supplemental extension comparisons have a separate 12-test Holm correction and
 are exploratory additions; original primary registries and frozen science stay intact.
+
+### After D: H, then optional attribution diagnostic J/K/L
+
+E/F/G full experiments are skipped by user decision; qualification/synthetic smoke
+is not a replacement quality result. H defaults to read-only saved analysis and
+shows `optional_phase_decisions.json`. Original multiplicity families stay unchanged.
+
+J: set `RUN_SMOKE=False` and Run All to inspect/reuse the frozen 50-query-per-dataset
+VAL diagnostic and six full-VAL-selected comparators. Cached setup does not call an LM.
+K: set `RUN_FULL=True` only when ready for real perturbations; completed immutable
+actions resume. L: after K, set `RUN_SMOKE=False` and Run All for real saved analysis.
+J/K/L default to synthetic smoke, never full generation. The diagnostic is causal
+input ablation, not internal-model explanation; it does not inspect confirmation.
+See `results/week12/W12_ATTRIBUTION_READINESS.md` for IDs, call budget, limits and tests.

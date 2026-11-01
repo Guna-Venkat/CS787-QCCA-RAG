@@ -18,6 +18,8 @@ def main():
   flags=n.cells[1].source
   if '_C_EXT_' in path.name:
    assert 'RUN_C_EXT_FULL = False' in flags and 'RUN_SPECIALIST_QUALIFICATION = False' in flags
+  elif path.name.startswith(('week12_J_','week12_K_','week12_L_')):
+   assert 'RUN_FULL = False' in flags and 'RUN_SMOKE = True' in flags
   else:
    assert 'RUN_FULL = False' in flags and 'RUN_FULL_LORA_TRAIN = False' in flags
   target=out/path.name

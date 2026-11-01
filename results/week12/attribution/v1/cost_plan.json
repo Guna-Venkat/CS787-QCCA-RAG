@@ -1,0 +1,19 @@
+{
+  "causal_ONLY_top3_unknown_until_LOO": true,
+  "cells": 600,
+  "estimated_additional_disk_GiB_upper": 0.2686008810997009,
+  "known_LOO_and_relevance_ONLY_unique": 10505,
+  "known_action_cache_reuse_percent": 0.5140409328891005,
+  "known_actions_already_cached": 54,
+  "minimum_free_disk_GiB": 2,
+  "no_evidence_reference_cache_reuse_percent": 100,
+  "note": "Upper bound includes LOO, union of relevance/causal top3 ONLY, and available top1/top2/top4 ONLY/REMOVE; duplicates, original/NONE and compatible C/D cache hits reduce calls. Cached inputs are not zero conceptual prompt cost.",
+  "optional_replacement": false,
+  "optional_third_method": false,
+  "original_reference_answers": 600,
+  "original_reference_cache_reuse_percent": 100,
+  "perturbation_call_upper_bound_before_global_dedup": 16534,
+  "queries": 150,
+  "remaining_call_upper_bound": 16534,
+  "units": 9607
+}
