@@ -1,0 +1,2 @@
+file,status,incorrect_claim,authoritative_evidence,action,sha_before,sha_after,corrected
+results/week6/README.md,UNKNOWN,Not certified by line-by-line reconciliation; legacy narrative excluded from reconstruction.,results/weekly_reports/week_06/SourceInventory.csv,Leave unchanged; manual review required. Preserve historical documentation; use frozen authoritative reports.,e0b0f74f77c7f5b51f1d1922d5aaaaaac3e8512dd2bf093583cb15c743965a7a,e0b0f74f77c7f5b51f1d1922d5aaaaaac3e8512dd2bf093583cb15c743965a7a,False

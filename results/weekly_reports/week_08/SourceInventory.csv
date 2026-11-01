@@ -1,0 +1,30 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+8,protocol/cross-check,configs/week8/w8_dafir.yaml,yaml,inspected,protocol/context only,edfd9fa6e41839f47e219c1a0fc224cf9a65134cff0010ff38ba04e6e1f9a66c
+8,protocol/cross-check,notebooks/week8/week8_master.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,1e1578b05000b6f3de5bdcde789b90d8acd289d5c2882ec6c658e4847d5fe579
+8,protocol/cross-check,notebooks/week8/week8a_promotion_oracle.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,fffea58f829b2418f400c455ce6b6f3e2bc540efb4cc82950a747930594c8084
+8,B,notebooks/week8/week8b_draft_diagnostics.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,6230a5f0d2be0b45615a797d28918f95a1b78b040a5485c21bd80282afca8604
+8,protocol/cross-check,notebooks/week8/week8c_utility_modeling.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,f42c270933de30669445a34e388b9897f79dbca17a7ec1c08b0993ac43bb8516
+8,protocol/cross-check,notebooks/week8/week8d_cached_closeout.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,8fad9e0bae826b6818fa96919b017b5d8d2469ea1af16b5da4ac2b8d765cc576
+8,protocol/cross-check,notebooks/week8/week8d_generator_interaction.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c2eb01c02aff324e4c16d314b80c5fd797f291061496a1e7185250558a67eeff
+8,protocol/cross-check,notebooks/week8/week8e_controller.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,a43a8e3c63c7459cd7140700334a2126754f61d42583eec62ccdf602ac5ff776
+8,protocol/cross-check,notebooks/week8/week8f_qcla.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,0904869a9318b81fbfc0845881c2142eb54c21a6127413333e6bee0b70a1e0d1
+8,G,notebooks/week8/week8g_outcome_weighted_sft.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,d68875abc46edc6740a554244907bea11f910026f294a500d202b84b59791b10
+8,protocol/cross-check,notebooks/week8/week8h_full_system.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,7800a3d0b67d7e05e159edcf1c14096ac1703e59fe0a6f0e889625a73c933a86
+8,I,notebooks/week8/week8i_ablations.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,05b14b060e42ccf8f612c04579c16db169043279d5397533bb898a0472ef729a
+8,J,notebooks/week8/week8j_final_dev_evaluation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,5a4a01d8163746a9d25c8da3ca71ec577f2bf74f9a31fdf7bb1194dc667f6667
+8,B,results/week8/drafts/draft_diagnostics_internal_val.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,50a2557b88b140d41c028f67ef083154d3f08d7a2f7aa8adbf3b7c482c883406
+8,A,results/week8/surfaces/promotion_surface_fit.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958
+8,H,results/week8/tables/w8h_dafir1_cost_summary_smoke.csv,csv,inspected,Outcome or execution evidence; see per-part status,0f69da8f356cc6090a393f2473112ed553e5070581b3074be7f97abccb4e9a41
+8,J,results/week8/tables/w8j_bootstrap_dafir_vs_k4_smoke.csv,csv,inspected,Outcome or execution evidence; see per-part status,7ddf4ae08ef1e28d538dfb633b5cd04ae56e362353a1576d1c0207f9ec768255
+8,C,results/week8/w8c_utility/fit_oof_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,8e48c70b802c76b0572040cae7ac1afdb14d1cd9f18bf841d7faf32ad75bdd8c
+8,C,results/week8/w8c_utility/w8c_frozen_selector_config.json,json,inspected,Outcome or execution evidence; see per-part status,093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280
+8,D,results/week8/w8d_attribution/full/features_fit.csv,csv,inspected,Outcome or execution evidence; see per-part status,d99c087b46270486ee53036e264882732843d8487352877045044a2f88749260
+8,D,results/week8/w8d_closeout/closeout_summary.json,json,inspected,Outcome or execution evidence; see per-part status,ac5b02426f3ee7a408d559526222dfc05c4ab5d02be25586e954fe7823d9e55a
+8,D-CLOSEOUT,results/week8/w8d_closeout/fit_frozen_decisions.json,json,inspected,Outcome or execution evidence; see per-part status,d308c115e22311612deefaf71bb94a72a14e9d09e28583cf5bef12e4fdee013c
+8,D-CLOSEOUT,results/week8/w8d_closeout/fit_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,7fc448f3b33bd67581d1fd63be3d4d56a9fbff122e848de07ff2e32f80f7d13a
+8,D,results/week8/w8d_closeout/internal_val_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,a76131ad509537c509f8870faf49045ea53fbd111d681d9114306e6b7946a17d
+8,E,results/week8/w8e_controller/controller_summary.json,json,inspected,Outcome or execution evidence; see per-part status,59e36894012cf54b6b74286de5417a77d5425cf44fc934103a3842bda9a2a423
+8,E,results/week8/w8e_controller/internal_val_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,8de0221f6c5e92afe815980d66a3f9a3ab334c8bd8d361fd77662cf83533c043
+8,E,results/week8/w8e_controller/pipeline_status.json,json,inspected,Outcome or execution evidence; see per-part status,388f81b12dd6b9238b9aacdc6c0b94b6f9557e0116b67075480f06790c8f1760
+8,F,results/week8/w8f_qcla/full/comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,d916e376e0c154260641d173ea6cb4f1e0e3eb049a2488fe975c402ddff759b8
+8,F,results/week8/w8f_qcla/full/summary.json,json,inspected,Outcome or execution evidence; see per-part status,003116f85f02af84b5837a01bc32c451a58114bc09d04f0c3cbb63842dd3553b

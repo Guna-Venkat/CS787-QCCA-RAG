@@ -1,0 +1,38 @@
+{
+  "week": 4,
+  "reports": {
+    "WeeklyPartWiseAnalysis.md": "1854b63fa7024160bb58b6f2b4983910b3147b0e58e25279fbfa40427433855a",
+    "WeeklySummaryAnalysis.md": "44ddd419502bb56f6e22e4b83a0395d6fe1897569818f3fa7255089ea7a01e33"
+  },
+  "sources": {
+    "configs/week4/week4_config.yaml": "5147ef42dbd5c2dff534beb75a6c42ac73bb72ed711b3b747fb20d2140713a83",
+    "notebooks/week4/week4_feature_discovery.ipynb": "1b59aa21af5935622cae2b4b6c651bad58a3f6a4feff49e7aa88106dc9be5056",
+    "notebooks/week4/week4_feature_validation.ipynb": "bb6955ed9f9b0ae8e42d7b44944cf14c2a602262fb1c367630f0eff8b9c96708",
+    "notebooks/week4/week4_model_benchmark.ipynb": "70f58e42fd198c3290d25b04f163400d01531e5923fc47e46b1c70d5618a61e6",
+    "notebooks/week4/week4_qcca_development.ipynb": "a19b4cf267bfa189a529da86ce10a25763cedf696186ebb62873434d8bd97412",
+    "notebooks/week4/week4_qcca_v2_diagnostic.ipynb": "67da0a9ecd5f46a8d0133f01d4952a9c351dd5ba6c3258f3b0935042e228f75a",
+    "notebooks/week4/week4_qcca_v2_final_validation.ipynb": "720ab32238eb45172f8cc94999ad8d508d5c431f663a959a905cc648e207aeb0",
+    "notebooks/week4/week4_qcca_v2_modeling.ipynb": "da88713c1ac8a65757c09ac2399f56d817bb703abe508ad6accfe20bbad74f46",
+    "results/week4/feature_discovery/feature_family_summary.csv": "d264afea3fb83c92dfcc34681d4da5e2a2023be5893bba83f8d68294179bf70b",
+    "results/week4/feature_validation/feature_family_validation_summary.csv": "594794934572732ddeeb1ac5956897f9dcaa351a34fde0746ee03e04fea412bd",
+    "results/week4/feature_validation/provisional_feature_set.csv": "8fdc28e0133dfdd4b2309fc4fe128aa8607e437c0476880e516e7d75cf9c4580",
+    "results/week4/model_benchmark/bootstrap_comparison.csv": "f9ea34cb447fa9a76d6729283d9d931ce0e916dd27bd81b0cfac543a2976ad8e",
+    "results/week4/model_benchmark/policy_comparison.csv": "300170aff09ce67a8324ee8ece1d9f2352b29b4bfa649b2fdea54e55b7db9b70",
+    "results/week4/processed/model_comparison.csv": "d7f340255f2c0e60b14b953ce2c7272248b5f92562d7552849a9da2f10d34eaf",
+    "results/week4/qcca_v2/bootstrap_policy_comparison.csv": "996bf1fe3e2d61a172e3bb0a4221e521f869f4ef4c60603d9ea64a31b3459477",
+    "results/week4/qcca_v2/qcca_v2_policy_summary.csv": "1308f4095abbd7e79de43e2f62c139b1ac9525496ef9530a697a65680b847058",
+    "results/week4/qcca_v2_diagnostic/figures/policy_pareto_frontier.png": "97575621201be9551fb9abc8ac816e49ed77cb9cee0b41fef95a0abbcc466f94",
+    "results/week4/qcca_v2_diagnostic/transition_model_comparison.csv": "9a75644d5431c2b6f1928bbf25853b9df33e0e35f4f17038906902be38aa235e",
+    "results/week4/qcca_v2_final_validation/policy_pareto_points.csv": "c7ab7522b10a07b8e0ed099d54288f138cdcb081d31b5310075674c65d3b681e",
+    "results/week4/qcca_v2_final_validation/statistical_comparisons.csv": "c4e2c2d95f2bf908c2b2739264f431f03a4a435636c9933ae456f02283480e96"
+  },
+  "legacy_markdown_used_as_evidence": false,
+  "parts": 7,
+  "numerical_tables": 11,
+  "figures": 1,
+  "checks": [
+    "OOF file has 231 rows; recomputed means: {'f1_pred_rule': 0.3285909090909091, 'f1_pred_logreg': 0.30335411255411254, 'f1_pred_tree': 0.32817878787878785}",
+    "SOURCE CONFLICT: V2 bootstrap k5 contrast is mislabeled/numerically inconsistent; raw policy/static points retained.",
+    "Pareto flags mixing retrospective oracles and deployable policies are not interpreted as production dominance."
+  ]
+}

@@ -1,0 +1,2 @@
+file,status,incorrect_claim,authoritative_evidence,action,sha_before,sha_after,corrected
+results/week2/week2_scientific_validation_report.md,UNKNOWN,Not certified by line-by-line reconciliation; legacy narrative excluded from reconstruction.,results/weekly_reports/week_02/SourceInventory.csv,Leave unchanged; manual review required. Preserve historical documentation; use frozen authoritative reports.,bff30645e2e42f03534c20dd0050cffeb4915854ed31ad489011dd1f037338d6,bff30645e2e42f03534c20dd0050cffeb4915854ed31ad489011dd1f037338d6,False

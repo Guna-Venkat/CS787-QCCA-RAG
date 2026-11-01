@@ -1,0 +1,31 @@
+{
+  "week": 6,
+  "reports": {
+    "WeeklyPartWiseAnalysis.md": "fd3b97b951c4d23eee222c9a9cefa4cd33adbdade774d12537b26161e4c824b0",
+    "WeeklySummaryAnalysis.md": "f00873d1c975bf6e44a48dbcef87baa8f3af4154222040b84f57ce853801440b"
+  },
+  "sources": {
+    "configs/week6/hybrid_routing.yaml": "35498ae84cf29642a7fbb62d74d46882d6d0433af1a59be2d5d672fff8f7377d",
+    "configs/week6/passage_routing.yaml": "ddb004163ea09f00c72f20f778a637e10e972b396e99b42a3748f2e6e95eb451",
+    "notebooks/week6/week6_passage_fidelity_routing.ipynb": "f40cddafcbe47b18d2a6db83068dfdf5e7d516fe3811f0b741da7f457b55e012",
+    "notebooks/week6/week6b_hybrid_routing.ipynb": "4a91eb1bb8f5c032597c557c08173dd61ffb72236a8d4f8b346295d27e9b2dcd",
+    "results/week6/hybrid_routing/bootstrap/w6b_bootstrap_comparisons.csv": "9717d4e49894b4cb96c346b9959019fddf224b2a122ff666a3b1412b8fe7c329",
+    "results/week6/hybrid_routing/tables/w6b_main_results.csv": "d86a127eee915e680b6db68c54765933c7f0686a56f9524db6fbb2f8caa63ea7",
+    "results/week6/passage_routing/bootstrap/w6_bootstrap_comparisons.csv": "67710f6a66761d581d9098f4a53873f07bd99189544b18366ca5bee343dcfe57",
+    "results/week6/passage_routing/sara_generations/dev_sara_generations.jsonl": "b16780b658c6a6ba59ce77f04b933db9f4565fff548f865f469cfe81bab1bae6",
+    "results/week6/passage_routing/tables/w6_main_results.csv": "64deb826cf0249f3c835bb2b4e9ff535f9d64c394b97d3900242aa79c96052cd",
+    "results/week6/passage_routing/tables/w6_routing_quality.csv": "5d15f06f3873b9a0f88c22c85a829109ad3d862d884d38bad0f092150650f91a",
+    "results/week6/passage_routing/figures/w6_quality_vs_budget.png": "6f13a3357c27b2779c8ac524f4ed45bd7643b69ab153a3e7813378ca08b959b8"
+  },
+  "legacy_markdown_used_as_evidence": false,
+  "parts": 2,
+  "numerical_tables": 5,
+  "figures": 1,
+  "checks": [
+    "Saved DEV generation JSONL coverage: 1386 records; columns: router,k,question_id,prediction,token_f1,context_tokens,latency,selected_ranks"
+  ],
+  "figure_supplement": {
+    "primary_only": true,
+    "legacy_narrative_used": false
+  }
+}

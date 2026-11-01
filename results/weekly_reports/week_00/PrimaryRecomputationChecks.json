@@ -1,0 +1,9 @@
+{
+  "generic_attention_rows": 2400,
+  "generic_ablation_rows": 400,
+  "generic_layer_rows": 2400,
+  "mock_attention_all_values_match": true,
+  "mock_ablation_all_values_match": true,
+  "mock_layer_all_values_match": true,
+  "model_execution": false
+}

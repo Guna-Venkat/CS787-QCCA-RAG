@@ -1,102 +1,111 @@
-# Week 0 Final Empirical Study Report: Dataset Understanding & RAG Model Utilization
+This file was reconstructed from primary experimental artifacts. Existing narrative was not used as evidence.
 
-**Study Execution Status:** COMPLETE & VERIFIED  
-**Final Decision:** `WEEK 0 STATUS: FROZEN`  
-**Execution Timestamp:** 2026-10-05 14:51:56 UTC  
-**Hardware & Environment:** NVIDIA TITAN RTX | Peak VRAM: 18.40 GB | Runtime: 4615.58s  
-**Model & Checkpoint:** `/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42` (`bfloat16`)  
-**Total Real Forward Passes:** 840 (40 Full Context + 400 Removal Passes + 400 Replacement Passes)  
-**Sample Composition:** Exactly 40 questions spanning 40 distinct QASPER development papers  
+Generated legacy report corrected after the two authoritative Week0 reports were frozen. Primary artifacts were not changed.
 
----
+# Part FINAL40 — Forty-paper input-sensitivity study
 
-## Executive Summary & Core Conclusion
+**Status: COMPLETED**
 
-This study completes the empirical investigation of Week 0, designed to address whether fixed retrieval budgets in RAG systems are optimal across diverse queries, establishing defensible empirical motivation for subsequent adaptive representation architectures (SARA / QCCA).
+## 1. Research question
 
-### Final Safe Week-0 Scientific Conclusion
-> **QASPER questions exhibit heterogeneous annotated evidence and retrieval structure, while real-model diagnostics indicate that retrieved passages are not utilized uniformly. These observations motivate examining whether a fixed high-fidelity representation budget is appropriate for every query. Subsequent fixed-budget experiments therefore quantify the performance-cost response surface and the potential headroom available from per-query allocation.**
+Do annotated-evidence categories differ in real replacement sensitivity across a broader, deliberately heterogeneous dev sample?
 
-*Critical Methodological Guardrails Enforced:*
-1. **No Claims of Distraction Proof:** Negative $\Delta_{\mathrm{replace}}$ is interpreted strictly as a relative preference between the original retrieved passage and a deterministic length-matched unrelated passage, not proof of harmful distraction.
-2. **No Causal Interpretation of Attention:** Attention is designated strictly as an `attention-based utilization proxy`, separate from query-directed reading.
-3. **Paper-Clustered Statistics:** 400 passages are treated as hierarchically clustered within 40 distinct papers; all confidence intervals are calculated using 2,000 cluster-bootstrap resamples.
-4. **Zero Fallback / Synthetic Logic:** All 840 passes were executed live on real Mistral-7B forward passes with zero mock logic.
+## 2. Experimental design
 
----
+| component          | value                                                                                                               |
+|:-------------------|:--------------------------------------------------------------------------------------------------------------------|
+| base_model         | mistralai/Mistral-7B-Instruct-v0.2                                                                                  |
+| checkpoint         | /home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42 |
+| tokenizer          | mistralai/Mistral-7B-Instruct-v0.2                                                                                  |
+| dtype              | bfloat16                                                                                                            |
+| selected_layers    | [0, 4, 8, 16, 24, 31]                                                                                               |
+| forward_passes     | 840                                                                                                                 |
+| context_truncation | False                                                                                                               |
+| dataset            | QASPER dev                                                                                                          |
+| queries            | 40                                                                                                                  |
+| papers             | 40                                                                                                                  |
+| passages           | 400                                                                                                                 |
+| selection          | 15 complete / 21 partial / 4 failed retrieval queries                                                               |
+| metric             | Teacher-forced per-answer-token log-probability sensitivity, not answer F1                                          |
 
-## 1. Research Questions & Empirical Answers
+## 3. What was implemented / executed
 
-### RQ0.1: How heterogeneous is the annotated evidence and retrieval structure in QASPER?
-**VERIFIED (PRIMARY):**
-- **Evidence Count Heterogeneity:** Across QASPER development questions, the number of gold-annotated evidence paragraphs spans from 0 (unanswerable) to 18 paragraphs (mean: 1.62, median: 1.0, std: 1.54). 61.5% require a single paragraph, 21.2% require 2 paragraphs, and 12.6% require 3 or more paragraphs.
-- **BM25 Retrieval Depth Failure:** In top-10 BM25 retrieval, while $\mathrm{Recall}_{\mathrm{any}}$ reaches 84.8% at $k=10$, $\mathrm{Recall}_{\mathrm{all}}$ plateaus at only 64.9%. For multi-paragraph queries ($N \ge 2$), BM25 completely fails to retrieve all necessary evidence in 42.1% of cases, leaving retrieval incomplete.
+Metadata records 840 real forward passes, 400 removals and 400 replacements. CSV row counts, 40 distinct papers and delta arithmetic were cross-checked within the saved log-probability rounding tolerance (maximum discrepancy 0.000010). Replacement-length differences are at most 6 tokens. Source scripts use a text-context prompt with the SARA-named fine-tuned checkpoint; these probes do not establish original latent-interface performance.
 
-### RQ0.2: Does Mistral interact uniformly with the retrieved passages?
-**VERIFIED (PRIMARY):**
-- **Non-Uniform Attention:** Teacher-forced answer tokens allocate highly concentrated attention on specific passages rather than distributing mass evenly across the 10 documents. Layer 31 answer-to-passage attention ranges from $10^{-7}$ to $10^{-2}$, spanning over 5 orders of magnitude across documents in the same context.
-- **Intervention Heterogeneity:** Across the 40 questions, individual passage replacements produce signed changes in gold log-probability $\Delta_{\mathrm{replace}}$ ranging from $-0.6094$ to $+3.1289$. A median of only 1 to 2 passages per query yield positive contribution mass ($c_i = \max(\Delta_{\mathrm{replace}, i}, 0) > 0$).
+## 4. Result artifacts used
 
-### RQ0.3: Are retrieval/model-utilization diagnostics associated with annotated evidence structure?
-**VERIFIED (PRIMARY):**
-- **Strong Association with Evidence Correspondence:** Retrieved passages matching gold annotations (`STRONG`) exhibit substantial and statistically significant advantages over non-evidence passages (`NONE/WEAK`) across all functional metrics:
-  - **Intervention Effect Gap:**
-    $$\mathrm{effect\_gap} = \mathrm{mean}(\Delta_{\mathrm{replace}} \mid \mathrm{STRONG}) - \mathrm{mean}(\Delta_{\mathrm{replace}} \mid \mathrm{NONE/WEAK}) = \mathbf{+0.6029}$$
-    Paper-clustered 95% Bootstrap Confidence Interval: $[\mathbf{+0.3775}, \mathbf{+0.8570}]$ (SE = 0.1229, p < 0.001).
-  - **Answer Attention Advantage:** Passages with STRONG evidence correspondence receive **2.6x higher answer attention mass** than NONE passages (0.000424 vs 0.000162).
-  - **Hidden-State Cosine Similarity (Layer 31):** STRONG evidence passages exhibit higher query cosine similarity (0.7872 vs 0.7282), though geometric overlap is substantially less discriminative than functional answer attention.
+- [results/week0/final40/execution_metadata.json](execution_metadata.json)
+- [results/week0/final40/sample_manifest.csv](sample_manifest.csv)
+- [results/week0/final40/removal_results.csv](removal_results.csv)
+- [results/week0/final40/replacement_results.csv](replacement_results.csv)
+- [results/week0/final40/attention_results.csv](attention_results.csv)
+- [results/week0/final40/evidence_match_results.csv](evidence_match_results.csv)
+- [results/week0/final40/question_level_features.csv](question_level_features.csv)
+- [results/weekly_reports/week_00/OfflineBootstrapReconstruction.json](../../weekly_reports/week_00/OfflineBootstrapReconstruction.json)
 
-### RQ0.4 (Exploratory Bridge): Do questions with different Week-3 oracle representation budgets exhibit different retrieval/utilization characteristics?
-**EXPLORATORY:**
-- Joining the 40 questions to the frozen Week-3 oracle table ($k^*_{\epsilon=0.01} \in \{2, 4, 5, 6, 8\}$) demonstrates that queries requiring larger representation budgets exhibit higher positive contribution mass:
-  - Questions with $k^*=2$ have mean positive replacement mass $\sum c_i = 0.7568$.
-  - Questions with $k^* \ge 5$ have mean positive replacement mass $\sum c_i = 1.3879$.
-  - Correlation between Week 0 positive mass and Week 3 $k^*$: rho = +0.394 (p = 0.0118).
-- *Cautious Interpretation:* While descriptive alignment exists, the relationship has moderate dispersion across individual queries, confirming that Week 0 observable features provide partial, but not complete, signal for oracle budgeting. This directly motivates learned semantic allocation from query + context.
+## 5. Main numerical results
 
----
+### Overall final40 sensitivity
 
-## 2. Descriptive Summary Across Evidence Categories
+| study               |   rows |   queries |   mean_delta |   median_delta |   positive |   negative |   zero |
+|:--------------------|-------:|----------:|-------------:|---------------:|-----------:|-----------:|-------:|
+| final40 removal     |    400 |        40 |     0.089741 |       0.003906 |        217 |        170 |     13 |
+| final40 replacement |    400 |        40 |     0.098325 |       0.007812 |        235 |        146 |     19 |
 
-| Graded Evidence Category | N Chunks | Mean $\Delta_{\mathrm{replace}}$ | Median $\Delta_{\mathrm{replace}}$ | Mean $\Delta_{\mathrm{remove}}$ | Mean Ans Attn (L31) | Mean Query Attn (L31) | Mean BM25 | Mean CosSim (L31) |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **STRONG** | 51 | **+0.6187** | **+0.1250** | +0.6163 | **0.000424** | 0.000325 | 1.51 | 0.7872 |
-| **PARTIAL** | 47 | **+0.0317** | +0.0078 | +0.0269 | 0.000226 | 0.000253 | 1.17 | 0.7885 |
-| **WEAK** | 194 | **+0.0222** | +0.0010 | +0.0110 | 0.000205 | 0.000276 | 1.43 | 0.7647 |
-| **NONE** | 108 | **+0.0183** | +0.0078 | +0.0099 | 0.000162 | 0.000219 | 1.15 | 0.7282 |
+Sources: [results/week0/final40/execution_metadata.json](execution_metadata.json), [results/week0/final40/sample_manifest.csv](sample_manifest.csv), [results/week0/final40/removal_results.csv](removal_results.csv), [results/week0/final40/replacement_results.csv](replacement_results.csv), [results/week0/final40/attention_results.csv](attention_results.csv), [results/week0/final40/evidence_match_results.csv](evidence_match_results.csv), [results/week0/final40/question_level_features.csv](question_level_features.csv), [results/weekly_reports/week_00/OfflineBootstrapReconstruction.json](../../weekly_reports/week_00/OfflineBootstrapReconstruction.json).
 
----
+### Replacement sensitivity by annotation-match category
 
-## 3. Classification of Hypotheses & Findings
+| match_category   |   n |   mean_replacement_delta |   median_replacement_delta |   positive_fraction |
+|:-----------------|----:|-------------------------:|---------------------------:|--------------------:|
+| NONE             | 108 |                 0.018283 |                   0.007812 |            0.629630 |
+| PARTIAL          |  47 |                 0.031660 |                   0.007812 |            0.617021 |
+| STRONG           |  51 |                 0.618710 |                   0.125000 |            0.784314 |
+| WEAK             | 194 |                 0.022233 |                   0.000977 |            0.505155 |
 
-### PRIMARY VERIFIED
-1. **Annotated Evidence Heterogeneity (RQ0.1):** Gold evidence requirements vary from 1 to 18 paragraphs across QASPER dev questions, with 38.5% requiring multi-paragraph context.
-2. **Retrieval Depth Incompleteness (RQ0.1):** BM25 top-10 retrieval fails to retrieve complete evidence for over one-third of all questions (Recall_all = 64.9%).
-3. **Non-Uniform Model Utilization (RQ0.2):** Mistral-7B attends to and relies on retrieved passages in a sharply non-uniform manner. Answer-to-passage attention concentrates predominantly on 1-2 chunks per query.
-4. **Intervention Sensitivity to Evidence Correspondence (RQ0.3):** Replacing strong evidence passages causes a substantial drop in gold-token log-probability relative to non-evidence replacements (Effect Gap: **+0.6029**, 95% CI: $[+0.3775, +0.8570]$).
+Sources: [results/week0/final40/execution_metadata.json](execution_metadata.json), [results/week0/final40/sample_manifest.csv](sample_manifest.csv), [results/week0/final40/removal_results.csv](removal_results.csv), [results/week0/final40/replacement_results.csv](replacement_results.csv), [results/week0/final40/attention_results.csv](attention_results.csv), [results/week0/final40/evidence_match_results.csv](evidence_match_results.csv), [results/week0/final40/question_level_features.csv](question_level_features.csv), [results/weekly_reports/week_00/OfflineBootstrapReconstruction.json](../../weekly_reports/week_00/OfflineBootstrapReconstruction.json).
 
-### EXPLORATORY
-1. **Bridge to Week-3 Oracle (RQ0.4):** Questions assigned higher representation budgets ($k^*_{\epsilon=0.01} \ge 5$) exhibit higher aggregate positive contribution mass, though with moderate dispersion (rho = +0.394 (p = 0.0118)).
-2. **Question-Level Utilization Features:** Entropy of answer attention and positive mass concentration provide directional indicators of query complexity, serving as conceptual feature candidates for learned allocation.
+### Offline reconstructed exploratory contrast
 
-### NOT SUPPORTED (Hypotheses Refuted / Discarded)
-1. **Harmful Distraction Hypothesis:** The hypothesis that negative $\Delta$ proves passages are harmful distractors is **NOT SUPPORTED**. Raw removal was confounded by prompt-length reduction; under length-matched control, negative $\Delta_{\mathrm{replace}}$ reflects relative preference between documents, not harmful interference.
-2. **Query Representation Drift as Relevance Proxy:** Query drift across layers does not discriminate evidence from non-evidence passages (cosine similarity with query is essentially identical for evidence vs non-evidence).
-3. **Passage Representation Query-Conditioning in Pre-Query Context:** Because retrieved passages precede the query in the prompt, causal attention forbids passage tokens from attending to query tokens; passage vectors cannot be query-conditioned.
+| contrast                                      |    point |   bootstrap_mean |   ci_low |   ci_high |   resamples |   seed |   clusters | role                                                                                              |
+|:----------------------------------------------|---------:|-----------------:|---------:|----------:|------------:|-------:|-----------:|:--------------------------------------------------------------------------------------------------|
+| STRONG minus WEAK/NONE mean replacement delta | 0.597889 |         0.602894 | 0.377483 |  0.856960 |        2000 |     42 |         40 | New offline reconstruction from original CSV; exploratory, nominal CI; no multiplicity correction |
 
----
+Sources: [results/week0/final40/execution_metadata.json](execution_metadata.json), [results/week0/final40/sample_manifest.csv](sample_manifest.csv), [results/week0/final40/removal_results.csv](removal_results.csv), [results/week0/final40/replacement_results.csv](replacement_results.csv), [results/week0/final40/attention_results.csv](attention_results.csv), [results/week0/final40/evidence_match_results.csv](evidence_match_results.csv), [results/week0/final40/question_level_features.csv](question_level_features.csv), [results/weekly_reports/week_00/OfflineBootstrapReconstruction.json](../../weekly_reports/week_00/OfflineBootstrapReconstruction.json).
 
-## 4. Verification Checkpoint & Status
+## 6. Figures
 
-- [x] Deterministic 40-question sample spanning 40 distinct papers (`sample_manifest.csv`)
-- [x] Graded evidence matching (STRONG, PARTIAL, WEAK, NONE) recorded in `evidence_match_results.csv`
-- [x] 840 real Mistral forward passes executed on NVIDIA TITAN RTX (`execution_metadata.json`)
-- [x] No mocks, no synthetic values, no fallback logic in empirical paths
-- [x] Paper-clustered bootstrap uncertainty (2000 resamples, 95% CI reported)
-- [x] 6 publication-style figures generated in `figures/`
-- [x] Exploratory bridge to Week-3 oracle table documented without recomputation
-- [x] All unit and regression tests passing
+![Forty-paper input-sensitivity study](figures/delta_replace_by_evidence_category.png)
 
-```text
-WEEK 0 STATUS: FROZEN
-```
+X-axis is the source/annotation matching category; y-axis is replacement delta. STRONG passages have a higher mean sensitivity. This observational category association is not a randomized comparison of evidence truth.
+
+![Forty-paper input-sensitivity study](figures/per_query_intervention_heterogeneity.png)
+
+Axes index queries and passage ranks with color showing signed intervention delta. Heterogeneity is visible; row/rank order is not an importance-based deployable policy.
+
+## 7. Statistical analysis
+
+The existing plotting code defines a 2,000-resample paper-clustered bootstrap, seed 42. A new offline reconstruction from the untouched CSV gives observed STRONG minus WEAK/NONE mean delta 0.597889, nominal 95% interval [0.377483, 0.856960]. This new reconstruction is explicitly labelled, not asserted to be a surviving historical statistics artifact. Forty papers are the resampling units; no multiplicity adjustment is established.
+
+## 8. Interpretation
+
+### Supported
+
+STRONG-match passages have mean replacement delta 0.618710 versus about 0.02 for WEAK/NONE. Overall replacement mean is +0.098325, but 146/400 deltas are negative and 19 are zero. Utility is heterogeneous.
+
+### Not established
+
+Attention proves internal reasoning; all positive deltas improve generated answer F1; a fixed small budget is sufficient for all queries; a universal causal gold-evidence effect are not established.
+
+### Important caveats
+
+Stratified dev sample; approximate annotation matching; teacher forcing on known gold answer; no held-out generation evaluation; aggregate pilot/final40 signs differ and cannot be pooled. Model/checkpoint/interface comparisons would be whole-system comparisons.
+
+## 9. Part conclusion
+
+- Real final40 sensitivity differs from the mock exports and from the small pilot.
+- Strong annotation overlap associates with larger positive replacement sensitivity, with substantial query/passage heterogeneity.
+- This supports further tests of context amount, not a deployed allocator.
+
+
+Authoritative reports: ../../weekly_reports/week_00/WeeklyPartWiseAnalysis.md and ../../weekly_reports/week_00/WeeklySummaryAnalysis.md.

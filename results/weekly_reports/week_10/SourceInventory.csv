@@ -1,0 +1,18 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+10,protocol/cross-check,configs/week10/root_cause_v1.json,json,inspected,Outcome or execution evidence; see per-part status,e9c473283ab85e0de9e6848a8a6f567c1a242c97ef5a59690913e1faec66206e
+10,protocol/cross-check,notebooks/week10/week10_root_cause.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2066a179f8425f86757e0d0f0187610b45c3b1b111d9aaab536535831f83c62c
+10,D,results/week10/root_cause/v1/D_partial_panel_provenance.json,json,inspected,Outcome or execution evidence; see per-part status,674656f1c9e17387e88e0583490d45f92fa3cb9c59a719b4d99d2fe2753b9f1d
+10,C,results/week10/root_cause/v1/bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,dd73f7a3b6ae4a028e45bf1e836ab5ec77949652f182f72875baf2221d5a4ad3
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/execution_freeze.json,json,inspected,Outcome or execution evidence; see per-part status,798f3ad2a58c892f20c7f2c23042ba0332306d2411568755817524e80cb35254
+10,C,results/week10/root_cause/v1/freeze_C.json,json,inspected,Outcome or execution evidence; see per-part status,ed0be278a786b6b6935e1dd0b90f2d4a9cb58fcf449691970f18b11eaefc306b
+10,G,results/week10/root_cause/v1/freeze_G.json,json,inspected,Outcome or execution evidence; see per-part status,ac211cb782d8fdf293880d58564831f6e4cd4d6e59121c6902f3b65b3ad05fb3
+10,R,results/week10/root_cause/v1/freeze_R.json,json,inspected,Outcome or execution evidence; see per-part status,cf5a6ae181b18b88d239d285335ffbc83948b4fe2514097eeb0526fd5eb6fcdd
+10,G,results/week10/root_cause/v1/full_reader_bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,89ac2d886576ecfbc3329c7dba1159478290a640a3b3b75324abf3b4019b9018
+10,G,results/week10/root_cause/v1/full_reader_panel_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,b93cf7e92213728acf0718e7dfb2c3e7b25ab34504776babb542e8f625e7f31f
+10,D,results/week10/root_cause/v1/full_study_summary.json,json,inspected,Outcome or execution evidence; see per-part status,d88bf754883f90e4647848aaa184ce4c9d0902bde70712df3870bacb2f0b477f
+10,ORACLE-REPORT,results/week10/root_cause/v1/oracle_diagnostics.json,json,inspected,Outcome or execution evidence; see per-part status,e0d4e928878e867fc38163635d8e3d5743f5efac0600f498c675c7842c1460d2
+10,ORACLE-REPORT,results/week10/root_cause/v1/retrieval_interface_interactions.csv,csv,inspected,Outcome or execution evidence; see per-part status,5be7b2de335cfaf53bd01b4b24f9165ad91821cd3231692602c3db9cba19cff0
+10,R,results/week10/root_cause/v1/retrieval_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,5c99aefbee4e2bedb4fc12bde80345e86aa4ab9dab4b6097d1a6d126ae75d8fd
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/sara_configuration_crosswalk.csv,csv,inspected,Outcome or execution evidence; see per-part status,1b6e62e737f53cb16f067ecabe21cedf06de07984bf4a2c76ae8bc48caeef299
+10,R;C,results/week10/root_cause/v1/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,4f7ec2a503f934b3d4b0a400ec3184f0bc8574c30f140d99554df2d4147b814d
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/verification.json,json,inspected,Outcome or execution evidence; see per-part status,6f6ab7150289e8e7efd871298b484231784d39605a5b0dd77ce752c8ef12c3f8

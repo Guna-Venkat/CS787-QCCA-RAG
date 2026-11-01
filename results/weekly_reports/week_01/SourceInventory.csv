@@ -1,0 +1,33 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+1,G,Baselines/SANE-main/benchmarks/metrics.py,py,inspected,protocol/context only,4c6d30026d6729a832a29fd7c64c73051f4d65bbb193c0d252fe2ac6388fd29f
+1,G,Baselines/SANE-main/config/default.yaml,yaml,inspected,protocol/context only,6146c3171c5064100dc399a936be14ee4ec7f54b86a1ea4bdb404872f6f0f7ab
+1,G,Baselines/SANE-main/sane/agents/sane_agent.py,py,inspected,protocol/context only,7104dd76143057d24f85f7a893b6173ff899ca4d2b96540a812aa6208099c0d6
+1,D,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/adapter_config.json,json,inspected,Outcome or execution evidence; see per-part status,ab665d727348599b15d4f2f4fdf86a45ff5dc0125059ece947136d8a01825241
+1,B,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/args.json,json,inspected,Outcome or execution evidence; see per-part status,dbb93c1eced4ae1b3adf635ef17f442b59063caade655bd5b0c672828b5933bf
+1,B;E,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/checkpoint-250/trainer_state.json,json,inspected,Outcome or execution evidence; see per-part status,8d46e409762eaa04ae38f48e35f6c1e44188e8dd803d5b63293f4c8419cb0daf
+1,D,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json,json,inspected,Outcome or execution evidence; see per-part status,7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d
+1,C,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json,json,inspected,Outcome or execution evidence; see per-part status,0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31
+1,C;E,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/checkpoint-250/trainer_state.json,json,inspected,Outcome or execution evidence; see per-part status,51081cae161f5fd5bb5cc8b922e6125a99595d3c570ddcbb0e00830d3b161edf
+1,C;D,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json,json,inspected,Outcome or execution evidence; see per-part status,36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66
+1,B,Baselines/SARA-main/config/language_modeling/Finetune_RAG_qasper_pubbase.yaml,yaml,inspected,protocol/context only,7d89d4008fa88e098f9324890716061658de68483a580620ba2c43c6e7544a77
+1,C,Baselines/SARA-main/config/language_modeling/Finetune_SARA_qasper_pubbase.yaml,yaml,inspected,protocol/context only,aae6c4d476b35b14472bd5c167c64fe2ac489f0052ec72ff1312898496973582
+1,A,Baselines/SARA-main/data/manifests/qasper_split.json,json,inspected,Outcome or execution evidence; see per-part status,2cb43785eb42aecc0cf11bd56a51d704c5257413cd19f63239523c592f072a81
+1,A,Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534
+1,A,Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,f49122e54ef7ce47d0e882a85d1a58be11c0da68c7458d132038dd220caaddc7
+1,B;C;D,Baselines/SARA-main/notebooks/sara_baseline_checkpoints.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,9cf6bf7eed106b2b84d665ee4eea2709cb628c090c554d56962c279002f213f2
+1,protocol/cross-check,Baselines/SARA-main/scripts/build_qasper_dataset.py,py,inspected,protocol/context only,cd92bb216f41c5fd7d01ed1af456d5686129c7352dc8837801de5967dd6255e5
+1,protocol/cross-check,Baselines/SARA-main/src/data/make_qasper_splits.py,py,inspected,protocol/context only,ef56044aa03bd8f290232c575de80315e12c9fd647ec1fcb0865753e0f1e1033
+1,F,Baselines/SARA-main/src/eval/calculate_qa_performance.py,py,inspected,protocol/context only,4361531540aa0b36b12c8f98384e14bd8d76669e1ad5f5b37d19dfeed1bef878
+1,F,Baselines/SARA-main/src/eval/eval_sara.py,py,inspected,protocol/context only,632428ff94d7fe17126256b3b8a18f9892fc518d0395be5dec4d7a2cf0dc3d06
+1,F,Baselines/SARA-main/src/run_sara.py,py,inspected,protocol/context only,4f81fd7266107fc440ca811c38ffd049edf79e895cbdb5b4230f361319a06cdf
+1,protocol/cross-check,Baselines/SARA-main/src/train/train_generator.py,py,inspected,protocol/context only,fbcdcfc702abeaf5558a3ebfce719ce3181828d5f4a87723edf343c0204e9b56
+1,H,Baselines/recomp-main/data/completions/flan_ul2_nq_5shot_no_passage.csv,csv,inspected,Outcome or execution evidence; see per-part status,796f4bf9272556b4731707cd1dc8f7fd709948e81d4fa5d1eac71cdc715a9fa4
+1,H,Baselines/recomp-main/eval_qa.py,py,inspected,protocol/context only,9d7037af463c33a88905de4b3257581a2d6713833708a3f38e170a74f4957328
+1,H,Baselines/recomp-main/run_extractive_compressor.py,py,inspected,protocol/context only,d2835cb74eec14e1490a07d30fc01d65dfb618bf7d14c2b2a9477a9a2b57c155
+1,H,Baselines/recomp-main/train_extractive_compressor.py,py,inspected,protocol/context only,795239fa4a2bb74c2b9225e671ec252c0755e06b5f664ff45e43e1c707297b94
+1,protocol/cross-check,results/weekly_reports/week_01/CheckpointProfilingExtract.csv,csv,inspected,Outcome or execution evidence; see per-part status,8e5b70bfac493ccb5382ebc193ca08499cef59501497beb89f99a13ef8e64cd3
+1,protocol/cross-check,results/weekly_reports/week_01/NotebookExecutionChecks.json,json,inspected,Outcome or execution evidence; see per-part status,dbae310bdcecac9e8c50d959d2ffb77dcf5195f544a3f32484994b98d0a59dec
+1,protocol/cross-check,results/weekly_reports/week_01/SplitRecomputation.json,json,inspected,Outcome or execution evidence; see per-part status,a0f44ed6bafa362beca53510b40d9fa34fc4cd511b5e933f2bc66c6be4861947
+1,protocol/cross-check,results/weekly_reports/week_01/TrainingLogExtract.csv,csv,inspected,Outcome or execution evidence; see per-part status,9cb818dd87345961fc9625631a9032fe6250baf3a733244f0ec12e0c7c5acf29
+1,E,results/weekly_reports/week_01/TrainingRecomputation.csv,csv,inspected,Outcome or execution evidence; see per-part status,de4540781c74639ce6303c2c96fc51dfe5886495719b4f6beebd8a8184b97a99
+1,protocol/cross-check,results/weekly_reports/week_01/figures/logged_training_loss.png,png,inspected,Outcome or execution evidence; see per-part status,811faf574635dbd0a876cd543813aa584f9ec9e11af9da10de218a56790b12f5

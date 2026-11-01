@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-01",
+  "branch": "gagan",
+  "removed_files": 24061,
+  "removed_logical_bytes": 9463081418,
+  "free_bytes_before": 1823535104,
+  "free_bytes_after": 11335741440,
+  "groups_bytes": {
+    "results/week9/retrieval/fit": 3474948096,
+    "cache/week11/v1/index": 1917308316,
+    "cache/week11/v1/selections": 570417147,
+    "cache/week11/v1/hierarchy": 200830333,
+    "cache/week11/v1/embeddings": 163713024,
+    "results/week12/cache/v1": 264887612,
+    "results/week5/content_allocator/checkpoints_smoke": 102172620,
+    "results/week8/w8f_qcla/smoke": 1384402135,
+    "results/week8/w8f_qcla/initial_measured_smoke_before_latency_reporting": 1384402135
+  },
+  "preserved": [
+    "All tracked files",
+    "W12 v3 embedding/hierarchy caches",
+    "C/C-EXT generations and checkpoints",
+    "Frozen splits/protocols and reports",
+    "Final trained model weights",
+    "W11 SFR embedding cache",
+    "Model downloads and environments"
+  ],
+  "note": "Only explicitly inventoried untracked obsolete retrieval caches and smoke checkpoint weights removed. Older smoke/model-cache reruns may recompute deleted intermediates."
+}

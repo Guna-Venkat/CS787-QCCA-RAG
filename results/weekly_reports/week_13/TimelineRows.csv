@@ -1,0 +1,2 @@
+week,part,research_question,method,dataset,status,primary_result,carried_forward
+13,LEGACY-WRAPPER,Was a distinct Week13 scientific experiment executed?,Historical confirmation entry point,See primary protocol,HISTORICAL / SUPERSEDED,"A historical scripts/week13/run_confirmation.py entry point exists, but no separate results/week13 experiment directory was located. Executed final confirmation is Week12 M and is not duplicated as a Week13 result.",Use Week12 M for the final confirmation outcome; do not count it twice.

@@ -1,0 +1,53 @@
+{
+  "week": 1,
+  "reports": {
+    "WeeklyPartWiseAnalysis.md": "93dba321d6236b0cc684ae8c39bfa836083b7ff87ad004e068bb749ba5f990cc",
+    "WeeklySummaryAnalysis.md": "60fad947d79bd463f4a4dc2504621f4ca352b6210ee60e70bb3e944b2eb6914a"
+  },
+  "sources": {
+    "Baselines/SANE-main/benchmarks/metrics.py": "4c6d30026d6729a832a29fd7c64c73051f4d65bbb193c0d252fe2ac6388fd29f",
+    "Baselines/SANE-main/config/default.yaml": "6146c3171c5064100dc399a936be14ee4ec7f54b86a1ea4bdb404872f6f0f7ab",
+    "Baselines/SANE-main/sane/agents/sane_agent.py": "7104dd76143057d24f85f7a893b6173ff899ca4d2b96540a812aa6208099c0d6",
+    "Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/adapter_config.json": "ab665d727348599b15d4f2f4fdf86a45ff5dc0125059ece947136d8a01825241",
+    "Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/args.json": "dbb93c1eced4ae1b3adf635ef17f442b59063caade655bd5b0c672828b5933bf",
+    "Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/checkpoint-250/trainer_state.json": "8d46e409762eaa04ae38f48e35f6c1e44188e8dd803d5b63293f4c8419cb0daf",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/checkpoint-250/trainer_state.json": "51081cae161f5fd5bb5cc8b922e6125a99595d3c570ddcbb0e00830d3b161edf",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+    "Baselines/SARA-main/config/language_modeling/Finetune_RAG_qasper_pubbase.yaml": "7d89d4008fa88e098f9324890716061658de68483a580620ba2c43c6e7544a77",
+    "Baselines/SARA-main/config/language_modeling/Finetune_SARA_qasper_pubbase.yaml": "aae6c4d476b35b14472bd5c167c64fe2ac489f0052ec72ff1312898496973582",
+    "Baselines/SARA-main/data/manifests/qasper_split.json": "2cb43785eb42aecc0cf11bd56a51d704c5257413cd19f63239523c592f072a81",
+    "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+    "Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl": "f49122e54ef7ce47d0e882a85d1a58be11c0da68c7458d132038dd220caaddc7",
+    "Baselines/SARA-main/notebooks/sara_baseline_checkpoints.ipynb": "9cf6bf7eed106b2b84d665ee4eea2709cb628c090c554d56962c279002f213f2",
+    "Baselines/SARA-main/scripts/build_qasper_dataset.py": "cd92bb216f41c5fd7d01ed1af456d5686129c7352dc8837801de5967dd6255e5",
+    "Baselines/SARA-main/src/data/make_qasper_splits.py": "ef56044aa03bd8f290232c575de80315e12c9fd647ec1fcb0865753e0f1e1033",
+    "Baselines/SARA-main/src/eval/calculate_qa_performance.py": "4361531540aa0b36b12c8f98384e14bd8d76669e1ad5f5b37d19dfeed1bef878",
+    "Baselines/SARA-main/src/eval/eval_sara.py": "632428ff94d7fe17126256b3b8a18f9892fc518d0395be5dec4d7a2cf0dc3d06",
+    "Baselines/SARA-main/src/run_sara.py": "4f81fd7266107fc440ca811c38ffd049edf79e895cbdb5b4230f361319a06cdf",
+    "Baselines/SARA-main/src/train/train_generator.py": "fbcdcfc702abeaf5558a3ebfce719ce3181828d5f4a87723edf343c0204e9b56",
+    "Baselines/recomp-main/data/completions/flan_ul2_nq_5shot_no_passage.csv": "796f4bf9272556b4731707cd1dc8f7fd709948e81d4fa5d1eac71cdc715a9fa4",
+    "Baselines/recomp-main/eval_qa.py": "9d7037af463c33a88905de4b3257581a2d6713833708a3f38e170a74f4957328",
+    "Baselines/recomp-main/run_extractive_compressor.py": "d2835cb74eec14e1490a07d30fc01d65dfb618bf7d14c2b2a9477a9a2b57c155",
+    "Baselines/recomp-main/train_extractive_compressor.py": "795239fa4a2bb74c2b9225e671ec252c0755e06b5f664ff45e43e1c707297b94",
+    "results/weekly_reports/week_01/CheckpointProfilingExtract.csv": "8e5b70bfac493ccb5382ebc193ca08499cef59501497beb89f99a13ef8e64cd3",
+    "results/weekly_reports/week_01/NotebookExecutionChecks.json": "dbae310bdcecac9e8c50d959d2ffb77dcf5195f544a3f32484994b98d0a59dec",
+    "results/weekly_reports/week_01/SplitRecomputation.json": "a0f44ed6bafa362beca53510b40d9fa34fc4cd511b5e933f2bc66c6be4861947",
+    "results/weekly_reports/week_01/TrainingLogExtract.csv": "9cb818dd87345961fc9625631a9032fe6250baf3a733244f0ec12e0c7c5acf29",
+    "results/weekly_reports/week_01/TrainingRecomputation.csv": "de4540781c74639ce6303c2c96fc51dfe5886495719b4f6beebd8a8184b97a99",
+    "results/weekly_reports/week_01/figures/logged_training_loss.png": "811faf574635dbd0a876cd543813aa584f9ec9e11af9da10de218a56790b12f5"
+  },
+  "legacy_markdown_used_as_evidence": false,
+  "parts": 8,
+  "numerical_tables": 8,
+  "figures": 1,
+  "checks": [
+    "User explicitly identifies Baselines/ as Week1; previous no-tagged-directory gap is superseded, not hidden.",
+    "TRAIN/DEV counts and paper disjointness verified from raw files and split manifest.",
+    "Both trainer states have global_step250 and exactly250 consecutive loss records.",
+    "Notebook cell10 logs506 RAG examples; current/saved epoch settings differ; SARA failed attempt and completed checkpoint are distinct records.",
+    "No TEST questions/outcomes, unsafe pickle weights or model runs were needed."
+  ],
+  "scope_revision_reason": "User explicitly clarified that Baselines/ is Week1; replace the prior discovery-only gap with primary-artifact evidence."
+}

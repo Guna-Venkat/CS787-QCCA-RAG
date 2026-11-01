@@ -1,121 +1,73 @@
-# Week 0 GPU Pilot: Leave-One-Out Intervention Validation Report
+This file was reconstructed from primary experimental artifacts. Existing narrative was not used as evidence.
 
-**Validation Target:** Disentangling Semantic Passage Utility from Prompt-Length / Token-Position Artifacts  
-**Scope:** Exactly the same 10 diagnostic development queries (100 retrieved passages)  
-**Hardware & Execution:** Real Mistral-7B inference on NVIDIA TITAN RTX via SDPA  
-**Total Additional Forward Passes:** 100 real GPU forward passes  
-**Total Additional Runtime:** 507.97 seconds  
+Generated legacy report corrected after the two authoritative Week0 reports were frozen. Primary artifacts were not changed.
 
----
+# Part INTERVENTION-VALIDATION — Removal versus length-controlled replacement
 
-## 1. Executive Summary & Core Research Question
+**Status: COMPLETED**
 
-In the preliminary pilot, the leave-one-out deletion metric:
-$$\Delta_{\mathrm{remove}}(i) = \mathrm{mean\_logP}(y_{\mathrm{gold}} \mid q, \mathrm{all\;} 10) - \mathrm{mean\_logP}(y_{\mathrm{gold}} \mid q, \mathrm{all}\setminus D_i)$$
-resulted in 96/100 passages yielding $\Delta_{\mathrm{remove}} < 0$ (meaning removing the passage increased gold-answer likelihood).
+## 1. Research question
 
-### The Methodological Concern:
-Deleting passage $D_i$ alters four confounding variables simultaneously:
-1. **Semantic Knowledge:** Eliminates the facts contained in $D_i$.
-2. **Total Prompt Length:** Shortens the prompt by 5 to 280 tokens.
-3. **Downstream Token Positions:** Shifts all subsequent passages, query tokens, and answer tokens forward in RoPE space.
-4. **Attention Normalization:** Decreases context density and causal denominator size.
+Could removing a passage change prompt structure/length rather than isolate its information content?
 
-Therefore, the preliminary 96% negative deletion rate could NOT be interpreted as pure semantic distractor interference.
+## 2. Experimental design
 
-### The Controlled Solution:
-We implemented a **length-matched replacement intervention**:
-$$\Delta_{\mathrm{replace}}(i) = \mathrm{mean\_logP}(y_{\mathrm{gold}} \mid q, \mathrm{orig\;} D_i) - \mathrm{mean\_logP}(y_{\mathrm{gold}} \mid q, \mathrm{matched\;replacement\;} D_i)$$
-where $D_i$ is replaced in-place by a real academic text passage sampled from another paper/query in QASPER dev, matched to approximately the exact same token length, with zero query leakage.
+| component     | value                                                                      |
+|:--------------|:---------------------------------------------------------------------------|
+| queries       | 10                                                                         |
+| interventions | 100                                                                        |
+| replacement   | Donor passage from another query/paper; approximately token-length matched |
+| metric        | Full minus controlled-replacement mean log-probability                     |
 
-This holds prompt length, downstream token positions, and attention denominator essentially invariant, isolating the **semantic utility** of passage $D_i$.
+## 3. What was implemented / executed
 
----
+Replacement and removal comparison tables have 100 matching rows. The stored removal column agrees with the pilot ablation output. Mean absolute replacement-length difference is 1.28 tokens, maximum 5; signs agree for 98/100 rows.
 
-## 2. Token-Length Matching Quality Audit
+## 4. Result artifacts used
 
-The donor pool comprised **2,036 candidate passages** across **76 non-pilot papers**.
+- [results/week0/gpu_pilot/intervention_validation/replacement_results.csv](replacement_results.csv)
+- [results/week0/gpu_pilot/intervention_validation/removal_vs_replacement.csv](removal_vs_replacement.csv)
+- [results/week0/gpu_pilot/intervention_validation/evidence_match_audit.csv](evidence_match_audit.csv)
 
-| Metric | Passage Token Length | Total Prompt Token Length |
-|:---|:---:|:---:|
-| **Mean Absolute Difference** | **1.28 tokens** | **1.28 tokens** |
-| **Median Absolute Difference** | **0.00 tokens** | **0.00 tokens** |
-| **Max Absolute Difference** | **5.00 tokens** | **5.00 tokens** |
-| **Mean Percentage Difference** | **0.77%** | **0.06%** |
+## 5. Main numerical results
 
-*Verdict:* The token-length matching is exceptionally tight (median mismatch is strictly 0.0 tokens; mean mismatch is 0.54 tokens / 0.30%). Confounding by length variation was virtually eliminated.
+### Pilot removal and replacement
 
----
+| study             |   rows |   queries |   mean_delta |   median_delta |   positive |   negative |   zero |
+|:------------------|-------:|----------:|-------------:|---------------:|-----------:|-----------:|-------:|
+| pilot removal     |    100 |        10 |    -0.823364 |      -0.386718 |          4 |         96 |      0 |
+| pilot replacement |    100 |        10 |    -0.820215 |      -0.375000 |          6 |         94 |      0 |
 
-## 3. Annotated-Evidence Matching Duplication Audit
+Sources: [results/week0/gpu_pilot/intervention_validation/replacement_results.csv](replacement_results.csv), [results/week0/gpu_pilot/intervention_validation/removal_vs_replacement.csv](removal_vs_replacement.csv), [results/week0/gpu_pilot/intervention_validation/evidence_match_audit.csv](evidence_match_audit.csv).
 
-The pilot recorded **28/100 retrieved passages** as matching annotated evidence, despite the 10 queries having only **18 total gold evidence paragraphs** annotated.
+## 6. Figures
 
-### Audit Findings from `evidence_match_audit.csv`:
-1. **Vocabulary Sharing Across Chunks:** In queries with short, dense evidence annotations (e.g. Q735 and Q2102), multiple retrieved sliding-window passages share $>30\%$ content-word overlap with the same single evidence paragraph (`GoldPara_0`).
-   - In Q735: 8 retrieved passages matched `GoldPara_0` (score 0.50 to 0.75).
-   - In Q2102: 7 retrieved passages matched `GoldPara_0` (score 0.30 to 0.40).
-2. **Chunk Multi-Cover:** In Q1670 (Paper 538), Ranks 6 and 8 both contain exact substring matches covering all 3 gold evidence paragraphs.
-3. **Unique Underlying Gold Paragraphs:** Across all 10 queries, the 28 matching passages map to only **10 distinct underlying gold paragraphs**.
-4. **Terminology Correction:** Moving forward, these passages are strictly designated as **`retrieved passage matching annotated evidence`** rather than "gold evidence passages" or independent evidence items.
+![Removal versus length-controlled replacement](figures/removal_vs_replacement_scatter.png)
 
----
+X/y compare removal and replacement log-probability deltas for the same passages. Agreement is within this pilot and does not demonstrate an internally faithful explanation.
 
-## 4. Empirical Distribution of $\Delta_{\mathrm{replace}}$ vs $\Delta_{\mathrm{remove}}$
+## 7. Statistical analysis
 
-### Global Distribution Shift (N = 100 Passages):
-- **$\Delta_{\mathrm{remove}}$ (Deletion):**
-  - Positive ($\Delta > +10^{-4}$): **4 / 100 (4.0%)**
-  - Negative ($\Delta < -10^{-4}$): **96 / 100 (96.0%)**
-  - Mean $\Delta$: **-0.8234**
-- **$\Delta_{\mathrm{replace}}$ (Length-Matched Replacement):**
-  - Positive ($\Delta > +10^{-4}$): **6 / 100 (6.0%)**
-  - Negative ($\Delta < -10^{-4}$): **94 / 100 (94.0%)**
-  - Mean $\Delta$: **-0.8202**
-  - Median $\Delta$: **-0.3750**
+No formal inferential test was found for this comparison.
 
-### Three-Group Descriptive Comparison for $\Delta_{\mathrm{replace}}$:
+## 8. Interpretation
 
-| Group | N | Mean $\Delta$ | Median $\Delta$ | IQR | Positive Fraction | Negative Fraction | Range |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A. Retrieved Passages Matching Evidence** | 28 | **-0.0899** | **-0.2344** | **0.3423** | **17.9%** | **82.1%** | [-0.7344, +1.6641] |
-| **B. Non-Annotated Retrieved Passages** | 52 | **-0.4420** | **-0.4414** | **0.2910** | **1.9%** | **98.1%** | [-1.0449, +0.0010] |
-| **C. Failed Retrieval Queries (BM25 Recall=0)** | 20 | **-2.8260** | **-2.8359** | **5.2239** | **0.0%** | **100.0%** | [-5.4756, -0.1562] |
+### Supported
 
----
+Both pilot interventions mostly have negative deltas; replacement is approximately, not perfectly, length matched.
 
-## 5. Direct Comparison: Removal vs Replacement Effects
+### Not established
 
-### Correlation & Sign Concordance:
-- **Pearson Correlation ($r$):** **0.9996**
-- **Sign Agreement:** **98 / 100 (98%)**
-- **Quadrant Analysis:**
-  - **$\Delta_{\mathrm{remove}} < 0$ and $\Delta_{\mathrm{replace}} > 0$:** **2 passages**.
-    *Significance:* For these passages, deleting them increased likelihood (due to length reduction), but replacing them with unrelated content *decreased* likelihood. This proves that **deletion obscured their positive semantic contribution**!
-  - **$\Delta_{\mathrm{remove}} < 0$ and $\Delta_{\mathrm{replace}} < 0$:** **94 passages**.
-    *Significance:* Replacing these passages with unrelated text from another paper actually *increased* gold answer log-probability, confirming genuine distractor interference.
+Generalized harmful-evidence prevalence or a validated reader improvement is not established.
 
----
+### Important caveats
 
-## 6. Key Scientific Findings
+Donor text changes semantics and tokenization; replacement is not a pure single-factor causal information intervention. These are 100 nested passages from only 10 queries.
 
-1. **Deletion vs Semantic Utility:** The 96% negative result in leave-one-out ablation was significantly inflated by length/position confounding. Shortening the prompt systematically increases teacher-forced generation likelihood in decoder LLMs.
-2. **True Semantic Evidence Contribution:** When length and position are controlled via in-place replacement, passages matching annotated evidence show a clear positive semantic advantage over unrelated text (Mean $\Delta_{\mathrm{replace}} = -0.0899$).
-3. **Genuine Distractor Interference Exists:** Even under length control, 98.1% of non-annotated retrieved passages have negative replacement effects, demonstrating that semantically irrelevant retrieved text can still induce model perplexity compared to neutral background text.
+## 9. Part conclusion
 
----
+- Length-controlled replacement did not remove the pilot negative-delta pattern.
+- Keep pilot and final40 results separate.
 
-## 7. Final Classification & Recommendation
 
-### Classification: **B. Both semantic and length/position effects appear important**
-
-**Rationale:**
-- The prompt-length / token-position artifact is real: deletion systematically shifts log-probabilities negative because shorter contexts naturally lower perplexity on teacher-forced targets.
-- However, semantic effects are equally genuine: passages matching gold evidence have substantially higher utility than length-matched unrelated replacements (-0.0899 vs -0.4420), and key evidence passages (e.g. Q2201 Rank 1, Q1379 Rank 10) retain large positive effects under both interventions.
-
-### Recommendation: **SCALE_TO_40**
-
-**Next Action Plan:**
-1. In the upcoming 40-query study, report **both** $\Delta_{\mathrm{remove}}$ (as `removal_effect`) and $\Delta_{\mathrm{replace}}$ (as `length-matched replacement effect`).
-2. Use the validated non-leakage donor pool algorithm for all replacement interventions.
-3. Incorporate the evidence match audit into the production pipeline to distinguish distinct evidence paragraphs from overlapping sliding-window chunks.
+Authoritative reports: ../../../weekly_reports/week_00/WeeklyPartWiseAnalysis.md and ../../../weekly_reports/week_00/WeeklySummaryAnalysis.md.

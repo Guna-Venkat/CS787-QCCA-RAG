@@ -1,0 +1,25 @@
+{
+  "week_mapping": "User explicitly maps Baselines/ to Week1",
+  "split_rows": [
+    {
+      "split": "TRAIN",
+      "queries": 2088,
+      "papers": 772,
+      "source": "Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl"
+    },
+    {
+      "split": "DEV",
+      "queries": 231,
+      "papers": 86,
+      "source": "Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl"
+    },
+    {
+      "split": "TEST metadata only; no outcomes read",
+      "queries": 1309,
+      "papers": "Not recomputed",
+      "source": "Baselines/SARA-main/data/manifests/qasper_split.json"
+    }
+  ],
+  "train_dev_paper_overlap": 0,
+  "test_questions_or_outcomes_read": false
+}

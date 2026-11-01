@@ -1,0 +1,26 @@
+{
+  "raw_counts": {
+    "C": 91707,
+    "D": 66696
+  },
+  "unique_rows": 141729,
+  "duplicate_C_D_rows": 16674,
+  "conflicting_duplicates": 0,
+  "conditions": 51,
+  "all_means_match": true,
+  "source_receipts": [
+    {
+      "phase": "C",
+      "rows": 91707,
+      "manifest_sha256_of_sorted_names_and_stored_checksums": "4de720b2c6ef7475ce9577db545c11798d8a15f460bae7a8dd097229e75ac047",
+      "source_directory": "results/week12/qbgf/v3/validation/C/rows"
+    },
+    {
+      "phase": "D",
+      "rows": 66696,
+      "manifest_sha256_of_sorted_names_and_stored_checksums": "4080ad5ba8148d3f2dcc7174b7a10ec49da72144c29edc763b38be862780618b",
+      "source_directory": "results/week12/qbgf/v3/validation/D/rows"
+    }
+  ],
+  "source_summary_sha": "9d09d077d232ca650afd64397e9a0ceac163ff6bfdccf818fa15e3b38ba574e7"
+}

@@ -1,0 +1,19 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+5,protocol/cross-check,configs/week5/content_allocator.yaml,yaml,inspected,protocol/context only,b2f8a6ef91f5a136d8a44177ef278389a2a87ccb2aa21b6931af2ef00df1c92c
+5,protocol/cross-check,configs/week5/train_response_surface.yaml,yaml,inspected,protocol/context only,5aecd2827c240d2f8690a4aa80a25d72003806026b0228e31c72be0b8cf16636
+5,protocol/cross-check,configs/week5/w5c_encoder_adaptation.yaml,yaml,inspected,protocol/context only,14cc0e753e69138285cc112133e95d1e55b5ae1d68d19187f381a38812dabf36
+5,protocol/cross-check,notebooks/week5/week5_content_aware_allocator.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,fe8fa592f16185828d3e1404f80fe2cfd5564e4ee14f4beb25053af659b45c48
+5,protocol/cross-check,notebooks/week5/week5c_encoder_adaptation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c4a7feb6778378b5e5c593520adeb3ae3f855c0abab138da5ccdef062d41442b
+5,A,results/week5/content_allocator/bootstrap/paper_clustered_bootstrap_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,8210fd39b9c7b2913f325ed92360b3aa826620101798c0c5218a89296a65149a
+5,A,results/week5/content_allocator/tables/main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,3b57b448d135ae3c6a4058c06ee6c33dd9de580f2e61e1dada0ff1df2203cf64
+5,B,results/week5/content_allocator/w5b/bootstrap/w5b_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,5cb1dd148266458f32d6eaf86323a46abcb3707db854131e02f6900ca1565424
+5,B,results/week5/content_allocator/w5b/tables/w5b_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,d51c956046031a23e8e3c8ec27dd1eec40f02770294995a75d12a896e63b3b15
+5,B,results/week5/content_allocator/w5b/tables/w5b_seed_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,e190129bac0edb2fc0214286530aca213ddfba3f99a12105903c906b1d87ef06
+5,C,results/week5/content_allocator/w5c_encoder_adaptation/bootstrap/w5c_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,3c0d6eefe0f82abf9b83b5ec42993862d61f73de8896da7bacef733285abde33
+5,C,results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,52421007f130f12c4bde8c7e67a5c19471b3ed9826cc230dc93166a723eef27a
+5,TRAIN-SURFACE,results/week5/preflight/split_audit.json,json,inspected,Outcome or execution evidence; see per-part status,acf95ef95cc5668bfd64a074cb9be7e21b6d4b6dfa93b0a703d8f873e0d9811e
+5,TRAIN-SURFACE,results/week5/tables/dev_vs_train_target_distribution.csv,csv,inspected,Outcome or execution evidence; see per-part status,1229ce7584df612775b99ebb6770ff5557734e636c1919e2b865623506a8c607
+5,TRAIN-SURFACE,results/week5/tables/train_static_performance.csv,csv,inspected,Outcome or execution evidence; see per-part status,80df61f307849fafef327706a2a20ca524fe65b699aeb6b317a515d75c3c0068
+5,protocol/cross-check,src/week5/evaluation.py,py,inspected,protocol/context only,38dd6ff8e7f443b1c2a23f166f35746cffaaf2c92804b21e3561af0fc93266ea
+5,protocol/cross-check,src/week5/supervision.py,py,inspected,protocol/context only,45a406da39e5417ac5b4c7979ca5ca8f499292abaf7ca19f294357e1dcb9db76
+5,primary-figure supplement,results/week5/content_allocator/figures/pareto_quality_vs_tokens.png,png,inspected,Visualization only; exact values sourced from existing CSVs,d0c673a6b0275e85889b87b6374f39294445d966efa27389182f454cf41896f5

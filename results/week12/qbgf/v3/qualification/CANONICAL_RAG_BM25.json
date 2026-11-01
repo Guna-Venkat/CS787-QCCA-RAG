@@ -1,7 +1,7 @@
 {
   "canonical_k": 10,
   "identity": {
-    "code_hash": "a8b00f0998bfa458367d6fca43874aa9c227c8b4c4715681c3caddb986b6e6e0",
+    "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
     "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
     "extra": {},
     "models": {
@@ -30,6 +30,7 @@
       "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
       "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
       "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
       "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
     }
   },
