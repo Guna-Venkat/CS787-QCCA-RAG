@@ -1,0 +1,17 @@
+population,oracle,evidence_k,count,queries,rate
+all queries,oracle_evidence_k,0,956,1746,0.5475372279495991
+all queries,oracle_evidence_k,1,323,1746,0.1849942726231386
+all queries,oracle_evidence_k,2,211,1746,0.12084765177548683
+all queries,oracle_evidence_k,4,256,1746,0.1466208476517755
+all queries,epsilon_oracle_evidence_k,0,965,1746,0.5526918671248569
+all queries,epsilon_oracle_evidence_k,1,330,1746,0.18900343642611683
+all queries,epsilon_oracle_evidence_k,2,206,1746,0.11798396334478808
+all queries,epsilon_oracle_evidence_k,4,245,1746,0.14032073310423826
+at least four available candidates,oracle_evidence_k,0,803,1490,0.5389261744966443
+at least four available candidates,oracle_evidence_k,1,271,1490,0.1818791946308725
+at least four available candidates,oracle_evidence_k,2,185,1490,0.12416107382550336
+at least four available candidates,oracle_evidence_k,4,231,1490,0.15503355704697985
+at least four available candidates,epsilon_oracle_evidence_k,0,809,1490,0.5429530201342282
+at least four available candidates,epsilon_oracle_evidence_k,1,278,1490,0.1865771812080537
+at least four available candidates,epsilon_oracle_evidence_k,2,181,1490,0.12147651006711409
+at least four available candidates,epsilon_oracle_evidence_k,4,222,1490,0.14899328859060404

@@ -1,0 +1,13 @@
+name,dataset,family,point,ci_low,ci_high,resamples,seed,cluster
+QASPER_reader_by_granularity_512,QASPER,exploratory,-0.01238163442450494,-0.04904651598603435,0.026007995658634136,10000,42,paper_id
+QASPER_granularity_by_budget,QASPER,exploratory,-0.10872554324452809,-0.17118206883851483,-0.04826090090076863,10000,42,paper_id
+QASPER_compressor_by_budget,QASPER,exploratory,-0.11255025201401081,-0.16838889050638287,-0.05625102462218686,10000,42,paper_id
+QASPER_retriever_by_granularity,QASPER,exploratory,0.004613147640824591,-0.00011446886446886464,0.0116905262220169,10000,42,paper_id
+HotpotQA_reader_by_granularity_512,HotpotQA,exploratory,-0.009865165148487266,-0.07820027799872464,0.06261782915918229,10000,42,query_or_claim_id
+HotpotQA_granularity_by_budget,HotpotQA,exploratory,-0.09193362299546172,-0.2146553386336621,0.02474474595547483,10000,42,query_or_claim_id
+HotpotQA_compressor_by_budget,HotpotQA,exploratory,-0.16005327922253482,-0.2724441091474596,-0.056200469463008856,10000,42,query_or_claim_id
+HotpotQA_retriever_by_granularity,HotpotQA,exploratory,0.0,0.0,0.0,10000,42,query_or_claim_id
+SciFact_reader_by_granularity_512,SciFact,exploratory,0.02,-0.12,0.16,10000,42,query_or_claim_id
+SciFact_granularity_by_budget,SciFact,exploratory,-0.36,-0.56,-0.14,10000,42,query_or_claim_id
+SciFact_compressor_by_budget,SciFact,exploratory,-0.32,-0.52,-0.12,10000,42,query_or_claim_id
+SciFact_retriever_by_granularity,SciFact,exploratory,0.04,-0.06,0.14,10000,42,query_or_claim_id

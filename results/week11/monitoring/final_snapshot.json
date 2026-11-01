@@ -1,0 +1,241 @@
+{
+  "branch": "gagan",
+  "disk_free_GiB": 19.92,
+  "embedding_vectors": {
+    "MiniLM": 76633,
+    "SFR": 76633
+  },
+  "gpu": "0 %, 294 MiB, 24576 MiB",
+  "notebook_states": {
+    "B": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 2376536,
+      "status": "COMPLETE"
+    },
+    "C": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 2387957,
+      "status": "COMPLETE"
+    },
+    "D": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 205731,
+      "status": "COMPLETE"
+    },
+    "E": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 337978,
+      "status": "COMPLETE"
+    },
+    "F": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 371755,
+      "status": "COMPLETE"
+    },
+    "G": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 396544,
+      "status": "COMPLETE"
+    },
+    "H": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 432374,
+      "status": "COMPLETE"
+    },
+    "I": {
+      "current_cell": null,
+      "error_type": null,
+      "pid": 433376,
+      "status": "COMPLETE"
+    }
+  },
+  "phases": {
+    "0": {
+      "checkpoint_rows": {},
+      "report_ready": true,
+      "status": {
+        "completed": 150,
+        "configuration_hash": "2b62f76886336640a3242dc32b9289c6bc41521d0961bf7bb2b872cd23ca487e",
+        "executable_complete": true,
+        "expected": 150,
+        "hierarchy_hash": "4e98955f74384f6ea4395a33f95c82ba67d4380228a298b3861a837ac89b56a5",
+        "pending": [],
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "A": {
+      "checkpoint_rows": {
+        "HotpotQA": 450,
+        "QASPER": 450,
+        "SciFact": 450
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 1350,
+        "executable_complete": true,
+        "expected": 1350,
+        "pending": [],
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "B": {
+      "checkpoint_rows": {
+        "HotpotQA": 200,
+        "QASPER": 200,
+        "SciFact": 200
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 600,
+        "executable_complete": true,
+        "expected": 600,
+        "pending": [],
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "C": {
+      "checkpoint_rows": {
+        "HotpotQA": 1850,
+        "QASPER": 1850,
+        "SciFact": 1850
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 5550,
+        "executable_complete": true,
+        "expected": 5550,
+        "full_condition_surface_complete": false,
+        "pending": [
+          "LLMLingua-2"
+        ],
+        "selection_hash": "a2ace89704ba3c887584a9a79f888365fedeb2ecf9e0e42c7e6de038616e27fb",
+        "source_result_hash": "216f6fd697d6f84bf0bb2224e0c70a30fa272d4091a1db4d41eb42eb6471b337",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "D": {
+      "checkpoint_rows": {
+        "HotpotQA": 5550,
+        "QASPER": 5550,
+        "SciFact": 5550
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 16650,
+        "executable_complete": true,
+        "expected": 16650,
+        "full_condition_surface_complete": false,
+        "pending": [
+          "LLMLingua-2"
+        ],
+        "selection_hash": "93dd4e9ece74f1405e011961c4c647c410b860702e6bc4db4b5149c69d4a18fd",
+        "source_result_hash": "98f9f9c05379da7b83eb9a49e591720ea23be19190ce6d9fd71bc4fc5903578d",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "E": {
+      "checkpoint_rows": {
+        "HotpotQA": 1350,
+        "QASPER": 1450,
+        "SciFact": 1350
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 4150,
+        "executable_complete": true,
+        "expected": 4150,
+        "full_condition_surface_complete": false,
+        "pending": [
+          "LLMLingua-2"
+        ],
+        "selection_hash": "34468515a2c7769d42dd714c3f8f6e97f7a4157f5f5e3a02ac2791e670661101",
+        "source_result_hash": "54d483675f61a594c3919c4d09a7ecbb74acdc7c7827a5d0be0c3e182d317a63",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "F": {
+      "checkpoint_rows": {
+        "HotpotQA": 800,
+        "QASPER": 800,
+        "SciFact": 800
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 2400,
+        "executable_complete": true,
+        "expected": 2400,
+        "full_condition_surface_complete": true,
+        "pending": [],
+        "selection_hash": "d1299652f58ee3defb7b68ef80ce699809d115ca72db0f5c726f9ec2a031ff06",
+        "source_result_hash": "59a662914b7917c4fd7238ee2b907f6d200afa157c8a3cff3890d8fd51754018",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "G": {
+      "checkpoint_rows": {
+        "HotpotQA": 1050,
+        "QASPER": 1050,
+        "SciFact": 1050
+      },
+      "report_ready": true,
+      "status": {
+        "completed": 3150,
+        "executable_complete": true,
+        "expected": 3150,
+        "full_condition_surface_complete": false,
+        "pending": [
+          "LLMLingua-2"
+        ],
+        "selection_hash": "36bb43b455f54e0a727c0009a99737ad6090d04edf2f279655777ed767e00f12",
+        "source_result_hash": "9cb6d1f7bb644d04f5b045d0e99f3f25d52cec1c81bc3b710182081835c71663",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "H": {
+      "checkpoint_rows": {},
+      "report_ready": true,
+      "status": {
+        "completed": 31900,
+        "executable_complete": true,
+        "expected": 31900,
+        "generation_started": false,
+        "pending": [],
+        "source_result_hash": "cc26f2ed6961bc0e417b775808cca21aa8f12f4a9cb5949785509ca57b8ac9ee",
+        "synthetic": false
+      },
+      "writer_active": false
+    },
+    "I": {
+      "checkpoint_rows": {},
+      "report_ready": true,
+      "status": {
+        "completed": 31900,
+        "executable_complete": true,
+        "expected": 31900,
+        "generation_started": false,
+        "pending": [],
+        "source_result_hash": "cc26f2ed6961bc0e417b775808cca21aa8f12f4a9cb5949785509ca57b8ac9ee",
+        "synthetic": false
+      },
+      "writer_active": false
+    }
+  },
+  "selections_cached": 11500,
+  "timestamp_utc": "2026-10-28T20:20:56.113942+00:00",
+  "warnings": []
+}

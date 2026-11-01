@@ -1,0 +1,820 @@
+{
+  "bootstrap": {
+    "cluster": "paper_id",
+    "resamples": 10000,
+    "seed": 42,
+    "weighting": "queries equally; resample whole papers"
+  },
+  "comparisons": [
+    [
+      "W9-PRIMARY",
+      "D0",
+      "primary"
+    ],
+    [
+      "W9-PRIMARY",
+      "semantic_k4",
+      "primary"
+    ],
+    [
+      "W9-PRIMARY",
+      "semantic_k6",
+      "primary"
+    ],
+    [
+      "W9-PRIMARY",
+      "semantic_k8",
+      "primary"
+    ],
+    [
+      "W9-PRIMARY",
+      "original_SARA_G0",
+      "primary"
+    ],
+    [
+      "W9-PRIMARY",
+      "D1",
+      "mechanistic"
+    ],
+    [
+      "W9-SAFE",
+      "W9-PRIMARY",
+      "secondary"
+    ],
+    [
+      "W9-VERIFY",
+      "W9-PRIMARY",
+      "secondary"
+    ],
+    [
+      "W9-VERIFY",
+      "D0",
+      "secondary"
+    ],
+    [
+      "W9-VERIFY",
+      "W9-SAFE",
+      "secondary"
+    ]
+  ],
+  "materialization_spec": null,
+  "method": {
+    "coarse_evidence_k": 2,
+    "coarse_selector": "DraftSemantic",
+    "cost_definitions": {
+      "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+      "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+      "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+      "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+      "generated": "Sum of query-time generated tokens",
+      "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+    },
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 128
+    },
+    "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+    "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+    "no_retroactive_promotion": true,
+    "primary": "E3-k3 + F0",
+    "primary_system": "W9-PRIMARY",
+    "prompts": {
+      "F0": {
+        "messages": [
+          {
+            "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+            "role": "user"
+          }
+        ],
+        "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+      },
+      "F2-A": {
+        "messages": [
+          {
+            "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+            "role": "user"
+          }
+        ],
+        "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+      }
+    },
+    "raw_fixed_policy_remains": "K_E=0",
+    "retrieval": {
+      "representation": "FIXED-5",
+      "retriever": "SEMANTIC",
+      "width": 20
+    },
+    "safe": "E3-k3 + F2-A",
+    "sentence_k": 3,
+    "sentence_presentation": "Restore original document order, exact source substrings",
+    "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+    "sentence_splitter": "academic-offset-rules-v1",
+    "verifier": {
+      "feature_count": 32,
+      "model": "logistic",
+      "post_generation": true,
+      "threshold": 0.7
+    },
+    "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+  },
+  "missing_baseline_policy": "Never pair different splits, partial memberships, or incompatible evaluators",
+  "multiple_comparisons": "Raw paired CIs, predeclared comparison families. No adjusted significance claim.",
+  "qualitative_analysis": "Deterministic sample after aggregate seal only; never feeds methods",
+  "required_systems": [
+    "D0",
+    "BM25_k8",
+    "semantic_k2",
+    "semantic_k4",
+    "semantic_k5",
+    "semantic_k6",
+    "semantic_k8",
+    "original_SARA_G0",
+    "D1",
+    "W9-PRIMARY",
+    "W9-SAFE",
+    "W9-VERIFY"
+  ],
+  "robustness": {
+    "executed": false,
+    "status": "No preexisting frozen model panel found; no new model selection"
+  },
+  "schema": "W9-H-v1",
+  "split_policy": {
+    "dev": "Inspected; not untouched confirmation",
+    "evidence": [
+      "configs/week8/w8_dafir.yaml: test_disabled=true",
+      "src/week9/config.py: explicit TEST authorization and frozen config guard",
+      "Existing final split paths absent from W9 data configuration",
+      "User explicitly confirmed historical test_draft is synthetic; not inspected"
+    ],
+    "fit": "Extensively developed",
+    "internal_val": "Inspected; not untouched confirmation",
+    "known_test_query_count": null,
+    "suspicious_filename": "User confirmed synthetic fixture in this task; file not opened",
+    "test": "Locked according to config/code/history and human provenance; no claim of exhaustive external access logging",
+    "test_data_opened_by_h0": false,
+    "test_labels_opened_by_agent": false
+  },
+  "success_criteria": {
+    "compatibility_is_not_equivalence": true,
+    "efficiency": "Point F1 loss <= .003 against BOTH strong comparators AND mean cumulative query prompt reduction >= .15 against BOTH.",
+    "mechanistic": "Against D1: exposed evidence reduction >= .90 AND the entire paired 95% F1 difference CI lies within [-.003,.003].",
+    "minimum_cumulative_saving": 0.15,
+    "minimum_evidence_suppression": 0.9,
+    "missing_required_comparator": "No final classification; evaluation is incomplete, never drop a comparator",
+    "note": "Both strong comparators designated before confirmation. Conservative interval containment operationalizes quality compatibility; CI crossing zero alone is insufficient.",
+    "order": [
+      "QUALITY_HIT",
+      "EFFICIENCY_OR_MECHANISTIC_HIT",
+      "MIXED_OR_NEGATIVE"
+    ],
+    "primary": "W9-PRIMARY",
+    "quality": "Positive lower 95% paired paper-cluster CI against BOTH W8 original_SARA/G0 and semantic k8; no major protocol issue.",
+    "quality_tolerance": 0.003,
+    "strong_comparators": [
+      "original_SARA_G0",
+      "semantic_k8"
+    ]
+  },
+  "system_contracts": {
+    "BM25_k8": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 8,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 2,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical BM25 top-10 passage routing",
+      "revision_mode": null
+    },
+    "D0": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 4,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 6,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null,
+      "role": "Canonical shared initial SARA first pass"
+    },
+    "D1": {
+      "coarse_evidence_k": 2,
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "evidence": "raw source chunks",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "revision_mode": "F0",
+      "selector": "DraftSemantic"
+    },
+    "W9-PRIMARY": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F0",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-PRIMARY",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "W9-SAFE": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F2-A",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-SAFE",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "W9-VERIFY": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F0+G2",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-VERIFY",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "original_SARA_G0": {
+      "base_full_k": 4,
+      "controller_configuration": {
+        "DAFiR2": "not evaluated; requires sequential counterfactual outcomes",
+        "E4_included": false,
+        "E4_reason": "no demonstrated attribution benefit in tested variants",
+        "family_configurations": {
+          "E0": {
+            "complexity": 0,
+            "family": "E0",
+            "policy_name": "E0",
+            "selector": "S3",
+            "uses_attribution": false
+          },
+          "E1": {
+            "complexity": 1,
+            "family": "E1",
+            "policy_name": "E1",
+            "selector": "S3",
+            "uses_attribution": false
+          },
+          "E2": {
+            "complexity": 2,
+            "family": "E2",
+            "gate_threshold": 0.4,
+            "policy_name": "E2",
+            "selector": "S3",
+            "tau_help": -1.0,
+            "tau_hurt": 1.01,
+            "uses_attribution": false
+          },
+          "E3": {
+            "complexity": 3,
+            "family": "E3",
+            "gate_threshold": 0.4,
+            "policy_name": "E3",
+            "selector": "U4-A",
+            "tau_help": -1.0,
+            "tau_hurt": 1.01,
+            "uses_attribution": false
+          },
+          "E5-DraftSemantic": {
+            "complexity": 4,
+            "family": "E5",
+            "gate_threshold": 0.3,
+            "policy_name": "E5-DraftSemantic",
+            "selector": "S3",
+            "tau_help": 0.0,
+            "tau_hurt": 0.1,
+            "uses_attribution": false
+          },
+          "E5-U4-A": {
+            "complexity": 5,
+            "family": "E5",
+            "gate_threshold": 0.4,
+            "policy_name": "E5-U4-A",
+            "selector": "U4-A",
+            "tau_help": 0.0,
+            "tau_hurt": 0.2,
+            "uses_attribution": false
+          }
+        },
+        "family_rows_note": "Per-family cost-efficient operating points; the overall selected point is chosen once from the full grid and replaces its family row.",
+        "fit_grid_best_downstream_f1": 0.4056832844628259,
+        "fit_metrics": {
+          "E0": {
+            "downstream_f1": 0.3856311764978589,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.0,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 2.6982042513625593,
+            "estimated_total_recorded_latency_sec": 2.6982042513625593,
+            "gain_over_k4": 0.0,
+            "gain_over_k6": -0.025366327831041778,
+            "help_precision_promotions": 0.0,
+            "help_rate_all_queries": 0.0,
+            "hurt_rate_all_queries": 0.0,
+            "hurt_rate_promotions": 0.0,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 940.5441008018328,
+            "mean_final_prompt_tokens": 940.5441008018328,
+            "num_promotions": 0,
+            "num_queries": 1746,
+            "promotion_rate": 0.0,
+            "unnecessary_promotion_rate": 0.0
+          },
+          "E1": {
+            "downstream_f1": 0.40545418938837,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 1.0,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 5.854044425528484,
+            "estimated_total_recorded_latency_sec": 5.854044425528484,
+            "gain_over_k4": 0.019823012890511117,
+            "gain_over_k6": -0.0055433149405306565,
+            "help_precision_promotions": 0.143184421534937,
+            "help_rate_all_queries": 0.143184421534937,
+            "hurt_rate_all_queries": 0.09851088201603665,
+            "hurt_rate_promotions": 0.09851088201603665,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 2087.3132875143183,
+            "mean_final_prompt_tokens": 1146.7691867124856,
+            "num_promotions": 1746,
+            "num_queries": 1746,
+            "promotion_rate": 1.0,
+            "unnecessary_promotion_rate": 0.697594501718213
+          },
+          "E2": {
+            "downstream_f1": 0.404339042407108,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.9204545454545454,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.838070761297167,
+            "estimated_total_recorded_latency_sec": 4.838070761297167,
+            "gain_over_k4": 0.018707865909249107,
+            "gain_over_k6": -0.006658461921792669,
+            "help_precision_promotions": 0.209009009009009,
+            "help_rate_all_queries": 0.13287514318442153,
+            "hurt_rate_all_queries": 0.09163802978235967,
+            "hurt_rate_promotions": 0.14414414414414414,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1670.3470790378008,
+            "mean_final_prompt_tokens": 1073.6237113402062,
+            "num_promotions": 1110,
+            "num_queries": 1746,
+            "promotion_rate": 0.6357388316151202,
+            "unnecessary_promotion_rate": 0.35738831615120276
+          },
+          "E3": {
+            "downstream_f1": 0.40142443559925844,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.9204545454545454,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.873117595876888,
+            "estimated_total_recorded_latency_sec": 4.873117595876888,
+            "gain_over_k4": 0.015793259101399622,
+            "gain_over_k6": -0.009573068729642151,
+            "help_precision_promotions": 0.209009009009009,
+            "help_rate_all_queries": 0.13287514318442153,
+            "hurt_rate_all_queries": 0.09507445589919816,
+            "hurt_rate_promotions": 0.14954954954954955,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1683.2067583046965,
+            "mean_final_prompt_tokens": 1086.483390607102,
+            "num_promotions": 1110,
+            "num_queries": 1746,
+            "promotion_rate": 0.6357388316151202,
+            "unnecessary_promotion_rate": 0.35738831615120276
+          },
+          "E5-DraftSemantic": {
+            "downstream_f1": 0.40271885284775094,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.6893939393939394,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.537084239591574,
+            "estimated_total_recorded_latency_sec": 4.537084239591574,
+            "gain_over_k4": 0.01708767634989202,
+            "gain_over_k6": -0.008278651481149755,
+            "help_precision_promotions": 0.168462291870715,
+            "help_rate_all_queries": 0.09851088201603665,
+            "hurt_rate_all_queries": 0.058419243986254296,
+            "hurt_rate_promotions": 0.09990205680705191,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1614.798969072165,
+            "mean_final_prompt_tokens": 1062.3390607101946,
+            "num_promotions": 1021,
+            "num_queries": 1746,
+            "promotion_rate": 0.5847651775486827,
+            "unnecessary_promotion_rate": 0.37628865979381443
+          },
+          "E5-U4-A": {
+            "downstream_f1": 0.4014462436858647,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.8541666666666666,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.72919127881049,
+            "estimated_total_recorded_latency_sec": 4.72919127881049,
+            "gain_over_k4": 0.015815067188005752,
+            "gain_over_k6": -0.009551260643036026,
+            "help_precision_promotions": 0.20892687559354226,
+            "help_rate_all_queries": 0.12600229095074456,
+            "hurt_rate_all_queries": 0.0882016036655212,
+            "hurt_rate_promotions": 0.1462488129154796,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1646.2754868270333,
+            "mean_final_prompt_tokens": 1079.5189003436426,
+            "num_promotions": 1053,
+            "num_queries": 1746,
+            "promotion_rate": 0.6030927835051546,
+            "unnecessary_promotion_rate": 0.3447880870561283
+          }
+        },
+        "fit_reference_baselines": {
+          "4": {
+            "f1": 0.38563117649785905,
+            "generation_latency": 2.6982042513625593,
+            "tokens": 940.5441008018328
+          },
+          "6": {
+            "f1": 0.41099750432890064,
+            "generation_latency": 3.688340870512037,
+            "tokens": 1362.819587628866
+          }
+        },
+        "fit_selected_shortfall_from_grid_best": 0.0029644316150749805,
+        "frozen_before_internal_val": true,
+        "gate": "B0-GW logistic: measured token U1-U12; weight=1+5*max(0,best_delta)",
+        "gate_training": "5-fold paper-grouped FIT OOF; full FIT refit",
+        "max_promotions": 1,
+        "oracle_gate": false,
+        "prior_closeout_used_internal_val_for_E4_eligibility": true,
+        "selected_config": {
+          "complexity": 4,
+          "family": "E5",
+          "gate_threshold": 0.3,
+          "policy_name": "E5-DraftSemantic",
+          "selector": "S3",
+          "tau_help": 0.0,
+          "tau_hurt": 0.1,
+          "uses_attribution": false
+        },
+        "selected_policy": "E5-DraftSemantic",
+        "selection_rule": "highest FIT OOF downstream F1; within .003 lower cumulative prompt tokens, then recorded generation/attribution latency estimate, then simplicity",
+        "source_hashes": {
+          "results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl": "2ee73dd961afc6cb432682ed087cd932a9ce44425b804be2e3f582fbe9bd7a4e",
+          "results/week8/surfaces/promotion_surface_fit.jsonl": "1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958",
+          "results/week8/surfaces/promotion_surface_internal_val.jsonl": "8d4b9806ba1501cf0300ab1ae3a6e89cbd44be88b17084fdc1a47ed19f697103",
+          "results/week8/w8c_utility/U4-A_fit_oof_predictions.csv": "f595ea12aa9a09474d099623e6684ee50813de8314d822635ae52f6eb2806ebb",
+          "results/week8/w8c_utility/selected_internal_val_predictions.csv": "ebc681a61ac55bd8887d174d6a51e877a5b94cd038b8e9afba3586443c785773",
+          "results/week8/w8c_utility/selected_neural.pt": "8b1e4c8557287f9e98c5c020d87a9b8ca09ee45ffa42955e26633e7a82fddbd3",
+          "results/week8/w8c_utility/w8c_frozen_selector_config.json": "093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280",
+          "results/week8/w8d_closeout/closeout_summary.json": "ac5b02426f3ee7a408d559526222dfc05c4ab5d02be25586e954fe7823d9e55a",
+          "results/week8/w8d_closeout/fit_selector_scores.csv": "efe46fc6e4b51bbb07369f9979719d0657e1c354b6a70f4df48f89cbb1fd7a10",
+          "results/week8/w8d_closeout/internal_val_selector_scores.csv": "203a0a1afcaded337e955aff55e320be9b6cd10978a2070ead999ccac05bec27",
+          "results/week8/w8e_gate_inputs/gate_features_fit.csv": "3bf5a56e5685c1cdb0e5b00654a3f9bf20d98160f743448854a379ae9a762b6a",
+          "results/week8/w8e_gate_inputs/gate_features_internal_val.csv": "3f2b6ca23129a24e2d3c3736f2e8ee32a07210508fd6e5d57f2e1d1aad77e9c2",
+          "results/week8/w8e_gate_inputs/provenance_fit.json": "35a43b742cb6bb7192b74706e35982849718764e41e54d1ff75f5e5c19aad213",
+          "results/week8/w8e_gate_inputs/provenance_internal_val.json": "f0f939e73ec7b0ccfeb5357348332126fb5ae8fb0ede49b510392c7a9ec8399a",
+          "src/week6/routing.py": "7bf448621c9d49d0a0a43ddba5a716e81e656b0ba08efa715beabe77f1ac2b9d",
+          "src/week7/w7e/prompt_builder.py": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+          "src/week8/closeout.py": "a9a804911f199ede537be8bf69bc9a6a6983ad9324e856989301ba5032bfc706",
+          "src/week8/controller_costs.py": "c161a231d327f71d305507fbeb2581d2ef0397aa14b6e1eefedfd3cbb8d03d86",
+          "src/week8/gate_diagnostics.py": "f6fab42df474e52979db082ee4a83436b111eae0fbe3cb9176006efeb1428d22",
+          "src/week8/generator_features.py": "8391e82ad0dc432d641c5fc57191eececabe0e19251dd08e615df12d9c5bee84",
+          "src/week8/marginal_information.py": "51d69ee19d2621160cd6b55f37027f5fbe72e649f05b1069eff172f39d2f85fb",
+          "src/week8/selective_controller.py": "9e2a1fa5dd27f0b57e225c61b2463d9efe27f3a9e304bc6e8924b443d83d21f3",
+          "src/week8/semantic.py": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+          "src/week8/utility_models.py": "71a6939b803b1b3210f2fd8cc57293ba6fb117cd030f3a6219a93512787015fc",
+          "src/week8/utility_training.py": "2c66e967b7ad89610940b8e8c96a3123fa940a73d68238d5ba3b251dd1180b88"
+        },
+        "token_accounting": "Exact tokenizer input_ids lengths, including chat template and special tokens; both passes counted for promotions"
+      },
+      "controller_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8e_controller/frozen_controller.json",
+      "controller_sha256": "d509c89782b79981336a6a98b2ca61695541f19ea732b9b8ba75b27a5cf7feb0",
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "gate_sha256": "f0d0f711a488f8b657b33ec31c2aa0341ffa3bcaf7b977a0aeca04aea5f0b562",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "max_promotions": 1,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "reference": "Original W8 final-system protocol, not the W8-E cached replay; actual token uncertainty and frozen gate/selector",
+      "revision_mode": "G0",
+      "selector_config_sha256": "093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280",
+      "selector_weights_sha256": "8b1e4c8557287f9e98c5c020d87a9b8ca09ee45ffa42955e26633e7a82fddbd3"
+    },
+    "semantic_k2": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 2,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 8,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k4": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 4,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 6,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k5": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 5,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 5,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k6": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 6,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 4,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k8": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 8,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 2,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    }
+  }
+}

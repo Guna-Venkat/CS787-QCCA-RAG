@@ -1,0 +1,163 @@
+{
+  "CORE_D": [
+    "QBGF_FULL",
+    "QBGF_NO_QUERY",
+    "QBGF_SENTENCE_ONLY",
+    "QBGF_PASSAGE_ONLY"
+  ],
+  "budgets": [
+    256,
+    1024
+  ],
+  "created_at": "2026-10-29T16:52:39.275895+00:00",
+  "fusion_diagnostic_contrasts": [
+    {
+      "budget": 256,
+      "dataset": "QASPER",
+      "id": "QASPER:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 256,
+      "dataset": "QASPER",
+      "id": "QASPER:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "QASPER",
+      "id": "QASPER:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "QASPER",
+      "id": "QASPER:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    },
+    {
+      "budget": 256,
+      "dataset": "HotpotQA",
+      "id": "HotpotQA:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 256,
+      "dataset": "HotpotQA",
+      "id": "HotpotQA:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "HotpotQA",
+      "id": "HotpotQA:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "HotpotQA",
+      "id": "HotpotQA:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    },
+    {
+      "budget": 256,
+      "dataset": "SciFact",
+      "id": "SciFact:256:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 256,
+      "dataset": "SciFact",
+      "id": "SciFact:256:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "SciFact",
+      "id": "SciFact:1024:QBGF_FULL-QBGF_SENTENCE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_SENTENCE_ONLY"
+    },
+    {
+      "budget": 1024,
+      "dataset": "SciFact",
+      "id": "SciFact:1024:QBGF_FULL-QBGF_PASSAGE_ONLY",
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "reader": "BASE_FP16",
+      "right": "QBGF_PASSAGE_ONLY"
+    }
+  ],
+  "identity": {
+    "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+    "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+    "extra": {},
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "packages": {
+      "numpy": "1.26.4",
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "source_files": {
+      "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+      "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+    }
+  },
+  "joint_holm_family_size": 51,
+  "no_full_outcomes_observed": true,
+  "original_primary_contrasts": 39,
+  "original_registry_sha256": "e41cc8d79d3c0652e5421e2d312f47fcbc29c68aa3485ac7b006400908f61012",
+  "reason": "User-requested pre-full-run fusion necessity controls",
+  "split_hash": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117"
+}

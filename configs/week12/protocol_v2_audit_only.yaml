@@ -1,0 +1,127 @@
+schema: W12-QBGF-v2
+output_root: results/week12/qbgf/v2
+cache_root: results/week12/cache/v2
+seed: 42
+candidate_width: 10
+budgets:
+- 256
+- 1024
+tau_p: 5
+tau_s: 5
+readers:
+- Qwen
+models:
+  Qwen:
+    id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+  SFR:
+    id: Salesforce/SFR-Embedding-Mistral
+    revision: 33a60fe7b5e00b9414981280c571e8a4f9f42f1b
+  Mistral:
+    id: mistralai/Mistral-7B-Instruct-v0.2
+    revision: 63a8b081895390a26e140280378bc85ec8bce07a
+hierarchy:
+  max_passage_tokens: 256
+  overlap: 0
+  tokenizer: Qwen pinned revision
+  chunker: exact-word-boundary-token-ceiling-v1
+  native_passages: HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper
+    passages
+  sentence_splitter: academic-offset-rules-v1
+  propositions: PROPOSITION_RULE_V1
+historical_config: configs/week11/week11_base.yaml
+datasets:
+  QASPER:
+    split: dev
+    path: /home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl
+    raw_path: /home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow
+    corpus: complete matching scientific paper
+  HotpotQA:
+    split: dev
+    path: data/week11/hotpot_dev_distractor_v1.json
+    corpus: provided ten distractor paragraphs
+    source: https://hotpotqa.github.io/
+  SciFact:
+    split: dev
+    path: data/week11/scifact/claims_dev.jsonl
+    corpus_path: data/week11/scifact/corpus.jsonl
+    corpus: all corpus abstracts; never only cited/gold documents
+    labels:
+    - SUPPORT
+    - REFUTE
+    - NOT_ENOUGH_INFO
+    source: https://github.com/allenai/scifact
+confirmation_counts:
+  QASPER: 100
+  HotpotQA: 200
+  SciFact: 50
+training_queries_per_dataset: null
+allow_download: false
+generation:
+  max_new_tokens_qa: 128
+  max_new_tokens_verification: 16
+  max_context: 8192
+  seed: 42
+  do_sample: false
+  enable_thinking: false
+  precision: float16
+labels:
+- SUPPORT
+- REFUTE
+- NOT_ENOUGH_INFO
+help_epsilon: 0.01
+bootstrap_resamples: 10000
+statistics:
+  primary_metric:
+    QASPER: f1
+    HotpotQA: f1
+    SciFact: macro_f1
+  accuracy_secondary: true
+  holm_scope: all_datasets_budgets_prespecified_primary
+  p_value: paired cluster label-swap randomization; two-sided; 10000 draws +1 correction
+llmlingua:
+  id: microsoft/llmlingua-2-xlm-roberta-large-meetingbank
+  revision: null
+  allow_download: false
+  expected_weight_GiB: 2.5
+lora:
+  mode: qlora_nf4
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  learning_rate: 0.0002
+  epochs: 1
+  batch_size: 1
+  gradient_accumulation_steps: 16
+  max_length: 2048
+  target_modules:
+  - q_proj
+  - v_proj
+  dataset_balanced: true
+  modes:
+  - RAW_SKIP
+  - FIXED_SENTENCE
+  - QBGF_FULL
+  resume: true
+  overwrite: false
+  evidence_mode_sampling: one deterministic mode-budget per source query; sha256(seed,dataset,query_id)
+    modulo six
+  checkpoint_objective: dataset-balanced validation answer NLL; minimize; ties earliest
+    checkpoint
+  load_best_model_at_end: true
+sara:
+  checkpoint: Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42
+  canonical_label: SARA_CANONICAL_BM25_K5_N10
+  canonical_k: 5
+  canonical_n: 10
+  historical_sfr_k: 6
+selection_rule:
+  quality_margin_qa: 0.003
+  quality_margin_macro_f1: 0.01
+  rule: 'Validation-only: retain simple fixed sentence policy unless candidate is
+    feasible, noninferior within preregistered margin and Pareto improves tokens;
+    if no clear support retain simple baseline. No confirmation outcomes.'
+split_protocol: TRAIN_VAL_CONFIRM_v2
+training_data_policy: ALL_ELIGIBLE_TRAIN
+secondary_budgets:
+- 512

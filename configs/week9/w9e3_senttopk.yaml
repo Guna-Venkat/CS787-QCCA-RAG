@@ -1,0 +1,24 @@
+experiment: E3-SentTopK-v1
+output_root: results/week9/w9e3_senttopk/v1
+old_e_config: configs/week9/w9e_grounded.yaml
+encoder: sentence-transformers/all-MiniLM-L6-v2
+encoder_device: cpu
+draft_conditioned: false
+revision_mode: false
+max_new_tokens: 128
+sentence_k:
+- 1
+- 2
+- 3
+- 4
+- 6
+- 8
+seed: 42
+smoke_queries: 2
+quality_tolerance: 0.003
+epsilon: 0.01
+dynamic_gain: 0.005
+dynamic_cost_saving: 0.15
+heterogeneity_min_mass: 0.15
+heterogeneity_help_hurt_range: 0.05
+heterogeneity_min_gain: 0.003

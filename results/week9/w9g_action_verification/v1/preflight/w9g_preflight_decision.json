@@ -1,0 +1,38 @@
+{
+  "G1": {
+    "decision": "NO-GO",
+    "epsilon_headroom": 0.0038332437934255337,
+    "threshold": 0.005,
+    "rule": "epsilon oracle(D0,F2-A) minus best fixed >= threshold"
+  },
+  "G2": {
+    "decision": "GO",
+    "epsilon_headroom": 0.06381925695899743,
+    "verifier_advantage": 0.059986013165571894,
+    "threshold": 0.005,
+    "material_advantage_threshold": 0.005,
+    "rule": "epsilon oracle(D0,F0) headroom >=.005 AND advantage over PRE-A headroom >=.005; descriptive screen, not significance"
+  },
+  "G3": {
+    "decision": "NO-GO",
+    "extra_exact_oracle_f1": 0.0009634178579209784,
+    "unique_best_rate": 0.0074455899198167235,
+    "threshold": 0.003,
+    "rule": "Three-action exact oracle minus D0/F0 exact oracle >=.003. Unique-best fraction is descriptive; no outcome-tuned extra cutoff."
+  },
+  "recommended_route": "G2",
+  "controller_training_started": false,
+  "lm_calls": 0,
+  "interpretation": "Retrospective action-space research recommendation, not evidence of a learnable/deployable verifier.",
+  "artifact_hashes": {
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/action_values.csv": "c71473fc21e8e7d55cce4bdde2f08be6542597b834950740f854108dab8f8965",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/oracle_summary.csv": "8b89ccb5c2f523649a50b5055af0a594802ec4d6aef2427f7612d707a23cb608",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/oracle_distribution.csv": "58dccd77542bdc0e43079dc7a65c13c93baa9917eedd274137819e6a3cbd8928",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/oracle_choices.csv": "1716631f384ff414a4b2e6a6a5c274a44fa0b13ce38aef5049b0772b3bc4c45d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/three_action_unique_best.csv": "573dc60b48d929c8431b5439e8de484652b36866f9aa0cf8412bba5a613fb4b8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/three_action_query_categories.csv": "db77ce3dcffc9938219f83762ee96e997755794f19fb71ce596b4dae37541b09",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/action_targets_fit_only.csv": "c9bb7a70f72aaa14cc3bc7357b655afc2fc459ce0d7ec184b1cee142e4c00eee",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/post_generation_candidate_costs.csv": "b494b6f41c18888b55f540f7c884925086b26e069593245ce33db25752959be7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/preflight/headroom_analysis.json": "ef004e0a7ee67bded3c75060798716cdb5f915becb29382d2275fa044f9ab813"
+  }
+}

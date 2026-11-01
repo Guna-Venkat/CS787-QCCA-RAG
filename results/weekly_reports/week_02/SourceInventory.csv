@@ -1,0 +1,11 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+2,protocol/cross-check,configs/week2/sweep_config.yaml,yaml,inspected,protocol/context only,0333384fafe0e1b265054ababd6f082bf1e77ce9c436500f8c9b3417d322aae6
+2,protocol/cross-check,notebooks/week2/week2_dev_fixed_k_sweep.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c276c6a91ab46abe0442712294465f1c0dade009a2a2a9d32f1d9719b579a716
+2,ORACLE,results/week2/processed/best_k_distribution.csv,csv,inspected,Outcome or execution evidence; see per-part status,6bbf107967072b761446c8c2f5583e54337c669f092ccc18682ff6e874bb246e
+2,FREEZE,results/week2/processed/best_static_baseline.json,json,inspected,Outcome or execution evidence; see per-part status,bd88b8d835a5c61ba44f1486ee9b541e5b374bafe418eb75db15f389da7bd50e
+2,FIXED-K,results/week2/processed/dev_fixed_k_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,d603c95828cf300933f3920c912a4b8bb9056501a074210263426c3d657ba01c
+2,ORACLE,results/week2/processed/oracle_vs_static_summary.json,json,inspected,Outcome or execution evidence; see per-part status,aaaaf2fca93e4284474b1b44cf11231756c037fcb825a1bf4a1869f3b0a42c54
+2,ORACLE,results/week2/processed/per_query_best_k.csv,csv,inspected,Outcome or execution evidence; see per-part status,bc3c1787ece5c31e6d7b2526c4f15cf3a4d1569e2d6f8ceea079852054e2d6fc
+2,FREEZE,results/week2/processed/week2_validation_checkpoint.json,json,inspected,Outcome or execution evidence; see per-part status,a8df7b15fb7c8253b91db4801780b444f67410a44c3f6df1bc2855857103dc95
+2,FIXED-K;ORACLE,results/week2/raw/dev_fixed_k_matrix.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,cf41761b21027427ea9b620bfcfa9eac620648801e64aedd99e88f1ade713758
+2,primary-figure supplement,results/week2/plots/05_token_f1_vs_context_tokens.png,png,inspected,Visualization only; exact values sourced from existing CSVs,55a5955893425c5ce068ca24ab51b8fbfed2510ab2159e5303577ae5def69803

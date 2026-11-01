@@ -1,0 +1,4 @@
+action_space,note,total_query_prompt_tokens,total_query_generated_tokens,num_lm_calls
+PRE-A,Generate all non-D0 candidates before action verification; not oracle chosen-action cost.,2119.9902634593354,33.200458190148915,2.0
+PRE-B,Generate all non-D0 candidates before action verification; not oracle chosen-action cost.,2026.3127147766322,39.94902634593356,2.0
+PRE-C,Generate all non-D0 candidates before action verification; not oracle chosen-action cost.,3205.7588774341352,56.49484536082474,3.0

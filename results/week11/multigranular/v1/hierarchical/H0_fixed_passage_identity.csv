@@ -1,0 +1,13 @@
+dataset,budget,queries,same_evidence,same_prediction
+QASPER,256,50,50,50
+QASPER,512,50,50,50
+QASPER,1024,50,50,50
+QASPER,FULL,50,50,50
+HotpotQA,256,50,50,50
+HotpotQA,512,50,50,50
+HotpotQA,1024,50,50,50
+HotpotQA,FULL,50,50,50
+SciFact,256,50,50,50
+SciFact,512,50,50,50
+SciFact,1024,50,50,50
+SciFact,FULL,50,50,50

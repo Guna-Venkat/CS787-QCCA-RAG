@@ -1,0 +1,139 @@
+{
+  "baseline_inventory": [
+    {
+      "category": "canonical_control",
+      "id": "NONE",
+      "reader": "Qwen",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "budget": "natural original top10; separate specialist reference",
+      "category": "external",
+      "checkpoint": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42",
+      "id": "CANONICAL_RAG_BM25",
+      "reader": "adapted Mistral RAG",
+      "status": "SOURCE_ADAPTER_AVAILABLE_EXECUTION_SMOKE_PENDING"
+    },
+    {
+      "category": "external",
+      "checkpoint": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+      "id": "SARA_CANONICAL_BM25_K5_N10",
+      "k": 5,
+      "max_new_tokens": 64,
+      "n": 10,
+      "reader": "adapted Mistral SARA",
+      "status": "SOURCE_ADAPTER_AVAILABLE_EXECUTION_SMOKE_PENDING"
+    },
+    {
+      "category": "external_control",
+      "id": "STRONG_SFR_RAG",
+      "reader": "Qwen",
+      "status": "IMPLEMENTED_NATURAL_TOP10_REFERENCE"
+    },
+    {
+      "category": "external",
+      "id": "LLMLINGUA2",
+      "reader": "Qwen",
+      "status": "QUALIFICATION_REQUIRED"
+    },
+    {
+      "category": "historical_specialist",
+      "id": "SARA_SFR_K5",
+      "status": "NOT_QUALIFIED_HISTORICAL_POOL_PARITY_REQUIRED"
+    },
+    {
+      "category": "historical_specialist",
+      "id": "SARA_SFR_K6_HISTORICAL",
+      "status": "NOT_QUALIFIED_HISTORICAL_POOL_PARITY_REQUIRED"
+    },
+    {
+      "category": "project_baseline",
+      "id": "FIXED_SENTENCE",
+      "status": "IMPLEMENTED_NEW_PROTOCOL_PORT"
+    },
+    {
+      "category": "project_baseline",
+      "id": "C2",
+      "status": "IMPLEMENTED_NEW_PROTOCOL_PORT"
+    },
+    {
+      "category": "project_baseline",
+      "id": "H3",
+      "status": "IMPLEMENTED_NEW_PROTOCOL_PORT"
+    },
+    {
+      "category": "project_baseline",
+      "id": "RAW_STRICT",
+      "status": "IMPLEMENTED_NEW_PROTOCOL_PORT"
+    },
+    {
+      "category": "project_baseline",
+      "id": "RAW_SKIP",
+      "status": "IMPLEMENTED_NEW_PROTOCOL_PORT"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_NO_QUERY",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_SENTENCE_ONLY",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_PASSAGE_ONLY",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_NO_MASS",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_GREEDY",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "category": "QBGF_ablation",
+      "id": "QBGF_BM25",
+      "status": "IMPLEMENTED"
+    }
+  ],
+  "resources": {
+    "CPU_RAM_available_GiB": 55.59169006347656,
+    "GPU_memory": "24576 MiB, 23731 MiB",
+    "HF_cache_GiB": 70.30884454399347,
+    "disk_free_GiB": 19.546947479248047,
+    "expected_LLMLingua_weight_GiB": 2.5,
+    "models": {
+      "Mistral": {
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a",
+        "status": "CACHED",
+        "weight_files": 3
+      },
+      "Qwen": {
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218",
+        "status": "CACHED",
+        "weight_files": 5
+      },
+      "SFR": {
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+        "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+        "status": "CACHED",
+        "weight_files": 3
+      }
+    },
+    "packages": {
+      "bitsandbytes": "0.50.2",
+      "llmlingua": null,
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+week,parts,primary_artifacts,numerical_tables,figures,partwise_path,summary_path,status,legacy_markdown_used_as_evidence
+0,7,49,10,6,results/weekly_reports/week_00/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_00/WeeklySummaryAnalysis.md,FROZEN_WITH_GAPS,False
+1,8,32,8,1,results/weekly_reports/week_01/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_01/WeeklySummaryAnalysis.md,FROZEN_WITH_GAPS,False
+2,3,10,4,1,results/weekly_reports/week_02/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_02/WeeklySummaryAnalysis.md,FROZEN,False
+3,4,14,6,1,results/weekly_reports/week_03/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_03/WeeklySummaryAnalysis.md,FROZEN_WITH_GAPS,False
+4,7,20,11,1,results/weekly_reports/week_04/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_04/WeeklySummaryAnalysis.md,FROZEN,False
+5,4,18,9,1,results/weekly_reports/week_05/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_05/WeeklySummaryAnalysis.md,FROZEN,False
+6,2,11,5,1,results/weekly_reports/week_06/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_06/WeeklySummaryAnalysis.md,FROZEN,False
+7,7,33,13,6,results/weekly_reports/week_07/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_07/WeeklySummaryAnalysis.md,FROZEN,False
+8,11,29,9,0,results/weekly_reports/week_08/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_08/WeeklySummaryAnalysis.md,FROZEN_WITH_GAPS,False
+9,10,51,14,1,results/weekly_reports/week_09/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_09/WeeklySummaryAnalysis.md,FROZEN,False
+10,6,17,10,0,results/weekly_reports/week_10/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_10/WeeklySummaryAnalysis.md,FROZEN,False
+11,10,46,16,1,results/weekly_reports/week_11/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_11/WeeklySummaryAnalysis.md,FROZEN,False
+12,15,50,19,2,results/weekly_reports/week_12/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_12/WeeklySummaryAnalysis.md,FROZEN,False
+13,1,2,0,0,results/weekly_reports/week_13/WeeklyPartWiseAnalysis.md,results/weekly_reports/week_13/WeeklySummaryAnalysis.md,FROZEN_WITH_GAPS,False

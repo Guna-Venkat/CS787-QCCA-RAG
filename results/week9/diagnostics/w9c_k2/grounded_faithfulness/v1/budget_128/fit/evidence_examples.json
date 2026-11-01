@@ -1,0 +1,516 @@
+[
+  {
+    "question_id": "512",
+    "policy": "E0",
+    "evidence": {
+      "text": "[6ad011395e54b7dc9a41e8da] To evaluate the quality of the generated sequences regarding both precision and recall, the evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references  .\n[6ad011395e54b7dc9a41e8da] At each decoding step, attention values INLINEFORM3 are calculated by these methods and then used to compute the weighted sum as a context vector, which is then concatenated to decoder inputs as",
+      "items": [
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "source_paper_id": "139",
+          "question_id": "512",
+          "char_start": 4356,
+          "char_end": 4534,
+          "support_span": "To evaluate the quality of the generated sequences regarding both precision and recall, the evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references  .",
+          "exact_source_text": "To evaluate the quality of the generated sequences regarding both precision and recall, the evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references  .",
+          "support_valid": true,
+          "support_tokens": 39,
+          "token_count": 39
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "source_paper_id": "139",
+          "question_id": "512",
+          "char_start": 1825,
+          "char_end": 2019,
+          "support_span": "At each decoding step, attention values INLINEFORM3 are calculated by these methods and then used to compute the weighted sum as a context vector, which is then concatenated to decoder inputs as",
+          "exact_source_text": "At each decoding step, attention values INLINEFORM3 are calculated by these methods and then used to compute the weighted sum as a context vector, which is then concatenated to decoder inputs as",
+          "support_valid": true,
+          "support_tokens": 42,
+          "token_count": 42
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 128,
+      "support_tokens": 81,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "8d53618310c3fc5874929b9eebe7b1bb255a2c9a33e818b74e527ac1f1563669",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+        "char_start": 4356,
+        "char_end": 4534,
+        "canonical_source_substring": "To evaluate the quality of the generated sequences regarding both precision and recall, the evaluation metrics include BLEU and ROUGE (1, 2, L) scores with multiple references  ."
+      },
+      {
+        "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+        "char_start": 1825,
+        "char_end": 2019,
+        "canonical_source_substring": "At each decoding step, attention values INLINEFORM3 are calculated by these methods and then used to compute the weighted sum as a context vector, which is then concatenated to decoder inputs as"
+      }
+    ]
+  },
+  {
+    "question_id": "512",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "512",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "512",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "fact_not_copied_from_support_or_item_too_long",
+          "proposed": {
+            "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+            "support_span": "BLEU and ROUGE (1, 2, L) scores",
+            "normalized_claim": "BLEU and ROUGE (1, 2, L) scores",
+            "evidence_type": "answer_detail",
+            "relevance": "direct"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 1,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "513",
+    "policy": "E0",
+    "evidence": {
+      "text": "[6ad011395e54b7dc9a41e8da] that a curriculum of progressively harder tasks could significantly accelerate a network’s training.\n[6ad011395e54b7dc9a41e8da] The training procedure is to train each decoding layer for some epochs from the bottommost layer to the topmost one.",
+      "items": [
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "source_paper_id": "139",
+          "question_id": "513",
+          "char_start": 0,
+          "char_end": 100,
+          "support_span": "that a curriculum of progressively harder tasks could significantly accelerate a network’s training.",
+          "exact_source_text": "that a curriculum of progressively harder tasks could significantly accelerate a network’s training.",
+          "support_valid": true,
+          "support_tokens": 18,
+          "token_count": 18
+        },
+        {
+          "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+          "source_paper_id": "139",
+          "question_id": "513",
+          "char_start": 101,
+          "char_end": 217,
+          "support_span": "The training procedure is to train each decoding layer for some epochs from the bottommost layer to the topmost one.",
+          "exact_source_text": "The training procedure is to train each decoding layer for some epochs from the bottommost layer to the topmost one.",
+          "support_valid": true,
+          "support_tokens": 25,
+          "token_count": 25
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 90,
+      "support_tokens": 43,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "571819b1333eb9eac55ba3ac4e2921a7456b9689e8e65e77a86ef72d32f2fca2",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+        "char_start": 0,
+        "char_end": 100,
+        "canonical_source_substring": "that a curriculum of progressively harder tasks could significantly accelerate a network’s training."
+      },
+      {
+        "source_chunk_id": "6ad011395e54b7dc9a41e8da",
+        "char_start": 101,
+        "char_end": 217,
+        "canonical_source_substring": "The training procedure is to train each decoding layer for some epochs from the bottommost layer to the topmost one."
+      }
+    ]
+  },
+  {
+    "question_id": "513",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "a1ae67b60f73b96ba3b358e1",
+            "support_span": "E2E NLG challenge dataset  is utilized in our experiments, which is a crowd-sourced dataset of 50k instances in the restaurant domain.",
+            "fact": "E2E NLG challenge dataset"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "513",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "a1ae67b60f73b96ba3b358e1",
+            "support_span": "E2E NLG challenge dataset",
+            "fact": "E2E NLG challenge dataset"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "513",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [
+        {
+          "reason": "unsupported_span_or_source",
+          "proposed": {
+            "source_chunk_id": "a1ae67b60f73b96ba3b358e1",
+            "support_span": "E2E NLG challenge dataset",
+            "normalized_claim": "E2E NLG challenge dataset",
+            "evidence_type": "answer_detail",
+            "relevance": "direct"
+          }
+        }
+      ],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 1,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 1,
+      "exact_span_support_rate": 0.0,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "all_items_rejected_or_over_budget",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "745",
+    "policy": "E0",
+    "evidence": {
+      "text": "[d7854006fc2f6cd57fe895e7] Iterative Learning\tCompared to using external models for confidence modeling, an advantage of the proposed method is that the base model does\n[40472a34da2201033d10df7d] We randomly sample 50 extractions generated at the best performing iteration and conduct an error analysis to answer this question.",
+      "items": [
+        {
+          "source_chunk_id": "d7854006fc2f6cd57fe895e7",
+          "source_paper_id": "207",
+          "question_id": "745",
+          "char_start": 3415,
+          "char_end": 3556,
+          "support_span": "Iterative Learning\tCompared to using external models for confidence modeling, an advantage of the proposed method is that the base model does",
+          "exact_source_text": "Iterative Learning\tCompared to using external models for confidence modeling, an advantage of the proposed method is that the base model does",
+          "support_valid": true,
+          "support_tokens": 26,
+          "token_count": 26
+        },
+        {
+          "source_chunk_id": "40472a34da2201033d10df7d",
+          "source_paper_id": "207",
+          "question_id": "745",
+          "char_start": 1143,
+          "char_end": 1274,
+          "support_span": "We randomly sample 50 extractions generated at the best performing iteration and conduct an error analysis to answer this question.",
+          "exact_source_text": "We randomly sample 50 extractions generated at the best performing iteration and conduct an error analysis to answer this question.",
+          "support_valid": true,
+          "support_tokens": 24,
+          "token_count": 24
+        }
+      ],
+      "rejected_items": [],
+      "evidence_tokens": 98,
+      "support_tokens": 50,
+      "fact_tokens": 0,
+      "num_supported_items": 2,
+      "num_accepted_items": 2,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": 1.0,
+      "accepted_exact_span_support_rate": 1.0,
+      "zero_exact_support": false,
+      "invalid_format": false,
+      "empty_extraction": false,
+      "fail_closed": false,
+      "failure_reason": null,
+      "extraction_valid": true,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "52f9c6dc4ee898181ae8be9bfb36add4dab6e774c42d0927ec206f6bf7b78c94",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": [
+      {
+        "source_chunk_id": "d7854006fc2f6cd57fe895e7",
+        "char_start": 3415,
+        "char_end": 3556,
+        "canonical_source_substring": "Iterative Learning\tCompared to using external models for confidence modeling, an advantage of the proposed method is that the base model does"
+      },
+      {
+        "source_chunk_id": "40472a34da2201033d10df7d",
+        "char_start": 1143,
+        "char_end": 1274,
+        "canonical_source_substring": "We randomly sample 50 extractions generated at the best performing iteration and conduct an error analysis to answer this question."
+      }
+    ]
+  },
+  {
+    "question_id": "745",
+    "policy": "E1-Q",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": false,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "745",
+    "policy": "E1-QD",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": true,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  },
+  {
+    "question_id": "745",
+    "policy": "E2",
+    "evidence": {
+      "text": "",
+      "items": [],
+      "rejected_items": [],
+      "evidence_tokens": 0,
+      "support_tokens": 0,
+      "fact_tokens": 0,
+      "num_supported_items": 0,
+      "num_accepted_items": 0,
+      "num_rejected_items": 0,
+      "num_accepted_facts": 0,
+      "num_rejected_facts": 0,
+      "exact_span_support_rate": null,
+      "accepted_exact_span_support_rate": null,
+      "zero_exact_support": true,
+      "invalid_format": true,
+      "empty_extraction": false,
+      "fail_closed": true,
+      "failure_reason": "malformed_output",
+      "extraction_valid": false,
+      "reached_extraction_token_limit": true,
+      "evidence_hash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "max_evidence_tokens": 128,
+      "grounding_note": "Exact source support is mechanical, not semantic entailment. Facts are conservatively copied subspans, not free paraphrases."
+    },
+    "support_verification": []
+  }
+]

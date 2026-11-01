@@ -1,0 +1,8 @@
+category,count,rate
+D0 uniquely best,15,0.00859106529209622
+F0 uniquely best,366,0.20962199312714777
+F2-A uniquely best,13,0.0074455899198167235
+tie involving D0/F0,0,0.0
+tie involving D0/F2-A,358,0.20504009163802978
+tie involving F0/F2-A,18,0.010309278350515464
+three-way tie,976,0.5589919816723941

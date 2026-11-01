@@ -1,0 +1,17 @@
+{
+  "authorization": "User delegated sequential full runs, interpretation, fixes and reviews on 2026-10-28",
+  "cached_b": false,
+  "cell_source_preview": "if REVIEW_PHASE is not None:\n    if RUN_SMOKE: raise ValueError('Cannot freeze fabricated smoke output')\n    if REVIEW_PHASE != 'I': raise ValueError('Review th",
+  "current_cell": null,
+  "isolated_reader_driver_sha256": null,
+  "last_executed_cell": 22,
+  "launcher_sha256": "75e63ba9792134d37bba9f73ef4c4e67ef5b3dde6f21b1e742b8f88c82366eed",
+  "notebook": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/executed_notebooks/week11_I_final_report.ipynb",
+  "phase": "I",
+  "pid": 433376,
+  "reader_execution": "reference",
+  "source_notebook_sha256": "759e4883f885f2be02500e78cb3697554e54115980d90de6629625bc86a32267",
+  "start_utc": "2026-10-28T20:14:53.416118+00:00",
+  "status": "COMPLETE",
+  "updated_utc": "2026-10-28T20:17:14.563044+00:00"
+}

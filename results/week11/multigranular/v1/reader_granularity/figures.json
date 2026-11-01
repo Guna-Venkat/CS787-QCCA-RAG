@@ -1,0 +1,156 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_granularity.csv",
+    "dataset": "HotpotQA",
+    "name": "reader_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_granularity.csv",
+    "dataset": "QASPER",
+    "name": "reader_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_granularity.csv",
+    "dataset": "SciFact",
+    "name": "reader_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_budget.csv",
+    "dataset": "HotpotQA",
+    "name": "reader_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_budget.csv",
+    "dataset": "QASPER",
+    "name": "reader_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_budget.csv",
+    "dataset": "SciFact",
+    "name": "reader_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_granularity_budget.csv",
+    "dataset": "HotpotQA",
+    "name": "granularity_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_granularity_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_granularity_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_granularity_budget.csv",
+    "dataset": "QASPER",
+    "name": "granularity_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_granularity_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_granularity_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_granularity_budget.csv",
+    "dataset": "SciFact",
+    "name": "granularity_budget",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_granularity_budget.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_granularity_budget.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_HELP_reader_help_hurt.csv",
+    "dataset": "HotpotQA",
+    "name": "reader_help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_HELP_reader_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_HELP_reader_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_HELP_reader_help_hurt.csv",
+    "dataset": "QASPER",
+    "name": "reader_help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_HELP_reader_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_HELP_reader_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_HELP_reader_help_hurt.csv",
+    "dataset": "SciFact",
+    "name": "reader_help_hurt",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_HELP_reader_help_hurt.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_HELP_reader_help_hurt.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_efficiency.csv",
+    "dataset": "HotpotQA",
+    "name": "reader_efficiency",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_efficiency.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_efficiency.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_efficiency.csv",
+    "dataset": "QASPER",
+    "name": "reader_efficiency",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_efficiency.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_efficiency.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_efficiency.csv",
+    "dataset": "SciFact",
+    "name": "reader_efficiency",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_efficiency.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_efficiency.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_ranking.csv",
+    "dataset": "HotpotQA",
+    "name": "reader_ranking",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_ranking.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_task_score_reader_ranking.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_ranking.csv",
+    "dataset": "QASPER",
+    "name": "reader_ranking",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_ranking.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_task_score_reader_ranking.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_ranking.csv",
+    "dataset": "SciFact",
+    "name": "reader_ranking",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_ranking.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_task_score_reader_ranking.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/cross_dataset_Within-dataset_rank_lower_is_better__reader_dataset_rank.csv",
+    "dataset": "cross_dataset",
+    "name": "reader_dataset_rank",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/cross_dataset_Within-dataset_rank_lower_is_better__reader_dataset_rank.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/cross_dataset_Within-dataset_rank_lower_is_better__reader_dataset_rank.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_Delta_vs_Mistral_difference_from_mistral.csv",
+    "dataset": "HotpotQA",
+    "name": "difference_from_mistral",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_Delta_vs_Mistral_difference_from_mistral.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/HotpotQA_Delta_vs_Mistral_difference_from_mistral.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_Delta_vs_Mistral_difference_from_mistral.csv",
+    "dataset": "QASPER",
+    "name": "difference_from_mistral",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_Delta_vs_Mistral_difference_from_mistral.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/QASPER_Delta_vs_Mistral_difference_from_mistral.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_Delta_vs_Mistral_difference_from_mistral.csv",
+    "dataset": "SciFact",
+    "name": "difference_from_mistral",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_Delta_vs_Mistral_difference_from_mistral.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/reader_granularity/figures/SciFact_Delta_vs_Mistral_difference_from_mistral.png"
+  }
+]

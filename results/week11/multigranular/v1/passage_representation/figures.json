@@ -1,0 +1,107 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_any_gold_recall_pooling_recall.csv",
+    "dataset": "HotpotQA",
+    "name": "pooling_recall",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_any_gold_recall_pooling_recall.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_any_gold_recall_pooling_recall.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_any_gold_recall_pooling_recall.csv",
+    "dataset": "QASPER",
+    "name": "pooling_recall",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_any_gold_recall_pooling_recall.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_any_gold_recall_pooling_recall.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_any_gold_recall_pooling_recall.csv",
+    "dataset": "SciFact",
+    "name": "pooling_recall",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_any_gold_recall_pooling_recall.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_any_gold_recall_pooling_recall.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_mrr_pooling_mrr.csv",
+    "dataset": "HotpotQA",
+    "name": "pooling_mrr",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_mrr_pooling_mrr.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_mrr_pooling_mrr.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_mrr_pooling_mrr.csv",
+    "dataset": "QASPER",
+    "name": "pooling_mrr",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_mrr_pooling_mrr.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_mrr_pooling_mrr.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_mrr_pooling_mrr.csv",
+    "dataset": "SciFact",
+    "name": "pooling_mrr",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_mrr_pooling_mrr.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_mrr_pooling_mrr.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_overlap_pooling_overlap.csv",
+    "dataset": "HotpotQA",
+    "name": "pooling_overlap",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_overlap_pooling_overlap.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_overlap_pooling_overlap.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_overlap_pooling_overlap.csv",
+    "dataset": "QASPER",
+    "name": "pooling_overlap",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_overlap_pooling_overlap.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_overlap_pooling_overlap.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_overlap_pooling_overlap.csv",
+    "dataset": "SciFact",
+    "name": "pooling_overlap",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_overlap_pooling_overlap.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_overlap_pooling_overlap.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_count_weighted_minus_direct.csv",
+    "dataset": "HotpotQA",
+    "name": "weighted_minus_direct",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_count_weighted_minus_direct.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_count_weighted_minus_direct.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_count_weighted_minus_direct.csv",
+    "dataset": "QASPER",
+    "name": "weighted_minus_direct",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_count_weighted_minus_direct.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_count_weighted_minus_direct.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_count_weighted_minus_direct.csv",
+    "dataset": "SciFact",
+    "name": "weighted_minus_direct",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_count_weighted_minus_direct.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_count_weighted_minus_direct.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_delta_vs_direct_length_pooling_gain.csv",
+    "dataset": "HotpotQA",
+    "name": "length_pooling_gain",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_delta_vs_direct_length_pooling_gain.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/HotpotQA_delta_vs_direct_length_pooling_gain.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_delta_vs_direct_length_pooling_gain.csv",
+    "dataset": "QASPER",
+    "name": "length_pooling_gain",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_delta_vs_direct_length_pooling_gain.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/QASPER_delta_vs_direct_length_pooling_gain.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_delta_vs_direct_length_pooling_gain.csv",
+    "dataset": "SciFact",
+    "name": "length_pooling_gain",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_delta_vs_direct_length_pooling_gain.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/passage_representation/figures/SciFact_delta_vs_direct_length_pooling_gain.png"
+  }
+]

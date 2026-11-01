@@ -1,0 +1,16 @@
+output_root: results/week9/preflight
+fit_config: configs/week9/w9a.yaml
+cache_dir: null
+models: [M0, M1, M2, M3, M4, M5]
+first_pass_sara_model: mistralai/Mistral-7B-Instruct-v0.2
+precision_order: [fp16, int8, nf4]
+max_prompt_tokens: 4096
+max_new_tokens: 128
+extraction_max_tokens: 256
+smoke_queries: 2
+screen_queries: 48
+seed: 42
+min_free_disk_bytes: 8000000000
+max_alternatives: 2
+quality_tolerance: 0.003
+thinking: false

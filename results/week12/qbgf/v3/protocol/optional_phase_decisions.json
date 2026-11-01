@@ -1,0 +1,22 @@
+{
+  "confirmation_untouched": true,
+  "decision": "USER_REQUEST",
+  "missing_results_are_not_zero": true,
+  "phases": {
+    "E": {
+      "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+      "status": "NOT_RUN_BY_USER_DECISION"
+    },
+    "F": {
+      "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+      "status": "NOT_RUN_BY_USER_DECISION"
+    },
+    "G": {
+      "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+      "status": "NOT_RUN_BY_USER_DECISION"
+    }
+  },
+  "protocol": "W12-QBGF-v3",
+  "registered_multiplicity_families_unchanged": true,
+  "science_config_unchanged": true
+}

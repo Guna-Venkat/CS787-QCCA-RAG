@@ -1,0 +1,23 @@
+cache_dir: null
+extraction_max_tokens: 256
+first_pass_sara_model: mistralai/Mistral-7B-Instruct-v0.2
+fit_config: configs/week9/w9a.yaml
+max_alternatives: 2
+max_new_tokens: 128
+max_prompt_tokens: 4096
+min_free_disk_bytes: 8000000000
+models:
+- M0
+- M1
+- M2
+- M3
+- M4
+- M5
+output_root: results/week9/preflight/deepseek_fp32_diagnostic
+precision_order:
+- nf4_fp32
+quality_tolerance: 0.003
+screen_queries: 48
+seed: 42
+smoke_queries: 2
+thinking: false

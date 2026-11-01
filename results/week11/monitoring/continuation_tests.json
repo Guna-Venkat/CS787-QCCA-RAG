@@ -1,0 +1,11 @@
+{
+  "audit_driver_sha256": "e5aff36f0a80108672b76fd3548fb8f98698e2728fda02679829bbf24cf0e339",
+  "driver_sha256": "b611d3e8f9061ce2be0f6b2fe3aedec1817697b58bfe2d5f5d1ae21080190061",
+  "failed": 0,
+  "mode": "deterministic temporary fixtures only; no model or notebook execution",
+  "passed": 6,
+  "prior_C_D_gates_still_valid": true,
+  "test_file_sha256": "776047c9114a7c63a4e4d080210b1bde0a5ac34b4b98ceb54b2d10ab6f25e80c",
+  "tests": 6,
+  "timestamp_utc": "2026-10-28T09:47:50.949563+00:00"
+}

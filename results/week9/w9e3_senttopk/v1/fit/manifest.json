@@ -1,0 +1,12 @@
+{
+  "experiment": "E3-SentTopK-v1",
+  "stage": "full",
+  "queries": 1746,
+  "rows": 10476,
+  "complete": true,
+  "full_fit": true,
+  "protocol_hash": "33ac5ee8700b85524609a40fc433a2a32bfa0ec248095e03e99872cc8f016f76",
+  "old_artifacts_unchanged": true,
+  "extraction_lm_calls": 0,
+  "dynamic_controller_run": false
+}

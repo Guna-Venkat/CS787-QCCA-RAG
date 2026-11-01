@@ -1,0 +1,14 @@
+experiment: W9-F-E3k3-utilization-v1
+output_root: results/week9/w9f_utilization/v1
+e3_config: configs/week9/w9e3_senttopk.yaml
+split: fit
+sentence_k: 3
+policies: [F0, F1, F2-A, F2-B]
+f2_variants: [F2-A, F2-B]
+max_new_tokens: 128
+seed: 42
+smoke_queries: 2
+quality_tolerance: 0.003
+material_hurt_difference: 0.01
+bootstrap_resamples: 10000
+train_controller: false

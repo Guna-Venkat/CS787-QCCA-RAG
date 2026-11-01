@@ -1,0 +1,41 @@
+{
+  "week": 3,
+  "reports": {
+    "WeeklyPartWiseAnalysis.md": "97a22b41e7fbde21e5f25eccf52abe55d29b0cf63785a196a3055a0199878c05",
+    "WeeklySummaryAnalysis.md": "4f255ecf6d3d7891426508ef2ba5db8fad51ef0fd02e4daafec101ffe86bb523"
+  },
+  "sources": {
+    "configs/week3/week3_config.yaml": "146496d6d83cd103a7b2bf83d8e94f7ee11e8fcf89b870be26247babd32baed5",
+    "notebooks/week3/week3_oracle_epsilon_human_audit.ipynb": "efa12ba70ae44a64e30741bda97a8671a1d26d2f234f7e36f085a138162bccee",
+    "notebooks/week3/week3_oracle_target_analysis.ipynb": "2c557d8bd99721ee2d3120a2cd02cccdee98efff79d1414c0abd88a3589353c8",
+    "results/week3/human_audit/human_audit_summary.csv": "56a36369a1ed0de7a27829936508f4881bf9a157ff0ca21fff4c98fe551a4334",
+    "results/week3/human_audit/human_scoring_template.csv": "fc63fd3854a58d371bd17917d4f768f9d099ee33e7758ca002ab5a497ade76ef",
+    "results/week3/processed/dev_quality_oracle.csv": "007d2ff36dd38cd9e37de7c2ee77bc5291b94aeca878e6195d7e7c493cc484a0",
+    "results/week3/processed/epsilon_oracle_all.csv": "e59d6025056387293b945da719c0c4ccd800f6e7b878194149d1a180066d677a",
+    "results/week3/processed/epsilon_summary.csv": "0edcc2eb5cafe6d0daf79ab98331703baf49f706b0df76f53acfb84d5e275fe8",
+    "results/week3/processed/feature_signal_analysis.csv": "e4e38bba46618eda03f568f3370b5a0c16a130ca3f08a2cf74eb2e33a09d234b",
+    "results/week3/processed/heterogeneity_summary.json": "baac421fc5d806137a2ad62af2ba512e65c7b3b4f2053a25018c8bcca500dba7",
+    "results/week3/processed/quality_oracle_distribution.csv": "ac3cbb22fa1bc87efea3180fc14b24cff8c533853e035ef4775bd96a395488d2",
+    "results/week3/processed/selected_epsilon.json": "2f6e0f1b367b28f79c2904d9c590b21825ebc365bdef2fe5f50cb8ac23fe5719",
+    "results/week3/processed/week3_gate.json": "2d0dd7f89acb02574f4678f7f6f3000906d9c630beec1f6f13a62d298c0bc7a0",
+    "results/week3/plots/plot5_epsilon_vs_mean_k.png": "748544a476bbda663cedefdda0db0b25addb4a1e2ca654e4919e16723a5061fb"
+  },
+  "legacy_markdown_used_as_evidence": false,
+  "parts": 4,
+  "numerical_tables": 6,
+  "figures": 1,
+  "checks": [
+    "231 oracle rows and 924 epsilon rows verified; raw maxima and epsilon F1 means match stored analyses within rounding.",
+    "Week2/Week3 oracle values refer to different action sets; no silent source conflation."
+  ],
+  "figure_supplement": {
+    "primary_only": true,
+    "legacy_narrative_used": false
+  },
+  "primary_only_revision": {
+    "reason": "Blank raw human ratings conflict with numerical human summary; no legacy narrative informed this correction",
+    "raw_nonnull_ratings": 0,
+    "raw_rows": 150,
+    "legacy_markdown_influenced_revision": false
+  }
+}

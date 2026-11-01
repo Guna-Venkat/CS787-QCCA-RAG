@@ -1,0 +1,133 @@
+{
+  "commit": "fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d",
+  "parent_commit": "6b39cd26c56085f96c7a9711ed4a3a84d634bd33",
+  "source_provenance": {
+    "imported_path": "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/provenance.json",
+    "sha256": "69e781ce950ddf0d8788d7085632ee7c1d0ee34e153fe9493ba35c420376b3eb",
+    "git_blob": "0c65cf11efe2e5f6b78a5398bc06fba0da7bbd30"
+  },
+  "files": {
+    "src/week8/hard_case_dataset.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/hard_case_dataset.py",
+      "sha256": "099c3a306f56d696bd36f4f01f3ae5bf249c06a40c5d69fd5602115e4ce4ae03",
+      "git_blob": "b46f43fd6161fa9ee45c2576d1451d5c2beb3bf3"
+    },
+    "src/week8/hard_case_lora.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/hard_case_lora.py",
+      "sha256": "7775f5295d765773fc168af21f60ca5b31286e37528d25e7b03bacedde64f6a2",
+      "git_blob": "7392794cf750d401bbb740121f6b5152fc1f7d9d"
+    },
+    "src/week8/outcome_weighted_training.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/outcome_weighted_training.py",
+      "sha256": "c8d3aeaa6f4ece3a4fbad649e5cc4905352d9c3e713dad5a8ceb534dec85760b",
+      "git_blob": "5eb594935f61fe6a18e9d276c17335a195b4559b"
+    },
+    "scripts/week8/run_w8g_lora_training.py": {
+      "archive_path": "src/week9/final_h05/historical/scripts/week8/run_w8g_lora_training.py",
+      "sha256": "cd67e395806475e8ee7acce3eab7d438b82454be91a6b05655a475c2455fd827",
+      "git_blob": "b60be49c45be52ec4fc22f46610cce3cd767c915"
+    },
+    "src/week8/qcla_training.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/qcla_training.py",
+      "sha256": "33cf31e92c35069c98305ee51d7ee954e6a215e02dc40501f09316adc1093ee3",
+      "git_blob": "26e742c13d7423870902725a4bcb7eabab0c1f69"
+    },
+    "src/week8/qcla_experiment.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/qcla_experiment.py",
+      "sha256": "a44788efd3351732336407deb2e73066ec837311d9a11c6f44b90cdf2aa1cc03",
+      "git_blob": "198c16a7812595e40a887fc8b50e211d577448a3"
+    },
+    "src/week8/generator_features.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/generator_features.py",
+      "sha256": "8391e82ad0dc432d641c5fc57191eececabe0e19251dd08e615df12d9c5bee84",
+      "git_blob": "6c49266f92ff0fc7e5a669baf32ee5291b80a493"
+    },
+    "src/week8/utility_training.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/utility_training.py",
+      "sha256": "2c66e967b7ad89610940b8e8c96a3123fa940a73d68238d5ba3b251dd1180b88",
+      "git_blob": "07bc2232d776410961acf001f387603f926d0dd0"
+    },
+    "src/week7/w7e/prompt_builder.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week7/w7e/prompt_builder.py",
+      "sha256": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "git_blob": "7f74fd97931e9eae429d1258bf04319f700f9a73"
+    },
+    "src/week6/evaluation.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week6/evaluation.py",
+      "sha256": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+      "git_blob": "04f9412de6f627ed709ed75fcc8c714ece360d02"
+    },
+    "Baselines/SARA-main/src/model/loader.py": {
+      "archive_path": "src/week9/final_h05/historical/Baselines/SARA-main/src/model/loader.py",
+      "sha256": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+      "git_blob": "4ee4c1da00fe36705b41c474583a2d7a1b449e97"
+    },
+    "Baselines/SARA-main/src/model/xMistral/modeling_xmistral.py": {
+      "archive_path": "src/week9/final_h05/historical/Baselines/SARA-main/src/model/xMistral/modeling_xmistral.py",
+      "sha256": "85aabecd09eb2aef670c17b47f218a99f3da006a90074441fe63ebaf16f15604",
+      "git_blob": "feb21ddd8defb52f97d36027161e950779f850d0"
+    },
+    "src/week8/generation.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/generation.py",
+      "sha256": "975bd50dd8ca6439aafb9704c78d9969303500c3b8293a87237bf568368a4f78",
+      "git_blob": "d4437302ffe942cea27bf5c45a7bd599070eccc2"
+    },
+    "src/week8/full_system.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/full_system.py",
+      "sha256": "52d807ada78e61133a51f98b7010e3f67b7f781d745c2bbbb101896f43b77d17",
+      "git_blob": "a91d37802e8eff9e83f7d6b5472153ab84e13e3b"
+    },
+    "scripts/week8/run_w8h_full_evaluation.py": {
+      "archive_path": "src/week9/final_h05/historical/scripts/week8/run_w8h_full_evaluation.py",
+      "sha256": "66398276a03406650f8716dd4e49fb91705703ff45f481427659385f2cddaa02",
+      "git_blob": "d33483fc6a273b82f719034321501fd7121ba5c0"
+    },
+    "src/week8/gate_diagnostics.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/gate_diagnostics.py",
+      "sha256": "f6fab42df474e52979db082ee4a83436b111eae0fbe3cb9176006efeb1428d22",
+      "git_blob": "8b130ac78d11c819fab31a5885848f25e1dc5a8e"
+    },
+    "src/week8/selective_controller.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/selective_controller.py",
+      "sha256": "9e2a1fa5dd27f0b57e225c61b2463d9efe27f3a9e304bc6e8924b443d83d21f3",
+      "git_blob": "d02689ccee213d77dd180147c6cbbf3935b092af"
+    },
+    "src/week8/semantic.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/semantic.py",
+      "sha256": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+      "git_blob": "c1d17e7baaaac097c0fed2a44712a3b208c98f01"
+    },
+    "src/week8/marginal_information.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/marginal_information.py",
+      "sha256": "51d69ee19d2621160cd6b55f37027f5fbe72e649f05b1069eff172f39d2f85fb",
+      "git_blob": "d2d29ef9496e7b926f975cb5591d24b68ff0d137"
+    },
+    "src/week8/utility_models.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/utility_models.py",
+      "sha256": "71a6939b803b1b3210f2fd8cc57293ba6fb117cd030f3a6219a93512787015fc",
+      "git_blob": "1662001c03a90024f411223c5c5159c5a4478d87"
+    },
+    "src/week8/utility_dataset.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/utility_dataset.py",
+      "sha256": "9427041d09eac38a4ea3e7e0091bcd75835c0449e73daa845a6badeb11d4bbd1",
+      "git_blob": "4b5efc002a3eb921ec81053238f3ba34b5e2af16"
+    },
+    "src/week8/final_dev.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/final_dev.py",
+      "sha256": "8a77014a2bff4859d27df6b9b094517e9e1d8b78473434232cf441d9980c4121",
+      "git_blob": "838f96ea2bf1ed7afbfd0df9cf2b47db6d58f3c7"
+    },
+    "src/week8/final_reporting.py": {
+      "archive_path": "src/week9/final_h05/historical/src/week8/final_reporting.py",
+      "sha256": "6bf1bdaa6add645263a9555493eee279400a8260b8c3d7d9ac7fe59b489c3931",
+      "git_blob": "9a83b4c4639972a99c630a03e8ee186984a7f2b6"
+    },
+    "scripts/week8/run_w8j_final_dev_benchmarks.py": {
+      "archive_path": "src/week9/final_h05/historical/scripts/week8/run_w8j_final_dev_benchmarks.py",
+      "sha256": "1f1c381c3a7ea276370974697b9ebe0823cc1e452708c99c4812a8475a3e5b39",
+      "git_blob": "830cc9cd522d5a780f640a406e6a8d48c0eec5a6"
+    }
+  },
+  "classification": "RECOVERED_EXACT",
+  "test_accessed": false
+}

@@ -1,0 +1,10 @@
+dataset,reader,baseline,best,delta,granularity,selector,budget,HELP,HURT,evidence_tokens,interpretation
+HotpotQA,Llama,0.0948240359945165,0.4430185635620418,0.3481945275675253,PROPOSITION,hybrid,FULL,0.68,0.04,1295.2,retrospective pilot peak
+HotpotQA,Mistral,0.1004528238297423,0.3242809892941682,0.2238281654644259,PASSAGE,semantic,512,0.58,0.14,439.18,retrospective pilot peak
+HotpotQA,Qwen,0.1502496175322262,0.4802720722017397,0.33002245466951347,PASSAGE,semantic,1024,0.62,0.06,798.36,retrospective pilot peak
+QASPER,Llama,0.0717596653727021,0.2891461458917774,0.21738648051907528,SENTENCE,lexical,FULL,0.72,0.12,4079.32,retrospective pilot peak
+QASPER,Mistral,0.0598053166303584,0.2007496432029125,0.1409443265725541,SENTENCE,lexical,1024,0.64,0.14,1002.28,retrospective pilot peak
+QASPER,Qwen,0.0912275624175924,0.2436521978539798,0.1524246354363874,PASSAGE,hybrid,FULL,0.74,0.06,4144.28,retrospective pilot peak
+SciFact,Llama,0.0,0.04,0.04,PASSAGE,semantic,FULL,0.04,0.0,4819.1,format-confounded strict accuracy
+SciFact,Mistral,0.0,0.0,0.0,PASSAGE,lexical,256,0.0,0.0,16.44,format-confounded strict accuracy
+SciFact,Qwen,0.36,0.78,0.42000000000000004,PASSAGE,hybrid,1024,0.5,0.08,630.72,retrospective pilot peak

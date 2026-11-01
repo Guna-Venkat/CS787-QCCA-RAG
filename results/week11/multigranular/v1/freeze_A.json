@@ -1,0 +1,24 @@
+{
+  "branch": "gagan",
+  "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+  "phase": "A",
+  "rationale": "All 1350 rows and frozen inputs audited; keep prespecified SFR control, do not choose a global winner from unequal-budget pilot recall. Seven QASPER mapping flags and 25 SciFact no-gold claims documented; proceed to prespecified B surface under delegated review.",
+  "reviewed_config": {
+    "change_to_prespecified_primary": false,
+    "interpretation": "exploratory_50_per_dataset",
+    "mapping_flags_preserved": true,
+    "next_phase": "B",
+    "next_representations": [
+      "P0",
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "primary_retriever": "SFR",
+    "review_report_sha256": "428a1eca9aaa8caa65578b32d95fff3727f3a11976563a591646cc88b991ad09",
+    "user_delegated_sequential_review": true
+  },
+  "source_result_hash": "13711a8e349bf5175ab5dc38208e4b07b197ef9759a3f19333d7479afa07fecb",
+  "timestamp": "2026-10-27T21:34:25.584783+00:00"
+}

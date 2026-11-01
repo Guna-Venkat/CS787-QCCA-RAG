@@ -1,0 +1,12 @@
+{
+  "active_readers": [
+    "Mistral",
+    "Qwen"
+  ],
+  "full_panel_complete": false,
+  "pending_readers": [
+    "Llama"
+  ],
+  "seconds": 2704.395929336548,
+  "status": "complete"
+}

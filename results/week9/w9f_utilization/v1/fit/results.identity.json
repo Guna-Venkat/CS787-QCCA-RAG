@@ -1,0 +1,165 @@
+{
+  "protocol": {
+    "schema": "W9-F-E3k3-utilization-v1",
+    "config": {
+      "experiment": "W9-F-E3k3-utilization-v1",
+      "output_root": "results/week9/w9f_utilization/v1",
+      "e3_config": "configs/week9/w9e3_senttopk.yaml",
+      "split": "fit",
+      "sentence_k": 3,
+      "policies": [
+        "F0",
+        "F1",
+        "F2-A",
+        "F2-B"
+      ],
+      "f2_variants": [
+        "F2-A",
+        "F2-B"
+      ],
+      "max_new_tokens": 128,
+      "seed": 42,
+      "smoke_queries": 2,
+      "quality_tolerance": 0.003,
+      "material_hurt_difference": 0.01,
+      "bootstrap_resamples": 10000,
+      "train_controller": false
+    },
+    "split": "fit",
+    "sources": {
+      "src/week9/utilization_f/__init__.py": "a1525c7f0e4c2e9ed0c1100f76bf8dfc0236d271338af6090abc9706e0bd43de",
+      "src/week9/utilization_f/analysis.py": "b4fe72011333cd4cb5fa0549c312e02e1b4e3da05c260c21e1351feddc90c3b8",
+      "src/week9/utilization_f/prompts.py": "a28210fa5e1b6b4ad51ba59da2c071e0b7b2b1d424115ad65dae674c85543feb",
+      "src/week9/utilization_f/protocol.py": "d8309dd4dbe8145d9af57c95cbb40b6a2128c4a0b08f40bb8e9b28c607dea011",
+      "src/week9/utilization_f/runner.py": "d99105979f35566f8a5730dba1261c9c16251406e0ba7b064f067ca67149825f"
+    },
+    "prompts": {
+      "F0": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+          }
+        ],
+        "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+      },
+      "F1": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "The initial answer may already be correct. Review the additional source evidence. Preserve the original answer unless the evidence clearly requires a correction or addition. Make the smallest necessary change. Do not add unsupported information. Use only the supplied source evidence for any correction or addition. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+          }
+        ],
+        "prompt_hash": "e692aea57c2bb3c0e3d3b12cf862230f91ff3463ff0b32dd94a0ec75affff201"
+      },
+      "F2-A": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+          }
+        ],
+        "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+      },
+      "F2-B": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Answer the question using the supplied source evidence as the authoritative source. Use the initial answer as a starting point, not as an authority; it may be incomplete or wrong. Consider information missing from the draft, claims contradicted by the evidence, and supported draft content worth preserving. Add supported missing information, correct contradictions, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer; do not output these categories, reasoning, or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+          }
+        ],
+        "prompt_hash": "3116b8b057cb448b38bf67a2ce4181fbb1c5ae09ca9c99e42baf2a6f79a7615d"
+      }
+    },
+    "selection_rule": "FIT only: maximum F1, retain candidates within .003. Preserve existing global cost-first convention: lower cumulative prompt tokens, then materially lower HURT (at least .01 above minimum eligible HURT is the higher-risk tier), then lower generated tokens, lower recorded answer-stage latency, shorter template, stable policy name. D0 is excluded from intervention selection.",
+    "upstream_protocol_hash": "33ac5ee8700b85524609a40fc433a2a32bfa0ec248095e03e99872cc8f016f76",
+    "upstream_manifest_hash": "ff49cca0a771131f53ce6005f665c473d14f711a804e337fb58a28ea62fe599a",
+    "input_hashes": {
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/source_config_prompt_model_hashes.json": "914791e4d74d3fef5ba8e711a465edea5f341f27ec1e1cdfc1c3cf5e8e290c6c",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/protocol.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/frozen_e3_senttopk.json": "cad8cc70070cdb7f4a339f6822c92c50697b6e9277e5666e2f38947d546b1a7f",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/dynamic_go_no_go.json": "412c4ba10d3e04ca581db879f9dc1be35d2f82f9cb54a03fe0ba80a8660e2856",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/bootstrap.json": "33a735ce1a9e48b9fc168d751e9aa78464ed5d6472d8fced3179d84c645a86b5",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/results.jsonl": "bdd3d77d43688f7038945775c7c264b04acce7ab7b132adb475826663da2f680",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/summary.csv": "ceb81fc547e4326a4db5565258707f66f6a1ef2b5c8688f55662a21429f9764d",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/intervention_only_oracle_choices.csv": "0facba795bf3d4323cfbba297f825f91a6edef82bf71d8c24689f40fd4b69f0d",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/intervention_only_oracle_costs.csv": "71f697cc9c16f42c5ff884604356bd27a3c3f3f65b078180306feee92e4f35d7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/embedding_costs.json": "e6f17c8d1de8c4f23b2f1fa1b0a9797ee14d32156b0fd8d6a66edb69bfde46e1",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/bootstrap.csv": "b16e0a60630f73bf186cc1dfb16b585e37ce22f050e38a36b5898f6d3333ac1f",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/local_window_intervention_only_oracle_choices.csv": "fde3c9bdbc2f256b1f0af7cbf40e07ea9d554f37fd822268d2a53beab23729ca",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/results.identity.json": "7abc24668f01d0a7e22246bc8727b6d6316402cf4973c98e8933c50af26c9faf",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/local_window_intervention_only_oracle_costs.csv": "13bcca8681252a8f00b47c75fd3a9b76736fac81ea26186352ede38b298e5312",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/REPORT.md": "5266e4802f517e5ad25f31c59bfdcb4463db088bb7bfba347f7ce2583ec8ceff",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/full_action_oracle_choices.csv": "917b57a834df8e0e6748d967d6117981c4850e59a05a1bd6b8ef709ed86a5d1a",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/oracle_distribution.csv": "0aca263870ab217172d6c5c5bc908abd049b752dab2b3764481a1d687601d5d1",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/lm_calls.jsonl": "7fa4e0446daf4af408d1d982bedcbeb50b9c26a692ea46f4b7a2fd533071e7ef",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/manifest.json": "ff49cca0a771131f53ce6005f665c473d14f711a804e337fb58a28ea62fe599a",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/full_action_oracle_costs.csv": "b5994a4f0ca1cf334a1b2f68745320e6cb6dd1609297c16e1d88a7a46e644272",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/lm_calls.identity.json": "7abc24668f01d0a7e22246bc8727b6d6316402cf4973c98e8933c50af26c9faf",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/oracle_summary.json": "e9ce553f045ec9b7496126aaba2ad1cb3340749bae6e7192c2acc60b6254639b",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/sentence_embeddings.identity.json": "43ce51684f08a8f3b0ad90939ca500c1cce5d44bdf4c41f4a8d6ba9e791140b5",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/scores.identity.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/query_embeddings.sqlite3": "b4948a2746f880da32598c86410099d9cf63e080489ce5e957ea803b6fefac05",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/inventories.identity.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/query_embeddings.identity.json": "43ce51684f08a8f3b0ad90939ca500c1cce5d44bdf4c41f4a8d6ba9e791140b5",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/sentence_embeddings.sqlite3": "e412a69151c17aff5db35088a54015789cb5a6b3623862dd68787300067f5f39",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/inventories.jsonl": "5c4045984065b63523102f9e21c9c95771e12cfa4ccfceefb3f82c46a4eea7d9",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/scores.jsonl": "6848cc780eee552e800425950bbb32f00b13ba5297a7ff6ca62b6143003b7686",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/results.jsonl": "0d2a92bf0fc9e97ac9b2ec9316f2e9e361c6fc552d9bb6ffa71e84c16e812b15",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/summary.csv": "fded3f9f18aa12eed8b49bfaf66ec05553a1c234c095bc3b1825193e99000d32",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/embedding_costs.json": "be215fd9f8fdc2b2c351702208f88151c96d436871c5cc3f55bc4a4475a857a6",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/results.identity.json": "5e3e64cc21df7c1d87a1d8d8730f48117cfdbebfcab3a5690159058cbee10739",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/REPORT.md": "cf20bf669ac2ca2ec91786e1ccf64a0a6deda8116a004ded2f51fbec3cf8c717",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/lm_calls.jsonl": "4724a793441549cb1d57286873acf015f9d796b10990f9220ee66b7b68258434",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/manifest.json": "0ed258c0f8a91f5b3daf77c20a765dfbab7d564c724a48b1363858c83a6bc8f6",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/lm_calls.identity.json": "5e3e64cc21df7c1d87a1d8d8730f48117cfdbebfcab3a5690159058cbee10739",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl": "a8bb0f2563a55416168f1f1c655d025beaadd274edae59ea8906cd346a2784c0",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.identity.json": "fd478934d71d29aca26cf655c3372fa8be76632e5904d4375bf65b52f79e902c",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_manifest.json": "f068c67761c9911d6ba860f4aa19c3043e3c8b87eec0d80a6e51f5272af7ceed",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/frozen/w9b_frozen_config.json": "3a850a087d3b6232ef29d45629a3160ec7cb1ff64967feb4a5587a185172dd24",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9a_frozen_config.json": "24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9b_frozen_config.json": "326d805dd8acb343c822b61295568bac86385711b7b89c6d7b1d4197eac6cab4",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9c_frozen_config.json": "58a1cbbac2c7069721ba31daf97c47dc863527c41c26f93b904d1f644fb1a0c4",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/REPORT.md": "081c23b572374858b2a3fe834d71d1827fa8e2127f88a677348e32052bc4ad25",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/answer_and_cost_summary.csv": "eb8cabeae05d8da1cd108731075841fe5b64ace5828e501f39a24955086887b3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_examples.json": "4a268a9ac456ed58b74dade2c915f45c068d051dac549a66f52693fc1717016d",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_objects.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_objects.jsonl": "82c3ac35b8c0abac71eed29fbc791430624977b1f3d0002a4ee00679a1e707a6",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_quality.csv": "b019bd77129afad94ed5f996d4508fccb97205920f5484ee426913ac28b6d68c",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/grounded_e_results.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/grounded_e_results.jsonl": "bd1374287b6e163b94bb346a1be9fd94a082597deaea12ff5f19b579dcc1f30e",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/lm_calls.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/lm_calls.jsonl": "6062dd3a9b4220c3fcba312c6fe0b6a19274cc7bbbabf0bba2ba0b12bd9590d9",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/manifest.json": "5d822518582f763999ede1c84a9faf359e85acb7b30ea0672a946e69f753b66e",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/paired_paper_bootstrap.json": "bb60019c22dc289f02d9bf067f2cd7e9bbcd372f78d08bfac7fb3a4f969d9f49",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/REPORT.md": "2923d4f61b0ff7c08c4d10be6a5162c16d68c2bcc11f42196dde90947f4c23a8",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/answer_and_cost_summary.csv": "bdf54d47fd6d13f28fd894868ec0be62337edce1eb27dfd7cb2f9a9500d8c6ef",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_examples.json": "592d9e00188cb21ae0254768ce8860f0d9d9fac90dff757a5273a30ea110dcd3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_objects.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_objects.jsonl": "2ba2234b6ff746706147c1058f5929e9ed5a6206a5cdf5fc554de9be258bc280",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_quality.csv": "b34abf02697e2aa4b89a9163c838789cb9d0c59917a40f14c987f74f3b2ea767",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/grounded_e_results.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/grounded_e_results.jsonl": "d7831ee58bcbd1560bed4b06dc5be28a96a8b073b6670dc6721e28e0ea46f835",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/lm_calls.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/lm_calls.jsonl": "51073781ff2c16208b819b39feb55955e7fc3b69882e54abc9619eecca3cfedf",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/manifest.json": "9f7fe0946ed81566af50187a5ffb9828fd647e9319bf9cc297cff2fb11ab1d93",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/preflight_gate.json": "e2bd14b660f15a88e90a95ae1dca20cebeca6d21bf9b2d5a55751d6feb51653f",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/d_input_freeze.json": "4c10028b468c8432916c5f9920cc72a71fcac83e293dc94467fb4e553dd9a534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/grounded_e_identity.json": "2383b6aa1c7aceec69e38b44d95fc0dfaf652fa2715ed4f03a01b7f078b3e31c",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/prompt_templates.json": "a9eba09f0273e8e4b9f17f7baf57dbfb39ddaf9fac309482e5f2ff080710fb45"
+    },
+    "model": {
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+      "dtype": "torch.float16",
+      "quantization": "none",
+      "interface": "trained_SARA",
+      "attention_backend": "efficient_sdpa"
+    },
+    "evidence_identity_hash": "d4f91cc5832fe391fe17ee56844ede47bcd3b715421556fd481d54692c669e92",
+    "f0_alias_proof_hash": "e52c63fc0b7d2ca7d65474e3f22cf965ce7d2c6e520e0050b8284e3d1be1925b",
+    "answer_fallback": "Empty/invalid wrapper -> exact D0, charged answer call; no extraction fallback.",
+    "controller": "OFF: W9-G must wait for the frozen W9-F intervention action; E3 oracle used F0."
+  },
+  "stage": "full"
+}

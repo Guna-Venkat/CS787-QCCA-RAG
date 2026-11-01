@@ -1,0 +1,1409 @@
+{
+  "budgets": [
+    256,
+    1024
+  ],
+  "causal_ties": "Original source order then stable unit ID; never break causal ties using relevance",
+  "comparator_results": [
+    {
+      "budget": 256,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 308.60656883298395,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 7155,
+          "score": 0.4082469551102361
+        },
+        {
+          "mean_prompt_tokens": 274.61649196366176,
+          "method": "C2",
+          "n_queries": 7155,
+          "score": 0.4119271973287167
+        },
+        {
+          "mean_prompt_tokens": 291.3986023759609,
+          "method": "H3",
+          "n_queries": 7155,
+          "score": 0.42531078219575524
+        },
+        {
+          "mean_prompt_tokens": 278.0609364081062,
+          "method": "RAW_SKIP",
+          "n_queries": 7155,
+          "score": 0.4069742752674127
+        },
+        {
+          "mean_prompt_tokens": 279.4668064290706,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 7155,
+          "score": 0.37955346793283345
+        },
+        {
+          "mean_prompt_tokens": 304.7566736547869,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 7155,
+          "score": 0.4121892052259855
+        },
+        {
+          "mean_prompt_tokens": 282.6672257162823,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 7155,
+          "score": 0.39350944040725905
+        }
+      ],
+      "chosen": "H3",
+      "dataset": "HotpotQA"
+    },
+    {
+      "budget": 1024,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 1055.2490566037736,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 7155,
+          "score": 0.4233103966803955
+        },
+        {
+          "mean_prompt_tokens": 1041.3088749126484,
+          "method": "H3",
+          "n_queries": 7155,
+          "score": 0.43642074958398386
+        },
+        {
+          "mean_prompt_tokens": 1005.6673654786862,
+          "method": "RAW_SKIP",
+          "n_queries": 7155,
+          "score": 0.45213255482001524
+        },
+        {
+          "mean_prompt_tokens": 1013.8197064989517,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 7155,
+          "score": 0.43534482446237854
+        },
+        {
+          "mean_prompt_tokens": 1046.4591194968552,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 7155,
+          "score": 0.4322948785130742
+        },
+        {
+          "mean_prompt_tokens": 1010.822641509434,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 7155,
+          "score": 0.45250713381428886
+        }
+      ],
+      "chosen": "QBGF_PASSAGE_ONLY",
+      "dataset": "HotpotQA"
+    },
+    {
+      "budget": 256,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 297.89353233830843,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 1005,
+          "score": 0.26343006872390434
+        },
+        {
+          "mean_prompt_tokens": 270.38009950248755,
+          "method": "C2",
+          "n_queries": 1005,
+          "score": 0.2581178596083769
+        },
+        {
+          "mean_prompt_tokens": 277.7194029850746,
+          "method": "H3",
+          "n_queries": 1005,
+          "score": 0.2543625006615003
+        },
+        {
+          "mean_prompt_tokens": 267.3970149253731,
+          "method": "RAW_SKIP",
+          "n_queries": 1005,
+          "score": 0.16928258980092692
+        },
+        {
+          "mean_prompt_tokens": 280.46666666666664,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 1005,
+          "score": 0.15338809208287119
+        },
+        {
+          "mean_prompt_tokens": 295.2776119402985,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 1005,
+          "score": 0.23558405231606805
+        },
+        {
+          "mean_prompt_tokens": 267.3970149253731,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 1005,
+          "score": 0.16928258980092692
+        }
+      ],
+      "chosen": "FIXED_SENTENCE",
+      "dataset": "QASPER"
+    },
+    {
+      "budget": 1024,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 1065.6835820895521,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 1005,
+          "score": 0.2987884473314289
+        },
+        {
+          "mean_prompt_tokens": 1046.281592039801,
+          "method": "H3",
+          "n_queries": 1005,
+          "score": 0.2994867952371586
+        },
+        {
+          "mean_prompt_tokens": 955.2358208955224,
+          "method": "RAW_SKIP",
+          "n_queries": 1005,
+          "score": 0.2879568225586981
+        },
+        {
+          "mean_prompt_tokens": 950.8666666666667,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 1005,
+          "score": 0.25592779051122033
+        },
+        {
+          "mean_prompt_tokens": 1062.5164179104477,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 1005,
+          "score": 0.2977399304700041
+        },
+        {
+          "mean_prompt_tokens": 978.7303482587065,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 1005,
+          "score": 0.2895806232236927
+        }
+      ],
+      "chosen": "H3",
+      "dataset": "QASPER"
+    },
+    {
+      "budget": 256,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 318.24858757062145,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 177,
+          "score": 0.7000623840543657
+        },
+        {
+          "mean_prompt_tokens": 294.7909604519774,
+          "method": "C2",
+          "n_queries": 177,
+          "score": 0.7102477534223567
+        },
+        {
+          "mean_prompt_tokens": 295.6327683615819,
+          "method": "H3",
+          "n_queries": 177,
+          "score": 0.6856267725467952
+        },
+        {
+          "mean_prompt_tokens": 251.07344632768363,
+          "method": "RAW_SKIP",
+          "n_queries": 177,
+          "score": 0.4563775340644733
+        },
+        {
+          "mean_prompt_tokens": 248.97175141242937,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 177,
+          "score": 0.4375109437429079
+        },
+        {
+          "mean_prompt_tokens": 315.54237288135596,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 177,
+          "score": 0.6749686524946782
+        },
+        {
+          "mean_prompt_tokens": 251.87005649717514,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 177,
+          "score": 0.4577750890636552
+        }
+      ],
+      "chosen": "C2",
+      "dataset": "SciFact"
+    },
+    {
+      "budget": 1024,
+      "candidates": [
+        {
+          "mean_prompt_tokens": 1085.9830508474577,
+          "method": "FIXED_SENTENCE",
+          "n_queries": 177,
+          "score": 0.6703980265846391
+        },
+        {
+          "mean_prompt_tokens": 1065.406779661017,
+          "method": "H3",
+          "n_queries": 177,
+          "score": 0.6859039990885832
+        },
+        {
+          "mean_prompt_tokens": 998.9378531073446,
+          "method": "RAW_SKIP",
+          "n_queries": 177,
+          "score": 0.6989786840325967
+        },
+        {
+          "mean_prompt_tokens": 1003.7796610169491,
+          "method": "BM25_PLAIN_RAG",
+          "n_queries": 177,
+          "score": 0.7107163106819089
+        },
+        {
+          "mean_prompt_tokens": 1082.6666666666667,
+          "method": "QBGF_SENTENCE_ONLY",
+          "n_queries": 177,
+          "score": 0.6846926713947991
+        },
+        {
+          "mean_prompt_tokens": 1031.3898305084747,
+          "method": "QBGF_PASSAGE_ONLY",
+          "n_queries": 177,
+          "score": 0.6031073446327683
+        }
+      ],
+      "chosen": "BM25_PLAIN_RAG",
+      "dataset": "SciFact"
+    }
+  ],
+  "comparator_rule": "Maximum complete full-VAL task metric among fixed-sentence/C2/H3/SFR RAW_SKIP/BM25 RAW_SKIP and D single-granularity controls; exact ties lower mean prompt tokens, then method name. Excludes multi-granular NO_QUERY and specialists.",
+  "comparators": {
+    "HotpotQA:1024": "QBGF_PASSAGE_ONLY",
+    "HotpotQA:256": "H3",
+    "QASPER:1024": "H3",
+    "QASPER:256": "FIXED_SENTENCE",
+    "SciFact:1024": "BM25_PLAIN_RAG",
+    "SciFact:256": "C2"
+  },
+  "epsilon": 0,
+  "identity": {
+    "budgets": [
+      256,
+      1024
+    ],
+    "code": "8e202f7d13200307c065ce7c5055034c59eb19a0554b4742ab1229b0678059ba",
+    "confirmation_access": false,
+    "counts": 50,
+    "epsilon": 0,
+    "parent": {
+      "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+      "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+      "extra": {},
+      "models": {
+        "Mistral": {
+          "id": "mistralai/Mistral-7B-Instruct-v0.2",
+          "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+        },
+        "Qwen": {
+          "id": "Qwen/Qwen3-8B",
+          "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+        },
+        "SFR": {
+          "id": "Salesforce/SFR-Embedding-Mistral",
+          "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+        }
+      },
+      "packages": {
+        "numpy": "1.26.4",
+        "peft": "0.21.0",
+        "torch": "2.14.0",
+        "transformers": "4.57.6"
+      },
+      "source_files": {
+        "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+        "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+        "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+      }
+    },
+    "seed": 42,
+    "study": "posthoc-input-ablation-v1",
+    "synthetic": false
+  },
+  "inference": "Exact frozen BASE_FP16 Qwen reader/parser/tokenizer/decoding. Only selected evidence differs.",
+  "methods_per_cell": 2,
+  "optional_attention": false,
+  "optional_replacement": false,
+  "retention": "Only define normalized gain retention when full score minus NONE score >0",
+  "sampling_rule": "50 per dataset; proportional answer-type/class strata; seed42 sorted-ID shuffle; prefer unique QASPER papers; never filter by outcomes",
+  "selected": {
+    "HotpotQA": [
+      {
+        "dataset": "HotpotQA",
+        "group": "question:0f48f453a4dc82feb9414202ceeccb6facb1a7773d58bad82dc73aa0d828e0a8",
+        "paper_id": "5a7100435542994082a3e4a3",
+        "query_id": "5a7100435542994082a3e4a3",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:2eb1ba17ca9ae61bc9185026fd1ca3f213d6a5ac795567a977319ba65ab75db8",
+        "paper_id": "5a737d3c55429908901be2c8",
+        "query_id": "5a737d3c55429908901be2c8",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:d82209d4d37595d382d9100df8ca776f2ade59da60b55ad5e6d1d697bc6fba52",
+        "paper_id": "5a739d8c55429905862fe073",
+        "query_id": "5a739d8c55429905862fe073",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:635bc6aac3d28c8ad42afabdb7dfeb91ee8f55ba562b7eda5c86c13215a1e17a",
+        "paper_id": "5a7741775542994aec3b724f",
+        "query_id": "5a7741775542994aec3b724f",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:ffa64ffa2f3f7eebe996e58d9aa3a6a0a48a8e47bdac83624eeae73ae7294aff",
+        "paper_id": "5a7949d45542994bb9456fdd",
+        "query_id": "5a7949d45542994bb9456fdd",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:0ae6b8cd7565f4be6fa9ccc17171586fb06ef52d7dc1e73fdfdf0ff5cfaf281b",
+        "paper_id": "5a7a1e635542990783324e69",
+        "query_id": "5a7a1e635542990783324e69",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:897bba2d9bd7216232a74926003d01d5d9d14b8e3f71c2d259104eaf0917a275",
+        "paper_id": "5a7c76275542990527d554b4",
+        "query_id": "5a7c76275542990527d554b4",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:235c74b6db1108e1136692c1b036043aa87618748f1aeecd3614086c5360b651",
+        "paper_id": "5a7df25a5542990b8f503b02",
+        "query_id": "5a7df25a5542990b8f503b02",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:86a7048c9e2735aba19c8444ee2ad4b237cb698f3e22f9095d92ae62e1d9b01a",
+        "paper_id": "5a7e30b255429934daa2fbeb",
+        "query_id": "5a7e30b255429934daa2fbeb",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:75f32d09e626f4b7472520af4f5ba2bd6418ab144827dba915c4609d772d0a64",
+        "paper_id": "5a807e6f5542995d8a8ddf80",
+        "query_id": "5a807e6f5542995d8a8ddf80",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:eb4681094142be237da8bad80ea6d02e176ce0a9627c486655fd674667d61ed9",
+        "paper_id": "5a8241a855429940e5e1a819",
+        "query_id": "5a8241a855429940e5e1a819",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:905cf41d1def2145ac220766adb0d00d3d5a899b7d65f9e85a05a424c0df3157",
+        "paper_id": "5a82a1ae55429954d2e2eb89",
+        "query_id": "5a82a1ae55429954d2e2eb89",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:26616edbf4896d33574cd5509fd9e24a2b33c9b39abfb0742a1af96ca44dca2a",
+        "paper_id": "5a8333115542993344745feb",
+        "query_id": "5a8333115542993344745feb",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:c44758b4ce16a68b86bfecbff4a6824cc41e02e5696b9f1064bd0b6ddcc2dd7a",
+        "paper_id": "5a8484495542997175ce1ee8",
+        "query_id": "5a8484495542997175ce1ee8",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:d0df9df83f3b9a8077f72be9f5d204f06a6a7a038213afcaaf26e0e4a8b1e584",
+        "paper_id": "5a84b7db5542991dd0999db0",
+        "query_id": "5a84b7db5542991dd0999db0",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:ce2bf7cd96ab38b94476832c37914e3c88de319bc6a0bbe75da2b01d048a7c87",
+        "paper_id": "5a84bc5b5542991dd0999dc3",
+        "query_id": "5a84bc5b5542991dd0999dc3",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:59f98372ea3d7b35192932dacde8edd3fe6f3b7e58b8c04a7ac936c0cb75687f",
+        "paper_id": "5a862f985542991e771815af",
+        "query_id": "5a862f985542991e771815af",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:a7c987a3d70448e25f7f81f6fcd26e59c68c5146ce4cd7252ecfd00e5fe76e87",
+        "paper_id": "5a8901a2554299515336125a",
+        "query_id": "5a8901a2554299515336125a",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:9517e7c4f624fc9e1048f080c8a675c457438c2df2eeef101a8d58030f42d5f2",
+        "paper_id": "5a89ba6b554299669944a584",
+        "query_id": "5a89ba6b554299669944a584",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:a847b438d7b2eecb60d25d456966d94f46906316bd22eff71cbba34036486cfd",
+        "paper_id": "5a8ac0595542992d82986f6c",
+        "query_id": "5a8ac0595542992d82986f6c",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:a09ec6cefb1e0b81e2839d8eacf9f429f821cd108c6cd16de2220d4fcb253b96",
+        "paper_id": "5a8dbc8b554299441c6ba077",
+        "query_id": "5a8dbc8b554299441c6ba077",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:8072624ed07dbc181f61138e71a5854ac3bf563bc995746180588bf81ef2043b",
+        "paper_id": "5a8eed625542995085b374b9",
+        "query_id": "5a8eed625542995085b374b9",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:d34a49b5884e32e1b18769d393dc8e689abb3f6786a17fc45e51f7b8a224fc00",
+        "paper_id": "5a8f6e295542992414482ac6",
+        "query_id": "5a8f6e295542992414482ac6",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:aff6ef76424f250cb4f981e9ea3bdc32398cb3c95cedc28c14df1955663e4adb",
+        "paper_id": "5a8f7c9a55429918e830d239",
+        "query_id": "5a8f7c9a55429918e830d239",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:f712e62191bbceb75fdfa692c2ac8ff217ce5bac400a61b2b7f547c6f38e44b8",
+        "paper_id": "5ab1e36d554299449642c7f9",
+        "query_id": "5ab1e36d554299449642c7f9",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:5e595cbbf848d825a046016a1b6d85d2169cfff6d8a5c2116a3cc365ebbe6365",
+        "paper_id": "5ab2b2a7554299295394681d",
+        "query_id": "5ab2b2a7554299295394681d",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:1e2eb4d042545aacdfd49d176ce28ea608e42b9a43f2eebe8e030da48e0feab6",
+        "paper_id": "5ab2f88755429976abd1bbe0",
+        "query_id": "5ab2f88755429976abd1bbe0",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:1eeb997fcb26e7415ee5465eea6d0464b861701228dd4e29f364179c5bec5db4",
+        "paper_id": "5ab7c6995542993667794005",
+        "query_id": "5ab7c6995542993667794005",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:c980e7a0898236216362015534d29c438904863e3f843e6690f48d0c6478e7aa",
+        "paper_id": "5ab8a7f65542991b5579efca",
+        "query_id": "5ab8a7f65542991b5579efca",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:195a4e78b301bf6324728e82c2ea7aa8a7419263039171b2db2a40c99cd0fd76",
+        "paper_id": "5ab8eabb5542991b5579f03d",
+        "query_id": "5ab8eabb5542991b5579f03d",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:9010e82bce92d349b53427ee957fb53476ede2e8715c4b5815b1f742fa024505",
+        "paper_id": "5ab9b7d555429970cfb8eb7a",
+        "query_id": "5ab9b7d555429970cfb8eb7a",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:830874b40475631ab01061ac9b47f10c1e37367bfd3db9c217984c4a7d0f9943",
+        "paper_id": "5abb7ff15542996cc5e4a015",
+        "query_id": "5abb7ff15542996cc5e4a015",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:2ab36daa4febf71143a9e139b37cc15f36d2c05de834173a4bc114ab3544ae62",
+        "paper_id": "5abd8c295542992ac4f382ab",
+        "query_id": "5abd8c295542992ac4f382ab",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:fdad71ce1d4b961be25276b81939d05b211c9a719228fecf8dbaa9beff47e411",
+        "paper_id": "5ac046c65542996f0d89cb71",
+        "query_id": "5ac046c65542996f0d89cb71",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:1f9cb5ed452e9b1150991af2f8c7a7ed6f2febabf957647e1ccc3f2bdc6f8cff",
+        "paper_id": "5ac11a8d5542992a796dedee",
+        "query_id": "5ac11a8d5542992a796dedee",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:054111295b637bc5ae6a0824877f37122f4095999af4457b30edfd910fb164d3",
+        "paper_id": "5adc3d7455429944faac248a",
+        "query_id": "5adc3d7455429944faac248a",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:cc12abb1dbceb663484db8a00615f3ea479bd86bd421c3109bba28b0afe4ba06",
+        "paper_id": "5adc75525542994650320d0e",
+        "query_id": "5adc75525542994650320d0e",
+        "stratum": "comparison"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:f19724ef7f8a6c05ebec7b7b59287fd3ece06e0d3a8cadc29737dbe1faeb5916",
+        "paper_id": "5adc7f4a5542994650320d28",
+        "query_id": "5adc7f4a5542994650320d28",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:e998e570ae83e80048c33422220a46bdfef4ded34c30cbfe0e944c8ee1eb3f5d",
+        "paper_id": "5adcca7f5542994ed6169c06",
+        "query_id": "5adcca7f5542994ed6169c06",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:ef26820ff093fb655bd8f04ae90b6ee893611cc140b963983fd5abca95ab0f72",
+        "paper_id": "5adce88b5542992c1e3a249a",
+        "query_id": "5adce88b5542992c1e3a249a",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:a264b7e9c8ea43633385cf84fae5d87045573b41a30b1a69e2dc160dd62e018d",
+        "paper_id": "5add1d575542992c1e3a2540",
+        "query_id": "5add1d575542992c1e3a2540",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:96a26cd07395b1517c33b7b342a37d8e29fe07d5b6b4c63055ddd4a5303df713",
+        "paper_id": "5adfa3da554299025d62a317",
+        "query_id": "5adfa3da554299025d62a317",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:ab7c32e26d4885659d6bf0d21b253cb287e031ac0a57b0213e5dae8470cd161e",
+        "paper_id": "5ae29d8a5542996483e64a0f",
+        "query_id": "5ae29d8a5542996483e64a0f",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:406e1ec1ce9f4c90e60f03c1bd49bc2f4bd8a196c1d867a69367195977db107a",
+        "paper_id": "5ae2eb7f55429928c423955b",
+        "query_id": "5ae2eb7f55429928c423955b",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:626d0f609d2d46599cddf1a3f8165cf834f51fd2dd596bafaf22299012f82713",
+        "paper_id": "5ae35b6b5542990afbd1e116",
+        "query_id": "5ae35b6b5542990afbd1e116",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:df072800f8889404003de68417f2eb3ac41650e0640bdf6430ca792eac1f115d",
+        "paper_id": "5ae531695542990ba0bbb1fb",
+        "query_id": "5ae531695542990ba0bbb1fb",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:bc719e53a9cd96d67a786188570a843e610e68660a9ed3909994a7895b65da63",
+        "paper_id": "5ae72b96554299572ea5474e",
+        "query_id": "5ae72b96554299572ea5474e",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:4c3e3c66748459b9c2e0b96cd54abe69f04fda3d7035f71b61132b43465f3bc4",
+        "paper_id": "5ae73d505542991e8301cc2c",
+        "query_id": "5ae73d505542991e8301cc2c",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:cabdbfd70af13fb07c637527c59b8ca17038f48cd08e07927f7023d40af9da99",
+        "paper_id": "5ae7936d5542997ec27276a7",
+        "query_id": "5ae7936d5542997ec27276a7",
+        "stratum": "bridge"
+      },
+      {
+        "dataset": "HotpotQA",
+        "group": "question:bcefd15d33551fb07b60f4b24f102cdf74db131d9cc72e43a33020f43b05d626",
+        "paper_id": "5ae824295542997ec272772f",
+        "query_id": "5ae824295542997ec272772f",
+        "stratum": "bridge"
+      }
+    ],
+    "QASPER": [
+      {
+        "dataset": "QASPER",
+        "group": "1612.08205",
+        "paper_id": "1612.08205",
+        "query_id": "01a41c0a4a7365cd37d28690735114f2ff5229f2",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1706.06894",
+        "paper_id": "1706.06894",
+        "query_id": "05887a8466e0a2f0df4d6a5ffc5815acd7d9066a",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1708.01464",
+        "paper_id": "1708.01464",
+        "query_id": "113d791df6fcfc9cecfb7b1bebaf32cc2e4402ab",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1908.09246",
+        "paper_id": "1908.09246",
+        "query_id": "15e481e668114e4afe0c78eefb716ffe1646b494",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1703.07090",
+        "paper_id": "1703.07090",
+        "query_id": "1bb7eb5c3d029d95d1abf9f2892c1ec7b6eef306",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1909.13104",
+        "paper_id": "1909.13104",
+        "query_id": "21548433abd21346659505296fb0576e78287a74",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1912.03804",
+        "paper_id": "1912.03804",
+        "query_id": "2ccc26e11df4eb26fcccdd1f446dc749aff5d572",
+        "stratum": "yes_no"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1611.03599",
+        "paper_id": "1611.03599",
+        "query_id": "37a79be0148e1751ffb2daabe4c8ec6680036106",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "2003.03106",
+        "paper_id": "2003.03106",
+        "query_id": "3de0487276bb5961586acc6e9f82934ef8cb668c",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1712.00991",
+        "paper_id": "1712.00991",
+        "query_id": "443d2448136364235389039cbead07e80922ec5c",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1503.00841",
+        "paper_id": "1503.00841",
+        "query_id": "50be4a737dc0951b35d139f51075011095d77f2a",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1908.06267",
+        "paper_id": "1908.06267",
+        "query_id": "545e92833b0ad4ba32eac5997edecf97a366a244",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1908.05828",
+        "paper_id": "1908.05828",
+        "query_id": "567dc9bad8428ea9a2658c88203a0ed0f8da0dc3",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1811.12254",
+        "paper_id": "1811.12254",
+        "query_id": "57f23dfc264feb62f45d9a9e24c60bd73d7fe563",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1902.09666",
+        "paper_id": "1902.09666",
+        "query_id": "5a8cc8f80509ea77d8213ed28c5ead501c68c725",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1809.01541",
+        "paper_id": "1809.01541",
+        "query_id": "5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1912.01772",
+        "paper_id": "1912.01772",
+        "query_id": "5cc2daca2a84ddccba9cdd9449e51bb3f64b3dde",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "2003.08385",
+        "paper_id": "2003.08385",
+        "query_id": "612c3675b6c55b60ae6d24265ed8e20f62cb117e",
+        "stratum": "yes_no"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1912.08960",
+        "paper_id": "1912.08960",
+        "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1905.11268",
+        "paper_id": "1905.11268",
+        "query_id": "67ec8ef85844e01746c13627090dc2706bb2a4f3",
+        "stratum": "unanswerable"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1910.09982",
+        "paper_id": "1910.09982",
+        "query_id": "6bfba3ddca5101ed15256fca75fcdc95a53cece7",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1906.07662",
+        "paper_id": "1906.07662",
+        "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "2002.01664",
+        "paper_id": "2002.01664",
+        "query_id": "75df70ce7aa714ec4c6456d0c51f82a16227f2cb",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1911.03343",
+        "paper_id": "1911.03343",
+        "query_id": "78292bc57ee68fdb93ed45430d80acca25a9e916",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "2001.02885",
+        "paper_id": "2001.02885",
+        "query_id": "78536da059b884d6ad04680baeb894895458055c",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1707.05236",
+        "paper_id": "1707.05236",
+        "query_id": "7b4992e2d26577246a16ac0d1efc995ab4695d24",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1909.03405",
+        "paper_id": "1909.03405",
+        "query_id": "7b4fb6da74e6bd1baea556788a02969134cf0800",
+        "stratum": "yes_no"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1907.06292",
+        "paper_id": "1907.06292",
+        "query_id": "869feb7f47606105005efdb6bea1c549824baea0",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1609.00559",
+        "paper_id": "1609.00559",
+        "query_id": "88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1909.05359",
+        "paper_id": "1909.05359",
+        "query_id": "8b0abc1907c2bf3e0256f8cf85e0ba66a839bd92",
+        "stratum": "yes_no"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "2003.02249",
+        "paper_id": "2003.02249",
+        "query_id": "8b9c12df9f89040f1485b3847a29f11b5c9262e0",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1712.05999",
+        "paper_id": "1712.05999",
+        "query_id": "907b3af3cfaf68fe188de9467ed1260e52ec6cf1",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1905.12801",
+        "paper_id": "1905.12801",
+        "query_id": "90d946ccc3abf494890e147dd85bd489b8f3f0e8",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1907.01468",
+        "paper_id": "1907.01468",
+        "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+        "stratum": "unanswerable"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1908.08345",
+        "paper_id": "1908.08345",
+        "query_id": "97d1ac71eed13d4f51f29aac0e1a554007907df8",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1802.07862",
+        "paper_id": "1802.07862",
+        "query_id": "a0543b4afda15ea47c1e623c7f00d4aaca045be0",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1806.04511",
+        "paper_id": "1806.04511",
+        "query_id": "a103636c8d1dbfa53341133aeb751ffec269415c",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1805.06966",
+        "paper_id": "1805.06966",
+        "query_id": "a15bc19674d48cd9919ad1cf152bf49c88f4417d",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1807.07279",
+        "paper_id": "1807.07279",
+        "query_id": "a5e5cda1f6195ab1336855f1e39a609d61326d62",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1910.14599",
+        "paper_id": "1910.14599",
+        "query_id": "b3d01ac226ee979e188a4141877a6d2a5482de98",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1808.03738",
+        "paper_id": "1808.03738",
+        "query_id": "b9d07757e2d2c4be41823dd1ea3b9c7f115b5f72",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1603.09631",
+        "paper_id": "1603.09631",
+        "query_id": "bc16ce6e9c61ae13d46970ebe6c4728a47f8f425",
+        "stratum": "free_form"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1908.07195",
+        "paper_id": "1908.07195",
+        "query_id": "c262d3d1c5a8b6fef6b594d5eee86bc2b09e3baf",
+        "stratum": "unanswerable"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1910.12574",
+        "paper_id": "1910.12574",
+        "query_id": "c81f215d457bdb913a5bade2b4283f19c4ee826c",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1704.06194",
+        "paper_id": "1704.06194",
+        "query_id": "cfbec1ef032ac968560a7c76dec70faf1269b27c",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1901.01010",
+        "paper_id": "1901.01010",
+        "query_id": "d5a8fd8bb48dd1f75927e874bdea582b4732a0cd",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1601.02403",
+        "paper_id": "1601.02403",
+        "query_id": "d6401cece55a14d2a35ba797a0878dfe2deabedc",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1707.06806",
+        "paper_id": "1707.06806",
+        "query_id": "ddb23a71113cbc092cbc158066d891cae261e2c6",
+        "stratum": "extractive"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1904.04358",
+        "paper_id": "1904.04358",
+        "query_id": "deb89bca0925657e0f91ab5daca78b9e548de2bd",
+        "stratum": "mixed"
+      },
+      {
+        "dataset": "QASPER",
+        "group": "1909.09534",
+        "paper_id": "1909.09534",
+        "query_id": "f20a389ace2267aa61eddcc235535452ccdae0e6",
+        "stratum": "yes_no"
+      }
+    ],
+    "SciFact": [
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1011",
+        "paper_id": "1012",
+        "query_id": "1012",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1018",
+        "paper_id": "1019",
+        "query_id": "1019",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1028",
+        "paper_id": "1029",
+        "query_id": "1029",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1031",
+        "paper_id": "1049",
+        "query_id": "1049",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:550",
+        "paper_id": "1132",
+        "query_id": "1132",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:559",
+        "paper_id": "1202",
+        "query_id": "1202",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1133",
+        "paper_id": "1216",
+        "query_id": "1216",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1265",
+        "paper_id": "1266",
+        "query_id": "1266",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1288",
+        "paper_id": "1290",
+        "query_id": "1290",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:44",
+        "paper_id": "1292",
+        "query_id": "1292",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1298",
+        "paper_id": "1298",
+        "query_id": "1298",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:132",
+        "paper_id": "132",
+        "query_id": "132",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1316",
+        "paper_id": "1335",
+        "query_id": "1335",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:272",
+        "paper_id": "1359",
+        "query_id": "1359",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:178",
+        "paper_id": "1379",
+        "query_id": "1379",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1389",
+        "paper_id": "1389",
+        "query_id": "1389",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:91",
+        "paper_id": "148",
+        "query_id": "148",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:212",
+        "paper_id": "212",
+        "query_id": "212",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:214",
+        "paper_id": "213",
+        "query_id": "213",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:277",
+        "paper_id": "279",
+        "query_id": "279",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:299",
+        "paper_id": "298",
+        "query_id": "298",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:1209",
+        "paper_id": "314",
+        "query_id": "314",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:223",
+        "paper_id": "324",
+        "query_id": "324",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:342",
+        "paper_id": "343",
+        "query_id": "343",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:354",
+        "paper_id": "354",
+        "query_id": "354",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:385",
+        "paper_id": "385",
+        "query_id": "385",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:410",
+        "paper_id": "411",
+        "query_id": "411",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:452",
+        "paper_id": "452",
+        "query_id": "452",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:900",
+        "paper_id": "475",
+        "query_id": "475",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:494",
+        "paper_id": "521",
+        "query_id": "521",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:679",
+        "paper_id": "525",
+        "query_id": "525",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:537",
+        "paper_id": "536",
+        "query_id": "536",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:539",
+        "paper_id": "539",
+        "query_id": "539",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:55",
+        "paper_id": "54",
+        "query_id": "54",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:553",
+        "paper_id": "552",
+        "query_id": "552",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:555",
+        "paper_id": "554",
+        "query_id": "554",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:578",
+        "paper_id": "578",
+        "query_id": "578",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:588",
+        "paper_id": "587",
+        "query_id": "587",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:620",
+        "paper_id": "619",
+        "query_id": "619",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:126",
+        "paper_id": "628",
+        "query_id": "628",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:642",
+        "paper_id": "644",
+        "query_id": "644",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:703",
+        "paper_id": "700",
+        "query_id": "700",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:73",
+        "paper_id": "72",
+        "query_id": "72",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:756",
+        "paper_id": "756",
+        "query_id": "756",
+        "stratum": "SUPPORT"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:847",
+        "paper_id": "847",
+        "query_id": "847",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:871",
+        "paper_id": "870",
+        "query_id": "870",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:879",
+        "paper_id": "879",
+        "query_id": "879",
+        "stratum": "REFUTE"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:887",
+        "paper_id": "887",
+        "query_id": "887",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:976",
+        "paper_id": "975",
+        "query_id": "975",
+        "stratum": "NOT_ENOUGH_INFO"
+      },
+      {
+        "dataset": "SciFact",
+        "group": "cited-paper-component:990",
+        "paper_id": "993",
+        "query_id": "993",
+        "stratum": "REFUTE"
+      }
+    ]
+  },
+  "split_hash": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117",
+  "statistics": "10000 paper/query/document-group bootstrap resamples, seed42; post-hoc diagnostic, no primary policy tuning",
+  "unit_definition": "Selected sentence/PROPOSITION span individually; FULL/RAW_SKIP passage one unit; no resplitting FULL"
+}

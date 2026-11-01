@@ -1,0 +1,383 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+0,context/cross-check,configs/week0/week0.yaml,yaml,inspected,protocol only,fde8fe837811e746ba6acd79b440f8a3129683ed88b33b10fa2deddf10256d02
+0,context/cross-check,notebooks/week0/week0_analysis.ipynb,ipynb,inspected,See associated report section; mock paths explicitly quarantined,8f343ec51c26b4ac9242cc7fb95cca31b87072ec7ccaf33626beac2ee7379850
+0,A,results/week0/dataset_analysis/dataset_summary.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,07bb5e1d460935f8787021e42d0ee6e8c4e044e77ba013332ca2b3745eb91511
+0,context/cross-check,results/week0/dataset_analysis/evidence_statistics.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,5be31445fbd011b601fba7cf5a23174c716c9be05db553e197822bbcb245c9c4
+0,context/cross-check,results/week0/dataset_analysis/paper_level_statistics.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,24b6e6e5158e8faecc8b7bd87d7a40c57ea82806725a05b246466ff61e748dbd
+0,A,results/week0/dataset_analysis/question_level_statistics.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,92592662fc3ba948827c0d158ea1082cbc992a0383b0e53b9f1ab8075d664818
+0,A,results/week0/dataset_analysis/retrieval_statistics.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,4597e4659a58eb8a1e681ff4b9f1469eb00736f2b5bfbea712b701899bc64695
+0,C,results/week0/evidence_analysis/ablation_passage_scores.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,547f494f78ae534d2c62382ee5a6852e2c9b24fa494c0508abe92792b48266c8
+0,C,results/week0/evidence_analysis/attention_passage_scores.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,267984d91bed750ee15c6f8fceb9e41e4353ec059a776641af54ec32234ad662
+0,C,results/week0/evidence_analysis/signal_correlations.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,58ae0d51f2a4d76ebf4d32834c84d564bc6b4ad7fd6a95aacfcf38a110427f60
+0,context/cross-check,results/week0/figures/retrieval_diagnostics.png,png,inspected,See associated report section; mock paths explicitly quarantined,a842d1766799e5fc755a039e67f75ce62b77f98e5fd62f3bb5c1c5596f15fbf7
+0,FINAL40,results/week0/final40/attention_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,952a77469519e040a49b91dfb65ade69e31531aa714ca41d3dea88489de27515
+0,FINAL40,results/week0/final40/evidence_match_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,0ed019fa9848f32d07195237930c24811fc2092458f67ceef092df37aaab667f
+0,FINAL40,results/week0/final40/execution_metadata.json,json,inspected,See associated report section; mock paths explicitly quarantined,9fc0f5739a16cebf64ee93fad82f39e42acdae22928f90260f54e5bfdc803fbc
+0,context/cross-check,results/week0/final40/figures/delta_replace_by_evidence_category.png,png,inspected,See associated report section; mock paths explicitly quarantined,fc3700fae835412ad39299d48743754336964b7e9d77bbcc65efbf38c982b4e3
+0,context/cross-check,results/week0/final40/figures/per_query_intervention_heterogeneity.png,png,inspected,See associated report section; mock paths explicitly quarantined,7028bd0f79037d38aa2f60809e0f3ff831ed9c8f1d0183b3eb08381481dbcbf4
+0,context/cross-check,results/week0/final40/figures/week0_vs_week3_oracle.png,png,inspected,See associated report section; mock paths explicitly quarantined,6b20d7c31461b53d0951d2facbddcd865a5744f579072c49866f6d6c34aec26b
+0,context/cross-check,results/week0/final40/layer_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,2e61f96c72dd7b9c61a279ed9f58b591a87c9066af7bb7b3987817800d0a9798
+0,FINAL40,results/week0/final40/question_level_features.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,1b92ab6f33aa3ba65d8632f979c9e07c463520c04a66f9b59286fafe9b1f3ec3
+0,FINAL40,results/week0/final40/removal_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,8d4b3a626a67213a204f3ef0dd24d68d89174696def98c9dd880b374dee4c948
+0,FINAL40,results/week0/final40/replacement_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,15d61676eb418d84f086def10aa551cb1d08654f6ce5032042e7e31c58cdd87e
+0,FINAL40,results/week0/final40/sample_manifest.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,a295c2da6ac6e37d669d39a3ea3042e10e86160a631641b60938f58f25a5d629
+0,RETROSPECTIVE-BRIDGE,results/week0/final40/week3_bridge.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,685a5e5a9fc7c6dd175c484c924877693de933998d040fc46891317aff7cb427
+0,GPU-PILOT,results/week0/gpu_pilot/ablation_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,aac7683e7db32feb0998d220fc9085e9fae2502b779c4667c13295560222b949
+0,GPU-PILOT,results/week0/gpu_pilot/attention_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,44a3d89f2315f5e64cdd09bfa1cfade0af10f04e1eb15d796307facc32f2cd1b
+0,GPU-PILOT,results/week0/gpu_pilot/execution_metadata.json,json,inspected,See associated report section; mock paths explicitly quarantined,b77f3de02ef6f740c1765710661d50f1f67c1ee317ef68816883981007ae67f0
+0,context/cross-check,results/week0/gpu_pilot/figures/attention_vs_intervention.png,png,inspected,See associated report section; mock paths explicitly quarantined,fb308aa61cc427b3ff051a4d639a6c2ff1de55d944f46d544327b0aefef2d54e
+0,INTERVENTION-VALIDATION,results/week0/gpu_pilot/intervention_validation/evidence_match_audit.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,9b0660d252216066e7d303e5e9b4378c22fb40a1a9ea3904f0995ec129caa7c1
+0,context/cross-check,results/week0/gpu_pilot/intervention_validation/figures/removal_vs_replacement_scatter.png,png,inspected,See associated report section; mock paths explicitly quarantined,f8e5a6bb0b1805f2468810f6f1182efe92fed64faa242858a7f00a8f936d5bdf
+0,INTERVENTION-VALIDATION,results/week0/gpu_pilot/intervention_validation/removal_vs_replacement.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,2ad89ded3f15968b528d1584f3cd76d6e7e3b41a6c68940245c359d8a87a3274
+0,INTERVENTION-VALIDATION,results/week0/gpu_pilot/intervention_validation/replacement_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,c4b2e1554ec90342a3e629666136c56792e014f598d93fec27f8a3d65e4726f2
+0,GPU-PILOT,results/week0/gpu_pilot/layer_results.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,5a91a1112abca44e1a7bf5eb18df566bb429bd71f232acd90a94e8f3974eafcf
+0,GPU-PILOT,results/week0/gpu_pilot/pilot_questions.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,1e174796ad954bd950ee7ba1ee8abb80d994a81d9437afc81238bf0fb18b8bde
+0,B,results/week0/gpu_status.json,json,inspected,See associated report section; mock paths explicitly quarantined,8d187b4eb51034513b8cc3387872eee30687984ef2cb3ed0e22354469db1a997
+0,B,results/week0/layer_analysis/layer_similarity_long.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,5e01a2919b591eda427fe63a14c58d31e50598555b6777c392574e0807d7b181
+0,RETROSPECTIVE-BRIDGE,results/week3/processed/dev_quality_oracle.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,007d2ff36dd38cd9e37de7c2ee77bc5291b94aeca878e6195d7e7c493cc484a0
+0,RETROSPECTIVE-BRIDGE,results/week3/processed/epsilon_oracle_all.csv,csv,inspected,See associated report section; mock paths explicitly quarantined,e59d6025056387293b945da719c0c4ccd800f6e7b878194149d1a180066d677a
+0,FINAL40,results/weekly_reports/week_00/OfflineBootstrapReconstruction.json,json,inspected,See associated report section; mock paths explicitly quarantined,45b0847537a1210357271085c3801d6f8a333d757661e2801e6ccce34e84ef8f
+0,B;C,results/weekly_reports/week_00/PrimaryRecomputationChecks.json,json,inspected,See associated report section; mock paths explicitly quarantined,483c9b469e657872c028868915362e424952cb692fe5cdcf835046d33195483b
+0,context/cross-check,scripts/week0/generate_final40_figures_and_report.py,py,inspected,protocol only,96788095ef1214929ba519540347e6c8b35b84e9a36667743b315224427be158
+0,context/cross-check,scripts/week0/run_final40_study.py,py,inspected,protocol only,d754d2729292640b3bcccf11d0c301982baeba1b28cbd9e3a513a1bd4139ffc7
+0,context/cross-check,scripts/week0/run_gpu_pilot.py,py,inspected,protocol only,6c5827662cac4f8c99d4a6f1e2a15278a520a7cf1f4c9acdde649316c4420167
+0,context/cross-check,scripts/week0/run_intervention_validation.py,py,inspected,protocol only,0aa4f673449596751d775fb44be1ac2ac2395ed8c11313161b535beba45686e7
+0,context/cross-check,scripts/week0/run_week0_analysis.py,py,inspected,protocol only,6e35a39d824af8fb721ee043a390973ecb35897294ef34c4d8c81f8245ed1fe2
+0,context/cross-check,scripts/week0/select_final40_sample.py,py,inspected,protocol only,f4a91d2e202c3c16e52f00d91dae6ff78f83b0a8b70d5fbf142445d60c9f3659
+0,context/cross-check,scripts/weekly_reports/check_week0_primary.py,py,inspected,protocol only,59ffc6d52ca033227db28238d2a57d8eab24ddd35bc56cda40e617f5f94739be
+0,context/cross-check,src/week0/dataset_adapter.py,py,inspected,protocol only,d8ad1f2ac45372b89d0f622ad588a5640554cb408fa5d678ce01564171b0560c
+0,C,src/week0/evidence_utilization.py,py,inspected,protocol only,276c49703ce6cd3cb9b290cb2e9a3434e125ded8245d44009d2d004b7d51da1f
+0,B,src/week0/layer_analyzer.py,py,inspected,protocol only,889426c257d6f46cd11fce4635302a483dde295d8336eef5692d5ff213ebf019
+1,G,Baselines/SANE-main/benchmarks/metrics.py,py,inspected,protocol/context only,4c6d30026d6729a832a29fd7c64c73051f4d65bbb193c0d252fe2ac6388fd29f
+1,G,Baselines/SANE-main/config/default.yaml,yaml,inspected,protocol/context only,6146c3171c5064100dc399a936be14ee4ec7f54b86a1ea4bdb404872f6f0f7ab
+1,G,Baselines/SANE-main/sane/agents/sane_agent.py,py,inspected,protocol/context only,7104dd76143057d24f85f7a893b6173ff899ca4d2b96540a812aa6208099c0d6
+1,D,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/adapter_config.json,json,inspected,Outcome or execution evidence; see per-part status,ab665d727348599b15d4f2f4fdf86a45ff5dc0125059ece947136d8a01825241
+1,B,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/args.json,json,inspected,Outcome or execution evidence; see per-part status,dbb93c1eced4ae1b3adf635ef17f442b59063caade655bd5b0c672828b5933bf
+1,B;E,Baselines/SARA-main/checkpoints/finetune/rag_qasper_lora_r16_seed42/checkpoint-250/trainer_state.json,json,inspected,Outcome or execution evidence; see per-part status,8d46e409762eaa04ae38f48e35f6c1e44188e8dd803d5b63293f4c8419cb0daf
+1,D,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json,json,inspected,Outcome or execution evidence; see per-part status,7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d
+1,C,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json,json,inspected,Outcome or execution evidence; see per-part status,0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31
+1,C;E,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/checkpoint-250/trainer_state.json,json,inspected,Outcome or execution evidence; see per-part status,51081cae161f5fd5bb5cc8b922e6125a99595d3c570ddcbb0e00830d3b161edf
+1,C;D,Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json,json,inspected,Outcome or execution evidence; see per-part status,36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66
+1,B,Baselines/SARA-main/config/language_modeling/Finetune_RAG_qasper_pubbase.yaml,yaml,inspected,protocol/context only,7d89d4008fa88e098f9324890716061658de68483a580620ba2c43c6e7544a77
+1,C,Baselines/SARA-main/config/language_modeling/Finetune_SARA_qasper_pubbase.yaml,yaml,inspected,protocol/context only,aae6c4d476b35b14472bd5c167c64fe2ac489f0052ec72ff1312898496973582
+1,A,Baselines/SARA-main/data/manifests/qasper_split.json,json,inspected,Outcome or execution evidence; see per-part status,2cb43785eb42aecc0cf11bd56a51d704c5257413cd19f63239523c592f072a81
+1,A,Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534
+1,A,Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,f49122e54ef7ce47d0e882a85d1a58be11c0da68c7458d132038dd220caaddc7
+1,B;C;D,Baselines/SARA-main/notebooks/sara_baseline_checkpoints.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,9cf6bf7eed106b2b84d665ee4eea2709cb628c090c554d56962c279002f213f2
+1,protocol/cross-check,Baselines/SARA-main/scripts/build_qasper_dataset.py,py,inspected,protocol/context only,cd92bb216f41c5fd7d01ed1af456d5686129c7352dc8837801de5967dd6255e5
+1,protocol/cross-check,Baselines/SARA-main/src/data/make_qasper_splits.py,py,inspected,protocol/context only,ef56044aa03bd8f290232c575de80315e12c9fd647ec1fcb0865753e0f1e1033
+1,F,Baselines/SARA-main/src/eval/calculate_qa_performance.py,py,inspected,protocol/context only,4361531540aa0b36b12c8f98384e14bd8d76669e1ad5f5b37d19dfeed1bef878
+1,F,Baselines/SARA-main/src/eval/eval_sara.py,py,inspected,protocol/context only,632428ff94d7fe17126256b3b8a18f9892fc518d0395be5dec4d7a2cf0dc3d06
+1,F,Baselines/SARA-main/src/run_sara.py,py,inspected,protocol/context only,4f81fd7266107fc440ca811c38ffd049edf79e895cbdb5b4230f361319a06cdf
+1,protocol/cross-check,Baselines/SARA-main/src/train/train_generator.py,py,inspected,protocol/context only,fbcdcfc702abeaf5558a3ebfce719ce3181828d5f4a87723edf343c0204e9b56
+1,H,Baselines/recomp-main/data/completions/flan_ul2_nq_5shot_no_passage.csv,csv,inspected,Outcome or execution evidence; see per-part status,796f4bf9272556b4731707cd1dc8f7fd709948e81d4fa5d1eac71cdc715a9fa4
+1,H,Baselines/recomp-main/eval_qa.py,py,inspected,protocol/context only,9d7037af463c33a88905de4b3257581a2d6713833708a3f38e170a74f4957328
+1,H,Baselines/recomp-main/run_extractive_compressor.py,py,inspected,protocol/context only,d2835cb74eec14e1490a07d30fc01d65dfb618bf7d14c2b2a9477a9a2b57c155
+1,H,Baselines/recomp-main/train_extractive_compressor.py,py,inspected,protocol/context only,795239fa4a2bb74c2b9225e671ec252c0755e06b5f664ff45e43e1c707297b94
+1,protocol/cross-check,results/weekly_reports/week_01/CheckpointProfilingExtract.csv,csv,inspected,Outcome or execution evidence; see per-part status,8e5b70bfac493ccb5382ebc193ca08499cef59501497beb89f99a13ef8e64cd3
+1,protocol/cross-check,results/weekly_reports/week_01/NotebookExecutionChecks.json,json,inspected,Outcome or execution evidence; see per-part status,dbae310bdcecac9e8c50d959d2ffb77dcf5195f544a3f32484994b98d0a59dec
+1,protocol/cross-check,results/weekly_reports/week_01/SplitRecomputation.json,json,inspected,Outcome or execution evidence; see per-part status,a0f44ed6bafa362beca53510b40d9fa34fc4cd511b5e933f2bc66c6be4861947
+1,protocol/cross-check,results/weekly_reports/week_01/TrainingLogExtract.csv,csv,inspected,Outcome or execution evidence; see per-part status,9cb818dd87345961fc9625631a9032fe6250baf3a733244f0ec12e0c7c5acf29
+1,E,results/weekly_reports/week_01/TrainingRecomputation.csv,csv,inspected,Outcome or execution evidence; see per-part status,de4540781c74639ce6303c2c96fc51dfe5886495719b4f6beebd8a8184b97a99
+1,protocol/cross-check,results/weekly_reports/week_01/figures/logged_training_loss.png,png,inspected,Outcome or execution evidence; see per-part status,811faf574635dbd0a876cd543813aa584f9ec9e11af9da10de218a56790b12f5
+2,protocol/cross-check,configs/week2/sweep_config.yaml,yaml,inspected,protocol/context only,0333384fafe0e1b265054ababd6f082bf1e77ce9c436500f8c9b3417d322aae6
+2,protocol/cross-check,notebooks/week2/week2_dev_fixed_k_sweep.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c276c6a91ab46abe0442712294465f1c0dade009a2a2a9d32f1d9719b579a716
+2,ORACLE,results/week2/processed/best_k_distribution.csv,csv,inspected,Outcome or execution evidence; see per-part status,6bbf107967072b761446c8c2f5583e54337c669f092ccc18682ff6e874bb246e
+2,FREEZE,results/week2/processed/best_static_baseline.json,json,inspected,Outcome or execution evidence; see per-part status,bd88b8d835a5c61ba44f1486ee9b541e5b374bafe418eb75db15f389da7bd50e
+2,FIXED-K,results/week2/processed/dev_fixed_k_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,d603c95828cf300933f3920c912a4b8bb9056501a074210263426c3d657ba01c
+2,ORACLE,results/week2/processed/oracle_vs_static_summary.json,json,inspected,Outcome or execution evidence; see per-part status,aaaaf2fca93e4284474b1b44cf11231756c037fcb825a1bf4a1869f3b0a42c54
+2,ORACLE,results/week2/processed/per_query_best_k.csv,csv,inspected,Outcome or execution evidence; see per-part status,bc3c1787ece5c31e6d7b2526c4f15cf3a4d1569e2d6f8ceea079852054e2d6fc
+2,FREEZE,results/week2/processed/week2_validation_checkpoint.json,json,inspected,Outcome or execution evidence; see per-part status,a8df7b15fb7c8253b91db4801780b444f67410a44c3f6df1bc2855857103dc95
+2,FIXED-K;ORACLE,results/week2/raw/dev_fixed_k_matrix.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,cf41761b21027427ea9b620bfcfa9eac620648801e64aedd99e88f1ade713758
+2,primary-figure supplement,results/week2/plots/05_token_f1_vs_context_tokens.png,png,inspected,Visualization only; exact values sourced from existing CSVs,55a5955893425c5ce068ca24ab51b8fbfed2510ab2159e5303577ae5def69803
+3,protocol/cross-check,configs/week3/week3_config.yaml,yaml,inspected,protocol/context only,146496d6d83cd103a7b2bf83d8e94f7ee11e8fcf89b870be26247babd32baed5
+3,protocol/cross-check,notebooks/week3/week3_oracle_epsilon_human_audit.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,efa12ba70ae44a64e30741bda97a8671a1d26d2f234f7e36f085a138162bccee
+3,protocol/cross-check,notebooks/week3/week3_oracle_target_analysis.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2c557d8bd99721ee2d3120a2cd02cccdee98efff79d1414c0abd88a3589353c8
+3,HUMAN-AUDIT,results/week3/human_audit/human_audit_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,56a36369a1ed0de7a27829936508f4881bf9a157ff0ca21fff4c98fe551a4334
+3,HUMAN-AUDIT,results/week3/human_audit/human_scoring_template.csv,csv,inspected,Outcome or execution evidence; see per-part status,fc63fd3854a58d371bd17917d4f768f9d099ee33e7758ca002ab5a497ade76ef
+3,QUALITY-ORACLE,results/week3/processed/dev_quality_oracle.csv,csv,inspected,Outcome or execution evidence; see per-part status,007d2ff36dd38cd9e37de7c2ee77bc5291b94aeca878e6195d7e7c493cc484a0
+3,EPSILON,results/week3/processed/epsilon_oracle_all.csv,csv,inspected,Outcome or execution evidence; see per-part status,e59d6025056387293b945da719c0c4ccd800f6e7b878194149d1a180066d677a
+3,EPSILON,results/week3/processed/epsilon_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,0edcc2eb5cafe6d0daf79ab98331703baf49f706b0df76f53acfb84d5e275fe8
+3,FEATURES,results/week3/processed/feature_signal_analysis.csv,csv,inspected,Outcome or execution evidence; see per-part status,e4e38bba46618eda03f568f3370b5a0c16a130ca3f08a2cf74eb2e33a09d234b
+3,QUALITY-ORACLE,results/week3/processed/heterogeneity_summary.json,json,inspected,Outcome or execution evidence; see per-part status,baac421fc5d806137a2ad62af2ba512e65c7b3b4f2053a25018c8bcca500dba7
+3,QUALITY-ORACLE,results/week3/processed/quality_oracle_distribution.csv,csv,inspected,Outcome or execution evidence; see per-part status,ac3cbb22fa1bc87efea3180fc14b24cff8c533853e035ef4775bd96a395488d2
+3,EPSILON,results/week3/processed/selected_epsilon.json,json,inspected,Outcome or execution evidence; see per-part status,2f6e0f1b367b28f79c2904d9c590b21825ebc365bdef2fe5f50cb8ac23fe5719
+3,HUMAN-AUDIT,results/week3/processed/week3_gate.json,json,inspected,Outcome or execution evidence; see per-part status,2d0dd7f89acb02574f4678f7f6f3000906d9c630beec1f6f13a62d298c0bc7a0
+3,primary-figure supplement,results/week3/plots/plot5_epsilon_vs_mean_k.png,png,inspected,Visualization only; exact values sourced from existing CSVs,748544a476bbda663cedefdda0db0b25addb4a1e2ca654e4919e16723a5061fb
+4,protocol/cross-check,configs/week4/week4_config.yaml,yaml,inspected,protocol/context only,5147ef42dbd5c2dff534beb75a6c42ac73bb72ed711b3b747fb20d2140713a83
+4,protocol/cross-check,notebooks/week4/week4_feature_discovery.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,1b59aa21af5935622cae2b4b6c651bad58a3f6a4feff49e7aa88106dc9be5056
+4,protocol/cross-check,notebooks/week4/week4_feature_validation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,bb6955ed9f9b0ae8e42d7b44944cf14c2a602262fb1c367630f0eff8b9c96708
+4,protocol/cross-check,notebooks/week4/week4_model_benchmark.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,70f58e42fd198c3290d25b04f163400d01531e5923fc47e46b1c70d5618a61e6
+4,protocol/cross-check,notebooks/week4/week4_qcca_development.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,a19b4cf267bfa189a529da86ce10a25763cedf696186ebb62873434d8bd97412
+4,protocol/cross-check,notebooks/week4/week4_qcca_v2_diagnostic.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,67da0a9ecd5f46a8d0133f01d4952a9c351dd5ba6c3258f3b0935042e228f75a
+4,protocol/cross-check,notebooks/week4/week4_qcca_v2_final_validation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,720ab32238eb45172f8cc94999ad8d508d5c431f663a959a905cc648e207aeb0
+4,protocol/cross-check,notebooks/week4/week4_qcca_v2_modeling.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,da88713c1ac8a65757c09ac2399f56d817bb703abe508ad6accfe20bbad74f46
+4,FEATURE-DISCOVERY,results/week4/feature_discovery/feature_family_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,d264afea3fb83c92dfcc34681d4da5e2a2023be5893bba83f8d68294179bf70b
+4,FEATURE-VALIDATION,results/week4/feature_validation/feature_family_validation_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,594794934572732ddeeb1ac5956897f9dcaa351a34fde0746ee03e04fea412bd
+4,FEATURE-VALIDATION,results/week4/feature_validation/provisional_feature_set.csv,csv,inspected,Outcome or execution evidence; see per-part status,8fdc28e0133dfdd4b2309fc4fe128aa8607e437c0476880e516e7d75cf9c4580
+4,MODEL-BENCHMARK,results/week4/model_benchmark/bootstrap_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,f9ea34cb447fa9a76d6729283d9d931ce0e916dd27bd81b0cfac543a2976ad8e
+4,MODEL-BENCHMARK,results/week4/model_benchmark/policy_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,300170aff09ce67a8324ee8ece1d9f2352b29b4bfa649b2fdea54e55b7db9b70
+4,QCCA-V1,results/week4/processed/model_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,d7f340255f2c0e60b14b953ce2c7272248b5f92562d7552849a9da2f10d34eaf
+4,V2-MODELING,results/week4/qcca_v2/bootstrap_policy_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,996bf1fe3e2d61a172e3bb0a4221e521f869f4ef4c60603d9ea64a31b3459477
+4,V2-MODELING,results/week4/qcca_v2/qcca_v2_policy_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,1308f4095abbd7e79de43e2f62c139b1ac9525496ef9530a697a65680b847058
+4,protocol/cross-check,results/week4/qcca_v2_diagnostic/figures/policy_pareto_frontier.png,png,inspected,Outcome or execution evidence; see per-part status,97575621201be9551fb9abc8ac816e49ed77cb9cee0b41fef95a0abbcc466f94
+4,V2-DIAGNOSTIC,results/week4/qcca_v2_diagnostic/transition_model_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,9a75644d5431c2b6f1928bbf25853b9df33e0e35f4f17038906902be38aa235e
+4,V2-FINAL,results/week4/qcca_v2_final_validation/policy_pareto_points.csv,csv,inspected,Outcome or execution evidence; see per-part status,c7ab7522b10a07b8e0ed099d54288f138cdcb081d31b5310075674c65d3b681e
+4,V2-FINAL,results/week4/qcca_v2_final_validation/statistical_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,c4e2c2d95f2bf908c2b2739264f431f03a4a435636c9933ae456f02283480e96
+5,protocol/cross-check,configs/week5/content_allocator.yaml,yaml,inspected,protocol/context only,b2f8a6ef91f5a136d8a44177ef278389a2a87ccb2aa21b6931af2ef00df1c92c
+5,protocol/cross-check,configs/week5/train_response_surface.yaml,yaml,inspected,protocol/context only,5aecd2827c240d2f8690a4aa80a25d72003806026b0228e31c72be0b8cf16636
+5,protocol/cross-check,configs/week5/w5c_encoder_adaptation.yaml,yaml,inspected,protocol/context only,14cc0e753e69138285cc112133e95d1e55b5ae1d68d19187f381a38812dabf36
+5,protocol/cross-check,notebooks/week5/week5_content_aware_allocator.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,fe8fa592f16185828d3e1404f80fe2cfd5564e4ee14f4beb25053af659b45c48
+5,protocol/cross-check,notebooks/week5/week5c_encoder_adaptation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c4a7feb6778378b5e5c593520adeb3ae3f855c0abab138da5ccdef062d41442b
+5,A,results/week5/content_allocator/bootstrap/paper_clustered_bootstrap_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,8210fd39b9c7b2913f325ed92360b3aa826620101798c0c5218a89296a65149a
+5,A,results/week5/content_allocator/tables/main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,3b57b448d135ae3c6a4058c06ee6c33dd9de580f2e61e1dada0ff1df2203cf64
+5,B,results/week5/content_allocator/w5b/bootstrap/w5b_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,5cb1dd148266458f32d6eaf86323a46abcb3707db854131e02f6900ca1565424
+5,B,results/week5/content_allocator/w5b/tables/w5b_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,d51c956046031a23e8e3c8ec27dd1eec40f02770294995a75d12a896e63b3b15
+5,B,results/week5/content_allocator/w5b/tables/w5b_seed_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,e190129bac0edb2fc0214286530aca213ddfba3f99a12105903c906b1d87ef06
+5,C,results/week5/content_allocator/w5c_encoder_adaptation/bootstrap/w5c_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,3c0d6eefe0f82abf9b83b5ec42993862d61f73de8896da7bacef733285abde33
+5,C,results/week5/content_allocator/w5c_encoder_adaptation/tables/w5c_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,52421007f130f12c4bde8c7e67a5c19471b3ed9826cc230dc93166a723eef27a
+5,TRAIN-SURFACE,results/week5/preflight/split_audit.json,json,inspected,Outcome or execution evidence; see per-part status,acf95ef95cc5668bfd64a074cb9be7e21b6d4b6dfa93b0a703d8f873e0d9811e
+5,TRAIN-SURFACE,results/week5/tables/dev_vs_train_target_distribution.csv,csv,inspected,Outcome or execution evidence; see per-part status,1229ce7584df612775b99ebb6770ff5557734e636c1919e2b865623506a8c607
+5,TRAIN-SURFACE,results/week5/tables/train_static_performance.csv,csv,inspected,Outcome or execution evidence; see per-part status,80df61f307849fafef327706a2a20ca524fe65b699aeb6b317a515d75c3c0068
+5,protocol/cross-check,src/week5/evaluation.py,py,inspected,protocol/context only,38dd6ff8e7f443b1c2a23f166f35746cffaaf2c92804b21e3561af0fc93266ea
+5,protocol/cross-check,src/week5/supervision.py,py,inspected,protocol/context only,45a406da39e5417ac5b4c7979ca5ca8f499292abaf7ca19f294357e1dcb9db76
+5,primary-figure supplement,results/week5/content_allocator/figures/pareto_quality_vs_tokens.png,png,inspected,Visualization only; exact values sourced from existing CSVs,d0c673a6b0275e85889b87b6374f39294445d966efa27389182f454cf41896f5
+6,protocol/cross-check,configs/week6/hybrid_routing.yaml,yaml,inspected,protocol/context only,35498ae84cf29642a7fbb62d74d46882d6d0433af1a59be2d5d672fff8f7377d
+6,protocol/cross-check,configs/week6/passage_routing.yaml,yaml,inspected,protocol/context only,ddb004163ea09f00c72f20f778a637e10e972b396e99b42a3748f2e6e95eb451
+6,protocol/cross-check,notebooks/week6/week6_passage_fidelity_routing.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,f40cddafcbe47b18d2a6db83068dfdf5e7d516fe3811f0b741da7f457b55e012
+6,protocol/cross-check,notebooks/week6/week6b_hybrid_routing.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,4a91eb1bb8f5c032597c557c08173dd61ffb72236a8d4f8b346295d27e9b2dcd
+6,B,results/week6/hybrid_routing/bootstrap/w6b_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,9717d4e49894b4cb96c346b9959019fddf224b2a122ff666a3b1412b8fe7c329
+6,B,results/week6/hybrid_routing/tables/w6b_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,d86a127eee915e680b6db68c54765933c7f0686a56f9524db6fbb2f8caa63ea7
+6,A,results/week6/passage_routing/bootstrap/w6_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,67710f6a66761d581d9098f4a53873f07bd99189544b18366ca5bee343dcfe57
+6,protocol/cross-check,results/week6/passage_routing/sara_generations/dev_sara_generations.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,b16780b658c6a6ba59ce77f04b933db9f4565fff548f865f469cfe81bab1bae6
+6,A,results/week6/passage_routing/tables/w6_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,64deb826cf0249f3c835bb2b4e9ff535f9d64c394b97d3900242aa79c96052cd
+6,A,results/week6/passage_routing/tables/w6_routing_quality.csv,csv,inspected,Outcome or execution evidence; see per-part status,5d15f06f3873b9a0f88c22c85a829109ad3d862d884d38bad0f092150650f91a
+6,primary-figure supplement,results/week6/passage_routing/figures/w6_quality_vs_budget.png,png,inspected,Visualization only; exact values sourced from existing CSVs,6f13a3357c27b2779c8ac524f4ed45bd7643b69ab153a3e7813378ca08b959b8
+7,protocol/cross-check,configs/week7/w7a_budget_semantic_composition.yaml,yaml,inspected,protocol/context only,277a172e889d3102020ac089874e5b7205e3ba467ed7eaf97676c403b0540e42
+7,protocol/cross-check,configs/week7/w7b_semantic_budget_relearning.yaml,yaml,inspected,protocol/context only,84bb398d4b5e5c515d28fdcb42c191828c8e504439068b254ac6ff0dbfe888f1
+7,protocol/cross-check,configs/week7/w7c2_utility_aware_budget_ranking.yaml,yaml,inspected,protocol/context only,f43b2cd28cf91a01d41b662d121a7dcffdcea3ac7805e2bdc28bb039770591bf
+7,protocol/cross-check,configs/week7/w7c3_anchor_deviate.yaml,yaml,inspected,protocol/context only,d3c6c9d97ff63277064d977cf360b29679a87a7dbe9fb4801b8d187daf5fd480
+7,protocol/cross-check,configs/week7/w7c_retrieval_aware_allocator.yaml,yaml,inspected,protocol/context only,5e8f99eec442d136db5bb91bf05b7b6906ff2552d989f1bda12b41aa764dc443
+7,protocol/cross-check,configs/week7/w7d_cross_encoder_fidelity_router.yaml,yaml,inspected,protocol/context only,995071222fbd2b688dfd59af71fc535b9c6fc81a2bca98259f88e3326d6bd52c
+7,protocol/cross-check,configs/week7/w7e_multifidelity.yaml,yaml,inspected,protocol/context only,48585023ca0cbf29bdd326a2bad704db6e95b2019aa9206b6c5df02a681ab941
+7,protocol/cross-check,notebooks/week7/week7a_budget_semantic_composition.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c7314579324f892a39eea999962402870895d55e2ef33816b4c700c010de316f
+7,protocol/cross-check,notebooks/week7/week7b_semantic_budget_relearning.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,b9b96cdf229a9bff3b9418b7570bab832e0d140dca2d3ace7f580dded15a6b5b
+7,protocol/cross-check,notebooks/week7/week7c2_utility_aware_budget_ranking.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,5c87c74410d99401f6235ff6daf485e92d0d7b484e4d41a2f6b5cef6a5ad41bf
+7,protocol/cross-check,notebooks/week7/week7c3_anchor_and_deviate_policy.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,ff4eca58b600e57b06257afbb8ca929af2d2649f2b63826f42ae354241f83345
+7,protocol/cross-check,notebooks/week7/week7c_retrieval_aware_semantic_allocator.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,91d1b676756d1fdbb37cd28b995b66637e77c8121b5e6599cdffc265d62fc080
+7,protocol/cross-check,notebooks/week7/week7d_cross_encoder_fidelity_router.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,5d5262aa1c275eca5058ffce035d6f504c074be76e2b61bb93ffa023c3975d18
+7,protocol/cross-check,notebooks/week7/week7e_multifidelity_representation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,0e6b5b39848963a60dd8085aeba6bf5b575db89dbb6e15b74e3961b292eb87fa
+7,A,results/week7/w7a_budget_semantic_composition/bootstrap/w7a_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,3a6fca427f445ea3bd650b77d4ded25f538981acb187ba135d04db7080d7545d
+7,protocol/cross-check,results/week7/w7a_budget_semantic_composition/figures/w7a_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,0e197e3c30a9efc9dc5000fed314514cca7e17c7ccc80194acdf32d64cd55d61
+7,A,results/week7/w7a_budget_semantic_composition/tables/w7a_main_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,04e9df01de94a8bdbf1e37e7edcbc117e268e6d6725bbffecbfb9aedf6dba0cd
+7,B,results/week7/w7b_semantic_budget/bootstrap/w7b_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,050cc4f43fbfb5fa27aa1777f289d6eb2567e9405213d65246f6ca0e52323ccd
+7,protocol/cross-check,results/week7/w7b_semantic_budget/figures/w7b_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,766c4ea7393b7789dfaf24d97a2a49345c10190f460e3066388766c5ab7ed175
+7,B,results/week7/w7b_semantic_budget/tables/w7b_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,b211ac93a98fc568c5afdad7c053f7344e8fb330ab751ea0ff37fc65aba83459
+7,C2,results/week7/w7c2_utility_ranking/bootstrap/w7c2_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,a5834f9b78892653848a29a8b028e7666ca0c9e5eb946029e346445830410197
+7,protocol/cross-check,results/week7/w7c2_utility_ranking/figures/w7c2_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,78fe46464c338cf1da5722d6ecb6ea9c4d1481404d5f16e93b27d4b1ee31571d
+7,C2,results/week7/w7c2_utility_ranking/tables/w7c2_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,3d142da184072dd00a442e7594fe8ffd6f9e7ab8fe3510c03907ef6152d97831
+7,C3,results/week7/w7c3_anchor_deviate/bootstrap/w7c3_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,5f4b67bc2a4d6006e9dfc7ad2533c209c23b17aebb7a9b8112fd9ce487c0d40f
+7,protocol/cross-check,results/week7/w7c3_anchor_deviate/figures/w7c3_oof_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,779f980720fbf8827bc224b523235efbea90c6677ea0bf81c0ff74e55917abae
+7,C3,results/week7/w7c3_anchor_deviate/tables/w7c3_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,f55b446150414acd9099d02bf7964f7db178c38b7f2dad57e6278e08b2928a1a
+7,C,results/week7/w7c_retrieval_aware_allocator/bootstrap/w7c_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,e4ab6a7f02227b799b9e1f9c0f56fa3a302ca7e294cc95c030013b6ae39f1a03
+7,protocol/cross-check,results/week7/w7c_retrieval_aware_allocator/figures/w7c_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,c97dc367c0c86d13afa7b2051360c9ddf9ce359a00169dbaea58c1b2bfb585b4
+7,C,results/week7/w7c_retrieval_aware_allocator/tables/w7c_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,124fd0ceb08e654dbeb2681b488dc62887c6a87a4e48a9b094fd354453210809
+7,D,results/week7/w7d_cross_encoder_router/bootstrap/w7d_bootstrap_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,8f3c3e827b24aac6fcf48c78a3f6341eb25fa6dd30277bb92dca9e67a46eb23a
+7,protocol/cross-check,results/week7/w7d_cross_encoder_router/figures/w7d_quality_vs_tokens.png,png,inspected,Outcome or execution evidence; see per-part status,03385525449b91e6387ea6858a1f61e5c69d557d70daebbe34d8c84fa62295ce
+7,D,results/week7/w7d_cross_encoder_router/tables/w7d_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,61c6f070e6f4833b57a06a547079d53bab3a0a11eedce158d8a35911a697335d
+7,E,results/week7/w7e_multifidelity/tables/w7e_main_dev_results.csv,csv,inspected,Outcome or execution evidence; see per-part status,7ef028a3b492b63664a302ddb869b97221ddee7da475c3430fb5335a593ddfaf
+8,protocol/cross-check,configs/week8/w8_dafir.yaml,yaml,inspected,protocol/context only,edfd9fa6e41839f47e219c1a0fc224cf9a65134cff0010ff38ba04e6e1f9a66c
+8,protocol/cross-check,notebooks/week8/week8_master.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,1e1578b05000b6f3de5bdcde789b90d8acd289d5c2882ec6c658e4847d5fe579
+8,protocol/cross-check,notebooks/week8/week8a_promotion_oracle.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,fffea58f829b2418f400c455ce6b6f3e2bc540efb4cc82950a747930594c8084
+8,B,notebooks/week8/week8b_draft_diagnostics.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,6230a5f0d2be0b45615a797d28918f95a1b78b040a5485c21bd80282afca8604
+8,protocol/cross-check,notebooks/week8/week8c_utility_modeling.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,f42c270933de30669445a34e388b9897f79dbca17a7ec1c08b0993ac43bb8516
+8,protocol/cross-check,notebooks/week8/week8d_cached_closeout.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,8fad9e0bae826b6818fa96919b017b5d8d2469ea1af16b5da4ac2b8d765cc576
+8,protocol/cross-check,notebooks/week8/week8d_generator_interaction.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c2eb01c02aff324e4c16d314b80c5fd797f291061496a1e7185250558a67eeff
+8,protocol/cross-check,notebooks/week8/week8e_controller.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,a43a8e3c63c7459cd7140700334a2126754f61d42583eec62ccdf602ac5ff776
+8,protocol/cross-check,notebooks/week8/week8f_qcla.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,0904869a9318b81fbfc0845881c2142eb54c21a6127413333e6bee0b70a1e0d1
+8,G,notebooks/week8/week8g_outcome_weighted_sft.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,d68875abc46edc6740a554244907bea11f910026f294a500d202b84b59791b10
+8,protocol/cross-check,notebooks/week8/week8h_full_system.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,7800a3d0b67d7e05e159edcf1c14096ac1703e59fe0a6f0e889625a73c933a86
+8,I,notebooks/week8/week8i_ablations.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,05b14b060e42ccf8f612c04579c16db169043279d5397533bb898a0472ef729a
+8,J,notebooks/week8/week8j_final_dev_evaluation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,5a4a01d8163746a9d25c8da3ca71ec577f2bf74f9a31fdf7bb1194dc667f6667
+8,B,results/week8/drafts/draft_diagnostics_internal_val.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,50a2557b88b140d41c028f67ef083154d3f08d7a2f7aa8adbf3b7c482c883406
+8,A,results/week8/surfaces/promotion_surface_fit.jsonl,jsonl,inspected,Outcome or execution evidence; see per-part status,1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958
+8,H,results/week8/tables/w8h_dafir1_cost_summary_smoke.csv,csv,inspected,Outcome or execution evidence; see per-part status,0f69da8f356cc6090a393f2473112ed553e5070581b3074be7f97abccb4e9a41
+8,J,results/week8/tables/w8j_bootstrap_dafir_vs_k4_smoke.csv,csv,inspected,Outcome or execution evidence; see per-part status,7ddf4ae08ef1e28d538dfb633b5cd04ae56e362353a1576d1c0207f9ec768255
+8,C,results/week8/w8c_utility/fit_oof_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,8e48c70b802c76b0572040cae7ac1afdb14d1cd9f18bf841d7faf32ad75bdd8c
+8,C,results/week8/w8c_utility/w8c_frozen_selector_config.json,json,inspected,Outcome or execution evidence; see per-part status,093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280
+8,D,results/week8/w8d_attribution/full/features_fit.csv,csv,inspected,Outcome or execution evidence; see per-part status,d99c087b46270486ee53036e264882732843d8487352877045044a2f88749260
+8,D,results/week8/w8d_closeout/closeout_summary.json,json,inspected,Outcome or execution evidence; see per-part status,ac5b02426f3ee7a408d559526222dfc05c4ab5d02be25586e954fe7823d9e55a
+8,D-CLOSEOUT,results/week8/w8d_closeout/fit_frozen_decisions.json,json,inspected,Outcome or execution evidence; see per-part status,d308c115e22311612deefaf71bb94a72a14e9d09e28583cf5bef12e4fdee013c
+8,D-CLOSEOUT,results/week8/w8d_closeout/fit_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,7fc448f3b33bd67581d1fd63be3d4d56a9fbff122e848de07ff2e32f80f7d13a
+8,D,results/week8/w8d_closeout/internal_val_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,a76131ad509537c509f8870faf49045ea53fbd111d681d9114306e6b7946a17d
+8,E,results/week8/w8e_controller/controller_summary.json,json,inspected,Outcome or execution evidence; see per-part status,59e36894012cf54b6b74286de5417a77d5425cf44fc934103a3842bda9a2a423
+8,E,results/week8/w8e_controller/internal_val_metrics.csv,csv,inspected,Outcome or execution evidence; see per-part status,8de0221f6c5e92afe815980d66a3f9a3ab334c8bd8d361fd77662cf83533c043
+8,E,results/week8/w8e_controller/pipeline_status.json,json,inspected,Outcome or execution evidence; see per-part status,388f81b12dd6b9238b9aacdc6c0b94b6f9557e0116b67075480f06790c8f1760
+8,F,results/week8/w8f_qcla/full/comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,d916e376e0c154260641d173ea6cb4f1e0e3eb049a2488fe975c402ddff759b8
+8,F,results/week8/w8f_qcla/full/summary.json,json,inspected,Outcome or execution evidence; see per-part status,003116f85f02af84b5837a01bc32c451a58114bc09d04f0c3cbb63842dd3553b
+9,protocol/cross-check,configs/week9/w9a.yaml,yaml,inspected,protocol/context only,93eb51a44266e5d8304859a43d0ac00f15272111aebf4ce3bdcd2726535c96f7
+9,protocol/cross-check,configs/week9/w9b.yaml,yaml,inspected,protocol/context only,e90978db4942f973d5692dda430eb644b506bb6f70ac73e7908a80132498998f
+9,protocol/cross-check,configs/week9/w9c.yaml,yaml,inspected,protocol/context only,29ca0878beed19c346a04dff35badbb2b94ca2cac03c008e7ac81b37576914e5
+9,protocol/cross-check,configs/week9/w9c_k2_diagnostic.yaml,yaml,inspected,protocol/context only,49c8f7e71e70f7c52a6af9d37f402fc704bfb3484fcc48c917e1521562cf6438
+9,protocol/cross-check,configs/week9/w9d.yaml,yaml,inspected,protocol/context only,bd58511263a68e3544431e8a3c3c0f720658f81046825a7c544ad3a1a7c80d4d
+9,protocol/cross-check,configs/week9/w9d_k2_diagnostic.yaml,yaml,inspected,protocol/context only,d6c172c4a0929237f6a6755177fc5aa828b7b04ac053b68c627f4dc80d736c1e
+9,protocol/cross-check,configs/week9/w9e.yaml,yaml,inspected,protocol/context only,f9b36d71d134cf7bfad8c1abc587775fefd9d22901a4c8f3385d8ca1e5ee47c6
+9,protocol/cross-check,configs/week9/w9e3_senttopk.yaml,yaml,inspected,protocol/context only,bb4d98c04c425092407f8021042b1bf75f9be19c128d5b8ad20d1c3cb9a89d91
+9,protocol/cross-check,configs/week9/w9e_grounded.yaml,yaml,inspected,protocol/context only,76986517858e44747d6abc946da4b8fc35f0f12fcac133671b1b21ad0d174a59
+9,protocol/cross-check,configs/week9/w9e_grounded_64.yaml,yaml,inspected,protocol/context only,37379a830c51ac35f622db3269a3f4494f0ba1db899e68ff51498bb4c79c3280
+9,protocol/cross-check,configs/week9/w9f.yaml,yaml,inspected,protocol/context only,df9266bba9437c113cf6659af30c5a012ba1560db1cfc960f459d5d9fd2a4fb9
+9,protocol/cross-check,configs/week9/w9f_utilization.yaml,yaml,inspected,protocol/context only,7e1956f17a59fe1212697473951634717cc8e8be2baaa72b0454cb3a374724c2
+9,protocol/cross-check,configs/week9/w9g.yaml,yaml,inspected,protocol/context only,4f5fa264d41ae355015c7f48368d9a0c66810019b89bf9795ad21d5e3a020b4f
+9,protocol/cross-check,configs/week9/w9g_action_verification.yaml,yaml,inspected,protocol/context only,70be0fc2ac92519cbe7051057e3f7e83e229ea3a2678b4a603f19f5ba6b83cc8
+9,protocol/cross-check,configs/week9/w9h.yaml,yaml,inspected,protocol/context only,a73214e891ff6ad420e292452ac06d90f81588d7991d034cfd150b8098289ffb
+9,protocol/cross-check,configs/week9/w9pre_deepseek_nf4_fp32.yaml,yaml,inspected,protocol/context only,dd5e39661a0890250ea99105c302809e9db5992f7a449c614b7b63c8e68c2723
+9,protocol/cross-check,configs/week9/w9pre_models.yaml,yaml,inspected,protocol/context only,a6f311862c78bd1012e784747cb5df411aceb8a8fa44bf55c96e252ff820f04b
+9,protocol/cross-check,notebooks/week9/week9a_semantic_chunking_retrieval.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,08c41c671b1e8b2577abab5da9ca1776344bec3684b1787006a9493d0cbe88c8
+9,protocol/cross-check,notebooks/week9/week9b_evidence_k_surface.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,587bba7d89e20933618e7b5583818740e4aa451ed61edec25427efc4319dc1e3
+9,protocol/cross-check,notebooks/week9/week9c_selector.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,9e13b4e75c1e6876041f5b4715afe3ababe9be90ab2a77d81b1b61c52138071c
+9,protocol/cross-check,notebooks/week9/week9d_representation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,155ed6062cd1d95636f729d19b362e08dc32db424f73cd911c636d25f627113f
+9,protocol/cross-check,notebooks/week9/week9e_extraction_faithfulness.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2f061fb1e5cc517892b60518c17d8da4bdc8e4305626e6ca2935b4d421b094b4
+9,protocol/cross-check,notebooks/week9/week9f_revision.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,4e0142d8a3df7a4a98e99c3efc6975c392766466264f5725d9c664c03ee0bd3e
+9,protocol/cross-check,notebooks/week9/week9g_action_verification.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,ae75e5b28802a713a2e22817212b55f23175da91aab639a538fb1c243c2702fc
+9,protocol/cross-check,notebooks/week9/week9g_adaptive_ke.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,00559b6e80cc848b23b89286cc2dbb31d66dd43749fc0af154069d001e22aac8
+9,protocol/cross-check,notebooks/week9/week9h_final.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,a4ccaf6bbbb5436d0135254e661d3f9341eab7f24ede108f144c12f9f1da1058
+9,protocol/cross-check,notebooks/week9/week9h_final_evaluation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,046c4c971101bd5a639ccc609712a78b7dc366e5c6ad3c2278cf1faacc2f2a27
+9,protocol/cross-check,notebooks/week9/week9pre_model_preflight.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,a7a10386140f05023c85d5ea459ba0900287bca68fdb0205d3af6c005a8cf701
+9,D,results/week9/diagnostics/w9c_k2/extraction/fit/w9d_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,b189bff6327291512c9734d63fa1d9582df10dcda680e00cb3094f8f8e47c40b
+9,E,results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/answer_and_cost_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,eb8cabeae05d8da1cd108731075841fe5b64ace5828e501f39a24955086887b3
+9,C,results/week9/diagnostics/w9c_k2/selection/fit/w9c_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,d6aca2bf0e2f5c9685c5fea379627db193f340e3ade50c0f06a404293e99237a
+9,A,results/week9/frozen/w9a_frozen_config.json,json,inspected,Outcome or execution evidence; see per-part status,24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142
+9,B,results/week9/frozen/w9b_frozen_config.json,json,inspected,Outcome or execution evidence; see per-part status,3a850a087d3b6232ef29d45629a3160ec7cb1ff64967feb4a5587a185172dd24
+9,B,results/week9/ke_surface/fit/w9b_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,6700e99f45ae8288f6cf54e5e4d480ccc12548cb76156c8120811bd23b3ef8c2
+9,PRE,results/week9/preflight/smoke_summary.json,json,inspected,Outcome or execution evidence; see per-part status,01742be29c67ad9b13b9f4b3f1b2e30eb54dcb42e0deda0d9ecaab2457054a65
+9,A,results/week9/retrieval/fit/w9a_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,6b1e799a28c3d281129d5aefcc2a1a8be9ccbabe50fea0633e40e9b517eb1906
+9,E3,results/week9/w9e3_senttopk/v1/fit/bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,b16e0a60630f73bf186cc1dfb16b585e37ce22f050e38a36b5898f6d3333ac1f
+9,E3,results/week9/w9e3_senttopk/v1/fit/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,ceb81fc547e4326a4db5565258707f66f6a1ef2b5c8688f55662a21429f9764d
+9,E3,results/week9/w9e3_senttopk/v1/frozen_e3_senttopk.json,json,inspected,Outcome or execution evidence; see per-part status,cad8cc70070cdb7f4a339f6822c92c50697b6e9277e5666e2f38947d546b1a7f
+9,F,results/week9/w9f_utilization/v1/fit/bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,fd9489e23bd3bf507046c533c2c3b5bd4b03b34e77370c5aead23012d030469b
+9,F,results/week9/w9f_utilization/v1/fit/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,4f875eecc5f8fedf35199253a43ba386309558b9b3357e0e3fd0ae07fa227b5d
+9,F,results/week9/w9f_utilization/v1/frozen_w9f_f2.json,json,inspected,Outcome or execution evidence; see per-part status,2ae14b0a3d8753396aafe1df21619213eb60db61e81083b46605a72f2b5dd7e7
+9,G,results/week9/w9g_action_verification/v1/audit_pre_final/independent_bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,48095fb2c9d260bd08c863948765028361f4644a60fdabbbba81d15414e19644
+9,G,results/week9/w9g_action_verification/v1/controller_fit_oof/frozen_verifier.json,json,inspected,Outcome or execution evidence; see per-part status,71faafbf3dbb5d0f7c7aae6852114754d7261e1dcdcf24249f4d1e7b51035690
+9,G,results/week9/w9g_action_verification/v1/controller_fit_oof/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,4fdb1036b65e5b8b08711e0f2fab77ae0f8909e7db3411df1c798c72bf84df75
+9,G,results/week9/w9g_action_verification/v1/preflight/go_no_go.json,json,inspected,Outcome or execution evidence; see per-part status,4826a6cd8542b4ccd3633acc24729327a385f50ce6707d38a3dc1b5ea35eeeff
+9,H,results/week9/w9h_final/v2/report/paired_bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,276bf9033fea87a7445fb40178955fa97c7743355c184e9c6fa8b0de4d526a7a
+9,H,results/week9/w9h_final/v2/report/summary_cost.csv,csv,inspected,Outcome or execution evidence; see per-part status,7b967c3ea8bf7625cb930d9b20b66f68262b9887ac396a9c61bc96db99fd3e27
+9,H,results/week9/w9h_final/v2/report/summary_quality.csv,csv,inspected,Outcome or execution evidence; see per-part status,cbddfc6fa0b2b96300043c71efaabfde2e74cb525f669443d56eec7840f02118
+9,H,results/week9/w9h_final/v2/w9h_pretest_freeze_manifest.json,json,inspected,Outcome or execution evidence; see per-part status,376d1ad7c331c71e7bec01d9086b4e1c99ea5a2fb643266ae9602044da9767e6
+9,primary-figure supplement,results/week9/w9h_final/v2/report/quality_cost.png,png,inspected,Visualization only; exact values sourced from existing CSVs,8d04cf554d660a6ff2579406963a60a221ae89d1997bf523f2629105cd21dbf0
+10,protocol/cross-check,configs/week10/root_cause_v1.json,json,inspected,Outcome or execution evidence; see per-part status,e9c473283ab85e0de9e6848a8a6f567c1a242c97ef5a59690913e1faec66206e
+10,protocol/cross-check,notebooks/week10/week10_root_cause.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2066a179f8425f86757e0d0f0187610b45c3b1b111d9aaab536535831f83c62c
+10,D,results/week10/root_cause/v1/D_partial_panel_provenance.json,json,inspected,Outcome or execution evidence; see per-part status,674656f1c9e17387e88e0583490d45f92fa3cb9c59a719b4d99d2fe2753b9f1d
+10,C,results/week10/root_cause/v1/bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,dd73f7a3b6ae4a028e45bf1e836ab5ec77949652f182f72875baf2221d5a4ad3
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/execution_freeze.json,json,inspected,Outcome or execution evidence; see per-part status,798f3ad2a58c892f20c7f2c23042ba0332306d2411568755817524e80cb35254
+10,C,results/week10/root_cause/v1/freeze_C.json,json,inspected,Outcome or execution evidence; see per-part status,ed0be278a786b6b6935e1dd0b90f2d4a9cb58fcf449691970f18b11eaefc306b
+10,G,results/week10/root_cause/v1/freeze_G.json,json,inspected,Outcome or execution evidence; see per-part status,ac211cb782d8fdf293880d58564831f6e4cd4d6e59121c6902f3b65b3ad05fb3
+10,R,results/week10/root_cause/v1/freeze_R.json,json,inspected,Outcome or execution evidence; see per-part status,cf5a6ae181b18b88d239d285335ffbc83948b4fe2514097eeb0526fd5eb6fcdd
+10,G,results/week10/root_cause/v1/full_reader_bootstrap.csv,csv,inspected,Outcome or execution evidence; see per-part status,89ac2d886576ecfbc3329c7dba1159478290a640a3b3b75324abf3b4019b9018
+10,G,results/week10/root_cause/v1/full_reader_panel_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,b93cf7e92213728acf0718e7dfb2c3e7b25ab34504776babb542e8f625e7f31f
+10,D,results/week10/root_cause/v1/full_study_summary.json,json,inspected,Outcome or execution evidence; see per-part status,d88bf754883f90e4647848aaa184ce4c9d0902bde70712df3870bacb2f0b477f
+10,ORACLE-REPORT,results/week10/root_cause/v1/oracle_diagnostics.json,json,inspected,Outcome or execution evidence; see per-part status,e0d4e928878e867fc38163635d8e3d5743f5efac0600f498c675c7842c1460d2
+10,ORACLE-REPORT,results/week10/root_cause/v1/retrieval_interface_interactions.csv,csv,inspected,Outcome or execution evidence; see per-part status,5be7b2de335cfaf53bd01b4b24f9165ad91821cd3231692602c3db9cba19cff0
+10,R,results/week10/root_cause/v1/retrieval_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,5c99aefbee4e2bedb4fc12bde80345e86aa4ab9dab4b6097d1a6d126ae75d8fd
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/sara_configuration_crosswalk.csv,csv,inspected,Outcome or execution evidence; see per-part status,1b6e62e737f53cb16f067ecabe21cedf06de07984bf4a2c76ae8bc48caeef299
+10,R;C,results/week10/root_cause/v1/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,4f7ec2a503f934b3d4b0a400ec3184f0bc8574c30f140d99554df2d4147b814d
+10,AUDIT-PREFLIGHT,results/week10/root_cause/v1/verification.json,json,inspected,Outcome or execution evidence; see per-part status,6f6ab7150289e8e7efd871298b484231784d39605a5b0dd77ce752c8ef12c3f8
+11,protocol/cross-check,configs/week11/week11_base.yaml,yaml,inspected,protocol/context only,daa86f7f45e52d054d30537e4f01bc95f28418a702434955c3d21a99d00524cc
+11,E,configs/week11/week11_compressors.yaml,yaml,inspected,protocol/context only,e0a93652953ad0dd4c0e935ca56c2c23468129101aef2cefa75da432c9e146fb
+11,protocol/cross-check,configs/week11/week11_datasets.yaml,yaml,inspected,protocol/context only,c73725febe11a718b2edf6cabdb4dce63189c651d099212854c9e4b53acca6bd
+11,protocol/cross-check,configs/week11/week11_granularity.yaml,yaml,inspected,protocol/context only,47692fa90263e21f1f3e0a823b121497b1c424184f5db0ebfbd4c82fac29d3a7
+11,protocol/cross-check,configs/week11/week11_readers.yaml,yaml,inspected,protocol/context only,63fc69e0739031d61ba4df711124fc98a5fd6db8d12db1ba48899ea92661467c
+11,protocol/cross-check,configs/week11/week11_retrievers.yaml,yaml,inspected,protocol/context only,9a054f008df608c78408c9f979d2ff20fc435dbd421c223e7dacad51dc38380d
+11,protocol/cross-check,configs/week11/week11_runs.yaml,yaml,inspected,protocol/context only,068681dba6fbc4809249d310b66466563c024f7e076767022af32c092489fd47
+11,protocol/cross-check,notebooks/week11/week11_0_setup_and_data.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,63ab32e4486f9513b3177b24e0b3cf84a35cba6a59b4f40173ae29b20f76f1a2
+11,protocol/cross-check,notebooks/week11/week11_A_retrieval_granularity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,6151dd91d6d3c03759043398f5bcc7bc0a0ff77a0571196e17ef280b47a4c501
+11,protocol/cross-check,notebooks/week11/week11_B_passage_representation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,99635970bc0e5d2489b571e36be09277c396775d4b8c3d06450ee9ef530a027d
+11,protocol/cross-check,notebooks/week11/week11_C_granularity_budget.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2423af590665ae307d30f93d1cc6d980bb0203ec31f1f293afdbb7b13650f6e8
+11,protocol/cross-check,notebooks/week11/week11_D_reader_granularity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,cc7674a1c76b8b8bc1c7a5b2f3e18f807d45901243ff79af2eeeb804cefa41f4
+11,protocol/cross-check,notebooks/week11/week11_E_compressor_reader.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,bdd6f514ec08999d9dbca6df1099845cdd4925c10fea6bbbebdc229839f0a072
+11,protocol/cross-check,notebooks/week11/week11_F_retriever_robustness.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,d56d425beffb128315816dee6650fe2ce92e3251c1de4903df1676e00fdc8f4c
+11,protocol/cross-check,notebooks/week11/week11_G_hierarchical_fidelity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,4b206f207d95b65948513a42c6075e99766ea814a399be55c8bc154bd430009b
+11,protocol/cross-check,notebooks/week11/week11_H_oracle_and_interactions.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,e3339a2d4117f2ed9a5b0441581f0bc2e6b067756c8067f63896f65a60306ef7
+11,protocol/cross-check,notebooks/week11/week11_I_final_report.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,759e4883f885f2be02500e78cb3697554e54115980d90de6629625bc86a32267
+11,protocol/cross-check,notebooks/week11/week11_MASTER.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c224749aab41c23b94012691c5832c9077b4baa36b30e8a7f72da729eecc54fc
+11,E,results/week11/multigranular/v1/compressor_reader/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,2ac578c5809463e191667bcc65fd076edbeafc4f979f1aab7d49c669d8d9dcea
+11,E,results/week11/multigranular/v1/compressor_reader/condition_status_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,dbc1dccdb3cbbc5b32f38aa44b3e93e9a9d3a2cef34ff38d4dcfa4eee0a4b835
+11,E,results/week11/multigranular/v1/compressor_reader/status.json,json,inspected,Outcome or execution evidence; see per-part status,4830f0b939694cc165a735847bf3d52f8f6ae2d8feea303e0862ce7030dc600f
+11,I,results/week11/multigranular/v1/final_report/master_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,12a2e04c512221691ad70853e15077f070c7a4e08c5710d397eb90274b0ba6aa
+11,I,results/week11/multigranular/v1/final_report/portable_reader_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,393f8c6cf2204fd18d5f7bd06ff1f491f2c550cff7accf34d4b1f936530e3809
+11,I,results/week11/multigranular/v1/final_report/status.json,json,inspected,Outcome or execution evidence; see per-part status,b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26
+11,C,results/week11/multigranular/v1/granularity_budget/c_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,baf829885575aef77a6b0c2d516adf6d56faff1c2be0f474c98e7d8a050ed045
+11,C,results/week11/multigranular/v1/granularity_budget/status.json,json,inspected,Outcome or execution evidence; see per-part status,64247a0b0a905e4f81b8b74b4a1e78b9b5f3e1fd29522e0bf5f9e99abc55ab56
+11,G,results/week11/multigranular/v1/hierarchical/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,274e6fcca7ed54213c04799ce6b3645cb79ecbcabfc4bf6f1bcad68b642da5b6
+11,G,results/week11/multigranular/v1/hierarchical/condition_status_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,52524b910cb573754a6ee87809d7715ceabc2a2f54b79c0de74b2eaaac1eacd7
+11,G,results/week11/multigranular/v1/hierarchical/status.json,json,inspected,Outcome or execution evidence; see per-part status,fd494c4ac5d604f6ddcea74d1a346be84961696d4ba9e2551653bbca9d8ebdaa
+11,H,results/week11/multigranular/v1/oracle/oracle_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,5512263ce87ae6e06cfa37c8d24e0d72f97860ad4e606921453b0535102e4a8c
+11,H,results/week11/multigranular/v1/oracle/paired_interaction_contrasts_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,081434b91e029dfcbfa40072eab155b869fa700a5abf8a52cf88076414661102
+11,H,results/week11/multigranular/v1/oracle/status.json,json,inspected,Outcome or execution evidence; see per-part status,b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26
+11,B,results/week11/multigranular/v1/passage_representation/passage_representation_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,b018873d965555d89ae1331dcc4af7eefe566f855b81cdc3f288d025c0fcc45e
+11,B,results/week11/multigranular/v1/passage_representation/status.json,json,inspected,Outcome or execution evidence; see per-part status,a319f6b65588f02dca304d7f77c0c6f929ae4c3b933a5129ad15298a801f949d
+11,D,results/week11/multigranular/v1/reader_granularity/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,7386ff8055c7e26c143185b4f136e47217a8a5b6a92782f46c847f99f3b0e3b4
+11,D,results/week11/multigranular/v1/reader_granularity/label_compliance_diagnostic_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,116118e055c6ce87a096fd4891a0f217a98beffe9a80b5e18ca3e2f78021f1d1
+11,D,results/week11/multigranular/v1/reader_granularity/named_reader_granularity_interactions.csv,csv,inspected,Outcome or execution evidence; see per-part status,7ab408e1c3440e8c8bedca09ad5fa78bae40b721186a2c89122673a54e56c89a
+11,D,results/week11/multigranular/v1/reader_granularity/status.json,json,inspected,Outcome or execution evidence; see per-part status,b8fa21f6a5da304df60e466595c91daa7f48b2e64d44cd6a235f18ae7dbdb787
+11,A,results/week11/multigranular/v1/retrieval/retrieval_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,acd002e5447b0a8627cacd293fc454e3cadc1ecf92ad0fcd93a71e704581f0f2
+11,A,results/week11/multigranular/v1/retrieval/status.json,json,inspected,Outcome or execution evidence; see per-part status,13711a8e349bf5175ab5dc38208e4b07b197ef9759a3f19333d7479afa07fecb
+11,F,results/week11/multigranular/v1/retriever_robustness/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,a6f4c26b5d4acafa455a7fda5310e4e141e926cdecdd23406212995f67eaac54
+11,F,results/week11/multigranular/v1/retriever_robustness/status.json,json,inspected,Outcome or execution evidence; see per-part status,7f826258f9cab1c14fb54a30d4ba0641f72883fe06cf9ad43d3a03b924ef6f6f
+11,0,results/week11/multigranular/v1/setup/dataset_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,933089bf9749ea3fe707ef575f4feea8396c4bbf75dee24e8944760090206e6e
+11,0,results/week11/multigranular/v1/setup/model_registry_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,cb882a37ce2f4be88ced758a06197f0fb5e0c356af3bd9dc983d374b29770bb8
+11,0,results/week11/multigranular/v1/setup/status.json,json,inspected,Outcome or execution evidence; see per-part status,436e9ba45cbefae347853329f8a67fa6e1ab1b5b247db02ecf545b0b67b95da2
+11,primary-figure supplement,results/week11/multigranular/v1/granularity_budget/figures/HotpotQA_task_score_quality_budget.png,png,inspected,Visualization only; exact values sourced from existing CSVs,c54fcaf4442fd9ea77dea9d6494ab1c49f152448846f0ceb689572bb84b0dad5
+12,protocol/cross-check,configs/week12/protocol.yaml,yaml,inspected,protocol/context only,cea1c12d688490d598df5f578adfc85fd6f5088383c23fb04693b7821f1922ad
+12,protocol/cross-check,notebooks/week12/week12_0_protocol_and_split_audit.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,01951ebe4f1edb7f5ef8c32443a74006402d5f41faf9feadf05923e0a70d7c88
+12,A,notebooks/week12/week12_A_qbgf_algorithm.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,099617eaf33297084c0e961a154e06a54660a8105491c18007c8929960e64930
+12,protocol/cross-check,notebooks/week12/week12_B_baseline_qualification.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,cf3f84ae217844a79af997359931c1d1748aa97dd1acf04da978818ee7b9a558
+12,protocol/cross-check,notebooks/week12/week12_C_EXT_baseline_extension.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,58a6680dd93649eab379e84dfa0cf5ac06fe941abcde85283f3e671e71cc7d20
+12,protocol/cross-check,notebooks/week12/week12_C_validation_surface.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,1d113458e3c539055920c44baa7f7a4657a5a8263e75fafb06370fcf8bd7660e
+12,protocol/cross-check,notebooks/week12/week12_D_qbgf_ablations.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,5fcef3e8b74f49d7ef1f74615dd2e95986d37d595a83a00c9a13a7c3bb32a60b
+12,protocol/cross-check,notebooks/week12/week12_E_llmlingua2.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c58a542b7cacc12a0901bd8a1e6430a92fdd049b9777c4998a9bd362f2d5ae64
+12,protocol/cross-check,notebooks/week12/week12_F_lora_training.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,377799f27061ad29c3bdff7312301bb1bc8737d8f0fd0579034996e0ef713152
+12,protocol/cross-check,notebooks/week12/week12_G_lora_validation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,bf9d0fec3b058eae4ab442dc7e6409f9bc7275be66605d18b19f9366796b1fe5
+12,protocol/cross-check,notebooks/week12/week12_H_validation_analysis.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,8d674def34a9eb13eef2a0345005964c628e77f5488a8d09db3744e8946f0504
+12,protocol/cross-check,notebooks/week12/week12_I_week13_freeze.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c7d64cb9bc48d9dc88fbafbaded9677feb73bd43c11bdab6cff4abfc2e7b4dad
+12,protocol/cross-check,notebooks/week12/week12_J_attribution_setup.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,822dcc9bda4b4b2433c91170794f720f471670f17f8aa75e99dadce9d9d07b24
+12,protocol/cross-check,notebooks/week12/week12_K_causal_evidence_ablation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,846c66988a3229ed96d4ed04516cfe78dc9ae6f64c0b5e908ed8d4eb42ff8dae
+12,protocol/cross-check,notebooks/week12/week12_L_attribution_analysis.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,6d3414b6fd0f566dc1bcf3868b0473cf2da468090c509e537f69409af4d049a4
+12,protocol/cross-check,notebooks/week12/week12_M_final_confirmation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,64f55eb8a17bf6139fa8536aafdb7aa485fb9c61941b69004dcb5cc085ea8755
+12,0;H;I,results/week12/W13_FINAL_METHOD_FREEZE.json,json,inspected,Outcome or execution evidence; see per-part status,d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b
+12,J,results/week12/attribution/ATTRIBUTION_QUERY_FREEZE.json,json,inspected,Outcome or execution evidence; see per-part status,fe529e21126d36d001083859d92ef13196523bc225318aff2bb47b26f7a05218
+12,K,results/week12/attribution/v1/analysis/CLOSEOUT_AUDIT.json,json,inspected,Outcome or execution evidence; see per-part status,dc6dd07e00b832c74ffbea2de030d4128d3c43c40e9b7c47186de0803acac7dc
+12,L,results/week12/attribution/v1/analysis/curve_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,a525122c7b0b51c30ee11480ae91ed0ca132aa0ad6f74f26389827379e8fbc38
+12,L,results/week12/attribution/v1/analysis/finite_retention_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,9d569cdfe50c5ae2b0b59345539447473bad5ca70ddd664e28867dedf7f1f1d7
+12,L,results/week12/attribution/v1/analysis/paired_harmful_effects.csv,csv,inspected,Outcome or execution evidence; see per-part status,c0763be4cfd03a3d1d79a44aa2e5d2b1b83978118716ea1a94a9861528a42982
+12,L,results/week12/attribution/v1/analysis/relevance_utility.csv,csv,inspected,Outcome or execution evidence; see per-part status,0d57945efda5bb92a9c5a925b82eb2e6279bba249615b3e2b0a3623805cd84c6
+12,K,results/week12/attribution/v1/analysis/system_quality.csv,csv,inspected,Outcome or execution evidence; see per-part status,65d5f47125bee40d66fb7662abe5dd59132a806bf7a0977e7a9a0163c7054abb
+12,K,results/week12/attribution/v1/analysis/unit_importance.csv,csv,inspected,Outcome or execution evidence; see per-part status,38c64643c0dcbc5647ddc93b626f08079cb81d3f35e4848c1bbb77a5b0eb43ad
+12,K,results/week12/attribution/v1/analysis/unit_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,52bff3fedc5dc1afe5ce51f43e1cdc1052a7fd505eedec0ebd082f7ce777f841
+12,J,results/week12/attribution/v1/cost_plan.json,json,inspected,Outcome or execution evidence; see per-part status,af29cbd5fa89a4044319a5dd84e9e0004d400f6bbf1dfc79f4d7a8917619b191
+12,K,results/week12/attribution/v1/status.json,json,inspected,Outcome or execution evidence; see per-part status,7282aefd749a695c62ebfe7d23eb2f573cd839baacd521a713a68f66f54a9f66
+12,M,results/week12/final_confirmation/v1/FINAL_CLOSEOUT_AUDIT.json,json,inspected,Outcome or execution evidence; see per-part status,9c99fecc7ada58844e0f6495cb483e61b548ebda05a483bf22d26ef6f98759ae
+12,M,results/week12/final_confirmation/v1/complete.json,json,inspected,Outcome or execution evidence; see per-part status,f0424fbc0b36b4a4663efd064150a4569870b7c18a022a3b571f8ab3e64818e6
+12,M,results/week12/final_confirmation/v1/contrasts.csv,csv,inspected,Outcome or execution evidence; see per-part status,935dc9deba6736df5f0f31fd4e50ab6fdf5aa3ce6ff99e301627c43f25bd4f6c
+12,protocol/cross-check,results/week12/final_confirmation/v1/figures/paired_contrasts.png,png,inspected,Outcome or execution evidence; see per-part status,1f6c5bd56d2dcb4d4f5deadc0eaee55ef44162fe980be6677c803652c56a7be9
+12,protocol/cross-check,results/week12/final_confirmation/v1/figures/quality_by_budget.png,png,inspected,Outcome or execution evidence; see per-part status,a2e3fbc498c53feb54b2baa794839687ce3a0e2baca49d2f205afce275b13a55
+12,M,results/week12/final_confirmation/v1/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,938f1c57c77b041a0c1c464b5b2106a5cc259e899e4565fe42485589f162a5de
+12,M,results/week12/final_confirmation/v1/validation_comparison.csv,csv,inspected,Outcome or execution evidence; see per-part status,3c0c807746f712847e675ea08f62bab15ca2900a04da4de8caf19b64abb5e168
+12,I,results/week12/qbgf/v3/W13_FINAL_METHOD_FREEZE.json,json,inspected,Outcome or execution evidence; see per-part status,d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b
+12,D;H,results/week12/qbgf/v3/analysis/fusion_diagnostic_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,cdb0754dfbd7e20237d0b4bf95520055591882b64ba564a3b4474d03c0d30e3a
+12,C;H,results/week12/qbgf/v3/analysis/primary_comparisons.csv,csv,inspected,Outcome or execution evidence; see per-part status,189bf912da2d92e1649c6471ae3504382b25fb61488abbd94ce2570bc9fd8704
+12,0;C;D;H,results/week12/qbgf/v3/analysis/summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,9d09d077d232ca650afd64397e9a0ceac163ff6bfdccf818fa15e3b38ba574e7
+12,C-EXT,results/week12/qbgf/v3/c_extension/v1/analysis/merged_validation_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,abc7fa48ed7d9de3960f7134bf0f37b5cab6493b6900ccd92c7f2ce7cc67f099
+12,C-EXT,results/week12/qbgf/v3/c_extension/v1/status.json,json,inspected,Outcome or execution evidence; see per-part status,9f517050c35254f52562462ac67df5fad3fe6027bf73cad7269c0c90bf1944a8
+12,B;E,results/week12/qbgf/v3/protocol/llmlingua_qualification_lock.json,json,inspected,Outcome or execution evidence; see per-part status,030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be
+12,E;F;G,results/week12/qbgf/v3/protocol/optional_phase_decisions.json,json,inspected,Outcome or execution evidence; see per-part status,b6011e03a44649f43c8bb177c5074b7f9761edf7b9441dba716d303e5c08f90d
+12,0;F,results/week12/qbgf/v3/protocol/training_execution_patch.json,json,inspected,Outcome or execution evidence; see per-part status,9a6bd40bf10d4cdf33bfc2f3415ffeea9c720e4046f63145f32cc5d949ab3436
+12,B,results/week12/qbgf/v3/qualification/baselines.json,json,inspected,Outcome or execution evidence; see per-part status,32b690120c00ef7d5a93b7ef0cb13f41ec1f85d7175c73a89bb7773b7d2838a8
+12,C,results/week12/qbgf/v3/validation/C/status.json,json,inspected,Outcome or execution evidence; see per-part status,a29ffdc71d8f3e83e8fdbc485b0b24d0faff8dc77d5291215c353487df4f21a1
+12,D,results/week12/qbgf/v3/validation/D/status.json,json,inspected,Outcome or execution evidence; see per-part status,97deabdbfa1647ebfa4be4aae6a72c8dec95fc43016fdc9cdfa1acc2345d9989
+12,H,results/weekly_reports/week_12/OfflineValidationRecomputation.csv,csv,inspected,Outcome or execution evidence; see per-part status,341bae3e91cb0201f0a03bfb22cda7e5b66cb11170aedb184019bed861c40ebd
+12,protocol/cross-check,results/weekly_reports/week_12/OfflineValidationRecomputation.json,json,inspected,Outcome or execution evidence; see per-part status,95d9f7562ebcbad443bafb0fc50de4148237726d76dc0a976654d35166878714
+12,A,src/week12/algorithm.py,py,inspected,protocol/context only,433222886e997116cea673df24d32e2a3f81210663cfabcb5b689720f5bb5132
+13,LEGACY-WRAPPER,scripts/week13/run_confirmation.py,py,inspected,protocol/context only,8023da78ae7cb7f22638480f1eb338729130ecca4f6c6b97adab722c73a47cc6
+13,LEGACY-WRAPPER,src/week12/confirmation.py,py,inspected,protocol/context only,6b06f0b832d5ca2ceb2ecb6aa45fa51fae75f82cff3c843dd5e0c1e9ade345ea

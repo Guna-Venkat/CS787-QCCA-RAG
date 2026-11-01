@@ -1,0 +1,114 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_exact_oracle_oracle_fixed.csv",
+    "dataset": "HotpotQA",
+    "name": "oracle_fixed",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_exact_oracle_oracle_fixed.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_exact_oracle_oracle_fixed.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_exact_oracle_oracle_fixed.csv",
+    "dataset": "QASPER",
+    "name": "oracle_fixed",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_exact_oracle_oracle_fixed.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_exact_oracle_oracle_fixed.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_exact_oracle_oracle_fixed.csv",
+    "dataset": "SciFact",
+    "name": "oracle_fixed",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_exact_oracle_oracle_fixed.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_exact_oracle_oracle_fixed.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_count_oracle_actions.csv",
+    "dataset": "HotpotQA",
+    "name": "oracle_actions",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_count_oracle_actions.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_count_oracle_actions.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_count_oracle_actions.csv",
+    "dataset": "QASPER",
+    "name": "oracle_actions",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_count_oracle_actions.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_count_oracle_actions.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_count_oracle_actions.csv",
+    "dataset": "SciFact",
+    "name": "oracle_actions",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_count_oracle_actions.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_count_oracle_actions.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_cumulative_gain_fraction_gain_concentration.csv",
+    "dataset": "HotpotQA",
+    "name": "gain_concentration",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_cumulative_gain_fraction_gain_concentration.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_cumulative_gain_fraction_gain_concentration.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_cumulative_gain_fraction_gain_concentration.csv",
+    "dataset": "QASPER",
+    "name": "gain_concentration",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_cumulative_gain_fraction_gain_concentration.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_cumulative_gain_fraction_gain_concentration.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_cumulative_gain_fraction_gain_concentration.csv",
+    "dataset": "SciFact",
+    "name": "gain_concentration",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_cumulative_gain_fraction_gain_concentration.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_cumulative_gain_fraction_gain_concentration.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_oracle.csv",
+    "dataset": "cross_dataset",
+    "name": "dataset_oracle",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_oracle.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_oracle.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_oracle.csv",
+    "dataset": "cross_dataset",
+    "name": "reader_oracle",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_oracle.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_oracle.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_granularity.csv",
+    "dataset": "cross_dataset",
+    "name": "dataset_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_dataset_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_granularity.csv",
+    "dataset": "cross_dataset",
+    "name": "reader_granularity",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_granularity.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/cross_dataset_Count_reader_granularity.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_task_score_factorial_effects.csv",
+    "dataset": "HotpotQA",
+    "name": "factorial_effects",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_task_score_factorial_effects.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/HotpotQA_task_score_factorial_effects.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_task_score_factorial_effects.csv",
+    "dataset": "QASPER",
+    "name": "factorial_effects",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_task_score_factorial_effects.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/QASPER_task_score_factorial_effects.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_task_score_factorial_effects.csv",
+    "dataset": "SciFact",
+    "name": "factorial_effects",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_task_score_factorial_effects.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/oracle/figures/SciFact_task_score_factorial_effects.png"
+  }
+]

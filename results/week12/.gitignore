@@ -1,0 +1,53 @@
+/cache/
+/qbgf/*/smoke/
+/qbgf/*/generation/
+/qbgf/*/development/*/rows/
+/qbgf/*/development/*/prepared/
+/qbgf/*/canonical_inputs/
+/qbgf/*/canonical_references/
+/qbgf/*/lora/corpus/
+/qbgf/*/lora/checkpoints/
+/qbgf/*/lora/adapter/
+*.partial
+*.lock
+
+*.log
+
+# Large immutable metadata transported as lossless gzip copies.
+/W12_SPLIT_FREEZE*.json
+/qbgf/v*/protocol/W12_SPLIT_FREEZE.json
+/qbgf/v*/protocol/exposure_manifest.json
+
+/tools/
+/qbgf/*/lora/coverage_events.jsonl
+
+/qbgf/*/qualification/execution/
+
+# Full validation checkpoints: retain locally for resume; commit summary tables instead.
+/qbgf/*/validation/*/prepared/
+/qbgf/*/validation/*/rows/
+
+# Additive C-EXT per-query resume caches (retain compact analysis and qualification).
+/qbgf/*/c_extension/*/prepared/
+/qbgf/*/c_extension/*/rows/
+/qbgf/*/c_extension/*/generation/
+/qbgf/*/c_extension/*/specialists/*/canonical_inputs/
+/qbgf/*/c_extension/*/specialists/*/canonical_references/
+/qbgf/*/c_extension/*/specialists/*/qualification_smoke/
+
+# Attribution study: preserve freezes/summaries; keep detailed resume shards local.
+/attribution/smoke/
+/attribution/v*/prepared/
+/attribution/v*/perturbations/
+/attribution/v*/generation/
+/attribution/v*/completed_cells/
+# Dense per-query choice table is reproducible from saved C/D rows; keep summaries/plots.
+/qbgf/*/analysis/allocation.csv
+
+# Part M synthetic fixtures and immutable per-query resume shards stay local.
+/final_confirmation/smoke/
+/final_confirmation/v*/prepared/
+/final_confirmation/v*/generation/
+/final_confirmation/v*/rows/
+# Verbose per-perturbation attribution outputs are retained locally; summaries are tracked.
+/attribution/v*/analysis/perturbation_cost_and_flips.csv

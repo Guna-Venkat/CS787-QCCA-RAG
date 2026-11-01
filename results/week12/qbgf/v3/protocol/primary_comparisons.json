@@ -1,0 +1,359 @@
+[
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-C2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "C2"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 256,
+    "dataset": "QASPER",
+    "id": "QASPER:256:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 1024,
+    "dataset": "QASPER",
+    "id": "QASPER:1024:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-C2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "C2"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:256:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "id": "HotpotQA:1024:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-C2",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "C2"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "id": "SciFact:256:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-RAW_SKIP",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-FIXED_SENTENCE",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "FIXED_SENTENCE"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-H3",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "H3"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-QBGF_NO_QUERY",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "QBGF_NO_QUERY"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:QBGF_FULL-LLMLINGUA2",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "BASE_FP16",
+    "right": "LLMLINGUA2"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "id": "SciFact:1024:LORA-BASE",
+    "left": "QBGF_FULL",
+    "metric": "macro_f1",
+    "reader": "LORA_NF4",
+    "right": "QBGF_FULL",
+    "right_reader": "BASE_NF4"
+  }
+]

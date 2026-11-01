@@ -1,0 +1,17 @@
+dataset,reader,action_id,evidence_granularity,selector,budget,compressor,n_queries,strict_accuracy,strict_format_rate,leading_label_rate,leading_label_diagnostic_accuracy,cap_hit_rate
+SciFact,Qwen,0ae4cd8d7bbf0c1f335b,SENTENCE,hybrid,256,C0,50,0.74,1.0,1.0,0.74,0.0
+SciFact,Qwen,0dc37be7e1b23dacb4e6,PASSAGE,semantic,FULL,C0,50,0.64,1.0,1.0,0.64,0.0
+SciFact,Qwen,0e8bebd7162b7ff88ee7,NONE,none,0,C0,50,0.36,1.0,1.0,0.36,0.0
+SciFact,Qwen,1e0768de16b50846bbb7,SENTENCE,hybrid,256,C0,50,0.64,1.0,1.0,0.64,0.0
+SciFact,Qwen,21945e4fa2f8705919f5,PROPOSITION,semantic,1024,C0,50,0.62,1.0,1.0,0.62,0.0
+SciFact,Qwen,39d891f9fed0db18d8c2,PASSAGE,semantic,1024,C0,50,0.68,1.0,1.0,0.68,0.0
+SciFact,Qwen,40719a9b7fa6061367c9,PASSAGE,semantic,FULL,C0,50,0.7,1.0,1.0,0.7,0.0
+SciFact,Qwen,5ef43643d916e4c17721,PROPOSITION,semantic,1024,C0,50,0.62,1.0,1.0,0.62,0.0
+SciFact,Qwen,7aa17908c2f61a860df7,SENTENCE,semantic,1024,C0,50,0.66,1.0,1.0,0.66,0.0
+SciFact,Qwen,82393b5263355fa073d6,PASSAGE,semantic,1024,C0,50,0.7,1.0,1.0,0.7,0.0
+SciFact,Qwen,8603dec831a84395948a,PASSAGE,semantic,1024,C0,50,0.76,1.0,1.0,0.76,0.0
+SciFact,Qwen,a0788207676a3dd94c29,SENTENCE,semantic,1024,C0,50,0.62,1.0,1.0,0.62,0.0
+SciFact,Qwen,c050bf1f46f443179fae,SENTENCE,semantic,1024,C0,50,0.64,1.0,1.0,0.64,0.0
+SciFact,Qwen,c3720d3c14d50b74107b,PROPOSITION,semantic,1024,C0,50,0.66,1.0,1.0,0.66,0.0
+SciFact,Qwen,ecbe1962e8a80f2318cc,PASSAGE,semantic,FULL,C0,50,0.66,1.0,1.0,0.66,0.0
+SciFact,Qwen,fc9352ab57c0ab40eb3b,SENTENCE,hybrid,256,C0,50,0.72,1.0,1.0,0.72,0.0

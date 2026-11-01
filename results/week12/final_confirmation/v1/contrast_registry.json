@@ -1,0 +1,110 @@
+[
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "family": "primary",
+    "id": "HotpotQA:256:FIXED_SENTENCE-NONE",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "NONE"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "family": "primary",
+    "id": "HotpotQA:1024:FIXED_SENTENCE-NONE",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "NONE"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "family": "primary",
+    "id": "HotpotQA:256:FIXED_SENTENCE-RAW_SKIP",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "family": "primary",
+    "id": "HotpotQA:1024:FIXED_SENTENCE-RAW_SKIP",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 256,
+    "dataset": "HotpotQA",
+    "family": "secondary",
+    "id": "HotpotQA:256:FIXED_SENTENCE-QBGF_FULL",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "QBGF_FULL"
+  },
+  {
+    "budget": 1024,
+    "dataset": "HotpotQA",
+    "family": "secondary",
+    "id": "HotpotQA:1024:FIXED_SENTENCE-QBGF_FULL",
+    "left": "FIXED_SENTENCE",
+    "metric": "f1",
+    "right": "QBGF_FULL"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "family": "primary",
+    "id": "SciFact:256:FIXED_SENTENCE-NONE",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "NONE"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "family": "primary",
+    "id": "SciFact:1024:FIXED_SENTENCE-NONE",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "NONE"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "family": "primary",
+    "id": "SciFact:256:FIXED_SENTENCE-RAW_SKIP",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "family": "primary",
+    "id": "SciFact:1024:FIXED_SENTENCE-RAW_SKIP",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "RAW_SKIP"
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "family": "secondary",
+    "id": "SciFact:256:FIXED_SENTENCE-QBGF_FULL",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "QBGF_FULL"
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "family": "secondary",
+    "id": "SciFact:1024:FIXED_SENTENCE-QBGF_FULL",
+    "left": "FIXED_SENTENCE",
+    "metric": "macro_f1",
+    "right": "QBGF_FULL"
+  }
+]

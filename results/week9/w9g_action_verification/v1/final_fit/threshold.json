@@ -1,0 +1,7 @@
+{
+  "threshold": 0.7,
+  "source": "Already selected pooled outer-OOF deployment threshold",
+  "source_artifact_hash": "efa4a521471f2b9a6496c249b2121df438c61f381685251bd750843a68c4a2b7",
+  "post_selection": true,
+  "not_used_for_honest_nested_oof": true
+}

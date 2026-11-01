@@ -1,0 +1,19 @@
+{
+  "identity": "0bb58cd4cc1826bccaaa31754314c1694ba5e922fc90298c558f72d89d18a3b6",
+  "no_generated_interpretation": true,
+  "retrospective": true,
+  "tables": {
+    "curve_summary": "a525122c7b0b51c30ee11480ae91ed0ca132aa0ad6f74f26389827379e8fbc38",
+    "gold_overlap": "9588e271b4771ea857f60ffee10fcd65b1c4c08c0b97e62c47a544eedd0b33c5",
+    "paired_harmful_effects": "c0763be4cfd03a3d1d79a44aa2e5d2b1b83978118716ea1a94a9861528a42982",
+    "perturbation_cost_and_flips": "389c5f900b35ab4e47aead0238f07039d698f443d3f2249624edbde38cff46e6",
+    "query_profiles": "458e76389e866759b1949d4c9b6f08421c55dd6481fbc5e32e9e7e2d7a55c20d",
+    "relevance_utility": "0d57945efda5bb92a9c5a925b82eb2e6279bba249615b3e2b0a3623805cd84c6",
+    "single_unit_sufficiency": "ea8baeec37a6249eb332e6354854f21d21985a933c8a131571eff419801c2aed",
+    "sufficiency_comprehensiveness": "a7ba9bf3c30a1c7d8af2be0981a455912cf3fde27e710298d3ed40ee9a473c77",
+    "system_quality": "65d5f47125bee40d66fb7662abe5dd59132a806bf7a0977e7a9a0163c7054abb",
+    "unit_importance": "38c64643c0dcbc5647ddc93b626f08079cb81d3f35e4848c1bbb77a5b0eb43ad",
+    "unit_summary": "52bff3fedc5dc1afe5ce51f43e1cdc1052a7fd505eedec0ebd082f7ce777f841",
+    "win_loss_pairs": "8709fa5153999fb29f87e6f6163a5d5b1dde102ae3e593fd14daad20c330df54"
+  }
+}

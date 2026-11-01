@@ -1,0 +1,16 @@
+{
+  "source": "Baselines/SARA-main/notebooks/sara_baseline_checkpoints.ipynb",
+  "executed_training_cells": [
+    10,
+    11
+  ],
+  "RAG_logged_training_examples": 506,
+  "RAG_reported_train_runtime_seconds": 14988.353,
+  "RAG_reported_train_loss": 5.325838745117188,
+  "SARA_cell11_status": "OOM_FAILED_ATTEMPT",
+  "SARA_saved_checkpoint_global_step": 250,
+  "profiling_cell": 13,
+  "profiling_execution_count": 7,
+  "sanity_generation_cell15_execution_count": null,
+  "local_model_or_training_execution_by_reconstruction": false
+}

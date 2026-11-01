@@ -1,0 +1,2 @@
+# Local recovery copies; originals are retained without duplicating them in Git.
+original_cache/

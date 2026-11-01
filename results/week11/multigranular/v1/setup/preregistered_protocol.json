@@ -1,0 +1,152 @@
+{
+  "configuration": {
+    "allow_pending_conditions": true,
+    "analysis_comparison_family": "exploratory",
+    "bootstrap_resamples": 10000,
+    "budgets": [
+      256,
+      512,
+      1024,
+      "FULL"
+    ],
+    "cache_root": "cache/week11/v1",
+    "candidate_context_token_ceiling": 6144,
+    "characterization_queries_per_dataset": 50,
+    "datasets": {
+      "HotpotQA": {
+        "corpus": "provided ten distractor paragraphs",
+        "path": "data/week11/hotpot_dev_distractor_v1.json",
+        "source": "https://hotpotqa.github.io/",
+        "split": "dev"
+      },
+      "QASPER": {
+        "corpus": "complete matching scientific paper",
+        "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+        "raw_path": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+        "split": "dev"
+      },
+      "SciFact": {
+        "corpus": "all corpus abstracts; never only cited/gold documents",
+        "corpus_path": "data/week11/scifact/corpus.jsonl",
+        "labels": [
+          "SUPPORT",
+          "REFUTE",
+          "NOT_ENOUGH_INFO"
+        ],
+        "path": "data/week11/scifact/claims_dev.jsonl",
+        "source": "https://github.com/allenai/scifact",
+        "split": "dev"
+      }
+    },
+    "density_gamma": 1.0,
+    "epsilon": 0.01,
+    "exact_text_sentence_k": 8,
+    "finalist_configurations": {},
+    "finalist_run_ids": [],
+    "generation": {
+      "attention": "efficient_sdpa",
+      "device": "cuda",
+      "do_sample": false,
+      "dtype": "float16",
+      "max_context": 8192,
+      "max_new_tokens": 128,
+      "quantization": null,
+      "seed": 42
+    },
+    "hierarchical": {
+      "full_head_passages": 1,
+      "sentence_passages": 3,
+      "token_tail_fraction": 0.25
+    },
+    "hierarchical_strategies": [
+      "H0",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5"
+    ],
+    "hierarchy": {
+      "chunker": "exact-word-boundary-token-ceiling-v1",
+      "max_passage_tokens": 256,
+      "native_passages": "HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper passages",
+      "overlap": 0,
+      "propositions": "PROPOSITION_RULE_V1",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "tokenizer": "Qwen pinned revision"
+    },
+    "history_trajectory_records": [],
+    "hybrid_weight": 0.5,
+    "interaction_contrasts": [],
+    "learned_compressor_status": "FUTURE_WORK; faithful SeleCom not implemented",
+    "models": {
+      "Llama": {
+        "id": "meta-llama/Llama-3.1-8B-Instruct",
+        "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      },
+      "MiniLM": {
+        "id": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "output_root": "results/week11/multigranular/v1",
+    "passage_pooling_beta": 5.0,
+    "primary_reader": "Qwen",
+    "query_sampling": "sha256(dataset,query_id,seed), independent of labels",
+    "qwen_thinking": false,
+    "readers": [
+      "Mistral",
+      "Qwen",
+      "Llama"
+    ],
+    "retrieval_granularities": [
+      "PASSAGE",
+      "SENTENCE",
+      "PROPOSITION"
+    ],
+    "retrieval_width": 20,
+    "retrievers": [
+      "BM25",
+      "MiniLM",
+      "SFR"
+    ],
+    "sara_checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+    "sara_k": 4,
+    "sara_n": 10,
+    "seed": 42,
+    "selectors": [
+      "lexical",
+      "semantic",
+      "hybrid"
+    ],
+    "shared_budget_policy": "max actual token count across all frozen reader tokenizers; identical source-order text",
+    "token_compressor": {
+      "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+      "qualified": false,
+      "revision": null,
+      "status": "PENDING_DEPENDENCY_AND_QUALIFICATION"
+    },
+    "verification_dataset": "SciFact",
+    "version": "v1"
+  },
+  "default_safe": true,
+  "full_started": false,
+  "historical_artifacts": "READ_ONLY",
+  "optional_token": "PENDING; no qualification/model run performed by agent",
+  "primary_reader": "Qwen",
+  "qasper_test": "BLOCKED",
+  "sampling": "50 hashed IDs/dataset, seed42; outcomes not used",
+  "verification_dataset": "SciFact"
+}

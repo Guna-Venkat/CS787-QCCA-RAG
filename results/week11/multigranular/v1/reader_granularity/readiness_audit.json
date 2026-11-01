@@ -1,0 +1,33 @@
+{
+  "Qwen_C_results_exactly_reused": 5550,
+  "audit_driver_sha256": "46f8f8a7f816f467dc34b9c41b2a503dee217b5fbba1eefb25d2e4b98248c0c0",
+  "checks_passed": true,
+  "checksums_verified": 16650,
+  "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+  "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "counts_per_dataset": {
+    "HotpotQA": 5550,
+    "QASPER": 5550,
+    "SciFact": 5550
+  },
+  "counts_per_reader": {
+    "Llama": 5550,
+    "Mistral": 5550,
+    "Qwen": 5550
+  },
+  "expected": 16650,
+  "flags": {
+    "empty_evidence_strict_prefix": 924,
+    "generation_cap_reached": 987,
+    "invalid_verification_label": 3675,
+    "unmapped_gold_annotation": 777
+  },
+  "pending": [
+    "LLMLingua-2"
+  ],
+  "phase": "D",
+  "physical_generation_calls": 7012,
+  "queries": 150,
+  "status_sha256": "b8fa21f6a5da304df60e466595c91daa7f48b2e64d44cd6a235f18ae7dbdb787",
+  "timestamp_utc": "2026-10-28T18:27:03.518590+00:00"
+}

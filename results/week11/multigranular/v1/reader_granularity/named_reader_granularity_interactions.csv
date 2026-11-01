@@ -1,0 +1,9 @@
+dataset,reader,reference,budget,contrast,family,point,ci_low,ci_high,resamples,seed,cluster
+HotpotQA,Mistral,Qwen,1024,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,-0.012425316405715765,-0.08177105288151067,0.05386632028069535,10000,42,query_or_claim_id
+HotpotQA,Mistral,Qwen,FULL,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,0.017846007571148993,-0.01702780775478806,0.06132697844043205,10000,42,query_or_claim_id
+HotpotQA,Llama,Qwen,1024,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,-0.08128630342103219,-0.1728993837578593,0.004409670704962469,10000,42,query_or_claim_id
+HotpotQA,Llama,Qwen,FULL,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,0.022373463573463575,-0.024150370370370364,0.07322936507936506,10000,42,query_or_claim_id
+QASPER,Mistral,Qwen,1024,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,-0.016287834786156034,-0.058947533250979255,0.024116216797445623,10000,42,paper_id
+QASPER,Mistral,Qwen,FULL,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,0.021601653056469196,-0.0066231122957191736,0.04908701174054267,10000,42,paper_id
+QASPER,Llama,Qwen,1024,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,0.005212527596274148,-0.057550747035124306,0.05805539679437875,10000,42,paper_id
+QASPER,Llama,Qwen,FULL,(sentence-passage)_reader - (sentence-passage)_Qwen,additional_posthoc_exploratory,0.018993506004354625,-0.0048559948365163716,0.04339852349505773,10000,42,paper_id

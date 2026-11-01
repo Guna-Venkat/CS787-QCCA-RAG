@@ -1,0 +1,56 @@
+{
+  "analysis_plot_validation": [
+    {
+      "all_figures_present": true,
+      "figure_types": 8,
+      "figures": 12,
+      "full": false,
+      "model_calls": 0,
+      "phase": "H",
+      "synthetic": true,
+      "tables": 14
+    },
+    {
+      "all_figures_present": true,
+      "figure_types": 12,
+      "figures": 26,
+      "full": false,
+      "model_calls": 0,
+      "phase": "I",
+      "synthetic": true,
+      "tables": 25
+    }
+  ],
+  "branch": "gagan",
+  "default_notebooks_prefer_saved_real_results": true,
+  "default_queries_per_dataset": 50,
+  "external_datasets_downloaded": false,
+  "full_started": false,
+  "historical_bytes_unchanged": true,
+  "historical_files_checked": 36549,
+  "manual_order": [
+    "0",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "qasper_test_used": false,
+  "real_model_generation": false,
+  "real_model_loading_tested": false,
+  "safe_notebooks_passed": 11,
+  "source_identity": "fe7a9e38c2cefefb948455c04ccf0658e2cf4bc39a03f0605c894a11aaaf3298",
+  "timestamp": "2026-10-27T16:30:08.493811+00:00",
+  "token_compressor": "PENDING_DEPENDENCY_AND_QUALIFICATION",
+  "unit_test_seconds": 84.88,
+  "unit_tests_passed": 84,
+  "visual_checks": [
+    "hierarchy_vs_fixed",
+    "six_panel_trajectory"
+  ]
+}

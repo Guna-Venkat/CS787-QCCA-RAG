@@ -1,0 +1,22 @@
+[
+  {
+    "id": "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank",
+    "revision": "5f0c82792b7ea14c6484e015b6a072009496b7f2",
+    "weight_files": [
+      {
+        "bytes": 709388104,
+        "name": "model.safetensors"
+      }
+    ]
+  },
+  {
+    "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+    "revision": "ebaba9b0e874dadd3003ffcff828e4397e568089",
+    "weight_files": [
+      {
+        "bytes": 2235829648,
+        "name": "model.safetensors"
+      }
+    ]
+  }
+]

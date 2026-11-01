@@ -1,0 +1,882 @@
+{
+  "H_table_hashes": {
+    "fusion_diagnostic_comparisons.csv": "cdb0754dfbd7e20237d0b4bf95520055591882b64ba564a3b4474d03c0d30e3a",
+    "primary_comparisons.csv": "189bf912da2d92e1649c6471ae3504382b25fb61488abbd94ce2570bc9fd8704",
+    "summary.csv": "9d09d077d232ca650afd64397e9a0ceac163ff6bfdccf818fa15e3b38ba574e7"
+  },
+  "adapter_checkpoint": null,
+  "adapter_hash": null,
+  "baseline_configurations": {
+    "allow_download": false,
+    "bootstrap_resamples": 10000,
+    "budgets": [
+      256,
+      1024
+    ],
+    "cache_root": "results/week12/cache/v3",
+    "candidate_width": 10,
+    "confirmation_counts": {
+      "HotpotQA": 200,
+      "QASPER": 100,
+      "SciFact": 50
+    },
+    "datasets": {
+      "HotpotQA": {
+        "corpus": "provided ten distractor paragraphs",
+        "path": "data/week11/hotpot_dev_distractor_v1.json",
+        "source": "https://hotpotqa.github.io/",
+        "split": "dev"
+      },
+      "QASPER": {
+        "corpus": "complete matching scientific paper",
+        "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+        "raw_path": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+        "split": "dev"
+      },
+      "SciFact": {
+        "corpus": "all corpus abstracts; never only cited/gold documents",
+        "corpus_path": "data/week11/scifact/corpus.jsonl",
+        "labels": [
+          "SUPPORT",
+          "REFUTE",
+          "NOT_ENOUGH_INFO"
+        ],
+        "path": "data/week11/scifact/claims_dev.jsonl",
+        "source": "https://github.com/allenai/scifact",
+        "split": "dev"
+      }
+    },
+    "generation": {
+      "do_sample": false,
+      "enable_thinking": false,
+      "max_context": 8192,
+      "max_new_tokens_qa": 128,
+      "max_new_tokens_verification": 16,
+      "precision": "float16",
+      "seed": 42
+    },
+    "help_epsilon": 0.01,
+    "hierarchy": {
+      "chunker": "exact-word-boundary-token-ceiling-v1",
+      "max_passage_tokens": 256,
+      "native_passages": "HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper passages",
+      "overlap": 0,
+      "propositions": "PROPOSITION_RULE_V1",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "tokenizer": "Qwen pinned revision"
+    },
+    "historical_config": "configs/week11/week11_base.yaml",
+    "labels": [
+      "SUPPORT",
+      "REFUTE",
+      "NOT_ENOUGH_INFO"
+    ],
+    "llmlingua": {
+      "allow_download": false,
+      "expected_weight_GiB": 2.5,
+      "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+      "revision": null
+    },
+    "lora": {
+      "alpha": 16,
+      "batch_size": 1,
+      "checkpoint_objective": "dataset-balanced validation answer NLL; minimize; ties earliest checkpoint",
+      "dataset_balanced": true,
+      "dropout": 0.05,
+      "epochs": 1,
+      "evidence_mode_sampling": "one deterministic mode-budget per source query; sha256(seed,dataset,query_id) modulo six",
+      "gradient_accumulation_steps": 16,
+      "learning_rate": 0.0002,
+      "load_best_model_at_end": true,
+      "max_length": 2048,
+      "mode": "qlora_nf4",
+      "modes": [
+        "RAW_SKIP",
+        "FIXED_SENTENCE",
+        "QBGF_FULL"
+      ],
+      "overwrite": false,
+      "r": 8,
+      "resume": true,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "minimum_qasper_confirm_papers": 20,
+    "minimum_qasper_unused_papers": 200,
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "output_root": "results/week12/qbgf/v3",
+    "readers": [
+      "Qwen"
+    ],
+    "sara": {
+      "canonical_k": 5,
+      "canonical_label": "SARA_CANONICAL_BM25_K5_N10",
+      "canonical_n": 10,
+      "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+      "historical_sfr_k": 6
+    },
+    "schema": "W12-QBGF-v3",
+    "secondary_budgets": [
+      512
+    ],
+    "seed": 42,
+    "selection_rule": {
+      "quality_margin_macro_f1": 0.01,
+      "quality_margin_qa": 0.003,
+      "rule": "Validation-only: retain simple fixed sentence policy unless candidate is feasible, noninferior within preregistered margin and Pareto improves tokens; if no clear support retain simple baseline. No confirmation outcomes."
+    },
+    "split_protocol": "TRAIN_VAL_CONFIRM_v2",
+    "statistics": {
+      "accuracy_secondary": true,
+      "holm_scope": "all_datasets_budgets_prespecified_primary",
+      "p_value": "paired cluster label-swap randomization; two-sided; 10000 draws +1 correction",
+      "primary_metric": {
+        "HotpotQA": "f1",
+        "QASPER": "f1",
+        "SciFact": "macro_f1"
+      }
+    },
+    "tau_p": 5,
+    "tau_s": 5,
+    "training_data_policy": "ALL_ELIGIBLE_TRAIN",
+    "training_queries_per_dataset": null
+  },
+  "budgets": [
+    256,
+    1024
+  ],
+  "candidate_width": 10,
+  "confirmation_evaluation_enabled": false,
+  "confirmation_history_review": "LOCAL_ARTIFACT_AUDIT_COMPLETE_WITH_DOCUMENTED_LIMITATIONS",
+  "confirmation_ids": {
+    "HotpotQA": [
+      "5abd94525542992ac4f382d2",
+      "5a8e1027554299653c1aa15f",
+      "5a77724455429972597f153e",
+      "5ab96ab755429970cfb8eacd",
+      "5ae7ba7a5542993210983f12",
+      "5ae37c765542992f92d822d4",
+      "5ae005b555429942ec259bec",
+      "5a80b3a9554299485f5986cc",
+      "5a75f79555429976ec32bcca",
+      "5a7b46e55542995eb53be8e5",
+      "5a7caae75542996dd594b971",
+      "5adfbca255429942ec259b2c",
+      "5a7cb9b95542990527d55515",
+      "5ae68fcb5542992ae0d1635b",
+      "5ab5b6c1554299637185c5e5",
+      "5a8d02cc554299441c6b9fb6",
+      "5ab626d555429953192ad279",
+      "5ab611cc5542992aa134a411",
+      "5abdd08d5542991f6610604c",
+      "5a8cd381554299653c1aa12b",
+      "5a7c53a855429935c91b515d",
+      "5ab4475c5542996a3a969f6c",
+      "5a78bc6b554299148911f979",
+      "5abe7eb05542993f32c2a12c",
+      "5abd9c2355429924427fd06c",
+      "5ab639e65542995eadeeff7f",
+      "5a79ca585542996c55b2dc71",
+      "5a83411655429966c78a6b5d",
+      "5ab840e255429934fafe6d3b",
+      "5ae479745542996836b02cb1",
+      "5ac0641f554299294b218fbe",
+      "5ab81cd955429916710eaff7",
+      "5ab1f13e554299449642c81c",
+      "5ab930655542991b5579f12a",
+      "5ae3790f5542992e3233c415",
+      "5abb02fe554299232ef4a39f",
+      "5a8ec4875542995a26add508",
+      "5adbf34955429947ff173862",
+      "5abdb8ba5542993f32c2a015",
+      "5a8f54165542992414482a52",
+      "5a866fed554299211dda2b2e",
+      "5ade664555429939a52fe89c",
+      "5adcb4ae5542994734353774",
+      "5abc7bf75542993a06baf8f0",
+      "5ae6545f5542991bbc9760c2",
+      "5ab78a445542992aa3b8c826",
+      "5ae0af5555429945ae95941e",
+      "5a835c895542993344746009",
+      "5ab6cebd55429954757d3378",
+      "5ac5188255429924173fb5a3",
+      "5ab8111c5542991d3222382b",
+      "5abd0296554299114383a1d1",
+      "5ae1338d55429901ffe4ade1",
+      "5abe765a55429976d4830b1f",
+      "5a7e21165542995ed0d166a2",
+      "5a7553a95542996c70cfaedf",
+      "5ae3fec55542995dadf242a4",
+      "5a8ac44055429970aeb70304",
+      "5ae0b68e55429906c02daafb",
+      "5a7f53ff5542992097ad2f17",
+      "5a77d5e655429967ab1052cc",
+      "5a7bb16f554299294a54aa9f",
+      "5abe044d5542991f661060a7",
+      "5ab5ec795542997d4ad1f252",
+      "5a775bd65542993569682d6b",
+      "5a7c0aa15542997c3ec972cd",
+      "5ac507825542994611c8b32b",
+      "5ae763aa5542995703ce8c09",
+      "5a7568175542992d0ec05f88",
+      "5ab474b35542990594ba9c25",
+      "5ab94e72554299743d22eaed",
+      "5a72a4645542991f9a20c54c",
+      "5ae830f05542997ec2727758",
+      "5ae7f56e5542993210983fd1",
+      "5ade09945542997545bbbe2c",
+      "5ae7f1e65542994a481bbe4a",
+      "5ae505d355429908b63264e4",
+      "5abeb91c5542994516f45400",
+      "5ab45bcd5542991779162c80",
+      "5a7e02cf5542997cc2c474f4",
+      "5a710a915542994082a3e504",
+      "5adcc21f5542990d50227d05",
+      "5a790e69554299148911f9d7",
+      "5ab3e07e55429969a97a81e5",
+      "5abeebe25542993fe9a41d9c",
+      "5a7a60f15542990783324f35",
+      "5ae0f5fc554299422ee9957c",
+      "5a86681c5542991e77181644",
+      "5ae2e06d55429928c4239521",
+      "5ab48af35542996a3a969f92",
+      "5a750d315542996c70cfae84",
+      "5abae3b05542996606241661",
+      "5abfab8d5542997ec76fd42d",
+      "5a89e6615542992e4fca8462",
+      "5ab98d70554299753720f82f",
+      "5a8e3e9b5542995085b37402",
+      "5a88e7a55542993b751ca8ca",
+      "5ae1599155429901ffe4ae7b",
+      "5ac235e355429951e9e684a2",
+      "5a899f4955429946c8d6e971",
+      "5a87100655429960ec39b71e",
+      "5a7f1ad155429934daa2fce2",
+      "5ae7b40e5542994a481bbdbd",
+      "5a9058e655429916514e747e",
+      "5ab9d7e4554299232ef4a21f",
+      "5a8b14125542992d82986fd5",
+      "5a739ef955429978a71e904b",
+      "5ab41b8c5542996a3a969f40",
+      "5a85e57a5542994c784ddbb1",
+      "5a84c89a5542992a431d1a9c",
+      "5a8197905542995ce29dcc10",
+      "5ab5d6155542997d4ad1f1fa",
+      "5a7bd286554299683c1c62bd",
+      "5a8d0e305542994ba4e3dbbe",
+      "5adc51375542996e68525300",
+      "5adde2475542997545bbbdc1",
+      "5ac434ed554299204fd21f09",
+      "5ae163b3554299422ee99678",
+      "5ae644c55542992663a4f27e",
+      "5a7b74485542997c3ec97190",
+      "5ab61668554299488d4d9aa6",
+      "5ae038e955429942ec259c4d",
+      "5ac14d0c5542991316484ae2",
+      "5ae3dfb05542992e3233c490",
+      "5ade64c7554299728e26c710",
+      "5ac2782d55429963665199cc",
+      "5abbfa8f55429965836003cc",
+      "5a835b88554299123d8c2101",
+      "5ae3599b5542992e3233c39d",
+      "5a74c6a655429974ef308c5d",
+      "5ac0d5a1554299294b219025",
+      "5a80ad205542992bc0c4a79d",
+      "5ae1c90e554299234fd042f7",
+      "5ab8829d55429934fafe6e08",
+      "5abfd83f5542997ec76fd45c",
+      "5ab8ae585542991b5579efd8",
+      "5ab624b855429953192ad26d",
+      "5ae81b2755429952e35eaa1e",
+      "5adf73a45542992d7e9f9378",
+      "5adc02445542994650320c4e",
+      "5a8a416955429930ff3c0d2b",
+      "5ab602405542992aa134a401",
+      "5a77a14655429949eeb29f13",
+      "5ab868e755429919ba4e22e3",
+      "5add1d435542990d50227de8",
+      "5a8de4595542995085b37348",
+      "5a8010685542992bc0c4a69a",
+      "5abe92de5542993f32c2a16b",
+      "5a7a1d305542990783324e66",
+      "5abe4a365542993f32c2a0dc",
+      "5ade636255429939a52fe896",
+      "5aba9813554299232ef4a357",
+      "5abbc4f955429931dba144ff",
+      "5add7c9c5542990dbb2f7e60",
+      "5a7329a15542991f9a20c65f",
+      "5ae5ead6554299546bf82fd0",
+      "5ade157e55429939a52fe802",
+      "5a843f305542996488c2e51d",
+      "5ae4bc7955429913cc2044e9",
+      "5a86d7825542996432c571ec",
+      "5a7195a05542994082a3e881",
+      "5a87a7235542996e4f3088a8",
+      "5ae340a85542994393b9e668",
+      "5a7265a95542992359bc307a",
+      "5ae5f9b355429929b0807a4b",
+      "5a7286865542991f9a20c4cb",
+      "5ae4a1ef55429970de88d9e7",
+      "5a876cd55542993e715abf36",
+      "5a87560d5542994775f607d9",
+      "5ae3d5ec5542992f92d8238c",
+      "5ae0f4645542997b2ef7d0aa",
+      "5ac029655542992a796decb3",
+      "5a773ec355429966f1a36ccb",
+      "5ae6c2285542995703ce8b9a",
+      "5ae4e29855429908b63264a9",
+      "5aba3bb855429955dce3ede7",
+      "5adcf37e5542994ed6169c37",
+      "5ac2f79e5542996773102661",
+      "5a8c6ebd5542996e8ac88aa9",
+      "5ab6654455429954757d3281",
+      "5abe84a95542991f6610619b",
+      "5ae2c4b8554299495565db31",
+      "5a81c90a5542990a1d231eb4",
+      "5a8fab8c5542995b4424208a",
+      "5ac0d732554299294b219030",
+      "5a8b84875542995d1e6f13d7",
+      "5ab613985542992aa134a418",
+      "5abcee275542993a06baf9af",
+      "5ae5be86554299546bf82f40",
+      "5a8a57fe55429930ff3c0da0",
+      "5ae5415055429908b63265b7",
+      "5a727ca45542994cef4bc2d8",
+      "5a8fa20555429918e830d298",
+      "5ae634355542995703ce8b41",
+      "5a84edf65542994c784dda8d",
+      "5a77769e5542997042120a65",
+      "5ae50eff55429908b6326500",
+      "5a7b72e15542997c3ec97187",
+      "5abdf68c5542993f32c2a06b",
+      "5ae1f2d4554299234fd04358"
+    ],
+    "QASPER": [],
+    "SciFact": [
+      "13",
+      "50",
+      "113",
+      "118",
+      "133",
+      "180",
+      "183",
+      "216",
+      "217",
+      "218",
+      "219",
+      "238",
+      "300",
+      "350",
+      "388",
+      "399",
+      "415",
+      "421",
+      "431",
+      "443",
+      "514",
+      "532",
+      "533",
+      "613",
+      "674",
+      "723",
+      "742",
+      "743",
+      "759",
+      "768",
+      "770",
+      "775",
+      "781",
+      "793",
+      "811",
+      "814",
+      "845",
+      "852",
+      "882",
+      "1200",
+      "1204",
+      "1207",
+      "1225",
+      "1226",
+      "1241",
+      "1262",
+      "1278",
+      "1279",
+      "1319",
+      "1320"
+    ]
+  },
+  "confirmation_ids_hash": "c35e3ac9b3855688a50787b8efafa0b49a002cd1ffd8098ced10f195ad3bb0a4",
+  "confirmation_methods": [
+    [
+      "NONE",
+      "BASE_FP16"
+    ],
+    [
+      "RAW_SKIP",
+      "BASE_FP16"
+    ],
+    [
+      "FIXED_SENTENCE",
+      "BASE_FP16"
+    ],
+    [
+      "H3",
+      "BASE_FP16"
+    ],
+    [
+      "QBGF_FULL",
+      "BASE_FP16"
+    ]
+  ],
+  "confirmation_registry_rule": "Retain existing MAIN controls only if complete BASE_FP16 VAL coverage at both budgets for every dataset. C2 at1024/unvalidated secondary controls excluded; qualified-only LLMLingua never enrolled. No new methods.",
+  "excluded_unvalidated_confirmation_methods": [
+    [
+      "RAW_STRICT",
+      "BASE_FP16"
+    ],
+    [
+      "C2",
+      "BASE_FP16"
+    ],
+    [
+      "STRONG_SFR_RAG",
+      "BASE_FP16"
+    ],
+    [
+      "BM25_QWEN_REFERENCE",
+      "BASE_FP16"
+    ]
+  ],
+  "git_commit": "93992932e29252bcedbc56bda02e0c8ae3926001",
+  "identity": {
+    "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+    "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+    "extra": {},
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "packages": {
+      "numpy": "1.26.4",
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "source_files": {
+      "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+      "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+    }
+  },
+  "llmlingua_effective_spec": {
+    "checksum": "42c3e17e85e96bedcda414fae1259ae0daa9d651aafe67078ac5732951f43032",
+    "frozen_science_config_unchanged": true,
+    "id": "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank",
+    "included_in_confirmation": false,
+    "package_versions": {
+      "llmlingua": "0.2.2",
+      "nltk": "3.9.2",
+      "numpy": "1.26.4",
+      "tiktoken": "0.14.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "python": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/tools/llmlingua_env/bin/python",
+    "quality_evaluation_status": "NOT_RUN_BY_USER_DECISION",
+    "reason": null,
+    "revision": "5f0c82792b7ea14c6484e015b6a072009496b7f2",
+    "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--microsoft--llmlingua-2-bert-base-multilingual-cased-meetingbank/snapshots/5f0c82792b7ea14c6484e015b6a072009496b7f2",
+    "source": "https://github.com/microsoft/LLMLingua",
+    "status": "QUALIFIED",
+    "synthetic_budget_checks": [
+      {
+        "budget": 256,
+        "compressed_qwen_tokens": 250,
+        "raw_qwen_tokens": 2041,
+        "retry_factor": 0.8,
+        "seconds": 6.121563900000183
+      },
+      {
+        "budget": 1024,
+        "compressed_qwen_tokens": 875,
+        "raw_qwen_tokens": 2041,
+        "retry_factor": 0.8,
+        "seconds": 6.137272986001335
+      }
+    ],
+    "weight_sha256": "22b9ecde52fec5c97e8c54a293be768727df95a81c6c8dccb03f262a50c58324",
+    "worker_sha256": "3807f6bc50cee9f25205c6602f914ab6c815247b1f82239837a241c4f2063dea"
+  },
+  "method": "FIXED_SENTENCE",
+  "metrics": {
+    "accuracy_secondary": true,
+    "holm_scope": "all_datasets_budgets_prespecified_primary",
+    "p_value": "paired cluster label-swap randomization; two-sided; 10000 draws +1 correction",
+    "primary_metric": {
+      "HotpotQA": "f1",
+      "QASPER": "f1",
+      "SciFact": "macro_f1"
+    }
+  },
+  "optional_phase_decisions": {
+    "confirmation_untouched": true,
+    "decision": "USER_REQUEST",
+    "missing_results_are_not_zero": true,
+    "phases": {
+      "E": {
+        "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+        "status": "NOT_RUN_BY_USER_DECISION"
+      },
+      "F": {
+        "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+        "status": "NOT_RUN_BY_USER_DECISION"
+      },
+      "G": {
+        "reason": "Compute/runtime constraint; proceed to H without LLMLingua-2 or LoRA outcomes",
+        "status": "NOT_RUN_BY_USER_DECISION"
+      }
+    },
+    "protocol": "W12-QBGF-v3",
+    "registered_multiplicity_families_unchanged": true,
+    "science_config_unchanged": true
+  },
+  "parser_hash": "ade75ad9d2630c135ef6e12866a4d104fba54adfc947479f7dcf7c89f544b94c",
+  "phase": "VALIDATION_ONLY",
+  "prompt_source_hash": "ade75ad9d2630c135ef6e12866a4d104fba54adfc947479f7dcf7c89f544b94c",
+  "protocol": {
+    "allow_download": false,
+    "bootstrap_resamples": 10000,
+    "budgets": [
+      256,
+      1024
+    ],
+    "cache_root": "results/week12/cache/v3",
+    "candidate_width": 10,
+    "confirmation_counts": {
+      "HotpotQA": 200,
+      "QASPER": 100,
+      "SciFact": 50
+    },
+    "datasets": {
+      "HotpotQA": {
+        "corpus": "provided ten distractor paragraphs",
+        "path": "data/week11/hotpot_dev_distractor_v1.json",
+        "source": "https://hotpotqa.github.io/",
+        "split": "dev"
+      },
+      "QASPER": {
+        "corpus": "complete matching scientific paper",
+        "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+        "raw_path": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+        "split": "dev"
+      },
+      "SciFact": {
+        "corpus": "all corpus abstracts; never only cited/gold documents",
+        "corpus_path": "data/week11/scifact/corpus.jsonl",
+        "labels": [
+          "SUPPORT",
+          "REFUTE",
+          "NOT_ENOUGH_INFO"
+        ],
+        "path": "data/week11/scifact/claims_dev.jsonl",
+        "source": "https://github.com/allenai/scifact",
+        "split": "dev"
+      }
+    },
+    "generation": {
+      "do_sample": false,
+      "enable_thinking": false,
+      "max_context": 8192,
+      "max_new_tokens_qa": 128,
+      "max_new_tokens_verification": 16,
+      "precision": "float16",
+      "seed": 42
+    },
+    "help_epsilon": 0.01,
+    "hierarchy": {
+      "chunker": "exact-word-boundary-token-ceiling-v1",
+      "max_passage_tokens": 256,
+      "native_passages": "HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper passages",
+      "overlap": 0,
+      "propositions": "PROPOSITION_RULE_V1",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "tokenizer": "Qwen pinned revision"
+    },
+    "historical_config": "configs/week11/week11_base.yaml",
+    "labels": [
+      "SUPPORT",
+      "REFUTE",
+      "NOT_ENOUGH_INFO"
+    ],
+    "llmlingua": {
+      "allow_download": false,
+      "expected_weight_GiB": 2.5,
+      "id": "microsoft/llmlingua-2-xlm-roberta-large-meetingbank",
+      "revision": null
+    },
+    "lora": {
+      "alpha": 16,
+      "batch_size": 1,
+      "checkpoint_objective": "dataset-balanced validation answer NLL; minimize; ties earliest checkpoint",
+      "dataset_balanced": true,
+      "dropout": 0.05,
+      "epochs": 1,
+      "evidence_mode_sampling": "one deterministic mode-budget per source query; sha256(seed,dataset,query_id) modulo six",
+      "gradient_accumulation_steps": 16,
+      "learning_rate": 0.0002,
+      "load_best_model_at_end": true,
+      "max_length": 2048,
+      "mode": "qlora_nf4",
+      "modes": [
+        "RAW_SKIP",
+        "FIXED_SENTENCE",
+        "QBGF_FULL"
+      ],
+      "overwrite": false,
+      "r": 8,
+      "resume": true,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "minimum_qasper_confirm_papers": 20,
+    "minimum_qasper_unused_papers": 200,
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "output_root": "results/week12/qbgf/v3",
+    "readers": [
+      "Qwen"
+    ],
+    "sara": {
+      "canonical_k": 5,
+      "canonical_label": "SARA_CANONICAL_BM25_K5_N10",
+      "canonical_n": 10,
+      "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+      "historical_sfr_k": 6
+    },
+    "schema": "W12-QBGF-v3",
+    "secondary_budgets": [
+      512
+    ],
+    "seed": 42,
+    "selection_rule": {
+      "quality_margin_macro_f1": 0.01,
+      "quality_margin_qa": 0.003,
+      "rule": "Validation-only: retain simple fixed sentence policy unless candidate is feasible, noninferior within preregistered margin and Pareto improves tokens; if no clear support retain simple baseline. No confirmation outcomes."
+    },
+    "split_protocol": "TRAIN_VAL_CONFIRM_v2",
+    "statistics": {
+      "accuracy_secondary": true,
+      "holm_scope": "all_datasets_budgets_prespecified_primary",
+      "p_value": "paired cluster label-swap randomization; two-sided; 10000 draws +1 correction",
+      "primary_metric": {
+        "HotpotQA": "f1",
+        "QASPER": "f1",
+        "SciFact": "macro_f1"
+      }
+    },
+    "tau_p": 5,
+    "tau_s": 5,
+    "training_data_policy": "ALL_ELIGIBLE_TRAIN",
+    "training_queries_per_dataset": null
+  },
+  "rationale": "Retain the preregistered fixed-sentence fallback: QBGF does not establish noninferiority across all dataset/budget cells; mixed-granularity benefits are unproven. E/F/G were not run; retain no LoRA.",
+  "reader": "BASE_FP16",
+  "retain_lora": false,
+  "retriever": "SFR",
+  "review_source_hash": "ad1b8cee232f6c8fab52871de1ba127b6fc640dd1fc6a980d2bcd8b701ea12f3",
+  "selection_evidence": [
+    {
+      "budget": 256,
+      "ci_high": -0.0149080039062121,
+      "ci_low": -0.0409962046990345,
+      "dataset": "QASPER",
+      "family_size": 39,
+      "holm_adjusted_p": 0.0038996100389961,
+      "id": "QASPER:256:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 0.0050994900509949,
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "n_clusters": 281.0,
+      "n_queries": 1005.0,
+      "point": -0.02791475494574,
+      "raw_p": 9.999000099990002e-05,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    },
+    {
+      "budget": 1024,
+      "ci_high": 0.005007529469601,
+      "ci_low": -0.0124896055729107,
+      "dataset": "QASPER",
+      "family_size": 39,
+      "holm_adjusted_p": 1.0,
+      "id": "QASPER:1024:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 1.0,
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "n_clusters": 281.0,
+      "n_queries": 1005.0,
+      "point": -0.0037338418124157,
+      "raw_p": 0.4061593840615938,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    },
+    {
+      "budget": 256,
+      "ci_high": 0.0110127514977503,
+      "ci_low": -0.0035112234725012,
+      "dataset": "HotpotQA",
+      "family_size": 39,
+      "holm_adjusted_p": 1.0,
+      "id": "HotpotQA:256:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 1.0,
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "n_clusters": 7155.0,
+      "n_queries": 7155.0,
+      "point": 0.0038211226990249,
+      "raw_p": 0.2967703229677032,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    },
+    {
+      "budget": 1024,
+      "ci_high": 0.0135093484086112,
+      "ci_low": 0.0045436293637543,
+      "dataset": "HotpotQA",
+      "family_size": 39,
+      "holm_adjusted_p": 0.0173982601739826,
+      "id": "HotpotQA:1024:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 0.0221977802219778,
+      "left": "QBGF_FULL",
+      "metric": "f1",
+      "n_clusters": 7155.0,
+      "n_queries": 7155.0,
+      "point": 0.0090334825272583,
+      "raw_p": 0.0005999400059994,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    },
+    {
+      "budget": 256,
+      "ci_high": 0.0365423346348538,
+      "ci_low": -0.0877573036212714,
+      "dataset": "SciFact",
+      "family_size": 39,
+      "holm_adjusted_p": 1.0,
+      "id": "SciFact:256:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 1.0,
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "n_clusters": 157.0,
+      "n_queries": 177.0,
+      "point": -0.0250937315596875,
+      "raw_p": 0.4460553944605539,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    },
+    {
+      "budget": 1024,
+      "ci_high": 0.0504564907764143,
+      "ci_low": -0.0711427414383132,
+      "dataset": "SciFact",
+      "family_size": 39,
+      "holm_adjusted_p": 1.0,
+      "id": "SciFact:1024:QBGF_FULL-FIXED_SENTENCE",
+      "joint_family_size": 51,
+      "joint_holm_adjusted_p": 1.0,
+      "left": "QBGF_FULL",
+      "metric": "macro_f1",
+      "n_clusters": 157.0,
+      "n_queries": 177.0,
+      "point": -0.0099852384762073,
+      "raw_p": 0.7443255674432556,
+      "reader": "BASE_FP16",
+      "resamples": 10000.0,
+      "right": "FIXED_SENTENCE",
+      "right_reader": null,
+      "seed": 42.0,
+      "status": "COMPLETE",
+      "test": "two-sided paired cluster label-swap randomization; exchangeability under null"
+    }
+  ],
+  "split_hash": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117",
+  "timestamp": "2026-11-01T09:27:41.297477+00:00",
+  "tokenizer": {
+    "id": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+  }
+}

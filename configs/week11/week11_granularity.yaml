@@ -1,0 +1,20 @@
+hierarchy:
+  max_passage_tokens: 256
+  overlap: 0
+  tokenizer: Qwen pinned revision
+  chunker: exact-word-boundary-token-ceiling-v1
+  native_passages: HotpotQA paragraphs; SciFact abstracts; QASPER bounded full-paper
+    passages
+  sentence_splitter: academic-offset-rules-v1
+  propositions: PROPOSITION_RULE_V1
+hierarchical_strategies:
+- H0
+- H1
+- H2
+- H3
+- H4
+- H5
+hierarchical:
+  full_head_passages: 1
+  sentence_passages: 3
+  token_tail_fraction: 0.25

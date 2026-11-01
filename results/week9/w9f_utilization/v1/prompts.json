@@ -1,0 +1,38 @@
+{
+  "F0": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+      }
+    ],
+    "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+  },
+  "F1": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "The initial answer may already be correct. Review the additional source evidence. Preserve the original answer unless the evidence clearly requires a correction or addition. Make the smallest necessary change. Do not add unsupported information. Use only the supplied source evidence for any correction or addition. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+      }
+    ],
+    "prompt_hash": "e692aea57c2bb3c0e3d3b12cf862230f91ff3463ff0b32dd94a0ec75affff201"
+  },
+  "F2-A": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+      }
+    ],
+    "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+  },
+  "F2-B": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Answer the question using the supplied source evidence as the authoritative source. Use the initial answer as a starting point, not as an authority; it may be incomplete or wrong. Consider information missing from the draft, claims contradicted by the evidence, and supported draft content worth preserving. Add supported missing information, correct contradictions, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer; do not output these categories, reasoning, or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}"
+      }
+    ],
+    "prompt_hash": "3116b8b057cb448b38bf67a2ce4181fbb1c5ae09ca9c99e42baf2a6f79a7615d"
+  }
+}

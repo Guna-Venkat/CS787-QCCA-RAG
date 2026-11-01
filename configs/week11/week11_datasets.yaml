@@ -1,0 +1,21 @@
+datasets:
+  QASPER:
+    split: dev
+    path: /home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl
+    raw_path: /home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow
+    corpus: complete matching scientific paper
+  HotpotQA:
+    split: dev
+    path: data/week11/hotpot_dev_distractor_v1.json
+    corpus: provided ten distractor paragraphs
+    source: https://hotpotqa.github.io/
+  SciFact:
+    split: dev
+    path: data/week11/scifact/claims_dev.jsonl
+    corpus_path: data/week11/scifact/corpus.jsonl
+    corpus: all corpus abstracts; never only cited/gold documents
+    labels:
+    - SUPPORT
+    - REFUTE
+    - NOT_ENOUGH_INFO
+    source: https://github.com/allenai/scifact

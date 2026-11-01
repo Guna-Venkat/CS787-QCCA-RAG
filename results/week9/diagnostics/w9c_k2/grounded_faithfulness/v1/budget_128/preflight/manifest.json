@@ -1,0 +1,11 @@
+{
+  "schema": "grounded-e-v1",
+  "stage": "preflight",
+  "complete": true,
+  "full_fit": false,
+  "queries": 3,
+  "rows": 12,
+  "identity_hash": "40a1877452ffeaffec96d3b4fe1aacbf14fde45355d3684e00ac34aa6f5c5619",
+  "primary_policy_unchanged": "K_E=0",
+  "no_method_selected": true
+}

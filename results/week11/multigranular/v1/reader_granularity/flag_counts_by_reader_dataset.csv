@@ -1,0 +1,10 @@
+dataset,reader,empty_evidence_rows,generation_cap_rows,invalid_label_rows
+HotpotQA,Llama,2,0,0
+HotpotQA,Mistral,2,4,0
+HotpotQA,Qwen,2,0,0
+QASPER,Llama,144,12,0
+QASPER,Mistral,144,58,0
+QASPER,Qwen,144,0,0
+SciFact,Llama,162,649,1826
+SciFact,Mistral,162,264,1849
+SciFact,Qwen,162,0,0

@@ -1,0 +1,143 @@
+{
+  "config": {
+    "bootstrap_resamples": 10000,
+    "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+    "dataset": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+    "epsilon": 0.01,
+    "help_hurt_epsilon": 0.01,
+    "k_values": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "models": {
+      "Llama": {
+        "id": "meta-llama/Llama-3.1-8B-Instruct",
+        "required_for_r": false,
+        "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+      },
+      "MiniLM": {
+        "id": "sentence-transformers/all-MiniLM-L6-v2",
+        "required_for_r": true,
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "required_for_r": true,
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "required_for_r": false,
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "required_for_r": true,
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "output_root": "results/week10/root_cause/v1",
+    "policy_enabled": false,
+    "query_limit": null,
+    "raw_dataset": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+    "reader_panel": [
+      "Mistral",
+      "Qwen",
+      "Llama"
+    ],
+    "seed": 42,
+    "split": "dev",
+    "version": "v1"
+  },
+  "config_hash": "7c8e34c7aec11ae4fe010bf9827eab8c5d5a7aa9006c4130febb53ef045cd236",
+  "datasets": {
+    "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534"
+  },
+  "packages": {
+    "llama-index-core": "0.14.24",
+    "numpy": "1.26.4",
+    "sentence-transformers": "5.7.0",
+    "torch": "2.14.0",
+    "transformers": "4.57.6"
+  },
+  "sources": {
+    "Baselines/SARA-main/src/metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Baselines/SARA-main/src/metrics/metrics.py": "1fcd588acf11213b2d1288e904604180d523510ca7ae5188c997d99e14968f77",
+    "Baselines/SARA-main/src/metrics/metrics_conditional_perplexity.py": "75a0a5515129c794ffe8c394a99fb5e5ea2032600ce9a5c823a6251778c2e1c4",
+    "Baselines/SARA-main/src/metrics/metrics_confidence.py": "56f0ea034679185e7194932a5c206e45d5d2170a92714e1390ef4ba7c7b53dbc",
+    "Baselines/SARA-main/src/metrics/metrics_distance.py": "60feb8aec0f77b80fb01330b0201f5f1b4aa2fce6c02a0e159df859552a73e22",
+    "Baselines/SARA-main/src/metrics/metrics_instructrag.py": "9ea37c9a2824671ff86c645313fe091114262fd150b4a42a3bc162dee633a132",
+    "Baselines/SARA-main/src/model/__init__.py": "fdfc18ce06f958eb22c0b20ca717b54d3f8969b29f3d1bd4c8cb6e741818c31f",
+    "Baselines/SARA-main/src/model/loader.py": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+    "Baselines/SARA-main/src/model/prompt_builder.py": "dc0a4ef72f9e04f9ef8b2c2d452aba484bdd24194be620537529089e3ef23ef9",
+    "Baselines/SARA-main/src/model/retriever.py": "4f4bba3b61cf561838b184b8d3b76ec7ba4f250aa749d51e349022c9ca7c2b26",
+    "src/week10/__init__.py": "a0c6c308837c55019ee0a282fb8b94f0adb3e01efd889c8083c2aa466489e182",
+    "src/week10/root_cause/__init__.py": "e44f11798a11c71819ddb673986e6f426d5acabb4d6c4026eb5e8ed7012fb11e",
+    "src/week10/root_cause/analysis.py": "533dcb8c5200b159155136a407d274bccdb5cbcaa8289ab870ca6b7cd1f24878",
+    "src/week10/root_cause/data.py": "14ff0829cf29fc8f59869c5c9467bd8fab74df43c09f20db9c6421a07b61ac84",
+    "src/week10/root_cause/dataset_audit.py": "d6f1aba9f41d5098d1fde8aed3bb8f7d6e8ede94d8e4b78b8be9f6b9d3bbb0c2",
+    "src/week10/root_cause/encoding.py": "c73be6e8ec0adf3eb34e3b3272e0e2a14538793ae6be4c4b1c83b9ff83b6c42f",
+    "src/week10/root_cause/preflight.py": "0404b7d21da063fc8dfb0eac838090d3b447cf818f80647ef02eb2849f6e6361",
+    "src/week10/root_cause/protocol.py": "489f72b7fb2ec85c0c2daaf05765f227acd20dc4d8f13aca5852d070987044b3",
+    "src/week10/root_cause/report.py": "bb099b4663e8054828caa78ea880a8a104bfbae4e8246ed2e450dd6cc1b121ec",
+    "src/week10/root_cause/runner.py": "ff7cdb09e62c405048224cd461822eddc2f3bd68637868c1e67d6bc9daa0702e",
+    "src/week10/root_cause/runtime.py": "1abe4072138e145938ac72383a69415af090a68ca9191c0694cec8f657dd215b",
+    "src/week10/root_cause/smoke.py": "afd713f7d5eede569255c5c62bd6e871d63ea657a023f9113bedbca8362b51b6",
+    "src/week10/root_cause/storage.py": "64eab844936371ba55dde8745ea70aa86b80d22cc338b681c48720d769a37a33",
+    "src/week6/evaluation.py": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+    "src/week6/routing.py": "7bf448621c9d49d0a0a43ddba5a716e81e656b0ba08efa715beabe77f1ac2b9d",
+    "src/week9/backend.py": "02903e6ff27ceef0da809b76daa26f781a813fa9ba513e60964696c36b620e30",
+    "src/week9/data.py": "76ef011a27f1196d2aad4718c03d1ce3a27de7414915314ec1d44f475bce6ec2",
+    "src/week9/provenance.py": "b10a9cad02806c21dc4147fd047281b33867e35356035262b55084afdbb7e306",
+    "src/week9/retrieval.py": "d92f0322ca09240b83d1ed982acadbbcb7d9758abd562db309f2d51071a53fb6",
+    "src/week9/senttopk_e3/sentences.py": "9ff672d6ee70a51d9bcd274dd5a550590fcb1e61ca5750c866b1fb9b917636e1"
+  },
+  "weights": {
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/1_Pooling/config.json": "ea1a7cf5a5462e27cc161814b5b5ad3e30fe16f3d3e5b6f443525d06e19e62a0",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/config.json": "6a9fc3fa5c0a0d741bbab96346355de703891821b82a27d238d05b0ac867126f",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/config_sentence_transformers.json": "c2daab5beaed69ff90d3b8e6334fd44962f72a49c2d5f31de246d1bf908d6a8d",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/model-00001-of-00003.safetensors": "afbfcebcf9df8c0af538cd5b6f616bd1d7a9739eba4b81d871545b1b562d6b0a",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/model-00002-of-00003.safetensors": "841e0ce0c37d7e05c7cdce5ab9b614ee2b38a5f4f860c245e614970aff627d40",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/model-00003-of-00003.safetensors": "f5d5a7317a86d186c4febf39d7734736c14b4fface62bfc1d905678b197cfb3a",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/model.safetensors.index.json": "49cd10183a5735b1f3e9227600ca8d5596c26cb4e53537f25d3a39c81dbee170",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/modules.json": "8f4b264b80206c830bebbdcae377e137925650a433b689343a63bdc9b3145460",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/sentence_bert_config.json": "bb32879957e4e8ac77577968f85cbbb625bda26684c6fb49c9cf240d83b54870",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/special_tokens_map.json": "35e7e566342a030b1c035f811204838d135e2aa5bac84de2109b660862abdc90",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/tokenizer.json": "386301223a5f22111c12f2d93d44ecdeadcf80443c71e25071881e10c25cefa6",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/.cache/huggingface/hub/models--Salesforce--SFR-Embedding-Mistral/snapshots/33a60fe7b5e00b9414981280c571e8a4f9f42f1b/tokenizer_config.json": "66349eabf13ba871e41d17be5168d1871773ec2eba580172107e300879d7a6a7",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/config.json": "2e97da1b1d2b7e7669f0991c186904538c27d4ea56c4fc74e89215e2b2013922",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/generation_config.json": "104f69e9625993a0839aff79b17f7a0aa73b0954ef8f7e7665aa50b5ef1d4454",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00001-of-00003.safetensors": "63654d601820b88b1fa8b4a98df5714f700fbc5b3df2cc4ecbabdced35096d31",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00002-of-00003.safetensors": "a42716540ecb2385d371f2109835921ff535406cac8fe8ff28f2f0b5fc7895bd",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00003-of-00003.safetensors": "5f86e15cb3ed9078e30ae6e72445e109d0e337d9cde59b9aeea4ce8e44e54a5d",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model.safetensors.index.json": "6d32424091caba25230b09cbae985a5f9252ecce3a722b03b88df17ad05be459",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/special_tokens_map.json": "6fa06efa2785e450051989a6f8fb4416b10149ded485ddd3f127a40734f5cfd0",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.json": "11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json": "475361439e5c012de9dffdedc416a66a50f1a29f7aa80b375ba014fb13d6bb8a",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/chat_template.jinja": "796853172235ab3aaa4810013ddfe2eab481bda3306dad4f700c00d436eed596",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f"
+  }
+}

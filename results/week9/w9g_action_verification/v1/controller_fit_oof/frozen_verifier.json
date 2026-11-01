@@ -1,0 +1,33 @@
+{
+  "selected_model": "logistic",
+  "metrics": {
+    "model": "logistic",
+    "evaluation": "nested-paper-OOF",
+    "n_queries": 1746,
+    "f1": 0.3894432529533657,
+    "exact_match": 0.22852233676975944,
+    "mean_selected_action_delta": 0.0038120764555066005,
+    "help": 0.07445589919816724,
+    "hurt": 0.06242840778923253,
+    "acceptance_rate": 0.18384879725085912,
+    "false_accept_rate": 0.5950155763239875,
+    "harmful_accept_precision": 0.3395638629283489,
+    "missed_help_rate": 0.656084656084656,
+    "harm_rejection_rate": 0.7013698630136986,
+    "help_retention_rate": 0.3439153439153439,
+    "neutral_accept_rate": 0.08175473579262213,
+    "accept_on_help": 130,
+    "keep_on_help": 248,
+    "accept_on_hurt": 109,
+    "keep_on_hurt": 256,
+    "mean_candidate_revision_latency": 1.0227216440971054,
+    "mean_verifier_predict_seconds": 1.7124566390634623e-05,
+    "total_query_prompt_tokens": 2026.3127147766322,
+    "total_query_generated_tokens": 39.94902634593356,
+    "num_lm_calls": 2.0
+  },
+  "selected_on": "FIT nested paper OOF; selecting best model is post-selection, not held-out confirmation",
+  "protocol_hash": "51a6b494838fea9ca1cbb21e3c14e1638fa502df3e2ec542a7ca3a8905038591",
+  "action": "KEEP_D0 vs ACCEPT_THIS_F0",
+  "candidate_cost_already_paid": true
+}

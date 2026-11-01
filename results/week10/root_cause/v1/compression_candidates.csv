@@ -1,0 +1,7 @@
+method,role,status,budget,limitation
+FULL,same top10 textual evidence,implemented,natural,reader context cap
+SARA,k4 text +6 latents,implemented,natural,query-agnostic document encoding
+LEAD256,exact source query-agnostic control,implemented,256 token ceiling,not strong learned compressor
+QCS256,query-conditioned source-sentence selection,implemented surrogate,same256 ceiling,NOT SeleCom or latent query-conditioned compression
+SeleCom,faithful released pipeline,gated,paper p8 n2,attention port / custom load / tokenizer / peak smoke needed
+LLMLingua-2,strong textual alternative,candidate only,must preregister,not integrated; do not add redundant grid post-results

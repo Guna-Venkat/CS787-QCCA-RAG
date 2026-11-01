@@ -1,0 +1,19 @@
+models:
+  Mistral:
+    id: mistralai/Mistral-7B-Instruct-v0.2
+    revision: 63a8b081895390a26e140280378bc85ec8bce07a
+  MiniLM:
+    id: sentence-transformers/all-MiniLM-L6-v2
+    revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  SFR:
+    id: Salesforce/SFR-Embedding-Mistral
+    revision: 33a60fe7b5e00b9414981280c571e8a4f9f42f1b
+  Qwen:
+    id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+  Llama:
+    id: meta-llama/Llama-3.1-8B-Instruct
+    revision: 0e9e39f249a16976918f6564b8830bc894c89659
+passage_pooling_beta: 5.0
+density_gamma: 1.0
+hybrid_weight: 0.5

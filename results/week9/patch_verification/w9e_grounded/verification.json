@@ -1,0 +1,36 @@
+{
+  "branch": "gagan",
+  "historical_artifacts_unchanged": true,
+  "upstream_source_bundle_unchanged": true,
+  "original_d_freezes_rewritten": false,
+  "e_only_d_input_seal": true,
+  "preflight_queries": [
+    "2038",
+    "1583",
+    "567"
+  ],
+  "preflight_rows": 12,
+  "accepted_evidence_token_max": 110,
+  "fail_closed_rows": 8,
+  "model_calls": 13,
+  "peak_memory_gib": 14.209607601165771,
+  "all_accepted_spans_exact_source_substrings": true,
+  "all_failures_keep_original_draft_without_answer_call": true,
+  "quality_warnings": [
+    "E1-Q: fail-closed rate/value 0.667 exceeds preregistered warning 0.5.",
+    "E1-Q: proposed exact-span support below .8. Rejected evidence must never reach the generator.",
+    "E1-QD: malformed rate/value 0.667 exceeds preregistered warning 0.2.",
+    "E1-QD: fail-closed rate/value 1.000 exceeds preregistered warning 0.5.",
+    "E1-QD: proposed exact-span support below .8. Rejected evidence must never reach the generator.",
+    "E2: malformed rate/value 0.667 exceeds preregistered warning 0.2.",
+    "E2: fail-closed rate/value 1.000 exceeds preregistered warning 0.5.",
+    "E2: generation-cap hits rate/value 0.333 exceeds preregistered warning 0.2.",
+    "E2: proposed exact-span support below .8. Rejected evidence must never reach the generator."
+  ],
+  "full_gate_blocked_until_explicit_warning_acknowledgment": true,
+  "prompts_repaired_or_tuned": false,
+  "full_e_started": false,
+  "tests_passed": 103,
+  "tests_deselected": 1,
+  "deselection": "Existing all-notebooks safe-default test conflicts with user-enabled B/C/D flags; dedicated E disabled-path test passes"
+}

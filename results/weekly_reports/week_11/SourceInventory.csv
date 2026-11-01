@@ -1,0 +1,47 @@
+week,part,artifact,type,status,what_it_can_establish,sha256
+11,protocol/cross-check,configs/week11/week11_base.yaml,yaml,inspected,protocol/context only,daa86f7f45e52d054d30537e4f01bc95f28418a702434955c3d21a99d00524cc
+11,E,configs/week11/week11_compressors.yaml,yaml,inspected,protocol/context only,e0a93652953ad0dd4c0e935ca56c2c23468129101aef2cefa75da432c9e146fb
+11,protocol/cross-check,configs/week11/week11_datasets.yaml,yaml,inspected,protocol/context only,c73725febe11a718b2edf6cabdb4dce63189c651d099212854c9e4b53acca6bd
+11,protocol/cross-check,configs/week11/week11_granularity.yaml,yaml,inspected,protocol/context only,47692fa90263e21f1f3e0a823b121497b1c424184f5db0ebfbd4c82fac29d3a7
+11,protocol/cross-check,configs/week11/week11_readers.yaml,yaml,inspected,protocol/context only,63fc69e0739031d61ba4df711124fc98a5fd6db8d12db1ba48899ea92661467c
+11,protocol/cross-check,configs/week11/week11_retrievers.yaml,yaml,inspected,protocol/context only,9a054f008df608c78408c9f979d2ff20fc435dbd421c223e7dacad51dc38380d
+11,protocol/cross-check,configs/week11/week11_runs.yaml,yaml,inspected,protocol/context only,068681dba6fbc4809249d310b66466563c024f7e076767022af32c092489fd47
+11,protocol/cross-check,notebooks/week11/week11_0_setup_and_data.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,63ab32e4486f9513b3177b24e0b3cf84a35cba6a59b4f40173ae29b20f76f1a2
+11,protocol/cross-check,notebooks/week11/week11_A_retrieval_granularity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,6151dd91d6d3c03759043398f5bcc7bc0a0ff77a0571196e17ef280b47a4c501
+11,protocol/cross-check,notebooks/week11/week11_B_passage_representation.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,99635970bc0e5d2489b571e36be09277c396775d4b8c3d06450ee9ef530a027d
+11,protocol/cross-check,notebooks/week11/week11_C_granularity_budget.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,2423af590665ae307d30f93d1cc6d980bb0203ec31f1f293afdbb7b13650f6e8
+11,protocol/cross-check,notebooks/week11/week11_D_reader_granularity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,cc7674a1c76b8b8bc1c7a5b2f3e18f807d45901243ff79af2eeeb804cefa41f4
+11,protocol/cross-check,notebooks/week11/week11_E_compressor_reader.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,bdd6f514ec08999d9dbca6df1099845cdd4925c10fea6bbbebdc229839f0a072
+11,protocol/cross-check,notebooks/week11/week11_F_retriever_robustness.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,d56d425beffb128315816dee6650fe2ce92e3251c1de4903df1676e00fdc8f4c
+11,protocol/cross-check,notebooks/week11/week11_G_hierarchical_fidelity.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,4b206f207d95b65948513a42c6075e99766ea814a399be55c8bc154bd430009b
+11,protocol/cross-check,notebooks/week11/week11_H_oracle_and_interactions.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,e3339a2d4117f2ed9a5b0441581f0bc2e6b067756c8067f63896f65a60306ef7
+11,protocol/cross-check,notebooks/week11/week11_I_final_report.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,759e4883f885f2be02500e78cb3697554e54115980d90de6629625bc86a32267
+11,protocol/cross-check,notebooks/week11/week11_MASTER.ipynb,ipynb,inspected,Outcome or execution evidence; see per-part status,c224749aab41c23b94012691c5832c9077b4baa36b30e8a7f72da729eecc54fc
+11,E,results/week11/multigranular/v1/compressor_reader/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,2ac578c5809463e191667bcc65fd076edbeafc4f979f1aab7d49c669d8d9dcea
+11,E,results/week11/multigranular/v1/compressor_reader/condition_status_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,dbc1dccdb3cbbc5b32f38aa44b3e93e9a9d3a2cef34ff38d4dcfa4eee0a4b835
+11,E,results/week11/multigranular/v1/compressor_reader/status.json,json,inspected,Outcome or execution evidence; see per-part status,4830f0b939694cc165a735847bf3d52f8f6ae2d8feea303e0862ce7030dc600f
+11,I,results/week11/multigranular/v1/final_report/master_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,12a2e04c512221691ad70853e15077f070c7a4e08c5710d397eb90274b0ba6aa
+11,I,results/week11/multigranular/v1/final_report/portable_reader_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,393f8c6cf2204fd18d5f7bd06ff1f491f2c550cff7accf34d4b1f936530e3809
+11,I,results/week11/multigranular/v1/final_report/status.json,json,inspected,Outcome or execution evidence; see per-part status,b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26
+11,C,results/week11/multigranular/v1/granularity_budget/c_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,baf829885575aef77a6b0c2d516adf6d56faff1c2be0f474c98e7d8a050ed045
+11,C,results/week11/multigranular/v1/granularity_budget/status.json,json,inspected,Outcome or execution evidence; see per-part status,64247a0b0a905e4f81b8b74b4a1e78b9b5f3e1fd29522e0bf5f9e99abc55ab56
+11,G,results/week11/multigranular/v1/hierarchical/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,274e6fcca7ed54213c04799ce6b3645cb79ecbcabfc4bf6f1bcad68b642da5b6
+11,G,results/week11/multigranular/v1/hierarchical/condition_status_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,52524b910cb573754a6ee87809d7715ceabc2a2f54b79c0de74b2eaaac1eacd7
+11,G,results/week11/multigranular/v1/hierarchical/status.json,json,inspected,Outcome or execution evidence; see per-part status,fd494c4ac5d604f6ddcea74d1a346be84961696d4ba9e2551653bbca9d8ebdaa
+11,H,results/week11/multigranular/v1/oracle/oracle_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,5512263ce87ae6e06cfa37c8d24e0d72f97860ad4e606921453b0535102e4a8c
+11,H,results/week11/multigranular/v1/oracle/paired_interaction_contrasts_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,081434b91e029dfcbfa40072eab155b869fa700a5abf8a52cf88076414661102
+11,H,results/week11/multigranular/v1/oracle/status.json,json,inspected,Outcome or execution evidence; see per-part status,b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26
+11,B,results/week11/multigranular/v1/passage_representation/passage_representation_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,b018873d965555d89ae1331dcc4af7eefe566f855b81cdc3f288d025c0fcc45e
+11,B,results/week11/multigranular/v1/passage_representation/status.json,json,inspected,Outcome or execution evidence; see per-part status,a319f6b65588f02dca304d7f77c0c6f929ae4c3b933a5129ad15298a801f949d
+11,D,results/week11/multigranular/v1/reader_granularity/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,7386ff8055c7e26c143185b4f136e47217a8a5b6a92782f46c847f99f3b0e3b4
+11,D,results/week11/multigranular/v1/reader_granularity/label_compliance_diagnostic_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,116118e055c6ce87a096fd4891a0f217a98beffe9a80b5e18ca3e2f78021f1d1
+11,D,results/week11/multigranular/v1/reader_granularity/named_reader_granularity_interactions.csv,csv,inspected,Outcome or execution evidence; see per-part status,7ab408e1c3440e8c8bedca09ad5fa78bae40b721186a2c89122673a54e56c89a
+11,D,results/week11/multigranular/v1/reader_granularity/status.json,json,inspected,Outcome or execution evidence; see per-part status,b8fa21f6a5da304df60e466595c91daa7f48b2e64d44cd6a235f18ae7dbdb787
+11,A,results/week11/multigranular/v1/retrieval/retrieval_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,acd002e5447b0a8627cacd293fc454e3cadc1ecf92ad0fcd93a71e704581f0f2
+11,A,results/week11/multigranular/v1/retrieval/status.json,json,inspected,Outcome or execution evidence; see per-part status,13711a8e349bf5175ab5dc38208e4b07b197ef9759a3f19333d7479afa07fecb
+11,F,results/week11/multigranular/v1/retriever_robustness/audited_summary.csv,csv,inspected,Outcome or execution evidence; see per-part status,a6f4c26b5d4acafa455a7fda5310e4e141e926cdecdd23406212995f67eaac54
+11,F,results/week11/multigranular/v1/retriever_robustness/status.json,json,inspected,Outcome or execution evidence; see per-part status,7f826258f9cab1c14fb54a30d4ba0641f72883fe06cf9ad43d3a03b924ef6f6f
+11,0,results/week11/multigranular/v1/setup/dataset_summary_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,933089bf9749ea3fe707ef575f4feea8396c4bbf75dee24e8944760090206e6e
+11,0,results/week11/multigranular/v1/setup/model_registry_df.csv,csv,inspected,Outcome or execution evidence; see per-part status,cb882a37ce2f4be88ced758a06197f0fb5e0c356af3bd9dc983d374b29770bb8
+11,0,results/week11/multigranular/v1/setup/status.json,json,inspected,Outcome or execution evidence; see per-part status,436e9ba45cbefae347853329f8a67fa6e1ab1b5b247db02ecf545b0b67b95da2
+11,primary-figure supplement,results/week11/multigranular/v1/granularity_budget/figures/HotpotQA_task_score_quality_budget.png,png,inspected,Visualization only; exact values sourced from existing CSVs,c54fcaf4442fd9ea77dea9d6494ab1c49f152448846f0ceb689572bb84b0dad5

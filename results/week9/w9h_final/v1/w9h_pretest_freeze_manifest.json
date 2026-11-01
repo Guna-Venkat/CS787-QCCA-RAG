@@ -1,0 +1,1145 @@
+{
+  "blockers": [
+    "TEST materialization spec absent: retrieval/first-pass/SFR inputs and same-split baseline producers are not configured",
+    "Historical W8 runtime source absent from current tree: full_system.py, final_dev.py, final_reporting.py; preserve/recover the exact audited implementation for the TEST adapter"
+  ],
+  "branch": "gagan",
+  "dependency_hashes": {
+    "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/refs/main": "722750a0ea627271f3ee95718d97952c38418b0a6d44d868712cd673136e793e",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/config.json": "2e97da1b1d2b7e7669f0991c186904538c27d4ea56c4fc74e89215e2b2013922",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/generation_config.json": "104f69e9625993a0839aff79b17f7a0aa73b0954ef8f7e7665aa50b5ef1d4454",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00001-of-00003.safetensors": "63654d601820b88b1fa8b4a98df5714f700fbc5b3df2cc4ecbabdced35096d31",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00002-of-00003.safetensors": "a42716540ecb2385d371f2109835921ff535406cac8fe8ff28f2f0b5fc7895bd",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00003-of-00003.safetensors": "5f86e15cb3ed9078e30ae6e72445e109d0e337d9cde59b9aeea4ce8e44e54a5d",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model.safetensors.index.json": "6d32424091caba25230b09cbae985a5f9252ecce3a722b03b88df17ad05be459",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/special_tokens_map.json": "6fa06efa2785e450051989a6f8fb4416b10149ded485ddd3f127a40734f5cfd0",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.json": "11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json": "475361439e5c012de9dffdedc416a66a50f1a29f7aa80b375ba014fb13d6bb8a",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/refs/main": "d36d67e02523717e3871dbcce928f122ed24afbcd375ca81600d4474cb618134",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/chat_template.jinja": "796853172235ab3aaa4810013ddfe2eab481bda3306dad4f700c00d436eed596",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl": "f49122e54ef7ce47d0e882a85d1a58be11c0da68c7458d132038dd220caaddc7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/notebooks/sara_baseline_checkpoints.ipynb": "9cf6bf7eed106b2b84d665ee4eea2709cb628c090c554d56962c279002f213f2",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/configs/week9/w9h_final.json": "0297eb6d81159dc41b97ad3631199a66280de5d8dc85a100a47040768d241f41",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week2/raw/dev_fixed_k_matrix.jsonl": "cf41761b21027427ea9b620bfcfa9eac620648801e64aedd99e88f1ade713758",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/model_benchmark/policy_comparison.csv": "300170aff09ce67a8324ee8ece1d9f2352b29b4bfa649b2fdea54e55b7db9b70",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/qcca_v2/baseline_comparison.csv": "7eb801bb1e69486c032bad9cba15ca8c20b437be0a5a26480cf388c57321ff5b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/qcca_v2_diagnostic/policy_comparison.csv": "6a8b3f8680dcef5b3b78745bfa8a67a2fd5e77ae789121c0acd3405d8de8d9dd",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/qcca_v2_diagnostic/policy_pareto_points.csv": "e753d07be2733b360bc2536513ef26f2f219d4ce1e56f8b46e6b0a5941bb021d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week4/qcca_v2_final_validation/policy_pareto_points.csv": "c7ab7522b10a07b8e0ed099d54288f138cdcb081d31b5310075674c65d3b681e",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/content_allocator/w5b/splits/train_fit_manifest.csv": "1b7071a7198ab02a69757e0939569bf2f2b9ccbbb8b0a449c4b1d8d025ade1ef",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/train_response_surface/train_fixed_k_results.jsonl": "fc44306ec25e61fa30c73ebc6c1bef5fb53b80778f697d4dfc73813fed758c56",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week5/train_response_surface/train_retrieval.jsonl": "fc3566dbbdfe7b46e5a3727b70d86a3b6fca5931625dc25c279aa243656443c7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week7/w7b_semantic_budget/response_surface/dev_semantic_fixed_k_results.jsonl": "80acf4b4877e667596ffdf4c0e7b4bfd3ff34a4aa77b537a5314c37a5450240b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl": "2ee73dd961afc6cb432682ed087cd932a9ce44425b804be2e3f582fbe9bd7a4e",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/surfaces/promotion_surface_fit.jsonl": "1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8e_gate_inputs/canonical_diagnostics_fit.jsonl": "6e5c6b40df549deb42aef2c2245e84ee08102544c2f7f8bfd6e94b9e6a60de4c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8f_qcla/full/qcla_1_internal_val.jsonl": "61cfcc18668d52fb4eefc98b1c9f0009f837c90cfe04bc0ef97a7e19eae0a05a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/HC_LoRA_predictions.jsonl": "ed7c121dd26da0b3741c00610758d1be1c3b3a0376770338ccd7db11acd5c402",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/HC_LoRA_predictions.jsonl": "85cfd28a1a9a7469f5cd8d681b333503007288dbc29edebe8c2979fede809f11",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/OW_LoRA_predictions.jsonl": "19b17d97dde11882b8b781dbec2ffc9f3c335dcd0aa1539b19b411ab0fdbd552",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/original_SARA_predictions.jsonl": "743ff032f88badf0bf11dae02ad49233142bfb67718eaf1d18333085d639c5c0",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/uniform_SFT_predictions.jsonl": "13638d9fcebec5a67523324c0db017f09ee4f8abcfa92e217d29223a9e6bac2b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/HC_LoRA_predictions.jsonl": "e46016f21afc28172f9a6e967af5e0310a062ae52b0a204de565caff256520bc",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/OW_LoRA_predictions.jsonl": "25dd923e1014a914edca402f93ea56abe2523a1e63d6c818ce3f2cf009370d6a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/original_SARA_predictions.jsonl": "d2e7a000d072a975214d6534b7985a822d7c891927041ff7bb03118e53568fde",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/uniform_SFT_predictions.jsonl": "086616d3487d98af4af692f4906378411b19ee5fcc3a13d7d06c54ed932a8d77",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/baselines/w8_import_manifest.json": "4f4b0f5b7854a6945d2fa51e35657e17b264498878af497a65bbacb12c3aae3b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_manifest.json": "f068c67761c9911d6ba860f4aa19c3043e3c8b87eec0d80a6e51f5272af7ceed",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.identity.json": "fd478934d71d29aca26cf655c3372fa8be76632e5904d4375bf65b52f79e902c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl": "a8bb0f2563a55416168f1f1c655d025beaadd274edae59ea8906cd346a2784c0",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9a_frozen_config.json": "24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9b_frozen_config.json": "326d805dd8acb343c822b61295568bac86385711b7b89c6d7b1d4197eac6cab4",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/frozen/w9c_frozen_config.json": "58a1cbbac2c7069721ba31daf97c47dc863527c41c26f93b904d1f644fb1a0c4",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/REPORT.md": "081c23b572374858b2a3fe834d71d1827fa8e2127f88a677348e32052bc4ad25",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/answer_and_cost_summary.csv": "eb8cabeae05d8da1cd108731075841fe5b64ace5828e501f39a24955086887b3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_examples.json": "4a268a9ac456ed58b74dade2c915f45c068d051dac549a66f52693fc1717016d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_objects.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_objects.jsonl": "82c3ac35b8c0abac71eed29fbc791430624977b1f3d0002a4ee00679a1e707a6",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/evidence_quality.csv": "b019bd77129afad94ed5f996d4508fccb97205920f5484ee426913ac28b6d68c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/grounded_e_results.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/grounded_e_results.jsonl": "bd1374287b6e163b94bb346a1be9fd94a082597deaea12ff5f19b579dcc1f30e",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/lm_calls.identity.json": "73537565b6f023a8ff49b47a2cc6a72603747449c6e12b10e4423cdfad4e19b3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/lm_calls.jsonl": "6062dd3a9b4220c3fcba312c6fe0b6a19274cc7bbbabf0bba2ba0b12bd9590d9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/manifest.json": "5d822518582f763999ede1c84a9faf359e85acb7b30ea0672a946e69f753b66e",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/fit/paired_paper_bootstrap.json": "bb60019c22dc289f02d9bf067f2cd7e9bbcd372f78d08bfac7fb3a4f969d9f49",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/REPORT.md": "2923d4f61b0ff7c08c4d10be6a5162c16d68c2bcc11f42196dde90947f4c23a8",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/answer_and_cost_summary.csv": "bdf54d47fd6d13f28fd894868ec0be62337edce1eb27dfd7cb2f9a9500d8c6ef",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_examples.json": "592d9e00188cb21ae0254768ce8860f0d9d9fac90dff757a5273a30ea110dcd3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_objects.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_objects.jsonl": "2ba2234b6ff746706147c1058f5929e9ed5a6206a5cdf5fc554de9be258bc280",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/evidence_quality.csv": "b34abf02697e2aa4b89a9163c838789cb9d0c59917a40f14c987f74f3b2ea767",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/grounded_e_results.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/grounded_e_results.jsonl": "d7831ee58bcbd1560bed4b06dc5be28a96a8b073b6670dc6721e28e0ea46f835",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/lm_calls.identity.json": "f603400b92b8f6c0120b4284120aee7c904a4de13b9689b251eaaa942e6b3683",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/lm_calls.jsonl": "51073781ff2c16208b819b39feb55955e7fc3b69882e54abc9619eecca3cfedf",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/manifest.json": "9f7fe0946ed81566af50187a5ffb9828fd647e9319bf9cc297cff2fb11ab1d93",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/preflight/preflight_gate.json": "e2bd14b660f15a88e90a95ae1dca20cebeca6d21bf9b2d5a55751d6feb51653f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/d_input_freeze.json": "4c10028b468c8432916c5f9920cc72a71fcac83e293dc94467fb4e553dd9a534",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/grounded_e_identity.json": "2383b6aa1c7aceec69e38b44d95fc0dfaf652fa2715ed4f03a01b7f078b3e31c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1/budget_128/protocol/prompt_templates.json": "a9eba09f0273e8e4b9f17f7baf57dbfb39ddaf9fac309482e5f2ff080710fb45",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/frozen/w9a_frozen_config.json": "24ece1cdfadb33762ac19f3b04791be21c60c3790d1872848f81653ca8210142",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/frozen/w9b_frozen_config.json": "3a850a087d3b6232ef29d45629a3160ec7cb1ff64967feb4a5587a185172dd24",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/REPORT.md": "5266e4802f517e5ad25f31c59bfdcb4463db088bb7bfba347f7ce2583ec8ceff",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/bootstrap.csv": "b16e0a60630f73bf186cc1dfb16b585e37ce22f050e38a36b5898f6d3333ac1f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/bootstrap.json": "33a735ce1a9e48b9fc168d751e9aa78464ed5d6472d8fced3179d84c645a86b5",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/dynamic_go_no_go.json": "412c4ba10d3e04ca581db879f9dc1be35d2f82f9cb54a03fe0ba80a8660e2856",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/embedding_costs.json": "e6f17c8d1de8c4f23b2f1fa1b0a9797ee14d32156b0fd8d6a66edb69bfde46e1",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/full_action_oracle_choices.csv": "917b57a834df8e0e6748d967d6117981c4850e59a05a1bd6b8ef709ed86a5d1a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/full_action_oracle_costs.csv": "b5994a4f0ca1cf334a1b2f68745320e6cb6dd1609297c16e1d88a7a46e644272",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/intervention_only_oracle_choices.csv": "0facba795bf3d4323cfbba297f825f91a6edef82bf71d8c24689f40fd4b69f0d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/intervention_only_oracle_costs.csv": "71f697cc9c16f42c5ff884604356bd27a3c3f3f65b078180306feee92e4f35d7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/lm_calls.identity.json": "7abc24668f01d0a7e22246bc8727b6d6316402cf4973c98e8933c50af26c9faf",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/lm_calls.jsonl": "7fa4e0446daf4af408d1d982bedcbeb50b9c26a692ea46f4b7a2fd533071e7ef",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/local_window_intervention_only_oracle_choices.csv": "fde3c9bdbc2f256b1f0af7cbf40e07ea9d554f37fd822268d2a53beab23729ca",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/local_window_intervention_only_oracle_costs.csv": "13bcca8681252a8f00b47c75fd3a9b76736fac81ea26186352ede38b298e5312",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/manifest.json": "ff49cca0a771131f53ce6005f665c473d14f711a804e337fb58a28ea62fe599a",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/oracle_distribution.csv": "0aca263870ab217172d6c5c5bc908abd049b752dab2b3764481a1d687601d5d1",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/oracle_summary.json": "e9ce553f045ec9b7496126aaba2ad1cb3340749bae6e7192c2acc60b6254639b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/results.identity.json": "7abc24668f01d0a7e22246bc8727b6d6316402cf4973c98e8933c50af26c9faf",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/results.jsonl": "bdd3d77d43688f7038945775c7c264b04acce7ab7b132adb475826663da2f680",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/fit/summary.csv": "ceb81fc547e4326a4db5565258707f66f6a1ef2b5c8688f55662a21429f9764d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/frozen_e3_senttopk.json": "cad8cc70070cdb7f4a339f6822c92c50697b6e9277e5666e2f38947d546b1a7f",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/protocol.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/inventories.identity.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/inventories.jsonl": "5c4045984065b63523102f9e21c9c95771e12cfa4ccfceefb3f82c46a4eea7d9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/query_embeddings.identity.json": "43ce51684f08a8f3b0ad90939ca500c1cce5d44bdf4c41f4a8d6ba9e791140b5",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/query_embeddings.sqlite3": "b4948a2746f880da32598c86410099d9cf63e080489ce5e957ea803b6fefac05",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/scores.identity.json": "7d9602b8c01e027ff68a30c226d9f4d3ec76857b0dcd36a398b0eccd3693f3fe",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/scores.jsonl": "6848cc780eee552e800425950bbb32f00b13ba5297a7ff6ca62b6143003b7686",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/sentence_embeddings.identity.json": "43ce51684f08a8f3b0ad90939ca500c1cce5d44bdf4c41f4a8d6ba9e791140b5",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/sentence_cache/sentence_embeddings.sqlite3": "e412a69151c17aff5db35088a54015789cb5a6b3623862dd68787300067f5f39",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/REPORT.md": "cf20bf669ac2ca2ec91786e1ccf64a0a6deda8116a004ded2f51fbec3cf8c717",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/embedding_costs.json": "be215fd9f8fdc2b2c351702208f88151c96d436871c5cc3f55bc4a4475a857a6",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/lm_calls.identity.json": "5e3e64cc21df7c1d87a1d8d8730f48117cfdbebfcab3a5690159058cbee10739",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/lm_calls.jsonl": "4724a793441549cb1d57286873acf015f9d796b10990f9220ee66b7b68258434",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/manifest.json": "0ed258c0f8a91f5b3daf77c20a765dfbab7d564c724a48b1363858c83a6bc8f6",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/results.identity.json": "5e3e64cc21df7c1d87a1d8d8730f48117cfdbebfcab3a5690159058cbee10739",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/results.jsonl": "0d2a92bf0fc9e97ac9b2ec9316f2e9e361c6fc552d9bb6ffa71e84c16e812b15",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/smoke/summary.csv": "fded3f9f18aa12eed8b49bfaf66ec05553a1c234c095bc3b1825193e99000d32",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9e3_senttopk/v1/source_config_prompt_model_hashes.json": "914791e4d74d3fef5ba8e711a465edea5f341f27ec1e1cdfc1c3cf5e8e290c6c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/fit/bootstrap.csv": "fd9489e23bd3bf507046c533c2c3b5bd4b03b34e77370c5aead23012d030469b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/fit/results.jsonl": "cb30209fd3993af909153982b774e4f5849da029d690010ce6dbe07bf695a536",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/fit/summary.csv": "4f875eecc5f8fedf35199253a43ba386309558b9b3357e0e3fd0ae07fa227b5d",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/frozen_w9f_f2.json": "2ae14b0a3d8753396aafe1df21619213eb60db61e81083b46605a72f2b5dd7e7",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/frozen_w9f_intervention.json": "2056dd4b9669a48c27b03e1b688a901ac28284164d045fdc66bc8d9b192e9c86",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/prompts.json": "e806c073bd11a3945a39e07c05b30105883afa9b3388a84f655f2edbe3ca2b4c",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9f_utilization/v1/protocol.json": "3adfb6fd01be23ef69e12393256c25056d688075b3aa27598a314b6cb46924d3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/feature_schema.json": "41d8ba55a07c49b6a0f753c0d6bf2eb596d290f4e1ae5a72c6a1df4cf204e56b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/fitted_preprocessing.joblib": "c7a4afd4870c5f1a8c72c138b9f3f967bcd3a7248b156d231b15ec4ba5ae3b59",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/logistic_model.joblib": "798ac0c972e79e3df9d70cd87e3cf128c139c854ec9862ce25b187ce66be751b",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/logistic_pipeline.joblib": "a600e090daa90f297fde08af4d56047e6a8893e7a61ff428c3084d0051d2b819",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/threshold.json": "9f8b663c54ac9e19da2f519db2ca6147e1770bad14f27f2d76e485a49751b953",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/training_manifest.json": "e26c00e32a967c557c367a6bcc6a0ee6a4f085693c050e4c89fb863e69fc7279",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/training_paper_ids.json": "3b1327b3ed0df25d34c3451465075113ac36bad28428b6076590fe6ae7e67458",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9g_action_verification/v1/final_fit/training_query_ids.json": "ab3f9dee0edefe28015be1c0184b68bf5c6ce9b0f8decfd8fc54a7cd3188c3ce",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v1/baseline_registry.json": "ac7f5df8bc1ef680ce5d14c3c830f060beb284845f7d268604cec64d853cbcc0",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v1/compatibility_matrix.csv": "82cfe16cb80312352932f2221db3ef31a9161447b76ca6808963af57afe98eea",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week9/w9h_final/v1/protocol.json": "7049ee735a40ccbba1b7baed451e7385a7277fbb678be7629d773256d9570e32",
+    "Baselines/SARA-main/src/const.py": "b79b7443f1e229ed6d51e79f6166ab8530816f4f5e5077456572e8801e69153f",
+    "Baselines/SARA-main/src/model/SFR/__init__.py": "e442a89e487037bd45e20bf2e6a93375a6530d7c839083c8fb6b6221e00015f8",
+    "Baselines/SARA-main/src/model/SFR/modeling_sfr.py": "bd0d3098b5184cc3965258c9c7a0830faa0205372c2520d2754478fd1f5eaf6b",
+    "Baselines/SARA-main/src/model/__init__.py": "fdfc18ce06f958eb22c0b20ca717b54d3f8969b29f3d1bd4c8cb6e741818c31f",
+    "Baselines/SARA-main/src/model/loader.py": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+    "Baselines/SARA-main/src/model/prompt_builder.py": "dc0a4ef72f9e04f9ef8b2c2d452aba484bdd24194be620537529089e3ef23ef9",
+    "Baselines/SARA-main/src/model/retriever.py": "4f4bba3b61cf561838b184b8d3b76ec7ba4f250aa749d51e349022c9ca7c2b26",
+    "Baselines/SARA-main/src/model/xMistral/__init__.py": "066d84eb2f16e1ae2c5d2fc2e69f60e03db5573c4616dc987d2ab57f0d9bcef4",
+    "Baselines/SARA-main/src/model/xMistral/modeling_xmistral.py": "85aabecd09eb2aef670c17b47f218a99f3da006a90074441fe63ebaf16f15604",
+    "results/week8/w8c_utility/selected_neural.pt": "8b1e4c8557287f9e98c5c020d87a9b8ca09ee45ffa42955e26633e7a82fddbd3",
+    "results/week8/w8c_utility/w8c_frozen_selector_config.json": "093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280",
+    "results/week8/w8e_controller/b0_gw_gate.joblib": "f0d0f711a488f8b657b33ec31c2aa0341ffa3bcaf7b977a0aeca04aea5f0b562",
+    "results/week8/w8e_controller/frozen_controller.json": "d509c89782b79981336a6a98b2ca61695541f19ea732b9b8ba75b27a5cf7feb0",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/HC_LoRA_predictions.jsonl": "ed7c121dd26da0b3741c00610758d1be1c3b3a0376770338ccd7db11acd5c402",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/OW_LoRA_predictions.jsonl": "ccb950340df23237bb6e3d379b3a241942ab71c26e587217284d7590dc856ad0",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/original_SARA_predictions.jsonl": "5dd29ebd7efe261911121c85e4ea8e465c6c7ed16076d7e10b5303a6beafec0e",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/protocol_frozen_before_validation.json": "28d04308e9418e48c63658f0e3464004aeb98d5cbe092b52fe3d73d86ca53450",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/provenance.json": "616ecf975ea99f5eae2ef467b5015b29caedb48607ffc4c2317149ca513f7719",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/summary.json": "459196ec19745a30e8646e09a0d89f93d67996bfa815f932c93f82cfa162e859",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8g_lora/full/uniform_SFT_predictions.jsonl": "df78bd373d21825ce27bbb208d29cde1d59b9e1f092ce5f96bdcdbbc6e19456a",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/HC_LoRA_predictions.jsonl": "85cfd28a1a9a7469f5cd8d681b333503007288dbc29edebe8c2979fede809f11",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/OW_LoRA_predictions.jsonl": "19b17d97dde11882b8b781dbec2ffc9f3c335dcd0aa1539b19b411ab0fdbd552",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/original_SARA_predictions.jsonl": "743ff032f88badf0bf11dae02ad49233142bfb67718eaf1d18333085d639c5c0",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/protocol_frozen_before_evaluation.json": "ff56311ab90bddada0deb09b6e390266589c318523a408997db22f5907e30a4f",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/provenance.json": "cdb3438eafa212fb92d9b1c1fbd1f0c06442adbc93574f88ce1d235072a21a5d",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/summary.json": "be7bc614572289deb9dd02f9837a79e7a1286a019783d1728d30e43b49e29126",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8h_full_system/full/uniform_SFT_predictions.jsonl": "13638d9fcebec5a67523324c0db017f09ee4f8abcfa92e217d29223a9e6bac2b",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/HC_LoRA_predictions.jsonl": "e46016f21afc28172f9a6e967af5e0310a062ae52b0a204de565caff256520bc",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/OW_LoRA_predictions.jsonl": "25dd923e1014a914edca402f93ea56abe2523a1e63d6c818ce3f2cf009370d6a",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/original_SARA_predictions.jsonl": "d2e7a000d072a975214d6534b7985a822d7c891927041ff7bb03118e53568fde",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/protocol_frozen_before_evaluation.json": "2b1911c6f617885adb5dc26c8313a5b5f986728c06b25aae3f89d9929b5be4a8",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/provenance.json": "69e781ce950ddf0d8788d7085632ee7c1d0ee34e153fe9493ba35c420376b3eb",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/summary.json": "0b13b512ed075407ab84cc7e4b6cb9027e7fd4a8e7875848e65457dac91d2d7f",
+    "results/week9/baselines/imported_w8/fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d/results/week8/w8j_final_dev/full/uniform_SFT_predictions.jsonl": "086616d3487d98af4af692f4906378411b19ee5fcc3a13d7d06c54ed932a8d77",
+    "src/week6/evaluation.py": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+    "src/week7/w7e/prompt_builder.py": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+    "src/week8/semantic.py": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+    "src/week9/__init__.py": "8ada5b08d8bea282bd03ebad194dd8cc16c9e15203e782a71e0341569fca4c60",
+    "src/week9/action_verification_g/__init__.py": "84c9b03d3c26b1a1f48f261d28d8f7c206b78b1c8bf8967316451ea2736b92d9",
+    "src/week9/action_verification_g/controller.py": "7ea05ac75f1db64b3d2ae2a7d86f3bab20436d6b83eb6a727f901066bd8ce714",
+    "src/week9/action_verification_g/features.py": "d8c8617f6bb8c85b1472477d1bc0513fbc46235fe617f1e44d40385df64b40e0",
+    "src/week9/action_verification_g/preflight.py": "0b8cdd607c9033c130f7dcf5539781f774e0290134990048374f8c3b469e04cc",
+    "src/week9/action_verification_g/protocol.py": "7cdecb7d4cc4ceb56bc58f4e409a3fa3d2f73ce3cc630bd8931cdf6d07052c3e",
+    "src/week9/action_verification_g/runner.py": "d52a0d85e88ca34f823ca838581989c816fde3af22f6c418ff600cdd692519b4",
+    "src/week9/action_verification_g_audit/__init__.py": "84eafed676ebe383775d296baae38815fb230b0703188943527f9462ac1df02c",
+    "src/week9/action_verification_g_audit/audit.py": "40fcb3cdd2dab9ce8b12f1d8466b1d00ef21edc03cc6c73be8e43b903009b619",
+    "src/week9/action_verification_g_audit/final_fit.py": "9127191de9e17333abf922ee92e342837c268f45cdecf5add76ae355d4657863",
+    "src/week9/action_verification_g_audit/report.py": "841fa06543a48e28abe24cdcd136c7e8cd0870632a3f1266ef3b4ddcd45880f7",
+    "src/week9/action_verification_g_audit/trace.py": "beb83c050a545fd2275b5e3fdb6a4c5820b7498e3b3bbe10a21f6c8f42109302",
+    "src/week9/adaptive_ke.py": "456395db91966fd3fd70ee514e5f8930148df98e74594c6c7cce5c83852ee318",
+    "src/week9/backend.py": "02903e6ff27ceef0da809b76daa26f781a813fa9ba513e60964696c36b620e30",
+    "src/week9/baseline_registry.py": "6513f19a94a3a949b819a275ce459985def5f64bc5d03a38ac30b2e305ee39a2",
+    "src/week9/blueprints.py": "ee47e9e96f7da3fe950f40489b2fd1c7163e11f0408b2f5adeffe81f29c72aac",
+    "src/week9/caching.py": "6d69fc8ed1e70f6357a0d7a9de2df0716c15b67074f975284fff2fa4614c90fb",
+    "src/week9/chunking.py": "175dabb565f62c6523c5ebfe354a0a85b740639587fd60fc39b38ab1586533e4",
+    "src/week9/config.py": "5867d4c7c53a41d626b87fb83538e314fcc8d250e04bcb113494096556437193",
+    "src/week9/cost_accounting.py": "a51961080391b09302f195aa54d49e3f9d75a7028bca6fafb387e6cd7294d7de",
+    "src/week9/data.py": "76ef011a27f1196d2aad4718c03d1ce3a27de7414915314ec1d44f475bce6ec2",
+    "src/week9/evaluation.py": "609018a7671ac987fa0cddc76f67e5dc59adb218aac5a6deab4a81fbe0930633",
+    "src/week9/evidence_alignment.py": "1c89c7c3fbe20c9d0c5ce252c5ee46bcdded7381774acd77eb2d6eb45b9cef2d",
+    "src/week9/extraction.py": "ef2d8226483cee73bf6d8a7c2e58312773d3065facb536e3622106c2533e4470",
+    "src/week9/faithfulness.py": "7c5a21895276fdaaab87d00fb839bfc08d6551a7db6ef1b31c8da6ee6bfebda4",
+    "src/week9/final_h/__init__.py": "041fa7c0dc2db0bba9cc124d7af6bf7aa14f42992603faae17f1af34f373ec00",
+    "src/week9/final_h/analysis.py": "c041558507b42dbc9f332c80a53333fba24dbb3954f234591d472407ce1f1b91",
+    "src/week9/final_h/audit.py": "4f1318a27a393df6629afd0f93fc1a6408570ca4d9c221156a91ad16c484e8ca",
+    "src/week9/final_h/protocol.py": "f98440b85007cf9d5331d9cf43658e6b771001cb94bdcdb7ee61f280e4c9d8ba",
+    "src/week9/final_h/registry.py": "1d12a646c268fdb6771cc483f53e1ea5c377860bc2baa812af9993bed61408ee",
+    "src/week9/final_h/runner.py": "38f24a6bc27233fb4d217dec8572ec7108ffcb9e1f70a42cf55ea5b653827951",
+    "src/week9/final_h/runtime.py": "59b3193e0532c7b2f16e2cb6d4e683ed673468fa5ef2a2d1950611b1c0153fda",
+    "src/week9/ke_surface.py": "cd3ca805b5c547b6fa3cee9e4cdfe27e046832a06481e1ba0bf1ac5e467537ea",
+    "src/week9/manifests.py": "2321081aa099b032783cab099460bd3302ab368b92ecb040d194dc67bfbfb63f",
+    "src/week9/model_preflight.py": "d7fab343485aaf019b5e1543cb947604bf5a5114ea71c5c02d1f5d605212b46f",
+    "src/week9/model_registry.py": "a8d16f590dfd85f722ff113b485f217b9188fdcd75b5107a6c350a4aff2f9067",
+    "src/week9/model_runtime.py": "e8b20983650177ef5cfd33fba8f9cc6a29659c7067e82daa4e18c3a36f67d872",
+    "src/week9/provenance.py": "b10a9cad02806c21dc4147fd047281b33867e35356035262b55084afdbb7e306",
+    "src/week9/retrieval.py": "d92f0322ca09240b83d1ed982acadbbcb7d9758abd562db309f2d51071a53fb6",
+    "src/week9/retrieval_cache.py": "fe4d057dd3f1c7d5bab17fcc583f5930bfe855cabf8d44e3fe279986022d8198",
+    "src/week9/revision.py": "ab2452491677bf3ee09438fe0c970bc21c59ac791c5938301f998c077f5ae77c",
+    "src/week9/runner.py": "c4028303f990e0bea38c9392de3669b75a50438e5ab25937038e4cb1e320387e",
+    "src/week9/sane_adapter.py": "1c72b7ec59188cdde2aaf8b1a086e9fe8ffffc18320c360e1f417ecf744d194b",
+    "src/week9/selection.py": "f5a4d41add0185e1870c8002f2f313a7156a49d2902bb651868595d2b2e858c0",
+    "src/week9/semantic_chunking.py": "4a46e734b2da87c49d0f77c174c1412bf29118bead4d79d6480662f781d7eefe",
+    "src/week9/senttopk_e3/__init__.py": "0df30f2f685d75edd396a960762cd8b30f7b62939a03ebdf9fcbf1b784f599ef",
+    "src/week9/senttopk_e3/analysis.py": "6bab892b9cf45079b71f7edcd987fe77e920727118dfa438bf69cc14db51bc2f",
+    "src/week9/senttopk_e3/embeddings.py": "3485d5ab371f885caf4367070cdd3ceb8937c4773622b1b1f368ee35d9d2b6b7",
+    "src/week9/senttopk_e3/protocol.py": "4431c59f93bfeecdddc4c822629a379ec26bffa537155924b87ab8f04625b7c5",
+    "src/week9/senttopk_e3/runner.py": "822ca0047f25802e4ae0461cda810d763253e1c7f73b187bc53d9ccb8d85d344",
+    "src/week9/senttopk_e3/sentences.py": "9ff672d6ee70a51d9bcd274dd5a550590fcb1e61ca5750c866b1fb9b917636e1",
+    "src/week9/text_model_roles.py": "ce765cdceacc59ff3fe1526ab2fdb1c1588529070f13ac569a77402243f05ed5",
+    "src/week9/utilization_f/__init__.py": "a1525c7f0e4c2e9ed0c1100f76bf8dfc0236d271338af6090abc9706e0bd43de",
+    "src/week9/utilization_f/analysis.py": "b4fe72011333cd4cb5fa0549c312e02e1b4e3da05c260c21e1351feddc90c3b8",
+    "src/week9/utilization_f/prompts.py": "a28210fa5e1b6b4ad51ba59da2c071e0b7b2b1d424115ad65dae674c85543feb",
+    "src/week9/utilization_f/protocol.py": "d8309dd4dbe8145d9af57c95cbb40b6a2128c4a0b08f40bb8e9b28c607dea011",
+    "src/week9/utilization_f/runner.py": "d99105979f35566f8a5730dba1261c9c16251406e0ba7b064f067ca67149825f"
+  },
+  "encoder": {
+    "file_hashes": {
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+      "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "normalization": "LocalEncoder nonoverlapping token-window mean, then float64 L2 normalization, floor 1e-12",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "text_preprocessing": "exact canonical string; no truncation, no draft"
+  },
+  "final_confirmation_started": false,
+  "git_commit": "424c887435d0fec205f02067a951658ee2e2f69b",
+  "h0_completed": true,
+  "h0_passed": false,
+  "manifest_digest": "d8773707fe98c8d514b6174124ba69dbd4941e74d3a43b363a8292e20c2f6083",
+  "method": {
+    "coarse_evidence_k": 2,
+    "coarse_selector": "DraftSemantic",
+    "cost_definitions": {
+      "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+      "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+      "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+      "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+      "generated": "Sum of query-time generated tokens",
+      "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+    },
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 128
+    },
+    "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+    "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+    "no_retroactive_promotion": true,
+    "primary": "E3-k3 + F0",
+    "primary_system": "W9-PRIMARY",
+    "prompts": {
+      "F0": {
+        "messages": [
+          {
+            "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+            "role": "user"
+          }
+        ],
+        "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+      },
+      "F2-A": {
+        "messages": [
+          {
+            "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+            "role": "user"
+          }
+        ],
+        "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+      }
+    },
+    "raw_fixed_policy_remains": "K_E=0",
+    "retrieval": {
+      "representation": "FIXED-5",
+      "retriever": "SEMANTIC",
+      "width": 20
+    },
+    "safe": "E3-k3 + F2-A",
+    "sentence_k": 3,
+    "sentence_presentation": "Restore original document order, exact source substrings",
+    "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+    "sentence_splitter": "academic-offset-rules-v1",
+    "verifier": {
+      "feature_count": 32,
+      "model": "logistic",
+      "post_generation": true,
+      "threshold": 0.7
+    },
+    "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+  },
+  "model": {
+    "attention_backend": "efficient_sdpa",
+    "dtype": "torch.float16",
+    "interface": "trained_SARA",
+    "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+    "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+    "quantization": "none"
+  },
+  "no_method_or_threshold_changed": true,
+  "public_backbone": {
+    "file_hashes": {
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/refs/main": "722750a0ea627271f3ee95718d97952c38418b0a6d44d868712cd673136e793e",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/config.json": "2e97da1b1d2b7e7669f0991c186904538c27d4ea56c4fc74e89215e2b2013922",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/generation_config.json": "104f69e9625993a0839aff79b17f7a0aa73b0954ef8f7e7665aa50b5ef1d4454",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00001-of-00003.safetensors": "63654d601820b88b1fa8b4a98df5714f700fbc5b3df2cc4ecbabdced35096d31",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00002-of-00003.safetensors": "a42716540ecb2385d371f2109835921ff535406cac8fe8ff28f2f0b5fc7895bd",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model-00003-of-00003.safetensors": "5f86e15cb3ed9078e30ae6e72445e109d0e337d9cde59b9aeea4ce8e44e54a5d",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/model.safetensors.index.json": "6d32424091caba25230b09cbae985a5f9252ecce3a722b03b88df17ad05be459",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/special_tokens_map.json": "6fa06efa2785e450051989a6f8fb4416b10149ded485ddd3f127a40734f5cfd0",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.json": "11c08db21487c885d8c792180f0be237f6a261b89a46f128a6a80a3aa4bd1720",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+      "/home/gunavenkat/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json": "475361439e5c012de9dffdedc416a66a50f1a29f7aa80b375ba014fb13d6bb8a"
+    },
+    "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+    "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+  },
+  "relevant_working_tree_sources": {
+    "Baselines/SARA-main/src/const.py": "b79b7443f1e229ed6d51e79f6166ab8530816f4f5e5077456572e8801e69153f",
+    "Baselines/SARA-main/src/model/SFR/__init__.py": "e442a89e487037bd45e20bf2e6a93375a6530d7c839083c8fb6b6221e00015f8",
+    "Baselines/SARA-main/src/model/SFR/modeling_sfr.py": "bd0d3098b5184cc3965258c9c7a0830faa0205372c2520d2754478fd1f5eaf6b",
+    "Baselines/SARA-main/src/model/__init__.py": "fdfc18ce06f958eb22c0b20ca717b54d3f8969b29f3d1bd4c8cb6e741818c31f",
+    "Baselines/SARA-main/src/model/loader.py": "eaee0e790ab8307ed2c0e639bcfe3b60519f2d2527c3c5e11c8f088e9087be24",
+    "Baselines/SARA-main/src/model/prompt_builder.py": "dc0a4ef72f9e04f9ef8b2c2d452aba484bdd24194be620537529089e3ef23ef9",
+    "Baselines/SARA-main/src/model/retriever.py": "4f4bba3b61cf561838b184b8d3b76ec7ba4f250aa749d51e349022c9ca7c2b26",
+    "Baselines/SARA-main/src/model/xMistral/__init__.py": "066d84eb2f16e1ae2c5d2fc2e69f60e03db5573c4616dc987d2ab57f0d9bcef4",
+    "Baselines/SARA-main/src/model/xMistral/modeling_xmistral.py": "85aabecd09eb2aef670c17b47f218a99f3da006a90074441fe63ebaf16f15604",
+    "src/week6/evaluation.py": "45e9636fa25d0595b1c331003ea56f625a86511ec21d36207d388c6f8a8fab16",
+    "src/week7/w7e/prompt_builder.py": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+    "src/week8/semantic.py": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+    "src/week9/__init__.py": "8ada5b08d8bea282bd03ebad194dd8cc16c9e15203e782a71e0341569fca4c60",
+    "src/week9/action_verification_g/__init__.py": "84c9b03d3c26b1a1f48f261d28d8f7c206b78b1c8bf8967316451ea2736b92d9",
+    "src/week9/action_verification_g/controller.py": "7ea05ac75f1db64b3d2ae2a7d86f3bab20436d6b83eb6a727f901066bd8ce714",
+    "src/week9/action_verification_g/features.py": "d8c8617f6bb8c85b1472477d1bc0513fbc46235fe617f1e44d40385df64b40e0",
+    "src/week9/action_verification_g/preflight.py": "0b8cdd607c9033c130f7dcf5539781f774e0290134990048374f8c3b469e04cc",
+    "src/week9/action_verification_g/protocol.py": "7cdecb7d4cc4ceb56bc58f4e409a3fa3d2f73ce3cc630bd8931cdf6d07052c3e",
+    "src/week9/action_verification_g/runner.py": "d52a0d85e88ca34f823ca838581989c816fde3af22f6c418ff600cdd692519b4",
+    "src/week9/action_verification_g_audit/__init__.py": "84eafed676ebe383775d296baae38815fb230b0703188943527f9462ac1df02c",
+    "src/week9/action_verification_g_audit/audit.py": "40fcb3cdd2dab9ce8b12f1d8466b1d00ef21edc03cc6c73be8e43b903009b619",
+    "src/week9/action_verification_g_audit/final_fit.py": "9127191de9e17333abf922ee92e342837c268f45cdecf5add76ae355d4657863",
+    "src/week9/action_verification_g_audit/report.py": "841fa06543a48e28abe24cdcd136c7e8cd0870632a3f1266ef3b4ddcd45880f7",
+    "src/week9/action_verification_g_audit/trace.py": "beb83c050a545fd2275b5e3fdb6a4c5820b7498e3b3bbe10a21f6c8f42109302",
+    "src/week9/adaptive_ke.py": "456395db91966fd3fd70ee514e5f8930148df98e74594c6c7cce5c83852ee318",
+    "src/week9/backend.py": "02903e6ff27ceef0da809b76daa26f781a813fa9ba513e60964696c36b620e30",
+    "src/week9/baseline_registry.py": "6513f19a94a3a949b819a275ce459985def5f64bc5d03a38ac30b2e305ee39a2",
+    "src/week9/blueprints.py": "ee47e9e96f7da3fe950f40489b2fd1c7163e11f0408b2f5adeffe81f29c72aac",
+    "src/week9/caching.py": "6d69fc8ed1e70f6357a0d7a9de2df0716c15b67074f975284fff2fa4614c90fb",
+    "src/week9/chunking.py": "175dabb565f62c6523c5ebfe354a0a85b740639587fd60fc39b38ab1586533e4",
+    "src/week9/config.py": "5867d4c7c53a41d626b87fb83538e314fcc8d250e04bcb113494096556437193",
+    "src/week9/cost_accounting.py": "a51961080391b09302f195aa54d49e3f9d75a7028bca6fafb387e6cd7294d7de",
+    "src/week9/data.py": "76ef011a27f1196d2aad4718c03d1ce3a27de7414915314ec1d44f475bce6ec2",
+    "src/week9/evaluation.py": "609018a7671ac987fa0cddc76f67e5dc59adb218aac5a6deab4a81fbe0930633",
+    "src/week9/evidence_alignment.py": "1c89c7c3fbe20c9d0c5ce252c5ee46bcdded7381774acd77eb2d6eb45b9cef2d",
+    "src/week9/extraction.py": "ef2d8226483cee73bf6d8a7c2e58312773d3065facb536e3622106c2533e4470",
+    "src/week9/faithfulness.py": "7c5a21895276fdaaab87d00fb839bfc08d6551a7db6ef1b31c8da6ee6bfebda4",
+    "src/week9/final_h/__init__.py": "041fa7c0dc2db0bba9cc124d7af6bf7aa14f42992603faae17f1af34f373ec00",
+    "src/week9/final_h/analysis.py": "c041558507b42dbc9f332c80a53333fba24dbb3954f234591d472407ce1f1b91",
+    "src/week9/final_h/audit.py": "4f1318a27a393df6629afd0f93fc1a6408570ca4d9c221156a91ad16c484e8ca",
+    "src/week9/final_h/protocol.py": "f98440b85007cf9d5331d9cf43658e6b771001cb94bdcdb7ee61f280e4c9d8ba",
+    "src/week9/final_h/registry.py": "1d12a646c268fdb6771cc483f53e1ea5c377860bc2baa812af9993bed61408ee",
+    "src/week9/final_h/runner.py": "38f24a6bc27233fb4d217dec8572ec7108ffcb9e1f70a42cf55ea5b653827951",
+    "src/week9/final_h/runtime.py": "59b3193e0532c7b2f16e2cb6d4e683ed673468fa5ef2a2d1950611b1c0153fda",
+    "src/week9/ke_surface.py": "cd3ca805b5c547b6fa3cee9e4cdfe27e046832a06481e1ba0bf1ac5e467537ea",
+    "src/week9/manifests.py": "2321081aa099b032783cab099460bd3302ab368b92ecb040d194dc67bfbfb63f",
+    "src/week9/model_preflight.py": "d7fab343485aaf019b5e1543cb947604bf5a5114ea71c5c02d1f5d605212b46f",
+    "src/week9/model_registry.py": "a8d16f590dfd85f722ff113b485f217b9188fdcd75b5107a6c350a4aff2f9067",
+    "src/week9/model_runtime.py": "e8b20983650177ef5cfd33fba8f9cc6a29659c7067e82daa4e18c3a36f67d872",
+    "src/week9/provenance.py": "b10a9cad02806c21dc4147fd047281b33867e35356035262b55084afdbb7e306",
+    "src/week9/retrieval.py": "d92f0322ca09240b83d1ed982acadbbcb7d9758abd562db309f2d51071a53fb6",
+    "src/week9/retrieval_cache.py": "fe4d057dd3f1c7d5bab17fcc583f5930bfe855cabf8d44e3fe279986022d8198",
+    "src/week9/revision.py": "ab2452491677bf3ee09438fe0c970bc21c59ac791c5938301f998c077f5ae77c",
+    "src/week9/runner.py": "c4028303f990e0bea38c9392de3669b75a50438e5ab25937038e4cb1e320387e",
+    "src/week9/sane_adapter.py": "1c72b7ec59188cdde2aaf8b1a086e9fe8ffffc18320c360e1f417ecf744d194b",
+    "src/week9/selection.py": "f5a4d41add0185e1870c8002f2f313a7156a49d2902bb651868595d2b2e858c0",
+    "src/week9/semantic_chunking.py": "4a46e734b2da87c49d0f77c174c1412bf29118bead4d79d6480662f781d7eefe",
+    "src/week9/senttopk_e3/__init__.py": "0df30f2f685d75edd396a960762cd8b30f7b62939a03ebdf9fcbf1b784f599ef",
+    "src/week9/senttopk_e3/analysis.py": "6bab892b9cf45079b71f7edcd987fe77e920727118dfa438bf69cc14db51bc2f",
+    "src/week9/senttopk_e3/embeddings.py": "3485d5ab371f885caf4367070cdd3ceb8937c4773622b1b1f368ee35d9d2b6b7",
+    "src/week9/senttopk_e3/protocol.py": "4431c59f93bfeecdddc4c822629a379ec26bffa537155924b87ab8f04625b7c5",
+    "src/week9/senttopk_e3/runner.py": "822ca0047f25802e4ae0461cda810d763253e1c7f73b187bc53d9ccb8d85d344",
+    "src/week9/senttopk_e3/sentences.py": "9ff672d6ee70a51d9bcd274dd5a550590fcb1e61ca5750c866b1fb9b917636e1",
+    "src/week9/text_model_roles.py": "ce765cdceacc59ff3fe1526ab2fdb1c1588529070f13ac569a77402243f05ed5",
+    "src/week9/utilization_f/__init__.py": "a1525c7f0e4c2e9ed0c1100f76bf8dfc0236d271338af6090abc9706e0bd43de",
+    "src/week9/utilization_f/analysis.py": "b4fe72011333cd4cb5fa0549c312e02e1b4e3da05c260c21e1351feddc90c3b8",
+    "src/week9/utilization_f/prompts.py": "a28210fa5e1b6b4ad51ba59da2c071e0b7b2b1d424115ad65dae674c85543feb",
+    "src/week9/utilization_f/protocol.py": "d8309dd4dbe8145d9af57c95cbb40b6a2128c4a0b08f40bb8e9b28c607dea011",
+    "src/week9/utilization_f/runner.py": "d99105979f35566f8a5730dba1261c9c16251406e0ba7b064f067ca67149825f"
+  },
+  "required_systems": [
+    "D0",
+    "BM25_k8",
+    "semantic_k2",
+    "semantic_k4",
+    "semantic_k5",
+    "semantic_k6",
+    "semantic_k8",
+    "original_SARA_G0",
+    "D1",
+    "W9-PRIMARY",
+    "W9-SAFE",
+    "W9-VERIFY"
+  ],
+  "runtime": {
+    "numpy": "1.26.4",
+    "python": "3.11.16 (main, Sep  1 2026, 14:18:37) [Clang 22.1.3 ]",
+    "sklearn": "1.9.1",
+    "torch": "2.14.0"
+  },
+  "schema": "W9-H-pretest-v1",
+  "split_status": {
+    "dev": "Inspected; not untouched confirmation",
+    "evidence": [
+      "configs/week8/w8_dafir.yaml: test_disabled=true",
+      "src/week9/config.py: explicit TEST authorization and frozen config guard",
+      "Existing final split paths absent from W9 data configuration",
+      "User explicitly confirmed historical test_draft is synthetic; not inspected"
+    ],
+    "fit": "Extensively developed",
+    "internal_val": "Inspected; not untouched confirmation",
+    "known_test_query_count": null,
+    "suspicious_filename": "User confirmed synthetic fixture in this task; file not opened",
+    "test": "Locked according to config/code/history and human provenance; no claim of exhaustive external access logging",
+    "test_data_opened_by_h0": false,
+    "test_labels_opened_by_agent": false
+  },
+  "success_criteria": {
+    "compatibility_is_not_equivalence": true,
+    "efficiency": "Point F1 loss <= .003 against BOTH strong comparators AND mean cumulative query prompt reduction >= .15 against BOTH.",
+    "mechanistic": "Against D1: exposed evidence reduction >= .90 AND the entire paired 95% F1 difference CI lies within [-.003,.003].",
+    "minimum_cumulative_saving": 0.15,
+    "minimum_evidence_suppression": 0.9,
+    "missing_required_comparator": "No final classification; evaluation is incomplete, never drop a comparator",
+    "note": "Both strong comparators designated before confirmation. Conservative interval containment operationalizes quality compatibility; CI crossing zero alone is insufficient.",
+    "order": [
+      "QUALITY_HIT",
+      "EFFICIENCY_OR_MECHANISTIC_HIT",
+      "MIXED_OR_NEGATIVE"
+    ],
+    "primary": "W9-PRIMARY",
+    "quality": "Positive lower 95% paired paper-cluster CI against BOTH W8 original_SARA/G0 and semantic k8; no major protocol issue.",
+    "quality_tolerance": 0.003,
+    "strong_comparators": [
+      "original_SARA_G0",
+      "semantic_k8"
+    ]
+  },
+  "system_contracts": {
+    "BM25_k8": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 8,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 2,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical BM25 top-10 passage routing",
+      "revision_mode": null
+    },
+    "D0": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 4,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 6,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null,
+      "role": "Canonical shared initial SARA first pass"
+    },
+    "D1": {
+      "coarse_evidence_k": 2,
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "evidence": "raw source chunks",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "revision_mode": "F0",
+      "selector": "DraftSemantic"
+    },
+    "W9-PRIMARY": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F0",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-PRIMARY",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "W9-SAFE": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F2-A",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-SAFE",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "W9-VERIFY": {
+      "coarse_evidence_k": 2,
+      "coarse_selector": "DraftSemantic",
+      "cost_definitions": {
+        "cumulative_prompt": "Sum of actual query-time LM prompt tokens, including first pass and any revision/selector/extraction",
+        "embeddings": "Reusable sentence index/preprocessing separated from online query embedding and ranking; cache hits retain conceptual origin cost",
+        "end_to_end": "Only separately measured wall-clock interval; never sum stage estimates or fill missing with zero",
+        "final_prompt": "Actual final answer-generation prompt tokens, including retained canonical SARA context",
+        "generated": "Sum of query-time generated tokens",
+        "verifier": "Every query pays D0 + E3 + F0, even KEEP; verifier time additional, no refunds"
+      },
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "first_pass": "Canonical original SARA: semantic 4 FULL + 6 HEAVY",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "generator_context": "Canonical first-pass SARA latent context retained; frozen F messages appended inside original chat envelope",
+      "mode": "F0+G2",
+      "no_retroactive_promotion": true,
+      "primary": "E3-k3 + F0",
+      "primary_system": "W9-PRIMARY",
+      "prompts": {
+        "F0": {
+          "messages": [
+            {
+              "content": "Answer the question using the additional source-grounded evidence. Return only a concise complete answer.\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "2555304fc70369427a5f7c2b54002fccb2d2805cbdd1f4c4efeb4d8de3525b38"
+        },
+        "F2-A": {
+          "messages": [
+            {
+              "content": "Answer the question using the supplied source evidence. Treat the source evidence as authoritative. The initial answer is only a starting point and may be incomplete or wrong. Preserve parts of the initial answer only when they remain supported by the evidence. Add missing information supported by the evidence, correct conflicting claims, and remove unsupported material when necessary. Do not invent facts. Output only the final concise answer, without reasoning or chain-of-thought.\n\nInitial answer: {initial_draft}\n\nAdditional evidence:\n{evidence}\n\nQuestion: {question}",
+              "role": "user"
+            }
+          ],
+          "prompt_hash": "10b48d1969224dbf0f5d79d3bfd7844ab828f44e0ae533f77b8d5f7f16467795"
+        }
+      },
+      "raw_fixed_policy_remains": "K_E=0",
+      "retrieval": {
+        "representation": "FIXED-5",
+        "retriever": "SEMANTIC",
+        "width": 20
+      },
+      "safe": "E3-k3 + F2-A",
+      "sentence_k": 3,
+      "sentence_presentation": "Restore original document order, exact source substrings",
+      "sentence_ranking": "Query-only cosine; frozen E3 rank/tie/source presentation logic",
+      "sentence_splitter": "academic-offset-rules-v1",
+      "system": "W9-VERIFY",
+      "verifier": {
+        "feature_count": 32,
+        "model": "logistic",
+        "post_generation": true,
+        "threshold": 0.7
+      },
+      "verify": "E3-k3 + F0 + G2 logistic; KEEP_D0 vs ACCEPT_THIS_F0"
+    },
+    "original_SARA_G0": {
+      "base_full_k": 4,
+      "controller_configuration": {
+        "DAFiR2": "not evaluated; requires sequential counterfactual outcomes",
+        "E4_included": false,
+        "E4_reason": "no demonstrated attribution benefit in tested variants",
+        "family_configurations": {
+          "E0": {
+            "complexity": 0,
+            "family": "E0",
+            "policy_name": "E0",
+            "selector": "S3",
+            "uses_attribution": false
+          },
+          "E1": {
+            "complexity": 1,
+            "family": "E1",
+            "policy_name": "E1",
+            "selector": "S3",
+            "uses_attribution": false
+          },
+          "E2": {
+            "complexity": 2,
+            "family": "E2",
+            "gate_threshold": 0.4,
+            "policy_name": "E2",
+            "selector": "S3",
+            "tau_help": -1.0,
+            "tau_hurt": 1.01,
+            "uses_attribution": false
+          },
+          "E3": {
+            "complexity": 3,
+            "family": "E3",
+            "gate_threshold": 0.4,
+            "policy_name": "E3",
+            "selector": "U4-A",
+            "tau_help": -1.0,
+            "tau_hurt": 1.01,
+            "uses_attribution": false
+          },
+          "E5-DraftSemantic": {
+            "complexity": 4,
+            "family": "E5",
+            "gate_threshold": 0.3,
+            "policy_name": "E5-DraftSemantic",
+            "selector": "S3",
+            "tau_help": 0.0,
+            "tau_hurt": 0.1,
+            "uses_attribution": false
+          },
+          "E5-U4-A": {
+            "complexity": 5,
+            "family": "E5",
+            "gate_threshold": 0.4,
+            "policy_name": "E5-U4-A",
+            "selector": "U4-A",
+            "tau_help": 0.0,
+            "tau_hurt": 0.2,
+            "uses_attribution": false
+          }
+        },
+        "family_rows_note": "Per-family cost-efficient operating points; the overall selected point is chosen once from the full grid and replaces its family row.",
+        "fit_grid_best_downstream_f1": 0.4056832844628259,
+        "fit_metrics": {
+          "E0": {
+            "downstream_f1": 0.3856311764978589,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.0,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 2.6982042513625593,
+            "estimated_total_recorded_latency_sec": 2.6982042513625593,
+            "gain_over_k4": 0.0,
+            "gain_over_k6": -0.025366327831041778,
+            "help_precision_promotions": 0.0,
+            "help_rate_all_queries": 0.0,
+            "hurt_rate_all_queries": 0.0,
+            "hurt_rate_promotions": 0.0,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 940.5441008018328,
+            "mean_final_prompt_tokens": 940.5441008018328,
+            "num_promotions": 0,
+            "num_queries": 1746,
+            "promotion_rate": 0.0,
+            "unnecessary_promotion_rate": 0.0
+          },
+          "E1": {
+            "downstream_f1": 0.40545418938837,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 1.0,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 5.854044425528484,
+            "estimated_total_recorded_latency_sec": 5.854044425528484,
+            "gain_over_k4": 0.019823012890511117,
+            "gain_over_k6": -0.0055433149405306565,
+            "help_precision_promotions": 0.143184421534937,
+            "help_rate_all_queries": 0.143184421534937,
+            "hurt_rate_all_queries": 0.09851088201603665,
+            "hurt_rate_promotions": 0.09851088201603665,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 2087.3132875143183,
+            "mean_final_prompt_tokens": 1146.7691867124856,
+            "num_promotions": 1746,
+            "num_queries": 1746,
+            "promotion_rate": 1.0,
+            "unnecessary_promotion_rate": 0.697594501718213
+          },
+          "E2": {
+            "downstream_f1": 0.404339042407108,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.9204545454545454,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.838070761297167,
+            "estimated_total_recorded_latency_sec": 4.838070761297167,
+            "gain_over_k4": 0.018707865909249107,
+            "gain_over_k6": -0.006658461921792669,
+            "help_precision_promotions": 0.209009009009009,
+            "help_rate_all_queries": 0.13287514318442153,
+            "hurt_rate_all_queries": 0.09163802978235967,
+            "hurt_rate_promotions": 0.14414414414414414,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1670.3470790378008,
+            "mean_final_prompt_tokens": 1073.6237113402062,
+            "num_promotions": 1110,
+            "num_queries": 1746,
+            "promotion_rate": 0.6357388316151202,
+            "unnecessary_promotion_rate": 0.35738831615120276
+          },
+          "E3": {
+            "downstream_f1": 0.40142443559925844,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.9204545454545454,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.873117595876888,
+            "estimated_total_recorded_latency_sec": 4.873117595876888,
+            "gain_over_k4": 0.015793259101399622,
+            "gain_over_k6": -0.009573068729642151,
+            "help_precision_promotions": 0.209009009009009,
+            "help_rate_all_queries": 0.13287514318442153,
+            "hurt_rate_all_queries": 0.09507445589919816,
+            "hurt_rate_promotions": 0.14954954954954955,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1683.2067583046965,
+            "mean_final_prompt_tokens": 1086.483390607102,
+            "num_promotions": 1110,
+            "num_queries": 1746,
+            "promotion_rate": 0.6357388316151202,
+            "unnecessary_promotion_rate": 0.35738831615120276
+          },
+          "E5-DraftSemantic": {
+            "downstream_f1": 0.40271885284775094,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.6893939393939394,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.537084239591574,
+            "estimated_total_recorded_latency_sec": 4.537084239591574,
+            "gain_over_k4": 0.01708767634989202,
+            "gain_over_k6": -0.008278651481149755,
+            "help_precision_promotions": 0.168462291870715,
+            "help_rate_all_queries": 0.09851088201603665,
+            "hurt_rate_all_queries": 0.058419243986254296,
+            "hurt_rate_promotions": 0.09990205680705191,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1614.798969072165,
+            "mean_final_prompt_tokens": 1062.3390607101946,
+            "num_promotions": 1021,
+            "num_queries": 1746,
+            "promotion_rate": 0.5847651775486827,
+            "unnecessary_promotion_rate": 0.37628865979381443
+          },
+          "E5-U4-A": {
+            "downstream_f1": 0.4014462436858647,
+            "end_to_end_latency_sec": null,
+            "escalation_recall": 0.8541666666666666,
+            "estimated_attribution_latency_sec": 0.0,
+            "estimated_generation_latency_sec": 4.72919127881049,
+            "estimated_total_recorded_latency_sec": 4.72919127881049,
+            "gain_over_k4": 0.015815067188005752,
+            "gain_over_k6": -0.009551260643036026,
+            "help_precision_promotions": 0.20892687559354226,
+            "help_rate_all_queries": 0.12600229095074456,
+            "hurt_rate_all_queries": 0.0882016036655212,
+            "hurt_rate_promotions": 0.1462488129154796,
+            "latency_note": "Cached k4 generation + selected W8-A promotion + measured attribution extraction when required; excludes other unmeasured routing, gate, and selector overhead. Not measured end-to-end deployment latency.",
+            "mean_cumulative_prompt_tokens": 1646.2754868270333,
+            "mean_final_prompt_tokens": 1079.5189003436426,
+            "num_promotions": 1053,
+            "num_queries": 1746,
+            "promotion_rate": 0.6030927835051546,
+            "unnecessary_promotion_rate": 0.3447880870561283
+          }
+        },
+        "fit_reference_baselines": {
+          "4": {
+            "f1": 0.38563117649785905,
+            "generation_latency": 2.6982042513625593,
+            "tokens": 940.5441008018328
+          },
+          "6": {
+            "f1": 0.41099750432890064,
+            "generation_latency": 3.688340870512037,
+            "tokens": 1362.819587628866
+          }
+        },
+        "fit_selected_shortfall_from_grid_best": 0.0029644316150749805,
+        "frozen_before_internal_val": true,
+        "gate": "B0-GW logistic: measured token U1-U12; weight=1+5*max(0,best_delta)",
+        "gate_training": "5-fold paper-grouped FIT OOF; full FIT refit",
+        "max_promotions": 1,
+        "oracle_gate": false,
+        "prior_closeout_used_internal_val_for_E4_eligibility": true,
+        "selected_config": {
+          "complexity": 4,
+          "family": "E5",
+          "gate_threshold": 0.3,
+          "policy_name": "E5-DraftSemantic",
+          "selector": "S3",
+          "tau_help": 0.0,
+          "tau_hurt": 0.1,
+          "uses_attribution": false
+        },
+        "selected_policy": "E5-DraftSemantic",
+        "selection_rule": "highest FIT OOF downstream F1; within .003 lower cumulative prompt tokens, then recorded generation/attribution latency estimate, then simplicity",
+        "source_hashes": {
+          "results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl": "2ee73dd961afc6cb432682ed087cd932a9ce44425b804be2e3f582fbe9bd7a4e",
+          "results/week8/surfaces/promotion_surface_fit.jsonl": "1f2a4d31c8712433acf32a792db526b932f5d036a986ec61466e08bc83d33958",
+          "results/week8/surfaces/promotion_surface_internal_val.jsonl": "8d4b9806ba1501cf0300ab1ae3a6e89cbd44be88b17084fdc1a47ed19f697103",
+          "results/week8/w8c_utility/U4-A_fit_oof_predictions.csv": "f595ea12aa9a09474d099623e6684ee50813de8314d822635ae52f6eb2806ebb",
+          "results/week8/w8c_utility/selected_internal_val_predictions.csv": "ebc681a61ac55bd8887d174d6a51e877a5b94cd038b8e9afba3586443c785773",
+          "results/week8/w8c_utility/selected_neural.pt": "8b1e4c8557287f9e98c5c020d87a9b8ca09ee45ffa42955e26633e7a82fddbd3",
+          "results/week8/w8c_utility/w8c_frozen_selector_config.json": "093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280",
+          "results/week8/w8d_closeout/closeout_summary.json": "ac5b02426f3ee7a408d559526222dfc05c4ab5d02be25586e954fe7823d9e55a",
+          "results/week8/w8d_closeout/fit_selector_scores.csv": "efe46fc6e4b51bbb07369f9979719d0657e1c354b6a70f4df48f89cbb1fd7a10",
+          "results/week8/w8d_closeout/internal_val_selector_scores.csv": "203a0a1afcaded337e955aff55e320be9b6cd10978a2070ead999ccac05bec27",
+          "results/week8/w8e_gate_inputs/gate_features_fit.csv": "3bf5a56e5685c1cdb0e5b00654a3f9bf20d98160f743448854a379ae9a762b6a",
+          "results/week8/w8e_gate_inputs/gate_features_internal_val.csv": "3f2b6ca23129a24e2d3c3736f2e8ee32a07210508fd6e5d57f2e1d1aad77e9c2",
+          "results/week8/w8e_gate_inputs/provenance_fit.json": "35a43b742cb6bb7192b74706e35982849718764e41e54d1ff75f5e5c19aad213",
+          "results/week8/w8e_gate_inputs/provenance_internal_val.json": "f0f939e73ec7b0ccfeb5357348332126fb5ae8fb0ede49b510392c7a9ec8399a",
+          "src/week6/routing.py": "7bf448621c9d49d0a0a43ddba5a716e81e656b0ba08efa715beabe77f1ac2b9d",
+          "src/week7/w7e/prompt_builder.py": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+          "src/week8/closeout.py": "a9a804911f199ede537be8bf69bc9a6a6983ad9324e856989301ba5032bfc706",
+          "src/week8/controller_costs.py": "c161a231d327f71d305507fbeb2581d2ef0397aa14b6e1eefedfd3cbb8d03d86",
+          "src/week8/gate_diagnostics.py": "f6fab42df474e52979db082ee4a83436b111eae0fbe3cb9176006efeb1428d22",
+          "src/week8/generator_features.py": "8391e82ad0dc432d641c5fc57191eececabe0e19251dd08e615df12d9c5bee84",
+          "src/week8/marginal_information.py": "51d69ee19d2621160cd6b55f37027f5fbe72e649f05b1069eff172f39d2f85fb",
+          "src/week8/selective_controller.py": "9e2a1fa5dd27f0b57e225c61b2463d9efe27f3a9e304bc6e8924b443d83d21f3",
+          "src/week8/semantic.py": "89b0f34620c8da0a058a1c0d689ef00b45b20afab8381853c848a3061f480b23",
+          "src/week8/utility_models.py": "71a6939b803b1b3210f2fd8cc57293ba6fb117cd030f3a6219a93512787015fc",
+          "src/week8/utility_training.py": "2c66e967b7ad89610940b8e8c96a3123fa940a73d68238d5ba3b251dd1180b88"
+        },
+        "token_accounting": "Exact tokenizer input_ids lengths, including chat template and special tokens; both passes counted for promotions"
+      },
+      "controller_path": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week8/w8e_controller/frozen_controller.json",
+      "controller_sha256": "d509c89782b79981336a6a98b2ca61695541f19ea732b9b8ba75b27a5cf7feb0",
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "gate_sha256": "f0d0f711a488f8b657b33ec31c2aa0341ffa3bcaf7b977a0aeca04aea5f0b562",
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "max_promotions": 1,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "reference": "Original W8 final-system protocol, not the W8-E cached replay; actual token uncertainty and frozen gate/selector",
+      "revision_mode": "G0",
+      "selector_config_sha256": "093c5b1a5361863004900a3496dbc0ce281f7f909f0cbcb7e5457eda2d96c280",
+      "selector_weights_sha256": "8b1e4c8557287f9e98c5c020d87a9b8ca09ee45ffa42955e26633e7a82fddbd3"
+    },
+    "semantic_k2": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 2,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 8,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k4": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 4,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 6,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k5": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 5,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 5,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k6": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 6,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 4,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    },
+    "semantic_k8": {
+      "decoding": {
+        "do_sample": false,
+        "max_new_tokens": 128
+      },
+      "full_k": 8,
+      "generator": {
+        "attention_backend": "efficient_sdpa",
+        "dtype": "torch.float16",
+        "interface": "trained_SARA",
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "model_revision": "b52c0e84decd72f68ff7fcaad4d9a5f8299d7115a535c077bc05df5afda6005b",
+        "quantization": "none"
+      },
+      "heavy_k": 2,
+      "prompt_builder_hash": "c0477b051721663efacf7a9c7e3f5c9ed694f4b9d957d288160c7ec3c58c2283",
+      "retriever": "canonical MiniLM semantic top-10 passage routing",
+      "revision_mode": null
+    }
+  },
+  "timestamp_utc": "2026-10-25T14:30:10.010694+00:00",
+  "tokenizer_hashes": {
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "/home/gunavenkat/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/chat_template.jinja": "796853172235ab3aaa4810013ddfe2eab481bda3306dad4f700c00d436eed596",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+    "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42/tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f"
+  }
+}

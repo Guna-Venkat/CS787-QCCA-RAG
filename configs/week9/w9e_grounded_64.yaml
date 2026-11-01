@@ -1,0 +1,99 @@
+initial_full_k: 4
+encoder: sentence-transformers/all-MiniLM-L6-v2
+device: cuda
+encoder_device: cpu
+checkpoint: Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42
+max_new_tokens: 128
+extraction_max_tokens: 256
+retrieval_widths:
+- 10
+- 20
+- 40
+evidence_counts:
+- 0
+- 1
+- 2
+- 4
+output_root: results/week9/diagnostics/w9c_k2
+retrieval_tolerance: 0.003
+quality_tolerance: 0.003
+semantic_grid:
+- buffer: 0
+  threshold: 0.25
+  max_tokens: 1024
+  overlap: 128
+- buffer: 0
+  threshold: 0.35
+  max_tokens: 1024
+  overlap: 128
+- buffer: 0
+  threshold: 0.5
+  max_tokens: 1024
+  overlap: 128
+- buffer: 1
+  threshold: 0.25
+  max_tokens: 1024
+  overlap: 128
+- buffer: 1
+  threshold: 0.35
+  max_tokens: 1024
+  overlap: 128
+- buffer: 1
+  threshold: 0.5
+  max_tokens: 1024
+  overlap: 128
+- buffer: 2
+  threshold: 0.25
+  max_tokens: 1024
+  overlap: 128
+- buffer: 2
+  threshold: 0.35
+  max_tokens: 1024
+  overlap: 128
+- buffer: 2
+  threshold: 0.5
+  max_tokens: 1024
+  overlap: 128
+fixed_overlap: 0
+selectors:
+- BM25
+- QuerySemantic
+- DraftSemantic
+- QueryDraft
+- SANE-adapted
+query_draft_alpha: 0.5
+query_draft_alpha_note: Preregistered constant; no validation tuning
+adaptive:
+  epsilon: 0.01
+  quality_gain: 0.005
+  token_savings: 0.15
+  quality_tolerance: 0.003
+  folds: 5
+  lambda_cost: 0.0
+data:
+  train_retrieval: results/week5/train_response_surface/train_retrieval.jsonl
+  dev_retrieval: results/week2/raw/dev_retrieval.jsonl
+  train_reformatted: Baselines/SARA-main/data/reformatted/QASPER_train_split.jsonl
+  dev_reformatted: Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl
+  train_canonical: results/week7/w7b_semantic_budget/response_surface/train_semantic_fixed_k_results.jsonl
+  dev_canonical: results/week7/w7b_semantic_budget/response_surface/dev_semantic_fixed_k_results.jsonl
+  train_sfr: results/week5/train_response_surface/train_sfr_embeddings.pt
+  dev_sfr: results/week2/raw/dev_sfr_embeddings.pt
+  fit_manifest: results/week5/content_allocator/w5b/splits/train_fit_manifest.csv
+  internal_val_manifest: results/week5/content_allocator/w5b/splits/internal_val_manifest.csv
+  raw_train: /home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow
+baselines:
+  qcla_fit_oof: null
+  qcla_internal_val: results/week8/w8f_qcla/full/qcla_1_internal_val.jsonl
+  qcla_dev: null
+  qcla_test: null
+phase: e
+first_pass_sara_model: mistralai/Mistral-7B-Instruct-v0.2
+textual_model_roles: null
+diagnostic_only: true
+diagnostic_label: Compact grounded W9-E at K2/DraftSemantic; primary K0 unchanged
+grounded_e_version: v1
+grounded_output_root: results/week9/diagnostics/w9c_k2/grounded_faithfulness/v1
+max_evidence_tokens: 64
+preflight_queries: 3
+seed: 42

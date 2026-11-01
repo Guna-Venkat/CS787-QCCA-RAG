@@ -1,0 +1,18 @@
+{
+  "week": 13,
+  "reports": {
+    "WeeklyPartWiseAnalysis.md": "37bc5f1b54fcc3884a936aa0aee91052b2269b270affbf44465160a351944977",
+    "WeeklySummaryAnalysis.md": "04924fddba9527479ec1aac72ca799a21c69e04c80dee1294dda3876f499136c"
+  },
+  "sources": {
+    "scripts/week13/run_confirmation.py": "8023da78ae7cb7f22638480f1eb338729130ecca4f6c6b97adab722c73a47cc6",
+    "src/week12/confirmation.py": "6b06f0b832d5ca2ceb2ecb6aa45fa51fae75f82cff3c843dd5e0c1e9ade345ea"
+  },
+  "legacy_markdown_used_as_evidence": false,
+  "parts": 1,
+  "numerical_tables": 0,
+  "figures": 0,
+  "checks": [
+    "No separate Week13 notebook/results tree found; code entry-point existence is distinguished from execution."
+  ]
+}

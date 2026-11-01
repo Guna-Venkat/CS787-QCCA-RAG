@@ -1,0 +1,20 @@
+{
+  "branch": "gagan",
+  "tests_passed": 27,
+  "tests_path": "tests/week10/test_root_cause.py",
+  "notebook_default_code_cells_executed": 10,
+  "allowed_default_subprocess_phases": [
+    "audit",
+    "smoke",
+    "status"
+  ],
+  "expensive_subprocesses_explicitly_forbidden_in_verification": true,
+  "synthetic_queries": 2,
+  "synthetic_cached_answers": 4,
+  "real_dev_schema_smoke_queries": 2,
+  "real_dev_schema_smoke_candidate_chunks": 45,
+  "real_gpu_generation_started": false,
+  "full_experiments_started": false,
+  "qasper_test_read": false,
+  "historical_weeks_modified": false
+}

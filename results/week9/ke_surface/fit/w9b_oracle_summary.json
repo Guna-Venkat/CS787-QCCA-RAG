@@ -1,0 +1,54 @@
+{
+  "oracle_distribution": {
+    "0": 956,
+    "1": 323,
+    "2": 211,
+    "4": 256
+  },
+  "epsilon_oracle_distribution": {
+    "0": 965,
+    "1": 330,
+    "2": 206,
+    "4": 245
+  },
+  "epsilon": 0.01,
+  "oracle_is_deployable": false,
+  "fixed_evidence_k": [
+    {
+      "evidence_k": 0,
+      "f1": 0.38563117649785905,
+      "final_prompt_tokens": 940.5441008018328,
+      "total_query_prompt_tokens": 940.5441008018328,
+      "total_query_generated_tokens": 16.65463917525773,
+      "help": 0.0,
+      "hurt": 0.0
+    },
+    {
+      "evidence_k": 1,
+      "f1": 0.38096729983315797,
+      "final_prompt_tokens": 2026.348224513173,
+      "total_query_prompt_tokens": 2966.8923253150056,
+      "total_query_generated_tokens": 54.15292096219931,
+      "help": 0.286368843069874,
+      "hurt": 0.24914089347079038
+    },
+    {
+      "evidence_k": 2,
+      "f1": 0.38500408038763306,
+      "final_prompt_tokens": 3041.3579610538372,
+      "total_query_prompt_tokens": 3981.90206185567,
+      "total_query_generated_tokens": 56.47479954180985,
+      "help": 0.32130584192439865,
+      "hurt": 0.281786941580756
+    },
+    {
+      "evidence_k": 4,
+      "f1": 0.38038769643332737,
+      "final_prompt_tokens": 4866.66609392898,
+      "total_query_prompt_tokens": 5807.210194730813,
+      "total_query_generated_tokens": 58.34364261168385,
+      "help": 0.35738831615120276,
+      "hurt": 0.30297823596792667
+    }
+  ]
+}

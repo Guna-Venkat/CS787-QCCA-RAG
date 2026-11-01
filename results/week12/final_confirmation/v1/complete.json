@@ -1,0 +1,24 @@
+{
+  "all_methods": [
+    "NONE",
+    "RAW_SKIP",
+    "FIXED_SENTENCE",
+    "H3",
+    "QBGF_FULL"
+  ],
+  "budgets": [
+    256,
+    1024
+  ],
+  "complete": true,
+  "conceptual_lm_calls": 2500,
+  "distinct_cached_generations": 2213,
+  "expected": 2500,
+  "freeze_sha": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b",
+  "identity": "e15134bedaf735b7322550796a335f09d6fb24f20489abd969c142ac1fabf010",
+  "logical_rows": 2500,
+  "parser_checks": true,
+  "real_confirmation": true,
+  "source_and_budget_checks": true,
+  "synthetic": false
+}

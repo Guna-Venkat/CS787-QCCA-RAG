@@ -1,0 +1,28 @@
+/multigranular/*/*/rows/
+# Synthetic fixtures, duplicated test figures and intermediate caches stay local.
+/multigranular/*/smoke/
+# Large per-unit inventories and historical byte snapshots can be rebuilt locally.
+/multigranular/*/setup/historical_sha256.json
+/multigranular/*/setup/hierarchy_stats_df.csv
+# Figure source tables duplicate the result tables. Keep the compact PNGs/index.
+/multigranular/*/*/figures/*.csv
+# Writer locks and unfinished atomic writes are never progress records.
+*.lock
+.pending-*
+*.partial
+# Executed notebook copies and recurring detailed monitor logs are local artifacts.
+/executed_notebooks/
+/monitoring/history.jsonl
+# Dense per-query exports are reproducible from local immutable checkpoint rows.
+/multigranular/*/*/recall_at_k_df.csv
+/multigranular/*/*/first_rank_df.csv
+/multigranular/*/*/*_per_query_df.csv
+/multigranular/*/*/per_query_representation_df.csv
+# Final retrieval export repeats A/B per-query records; summaries remain tracked.
+/multigranular/*/final_report/retrieval_saved_df.csv
+
+# Transient live monitor state and copied launcher versions.
+/monitoring/cell_state_*.json
+/monitoring/latest.json
+/monitoring/launcher_versions/
+/monitoring/B_optimization_reason.json

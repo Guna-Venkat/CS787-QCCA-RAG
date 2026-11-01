@@ -1,0 +1,25 @@
+{
+  "actual_queries": 150,
+  "cache_shards_verified": {
+    "datasets/documents": 5722,
+    "datasets/queries": 150,
+    "hierarchy": 5722
+  },
+  "code_matches": true,
+  "configuration_matches": true,
+  "dataset_bytes_match": true,
+  "phase_a_started": false,
+  "queries_per_dataset": {
+    "HotpotQA": 50,
+    "QASPER": 50,
+    "SciFact": 50
+  },
+  "retrieval_weight_bytes_present": {
+    "MiniLM": 90868376,
+    "SFR": 14221351888
+  },
+  "setup_complete": true,
+  "setup_status_sha256": "436e9ba45cbefae347853329f8a67fa6e1ab1b5b247db02ecf545b0b67b95da2",
+  "source_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "synthetic": false
+}

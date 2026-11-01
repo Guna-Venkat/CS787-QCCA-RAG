@@ -1,0 +1,10 @@
+{
+  "audit_driver_sha256": "d978d7310efa1f111c22b391c978612537dc793958c3bba776e5b59eefda68c5",
+  "checks_passed": true,
+  "generation_started": false,
+  "phase": "H",
+  "rows_verified": 31900,
+  "source_result_hash": "cc26f2ed6961bc0e417b775808cca21aa8f12f4a9cb5949785509ca57b8ac9ee",
+  "status_sha256": "b9383e8eae0bf58facc85dd1a09e2a7ae228d4f907fca5faa037ea1299fe7a26",
+  "timestamp_utc": "2026-10-28T20:14:53.001975+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "status": "NO W10 QUALITY EXPERIMENTS RUN",
+  "ranked": [
+    {
+      "rank": 1,
+      "cause": "retrieval foundation",
+      "strength": "MODERATE prior; local causal experiment pending"
+    },
+    {
+      "rank": 2,
+      "cause": "compression/interface",
+      "strength": "MODERATE mechanism hypothesis; matched evidence pending"
+    },
+    {
+      "rank": 3,
+      "cause": "reader/label instability",
+      "strength": "WEAK pending matched readers and repeats"
+    }
+  ],
+  "classifications": {
+    "retrieval": "NOT YET TESTED",
+    "compression_interface": "NOT YET TESTED",
+    "reader": "NOT YET TESTED",
+    "policy": "NOT YET TESTED",
+    "dataset": "NOT YET TESTED",
+    "metric_noise": "NOT YET TESTED",
+    "stochasticity": "NOT YET TESTED"
+  }
+}

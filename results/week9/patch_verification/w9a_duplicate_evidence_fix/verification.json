@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "branch": "gagan",
+  "evidence_lookups": {
+    "fit": 1746,
+    "internal_val": 342,
+    "dev": 231
+  },
+  "code_tests_passed": 75,
+  "notebook_default_test": "fails because user enabled run flags; settings preserved",
+  "cache_migration": "COMPLETE",
+  "payloads_unchanged": true,
+  "original_backups_verified": true,
+  "full_run_launched": false
+}

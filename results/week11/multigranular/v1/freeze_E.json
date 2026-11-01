@@ -1,0 +1,27 @@
+{
+  "branch": "gagan",
+  "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+  "phase": "E",
+  "rationale": "Authorized durable continuation after mechanical audit passed: complete frozen cohort/action surface, checksums, identities, budgets and baseline pairs (or saved-source aggregate hash for H/I). Preserve row flags and exploratory statistical caveats in INTERPRETATION.md. Explicitly waive only pending optional components; no automatic winner selection or deployability claim.",
+  "reviewed_config": {
+    "available_surface_only": true,
+    "continuation_mode": "Predeclared operational review under user delegation; not an independent scientific confirmation",
+    "finalist_run_ids": [
+      "39d891f9fed0db18d8c2",
+      "a0788207676a3dd94c29",
+      "5ef43643d916e4c17721",
+      "fc9352ab57c0ab40eb3b",
+      "ecbe1962e8a80f2318cc"
+    ],
+    "manual_selection_receipt": "results/week11/F_MANUAL_FINALIST_REVIEW.json",
+    "mechanical_audit": "readiness_audit.json",
+    "next_phase": "F",
+    "promote_single_winner": false,
+    "waive_pending": [
+      "LLMLingua-2"
+    ]
+  },
+  "source_result_hash": "4830f0b939694cc165a735847bf3d52f8f6ae2d8feea303e0862ce7030dc600f",
+  "timestamp": "2026-10-28T19:01:35.266728+00:00"
+}

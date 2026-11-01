@@ -1,0 +1,97 @@
+{
+  "settings": {
+    "semantic_grid": [
+      {
+        "buffer": 0,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 0,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 0,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 1,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.25,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.35,
+        "max_tokens": 1024,
+        "overlap": 128
+      },
+      {
+        "buffer": 2,
+        "threshold": 0.5,
+        "max_tokens": 1024,
+        "overlap": 128
+      }
+    ],
+    "fixed_sizes": {
+      "SEM-0": 27,
+      "SEM-1": 27,
+      "SEM-2": 30,
+      "SEM-3": 81,
+      "SEM-4": 205,
+      "SEM-5": 1022,
+      "SEM-6": 258,
+      "SEM-7": 1024,
+      "SEM-8": 1024
+    },
+    "representation": "FIXED-5",
+    "retriever": "SEMANTIC",
+    "retrieval_width": 20
+  },
+  "rule": "Existing preregistered global .003 recall tolerance, then retrieved tokens, latency, complexity, policy",
+  "metrics": {
+    "representation": "FIXED-5",
+    "retriever": "SEMANTIC",
+    "retrieval_width": 20,
+    "any_gold_evidence_recall": 0.948870392390012,
+    "all_gold_evidence_recall": 0.8787158145065398,
+    "mrr": 0.618924164941594,
+    "ndcg": 0.7330770756786876,
+    "mean_chunk_tokens": 921.773886044694,
+    "median_chunk_tokens": 1012.4782359679268,
+    "retrieved_context_tokens": 5600.471935853379,
+    "evidence_overlap_density": 0.0503660588853057,
+    "retrieval_query_time": 0.004959964511558,
+    "index_time_embedding_seconds": 0.2956414728759012,
+    "index_time_chunking_seconds": 0.0301060812629613,
+    "policy": "FIXED-5/SEMANTIC/20",
+    "quality": 0.8787158145065398,
+    "measured_latency": 0.3307075186504205,
+    "complexity": 1
+  },
+  "selection_split": "fit",
+  "freeze_performed": false
+}

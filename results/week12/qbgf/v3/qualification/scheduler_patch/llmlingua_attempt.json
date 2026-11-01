@@ -1,0 +1,47 @@
+{
+  "answer_generation_calls": 0,
+  "checks": [
+    {
+      "budget": 256,
+      "compressed_qwen_tokens": 250,
+      "raw_qwen_tokens": 2041,
+      "retry_factor": 0.8,
+      "seconds": 6.121563900000183
+    },
+    {
+      "budget": 1024,
+      "compressed_qwen_tokens": 875,
+      "raw_qwen_tokens": 2041,
+      "retry_factor": 0.8,
+      "seconds": 6.137272986001335
+    }
+  ],
+  "disk_free_before_download": 18361966592,
+  "disk_free_now": 17618255872,
+  "environment": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week12/tools/llmlingua_env/bin/python",
+  "model": {
+    "free_bytes_before": 18361966592,
+    "id": "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank",
+    "revision": "5f0c82792b7ea14c6484e015b6a072009496b7f2",
+    "snapshot": "/home/gunavenkat/.cache/huggingface/hub/models--microsoft--llmlingua-2-bert-base-multilingual-cased-meetingbank/snapshots/5f0c82792b7ea14c6484e015b6a072009496b7f2",
+    "weight_files": [
+      {
+        "bytes": 709388104,
+        "name": "model.safetensors"
+      }
+    ]
+  },
+  "no_caches_deleted": true,
+  "original_environment_modified": false,
+  "package_versions": {
+    "llmlingua": "0.2.2",
+    "nltk": "3.9.2",
+    "numpy": "1.26.4",
+    "tiktoken": "0.14.0",
+    "torch": "2.14.0",
+    "transformers": "4.57.6"
+  },
+  "reason": null,
+  "status": "QUALIFIED",
+  "synthetic_only": true
+}

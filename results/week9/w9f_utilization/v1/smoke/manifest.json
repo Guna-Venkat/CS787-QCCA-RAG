@@ -1,0 +1,18 @@
+{
+  "experiment": "W9-F-E3k3-utilization-v1",
+  "stage": "smoke",
+  "split": "fit",
+  "complete": true,
+  "full_fit": false,
+  "queries": 2,
+  "rows": 10,
+  "f0_reused": true,
+  "protocol_hash": "3f407df26188a45b2f9125491d49c95c4c5a8ffc6c185c741c80d6586025ed68",
+  "source_e3_protocol_hash": "33ac5ee8700b85524609a40fc433a2a32bfa0ec248095e03e99872cc8f016f76",
+  "old_artifacts_unchanged": true,
+  "extraction_lm_calls": 0,
+  "controller_trained_or_run": false,
+  "physical_new_answer_calls_this_invocation": 6,
+  "physical_call_note": "Zero on analysis/resume hits; per-row conceptual policy costs retain original stage costs.",
+  "measured_end_to_end_latency": null
+}

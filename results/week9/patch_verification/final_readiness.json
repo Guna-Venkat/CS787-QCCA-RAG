@@ -1,0 +1,79 @@
+{
+  "branch": "gagan",
+  "head": "6436c6bcff2b4558b978fe478c1d34d57acc53cc",
+  "main_unchanged": "fe6d1bdf08f8e9960f8a22432a98ce6fc923ea8d",
+  "w9_tests_passed": 72,
+  "w8_tests_present_passed": 82,
+  "reference_files_restored_and_hash_verified": 12,
+  "w8_imported_files_verified": 21,
+  "baseline_status_counts": {
+    "internal_val": {
+      "CHECKPOINT_ONLY": 2,
+      "SUMMARY_ONLY": 23,
+      "AVAILABLE": 20
+    },
+    "dev": {
+      "CHECKPOINT_ONLY": 2,
+      "SUMMARY_ONLY": 23,
+      "AVAILABLE": 20,
+      "MISSING": 1
+    }
+  },
+  "cache_checks": [
+    {
+      "path": "results/week9/preflight/smoke/M0/fp16/private_raw_outputs.jsonl",
+      "rows": 10,
+      "identity_current": true,
+      "checksum_valid": true,
+      "private": true
+    },
+    {
+      "path": "results/week9/preflight/smoke/M2/fp16/private_raw_outputs.jsonl",
+      "rows": 0,
+      "identity_current": true,
+      "checksum_valid": true,
+      "private": true
+    },
+    {
+      "path": "results/week9/preflight/smoke/M2/int8/private_raw_outputs.jsonl",
+      "rows": 10,
+      "identity_current": true,
+      "checksum_valid": true,
+      "private": true
+    },
+    {
+      "path": "results/week9/preflight/deepseek_fp32_diagnostic/smoke/M3/nf4_fp32/private_raw_outputs.jsonl",
+      "rows": 5,
+      "identity_current": true,
+      "checksum_valid": true,
+      "private": true
+    }
+  ],
+  "notebooks": [
+    {
+      "path": "notebooks/week9/week9pre_model_preflight.ipynb",
+      "safe_defaults": true,
+      "executed_without_errors": true
+    },
+    {
+      "path": "notebooks/week9/week9f_revision.ipynb",
+      "safe_defaults": true,
+      "executed_without_errors": true
+    },
+    {
+      "path": "notebooks/week9/week9g_adaptive_ke.ipynb",
+      "safe_defaults": true,
+      "executed_without_errors": true
+    },
+    {
+      "path": "notebooks/week9/week9h_final.ipynb",
+      "safe_defaults": true,
+      "executed_without_errors": true
+    }
+  ],
+  "diff_check": "PASS",
+  "model_panel_frozen": false,
+  "revision_winner_frozen": false,
+  "full_experiments_executed": false,
+  "next_manual_command": "./sara_env/bin/python scripts/week9/run_w9pre_models.py --stage screen --model M0 --model M2 --resume"
+}

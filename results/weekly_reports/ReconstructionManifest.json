@@ -1,0 +1,17 @@
+{
+  "weeks_documented": 14,
+  "active_experiment_weeks": 13,
+  "gap_week": null,
+  "historical_alias_week": 13,
+  "parts": 95,
+  "unique_primary_artifacts": 380,
+  "primary_artifact_entries": 382,
+  "raw_week12_rows_inspected": 158403,
+  "legacy_markdown_audited": 238,
+  "legacy_corrected": 4,
+  "legacy_manual_review": 229,
+  "figures": 22,
+  "project_audit_rows": 24,
+  "all_report_source_hashes_verified": true,
+  "primary_evidence_modified": false
+}

@@ -37,3 +37,50 @@ data/
 .vscode/
 *.swp
 *.swo
+
+# PDFs
+*.pdf
+
+# Baselines
+Baselines/
+
+# Week 8 files, experiments, and results
+configs/week8/
+notebooks/week8/
+results/week8/
+scripts/week8/
+src/week8/
+tests/week8/
+*week8*
+*w8*
+
+# Week 9 generated retrieval caches (large; retain summaries and configs)
+results/week9/**/w9a_retrieval_results*
+results/week9/**/w9a_chunk_manifest*
+results/week9/**/w9a_embeddings*
+results/week9/**/*.lock
+results/week9/diagnostics/w9c_k2/extraction/fit/w9d_representation.jsonl
+
+# W9-E grounded full-run caches; keep compact preflight evidence and summaries
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/grounded_e_results.jsonl
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/lm_calls.jsonl
+results/week9/diagnostics/**/grounded_faithfulness/**/fit/evidence_objects.jsonl
+
+# Week 9 sentence index and cache (large sqlite3, inventories, scores across all phases)
+results/week9/**/sentence_cache/
+results/week9/w9e3_senttopk/**/fit/results.jsonl
+results/week9/w9e3_senttopk/**/fit/lm_calls.jsonl
+
+
+# W9-F full answer caches; preserve smoke, identities, summaries and freezes
+results/week9/w9f_utilization/**/fit/results.jsonl
+results/week9/w9f_utilization/**/fit/lm_calls.jsonl
+
+# W9-H producer cache (per-query intermediate shards)
+results/week9/**/producer_cache/
+
+# W9-H shared intermediate embedding vectors and retriever caches
+results/week9/**/sfr_vectors/
+results/week9/**/shared/outputs/
+
+

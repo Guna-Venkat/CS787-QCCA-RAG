@@ -1,0 +1,10 @@
+{
+  "HotpotQA": {
+    "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week12/hotpot_train_v1.1.json",
+    "sha256": "5a09a981fd974dccb54b969e32fb2c6f381193f72a3541d790fb359aeeb789ad"
+  },
+  "SciFact": {
+    "path": "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week12/scifact/claims_train.jsonl",
+    "sha256": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0"
+  }
+}

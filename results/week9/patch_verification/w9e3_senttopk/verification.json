@@ -1,0 +1,44 @@
+{
+  "branch": "gagan",
+  "queries": [
+    {
+      "question_id": "594",
+      "question": "What features are proposed?",
+      "source_chunk_ids": [
+        "00c9eee8d27933c24e9b1af7",
+        "0a65048a715996c044d56d69"
+      ],
+      "candidate_sentences": 75,
+      "all_candidates_and_scores_saved": "results/week9/w9e3_senttopk/v1/sentence_cache/scores.jsonl"
+    },
+    {
+      "question_id": "1204",
+      "question": "What are the comparable alternative architectures?",
+      "source_chunk_ids": [
+        "cd5b8eed6ff7cb0c7602c85e",
+        "f62d1cd468bfac89861b9a98"
+      ],
+      "candidate_sentences": 76,
+      "all_candidates_and_scores_saved": "results/week9/w9e3_senttopk/v1/sentence_cache/scores.jsonl"
+    }
+  ],
+  "rows": 12,
+  "answer_lm_calls": 12,
+  "extraction_lm_calls": 0,
+  "peak_gpu_allocated_gib": 13.88438081741333,
+  "encoder_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "encoder_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "evidence_token_min": 18,
+  "evidence_token_max": 196,
+  "all_sentence_source_checks_passed": true,
+  "all_cosines_and_ranking_recomputed_from_cached_vectors": true,
+  "source_presentation_order_verified": true,
+  "old_artifacts_unchanged": true,
+  "old_notebook_prefix_preserved_except_safe_defaults": true,
+  "full_e3_started": false,
+  "k_selected_or_frozen": false,
+  "dynamic_controller_trained_or_run": false,
+  "tests_passed": 119,
+  "tests_deselected": 1,
+  "deselection": "Existing all-notebooks defaults test conflicts with user-enabled B/C/D flags; E3 disabled-path test passed."
+}

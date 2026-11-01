@@ -1,0 +1,50 @@
+{
+  "reason": "Preserve incompatible BF16 prefix; fresh FP16 B run must not mix precisions",
+  "files": [
+    {
+      "file": "extraction_units.identity.json",
+      "bytes": 12549,
+      "sha256": "bd1a5edc3470b5f32dcb736bfad4f82a2db8ec5bcf7530bfe30d3e61f34f1b82"
+    },
+    {
+      "file": "extraction_units.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "extraction_units.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "lm_calls.identity.json",
+      "bytes": 12549,
+      "sha256": "bd1a5edc3470b5f32dcb736bfad4f82a2db8ec5bcf7530bfe30d3e61f34f1b82"
+    },
+    {
+      "file": "lm_calls.jsonl",
+      "bytes": 3335,
+      "sha256": "bd7a735b326ebae3aebaf4ac9ed532a5f47cad95456886db903b88a0f8413613"
+    },
+    {
+      "file": "lm_calls.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "w9b_ke_surface.identity.json",
+      "bytes": 12549,
+      "sha256": "bd1a5edc3470b5f32dcb736bfad4f82a2db8ec5bcf7530bfe30d3e61f34f1b82"
+    },
+    {
+      "file": "w9b_ke_surface.jsonl",
+      "bytes": 40799,
+      "sha256": "5fcedab76d26a58bad16d28fe76cbea207462274024d4cabd0801f9124616a89"
+    },
+    {
+      "file": "w9b_ke_surface.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

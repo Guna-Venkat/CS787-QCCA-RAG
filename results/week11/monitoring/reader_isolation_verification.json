@@ -1,0 +1,44 @@
+{
+  "Llama_qualification": {
+    "generated_tokens": 15,
+    "generation_succeeded": true,
+    "prediction": "Yes, water is composed of two hydrogen atoms and one oxygen atom.",
+    "prompt_tokens": 63,
+    "reader": "Llama"
+  },
+  "Mistral_worker_pid": 204324,
+  "canonical_Mistral_replays": [
+    {
+      "action_id": "f70536eca71d35e6b7a0",
+      "dataset": "HotpotQA",
+      "prediction_exact_match": true,
+      "prompt_and_generation_tokens_exact_match": true,
+      "query_id": "5a874ec35542994846c1cd57"
+    },
+    {
+      "action_id": "773055b342cbf6449de0",
+      "dataset": "SciFact",
+      "prediction_exact_match": true,
+      "prompt_and_generation_tokens_exact_match": true,
+      "query_id": "1194"
+    }
+  ],
+  "driver_sha256": "c9e01965b16414e1b06c0fc34d5263e9db2d500932e83b5fa05d6674083504dd",
+  "extra_operational_lm_calls": 3,
+  "frozen_scientific_identity": {
+    "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+    "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+    "dataset_hash": "1135f00c9403d2adb58b8398ae460d7758f9b8a5b9c072ff6039d4f8cb41955c",
+    "model_hash": "675f3a005f3a85889c3072ad7da46b7726f33f8e53c196e305442fbb270c6926",
+    "phase": "D",
+    "synthetic": false
+  },
+  "gpu_after_Llama_close": "291 MiB, 23725 MiB",
+  "gpu_after_Mistral_close": "291 MiB, 23725 MiB",
+  "gpu_before": "293 MiB, 23724 MiB",
+  "mode": "operational replay and one qualification call; not scientific outcome rows",
+  "passed": true,
+  "timestamp_utc": "2026-10-28T14:40:18.196837+00:00",
+  "verification_driver_sha256": "6b5306e8ed9fb3322bf27d0a347a538c10b3416b440996acdedebf0617ddb64d",
+  "workers_exited": true
+}

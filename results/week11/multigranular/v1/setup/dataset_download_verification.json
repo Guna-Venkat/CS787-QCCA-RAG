@@ -1,0 +1,37 @@
+{
+  "all_hotpot_rows_exactly_match_pinned_source": true,
+  "branch": "gagan",
+  "counts": {
+    "HotpotQA_dev_distractor": 7405,
+    "QASPER_project_dev": 231,
+    "SciFact_corpus_abstracts": 5183,
+    "SciFact_dev_claims": 300
+  },
+  "download_regression_tests_passed": 5,
+  "experiments_started": false,
+  "files": {
+    "data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+    "data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+    "data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62"
+  },
+  "historical_rehash": "Not repeated for this download-only follow-up; no Week0\u201310 edits.",
+  "hotpot_provenance": {
+    "conversion": "id to _id; nested column lists to native context/supporting_facts pairs; strings and row order unchanged",
+    "converted_sha256": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+    "download_sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6",
+    "fallback_reason": "<urlopen error [Errno -2] Name or service not known>",
+    "n_queries": 7405,
+    "original_url": "https://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json",
+    "repository": "hotpotqa/hotpot_qa",
+    "revision": "1908d6afbbead072334abe2965f91bd2709910ab",
+    "source_url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/resolve/1908d6afbbead072334abe2965f91bd2709910ab/distractor/validation-00000-of-00001.parquet?download=true",
+    "split": "validation",
+    "subset": "distractor"
+  },
+  "model_calls": 0,
+  "notebook_default_check": "Expected failure: user manually enabled RUN_FULL=True in setup notebook, as instructed; user flags preserved.",
+  "other_post_download_tests_passed": 82,
+  "qasper_test_used": false,
+  "rerun_reused_locked_files": true,
+  "timestamp": "2026-10-27T16:58:09.708870+00:00"
+}

@@ -1,0 +1,1279 @@
+[
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "33499189:3",
+        "33499189:4"
+      ],
+      "gold_evidence_text": [
+        "The conformational change is elicited by cooperative rearrangements of two TCR-CD3 complexes and does not require accompanying changes in the structure of the TCRalphabeta ectodomains.",
+        "This conformational change at CD3 reverts upon ligand dissociation and is required for T cell activation."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_WIN",
+    "method": "QBGF_FULL",
+    "original_answer": "SUPPORT",
+    "query_id": "1132",
+    "question": "TCR/CD3 microdomains are a required to induce the immunologic synapse to activate T cells.",
+    "selected_evidence": [
+      {
+        "relevance": 0.7734283600392695,
+        "text": "Recruitment of Nck by CD3\u03f5 Reveals a Ligand-Induced Conformational Change Essential for T Cell Receptor Signaling and Synapse Formation",
+        "unit_id": "faa189135b9f644503f4d9f61a5922a4"
+      },
+      {
+        "relevance": 0.7964911983200916,
+        "text": "Finally, by interfering with Nck-CD3 epsilon association in vivo, we demonstrate that TCR-CD3 recruitment of Nck is critical for maturation of the immune synapse and for T cell activation.",
+        "unit_id": "a81b51ded29bbba5ad8273f15e5d67aa"
+      },
+      {
+        "relevance": 0.6768457123617738,
+        "text": "Direct observation of ligand recognition by T cells",
+        "unit_id": "80e4289afe10f1d482dd09a13cf7d5b1"
+      },
+      {
+        "relevance": 0.736252819730005,
+        "text": "The activation of T cells through interaction of their T-cell receptors with antigenic peptide bound to major histocompatibility complex (MHC) on the surface of antigen presenting cells (APCs) is a crucial step in adaptive immunity.",
+        "unit_id": "5c0506e1b86c0b3d6e922268123c1d9c"
+      },
+      {
+        "relevance": 0.7401595553431874,
+        "text": "Here we use three-dimensional fluorescence microscopy to visualize individual peptide\u2013I-Ek class II MHC complexes labelled with the phycobiliprotein phycoerythrin in an effort to characterize T-cell sensitivity and the requirements for forming an immunological synapse in single cells.",
+        "unit_id": "5b716800158b635f9da3632ddf749318"
+      },
+      {
+        "relevance": 0.778587720233893,
+        "text": "We show that T cells expressing the CD4 antigen respond with transient calcium signalling to even a single agonist peptide\u2013MHC ligand, and that the organization of molecules in the contact zone of the T cell and APC takes on the characteristics of an immunological synapse when only about ten agonists are present.",
+        "unit_id": "45d0296e0416cb5ed2ac807267ed7b4d"
+      },
+      {
+        "relevance": 0.6798027032203784,
+        "text": "This sensitivity is highly dependant on CD4, because blocking this molecule with antibodies renders T cells unable to detect less than about 30 ligands.",
+        "unit_id": "9270e799eecbc56f54d31fb9f90e285a"
+      },
+      {
+        "relevance": 0.7591286401946702,
+        "text": "Local changes in lipid environment of TCR microclusters regulate membrane binding by the CD3\u03b5 cytoplasmic domain",
+        "unit_id": "2e2970f4088b8fbedf7241625cb875ca"
+      },
+      {
+        "relevance": 0.7856748246138416,
+        "text": "Local changes in the lipid composition of TCR microclusters thus render the CD3\u03b5 cytoplasmic domain accessible during early stages of T cell activation.",
+        "unit_id": "a38133b6f20450b1e0ebaf3b22561286"
+      },
+      {
+        "relevance": 0.75520977630671,
+        "text": "Functional anatomy of T cell activation and synapse formation.",
+        "unit_id": "8c3981fe760d36c5cbe8a791a558b1c7"
+      },
+      {
+        "relevance": 0.712606976403791,
+        "text": "T cell activation and function require a structured engagement of antigen-presenting cells.",
+        "unit_id": "14a4c6b944861c9557201a44eb5bbad3"
+      },
+      {
+        "relevance": 0.7343472121151874,
+        "text": "These cell contacts are characterized by two distinct dynamics in vivo: transient contacts resulting from promigratory junctions called immunological kinapses or prolonged contacts from stable junctions called immunological synapses.",
+        "unit_id": "8607ae6f9bd10674bb529d5d2add4e07"
+      },
+      {
+        "relevance": 0.5928249478581605,
+        "text": "Kinapses operate in the steady state to allow referencing to self-peptide-MHC (pMHC) and searching for pathogen-derived pMHC.",
+        "unit_id": "eeefd0131606160a698ab27466a7dfc3"
+      },
+      {
+        "relevance": 0.7986166647325063,
+        "text": "Synapses are induced by T cell receptor (TCR) interactions with agonist pMHC under specific conditions and correlate with robust immune responses that generate effector and memory T cells.",
+        "unit_id": "8c682abedb681de27150963cc770d371"
+      },
+      {
+        "relevance": 0.7974001531787211,
+        "text": "High-resolution imaging has revealed that the synapse is highly coordinated, integrating cell adhesion, TCR recognition of pMHC complexes, and an array of activating and inhibitory ligands to promote or prevent T cell signaling.",
+        "unit_id": "ad95b0b41885f424643eb673f76e6b1b"
+      },
+      {
+        "relevance": 0.5821349946770741,
+        "text": "In this review, we examine the molecular components, geometry, and timing underlying kinapses and synapses.",
+        "unit_id": "a18507a615c423c7be94af3fc9774d47"
+      },
+      {
+        "relevance": 0.5303981134043575,
+        "text": "We integrate recent molecular and physiological data to provide a synthesis and suggest ways forward.",
+        "unit_id": "ec5aedfe7b94e7b77c65d04e8b97cb94"
+      },
+      {
+        "relevance": 0.7599575505044189,
+        "text": "Priming of T cells takes place via an immunological synapse formed with an antigen-presenting cell (APC).",
+        "unit_id": "8542d63c4f5764bf8eaee9e3c23a7b81"
+      },
+      {
+        "relevance": 0.7428440120362917,
+        "text": "We found that T cell\u2013T cell synapses had a major role in the generation of protective CD8+ T cell memory.",
+        "unit_id": "21555e70d3f2879854be2c6a26cd7f9e"
+      },
+      {
+        "relevance": 0.720228156721441,
+        "text": "T-cell-antigen recognition and the immunological synapse",
+        "unit_id": "1a990f4a32e90fc346184aa15e33e305"
+      },
+      {
+        "relevance": 0.7706071358918269,
+        "text": "Much excitement of the past five years in the area of T-cell-antigen recognition has centred around the immunological synapse \u2014 a complex cellular structure that forms at the interface of a T cell and a cell that expresses the appropriate peptide\u2013MHC complexes.",
+        "unit_id": "bfefebd239ffb9817e7eec1928e0deff"
+      },
+      {
+        "relevance": 0.6382556489077457,
+        "text": "Thanks to new imaging technologies, we are now beginning to understand the role of cell-surface molecules and some of their attendant signalling modules in the context of cell-to-cell communication.",
+        "unit_id": "a0869493cfd1744b4b5105879bfdc190"
+      },
+      {
+        "relevance": 0.6609925768059117,
+        "text": "Progress has been so rapid that T-cell-antigen recognition might be the first system in which the molecular basis of cell\u2013cell recognition is understood.",
+        "unit_id": "3f340ba9fdf0d3382c6cd7831fe4cf3b"
+      },
+      {
+        "relevance": 0.7551647772830011,
+        "text": "Full activation of the T cell receptor requires both clustering and conformational changes at CD3.",
+        "unit_id": "cfaaeb4da4ddc62d7ec0dff1a44b9afa"
+      },
+      {
+        "relevance": 0.7673348996083418,
+        "text": "T cell receptor (TCR-CD3) triggering involves both receptor clustering and conformational changes at the cytoplasmic tails of the CD3 subunits.",
+        "unit_id": "403104384d16571047122dfb1fc727d7"
+      },
+      {
+        "relevance": 0.7629687398642848,
+        "text": "By using well-defined ligands, we showed that induction of the conformational change requires both multivalent engagement and the mobility restriction of the TCR-CD3 imposed by the plasma membrane.",
+        "unit_id": "6d0d856eb9fc432d18ad5d053af40290"
+      },
+      {
+        "relevance": 0.765256929415512,
+        "text": "The conformational change is elicited by cooperative rearrangements of two TCR-CD3 complexes and does not require accompanying changes in the structure of the TCRalphabeta ectodomains.",
+        "unit_id": "76e12096b7bd0f264283bcd1855b6c7b"
+      },
+      {
+        "relevance": 0.7453654768271366,
+        "text": "Altered TCR signaling from geometrically repatterned immunological synapses.",
+        "unit_id": "5f8209591872d112305b3371af1896b3"
+      },
+      {
+        "relevance": 0.731289035568428,
+        "text": "The immunological synapse is a specialized cell-cell junction that is defined by large-scale spatial patterns of receptors and signaling molecules yet remains largely enigmatic in terms of formation and function.",
+        "unit_id": "90a7e2be6652cace67fd811af65d84c3"
+      },
+      {
+        "relevance": 0.7097950054284471,
+        "text": "We used supported bilayer membranes and nanometer-scale structures fabricated onto the underlying substrate to impose geometric constraints on immunological synapse formation.",
+        "unit_id": "1c45d9604080f6332e1ceb5f7dfac374"
+      },
+      {
+        "relevance": 0.7781975549666931,
+        "text": "Analysis of the resulting alternatively patterned synapses revealed a causal relation between the radial position of T cell receptors (TCRs) and signaling activity, with prolonged signaling from TCR microclusters that had been mechanically trapped in the peripheral regions of the synapse.",
+        "unit_id": "7e8a94b5ce69f341ef437cb84c6e957c"
+      },
+      {
+        "relevance": 0.7308619171030356,
+        "text": "These results are consistent with a model of the synapse in which spatial translocation of TCRs represents a direct mechanism of signal regulation.",
+        "unit_id": "2b9318662dec5a60e798ff1a1b13d9c0"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "SUPPORT",
+      "ablated_score": 1.0,
+      "budget": 1024,
+      "category": "NEUTRAL",
+      "cluster_id": "cited-paper-component:550",
+      "correctness_flip": false,
+      "dataset": "SciFact",
+      "exact_flip": false,
+      "full_score": 1.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 0.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": false,
+      "parent_retrieval_rank": 6,
+      "parent_retrieval_score": 0.7714747343784722,
+      "query_id": "1132",
+      "relevance": 0.7734283600392695,
+      "tokens": 33,
+      "unit_id": "faa189135b9f644503f4d9f61a5922a4",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "37480103:10",
+        "37480103:12"
+      ],
+      "gold_evidence_text": [
+        "Compared with women who had placentas weighing less than 500 g in 2 consecutive pregnancies, the risk of breast cancer was increased among women whose placentas weighed between 500 and 699 g in their first pregnancy and at least 700 g in their second pregnancy (or vice versa) (adjusted hazard ratio, 1.82; 95% confidence interval [CI], 1.07-3.08), and the corresponding risk was doubled among women whose placentas weighed at least 700 g in both pregnancies (adjusted hazard ratio, 2.05; 95% CI, 1.15-3.64).",
+        "CONCLUSIONS Placental weight is positively associated with maternal risk of breast cancer."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_WIN",
+    "method": "QBGF_FULL",
+    "original_answer": "SUPPORT",
+    "query_id": "1266",
+    "question": "The risk of breast cancer among parous women increases with placental weight of pregnancies, and this association is strongest for premenopausal breast cancer.",
+    "selected_evidence": [
+      {
+        "relevance": 0.7996935770610457,
+        "text": "Birth weight is a significant predictor of breast cancer risk in adult life and mammary gland mass could be an intermediate stage in this long process.",
+        "unit_id": "5027b72ca0aa890f23e9e753ab4517e7"
+      },
+      {
+        "relevance": 0.7898647968302217,
+        "text": "Our data support a mechanism for parity and breast cancer that involves mammographic density among pre- and early perimenopausal women that may be modified by body size.",
+        "unit_id": "bcc529ecea20e19a96286018d6822e61"
+      },
+      {
+        "relevance": 0.7575881035909038,
+        "text": "However, before menopause increased body weight is inversely related to breast cancer risk.",
+        "unit_id": "3dbf4d7a0a5038d790a47e7fb5bd03e2"
+      },
+      {
+        "relevance": 0.7797198436288227,
+        "text": "In both premenopausal and postmenopausal breast cancer, the mechanisms by which body weight and obesity affect risk have been related to estrogenic activity.",
+        "unit_id": "dc910c0a958a46b74d73257ab9a48715"
+      },
+      {
+        "relevance": 0.7678943839255675,
+        "text": "Role of birthweight in the etiology of breast cancer.",
+        "unit_id": "5bbebcece6193f1eca59c640d7d92bc9"
+      },
+      {
+        "relevance": 0.7632654618267816,
+        "text": "We reviewed the available evidence on the association between birthweight and the risk of breast cancer.",
+        "unit_id": "b09a7462dcdca69986a6dda5f9717543"
+      },
+      {
+        "relevance": 0.832298825528288,
+        "text": "The majority of studies identified a positive link between birthweight and premenopausal, but not postmenopausal, breast cancer.",
+        "unit_id": "f5a57ca30039ba85f8a630c161e6a993"
+      },
+      {
+        "relevance": 0.8290600587778184,
+        "text": "The relative risk estimate for breast cancer comparing women with high birthweight to women with low birthweight combining all studies including both pre- and postmenopausal breast cancer was 1.23 (95% confidence interval 1.13-1.34).",
+        "unit_id": "6d58cdc0cf75c76ac157653240ae5f7b"
+      },
+      {
+        "relevance": 0.8889996555164501,
+        "text": "CONCLUSIONS Placental weight is positively associated with maternal risk of breast cancer.",
+        "unit_id": "debbc113e631fd01fdd3ec1735a5ae3f"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 256,
+      "category": "HELPFUL",
+      "cluster_id": "cited-paper-component:1265",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 1.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 1.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 4,
+      "parent_retrieval_score": 0.7934909139416095,
+      "query_id": "1266",
+      "relevance": 0.7678943839255675,
+      "tokens": 12,
+      "unit_id": "5bbebcece6193f1eca59c640d7d92bc9",
+      "unit_index": 4
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "27910499:4"
+      ],
+      "gold_evidence_text": [
+        "After 6 months, cord blood-graft recipients approximated the TCR diversity of healthy individuals, whereas recipients of T cell-depleted peripheral-blood stem cell grafts had 28-fold and 14-fold lower CD4(+) and CD8(+) T cell diversities, respectively."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_WIN",
+    "method": "QBGF_FULL",
+    "original_answer": "SUPPORT",
+    "query_id": "1335",
+    "question": "UCB T cells maintain high TCR diversity after transplantation.",
+    "selected_evidence": [
+      {
+        "relevance": 0.690754091922655,
+        "text": "Long-term immune deficiency after allogeneic stem cell transplantation: B-cell deficiency is associated with late infections.",
+        "unit_id": "10ceaeeb33a14f6aa43b1aba333c1e54"
+      },
+      {
+        "relevance": 0.6893453197185804,
+        "text": "Immune reconstitution was analyzed in 140 consecutive patients who were 2-year disease-free and who underwent myeloablative allogeneic transplantation.",
+        "unit_id": "8b61550e2fc44be5672e1ec2ceaf031a"
+      },
+      {
+        "relevance": 0.6799292670332882,
+        "text": "Natural killer cells normalize at six months while we observed expansion of CD19(+)/CD5(+) B cells after three months and a persisting defect of memory B cells.",
+        "unit_id": "8bd6c9023910e26145d8f554a94b59a1"
+      },
+      {
+        "relevance": 0.6727533328557104,
+        "text": "Using Cox's models, only low B-cell counts at 12 (P=0.02) and 24 (P=0.001) months were associated with the hazard of developing late infection, in particular if patients did not develop chronic graft-versus-host disease.",
+        "unit_id": "a5e25a816a4fff4f92932df9c7197102"
+      },
+      {
+        "relevance": 0.6631533356237811,
+        "text": "Maintaining the norm: T-cell homeostasis",
+        "unit_id": "732487291078500facf8bbb0c938f57e"
+      },
+      {
+        "relevance": 0.6660015745095178,
+        "text": "The persistence of naive and memory T cells has long been of interest to immunologists, but the factors that influence the survival and homeostasis of these subsets have remained obscure.",
+        "unit_id": "1ce66cf0e0f68dc0ff832521428a4068"
+      },
+      {
+        "relevance": 0.7113929419919388,
+        "text": "In recent years, it has become evident that the homeostasis of both naive and memory T-cell pools is highly dynamic and tightly regulated by internal stimuli, including cytokines and self-peptide\u2013MHC ligands for the T-cell receptor.",
+        "unit_id": "e7162adb08f2c2325049b113d2a79db1"
+      },
+      {
+        "relevance": 0.6467373425306849,
+        "text": "These homeostatic mechanisms might have a vital influence on the capacity of the T-cell pool to respond to both foreign and self-antigens.",
+        "unit_id": "8cf2c4aa854870b1800017d331978008"
+      },
+      {
+        "relevance": 0.6459911798459942,
+        "text": "Reconstitution of the immune system after hematopoietic stem cell transplantation in humans",
+        "unit_id": "46516955bc12000f3322ea2ce52ee237"
+      },
+      {
+        "relevance": 0.6307643908290291,
+        "text": "Hematopoietic stem cell transplantation is associated with a severe immune deficiency.",
+        "unit_id": "b2f32a5c3bde16cef440c3a95b9a6c9a"
+      },
+      {
+        "relevance": 0.5178618202101931,
+        "text": "As a result, the patient is at high risk of infections.",
+        "unit_id": "0ac7d1381690783bf2bf9872dae7f225"
+      },
+      {
+        "relevance": 0.6557563994545568,
+        "text": "Innate immunity, including epithelial barriers, monocytes, granulocytes, and NK cells recovers within weeks after transplantation.",
+        "unit_id": "72a343823d1a40b01dca0cd42f9fc626"
+      },
+      {
+        "relevance": 0.562255064548247,
+        "text": "By contrast, adaptive immunity recovers much slower.",
+        "unit_id": "c49ba752774e45573ba5e420c45f40f4"
+      },
+      {
+        "relevance": 0.7433542295313572,
+        "text": "B- and T-cell counts normalize during the first months after transplantation, but in particular, T-cell immunity may remain impaired for years.",
+        "unit_id": "c957d713aadc309d17c8d3db11ed26e1"
+      },
+      {
+        "relevance": 0.44313445958595093,
+        "text": "During the last decade, much of the underlying mechanisms have been identified.",
+        "unit_id": "0529c92a8f0b9ad137887c26a5f36472"
+      },
+      {
+        "relevance": 0.489851883453447,
+        "text": "These insights may provide new therapies to accelerate recovery.",
+        "unit_id": "7af33875bc93f2f3c8e11b46e3f44f0b"
+      },
+      {
+        "relevance": 0.7671247606444346,
+        "text": "Furthermore, the diversity of TCRs on Foxp3(+)CD4(+) regulatory T cells exceeded the diversity of TCRs on Foxp3(-)CD4(+) naive T cells, even in mice that lack expression of tissue-specific antigens.",
+        "unit_id": "28d100582f7fa2c6cdb0ebda9e8ed28a"
+      },
+      {
+        "relevance": 0.7616547976142313,
+        "text": "Our results imply that higher TCR diversity on Foxp3(+) regulatory T cells helps these cells to match the specificities of autoreactive and naive T cells.",
+        "unit_id": "308ccddb34e3aaaf4848ab42c24eed4a"
+      },
+      {
+        "relevance": 0.6962591179164561,
+        "text": "TCR stimulation with modified anti-CD3 mAb expands CD8+ T cell population and induces CD8+CD25+ Tregs.",
+        "unit_id": "45cbf601c9519c8b3c8dd009a687a82e"
+      },
+      {
+        "relevance": 0.6961700947227284,
+        "text": "Immune reconstitution after cord blood transplantation: peculiarities, clinical implications and management strategies.",
+        "unit_id": "2c8ab9ba1385166bc9e1053ef14cf1e2"
+      },
+      {
+        "relevance": 0.6702328333273312,
+        "text": "Umbilical cord blood (UCB) is now widely used as an alternative hematopoietic stem cell source for patients lacking closely matched related or unrelated adult donors.",
+        "unit_id": "2105c32eab9600ff54619c07aa1779ed"
+      },
+      {
+        "relevance": 0.7413686717099331,
+        "text": "UCB transplantation has traditionally been associated with delayed engraftment, poor immune reconstitution and consequent increased risk of infection.",
+        "unit_id": "4d88530b263d1cb512f8252ddd49b67e"
+      },
+      {
+        "relevance": 0.7875455794834123,
+        "text": "More recent clinical studies, however, suggest that conditioning regimens and in particular the omission of in vivo T-cell depletion may play a crucial role in post-transplant T-cell expansion, facilitating a uniquely rapid immune recovery after UCB transplantation.",
+        "unit_id": "c867ad220deaf3c6de8650e8153e78a4"
+      },
+      {
+        "relevance": 0.7656176438762705,
+        "text": "The peculiar characteristics of UCB cells, the importance of thymic function and the role of conditioning regimens and graft-versus-host disease influencing immune reconstitution are described.",
+        "unit_id": "c2e38cd8bb8ba71b8e91e96d833704a2"
+      },
+      {
+        "relevance": 0.7436520728752111,
+        "text": "The last part of the review reports available data on UCB, as well as third-party peripheral blood derived anti-viral cell therapy, which provides a novel approach to rescue UCB recipients with viral complications in the post-transplant period.",
+        "unit_id": "009db81e1021997fbf81325a4354ee09"
+      },
+      {
+        "relevance": 0.70537764043041,
+        "text": "Quantitative assessment of T-cell repertoire recovery after hematopoietic stem cell transplantation",
+        "unit_id": "dbc586180c57aad15952f15b11349767"
+      },
+      {
+        "relevance": 0.7963227986418688,
+        "text": "Delayed T cell recovery and restricted T cell receptor (TCR) diversity after allogeneic hematopoietic stem cell transplantation (allo-HSCT) are associated with increased risks of infection and cancer relapse.",
+        "unit_id": "0a7db57da4530841fb8a32c1985e3c3d"
+      },
+      {
+        "relevance": 0.7174096889037895,
+        "text": "Technical challenges have limited faithful measurement of TCR diversity after allo-HSCT.",
+        "unit_id": "4316d71d9cf74763e3b02c01af2fe382"
+      },
+      {
+        "relevance": 0.7696013751884554,
+        "text": "Here we combined 5' rapid amplification of complementary DNA ends PCR with deep sequencing to quantify TCR diversity in 28 recipients of allo-HSCT using a single oligonucleotide pair.",
+        "unit_id": "a5a9cfcee6f2f8031d2ae416ebb5a5bd"
+      },
+      {
+        "relevance": 0.6275044518359124,
+        "text": "Analysis of duplicate blood samples confirmed that we accurately determined the frequency of individual TCRs.",
+        "unit_id": "a564629c806f71881c56872f97dffe71"
+      },
+      {
+        "relevance": 0.8176258017967789,
+        "text": "After 6 months, cord blood-graft recipients approximated the TCR diversity of healthy individuals, whereas recipients of T cell-depleted peripheral-blood stem cell grafts had 28-fold and 14-fold lower CD4(+) and CD8(+) T cell diversities, respectively.",
+        "unit_id": "1c0e950416498b47e0534033f4213b28"
+      },
+      {
+        "relevance": 0.6196212659319572,
+        "text": "After 12 months, these deficiencies had improved for the CD4(+) but not the CD8(+) T cell compartment.",
+        "unit_id": "1da9120c103c6fd761288a313e99a50c"
+      },
+      {
+        "relevance": 0.7653615571661807,
+        "text": "Overall, this method provides unprecedented views of T cell repertoire recovery after allo-HSCT and may identify patients at high risk of infection or relapse.",
+        "unit_id": "eb466b59df52dd5936cf9b5f17ae741b"
+      },
+      {
+        "relevance": 0.7276814263956143,
+        "text": "Recipient-type specific CD4+CD25+ regulatory T cells favor immune reconstitution and control graft-versus-host disease while maintaining graft-versus-leukemia.",
+        "unit_id": "eabe38c3cb45d8b61163d62e878667c3"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 1024,
+      "category": "HELPFUL",
+      "cluster_id": "cited-paper-component:1316",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 1.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 1.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 3,
+      "parent_retrieval_score": 0.7393630967127457,
+      "query_id": "1335",
+      "relevance": 0.7671247606444346,
+      "tokens": 54,
+      "unit_id": "28d100582f7fa2c6cdb0ebda9e8ed28a",
+      "unit_index": 16
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "11603066:7"
+      ],
+      "gold_evidence_text": [
+        "In summary, our results provide valuable insight into how cells mediate specificity in one of the most abundant signalling pathways in biology, two-component signal transduction."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_LOSS",
+    "method": "QBGF_FULL",
+    "original_answer": "REFUTE",
+    "query_id": "1019",
+    "question": "Rapid phosphotransfer rates govern fidelity in two component systems",
+    "selected_evidence": [
+      {
+        "relevance": 0.7544253798229238,
+        "text": "IMPORTANCE Using in vitro phosphotransfer and phosphatase profiling assays and isothermal titration calorimetry, we have taken a system-wide approach to demonstrate specificity for a family of two-component signaling proteins in Myxococcus xanthus.",
+        "unit_id": "3c7f4b309ddddc8d8fbcf3adcb1700c0"
+      },
+      {
+        "relevance": 0.7464936341200148,
+        "text": "The data indicate that preferential binding affinity is the basis for signaling fidelity in bacterial two-component systems.",
+        "unit_id": "b0b1b90d43550b3b5d3667bd611a7a23"
+      },
+      {
+        "relevance": 0.6524057960350078,
+        "text": "Translational fidelity, essential for protein and cell function, requires accurate transfer RNA (tRNA) aminoacylation.",
+        "unit_id": "18e749bfeba332bffb06b0d56bd8ca8b"
+      },
+      {
+        "relevance": 0.5899365909924498,
+        "text": "DNA replication fidelity",
+        "unit_id": "ac8b0342f27beeb90bd8a63c28801249"
+      },
+      {
+        "relevance": 0.6502897401854445,
+        "text": "DNA replication fidelity is a key determinant of genome stability and is central to the evolution of species and to the origins of human diseases.",
+        "unit_id": "d87fc3cd667184910139ca93cacda433"
+      },
+      {
+        "relevance": 0.6722314699523233,
+        "text": "Here we review our current understanding of replication fidelity, with emphasis on structural and biochemical studies of DNA polymerases that provide new insights into the importance of hydrogen bonding, base pair geometry, and substrate-induced conformational changes to fidelity.",
+        "unit_id": "95ad799ce757b5f1073bf80c088d3b36"
+      },
+      {
+        "relevance": 0.6365244038943519,
+        "text": "These studies also reveal polymerase interactions with the DNA minor groove at and upstream of the active site that influence nucleotide selectivity, the efficiency of exonucleolytic proofreading, and the rate of forming errors via strand misalignments.",
+        "unit_id": "6f66c8a7d59d7cc489789f78986f3933"
+      },
+      {
+        "relevance": 0.6629521280063501,
+        "text": "We highlight common features that are relevant to the fidelity of any DNA synthesis reaction, and consider why fidelity varies depending on the enzymes, the error, and the local sequence environment.",
+        "unit_id": "c6edd271da8ad359b86bc4c991a0eafd"
+      },
+      {
+        "relevance": 0.7477564520125948,
+        "text": "Some bacteria have over 150 different two-component pathways, and the specificity of the phosphotransfer reactions within these systems is tightly controlled to prevent unwanted crosstalk.",
+        "unit_id": "d666dcb034bbc8132ae61008c8915d61"
+      },
+      {
+        "relevance": 0.7345221857502293,
+        "text": "In summary, our results provide valuable insight into how cells mediate specificity in one of the most abundant signalling pathways in biology, two-component signal transduction.",
+        "unit_id": "97e672e43216f5bfa9d7d085fd485153"
+      },
+      {
+        "relevance": 0.6388254988607265,
+        "text": "Distinction and relationship between elongation rate and processivity of RNA polymerase II in vivo.",
+        "unit_id": "da6328ed5ffb9ca41d63ee11aadf81e7"
+      },
+      {
+        "relevance": 0.6518675380447753,
+        "text": "A number of proteins and drugs have been implicated in the process of transcriptional elongation by RNA polymerase (Pol) II, but the factors that govern the elongation rate (nucleotide additions per min) and processivity (nucleotide additions per initiation event) in vivo are poorly understood.",
+        "unit_id": "39ea0ef1295ca3a31f98cf06743cdf27"
+      },
+      {
+        "relevance": 0.6539754739716124,
+        "text": "Here, we show that a mutation in the Rpb2 subunit of Pol II reduces both the elongation rate and processivity in vivo.",
+        "unit_id": "9fe79c95c3f068c8a627870a67c514b4"
+      },
+      {
+        "relevance": 0.6358707877702996,
+        "text": "In contrast, none of the putative elongation factors tested affect the elongation rate, although mutations in the THO complex and in Spt4 significantly reduce processivity.",
+        "unit_id": "a1889576b9f49d2ad1a903840435c124"
+      },
+      {
+        "relevance": 0.6578817153867214,
+        "text": "The drugs 6-azauracil and mycophenolic acid reduce both the elongation rate and processivity, and this processivity defect is aggravated by mutations in Spt4, TFIIS, and CTDK-1.",
+        "unit_id": "ddcee472014f8e858a17e9fc13f75332"
+      },
+      {
+        "relevance": 0.6508331931607633,
+        "text": "Our results suggest that, in vivo, a reduced rate of Pol II elongation leads to premature dissociation along the chromatin template and that Pol II processivity can be uncoupled from elongation rate.",
+        "unit_id": "25a8111fb509ed2050582c3fd6147af2"
+      },
+      {
+        "relevance": 0.5323696185109918,
+        "text": "A nano-positioning system for macromolecular structural analysis",
+        "unit_id": "338b83826b99d436cb756eb34988c2d2"
+      },
+      {
+        "relevance": 0.5632181100360031,
+        "text": "Very often, the positions of flexible domains within macromolecules as well as within macromolecular complexes cannot be determined by standard structural biology methods.",
+        "unit_id": "ee5eb065d308b47403cb9d159836c80d"
+      },
+      {
+        "relevance": 0.5615949258782845,
+        "text": "To overcome this problem, we developed a method that uses probabilistic data analysis to combine single-molecule measurements with X-ray crystallography data.",
+        "unit_id": "a6a7d3db5340963b85418a29673953fd"
+      },
+      {
+        "relevance": 0.5931040525717667,
+        "text": "The method determines not only the most likely position of a fluorescent dye molecule attached to the domain but also the complete three-dimensional probability distribution depicting the experimental uncertainty.",
+        "unit_id": "f37bef40aec7d2a7e95612f1c7546bb8"
+      },
+      {
+        "relevance": 0.6349034022195963,
+        "text": "With this approach, single-pair fluorescence resonance energy transfer measurements can now be used as a quantitative tool for investigating the position and dynamics of flexible domains within macromolecular complexes.",
+        "unit_id": "de0b9c06d2c789acc9922ec57adb8d9d"
+      },
+      {
+        "relevance": 0.6319138034370876,
+        "text": "We applied this method to find the position of the 5\u2032 end of the nascent RNA exiting transcription elongation complexes of yeast (Saccharomyces cerevisiae) RNA polymerase II and studied the influence of transcription factor IIB on the position of the RNA.",
+        "unit_id": "e83140f0b90846c4cd39ed07c6c3fd4b"
+      },
+      {
+        "relevance": 0.6463930811208001,
+        "text": "The biphasic behavior of incoherent feed-forward loops in biomolecular regulatory networks.",
+        "unit_id": "0ada8f3c08dfab5ac2bdf86574315821"
+      },
+      {
+        "relevance": 0.6270132763141503,
+        "text": "An incoherent feed-forward loop (FFL) is one of the most-frequently observed motifs in biomolecular regulatory networks.",
+        "unit_id": "e6f90918bef5521e4018958314323caf"
+      },
+      {
+        "relevance": 0.6201938567104271,
+        "text": "It has been thought that the incoherent FFL is designed simply to induce a transient response shaped by a 'fast activation and delayed inhibition'.",
+        "unit_id": "634024e8668ff8dc46ed3b04c058ca26"
+      },
+      {
+        "relevance": 0.6717227998585711,
+        "text": "We find that the dynamics of various incoherent FFLs can be further classified into two types: time-dependent biphasic responses and dose-dependent biphasic responses.",
+        "unit_id": "df7f1b47d607faae805811dee8aa0561"
+      },
+      {
+        "relevance": 0.5798525502118093,
+        "text": "Why do the structurally identical incoherent FFLs play such different dynamical roles?",
+        "unit_id": "805859a74aab138c2d5608b92e2cc76a"
+      },
+      {
+        "relevance": 0.6048978924646972,
+        "text": "Through computational studies, we show that the dynamics of the two types of incoherent FFLs are mutually exclusive.",
+        "unit_id": "7385e5d702f7208e7fad2e53cf006e2b"
+      },
+      {
+        "relevance": 0.6254004611702183,
+        "text": "Following from further computational results and experimental observations, we hypothesize that incoherent FFLs have been optimally designed to achieve distinct biological function arising from different cellular contexts.",
+        "unit_id": "e39e7fcbaf860c0a50516a5dc5fcdc70"
+      },
+      {
+        "relevance": 0.47888171564456605,
+        "text": "Additional Supporting Information may be found in the online version of the article.",
+        "unit_id": "29b6b4b4ccb9f51522ad86d8b3981cb1"
+      },
+      {
+        "relevance": 0.6860471307707334,
+        "text": "A mathematical investigation of the effects of inhibitor therapy on three putative phosphorylation cascades governing the two-component system of the agr operon.",
+        "unit_id": "cdfc078d90c7164fd9f9d3c56deeab2a"
+      },
+      {
+        "relevance": 0.7382260166279322,
+        "text": "Two-component systems (TCSs) are widely employed by bacteria to sense specific external signals and conduct an appropriate response via a phosphorylation cascade within the cell.",
+        "unit_id": "edc5775e00c7e8e545ab4765335b28b8"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "REFUTE",
+      "ablated_score": 0.0,
+      "budget": 1024,
+      "category": "NEUTRAL",
+      "cluster_id": "cited-paper-component:1018",
+      "correctness_flip": false,
+      "dataset": "SciFact",
+      "exact_flip": false,
+      "full_score": 0.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 0.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": false,
+      "parent_retrieval_rank": 1,
+      "parent_retrieval_score": 0.7426492809013293,
+      "query_id": "1019",
+      "relevance": 0.7544253798229238,
+      "tokens": 51,
+      "unit_id": "3c7f4b309ddddc8d8fbcf3adcb1700c0",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "REFUTE",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "12486491:5",
+        "12486491:6"
+      ],
+      "gold_evidence_text": [
+        "Unexpectedly, a ribosomal protein (RP) expression screen reveals dynamic regulation of individual RPs within the vertebrate embryo.",
+        "Collectively, these findings suggest that RP activity may be highly regulated to impart a new layer of specificity in the control of gene expression and mammalian development."
+      ],
+      "gold_label": "REFUTE"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_LOSS",
+    "method": "QBGF_FULL",
+    "original_answer": "NOT_ENOUGH_INFO",
+    "query_id": "1049",
+    "question": "Ribosomopathies have a low degree of cell and tissue specific pathology.",
+    "selected_evidence": [
+      {
+        "relevance": 0.77458686067487,
+        "text": "As such, it is surprising that defects in ribosome biogenesis underlie a growing number of symptomatically distinct inherited disorders, collectively called ribosomopathies.",
+        "unit_id": "a7fd950a4d59ef50db9094d42780c368"
+      },
+      {
+        "relevance": 0.7840050743919516,
+        "text": "Ribosomopathies compose a collection of disorders in which genetic abnormalities cause impaired ribosome biogenesis and function, resulting in specific clinical phenotypes.",
+        "unit_id": "d643cc50655bfc8654e9fea855c9174a"
+      },
+      {
+        "relevance": 0.7027550132106092,
+        "text": "Growth control and ribosomopathies.",
+        "unit_id": "0988b6620dfd5e8a312a3fa5116f213d"
+      },
+      {
+        "relevance": 0.6466460439419753,
+        "text": "Ribosome biogenesis and protein synthesis are two of the most energy consuming processes in a growing cell.",
+        "unit_id": "1b5b1ce1e42bf6a60c8b2e8c266c342d"
+      },
+      {
+        "relevance": 0.6005092572117753,
+        "text": "Thus it is understandable that cells have developed a surveillance system to monitor the status of the translational machinery.",
+        "unit_id": "f4fd81fbb64cfacdafc607e72d0976e1"
+      },
+      {
+        "relevance": 0.7765254690154563,
+        "text": "Recent discoveries of causative mutations and deletions in genes linked to ribosome biogenesis have defined a group of similar pathologies termed ribosomopathies.",
+        "unit_id": "7ed28735c4220575f1c26b7e4f457acd"
+      },
+      {
+        "relevance": 0.6063078417257833,
+        "text": "Over the past decade, much has been learned regarding the relationship between growth control and ribosome biogenesis.",
+        "unit_id": "ea27246e2825ce0a1634c52fb4baa5ae"
+      },
+      {
+        "relevance": 0.6940109819536295,
+        "text": "The discovery of extra-ribosomal functions of several ribosome proteins and their regulation of p53 levels has provided a link from ribosome impairment to cell cycle regulation.",
+        "unit_id": "ef1d7f14563a38b852c2f358d72d8c53"
+      },
+      {
+        "relevance": 0.5806856941400834,
+        "text": "Yet, evidence suggesting p53 and/or Hdm2 independent pathways also exists.",
+        "unit_id": "f74d1db3e6d6aa53db8963c65dcee374"
+      },
+      {
+        "relevance": 0.730724339516178,
+        "text": "In this review, we summarize recent advances in understanding the mechanisms underlying the pathologies of ribosomopathies and discuss the relationship between ribosome production and tumorigenesis.",
+        "unit_id": "6d49d088ad6787530b9a7e6c937a5f0f"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 256,
+      "category": "NEUTRAL",
+      "cluster_id": "cited-paper-component:1031",
+      "correctness_flip": false,
+      "dataset": "SciFact",
+      "exact_flip": false,
+      "full_score": 0.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 0.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": false,
+      "parent_retrieval_rank": 10,
+      "parent_retrieval_score": 0.6723752471168921,
+      "query_id": "1049",
+      "relevance": 0.77458686067487,
+      "tokens": 33,
+      "unit_id": "a7fd950a4d59ef50db9094d42780c368",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "33499189:3",
+        "33499189:4"
+      ],
+      "gold_evidence_text": [
+        "The conformational change is elicited by cooperative rearrangements of two TCR-CD3 complexes and does not require accompanying changes in the structure of the TCRalphabeta ectodomains.",
+        "This conformational change at CD3 reverts upon ligand dissociation and is required for T cell activation."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "QBGF_LOSS",
+    "method": "QBGF_FULL",
+    "original_answer": "NOT_ENOUGH_INFO",
+    "query_id": "1132",
+    "question": "TCR/CD3 microdomains are a required to induce the immunologic synapse to activate T cells.",
+    "selected_evidence": [
+      {
+        "relevance": 0.7856748246138416,
+        "text": "Local changes in the lipid composition of TCR microclusters thus render the CD3\u03b5 cytoplasmic domain accessible during early stages of T cell activation.",
+        "unit_id": "a38133b6f20450b1e0ebaf3b22561286"
+      },
+      {
+        "relevance": 0.720228156721441,
+        "text": "T-cell-antigen recognition and the immunological synapse",
+        "unit_id": "1a990f4a32e90fc346184aa15e33e305"
+      },
+      {
+        "relevance": 0.7706071358918269,
+        "text": "Much excitement of the past five years in the area of T-cell-antigen recognition has centred around the immunological synapse \u2014 a complex cellular structure that forms at the interface of a T cell and a cell that expresses the appropriate peptide\u2013MHC complexes.",
+        "unit_id": "bfefebd239ffb9817e7eec1928e0deff"
+      },
+      {
+        "relevance": 0.7453654768271366,
+        "text": "Altered TCR signaling from geometrically repatterned immunological synapses.",
+        "unit_id": "5f8209591872d112305b3371af1896b3"
+      },
+      {
+        "relevance": 0.731289035568428,
+        "text": "The immunological synapse is a specialized cell-cell junction that is defined by large-scale spatial patterns of receptors and signaling molecules yet remains largely enigmatic in terms of formation and function.",
+        "unit_id": "90a7e2be6652cace67fd811af65d84c3"
+      },
+      {
+        "relevance": 0.7097950054284471,
+        "text": "We used supported bilayer membranes and nanometer-scale structures fabricated onto the underlying substrate to impose geometric constraints on immunological synapse formation.",
+        "unit_id": "1c45d9604080f6332e1ceb5f7dfac374"
+      },
+      {
+        "relevance": 0.7781975549666931,
+        "text": "Analysis of the resulting alternatively patterned synapses revealed a causal relation between the radial position of T cell receptors (TCRs) and signaling activity, with prolonged signaling from TCR microclusters that had been mechanically trapped in the peripheral regions of the synapse.",
+        "unit_id": "7e8a94b5ce69f341ef437cb84c6e957c"
+      },
+      {
+        "relevance": 0.7308619171030356,
+        "text": "These results are consistent with a model of the synapse in which spatial translocation of TCRs represents a direct mechanism of signal regulation.",
+        "unit_id": "2b9318662dec5a60e798ff1a1b13d9c0"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 256,
+      "category": "NEUTRAL",
+      "cluster_id": "cited-paper-component:550",
+      "correctness_flip": false,
+      "dataset": "SciFact",
+      "exact_flip": false,
+      "full_score": 0.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 0.0,
+      "method": "QBGF_FULL",
+      "normalized_flip": false,
+      "parent_retrieval_rank": 7,
+      "parent_retrieval_score": 0.7681268781078309,
+      "query_id": "1132",
+      "relevance": 0.7856748246138416,
+      "tokens": 31,
+      "unit_id": "a38133b6f20450b1e0ebaf3b22561286",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 256,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "REFUTE",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "12486491:5",
+        "12486491:6"
+      ],
+      "gold_evidence_text": [
+        "Unexpectedly, a ribosomal protein (RP) expression screen reveals dynamic regulation of individual RPs within the vertebrate embryo.",
+        "Collectively, these findings suggest that RP activity may be highly regulated to impart a new layer of specificity in the control of gene expression and mammalian development."
+      ],
+      "gold_label": "REFUTE"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "LOW_RELEVANCE_HIGH_IMPORTANCE",
+    "method": "C2",
+    "original_answer": "REFUTE",
+    "query_id": "1049",
+    "question": "Ribosomopathies have a low degree of cell and tissue specific pathology.",
+    "selected_evidence": [
+      {
+        "relevance": 0.77458686067487,
+        "text": "As such, it is surprising that defects in ribosome biogenesis underlie a growing number of symptomatically distinct inherited disorders, collectively called ribosomopathies.",
+        "unit_id": "a7fd950a4d59ef50db9094d42780c368"
+      },
+      {
+        "relevance": 0.7840050743919516,
+        "text": "Ribosomopathies compose a collection of disorders in which genetic abnormalities cause impaired ribosome biogenesis and function, resulting in specific clinical phenotypes.",
+        "unit_id": "d643cc50655bfc8654e9fea855c9174a"
+      },
+      {
+        "relevance": 0.7279471704324404,
+        "text": "Mutations in other genes required for normal ribosome biogenesis have been implicated in other rare congenital syndromes, Schwachman-Diamond syndrome, dyskeratosis congenita, cartilage hair hypoplasia, and Treacher Collins syndrome.",
+        "unit_id": "b1a071f9089e9205494966385b3eaac6"
+      },
+      {
+        "relevance": 0.7458167777682533,
+        "text": "The p53 pathway provides a surveillance mechanism for protein translation as well as genome integrity and is activated by defects in ribosome biogenesis; this pathway appears to be a critical mediator of many of the clinical features of ribosomopathies.",
+        "unit_id": "1729b01f1733142acc00f950dc0bc56d"
+      },
+      {
+        "relevance": 0.7765254690154563,
+        "text": "Recent discoveries of causative mutations and deletions in genes linked to ribosome biogenesis have defined a group of similar pathologies termed ribosomopathies.",
+        "unit_id": "7ed28735c4220575f1c26b7e4f457acd"
+      },
+      {
+        "relevance": 0.730724339516178,
+        "text": "In this review, we summarize recent advances in understanding the mechanisms underlying the pathologies of ribosomopathies and discuss the relationship between ribosome production and tumorigenesis.",
+        "unit_id": "6d49d088ad6787530b9a7e6c937a5f0f"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 256,
+      "category": "HELPFUL",
+      "cluster_id": "cited-paper-component:1031",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 1.0,
+      "gold_overlap": false,
+      "granularity": "SENTENCE",
+      "importance": 1.0,
+      "method": "C2",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 1,
+      "parent_retrieval_score": 0.7642384623847484,
+      "query_id": "1049",
+      "relevance": 0.7458167777682533,
+      "tokens": 49,
+      "unit_id": "1729b01f1733142acc00f950dc0bc56d",
+      "unit_index": 3
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "24142891:3"
+      ],
+      "gold_evidence_text": [
+        "Tmem27 forms dimers and its extracellular domain is glycosylated, cleaved and shed from the plasma membrane of beta cells."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "LOW_RELEVANCE_HIGH_IMPORTANCE",
+    "method": "BM25_PLAIN_RAG",
+    "original_answer": "SUPPORT",
+    "query_id": "1216",
+    "question": "The extracellular domain of TMEM27 is cleaved in human beta cells.",
+    "selected_evidence": [
+      {
+        "relevance": 15.075334883621455,
+        "text": "Use of synthetic peptides to locate novel integrin alpha2beta1-binding motifs in human collagen III.\nA set of 57 synthetic peptides encompassing the entire triplehelical domain of human collagen III was used to locate binding sites for the collagen-binding integrin alpha(2)beta(1).\nThe capacity of the peptides to support Mg(2+)-dependent binding of several integrin preparations was examined.\nWild-type integrins (recombinant alpha(2) I-domain, alpha(2)beta(1) purified from platelet membranes, and recombinant soluble alpha(2)beta(1) expressed as an alpha(2)-Fos/beta(1)-Jun heterodimer) bound well to only three peptides, two containing GXX'GER motifs (GROGER and GMOGER, where O is hydroxyproline) and one containing two adjacent GXX'GEN motifs (GLKGEN and GLOGEN).\nTwo mutant alpha(2) I-domains were tested: the inactive T221A mutant, which recognized no peptides, and the constitutively active E318W mutant, which bound a larger subset of peptides.\nAdhesion of activated human platelets to GER-containing peptides was greater than that of resting platelets, and HT1080 cells bound well to more of the peptides compared with platelets.\nBinding of cells and recombinant proteins was abolished by anti-alpha(2) monoclonal antibody 6F1 and by chelation of Mg(2+).\nWe describe two novel high affinity integrin-binding motifs in human collagen III (GROGER and GLOGEN) and a third motif (GLKGEN) that displays intermediate activity.\nEach motif was verified using shorter synthetic peptides.",
+        "unit_id": "e850979aba61f270d33fc2a6d9a124a3"
+      },
+      {
+        "relevance": 16.141241198264524,
+        "text": "ADAM13 disintegrin and cysteine-rich domains bind to the second heparin-binding domain of fibronectin.\nADAM13 is a member of the disintegrin and metalloprotease protein family that is expressed on cranial neural crest cells surface and is essential for their migration.\nADAM13 is an active protease that can cleave fibronectin in vitro and remodel a fibronectin substrate in vivo.\nUsing a recombinant secreted protein containing both disintegrin and cysteine-rich domains of ADAM13, we show that this \"adhesive\" region of the protein binds directly to fibronectin.\nFibronectin fusion proteins corresponding to the various functional domains were used to define the second heparin-binding domain as the ADAM13 binding site.\nMutation of the syndecan-binding site (PPRR --> PPTM) within this domain abolishes binding of the recombinant disintegrin and cysteine-rich domains of ADAM13.\nWe further show that the adhesive disintegrin and cysteine-rich domain of ADAM13 can promote cell adhesion via beta(1) integrins.\nThis adhesion requires integrin activation and can be prevented by antibodies to the cysteine-rich domain of ADAM13 and beta(1) integrin.\nFinally, wild type, but not the E/A mutant of ADAM13 metalloprotease domain, can be shed from the cell surface, releasing the metalloprotease domain associated with the disintegrin and cysteine-rich domains.\nThis suggests that ADAM13 shedding may involve its own metalloprotease activity and that the released protease may interact with both integrins and extracellular matrix proteins.",
+        "unit_id": "8b9a4b527a1ebaed1355ff407300b36a"
+      },
+      {
+        "relevance": 44.58631514783406,
+        "text": "Tmem27: a cleaved and shed plasma membrane protein that stimulates pancreatic beta cell proliferation.\nThe signals and molecular mechanisms that regulate the replication of terminally differentiated beta cells are unknown.\nHere, we report the identification and characterization of transmembrane protein 27 (Tmem27, collectrin) in pancreatic beta cells.\nExpression of Tmem27 is reduced in Tcf1(-/-) mice and is increased in islets of mouse models with hypertrophy of the endocrine pancreas.\nTmem27 forms dimers and its extracellular domain is glycosylated, cleaved and shed from the plasma membrane of beta cells.\nThis cleavage process is beta cell specific and does not occur in other cell types.\nOverexpression of full-length Tmem27, but not the truncated or soluble protein, leads to increased thymidine incorporation, whereas silencing of Tmem27 using RNAi results in a reduction of cell replication.\nFurthermore, transgenic mice with increased expression of Tmem27 in pancreatic beta cells exhibit increased beta cell mass.\nOur results identify a pancreatic beta cell transmembrane protein that regulates cell growth of pancreatic islets.",
+        "unit_id": "3fd075f68fd3f6e49fd655b31fe859a5"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 1024,
+      "category": "HELPFUL",
+      "cluster_id": "cited-paper-component:1133",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 1.0,
+      "gold_overlap": false,
+      "granularity": "PASSAGE",
+      "importance": 1.0,
+      "method": "BM25_PLAIN_RAG",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 3,
+      "parent_retrieval_score": 15.075334883621455,
+      "query_id": "1216",
+      "relevance": 15.075334883621455,
+      "tokens": 360,
+      "unit_id": "e850979aba61f270d33fc2a6d9a124a3",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "SUPPORT",
+      "gold_answer": null,
+      "gold_evidence_ids": [
+        "37480103:10",
+        "37480103:12"
+      ],
+      "gold_evidence_text": [
+        "Compared with women who had placentas weighing less than 500 g in 2 consecutive pregnancies, the risk of breast cancer was increased among women whose placentas weighed between 500 and 699 g in their first pregnancy and at least 700 g in their second pregnancy (or vice versa) (adjusted hazard ratio, 1.82; 95% confidence interval [CI], 1.07-3.08), and the corresponding risk was doubled among women whose placentas weighed at least 700 g in both pregnancies (adjusted hazard ratio, 2.05; 95% CI, 1.15-3.64).",
+        "CONCLUSIONS Placental weight is positively associated with maternal risk of breast cancer."
+      ],
+      "gold_label": "SUPPORT"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "LOW_RELEVANCE_HIGH_IMPORTANCE",
+    "method": "BM25_PLAIN_RAG",
+    "original_answer": "SUPPORT",
+    "query_id": "1266",
+    "question": "The risk of breast cancer among parous women increases with placental weight of pregnancies, and this association is strongest for premenopausal breast cancer.",
+    "selected_evidence": [
+      {
+        "relevance": 54.981558681805325,
+        "text": "Pooled analysis of prospective cohort studies on height, weight, and breast cancer risk.\nThe association between anthropometric indices and the risk of breast cancer was analyzed using pooled data from seven prospective cohort studies.\nTogether, these cohorts comprise 337,819 women and 4,385 incident invasive breast cancer cases.\nIn multivariate analyses controlling for reproductive, dietary, and other risk factors, the pooled relative risk (RR) of breast cancer per height increment of 5 cm was 1.02 (95% confidence interval (CI): 0.96, 1.10) in premenopausal women and 1.07 (95% CI: 1.03, 1.12) in postmenopausal women.\nBody mass index (BMI) showed significant inverse and positive associations with breast cancer among pre- and postmenopausal women, respectively; these associations were nonlinear.\nCompared with premenopausal women with a BMI of less than 21 kg/m2, women with a BMI exceeding 31 kg/m2 had an RR of 0.54 (95% CI: 0.34, 0.85).\nIn postmenopausal women, the RRs did not increase further when BMI exceeded 28 kg/m2; the RR for these women was 1.26 (95% CI: 1.09, 1.46).\nThe authors found little evidence for interaction with other breast cancer risk factors.\nTheir data indicate that height is an independent risk factor for postmenopausal breast cancer; in premenopausal women, this relation is less clear.\nThe association between BMI and breast cancer varies by menopausal status.\nWeight control may reduce the risk among postmenopausal women.",
+        "unit_id": "ade2ea504f6e08aa342b1359d3151ee2"
+      },
+      {
+        "relevance": 54.23454651329149,
+        "text": "Pregnancy characteristics and maternal risk of breast cancer.\nCONTEXT During pregnancy, serum levels of estrogen, progesterone, and other hormones are markedly higher than during other periods of life.\nPregnancy hormones primarily are produced in the placenta, and signs of placental impairment may serve as indirect markers of hormone exposures during pregnancy.\nDuring pregnancy, these markers have been inconsistently associated with subsequent risk of breast cancer in the mother.   \n\nOBJECTIVE To examine associations between indirect markers of hormonal exposures, such as placental weight and other pregnancy characteristics, and maternal risk of developing breast cancer.   \n\nDESIGN AND SETTING Population-based cohort study using data from the Swedish Birth Register, the Swedish Cancer Register, the Swedish Cause of Death Register, and the Swedish Register of Population and Population Changes.   \n\nPARTICIPANTS Women included in the Sweden Birth Register who delivered singletons between 1982 and 1989, with complete information on date of birth and gestational age.\nWomen were followed up until the occurrence of breast cancer, death, or end of follow-up (December 31, 2001).\nCox proportional hazards models were used to estimate associations between hormone exposures and risks of breast cancer.   \n\nMAIN OUTCOME MEASURE Incidence of invasive breast cancer.   \n\nRESULTS Of 314,019 women in the cohort, 2216 (0.7%) developed breast cancer during the follow-up through 2001, of whom 2100 (95%) were diagnosed before age 50 years.\nCompared with women who had placentas weighing less than 500 g in 2 consecutive pregnancies, the risk of breast cancer was increased among women whose placentas weighed between 500 and 699 g in their first pregnancy and at least 700 g in their second pregnancy (or vice versa) (adjusted hazard ratio, 1.82; 95% confidence interval [CI], 1.07-3.08), and the corresponding risk was doubled among women whose placentas weighed at least 700 g in both pregnancies (adjusted hazard ratio, 2.05; 95% CI, 1.15-3.64).\nA high birth weight (> or =4000 g) in 2 successive births was associated with an increased risk of breast cancer before but not after adjusting for placental weight and other covariates (adjusted hazard ratio, 1.10; 95% CI, 0.76-1.59).   \n\nCONCLUSIONS Placental weight is positively associated with maternal risk of breast cancer.\nThese results further support the hypothesis that pregnancy hormones are important modifiers of subsequent maternal breast cancer risk.",
+        "unit_id": "d4415f9466afd210c962214e88e53eb8"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 0.0,
+      "budget": 1024,
+      "category": "HELPFUL",
+      "cluster_id": "cited-paper-component:1265",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 1.0,
+      "gold_overlap": true,
+      "granularity": "PASSAGE",
+      "importance": 1.0,
+      "method": "BM25_PLAIN_RAG",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 2,
+      "parent_retrieval_score": 54.23454651329149,
+      "query_id": "1266",
+      "relevance": 54.23454651329149,
+      "tokens": 577,
+      "unit_id": "d4415f9466afd210c962214e88e53eb8",
+      "unit_index": 1
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "NOT_ENOUGH_INFO",
+      "gold_answer": null,
+      "gold_evidence_ids": [],
+      "gold_evidence_text": [],
+      "gold_label": "NOT_ENOUGH_INFO"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "HIGH_RELEVANCE_HARMFUL_OR_ZERO_ABLATION_EFFECT",
+    "method": "BM25_PLAIN_RAG",
+    "original_answer": "REFUTE",
+    "query_id": "213",
+    "question": "CRP is not predictive of postoperative mortality following Coronary Artery Bypass Graft (CABG) surgery.",
+    "selected_evidence": [
+      {
+        "relevance": 55.712562428279675,
+        "text": "Preoperative C-reactive protein predicts long-term mortality and hospital length of stay after primary, nonemergent coronary artery bypass grafting.\nBACKGROUND Preoperative C-reactive protein (CRP) levels more than 10 mg/l have been shown to be associated with increased morbidity and mortality after cardiac surgery.\nWe examine the value of preoperative CRP levels less than 10 mg/l for predicting long-term, all-cause mortality and hospital length of stay in surgical patients undergoing primary, nonemergent coronary artery bypass graft-only surgery.   \n\nMETHODS We examined the association between preoperative CRP levels stratified into four categories (< 1, 1-3, 3-10, and > 10 mg/l), and 7-yr all-cause mortality and hospital length of stay in 914 prospectively enrolled primary, nonemergent coronary artery bypass graft-only surgical patients using a proportional hazards regression model.   \n\nRESULTS Eighty-seven patients (9.5%) died during a mean follow-up period of 4.8 +/-\n1.5 yr.\nAfter proportional hazards adjustment, the 3-10 and > 10 mg/l preoperative CRP groups were associated with long-term, all-cause mortality (hazards ratios [95% CI]: 2.50 [1.22-5.16], P = 0.01 and 2.66 [1.21-5.80], P = 0.02, respectively) and extended hospital length of stay (1.32 [1.07-1.63], P < 0.001 and 1.27 [1.02-1.62], P = 0.001, respectively).   \n\nCONCLUSION We demonstrate that preoperative CRP levels as low as 3 mg/l are associated with increased long-term mortality and extended hospital length of stay in relatively lower-acuity patients undergoing primary, nonemergent coronary artery bypass graft-only surgery.\nThese important findings may allow for more objective risk stratification of patients who present for uncomplicated surgical coronary revascularization.",
+        "unit_id": "b27061260d8e2703dec0a82d77dc93f5"
+      },
+      {
+        "relevance": 47.1219172475309,
+        "text": "Dose-dependent effect of statins on the incidence of acute kidney injury after cardiac surgery.\nBACKGROUND Acute kidney injury (AKI) after cardiac surgery is associated with increased morbidity and mortality.   \n\nMETHODS We assessed whether statin treatment is associated with a lower incidence of postoperative AKI in 2,104 consecutive patients who underwent coronary artery bypass graft or valve surgery at the Minneapolis Veterans Administration Medical Center.\nAcute kidney injury was defined as absolute increase greater than 0.3 mg/dL or relative increase greater than 50% in serum creatinine from baseline, within 48 hours after surgery or requiring postoperative hemodialysis per AKI network.\nPropensity scores were utilized to adjust for the differences between the statin and the no-statin treatment groups.\nAll statins were converted to equivalent-dose simvastatin and divided at the median to construct high-dose (\u226540 mg) and low-dose (<40 mg) statin groups.   \n\nRESULTS Of the 2,104 patients, 1,435 (68%) were taking statins (638 high-dose) and 495 (24%) developed AKI (25% high-dose vs 40% low-dose vs 35% no-statin; p = 0.014).\nEstimated preoperative glomerular filtration rate (p = 0.003), diabetes mellitus (p=0.02), valve surgery with or without coronary artery bypass graft (p = 0.024), cardiopulmonary bypass time (p = 0.001), and intraaortic balloon pump (p = 0.055) were independent predictors of AKI.\nAfter propensity adjustment statin treatment was not associated with postoperative AKI (odds ratio 0.79; 95% confidence interval 0.59 to 1.06; p = 0.11 for high-dose v. no-statin).\nAfter full adjustment for all independent predictors of AKI, the results did not change.\nStatins also had no effect on the incidence of postoperative hemodialysis (0.8% high-dose vs 1.9% low-dose vs 1% no-statin; p = 0.15).   \n\nCONCLUSIONS Statin treatment is not associated with a lower incidence of AKI after cardiac surgery.",
+        "unit_id": "3a1b1067a99b1dbe3f52e3f13d72f2ac"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 1.0,
+      "budget": 1024,
+      "category": "HARMFUL",
+      "cluster_id": "cited-paper-component:214",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 0.0,
+      "gold_overlap": null,
+      "granularity": "PASSAGE",
+      "importance": -1.0,
+      "method": "BM25_PLAIN_RAG",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 1,
+      "parent_retrieval_score": 55.712562428279675,
+      "query_id": "213",
+      "relevance": 55.712562428279675,
+      "tokens": 452,
+      "unit_id": "b27061260d8e2703dec0a82d77dc93f5",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "NOT_ENOUGH_INFO",
+      "gold_answer": null,
+      "gold_evidence_ids": [],
+      "gold_evidence_text": [],
+      "gold_label": "NOT_ENOUGH_INFO"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "HIGH_RELEVANCE_HARMFUL_OR_ZERO_ABLATION_EFFECT",
+    "method": "BM25_PLAIN_RAG",
+    "original_answer": "REFUTE",
+    "query_id": "552",
+    "question": "IgA plasma cells that are specific for transglutaminase 2 accumulate in the duodenal mucosa on commencement of a gluten-free diet.",
+    "selected_evidence": [
+      {
+        "relevance": 49.42901318651748,
+        "text": "High abundance of plasma cells secreting transglutaminase 2\u2013specific IgA autoantibodies with limited somatic hypermutation in celiac disease intestinal lesions\nCeliac disease is an immune-mediated disorder in which mucosal autoantibodies to the enzyme transglutaminase 2 (TG2) are generated in response to the exogenous antigen gluten in individuals who express human leukocyte antigen HLA-DQ2 or HLA-DQ8 (ref.\n3).\nWe assessed in a comprehensive and nonbiased manner the IgA anti-TG2 response by expression cloning of the antibody repertoire of ex vivo\u2013isolated intestinal antibody-secreting cells (ASCs).\nWe found that TG2-specific plasma cells are markedly expanded within the duodenal mucosa in individuals with active celiac disease.\nTG2-specific antibodies were of high affinity yet showed little adaptation by somatic mutations.\nUnlike infection-induced peripheral blood plasmablasts, the TG2-specific ASCs had not recently proliferated and were not short-lived ex vivo.\nAltogether, these observations demonstrate that there is a germline repertoire with high affinity for TG2 that may favor massive generation of autoreactive B cells.\nTG2-specific antibodies did not block enzymatic activity and served as substrates for TG2-mediated crosslinking when expressed as IgD or IgM but not as IgA1 or IgG1.\nThis could result in preferential recruitment of plasma cells from naive IgD- and IgM-expressing B cells, thus possibly explaining why the antibody response to TG2 bears signs of a primary immune response despite the disease chronicity.",
+        "unit_id": "ce9eb0bf7459dbde38cd00c648084c58"
+      },
+      {
+        "relevance": 33.04912287001824,
+        "text": "The Molecular Basis for Oat Intolerance in Patients with Celiac Disease\nBackground  Celiac disease is a small intestinal inflammatory disorder characterized by malabsorption, nutrient deficiency, and a range of clinical manifestations.\nIt is caused by an inappropriate immune response to dietary gluten and is treated with a gluten-free diet.\nRecent feeding studies have indicated oats to be safe for celiac disease patients, and oats are now often included in the celiac disease diet.\nThis study aimed to investigate whether oat intolerance exists in celiac disease and to characterize the cells and processes underlying this intolerance.      \nMethods and Findings  We selected for study nine adults with celiac disease who had a history of oats exposure.\nFour of the patients had clinical symptoms on an oats-containing diet, and three of these four patients had intestinal inflammation typical of celiac disease at the time of oats exposure.\nWe established oats-avenin-specific and -reactive intestinal T-cell lines from these three patients, as well as from two other patients who appeared to tolerate oats.\nThe avenin-reactive T-cell lines recognized avenin peptides in the context of HLA-DQ2.\nThese peptides have sequences rich in proline and glutamine residues closely resembling wheat gluten epitopes.\nDeamidation (glutamine\u2192glutamic acid conversion) by tissue transglutaminase was involved in the avenin epitope formation.      \nConclusions  We conclude that some celiac disease patients have avenin-reactive mucosal T-cells that can cause mucosal inflammation.\nOat intolerance may be a reason for villous atrophy and inflammation in patients with celiac disease who are eating oats but otherwise are adhering to a strict gluten-free diet.\nClinical follow-up of celiac disease patients eating oats is advisable.",
+        "unit_id": "75686dc0a45e44eac48cdce5ce62edea"
+      },
+      {
+        "relevance": 32.8700399139632,
+        "text": "Serum immunoglobulin A from patients with celiac disease inhibits human T84 intestinal crypt epithelial cell differentiation.\nBACKGROUND & AIMS Celiac disease is characterized by disturbed jejunal crypt-villus axis biology with immunoglobulin (Ig) A deposits underlining the epithelium.\nThe aim of this study was to test whether celiac disease serum IgA (reticulin/endomysial autoantibodies) interferes with the mesenchymal-epithelial cell cross-talk.   \n\nMETHODS Differentiation of T84 epithelial cells was induced with IMR-90 fibroblasts or transforming growth factor beta in three-dimensional collagen gel cultures.\nThe effects of purified celiac IgA and monoclonal tissue transglutaminase antibodies (CUB7402) were studied by adding the antibodies to the cocultures.   \n\nRESULTS Active celiac disease IgA, reactive for tissue transglutaminase, significantly inhibited T84 epithelial cell differentiation (P < 0.001) and increased epithelial cell proliferation (P = 0.024).\nSimilar effects were obtained with antibodies against tissue transglutaminase.   \n\nCONCLUSIONS Celiac disease-associated IgA class antibodies disturb transforming growth factor beta-mediated fibroblast-epithelial cell cross-talk in this in vitro crypt-villus axis model.\nThis primary finding indicates that celiac disease-specific autoantibodies may also contribute to the formation of the gluten-triggered jejunal mucosal lesion in celiac disease.",
+        "unit_id": "383bac23b6cd85aee72c08ba81a437ae"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 1.0,
+      "budget": 1024,
+      "category": "HARMFUL",
+      "cluster_id": "cited-paper-component:553",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 0.0,
+      "gold_overlap": null,
+      "granularity": "PASSAGE",
+      "importance": -1.0,
+      "method": "BM25_PLAIN_RAG",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 1,
+      "parent_retrieval_score": 49.42901318651748,
+      "query_id": "552",
+      "relevance": 49.42901318651748,
+      "tokens": 333,
+      "unit_id": "ce9eb0bf7459dbde38cd00c648084c58",
+      "unit_index": 0
+    }
+  },
+  {
+    "budget": 1024,
+    "dataset": "SciFact",
+    "gold": {
+      "answer_type": "NOT_ENOUGH_INFO",
+      "gold_answer": null,
+      "gold_evidence_ids": [],
+      "gold_evidence_text": [],
+      "gold_label": "NOT_ENOUGH_INFO"
+    },
+    "interpretation": "MANUAL_REVIEW_REQUIRED; no internal reasoning inference",
+    "kind": "HIGH_RELEVANCE_HARMFUL_OR_ZERO_ABLATION_EFFECT",
+    "method": "BM25_PLAIN_RAG",
+    "original_answer": "SUPPORT",
+    "query_id": "411",
+    "question": "Febrile seizures reduce the threshold for development of epilepsy.",
+    "selected_evidence": [
+      {
+        "relevance": 19.937282906313023,
+        "text": "An Excitatory Loop with Astrocytes Contributes to Drive Neurons to Seizure Threshold\nSeizures in focal epilepsies are sustained by a highly synchronous neuronal discharge that arises at restricted brain sites and subsequently spreads to large portions of the brain.\nDespite intense experimental research in this field, the earlier cellular events that initiate and sustain a focal seizure are still not well defined.\nTheir identification is central to understand the pathophysiology of focal epilepsies and to develop new pharmacological therapies for drug-resistant forms of epilepsy.\nThe prominent involvement of astrocytes in ictogenesis was recently proposed.\nWe test here whether a cooperation between astrocytes and neurons is a prerequisite to support ictal (seizure-like) and interictal epileptiform events.\nSimultaneous patch-clamp recording and Ca2+ imaging techniques were performed in a new in vitro model of focal seizures induced by local applications of N-methyl-D-aspartic acid (NMDA) in rat entorhinal cortex slices.\nWe found that a Ca2+ elevation in astrocytes correlates with both the initial development and the maintenance of a focal, seizure-like discharge.\nA delayed astrocyte activation during ictal discharges was also observed in other models (including the whole in vitro isolated guinea pig brain) in which the site of generation of seizure activity cannot be precisely monitored.\nIn contrast, interictal discharges were not associated with Ca2+ changes in astrocytes.\nSelective inhibition or stimulation of astrocyte Ca2+ signalling blocked or enhanced, respectively, ictal discharges, but did not affect interictal discharge generation.\nOur data reveal that neurons engage astrocytes in a recurrent excitatory loop (possibly involving gliotransmission) that promotes seizure ignition and sustains the ictal discharge.\nThis neuron-astrocyte interaction may represent a novel target to develop effective therapeutic strategies to control seizures.",
+        "unit_id": "cdee216982cb0e04cccaf6ada644272b"
+      },
+      {
+        "relevance": 35.95770011472452,
+        "text": "Febrile seizures in the developing brain result in persistent modification of neuronal excitability in limbic circuits\nFebrile (fever-induced) seizures affect 3\u20135% of infants and young children.\nDespite the high incidence of febrile seizures, their contribution to the development of epilepsy later in life has remained controversial.\nCombining a new rat model of complex febrile seizures and patch clamp techniques, we determined that hyperthermia-induced seizures in the immature rat cause a selective presynaptic increase in inhibitory synaptic transmission in the hippocampus that lasts into adulthood.\nThe long-lasting nature of these potent alterations in synaptic communication after febrile seizures does not support the prevalent view of the 'benign' nature of early-life febrile convulsions.",
+        "unit_id": "bead8013abfeb85df113b165c98aadb1"
+      },
+      {
+        "relevance": 21.653166010105465,
+        "text": "A JOURNAL OF NEUROLOGY\nBrain glial cells, five times more prevalent than neurons, have recently received attention for their potential involvement in epileptic seizures.\nMicroglia and astrocytes, associated with inflammatory innate immune responses, are responsible for surveillance of brain damage that frequently results in seizures.\nThus, an intriguing suggestion has been put forward that seizures may be facilitated and perhaps triggered by brain immune responses.\nIndeed, recent evidence strongly implicates innate immune responses in lowering seizure threshold in experimental models of epilepsy, yet, there is no proof that they can play an independent role in initiating seizures in vivo.\nHere, we show that cortical innate immune responses alone produce profound increases of brain excitability resulting in focal seizures.\nWe found that cortical application of lipopolysaccharide, binding to toll-like receptor 4 (TLR4), triples evoked field potential amplitudes and produces focal epileptiform discharges.\nThese effects are prevented by pre-application of interleukin-1 receptor antagonist.\nOur results demonstrate how the innate immune response may participate in acute seizures, increasing neuronal excitability through interleukin-1 release in response to TLR4 detection of the danger signals associated with infections of the central nervous system and with brain injury.\nThese results suggest an important role of innate immunity in epileptogenesis and focus on glial inhibition, through pharmacological blockade of TLR4 and the pro-inflammatory mediators released by activated glia, in the study and treatment of seizure disorders in humans.",
+        "unit_id": "70bcba284eef827eba71a3791e205adc"
+      },
+      {
+        "relevance": 21.91436161215593,
+        "text": "A functional polymorphism in the prodynorphin gene promotor is associated with temporal lobe epilepsy.\nThe prodynorphin gene (PDYN) encoding the anticonvulsant peptide dynorphin is a strong candidate for a seizure suppressor gene and thus a possible modulator of susceptibility to temporal lobe epilepsy.\nWe performed a case control association study in 155 patients with nonlesional temporal lobe epilepsy and 202 controls and found that PDYN promotor low-expression L-alleles confer an increased risk for temporal lobe epilepsy in patients with a family history for seizures.\nIrrespective of the familial background, L-homozygotes display a higher risk for secondarily generalized seizures and status epilepticus.",
+        "unit_id": "519383910c5094d0799fba314646c681"
+      }
+    ],
+    "unit": {
+      "ablated_answer": "NOT_ENOUGH_INFO",
+      "ablated_score": 1.0,
+      "budget": 1024,
+      "category": "HARMFUL",
+      "cluster_id": "cited-paper-component:410",
+      "correctness_flip": true,
+      "dataset": "SciFact",
+      "exact_flip": true,
+      "full_score": 0.0,
+      "gold_overlap": null,
+      "granularity": "PASSAGE",
+      "importance": -1.0,
+      "method": "BM25_PLAIN_RAG",
+      "normalized_flip": true,
+      "parent_retrieval_rank": 1,
+      "parent_retrieval_score": 35.95770011472452,
+      "query_id": "411",
+      "relevance": 35.95770011472452,
+      "tokens": 155,
+      "unit_id": "bead8013abfeb85df113b165c98aadb1",
+      "unit_index": 1
+    }
+  }
+]

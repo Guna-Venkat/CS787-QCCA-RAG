@@ -1,0 +1,10 @@
+dataset,reader,exact_evidence_matches,identical_predictions,queries
+QASPER,Mistral,50,50,50
+QASPER,Qwen,50,50,50
+QASPER,Llama,50,50,50
+HotpotQA,Mistral,50,50,50
+HotpotQA,Qwen,50,50,50
+HotpotQA,Llama,50,50,50
+SciFact,Mistral,50,50,50
+SciFact,Qwen,50,50,50
+SciFact,Llama,50,50,50

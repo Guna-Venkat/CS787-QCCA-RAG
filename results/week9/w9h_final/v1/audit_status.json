@@ -1,0 +1,12 @@
+{
+  "baseline_registry_entries": 104,
+  "blockers": [
+    "TEST materialization spec absent: retrieval/first-pass/SFR inputs and same-split baseline producers are not configured",
+    "Historical W8 runtime source absent from current tree: full_system.py, final_dev.py, final_reporting.py; preserve/recover the exact audited implementation for the TEST adapter"
+  ],
+  "complete": true,
+  "final_confirmation_started": false,
+  "freeze_sha256": "0df18e811072a72a1fca5fe862a5d90fe1d45a2617c3f34af3142f23eaab4c08",
+  "passed": false,
+  "test_touched": false
+}

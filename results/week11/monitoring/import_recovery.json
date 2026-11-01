@@ -1,0 +1,14 @@
+{
+  "archive": "results/week11/executed_notebooks/recovery_20261028_import",
+  "checksum_checks_passed": true,
+  "core_code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "correction": "Pin project root and src namespace inside each spawned worker; verify canonical reader source file; preserve SARA namespace extension",
+  "extra_operational_lm_calls": 3,
+  "failure": "Spawned reader could not resolve src.week11 after E preparation",
+  "isolated_driver_sha256": "7acef234308c7f7ae6f5253671cf0b2b43db757155015402eb439815f35987cb",
+  "preserved_E_rows": 152,
+  "real_qualification_receipt": "results/week11/monitoring/import_recovery_verification.json",
+  "science_changed": false,
+  "tests_passed": 13,
+  "timestamp_utc": "2026-10-28T18:26:48.079761+00:00"
+}

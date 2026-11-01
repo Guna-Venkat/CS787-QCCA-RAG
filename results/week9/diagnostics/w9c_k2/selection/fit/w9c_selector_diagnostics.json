@@ -1,0 +1,52 @@
+{
+  "BM25": {
+    "mean_regret": 0.09357922956105115,
+    "near_oracle_rate": 0.6769759450171822,
+    "selector_headroom_recovery": -0.022593134236230515,
+    "useful_queries": 783,
+    "conditional_help_rate": 0.7266922094508301,
+    "conditional_hurt_rate": 0.12643678160919541,
+    "conditional_mean_delta": 0.19951235226840952,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "QuerySemantic": {
+    "mean_regret": 0.09224614234623868,
+    "near_oracle_rate": 0.6506300114547537,
+    "selector_headroom_recovery": -0.013923646864874965,
+    "useful_queries": 783,
+    "conditional_help_rate": 0.7241379310344828,
+    "conditional_hurt_rate": 0.10983397190293742,
+    "conditional_mean_delta": 0.2093736484977718,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "DraftSemantic": {
+    "mean_regret": 0.09073223117148303,
+    "near_oracle_rate": 0.6529209621993127,
+    "selector_headroom_recovery": -0.0040782041473522625,
+    "useful_queries": 783,
+    "conditional_help_rate": 0.7164750957854407,
+    "conditional_hurt_rate": 0.1123882503192848,
+    "conditional_mean_delta": 0.20866226247165964,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "QueryDraft": {
+    "mean_regret": 0.09164155505791617,
+    "near_oracle_rate": 0.647766323024055,
+    "selector_headroom_recovery": -0.009991824698437485,
+    "useful_queries": 783,
+    "conditional_help_rate": 0.722860791826309,
+    "conditional_hurt_rate": 0.11494252873563218,
+    "conditional_mean_delta": 0.2137656388674269,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "SANE-adapted": {
+    "mean_regret": 0.08940040061111626,
+    "near_oracle_rate": 0.6689576174112256,
+    "selector_headroom_recovery": 0.0045831108030800136,
+    "useful_queries": 783,
+    "conditional_help_rate": 0.7381864623243933,
+    "conditional_hurt_rate": 0.11494252873563218,
+    "conditional_mean_delta": 0.2057568486620604,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  }
+}

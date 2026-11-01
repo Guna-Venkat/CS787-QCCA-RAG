@@ -1,0 +1,6 @@
+policy,f0_hurt_queries,f0_help_queries,partial_rescue_rate,full_recovery_rate,hurt_rescue_rate,help_retention_rate,lost_gain_rate,diminished_gain_rate
+D0,0,1,,,,0.0,1.0,1.0
+F0,0,1,,,,1.0,0.0,0.0
+F1,0,1,,,,0.0,1.0,1.0
+F2-A,0,1,,,,0.0,1.0,1.0
+F2-B,0,1,,,,1.0,0.0,0.0

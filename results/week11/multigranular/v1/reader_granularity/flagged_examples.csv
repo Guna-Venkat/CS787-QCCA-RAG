@@ -1,0 +1,5 @@
+dataset,reader,flag,query_id,action_id,prediction_excerpt,score,evidence_tokens,generated_tokens
+SciFact,Mistral,flag_invalid,1024,0201e568dc562f50954e,"NOT_ENOUGH_INFO. The claim refers to the frequency of recurrent mutations within CTCF anchor sites adjacent to oncogenes, but no specific data or studies are provided as evidence in the context given.",0.0,0,47
+SciFact,Llama,flag_invalid,1024,02a6f3329796db882b78,"SUPPORT  Reasoning: The claim is supported by the evidence in the text, which states that ""The CTCF anchor regions we identified are a frequent site of mutations in cancer cells, underscoring their functional importance ",0.0,221,85
+QASPER,Mistral,flag_cap,1013,6a1e86c7a6280b2663bf,"Previous applications of neural networks for this task often used unidimensional Convolutional Neural Networks (CNNs) for text embeddings and Recurrent Neural Networks (RNNs) for sequential data. However, this hybrid mod",0.0,822,128
+QASPER,Llama,flag_empty,1003,97b63644eda906106fc8,The authors provide data from the IEMOCAP dataset and the AMI corpus to support their assertion.,0.0,0,22

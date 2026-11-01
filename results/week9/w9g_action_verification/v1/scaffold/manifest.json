@@ -1,0 +1,15 @@
+{
+  "queries": 1746,
+  "papers": 656,
+  "outer_folds": 5,
+  "controller_training_started": false,
+  "lm_calls": 0,
+  "route": "G2",
+  "protocol_hash": "51aa9d5351ef5800991126439c21ac0a225a9f3db34d11258e31617a5b500503",
+  "models": [
+    "logistic",
+    "hist_gradient_boosting"
+  ],
+  "oof": "Outer paper groups=5, inner paper groups=4 for threshold selection; no query-level split.",
+  "notes": "Features/folds only; no fitted estimator, OOF prediction or selected threshold exists."
+}

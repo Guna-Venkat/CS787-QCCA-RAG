@@ -1,0 +1,3 @@
+method,global_step,logged_steps,recorded_epoch,saved_num_train_epochs,saved_num_evidence,saved_num_additional_evidence,model_learning_rate,projector_learning_rate,batch_size,gradient_accumulation,max_train_samples_argument,mean_logged_training_loss,last_logged_training_loss,max_logged_grad_norm,best_metric,adapter_weight_bytes
+RAG,250,250,1.9723320158102768,2,10,0,2e-05,0.0,1,4,2000,5.325842400000001,2.9502,1975.659912109375,,27280152
+SARA,250,250,0.501002004008016,1,5,5,2e-05,0.0005,1,4,2000,6.936257599999999,5.4034,3262.517822265625,,27280152

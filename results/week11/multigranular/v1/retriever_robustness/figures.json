@@ -1,0 +1,86 @@
+[
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_finalist.csv",
+    "dataset": "HotpotQA",
+    "name": "retriever_finalist",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_finalist.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_finalist.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_finalist.csv",
+    "dataset": "QASPER",
+    "name": "retriever_finalist",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_finalist.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_finalist.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_finalist.csv",
+    "dataset": "SciFact",
+    "name": "retriever_finalist",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_finalist.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_finalist.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_recall_downstream.csv",
+    "dataset": "HotpotQA",
+    "name": "recall_downstream",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_recall_downstream.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_recall_downstream.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_recall_downstream.csv",
+    "dataset": "QASPER",
+    "name": "recall_downstream",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_recall_downstream.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_recall_downstream.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_recall_downstream.csv",
+    "dataset": "SciFact",
+    "name": "recall_downstream",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_recall_downstream.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_recall_downstream.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_pareto.csv",
+    "dataset": "HotpotQA",
+    "name": "retriever_pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_task_score_retriever_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_pareto.csv",
+    "dataset": "QASPER",
+    "name": "retriever_pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_task_score_retriever_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_pareto.csv",
+    "dataset": "SciFact",
+    "name": "retriever_pareto",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_pareto.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_task_score_retriever_pareto.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_Delta_vs_BM25_relative_bm25.csv",
+    "dataset": "HotpotQA",
+    "name": "relative_bm25",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_Delta_vs_BM25_relative_bm25.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/HotpotQA_Delta_vs_BM25_relative_bm25.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_Delta_vs_BM25_relative_bm25.csv",
+    "dataset": "QASPER",
+    "name": "relative_bm25",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_Delta_vs_BM25_relative_bm25.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/QASPER_Delta_vs_BM25_relative_bm25.png"
+  },
+  {
+    "data": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_Delta_vs_BM25_relative_bm25.csv",
+    "dataset": "SciFact",
+    "name": "relative_bm25",
+    "pdf": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_Delta_vs_BM25_relative_bm25.pdf",
+    "png": "/home/gunavenkat/Downloads/CS787-RAG-Project/results/week11/multigranular/v1/retriever_robustness/figures/SciFact_Delta_vs_BM25_relative_bm25.png"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "branch": "gagan",
+  "preflight_completed": true,
+  "controller_training_started": false,
+  "lm_calls": 0,
+  "old_artifacts_unchanged": true,
+  "queries": 1746,
+  "papers": 656,
+  "independent_oracle_arithmetic_passed": true,
+  "action_distributions_match": true,
+  "feature_count": 32,
+  "no_outcome_columns_in_model_features": true,
+  "outer_paper_folds": 5,
+  "no_paper_overlap": true,
+  "recommended_route": "G2",
+  "G1": "NO-GO",
+  "G2": "GO",
+  "G3": "NO-GO",
+  "f2_unique_exact_best_count": 13,
+  "source_protocol_hash": "51aa9d5351ef5800991126439c21ac0a225a9f3db34d11258e31617a5b500503"
+}

@@ -1,0 +1,7 @@
+{
+  "before_manifest_hash": "34e05150d057e2a3fa938f79fdf9f571b0842682de20305ff7955c2caa531473",
+  "changed_files": [],
+  "passed": true,
+  "scope": "Byte comparison against actual working-tree contents at task start, including pre-existing user notebook edits. No W0-W11 source/results/notebook file was modified.",
+  "tracked_historical_files_verified": 2359
+}

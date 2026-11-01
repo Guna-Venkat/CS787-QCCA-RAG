@@ -1,0 +1,11 @@
+{
+  "contrast": "STRONG minus WEAK/NONE mean replacement delta",
+  "point": 0.5978890988832619,
+  "bootstrap_mean": 0.6028944155728454,
+  "ci_low": 0.3774825915632339,
+  "ci_high": 0.856959543849447,
+  "resamples": 2000,
+  "seed": 42,
+  "clusters": 40,
+  "role": "New offline reconstruction from original CSV; exploratory, nominal CI; no multiplicity correction"
+}

@@ -1,0 +1,52 @@
+{
+  "version": "v1",
+  "output_root": "results/week10/root_cause/v1",
+  "split": "dev",
+  "dataset": "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl",
+  "raw_dataset": "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow",
+  "checkpoint": "Baselines/SARA-main/checkpoints/finetune/sara_qasper_proj_lr5e4_seed42",
+  "models": {
+    "Mistral": {
+      "id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "revision": "63a8b081895390a26e140280378bc85ec8bce07a",
+      "required_for_r": true
+    },
+    "MiniLM": {
+      "id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "required_for_r": true
+    },
+    "SFR": {
+      "id": "Salesforce/SFR-Embedding-Mistral",
+      "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b",
+      "required_for_r": true
+    },
+    "Qwen": {
+      "id": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "required_for_r": false
+    },
+    "Llama": {
+      "id": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "required_for_r": false
+    }
+  },
+  "k_values": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "query_limit": null,
+  "reader_panel": [
+    "Mistral",
+    "Qwen",
+    "Llama"
+  ],
+  "policy_enabled": false,
+  "bootstrap_resamples": 10000,
+  "seed": 42,
+  "epsilon": 0.01,
+  "help_hurt_epsilon": 0.01
+}

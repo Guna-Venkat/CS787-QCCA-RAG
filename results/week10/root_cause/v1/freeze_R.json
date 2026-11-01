@@ -1,0 +1,7 @@
+{
+  "GO_NEXT": true,
+  "execution_freeze_hash": "6d603f7220cf6545e64a32227fad18497ea7d56dec8013925d08ab503fbd0488",
+  "phase": "R",
+  "reason": "\n    'SFR improves evidence coverage; FULL gains over BM25 have positive '\n    'paper-bootstrap CIs at k2/k6, with positive k6 gains over MiniLM '\n    'in both FULL and SARA.'\n'",
+  "retriever": "SFR"
+}

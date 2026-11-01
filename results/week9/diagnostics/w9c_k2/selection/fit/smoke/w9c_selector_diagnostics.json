@@ -1,0 +1,52 @@
+{
+  "BM25": {
+    "mean_regret": 0.0,
+    "near_oracle_rate": 1.0,
+    "selector_headroom_recovery": 1.0,
+    "useful_queries": 1,
+    "conditional_help_rate": 1.0,
+    "conditional_hurt_rate": 0.0,
+    "conditional_mean_delta": 0.09999999999999998,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "QuerySemantic": {
+    "mean_regret": 0.1941176470588235,
+    "near_oracle_rate": 0.0,
+    "selector_headroom_recovery": -0.9411764705882355,
+    "useful_queries": 1,
+    "conditional_help_rate": 0.0,
+    "conditional_hurt_rate": 1.0,
+    "conditional_mean_delta": -0.09411764705882353,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "DraftSemantic": {
+    "mean_regret": 0.1941176470588235,
+    "near_oracle_rate": 0.0,
+    "selector_headroom_recovery": -0.9411764705882355,
+    "useful_queries": 1,
+    "conditional_help_rate": 0.0,
+    "conditional_hurt_rate": 1.0,
+    "conditional_mean_delta": -0.09411764705882353,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "QueryDraft": {
+    "mean_regret": 0.1941176470588235,
+    "near_oracle_rate": 0.0,
+    "selector_headroom_recovery": -0.9411764705882355,
+    "useful_queries": 1,
+    "conditional_help_rate": 0.0,
+    "conditional_hurt_rate": 1.0,
+    "conditional_mean_delta": -0.09411764705882353,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  },
+  "SANE-adapted": {
+    "mean_regret": 0.1941176470588235,
+    "near_oracle_rate": 0.0,
+    "selector_headroom_recovery": -0.9411764705882355,
+    "useful_queries": 1,
+    "conditional_help_rate": 0.0,
+    "conditional_hurt_rate": 1.0,
+    "conditional_mean_delta": -0.09411764705882353,
+    "headroom_note": "Oracle over measured selector/K actions only, not unmeasured combinations."
+  }
+}

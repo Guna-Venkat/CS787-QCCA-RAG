@@ -1,0 +1,17 @@
+{
+  "branch": "gagan",
+  "code_hash": "a4d57520bc7d0d008dc4caf175ed6a4a363074d3137d6dd7100ded0cfe397df2",
+  "config_hash": "91c742f29df96c98e344e059ebc0bee58f41d7abb9eb36afb72db40e1e999977",
+  "phase": "B",
+  "rationale": "All 600 rows audited; P0 exactly reproduces frozen A for all 150 queries. Pooling trade-offs are exploratory with annotation and token-budget limits; retain P0/SFR to isolate C granularity/selector/budget. User delegated sequential execution and review.",
+  "reviewed_config": {
+    "no_change_to_prespecified_control": true,
+    "pilot_only": true,
+    "primary_representation": "P0",
+    "primary_retriever": "SFR",
+    "review_report_sha256": "99667db51c3f2843d62197f73bd0869f98cda1c6654f88a82527fabbaede4f1b",
+    "supplemental_execution_identity_sha256": "140ac8ea09a39da6b46cc2ca0bbbc3c56972c4fea64b79933231005ade41cf45"
+  },
+  "source_result_hash": "a319f6b65588f02dca304d7f77c0c6f929ae4c3b933a5129ad15298a801f949d",
+  "timestamp": "2026-10-27T21:56:11.557733+00:00"
+}

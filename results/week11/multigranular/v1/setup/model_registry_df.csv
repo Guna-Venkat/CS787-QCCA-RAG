@@ -1,0 +1,7 @@
+model,id,revision,status,smoke_model_loaded,tokenizer,dtype,quantization,max_context,max_new_tokens,decoding,seed,peak_vram_measured
+Mistral,mistralai/Mistral-7B-Instruct-v0.2,63a8b081895390a26e140280378bc85ec8bce07a,CACHED_SNAPSHOT,False,mistralai/Mistral-7B-Instruct-v0.2,float16,,8192.0,128.0,greedy,42.0,
+MiniLM,sentence-transformers/all-MiniLM-L6-v2,1110a243fdf4706b3f48f1d95db1a4f5529b4d41,CACHED_SNAPSHOT,False,sentence-transformers/all-MiniLM-L6-v2,float32,,,,,42.0,
+SFR,Salesforce/SFR-Embedding-Mistral,33a60fe7b5e00b9414981280c571e8a4f9f42f1b,CACHED_SNAPSHOT,False,Salesforce/SFR-Embedding-Mistral,float16,,,,,42.0,
+Qwen,Qwen/Qwen3-8B,b968826d9c46dd6066d109eabc6255188de91218,CACHED_SNAPSHOT,False,Qwen/Qwen3-8B,float16,,8192.0,128.0,greedy,42.0,
+Llama,meta-llama/Llama-3.1-8B-Instruct,0e9e39f249a16976918f6564b8830bc894c89659,CACHED_SNAPSHOT,False,meta-llama/Llama-3.1-8B-Instruct,float16,,8192.0,128.0,greedy,42.0,
+LLMLingua-2,microsoft/llmlingua-2-xlm-roberta-large-meetingbank,,PENDING_DEPENDENCY,,,,,,,,,

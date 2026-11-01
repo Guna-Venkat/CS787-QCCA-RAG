@@ -1,0 +1,5 @@
+model,revision,status,license,release,fp16_weight_GB_estimate,risk,source
+mistralai/Mistral-7B-Instruct-v0.2,63a8b081895390a26e140280378bc85ec8bce07a,canonical,Apache-2.0,2023-12,14.5,local trained R/C vs public G must stay separate,https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2
+Qwen/Qwen3-8B,b968826d9c46dd6066d109eabc6255188de91218,provisional compatible candidate,Apache-2.0,2025-04-29,16.4,nonthinking; no measured GPU smoke or proven QASPER superiority,https://qwenlm.github.io/blog/qwen3/
+meta-llama/Llama-3.1-8B-Instruct,0e9e39f249a16976918f6564b8830bc894c89659,provisional compatible candidate,Llama3.1,2024-07-23,16.1,"gated; older model, not claimed strongest contemporary",https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+Qwen/Qwen3.5-9B,c202236235762e1c871ad0ccb60c8ee5ba337b9a,"current candidate audited, adapter pending",Apache-2.0,2026; official card,18,hybrid architecture and newer runtime not silently substituted,https://huggingface.co/Qwen/Qwen3.5-9B

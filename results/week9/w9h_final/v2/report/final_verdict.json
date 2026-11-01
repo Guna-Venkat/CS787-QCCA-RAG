@@ -1,0 +1,142 @@
+{
+  "baseline_comparators": [
+    "original_SARA_G0",
+    "semantic_k8"
+  ],
+  "confirmation_split": "test",
+  "efficiency_effects": {
+    "cumulative_prompt_reductions": {
+      "original_SARA_G0": -0.4257214004817047,
+      "semantic_k8": -0.12693544938306967
+    },
+    "f1_deltas": {
+      "original_SARA_G0": -0.023569335623474408,
+      "semantic_k8": -0.04275162603469701
+    },
+    "raw_evidence_compression": {
+      "compact_lm_calls": 2.0,
+      "cumulative_prompt_reduction": 0.4942560138614852,
+      "e3_evidence_tokens": 95.3170359052712,
+      "evidence_suppression": 0.9535245295275869,
+      "f1_delta_vs_d1": -0.0011399822976350116,
+      "final_prompt_reduction": 0.6460854601797117,
+      "help_rate_delta_vs_d1": -0.12987012987012986,
+      "hurt_rate_delta_vs_d1": -0.08938120702826585,
+      "interpretation": "Evidence exposure, final prompt, cumulative prompt and LM calls are different quantities.",
+      "raw_lm_calls": 2.0,
+      "raw_selected_chunk_tokens": 2050.910618792972,
+      "retained_fraction": 0.04647547047241308
+    }
+  },
+  "efficiency_mechanistic_hit": false,
+  "final_classification": "MIXED_OR_NEGATIVE",
+  "limitations": [
+    "FIT/DEV findings are development evidence",
+    "Evidence exposure reduction is not an equal reduction in end-to-end compute",
+    "One frozen canonical generator; no new robustness panel",
+    "Raw bootstrap CIs; no multiplicity-adjusted significance claim"
+  ],
+  "pretest_manifest_sha256": "376d1ad7c331c71e7bec01d9086b4e1c99ea5a2fb643266ae9602044da9767e6",
+  "primary_quality_effects": [
+    {
+      "ci_high": 0.012249821615784019,
+      "ci_low": -0.020074079925394967,
+      "cluster": "paper_id",
+      "delta_f1": -0.003867114569469368,
+      "family": "primary",
+      "left": "W9-PRIMARY",
+      "resamples": 10000,
+      "right": "D0",
+      "seed": 42,
+      "status": "COMPATIBLE"
+    },
+    {
+      "ci_high": 0.012249821615784019,
+      "ci_low": -0.020074079925394967,
+      "cluster": "paper_id",
+      "delta_f1": -0.003867114569469368,
+      "family": "primary",
+      "left": "W9-PRIMARY",
+      "resamples": 10000,
+      "right": "semantic_k4",
+      "seed": 42,
+      "status": "COMPATIBLE"
+    },
+    {
+      "ci_high": -0.01622600676452131,
+      "ci_low": -0.051087318004166965,
+      "cluster": "paper_id",
+      "delta_f1": -0.03365866286137916,
+      "family": "primary",
+      "left": "W9-PRIMARY",
+      "resamples": 10000,
+      "right": "semantic_k6",
+      "seed": 42,
+      "status": "COMPATIBLE"
+    },
+    {
+      "ci_high": -0.024722006456932115,
+      "ci_low": -0.06037529686587988,
+      "cluster": "paper_id",
+      "delta_f1": -0.04275162603469703,
+      "family": "primary",
+      "left": "W9-PRIMARY",
+      "resamples": 10000,
+      "right": "semantic_k8",
+      "seed": 42,
+      "status": "COMPATIBLE"
+    },
+    {
+      "ci_high": -0.006831409960896438,
+      "ci_low": -0.04026874475496388,
+      "cluster": "paper_id",
+      "delta_f1": -0.023569335623474366,
+      "family": "primary",
+      "left": "W9-PRIMARY",
+      "resamples": 10000,
+      "right": "original_SARA_G0",
+      "seed": 42,
+      "status": "COMPATIBLE"
+    }
+  ],
+  "primary_system": "W9-PRIMARY",
+  "quality_hit": false,
+  "rationale": "Applied the frozen conjunction across both strong comparators and the separate conservative D1 compression criterion.",
+  "safety_effects": [
+    {
+      "answer_changed": 0.5905271199388846,
+      "help": 0.18563789152024446,
+      "hurt": 0.1894576012223071,
+      "mean_negative_delta": -0.34721529901413944,
+      "mean_positive_delta": 0.33371782656651044,
+      "preservation": 0.4094728800611154,
+      "system": "W9-PRIMARY"
+    },
+    {
+      "answer_changed": 0.061879297173414824,
+      "f0_help_retention": 0.08641975308641975,
+      "f0_hurt_rescue": 0.9516129032258065,
+      "help": 0.02291825821237586,
+      "hurt": 0.014514896867838044,
+      "mean_negative_delta": -0.3103566824642037,
+      "mean_positive_delta": 0.5375919140492414,
+      "preservation": 0.9381207028265852,
+      "retention_definition": "Still HELP vs D0; rescue means no longer HURT vs D0",
+      "system": "W9-SAFE"
+    },
+    {
+      "answer_changed": 0.20244461420932008,
+      "f0_help_retention": 0.42386831275720166,
+      "f0_hurt_rejection": 0.6370967741935484,
+      "f0_hurt_rescue": 0.6370967741935484,
+      "help": 0.07868601986249045,
+      "hurt": 0.06875477463712758,
+      "mean_negative_delta": -0.4460472853247918,
+      "mean_positive_delta": 0.42936826412028006,
+      "preservation": 0.7975553857906799,
+      "retention_definition": "Still HELP vs D0; rescue means no longer HURT vs D0",
+      "system": "W9-VERIFY"
+    }
+  ],
+  "test_used_once_under_frozen_configuration": true
+}

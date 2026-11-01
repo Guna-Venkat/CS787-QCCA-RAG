@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "split": "fit",
+  "queries": 1746,
+  "papers": 656,
+  "rows": 298566,
+  "source_hashes_unchanged": true,
+  "validated_summary_checks": [
+    {
+      "representation": "FIXED-5",
+      "retriever": "SEMANTIC",
+      "retrieval_width": 20,
+      "rows": 1746,
+      "summary_matches_saved_rows": true
+    },
+    {
+      "representation": "SEM-4",
+      "retriever": "RRF",
+      "retrieval_width": 20,
+      "rows": 1746,
+      "summary_matches_saved_rows": true
+    },
+    {
+      "representation": "SEM-4",
+      "retriever": "RRF",
+      "retrieval_width": 40,
+      "rows": 1746,
+      "summary_matches_saved_rows": true
+    },
+    {
+      "representation": "ORIG",
+      "retriever": "RRF",
+      "retrieval_width": 20,
+      "rows": 1746,
+      "summary_matches_saved_rows": true
+    }
+  ],
+  "summary_sha256": "6b1e799a28c3d281129d5aefcc2a1a8be9ccbabe50fea0633e40e9b517eb1906",
+  "chunk_cache_sha256": "368aa7017869df33b993ba7ae46ce13a22d1c331156b093ca7967eae63bf1228",
+  "retrieval_cache_sha256": "8d4b9eaef1821751f3ffcfa33a9b0b553d43e709696386f5590c61ff83f7edb7",
+  "original_selection_rule_preserved": true,
+  "model_generations": 0,
+  "w9b_evidence_counts": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "w9b_selector": "DraftSemantic",
+  "epsilon_oracle": 0.01,
+  "w9b_training": "none; retrospective oracle analysis only"
+}

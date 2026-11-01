@@ -1,0 +1,13 @@
+{
+  "failed": 0,
+  "frozen_C_D_gates_still_valid": true,
+  "mode": "deterministic operational fixtures; real GPU replay is separately recorded",
+  "passed": 12,
+  "test_files": {
+    "test_continuation.py": "776047c9114a7c63a4e4d080210b1bde0a5ac34b4b98ceb54b2d10ab6f25e80c",
+    "test_isolated_readers.py": "ea8959010539952d4890e49faa260779bae1ef98395d3a920cc3c08aad9384ec",
+    "test_label_compliance.py": "0354f50a9b0bb8d7d5358fb90a72bc729e0028911c6ac80fdffd25e2e045bb1d"
+  },
+  "tests": 12,
+  "timestamp_utc": "2026-10-28T14:45:31.558308+00:00"
+}

@@ -1,0 +1,5 @@
+retriever,model,revision,role,priority,resource
+BM25,project Okapi k1=1.5 b=.75,source hash,full-paper lexical retrieval; not bit-identical official stemmer,mandatory,CPU
+MiniLM,sentence-transformers/all-MiniLM-L6-v2,1110a243fdf4706b3f48f1d95db1a4f5529b4d41,full-paper dense retrieval,mandatory,CPU ~0.1GB weights
+SFR,Salesforce/SFR-Embedding-Mistral,33a60fe7b5e00b9414981280c571e8a4f9f42f1b,instructed-query cosine retrieval; document vectors reused for compressor,mandatory,FP16 ~14.2GB weights + activations batch1
+BGE,bge-reranker-v2-m3,not frozen,official paper naming ambiguity; cross-encoder,defer,not auto-added
