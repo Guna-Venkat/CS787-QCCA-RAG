@@ -1,0 +1,22 @@
+{
+  "budgets_verified": true,
+  "confirmation_counts": {
+    "HotpotQA": 200,
+    "QASPER": 0,
+    "SciFact": 50
+  },
+  "contrasts_sha": "935dc9deba6736df5f0f31fd4e50ab6fdf5aa3ce6ff99e301627c43f25bd4f6c",
+  "exact_membership": true,
+  "freeze_sha": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b",
+  "group_membership": true,
+  "logical_rows": 2500,
+  "model_prompt_parser_generation_identity_verified": true,
+  "no_new_generation_by_this_report": true,
+  "no_post_confirmation_method_changes": true,
+  "physical_distinct_cached_generations": 2213,
+  "result_checksums_verified": true,
+  "source_evidence_hashes_verified": true,
+  "split_sha": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117",
+  "summary_sha": "938f1c57c77b041a0c1c464b5b2106a5cc259e899e4565fe42485589f162a5de",
+  "validation_comparison_sha": "3c0c807746f712847e675ea08f62bab15ca2900a04da4de8caf19b64abb5e168"
+}
