@@ -1,0 +1,189 @@
+{
+  "M_code_hash": "0c2c23debb65a8d4c2a90849f992925a3078d88630300203f14615a10d90355c",
+  "artifact_version": "W12-M-v1",
+  "attribution_used": false,
+  "budgets": [
+    256,
+    1024
+  ],
+  "counts": {
+    "HotpotQA": [
+      200,
+      200
+    ],
+    "QASPER": [
+      0,
+      0
+    ],
+    "SciFact": [
+      50,
+      43
+    ]
+  },
+  "freeze_sha": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b",
+  "logical_rows": 2500,
+  "max_distinct_generations": 2250,
+  "methods": [
+    "NONE",
+    "RAW_SKIP",
+    "FIXED_SENTENCE",
+    "H3",
+    "QBGF_FULL"
+  ],
+  "parent_identity": {
+    "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+    "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+    "extra": {},
+    "models": {
+      "Mistral": {
+        "id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+      },
+      "Qwen": {
+        "id": "Qwen/Qwen3-8B",
+        "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+      },
+      "SFR": {
+        "id": "Salesforce/SFR-Embedding-Mistral",
+        "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+      }
+    },
+    "packages": {
+      "numpy": "1.26.4",
+      "peft": "0.21.0",
+      "torch": "2.14.0",
+      "transformers": "4.57.6"
+    },
+    "source_files": {
+      "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+      "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+      "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+      "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+    }
+  },
+  "part": "Week12 M",
+  "registry": [
+    {
+      "budget": 256,
+      "dataset": "HotpotQA",
+      "family": "primary",
+      "id": "HotpotQA:256:FIXED_SENTENCE-NONE",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "NONE"
+    },
+    {
+      "budget": 1024,
+      "dataset": "HotpotQA",
+      "family": "primary",
+      "id": "HotpotQA:1024:FIXED_SENTENCE-NONE",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "NONE"
+    },
+    {
+      "budget": 256,
+      "dataset": "HotpotQA",
+      "family": "primary",
+      "id": "HotpotQA:256:FIXED_SENTENCE-RAW_SKIP",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "RAW_SKIP"
+    },
+    {
+      "budget": 1024,
+      "dataset": "HotpotQA",
+      "family": "primary",
+      "id": "HotpotQA:1024:FIXED_SENTENCE-RAW_SKIP",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "RAW_SKIP"
+    },
+    {
+      "budget": 256,
+      "dataset": "HotpotQA",
+      "family": "secondary",
+      "id": "HotpotQA:256:FIXED_SENTENCE-QBGF_FULL",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "QBGF_FULL"
+    },
+    {
+      "budget": 1024,
+      "dataset": "HotpotQA",
+      "family": "secondary",
+      "id": "HotpotQA:1024:FIXED_SENTENCE-QBGF_FULL",
+      "left": "FIXED_SENTENCE",
+      "metric": "f1",
+      "right": "QBGF_FULL"
+    },
+    {
+      "budget": 256,
+      "dataset": "SciFact",
+      "family": "primary",
+      "id": "SciFact:256:FIXED_SENTENCE-NONE",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "NONE"
+    },
+    {
+      "budget": 1024,
+      "dataset": "SciFact",
+      "family": "primary",
+      "id": "SciFact:1024:FIXED_SENTENCE-NONE",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "NONE"
+    },
+    {
+      "budget": 256,
+      "dataset": "SciFact",
+      "family": "primary",
+      "id": "SciFact:256:FIXED_SENTENCE-RAW_SKIP",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "RAW_SKIP"
+    },
+    {
+      "budget": 1024,
+      "dataset": "SciFact",
+      "family": "primary",
+      "id": "SciFact:1024:FIXED_SENTENCE-RAW_SKIP",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "RAW_SKIP"
+    },
+    {
+      "budget": 256,
+      "dataset": "SciFact",
+      "family": "secondary",
+      "id": "SciFact:256:FIXED_SENTENCE-QBGF_FULL",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "QBGF_FULL"
+    },
+    {
+      "budget": 1024,
+      "dataset": "SciFact",
+      "family": "secondary",
+      "id": "SciFact:1024:FIXED_SENTENCE-QBGF_FULL",
+      "left": "FIXED_SENTENCE",
+      "metric": "macro_f1",
+      "right": "QBGF_FULL"
+    }
+  ],
+  "source_commit": "93992932e29252bcedbc56bda02e0c8ae3926001",
+  "split_sha": "78f5ace11f9080d05dda12716e634020711182f721ac562dc81d19bad6c1c117",
+  "statistics": {
+    "H3": "descriptive",
+    "VAL_confirmation_shift": "unpaired descriptive only",
+    "primary_holm_family": 8,
+    "resamples": 10000,
+    "secondary_holm_family": 4,
+    "seed": 42
+  },
+  "synthetic": false
+}

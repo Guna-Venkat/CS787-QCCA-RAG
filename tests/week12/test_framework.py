@@ -124,7 +124,7 @@ class ProtocolTests(unittest.TestCase):
   g=components([{'query_id':'a','split_documents':['x']},{'query_id':'b','split_documents':['x','y']},{'query_id':'c','split_documents':['y']}]);self.assertEqual(len(set(g.values())),1)
  def test_notebook_defaults(self):
   import nbformat,ast
-  paths=list((ROOT/'notebooks/week12').glob('*.ipynb'));self.assertEqual(len(paths),14)
+  paths=list((ROOT/'notebooks/week12').glob('*.ipynb'));self.assertEqual(len(paths),15)
   for p in paths:
    n=nbformat.read(p,as_version=4);nbformat.validate(n);flags=n.cells[1].source
    if '_C_EXT_' in p.name:
@@ -137,7 +137,7 @@ class ProtocolTests(unittest.TestCase):
     try: saved=nbformat.reads(subprocess.check_output(['git','show','HEAD:'+str(p.relative_to(ROOT))],cwd=ROOT,text=True,stderr=subprocess.DEVNULL),as_version=4)
     except subprocess.CalledProcessError: saved=n
     flags=saved.cells[1].source
-    self.assertIn('RUN_FULL = False',flags);self.assertTrue('RUN_SMOKE = True' in flags or (p.name.startswith('week12_H_') and 'RUN_SMOKE = False' in flags));self.assertIn('RESUME = True',flags);self.assertIn('OVERWRITE = False',flags)
+    self.assertIn('RUN_FULL = False',flags);self.assertTrue('RUN_SMOKE = True' in flags or (p.name.startswith(('week12_H_','week12_M_')) and 'RUN_SMOKE = False' in flags));self.assertIn('RESUME = True',flags);self.assertIn('OVERWRITE = False',flags)
    for cell in n.cells:
     if cell.cell_type=='code':ast.parse(cell.source)
  def test_no_automatic_final_selection(self):

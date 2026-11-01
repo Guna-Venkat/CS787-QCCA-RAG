@@ -1,0 +1,15 @@
+{
+  "K_and_L_code_unchanged": true,
+  "LOO_units": 9607,
+  "complete_cells": 600,
+  "conceptual_generated_tokens": 222111,
+  "conceptual_lm_calls": 16032,
+  "conceptual_prompt_tokens": 9313113,
+  "finite_retention_note": "Original mean_ci accepts NaN after DataFrame coercion; additive finite-only summary excludes undefined ratios. No inference/result changed.",
+  "finite_retention_sha": "9d569cdfe50c5ae2b0b59345539447473bad5ca70ddd664e28867dedf7f1f1d7",
+  "original_L_tables_verified": true,
+  "original_quantitative_freeze_sha": "8e1281a741a2a2b4506449866b37887629a1c7a277f0944b012288587533ab0c",
+  "perturbation_rows": 16032,
+  "physical_lm_calls": 13410,
+  "prepared_cells": 600
+}

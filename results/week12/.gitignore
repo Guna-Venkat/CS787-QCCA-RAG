@@ -43,3 +43,11 @@
 /attribution/v*/completed_cells/
 # Dense per-query choice table is reproducible from saved C/D rows; keep summaries/plots.
 /qbgf/*/analysis/allocation.csv
+
+# Part M synthetic fixtures and immutable per-query resume shards stay local.
+/final_confirmation/smoke/
+/final_confirmation/v*/prepared/
+/final_confirmation/v*/generation/
+/final_confirmation/v*/rows/
+# Verbose per-perturbation attribution outputs are retained locally; summaries are tracked.
+/attribution/v*/analysis/perturbation_cost_and_flips.csv

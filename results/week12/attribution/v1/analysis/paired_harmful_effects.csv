@@ -1,0 +1,7 @@
+dataset,budget,contrast,mean,ci_low,ci_high,n
+HotpotQA,256,QBGF - comparator harmful unit fraction (query weighted),0.019327486239250943,-0.01729045521471992,0.05954974453650922,50
+HotpotQA,1024,QBGF - comparator harmful unit fraction (query weighted),0.021202035138548774,-0.025014621668351937,0.07618295256112688,50
+QASPER,256,QBGF - comparator harmful unit fraction (query weighted),0.043635116091637824,-0.01804001662588619,0.11394851778656119,50
+QASPER,1024,QBGF - comparator harmful unit fraction (query weighted),0.030093708644629947,-0.032108515877139164,0.09311189341022925,50
+SciFact,256,QBGF - comparator harmful unit fraction (query weighted),-0.017365079365079365,-0.07631448412698412,0.04050119047619047,50
+SciFact,1024,QBGF - comparator harmful unit fraction (query weighted),-0.03302663236510485,-0.06987297596457938,-0.0034044506884639753,50
