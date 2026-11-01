@@ -20,3 +20,9 @@
 /multigranular/*/*/per_query_representation_df.csv
 # Final retrieval export repeats A/B per-query records; summaries remain tracked.
 /multigranular/*/final_report/retrieval_saved_df.csv
+
+# Transient live monitor state and copied launcher versions.
+/monitoring/cell_state_*.json
+/monitoring/latest.json
+/monitoring/launcher_versions/
+/monitoring/B_optimization_reason.json

@@ -1,0 +1,177 @@
+{
+  "checkpoint_hash": "01608a52823e7114273e63db8193bbc31ceaa48c437a778aa27f42814174576e",
+  "extension": {
+    "allocation": "RAW_SKIP whole passages; same serialization and source order as C",
+    "budgets": [
+      256,
+      1024
+    ],
+    "extension_hash": "c3b26d629ffb1bd0d5bada54d8a7d954c8c5908511e691980e07c5063868968c",
+    "methods": {
+      "BM25_PLAIN_RAG": "BM25",
+      "SFR_PLAIN_RAG": "SFR"
+    },
+    "parent": {
+      "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+      "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+      "extra": {},
+      "models": {
+        "Mistral": {
+          "id": "mistralai/Mistral-7B-Instruct-v0.2",
+          "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+        },
+        "Qwen": {
+          "id": "Qwen/Qwen3-8B",
+          "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+        },
+        "SFR": {
+          "id": "Salesforce/SFR-Embedding-Mistral",
+          "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+        }
+      },
+      "packages": {
+        "numpy": "1.26.4",
+        "peft": "0.21.0",
+        "torch": "2.14.0",
+        "transformers": "4.57.6"
+      },
+      "source_files": {
+        "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+        "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+        "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+        "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+      }
+    },
+    "protocol": "C-EXT-v1",
+    "reader": "BASE_FP16",
+    "synthetic": false
+  },
+  "k": 5,
+  "n": 10,
+  "parity": "canonical chunk256/Mistral adapted/checkpoint/prompt/BF16 latent4096/greedy64; SFR changes retrieval only; not matched to Qwen budgets",
+  "real_queries": 1,
+  "smoke_identity": {
+    "checkpoint_hashes": {
+      "adapter_config.json": "7096b8b8016bb25ab9ee92753b0030bc4d779711ae46493b2c7eb25858a7658d",
+      "adapter_model.safetensors": "77c8f80a4d0da581d2408fbc7e33fd077dd8bd52cea769ff351bc642b0493583",
+      "added_tokens.json": "22a8469487ce2cf2e1341f5b78df92036221c475d69616b1855b332ef4882cca",
+      "args.json": "0f2b1b23c2ec0554c71dd879e40a143d4372c580b303e3f84293b6694c88aa31",
+      "config.json": "c0cbfb94704ed8e829c860f736697fc0d754c55e8f05e066497bed8017b4c94f",
+      "sara_config.json": "36b1ae915a121e106be4b1ebf9b6b95ca2944617c24fa51f6a69e6ffbc9a1a66",
+      "sara_extras.safetensors": "c3ad778d58acb009e1ddf624326f5de3c8847bfb29eef60c61a423d33fcbf4b8",
+      "special_tokens_map.json": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+      "tokenizer.model": "dadfd56d766715c61d2ef780a525ab43b8e6da4de6865bda3d95fdef5e134055",
+      "tokenizer_config.json": "6d142a0a9b75fa9afcfd3507a414031b5306360aff9e5e2b986c36f981074d7f"
+    },
+    "extension": {
+      "allocation": "RAW_SKIP whole passages; same serialization and source order as C",
+      "budgets": [
+        256,
+        1024
+      ],
+      "extension_hash": "c3b26d629ffb1bd0d5bada54d8a7d954c8c5908511e691980e07c5063868968c",
+      "methods": {
+        "BM25_PLAIN_RAG": "BM25",
+        "SFR_PLAIN_RAG": "SFR"
+      },
+      "parent": {
+        "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+        "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+        "extra": {},
+        "models": {
+          "Mistral": {
+            "id": "mistralai/Mistral-7B-Instruct-v0.2",
+            "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+          },
+          "Qwen": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+          },
+          "SFR": {
+            "id": "Salesforce/SFR-Embedding-Mistral",
+            "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+          }
+        },
+        "packages": {
+          "numpy": "1.26.4",
+          "peft": "0.21.0",
+          "torch": "2.14.0",
+          "transformers": "4.57.6"
+        },
+        "source_files": {
+          "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+          "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+          "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+          "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+          "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+          "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+          "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+        }
+      },
+      "protocol": "C-EXT-v1",
+      "reader": "BASE_FP16",
+      "synthetic": false
+    },
+    "input_identity": {
+      "extension": {
+        "allocation": "RAW_SKIP whole passages; same serialization and source order as C",
+        "budgets": [
+          256,
+          1024
+        ],
+        "extension_hash": "c3b26d629ffb1bd0d5bada54d8a7d954c8c5908511e691980e07c5063868968c",
+        "methods": {
+          "BM25_PLAIN_RAG": "BM25",
+          "SFR_PLAIN_RAG": "SFR"
+        },
+        "parent": {
+          "code_hash": "0002987a3e2fe48f3d6511fc9fb409bba23a9a3594c3370e2de0e672c22afa95",
+          "config_hash": "65b7de98a5d4222d0cd088d5b7a3424ff962aabc81dfafcb9938555c73c47f44",
+          "extra": {},
+          "models": {
+            "Mistral": {
+              "id": "mistralai/Mistral-7B-Instruct-v0.2",
+              "revision": "63a8b081895390a26e140280378bc85ec8bce07a"
+            },
+            "Qwen": {
+              "id": "Qwen/Qwen3-8B",
+              "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+            },
+            "SFR": {
+              "id": "Salesforce/SFR-Embedding-Mistral",
+              "revision": "33a60fe7b5e00b9414981280c571e8a4f9f42f1b"
+            }
+          },
+          "packages": {
+            "numpy": "1.26.4",
+            "peft": "0.21.0",
+            "torch": "2.14.0",
+            "transformers": "4.57.6"
+          },
+          "source_files": {
+            "/home/gunavenkat/.cache/huggingface/datasets/allenai___qasper/qasper/0.3.0/fdc9d8214fbab5dd782958601db4d678e6934a54/qasper-train.arrow": "670e68454c09c05decc41696b7c9d0a4f7ced901b4968a32cc82f323843ac7c3",
+            "/home/gunavenkat/Downloads/CS787-RAG-Project/Baselines/SARA-main/data/reformatted/QASPER_dev.jsonl": "9e270b890d8c2de192c7d86db6eb8e4fd453d1fc8cc74f1a56ebc744d2b1e534",
+            "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/hotpot_dev_distractor_v1.json": "2c56eb73e5f4cfaecf52342286510c40ebdbd7c8eea5971ceb2b3438929838f7",
+            "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/claims_dev.jsonl": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+            "/home/gunavenkat/Downloads/CS787-RAG-Project/data/week11/scifact/corpus.jsonl": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+            "LLMLingua_qualification_lock": "030054060244aae28af84fede07401bed75d5831838cacb64ac3ab5e40f831be",
+            "W12_split_freeze": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208"
+          }
+        },
+        "protocol": "C-EXT-v1",
+        "reader": "BASE_FP16",
+        "synthetic": false
+      },
+      "query_prefix": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: ",
+      "split_ids": [
+        "b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54"
+      ],
+      "splitter": "llama_index SentenceSplitter(chunk_size=256), canonical defaults"
+    }
+  },
+  "status": "QUALIFIED",
+  "system": "SARA_SFR_K5_N10"
+}

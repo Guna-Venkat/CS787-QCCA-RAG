@@ -22,3 +22,15 @@
 /qbgf/*/lora/coverage_events.jsonl
 
 /qbgf/*/qualification/execution/
+
+# Full validation checkpoints: retain locally for resume; commit summary tables instead.
+/qbgf/*/validation/*/prepared/
+/qbgf/*/validation/*/rows/
+
+# Additive C-EXT per-query resume caches (retain compact analysis and qualification).
+/qbgf/*/c_extension/*/prepared/
+/qbgf/*/c_extension/*/rows/
+/qbgf/*/c_extension/*/generation/
+/qbgf/*/c_extension/*/specialists/*/canonical_inputs/
+/qbgf/*/c_extension/*/specialists/*/canonical_references/
+/qbgf/*/c_extension/*/specialists/*/qualification_smoke/

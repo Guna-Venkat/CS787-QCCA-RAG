@@ -70,3 +70,20 @@ Full flags remain disabled. The agent has run tests and bounded smoke only.
 Read actual TRAIN coverage without launching a model: `sara_env/bin/python scripts/week12/training_coverage.py`. Before training this reports zero actual consumption; during interrupted work the durable ledger retains the physical repeats.
 
 Final pre-run CORE D patch and revised cost: `results/week12/W12_CORE_D_FUSION_PATCH.md`. No split, retriever, QBGF definition or confirmation identity changed.
+
+### C-EXT — additive baseline completion
+
+After the existing C completes, open `week12_C_EXT_baseline_extension.ipynb`, set
+`RUN_C_EXT_FULL=True`, then Run All. Keep `RESUME=True`, `OVERWRITE=False`.
+This runs budget-matched BM25/SFR RAW_SKIP passage RAG followed by a real one-query
+canonical BM25-SARA qualification and its QASPER-only specialist reference.
+`RUN_SFR_SARA=True` additionally requests qualification/full execution of SFR-SARA
+k5/n10; it is disabled until requested. Qualification failure stops that route,
+never substitutes another checkpoint or retriever. For qualification only, leave
+full disabled and set `RUN_SPECIALIST_QUALIFICATION=True`.
+
+H/I display merged C/C-EXT metrics plus separately labelled specialist references.
+I requires the two complete matched controls and canonical BM25 SARA before final
+freeze. Historical W10 SFR-SARA k6 remains historical, never a newly paired score.
+Supplemental extension comparisons have a separate 12-test Holm correction and
+are exploratory additions; original primary registries and frozen science stay intact.
