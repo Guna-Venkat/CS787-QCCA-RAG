@@ -1,0 +1,13 @@
+{
+  "archive": "curated-demo-v1.tar.gz",
+  "bundle_sha256": "14b4ba43d4cf3ab7359b54f2fc8bfe0ee59166c12f40c09125658c1d63f03036",
+  "compressed_bytes": 14605553,
+  "members": {
+    "PUBLISHED.json": "2887d12a7dc47cf4ccd1a2a988815cc77c20afa27cf833240d5f9d2b3ac6d5d6",
+    "bundle.json": "14b4ba43d4cf3ab7359b54f2fc8bfe0ee59166c12f40c09125658c1d63f03036",
+    "manifest.json": "766058f888eba83617ba171a09e30bccaa899ed08722d5404783da973132f1fb"
+  },
+  "policy": "Immutable versioned compressed archive; raw bundle is not stored as an ordinary Git object. Archive and checksum metadata travel with the source checkout.",
+  "sha256": "51361cdded3087f7706e9f3ae3804c19bec93f2d4a78a408595426a0359fee38",
+  "version": "curated-demo-v1"
+}

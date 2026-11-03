@@ -1,0 +1,47 @@
+{
+  "scope": "Outcome-curated VAL illustrations; not representative evaluation",
+  "queries": {
+    "QASPER": [
+      "7b4992e2d26577246a16ac0d1efc995ab4695d24",
+      "6bfba3ddca5101ed15256fca75fcdc95a53cece7",
+      "b9d07757e2d2c4be41823dd1ea3b9c7f115b5f72",
+      "a15bc19674d48cd9919ad1cf152bf49c88f4417d",
+      "90d946ccc3abf494890e147dd85bd489b8f3f0e8",
+      "88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",
+      "37a79be0148e1751ffb2daabe4c8ec6680036106",
+      "c81f215d457bdb913a5bade2b4283f19c4ee826c",
+      "50be4a737dc0951b35d139f51075011095d77f2a",
+      "907b3af3cfaf68fe188de9467ed1260e52ec6cf1",
+      "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "15e481e668114e4afe0c78eefb716ffe1646b494"
+    ],
+    "HotpotQA": [
+      "5a807e6f5542995d8a8ddf80",
+      "5a84bc5b5542991dd0999dc3",
+      "5a8f6e295542992414482ac6",
+      "5abd8c295542992ac4f382ab",
+      "5adcca7f5542994ed6169c06",
+      "5ae531695542990ba0bbb1fb",
+      "5ae824295542997ec272772f",
+      "5a7e30b255429934daa2fbeb",
+      "5ae2eb7f55429928c423955b",
+      "5adc7f4a5542994650320d28",
+      "5a89ba6b554299669944a584",
+      "5a8ac0595542992d82986f6c"
+    ],
+    "SciFact": [
+      "1132",
+      "1266",
+      "1335",
+      "1019",
+      "1049",
+      "1216",
+      "213",
+      "552",
+      "411",
+      "132",
+      "1359",
+      "279"
+    ]
+  }
+}

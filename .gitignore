@@ -84,3 +84,40 @@ results/week9/**/sfr_vectors/
 results/week9/**/shared/outputs/
 
 
+# Frozen demo source/assets are versioned; generated/private runtime data is not.
+/demo/.venv/
+/demo/**/__pycache__/
+/demo/.pytest_cache/
+/demo/cache/
+/demo/runtime/
+/demo/.streamlit/
+/demo/artifacts/
+/demo/**/*.log
+/demo/**/.DS_Store
+/demo/**/*.tmp
+/demo/**/*.lock
+/demo/**/.env
+/demo/**/.env.*
+/demo/**/secrets.toml
+/demo/**/token
+/demo/**/stored_tokens
+/demo/**/credentials*
+/demo/**/*.safetensors
+/demo/**/*.bin
+/demo/**/*.pt
+/demo/**/*.pth
+/demo/**/checkpoints/
+/demo/**/model_weights/
+# Raw published bundle/intermediate shards stay outside ordinary Git history.
+/demo/replay_data/*
+!/demo/replay_data/v1/
+/demo/replay_data/v1/*
+!/demo/replay_data/v1/PUBLISHED.json
+!/demo/replay_data/v1/manifest.json
+# Diagnostic raw inputs, large source inventories and temporary generations.
+/demo/audit/world_cup_input.txt
+/demo/audit/world_cup_correctness_v2/*
+!/demo/audit/world_cup_correctness_v2/WORLD_CUP_12_CONDITION_REPORT.md
+!/demo/audit/world_cup_correctness_v2/COMPLETE.json
+/demo/audit/live_sentence_segmentation_audit.json
+/demo/audit/qasper_frozen_splitter_impact.json

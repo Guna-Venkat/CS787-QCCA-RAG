@@ -1,0 +1,6 @@
+{
+  "checkout": "/tmp/evidence-demo-clean-_e_e77jg",
+  "result": "{\"curated_launch\": true, \"uncompressed_research_manifest_written\": false, \"torch_imported\": false}",
+  "source": "Git index export, no original demo/cache or replay_data intermediates",
+  "model_inference_executed": false
+}

@@ -1,0 +1,150 @@
+{
+  "policy": "Primary CSV/JSON + source-code definitions only; no Markdown numerical source",
+  "sources": {
+    "retrieval_pilot": {
+      "path": "results/week11/multigranular/v1/retrieval/retrieval_summary_df.csv",
+      "sha256": "acd002e5447b0a8627cacd293fc454e3cadc1ecf92ad0fcd93a71e704581f0f2",
+      "bytes": 44365
+    },
+    "retrieval_manifest": {
+      "path": "results/week11/multigranular/v1/retrieval/manifest.json",
+      "sha256": "4663f4279e34512bfda8dbf0fa9e6b5f18affd0fa4fa40dfd6e46bd0a6fc0eae",
+      "bytes": 14734
+    },
+    "reader_pilot": {
+      "path": "results/week11/multigranular/v1/reader_granularity/audited_summary.csv",
+      "sha256": "7386ff8055c7e26c143185b4f136e47217a8a5b6a92782f46c847f99f3b0e3b4",
+      "bytes": 123690
+    },
+    "reader_manifest": {
+      "path": "results/week11/multigranular/v1/reader_granularity/manifest.json",
+      "sha256": "b976fe07d00adf1ec20e315303d9d5ad380c717c2bd1e82ed047c97619c28136",
+      "bytes": 18700
+    },
+    "reader_pairs": {
+      "path": "results/week11/multigranular/v1/reader_granularity/named_reader_comparisons.csv",
+      "sha256": "6971ea18fe46653255fa1d05dd861009db27cfd8e129952d02e374705c9cb99f",
+      "bytes": 4966
+    },
+    "reader_interactions": {
+      "path": "results/week11/multigranular/v1/reader_granularity/named_reader_granularity_interactions.csv",
+      "sha256": "7ab408e1c3440e8c8bedca09ad5fa78bae40b721186a2c89122673a54e56c89a",
+      "bytes": 1642
+    },
+    "reader_compliance": {
+      "path": "results/week11/multigranular/v1/reader_granularity/label_compliance_diagnostic_summary.csv",
+      "sha256": "116118e055c6ce87a096fd4891a0f217a98beffe9a80b5e18ca3e2f78021f1d1",
+      "bytes": 9634
+    },
+    "reader_panel": {
+      "path": "results/week10/root_cause/v1/full_reader_panel_summary.csv",
+      "sha256": "b93cf7e92213728acf0718e7dfb2c3e7b25ab34504776babb542e8f625e7f31f",
+      "bytes": 1727
+    },
+    "reader_panel_ci": {
+      "path": "results/week10/root_cause/v1/full_reader_bootstrap.csv",
+      "sha256": "89ac2d886576ecfbc3329c7dba1159478290a640a3b3b75324abf3b4019b9018",
+      "bytes": 2176
+    },
+    "w10_protocol": {
+      "path": "results/week10/root_cause/v1/protocol.json",
+      "sha256": "bb6f35790e85ef028a74ef4fa92be21f77383aa344da0e2467b09af326377851",
+      "bytes": 3888
+    },
+    "extension": {
+      "path": "results/week12/qbgf/v3/c_extension/v1/analysis/merged_validation_summary.csv",
+      "sha256": "abc7fa48ed7d9de3960f7134bf0f37b5cab6493b6900ccd92c7f2ce7cc67f099",
+      "bytes": 7215
+    },
+    "specialists": {
+      "path": "results/week12/qbgf/v3/c_extension/v1/analysis/specialist_references.csv",
+      "sha256": "42fcf29d1b157258f8c2c00037f9844e6e0d41b7b89e58ead2487f3258f8f063",
+      "bytes": 869200
+    },
+    "gold_overlap": {
+      "path": "results/week12/attribution/v1/analysis/gold_overlap.csv",
+      "sha256": "9588e271b4771ea857f60ffee10fcd65b1c4c08c0b97e62c47a544eedd0b33c5",
+      "bytes": 2280
+    },
+    "retention": {
+      "path": "results/week12/attribution/v1/analysis/finite_retention_summary.csv",
+      "sha256": "9d569cdfe50c5ae2b0b59345539447473bad5ca70ddd664e28867dedf7f1f1d7",
+      "bytes": 3047
+    },
+    "w10": {
+      "path": "results/week10/root_cause/v1/retrieval_summary.csv",
+      "sha256": "5c99aefbee4e2bedb4fc12bde80345e86aa4ab9dab4b6097d1a6d126ae75d8fd",
+      "bytes": 2764
+    },
+    "w11": {
+      "path": "results/week11/multigranular/v1/granularity_budget/c_summary_df.csv",
+      "sha256": "baf829885575aef77a6b0c2d516adf6d56faff1c2be0f474c98e7d8a050ed045",
+      "bytes": 42324
+    },
+    "validation": {
+      "path": "results/week12/qbgf/v3/analysis/summary.csv",
+      "sha256": "9d09d077d232ca650afd64397e9a0ceac163ff6bfdccf818fa15e3b38ba574e7",
+      "bytes": 13255
+    },
+    "primary": {
+      "path": "results/week12/qbgf/v3/analysis/primary_comparisons.csv",
+      "sha256": "189bf912da2d92e1649c6471ae3504382b25fb61488abbd94ce2570bc9fd8704",
+      "bytes": 10085
+    },
+    "fusion": {
+      "path": "results/week12/qbgf/v3/analysis/fusion_diagnostic_comparisons.csv",
+      "sha256": "cdb0754dfbd7e20237d0b4bf95520055591882b64ba564a3b4474d03c0d30e3a",
+      "bytes": 3645
+    },
+    "confirmation": {
+      "path": "results/week12/final_confirmation/v1/summary.csv",
+      "sha256": "938f1c57c77b041a0c1c464b5b2106a5cc259e899e4565fe42485589f162a5de",
+      "bytes": 2878
+    },
+    "contrasts": {
+      "path": "results/week12/final_confirmation/v1/contrasts.csv",
+      "sha256": "935dc9deba6736df5f0f31fd4e50ab6fdf5aa3ce6ff99e301627c43f25bd4f6c",
+      "bytes": 3481
+    },
+    "consistency": {
+      "path": "results/week12/final_confirmation/v1/validation_comparison.csv",
+      "sha256": "3c0c807746f712847e675ea08f62bab15ca2900a04da4de8caf19b64abb5e168",
+      "bytes": 3442
+    },
+    "units": {
+      "path": "results/week12/attribution/v1/analysis/unit_importance.csv",
+      "sha256": "38c64643c0dcbc5647ddc93b626f08079cb81d3f35e4848c1bbb77a5b0eb43ad",
+      "bytes": 2800027
+    },
+    "profiles": {
+      "path": "results/week12/attribution/v1/analysis/query_profiles.csv",
+      "sha256": "458e76389e866759b1949d4c9b6f08421c55dd6481fbc5e32e9e7e2d7a55c20d",
+      "bytes": 145232
+    },
+    "correlations": {
+      "path": "results/week12/attribution/v1/analysis/relevance_utility.csv",
+      "sha256": "0d57945efda5bb92a9c5a925b82eb2e6279bba249615b3e2b0a3623805cd84c6",
+      "bytes": 1510
+    },
+    "qualitative": {
+      "path": "results/week12/attribution/v1/analysis/qualitative_candidates.json",
+      "sha256": "34cfbf6828beb8011ad041002c926a609094148e83d80815f7c659cfc6bf30db",
+      "bytes": 80494
+    },
+    "freeze": {
+      "path": "results/week12/W13_FINAL_METHOD_FREEZE.json",
+      "sha256": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b",
+      "bytes": 28650
+    },
+    "freeze_copy": {
+      "path": "results/week12/qbgf/v3/W13_FINAL_METHOD_FREEZE.json",
+      "sha256": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b",
+      "bytes": 28650
+    },
+    "split": {
+      "path": "results/week12/qbgf/v3/protocol/W12_SPLIT_FREEZE.json",
+      "sha256": "df4ab91bc708148febaf44472d008050b3cf8d5cc8cf52e2fe96952e550e3208",
+      "bytes": 113109921
+    }
+  }
+}
