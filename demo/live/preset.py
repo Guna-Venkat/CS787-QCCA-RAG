@@ -1,4 +1,4 @@
-"""Explicitly approved static diagnostic, never a tuning set or correctness oracle."""
+"""Approved static diagnostic and user reference; never benchmark or tuning data."""
 import json
 from functools import lru_cache
 from pathlib import Path

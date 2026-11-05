@@ -1,0 +1,18 @@
+{
+  "scope": "Reporting-only plot lookup repair and audited identity accounting; no allocation, scoring, statistical, generation or frozen-result changes",
+  "identity_preserving_sources": {
+    "src/post_w12/bea_qbgf/analysis.py": {
+      "original_sha": "6e72926da8716ffd9a9d5736272c4599bc8499a5c2076dbe532c42eedb3b4886",
+      "repaired_sha": "7ce0de39f862f0530e7fca4c520131ea3d368713c24ae72747572ea1bb2020dd"
+    },
+    "src/post_w12/bea_qbgf/protocol.py": {
+      "original_sha": "ad49f9550f521f18fd6a5f894aa118ff1ef1810495901b31765b9f43c3549c54",
+      "repaired_sha": "226c723cc2641718c03443c970d228f1b59ef31214479179768cda527d2ea4f1"
+    }
+  },
+  "reporting_sources": {
+    "src/post_w12/bea_qbgf/analysis.py": "7ce0de39f862f0530e7fca4c520131ea3d368713c24ae72747572ea1bb2020dd",
+    "src/post_w12/bea_qbgf/protocol.py": "226c723cc2641718c03443c970d228f1b59ef31214479179768cda527d2ea4f1",
+    "src/post_w12/reporting.py": "7ca45ba1b218462d8a0cf8050e2e4be035abe4b991651440d11bb04a75fea528"
+  }
+}

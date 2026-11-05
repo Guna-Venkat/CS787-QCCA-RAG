@@ -1,0 +1,74 @@
+{
+  "label": "POST_W12_EXPLORATORY",
+  "version": "BEA-QBGF-v1.1-prepilot",
+  "output_root": "results/post_w12/bea_qbgf/v3",
+  "parent_config": "configs/week12/protocol.yaml",
+  "methods": [
+    "FIXED_SENTENCE",
+    "QBGF_FULL",
+    "BEA_QBGF"
+  ],
+  "budgets": [
+    256,
+    1024
+  ],
+  "seed": 42,
+  "parameters": {
+    "lambda_red": 0.5,
+    "eta_cov": 0.5,
+    "tau_stop": 0.001,
+    "tau_expand": 0.001,
+    "tau_context": 0.05,
+    "min_parent_sentences": 2
+  },
+  "statistics": {
+    "resamples": 10000,
+    "seed": 42,
+    "contrasts": [
+      "BEA_QBGF-FIXED_SENTENCE",
+      "BEA_QBGF-QBGF_FULL"
+    ]
+  },
+  "pilot_gate": {
+    "qa_margin": 0.003,
+    "macro_f1_margin": 0.01,
+    "max_clearly_degraded_cells": 2,
+    "min_different_context_fraction": 0.1,
+    "min_upgrade_cell_fraction": 0.01,
+    "max_empty_cell_fraction": 0.1,
+    "meaningful_token_reduction": 0.15,
+    "meaningful_redundancy_reduction": 0.05,
+    "meaningful_coverage_increase": 0.05
+  },
+  "cache": {
+    "reuse_compatible": true,
+    "run_missing": true,
+    "overwrite_existing": false,
+    "force_regenerate": false
+  },
+  "minimum_free_disk_gib": 3,
+  "aspects": "query-only clause/conjunction rules v1; at most six; fallback full query",
+  "novelty": "Diagnostic 1-max cosine only; no separate reward (mu=0); need disabled (kappa=0)",
+  "expansion": "Source-order sequential hypothetical gains; update redundancy and coverage after each accepted addition; FULL exact replacement cost competes globally",
+  "compressed": "Not implemented; no extraction/compression LM",
+  "expanded_count_per_dataset": 150,
+  "automatic_expansion": false,
+  "automatic_attribution": false,
+  "full_eligibility": "Design assumption: two positive source-sentence selections, not a derived theorem",
+  "calibration": {
+    "queries_per_dataset": 3,
+    "tau_stop_grid": [
+      0.001,
+      0.0025,
+      0.005,
+      0.01,
+      0.02,
+      0.04
+    ],
+    "minimum_threshold_stop_fraction": 0.2,
+    "maximum_near_full_fraction": 0.8,
+    "maximum_empty_fraction": 0.1,
+    "minimum_coverage_retention": 0.85,
+    "selection": "Smallest global threshold meeting all allocation-only criteria; otherwise block pilot; tau_expand=max(original,tau_stop)"
+  }
+}

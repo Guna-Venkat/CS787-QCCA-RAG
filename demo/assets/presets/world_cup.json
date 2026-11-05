@@ -19,5 +19,94 @@
     "Host cities were geographically grouped into three regions:[3]\nWestern Region (Vancouver, Seattle, San Francisco Bay Area, Los Angeles)\nCentral Region (Guadalajara, Mexico City, Monterrey, Houston, Dallas, Kansas City)\nEastern Region (Atlanta, Miami, Toronto, Boston, Philadelphia, New York/New Jersey)"
   ],
   "scope": "Explicitly approved static diagnostic preset; supplied scenario assertions are not independently verified. Not a benchmark or a source of tuning labels.",
-  "segmentation": "academic-offset-rules-v1+live-citation-markdown-v1"
+  "segmentation": "academic-offset-rules-v1+live-citation-markdown-v1",
+  "reference": {
+    "label": "Preset Reference Answer",
+    "version": "world-cup-reference-v1",
+    "provenance": "User-supplied demonstration reference; not official gold or a benchmark outcome.",
+    "answer": "The 2026 World Cup expanded from 32 to 48 teams. The final format used 12 groups of 4 teams, with the top two teams and eight best third-place teams advancing to a round of 32, replacing the initially planned 16 groups of 3. The expansion increased the tournament from 64 to 104 matches, increased the maximum path to the semifinals from 7 to 8 matches, and extended the tournament to 39 days. FIFA abandoned the three-team format mainly because of collusion risks in the final group match; penalty shootouts were considered but would not fully remove that risk.",
+    "required_facts": [
+      {
+        "id": "teams",
+        "text": "48 teams",
+        "patterns": [
+          "\\b48\\s+teams\\b"
+        ]
+      },
+      {
+        "id": "groups",
+        "text": "12 groups of 4",
+        "patterns": [
+          "\\b12\\s+groups\\s+of\\s+4\\b"
+        ]
+      },
+      {
+        "id": "advance",
+        "text": "top 2 + 8 best third-place teams advance",
+        "patterns": [
+          "\\btop\\s+2\\b",
+          "\\b8\\s+best\\s+third\\s+place",
+          "\\b(?:advanc\\w*|progress\\w*|qualif\\w*)\\b"
+        ]
+      },
+      {
+        "id": "original",
+        "text": "original 16 groups of 3 proposal",
+        "patterns": [
+          "\\b16\\s+groups\\s+of\\s+3\\b",
+          "\\b(?:original\\w*|initial\\w*|planned|propos\\w*|replac\\w*|abandon\\w*)\\b"
+        ]
+      },
+      {
+        "id": "matches",
+        "text": "64 → 104 matches",
+        "patterns": [
+          "\\b64\\b.{0,60}\\b104\\s+matches\\b"
+        ]
+      },
+      {
+        "id": "semifinal",
+        "text": "7 → 8 matches for semifinalists",
+        "patterns": [
+          "\\b7\\s+(?:to\\s+)?8\\s+matches\\b",
+          "\\bsemi\\s*final\\w*\\b"
+        ]
+      },
+      {
+        "id": "days",
+        "text": "39-day tournament",
+        "patterns": [
+          "\\b39\\s+days?\\b"
+        ]
+      },
+      {
+        "id": "collusion",
+        "text": "collusion concern",
+        "patterns": [
+          "\\bcollusion\\b",
+          "\\b(?:risk\\w*|concern\\w*|fear\\w*|prevent\\w*|avoid\\w*)\\b"
+        ]
+      },
+      {
+        "id": "shootouts",
+        "text": "penalty shootouts would not fully solve collusion risk",
+        "patterns": [
+          "\\bpenalty\\s+shoot\\s*outs?\\b.{0,100}\\b(?:not|never|cannot|couldnt|wouldnt|cant|insufficient)\\b.{0,80}\\b(?:risk\\w*|collusion|solv\\w*|remov\\w*|eliminat\\w*)\\b"
+        ]
+      }
+    ],
+    "metrics_protocol": {
+      "version": "preset-reference-overlap-v1",
+      "scope": "Exact frozen query and passages only; post-generation display only.",
+      "normalization": "Existing project HotpotQA normalization: lowercase, remove ASCII punctuation and articles, collapse whitespace.",
+      "metrics": [
+        "token_precision",
+        "token_recall",
+        "token_f1",
+        "normalized_exact_match",
+        "required_fact_cue_coverage"
+      ],
+      "checklist": "Deterministic lexical/numeric cues, not semantic correctness or factual verification."
+    }
+  }
 }

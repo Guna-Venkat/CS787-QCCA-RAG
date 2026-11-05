@@ -1,0 +1,37 @@
+{
+  "label": "POST_W12_BEA_V2_POSTHOC_EXPLORATORY",
+  "output_root": "results/post_w12/bea_v2/posthoc_tau8e5",
+  "threshold": 8e-05,
+  "methods": [
+    "FIXED_SENTENCE",
+    "QBGF_FULL",
+    "BEA_QBGF_V1",
+    "BEA_V2"
+  ],
+  "budgets": [
+    256,
+    1024
+  ],
+  "statistics": {
+    "resamples": 10000,
+    "seed": 42
+  },
+  "resume": true,
+  "overwrite": false,
+  "retrain_predictors": false,
+  "automatic_expansion": false,
+  "protected_inputs": {
+    "W12-POST/bea_v2_config.json": "0ee7ed30ab1fbd51341bd6dc92f112525b11300293864add313301f8b53e344a",
+    "results/post_w12/bea_v2/v3/CALIBRATION_TERMINATED.json": "41bfb3ec6a907a817e042a599013b28db5b4002f79f0d3e6aec6103d421dfafe",
+    "results/post_w12/bea_v2/v3/calibration/CALIBRATION.json": "4bf122e29d3880902f80c17d3135c4c829054207cb646e1e47b3ce782d03a0bf",
+    "results/post_w12/bea_v2/v3/calibration/COHORT.json": "90888d9b8ff0f536066be049f29242459b7b8e107e8127dcb2986630709f7b58",
+    "results/post_w12/bea_v2/v3/calibration/resolution/AMENDMENT.json": "71852e7dbdd2cb4c649da89a47fd66a95e7a00a84e4137c19d3d2fe37349c3cf",
+    "results/post_w12/bea_v2/v3/calibration/resolution/RESOLUTION_RESULT.json": "41bfb3ec6a907a817e042a599013b28db5b4002f79f0d3e6aec6103d421dfafe",
+    "results/post_w12/bea_v2/v3/utility_model/MODELS.json": "05f63b84f09d39f775419c0ef0eb15ed6feb17d8d5c58b68357a6f212e3ea027",
+    "results/post_w12/bea_v2/v3/CROSSFIT_FOLDS.json": "21b0a87ed73d6fc17ab4676260772192e85b72c3d68c1bf6accdf8223f166a2c",
+    "results/post_w12/bea_v2/v3/FEATURE_SCHEMA.json": "e74524295d7f81aeb10f18a54f05b1626bf5aa863a062d49054255bde1ccb315",
+    "results/post_w12/bea_qbgf/v3/BEA_QBGF_V1_FREEZE.json": "1aea5e0b001846b4d1146ddaf471fc11d46443c29f42feb19d0fbe6f25491f2b",
+    "results/post_w12/bea_qbgf/v3/PILOT_COHORT.json": "9930ab34905fa0a33d1c3920ea1fb017db1643a261e6bd54c9f187e7271afcca",
+    "results/week12/W13_FINAL_METHOD_FREEZE.json": "d0188a3582d6aead0a3a31f9f15bad9b51a88a6b475b05ac79ae38e58f05366b"
+  }
+}

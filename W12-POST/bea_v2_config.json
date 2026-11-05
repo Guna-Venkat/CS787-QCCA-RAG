@@ -1,0 +1,88 @@
+{
+  "label": "POST_W12_EXPLORATORY_BEA_V2",
+  "study": "BEA_V2_CROSSFIT_DEVELOPMENT_PILOT",
+  "output_root": "results/post_w12/bea_v2/v3",
+  "v1_root": "results/post_w12/bea_qbgf/v3",
+  "budgets": [
+    256,
+    1024
+  ],
+  "methods": [
+    "FIXED_SENTENCE",
+    "QBGF_FULL",
+    "BEA_QBGF_V1",
+    "BEA_V2"
+  ],
+  "seed": 42,
+  "folds": 5,
+  "model": {
+    "C": 1.0,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "class_weight": null
+  },
+  "parameters": {
+    "eta_cov": 0.5,
+    "lambda_red": 0.5,
+    "min_parent_sentences": 2,
+    "utility_weight": "p_help_only"
+  },
+  "source_states": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "calibration": {
+    "queries_per_dataset": 3,
+    "threshold_grid": [
+      0,
+      1e-05,
+      2.5e-05,
+      5e-05,
+      0.0001,
+      0.00025,
+      0.0005,
+      0.001,
+      0.0025,
+      0.005
+    ],
+    "minimum_threshold_stop_fraction": 0.2,
+    "maximum_near_full_fraction": 0.8,
+    "maximum_empty_fraction": 0.0,
+    "minimum_coverage_retention": 0.85,
+    "selection": "Smallest globally shared preregistered threshold: zero empty contexts, >=20% threshold stops and <=80% near-full allocations globally; EVERY dataset/budget cell must retain >=90% mean cosine coverage relative to threshold zero, mean utilization >=20%, median selected units >=2, and <=1/3 trivial contexts (<10% utilization OR <2 units). No forced minimum is added to the allocator. No answer-quality or held-out LOO labels enter calibration. If no value qualifies, block the pilot without relaxation.",
+    "minimum_cell_mean_utilization": 0.2,
+    "minimum_cell_median_units": 2,
+    "maximum_cell_trivial_fraction": 0.3333333333333333,
+    "trivial_utilization_below": 0.1,
+    "minimum_cell_coverage_retention": 0.9
+  },
+  "statistics": {
+    "resamples": 10000,
+    "seed": 42
+  },
+  "decision": {
+    "qa_margin": 0.003,
+    "macro_f1_margin": 0.01,
+    "maximum_clearly_degraded_cells": 1,
+    "minimum_context_difference": 0.1,
+    "maximum_empty_fraction": 0.1,
+    "maximum_near_full_fraction": 0.9,
+    "minimum_quality_gain": 0.003,
+    "minimum_token_saving": 0.15,
+    "uninformative_mean_auc_ceiling": 0.5
+  },
+  "cache": {
+    "reuse_compatible": true,
+    "run_missing": true,
+    "resume": true,
+    "overwrite": false,
+    "force_regenerate": false
+  },
+  "minimum_free_disk_gib": 3,
+  "unseen_expansion": false,
+  "new_attribution": false,
+  "formulation": "P_help_only_times_positive_IG; P_harm_diagnostic_only"
+}

@@ -9,6 +9,8 @@ from .resources import LiveResources,inventory
 from .segmentation import MODES,ADAPTED,FROZEN
 from .protocol import NATIVE,CONTROLLED,SCORING_MODES,assert_controlled_pair,validity,archive_obsolete
 from .preset import load_preset,is_preset,passage_status
+from .history import remember,rows,differences
+from .reference import evaluate as evaluate_reference,metrics_text
 
 METHOD_LABELS={'NONE':'No Evidence','RAW_SKIP':'Whole passages · RAW_SKIP','FIXED_SENTENCE':'Query-selected evidence · FIXED_SENTENCE','QBGF_FULL':'Adaptive fidelity · QBGF'}
 WHY={
@@ -41,7 +43,16 @@ def evidence_card(r,technical=False):
     st.markdown('#### Model Answer')
     if r['answer'] is None:st.info('Reader generation unavailable in this environment. The evidence pipeline completed and the exact context is available below.')
     else:st.write(r['answer'])
-    st.caption('No gold-reference evaluation is available for custom LiveDemo queries.')
+    if is_preset(r['query'],r['passages']):
+        st.caption('Preset Reference Answer comparison · user-supplied demonstration reference, not official gold.')
+        st.caption(metrics_text(r))
+        with st.expander('Preset Reference Answer and required-facts checklist'):
+            st.write(load_preset()['reference']['answer'])
+            metrics=evaluate_reference(r)
+            if metrics is not None:st.dataframe(pd.DataFrame(metrics['checklist']),hide_index=True,width='stretch')
+            else:st.write([f['text'] for f in load_preset()['reference']['required_facts']])
+            st.caption('F1, precision and recall measure normalized token overlap; EM is normalized exact match. Fact cues are rule-based mentions, not semantic correctness or contradiction detection. Paraphrases may be missed.')
+    else:st.caption('No gold-reference evaluation is available for custom LiveDemo queries.')
     if r['answer'] is not None:st.caption('Custom answers are not automatically verified for factual correctness or complete support. Inspect the exact selected evidence to assess grounding.')
     st.markdown('#### Evidence Budget');budget_meter(r['selection']['evidence_tokens'],r['budget'])
     c=st.columns(4)
@@ -201,6 +212,8 @@ def render(technical=False,presentation=True):
         for stage in STAGES:slots[stage]=st.empty()
     cache=st.session_state.setdefault('live_prepared',{});results=st.session_state.setdefault('live_results',{})
     obsolete=st.session_state.setdefault('live_obsolete',{});archive_obsolete(results,obsolete)
+    history=st.session_state.setdefault('live_history',[])
+    for saved in results.values():remember(history,saved)
     if obsolete:
         with st.expander('Previous live runs · obsolete protocol metadata'):
             st.warning('PRE-FIX LIVE DEMO · OBSOLETE FOR GRANULARITY INTERPRETATION. Old contexts are retained for inspection but cannot be reused in corrected comparisons. RAW_SKIP is not invalid solely because sentence segmentation changed.')
@@ -221,13 +234,16 @@ def render(technical=False,presentation=True):
         k=(input_key(q.strip(),[p.strip() for p in ps],b,rt,seg,sm),m,device)
         old=results.get(k)
         if reader and old is not None and validity(old) is None and (old['answer'] is not None or not enable):
+            remember(history,old)
             st.info('Reused this session’s completed result; no model call was made.')
             return old
         with st.spinner('Running evidence operations…'):
             with pool.lock:
                 if hasattr(pool,'set_device'):pool.set_device(device)
                 value=run(q,ps,m,b,rt,pool,enable,notify,cache,generate_answer=reader,segmentation=seg,scoring_mode=sm)
-        if reader:results[k]=value
+        if reader:
+            results[k]=value
+            remember(history,value)
         if len(results)>20:
             oldest=next(iter(results))
             if oldest!=k:results.pop(oldest)
@@ -285,6 +301,57 @@ def render(technical=False,presentation=True):
                         st.markdown('### '+r['retriever']);st.write('Top-k IDs: '+', '.join(u['document_id'] for u in r['pool']))
                         st.dataframe(candidate_table(r),hide_index=True,width='stretch');evidence_card(r,technical)
                         st.caption('Unit types: '+', '.join(u.get('display_kind',u['unit_type']) for u in r['selection']['units']))
+    render_history(history,technical)
+
+
+def render_history(history,technical=False):
+    """Render saved pairs with the existing evidence cards; no execution path."""
+    st.divider();st.subheader('Run History / Comparison Tray')
+    st.caption('Last 30 distinct runs in this browser session. Select any two to inspect saved results without new model calls. Context-only runs are marked explicitly.')
+    summary=rows(history)
+    if not summary:
+        st.info('Complete a live pipeline run to start your history.')
+        return
+    st.dataframe(pd.DataFrame(summary),hide_index=True,width='stretch',row_height=90,
+                 column_config={'Answer':st.column_config.TextColumn('Saved answer',width='large'),
+                                'Metrics':st.column_config.TextColumn('Reference metrics',width='large')})
+    if any(row['Run']==0 for row in summary):
+        st.caption('Row 0 is the Preset Reference Answer, not a generated run. Metrics apply only to runs with the exact frozen preset query and passages. Other inputs remain unscored.')
+        with st.expander('Preset reference · metric definitions and required facts'):
+            st.write(load_preset()['reference']['answer'])
+            for fact in load_preset()['reference']['required_facts']:st.write('• '+fact['text'])
+            st.caption('P = overlapping tokens / answer tokens; R = overlapping tokens / reference tokens; F1 = 2PR/(P+R); EM = normalized string equality. Normalization uses the project HotpotQA rules. Fact-cue coverage is matched checklist cues / 9; it is a lexical heuristic, not factual verification. Reference text is never supplied to retrieval, allocation or the reader.')
+    entries={e['number']:e for e in history if validity(e['result']) is None}
+    if len(entries)<2:
+        st.caption('Run another method, budget or retriever to compare two saved runs.')
+        return
+    def label(n):
+        r=entries[n]['result']
+        return f"Run {n} · {r['retriever']} · {r['method']} · {r['budget']}"
+    picked=st.multiselect('Select two saved runs',list(entries),format_func=label,
+                          max_selections=2,key='live_history_picked')
+    if st.button('Compare Selected Runs',disabled=len(picked)!=2):
+        st.session_state['live_history_pair']=tuple(picked)
+    pair=st.session_state.get('live_history_pair',())
+    if len(pair)!=2 or any(n not in entries for n in pair):return
+    a,b=[entries[n]['result'] for n in pair]
+    changed=differences(a,b)
+    st.caption('Changed: '+(', '.join(changed) if changed else 'no recorded configuration fields')+'.')
+    if any(x not in ('Retriever','Method','Budget') for x in changed) or len(changed)>1:
+        st.info('These runs differ in multiple settings or input/protocol details. This is a descriptive comparison, not an isolated effect of one variable.')
+    st.caption('Compare the saved evidence and answers; no gold-reference winner is inferred.')
+    for col,n,r in zip(st.columns(2),pair,[a,b]):
+        with col:
+            st.markdown('### '+label(n));st.write(r['query'])
+            st.caption('Segmentation: '+r['segmentation']+' · Scoring: '+r['scoring_mode'])
+            evidence_card(r,technical)
+            with st.expander('Retrieved candidate pool'):
+                st.dataframe(candidate_table(r),hide_index=True,width='stretch')
+                for x in r['ranking']:
+                    st.markdown('**'+x['unit']['document_id']+'**');st.write(x['unit']['source_text'])
+            if r['allocation_trace']:
+                with st.expander('Budget allocation decisions'):
+                    st.dataframe(pd.DataFrame(r['allocation_trace']),hide_index=True,width='stretch')
 
 
 def same_custom_inputs(a,b):

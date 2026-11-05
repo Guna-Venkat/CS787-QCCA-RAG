@@ -1,0 +1,78 @@
+{
+  "label": "POST_W12_EXPLORATORY_BEA_V2",
+  "study": "BEA_V2_CROSSFIT_DEVELOPMENT_PILOT",
+  "output_root": "results/post_w12/bea_v2/v2",
+  "v1_root": "results/post_w12/bea_qbgf/v3",
+  "budgets": [
+    256,
+    1024
+  ],
+  "methods": [
+    "FIXED_SENTENCE",
+    "QBGF_FULL",
+    "BEA_QBGF_V1",
+    "BEA_V2"
+  ],
+  "seed": 42,
+  "folds": 5,
+  "model": {
+    "C": 1.0,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "class_weight": null
+  },
+  "parameters": {
+    "eta_cov": 0.5,
+    "lambda_red": 0.5,
+    "gamma": 1.0,
+    "min_parent_sentences": 2
+  },
+  "source_states": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "calibration": {
+    "queries_per_dataset": 1,
+    "threshold_grid": [
+      0,
+      0.00025,
+      0.0005,
+      0.001,
+      0.0025,
+      0.005
+    ],
+    "minimum_threshold_stop_fraction": 0.2,
+    "maximum_near_full_fraction": 0.8,
+    "maximum_empty_fraction": 0.1,
+    "minimum_coverage_retention": 0.85,
+    "selection": "Smallest threshold with meaningful threshold stopping, <=80% near-full allocations, <=10% empty allocations and >=85% mean cosine coverage retention relative to tau=0. No quality/LOO labels enter calibration."
+  },
+  "statistics": {
+    "resamples": 10000,
+    "seed": 42
+  },
+  "decision": {
+    "qa_margin": 0.003,
+    "macro_f1_margin": 0.01,
+    "maximum_clearly_degraded_cells": 1,
+    "minimum_context_difference": 0.1,
+    "maximum_empty_fraction": 0.1,
+    "maximum_near_full_fraction": 0.9,
+    "minimum_quality_gain": 0.003,
+    "minimum_token_saving": 0.15,
+    "uninformative_mean_auc_ceiling": 0.5
+  },
+  "cache": {
+    "reuse_compatible": true,
+    "run_missing": true,
+    "resume": true,
+    "overwrite": false,
+    "force_regenerate": false
+  },
+  "minimum_free_disk_gib": 3,
+  "unseen_expansion": false,
+  "new_attribution": false
+}

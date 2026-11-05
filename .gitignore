@@ -83,6 +83,11 @@ results/week9/**/producer_cache/
 results/week9/**/sfr_vectors/
 results/week9/**/shared/outputs/
 
+# W12 results
+results/
+
+# POST W9
+POST W9/
 
 # Frozen demo source/assets are versioned; generated/private runtime data is not.
 /demo/.venv/
@@ -121,3 +126,9 @@ results/week9/**/shared/outputs/
 !/demo/audit/world_cup_correctness_v2/COMPLETE.json
 /demo/audit/live_sentence_segmentation_audit.json
 /demo/audit/qasper_frozen_splitter_impact.json
+
+# POST-W12 derived hierarchy, embedding and generation caches (keep reports/freezes)
+/results/post_w12/bea_qbgf/**/cache/
+
+# BEA_V2 derived answer-generation caches; retain models, folds and summaries
+/results/post_w12/bea_v2/**/cache/

@@ -547,11 +547,15 @@ Live results use the same visual components as curated examples:
 
 The allocation trace for RAW_SKIP and FIXED_SENTENCE is checked against the actual selected context. QBGF displays its chosen option and cost for each passage. These are operational explanations, not reconstructed model reasoning.
 
-No answer F1, EM, gold answer or correctness badge is calculated for custom queries. Under generated answers, a neutral caption states that custom answers are not automatically verified for factual correctness or complete support; readers should inspect exact selected evidence. No automatic correctness classifier is added.
+No answer F1, EM, gold answer or correctness badge is calculated for arbitrary custom queries. The exact frozen World Cup preset has a separately labelled, user-supplied **Preset Reference Answer** for demonstration-only overlap metrics (see §15.10); it is not official gold. Under generated answers, a neutral caption states that custom answers are not automatically verified for factual correctness or complete support; readers should inspect exact selected evidence. No automatic correctness classifier is added.
 
 ### 15.4 Method comparison
 
 **Compare with another method** preserves the original run's question, passages, budget and retriever. It runs the other method if a completed answer is not already cached for that configuration in the session.
+
+**Run History / Comparison Tray** keeps the last 30 distinct LiveDemo runs in browser-session memory, including alternate-method and end-to-end retriever runs. Its compact table shows run number, retriever, method, budget, actual evidence tokens, evidence-unit count and whether an answer is available. Reusing a cached condition updates its existing row instead of adding a duplicate. Ranking-only retriever previews are not saved as answer runs. Context-only runs remain inspectable and are labelled explicitly.
+
+Select any two rows using **Select two saved runs**, then click **Compare Selected Runs**. This opens two saved answer/evidence cards, candidate pools and allocation traces without executing retrieval, embeddings or generation again. Runs remain available after changing the current inputs or budget, even if removed from the smaller generation cache. Changed input/configuration fields are listed; pairs with different inputs, protocols or multiple settings are descriptive comparisons, not isolated causal effects. No answer is declared better without a gold reference. The tray is session-only, clears when the session ends, and never writes experimental results. It summarizes many runs while showing only two detailed outputs at once.
 
 The comparison shows answers, evidence tokens, source count, evidence-unit count and prompt tokens. It does not declare an answer better without a reference.
 
@@ -576,6 +580,69 @@ A semantic SFR run still requires its actual encoder. It is not silently replace
 ### 15.8 The frozen diagnostic preset
 
 The World Cup preset exposes all ordinary live views plus a focused P7/P9 panel. P7 is the workload passage, P9 the abandoned-format passage. Separate columns show whether each was retrieved, its rank, whether it was dropped, selected in full, represented by all source units or represented partially, the actual selected unit count and the QBGF choice where relevant. The original and selected excerpts are shown. These are actual algorithmic states, not correctness or reader-utilization scores. The example may demonstrate failure and must not be used to retune QBGF. Retrieval, selection, allocation and reader utilization remain separate concepts.
+
+### 15.9 Run-history presentation workflow
+
+Use the tray to summarize several configurations, then inspect only two in detail. It does not create a three-, four- or six-column comparison.
+
+1. Keep the query, passages, SFR retriever and scoring policy fixed. Run RAW_SKIP at 256.
+2. Use **Compare with another method** to run FIXED_SENTENCE, then QBGF_FULL. Each completed condition appears in the history table.
+3. Change the main budget to 1024 and press **Run Evidence Pipeline**. Repeat the method comparisons at that budget. Changing the selector alone does not run a new condition.
+4. Scroll to **Run History / Comparison Tray**. Under **Select two saved runs**, choose exactly two entries, then click **Compare Selected Runs**.
+5. Inspect the two saved answers, exact evidence, budget meters, expandable candidate pools and budget-allocation decisions. Selecting rows alone does not replace the displayed pair; click the comparison button to apply the selection.
+6. Choose a different pair and click the same button again. This inspection makes no model calls, even when the pair uses different budgets.
+
+The compact history columns mean:
+
+| Column | Meaning |
+|---|---|
+| Run | Stable session run number; older entries leave the tray after 30 distinct conditions |
+| Retriever | Candidate retriever recorded for that run; NONE still skips retrieval |
+| Method | Actual evidence-policy ID |
+| Budget | Configured input-evidence token limit, not output length |
+| Evidence | Actual selected evidence-token count |
+| Units | Number of selected evidence units, whose granularity depends on the method |
+| Reader | **Answer saved** or **Context only**; the latter has no generated answer to compare |
+| Saved answer | The actual saved answer text, displayed directly in the history table for quick comparison. Context-only runs show **No answer — reader unavailable or disabled**. Select a pair to inspect long answers in full alongside their evidence. No new generation is requested. |
+| Reference metrics | For the exact World Cup preset only: token F1, normalized EM, token precision/recall and required-fact cue matches. Arbitrary custom runs show **No gold-reference evaluation available**. |
+
+For an isolated method comparison, choose runs with the same inputs, retriever, budget and protocol. For a budget comparison, keep the method and other settings fixed. For the reviewed retriever-only experiment, use **Compare Retrievers End-to-End**; its completed runs also enter history. The tray lists changed settings and warns when a selected pair differs in multiple settings or input/protocol details. Arbitrary saved pairs are useful for inspection but do not establish which change caused an answer difference.
+
+History is temporary server-side session memory associated with the browser session. It is not an export or durable experiment record; ending the session or restarting the app can clear it. It does not write custom inputs or answers to research artifacts.
+
+### 15.10 World Cup Preset Reference Answer and checklist
+
+The preset metadata (`demo/assets/presets/world_cup.json`) includes the supplied **Preset Reference Answer**, nine required facts and a versioned metric protocol. It is cached with the preset metadata. It is not an official gold answer, verified factual account, benchmark annotation or new confirmation outcome. The original query and source passages are unchanged.
+
+When history includes a run whose query and all source passages match this frozen preset, the table adds **row 0 — Preset Reference Answer**. Row 0 is a stored reference anchor, not a generated run; it has no evidence budget, retrieval, token cost or measured performance. The two-run selector continues to select actual saved runs. Inspect the reference text in the table or reference expander.
+
+The column immediately after **Saved answer** shows:
+
+| Diagnostic | Definition |
+|---|---|
+| P | Multiset token overlap divided by generated-answer token count |
+| R | Multiset token overlap divided by reference-answer token count |
+| F1 | `2 × P × R / (P + R)`; zero when no tokens overlap |
+| EM | 1 when normalized answer and reference strings are identical, otherwise 0 |
+| Fact cues | Matched required-fact cues out of 9, also shown as a percentage |
+
+Overlap and EM reuse the project's HotpotQA normalization: lowercase, remove ASCII punctuation and English articles, and collapse whitespace. This normalization is distinct from the checklist's cue preprocessing. An empty answer scores zero; an unavailable answer is **not evaluated**, rather than scored as a failure. Overlap is lexical, not a probability of correctness; a good paraphrase can have low F1 or EM.
+
+The answer-card expander **Preset Reference Answer and required-facts checklist** shows the reference and per-answer matched/not-matched cues for:
+
+1. 48 teams.
+2. 12 groups of 4.
+3. Top 2 + 8 best third-place teams advance.
+4. Original 16 groups of 3 proposal.
+5. 64 → 104 matches.
+6. 7 → 8 matches for semifinalists.
+7. 39-day tournament.
+8. Collusion concern.
+9. Penalty shootouts would not fully solve collusion risk.
+
+Checklist matching uses documented regular-expression cues, common number-word normalization and same-sentence/semicolon-clause co-occurrence. It is a surface heuristic: it can miss paraphrases or match a statement containing a contradiction. It does not establish factual support, completeness or truth. No LLM judge is called.
+
+Scoring runs only after generation, while displaying saved answers. The reference and checklist never enter the query, retrieval, sentence scoring, allocation or reader prompt. Editing the preset query or any passage disables these metrics; unrelated LiveDemo inputs keep **No gold-reference evaluation available**. Mixed histories score only the matching preset rows. No metrics or references are appended to benchmark, validation or confirmation results, and viewing them makes no new model calls.
 
 ## 16. CPU/GPU execution and model lifecycle
 
@@ -881,6 +948,7 @@ Changing one control at a time makes the differences easier to attribute.
 7. Watch the real stage transitions, then inspect the context and answer.
 8. Run the RAW_SKIP comparison on the same inputs.
 9. Compare input construction without declaring a winner from plausibility alone.
+10. Scroll to **Run History / Comparison Tray**, select the two completed runs, and click **Compare Selected Runs** to revisit their saved evidence without new inference.
 
 For an evidence-only demonstration, leave live models disabled and use BM25. For NONE, expect no retrieval and an empty evidence context.
 
@@ -910,7 +978,7 @@ For an evidence-only demonstration, leave live models disabled and use BM25. For
 | Does neutral deletion mean the reader ignored the unit? | No. Redundancy and interactions can conceal its contribution. |
 | Does exact source support mean the answer is correct? | No. It verifies origin of the text, not correctness or sufficiency. |
 | Are the curated answers generated again when I change a selector? | No. The saved condition is loaded. |
-| Does LiveDemo evaluate my answer against a hidden gold reference? | No. It has no custom-input gold scorer. |
+| Does LiveDemo evaluate my answer against a hidden gold reference? | No. Arbitrary inputs remain unscored. Only the exact frozen World Cup preset has a visible, user-supplied Preset Reference Answer for demo-only overlap and fact-cue diagnostics. |
 | Does LiveDemo search the whole dataset? | No. It ranks the passages you supply. |
 | Can live CPU results differ from saved GPU results? | Yes. Inputs, task mode and numerical execution can differ. |
 | Are all research controls available live? | No. LiveDemo intentionally supports four reviewed policies. |
@@ -930,6 +998,8 @@ Paths are relative to the repository root.
 | `demo/curated/generation.py` | Saved answers, exact-prompt reuse and selected-unit deletions |
 | `demo/curated/publication.py` | Complete bundle publication and checksum-verified loading |
 | `demo/live/ui.py` | Live inputs, stage updates, output panels and comparisons |
+| `demo/live/history.py` | Session-only run deduplication, compact history rows and comparison-setting differences |
+| `demo/live/reference.py` | Post-generation, preset-only token-overlap and required-fact cue diagnostics |
 | `demo/live/engine.py` | Observable execution, validation and packing traces |
 | `demo/live/resources.py` | Local model loading, CPU FP16 backend and sequential unloading |
 | `demo/components.py` | Shared source cards and budget meter |
